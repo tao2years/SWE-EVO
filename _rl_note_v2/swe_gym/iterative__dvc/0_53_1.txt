@@ -1,0 +1,12 @@
+1) [Support older `md5` tool versions for external ssh deps/outs;](https://github.com/iterative/dvc/issues/2242)
+2) [Add a workaround for submodules bug in gitpython;](https://github.com/iterative/dvc/issues/1898); Kudos @gdyuldin :tada: 
+3) [Fixed bash autocompletion;](https://github.com/iterative/dvc/issues/2069)Kudos @Naba7 :tada: 
+4) [Fixed bugs in ssh remote that caused unexpected errors;](https://github.com/iterative/dvc/issues/2280)
+5) [Sped up dir checksum calculation for ssh remote;](https://github.com/iterative/dvc/pull/2278)
+6) [Fixed recursion when using deepcopy for PathInfos;](https://github.com/iterative/dvc/issues/2259)
+7) [Fixed --jobs bug in pull/push/etc;](https://github.com/iterative/dvc/pull/2289)
+8) [Lock `dvc import-url` stages by default;](https://github.com/iterative/dvc/pull/2307)
+9) [Fixed bug that caused dvc-file checksum change when `meta` field changes;](https://github.com/iterative/dvc/issues/2209)
+10) [Fixed bug in ssh remote, that caused multiple password prompts;](https://github.com/iterative/dvc/issues/2305)
+11) [Fixed bug in checksum calculation for directories, that caused dvc to not use state db for files inside of that dir, which resulted in performance degradation;](https://github.com/iterative/dvc/issues/2258)
+12) [Temporarily made psutil dependency optional for `dvc version` command;](https://github.com/iterative/dvc/issues/2284)

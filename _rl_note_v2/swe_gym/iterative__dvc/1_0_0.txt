@@ -1,0 +1,2 @@
+* completion: misc fixes (#4076) @casperdcl
+* add --no-exec mode to import url (#4075) @karajan1001

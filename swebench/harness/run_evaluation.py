@@ -3,6 +3,7 @@ from __future__ import annotations
 import docker
 import json
 import platform
+import threading
 import traceback
 
 if platform.system() == "Linux":
@@ -10,6 +11,7 @@ if platform.system() == "Linux":
 
 from argparse import ArgumentParser, ArgumentDefaultsHelpFormatter
 from pathlib import Path, PurePosixPath
+from tqdm.auto import tqdm
 
 from swebench.harness.constants import (
     APPLY_PATCH_FAIL,
@@ -60,10 +62,11 @@ from swebench.harness.utils import (
 )
 
 GIT_APPLY_CMDS = [
-    # "git apply --verbose",
-    # "git apply --verbose --reject",
-    "git apply --verbose --reject --index",
-    # "patch --batch --fuzz=5 -p1 -i",
+    # "git reset --hard 7af856a1098406aea84bcadfd0f3de6b7901526c",
+    # "git rev-parse HEAD"
+    "git apply --verbose",
+    "git apply --verbose --reject",
+    "patch --batch --fuzz=5 -p1 -i",
 ]
 
 
@@ -76,7 +79,8 @@ def run_instance(
     run_id: str,
     timeout: int | None = None,
     rewrite_reports: bool = False,
-):
+    base_commit: str = "...",
+) -> dict:
     """
     Run a single instance with the given prediction.
 
@@ -110,9 +114,16 @@ def run_instance(
         # Write report to report.json
         with open(report_path, "w") as f:
             f.write(json.dumps(report, indent=4))
-        return instance_id, report
+        return {
+            "completed": True,
+            "resolved": report[instance_id]["resolved"],
+        }
     if report_path.exists():
-        return instance_id, json.loads(report_path.read_text())
+        report = json.loads(report_path.read_text())
+        return {
+            "completed": True,
+            "resolved": report[instance_id]["resolved"],
+        }
 
     if not test_spec.is_remote_image:
         # Link the image build dir in the log dir
@@ -137,6 +148,8 @@ def run_instance(
 
     # Run the instance
     container = None
+    eval_completed = False
+    report = {}
     try:
         # Build + start instance container (instance image should already be built)
         container = build_container(
@@ -155,21 +168,33 @@ def run_instance(
 
         # Attempt to apply patch to container (TODO: FIX THIS)
         applied_patch = False
+        if base_commit != "...":
+            val = container.exec_run(
+                    f"git reset --hard {base_commit}",
+                    workdir=DOCKER_WORKDIR,
+                    user=DOCKER_USER,
+                )
+        # print(f'[val] = {val}')
+        val = container.exec_run(
+                "git rev-parse HEAD",
+                workdir=DOCKER_WORKDIR,
+                user=DOCKER_USER,
+            )
+        # print(f'[val] = {val}')
         for git_apply_cmd in GIT_APPLY_CMDS:
             val = container.exec_run(
                 f"{git_apply_cmd} {DOCKER_PATCH}",
                 workdir=DOCKER_WORKDIR,
                 user=DOCKER_USER,
             )
+            # print(f'[val] = {val}')
             if val.exit_code == 0:
                 logger.info(f"{APPLY_PATCH_PASS}:\n{val.output.decode(UTF8)}")
                 applied_patch = True
                 break
             else:
-                logger.info(f"Failed to apply patch to container: {git_apply_cmd} : {val.output.decode(UTF8)}")
-            
-            applied_patch = True
-            break
+                logger.info(f"Failed to apply patch to container: {git_apply_cmd}")
+        
         if not applied_patch:
             logger.info(f"{APPLY_PATCH_FAIL}:\n{val.output.decode(UTF8)}")
             raise EvaluationError(
@@ -242,12 +267,8 @@ def run_instance(
         # Write report to report.json
         with open(report_path, "w") as f:
             f.write(json.dumps(report, indent=4))
-        return instance_id, report
-    except EvaluationError as e:
-        error_msg = traceback.format_exc()
-        logger.info(error_msg)
-        print(e)
-    except BuildImageError as e:
+        eval_completed = True
+    except (EvaluationError, BuildImageError) as e:
         error_msg = traceback.format_exc()
         logger.info(error_msg)
         print(e)
@@ -264,7 +285,10 @@ def run_instance(
         if rm_image:
             remove_image(client, test_spec.instance_image_key, logger)
         close_logger(logger)
-    return
+        return {
+            "completed": eval_completed,
+            "resolved": report.get(instance_id, {}).get("resolved", False),
+        }
 
 
 def run_instances(
@@ -279,6 +303,7 @@ def run_instances(
     namespace: str | None = "swebench",
     instance_image_tag: str = "latest",
     rewrite_reports: bool = False,
+    setup_base_commit: bool = False,
 ):
     """
     Run all instances for the given predictions in parallel.
@@ -305,13 +330,12 @@ def run_instances(
 
     # print number of existing instance images
     instance_image_ids = {x.instance_image_key for x in test_specs}
-    # existing_images = {
-    #     tag
-    #     for i in client.images.list(all=True)
-    #     for tag in i.tags
-    #     if tag in instance_image_ids
-    # }
-    existing_images = {}
+    existing_images = {
+        tag
+        for i in client.images.list(all=True)
+        for tag in i.tags
+        if tag in instance_image_ids
+    }
     if not force_rebuild and len(existing_images):
         print(
             f"Found {len(existing_images)} existing instance images. Will reuse them."
@@ -319,7 +343,9 @@ def run_instances(
 
     # run instances in parallel
     payloads = []
-    for test_spec in test_specs:
+    # print(f'[predictions] type = {type(predictions)} with value = {predictions}')
+    for id, test_spec in enumerate(test_specs):
+        base_commit = instances[id]['base_commit']
         payloads.append(
             (
                 test_spec,
@@ -335,12 +361,31 @@ def run_instances(
                 run_id,
                 timeout,
                 rewrite_reports,
+                base_commit,
             )
         )
 
     # run instances in parallel
     print(f"Running {len(instances)} instances...")
-    run_threadpool(run_instance, payloads, max_workers)
+    stats = {"✓": 0, "✖": 0, "error": 0}
+    pbar = tqdm(total=len(payloads), desc="Evaluation", postfix=stats)
+    lock = threading.Lock()
+
+    def run_evaluation_with_progress(*args):
+        result = run_instance(*args)
+        with lock:
+            if result["completed"]:
+                if result["resolved"]:
+                    stats["✓"] += 1
+                else:
+                    stats["✖"] += 1
+            else:
+                stats["error"] += 1
+            pbar.set_postfix(stats)
+            pbar.update()
+        return result
+
+    run_threadpool(run_evaluation_with_progress, payloads, max_workers)
     print("All instances run.")
 
 
@@ -485,14 +530,12 @@ def main(
     # load predictions as map of instance_id to prediction
     predictions = get_predictions_from_file(predictions_path, dataset_name, split)
     predictions = {pred[KEY_INSTANCE_ID]: pred for pred in predictions}
-    # predictions = {k: v for k, v in predictions.items() if 'numpy' in k}
 
     # get dataset from predictions
     dataset = get_dataset_from_preds(
         dataset_name, split, instance_ids, predictions, run_id, rewrite_reports
     )
     full_dataset = load_swebench_dataset(dataset_name, split, instance_ids)
-    # full_dataset = [i for i in full_dataset if 'numpy' in i[KEY_INSTANCE_ID]]
 
     if modal:
         # run instances on Modal
@@ -508,7 +551,7 @@ def main(
         resource.setrlimit(resource.RLIMIT_NOFILE, (open_file_limit, open_file_limit))
     client = docker.from_env()
 
-    # existing_images = list_images(client)
+    existing_images = list_images(client)
     if not dataset:
         print("No instances to run.")
     else:
@@ -530,7 +573,7 @@ def main(
         )
 
     # clean images + make final report
-    # clean_images(client, existing_images, cache_level, clean)
+    clean_images(client, existing_images, cache_level, clean)
     return make_run_report(predictions, full_dataset, run_id, client)
 
 
@@ -542,21 +585,24 @@ if __name__ == "__main__":
 
     # Common args
     parser.add_argument(
+        "-d",
         "--dataset_name",
         default="SWE-bench/SWE-bench_Lite",
         type=str,
         help="Name of dataset or path to JSON file.",
     )
     parser.add_argument(
-        "--split", type=str, default="test", help="Split of the dataset"
+        "-s", "--split", type=str, default="test", help="Split of the dataset"
     )
     parser.add_argument(
+        "-i",
         "--instance_ids",
         nargs="+",
         type=str,
         help="Instance IDs to run (space separated)",
     )
     parser.add_argument(
+        "-p",
         "--predictions_path",
         type=str,
         help="Path to predictions file - if 'gold', uses gold predictions",
@@ -574,6 +620,7 @@ if __name__ == "__main__":
         "--open_file_limit", type=int, default=4096, help="Open file limit"
     )
     parser.add_argument(
+        "-t",
         "--timeout",
         type=int,
         default=1_800,
@@ -598,9 +645,10 @@ if __name__ == "__main__":
         "--clean", type=str2bool, default=False, help="Clean images above cache level"
     )
     parser.add_argument(
-        "--run_id", type=str, required=True, help="Run ID - identifies the run"
+        "-id", "--run_id", type=str, required=True, help="Run ID - identifies the run"
     )
     parser.add_argument(
+        "-n",
         "--namespace",
         type=optional_str,
         default="swebench",

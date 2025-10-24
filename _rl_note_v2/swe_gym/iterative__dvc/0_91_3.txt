@@ -1,0 +1,3 @@
+* remote: skip non-cache looking files when estimating remote size (#3557) @efiop
+* remote: short-circuit remote size estimation for large remotes (#3537) @pmrowla
+* gdrive: method signatures cleanup, more safeguards (#3548) @shcheklein

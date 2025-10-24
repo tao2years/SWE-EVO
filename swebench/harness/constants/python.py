@@ -6,7 +6,7 @@ TEST_DJANGO = "./tests/runtests.py --verbosity 2 --settings=test_sqlite --parall
 TEST_DJANGO_NO_PARALLEL = "./tests/runtests.py --verbosity 2"
 TEST_SEABORN = "pytest --no-header -rA"
 TEST_SEABORN_VERBOSE = "pytest -rA --tb=long"
-TEST_PYTEST = "pytest --continue-on-collection-errors -rA"
+TEST_PYTEST = "pytest -rA"
 TEST_PYTEST_VERBOSE = "pytest -rA --tb=long"
 TEST_SPHINX = "tox --current-env -epy39 -v --"
 TEST_SYMPY = (
@@ -902,214 +902,6 @@ SPECS_PYDICOM.update(
 
 SPECS_HUMANEVAL = {k: {"python": "3.9", "test_cmd": "python"} for k in ["1.0"]}
 
-SPECS_GRAPHENE = {
-    k: {
-        "python": "3.10",
-        "install": "python -m pip install -e '.[test]'",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v3.2.2"
-    ]
-}
-
-SPECS_ARROW = {
-    k: {
-        "python": "3.9",
-        "pre_install": [
-            r"sed -i '/^\s*pytest$/s/pytest/pytest -rA --continue-on-collection-errors/' Makefile",
-        ],
-        "install": "make build39",
-        "test_cmd": "make test",
-    }
-    for k in [
-        "1.2.0"
-    ]
-}
-
-SPECS_SCIPY = {
-    k: {
-        "python": "3.11",
-        "packages": "environment.yml",
-        "pre_install": [
-            "apt update && apt install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev",
-        ],
-        "install": "git submodule sync --recursive; git submodule update --init --recursive ; python -m pip install . --no-build-isolation",
-        "test_cmd": "python dev.py test -- --continue-on-collection-errors -rA",
-    }
-    for k in [
-        "v1.15.3"
-    ]
-}
-
-SPECS_NUMPY = {
-    k: {
-        "python": "3.10",
-        "pre_install": [
-            "apt update && apt install -y gcc g++ gfortran libopenblas-dev liblapack-dev pkg-config python3-pip python3-dev",
-        ],
-        "install": "git submodule sync --recursive; git submodule update --init --recursive && python -m pip install -r requirements/all_requirements.txt",
-        "test_cmd": "spin test -- --continue-on-collection-errors -rA",
-    }
-    for k in [
-        "v2.1.3",
-        "v2.2.6",
-    ]
-}
-
-SPECS_QUTIP = {
-    k: {
-        "python": "3.12",
-        "packages": "setuptools wheel numpy scipy cython packaging pytest pytest-rerunfailures",
-        "install": "python setup.py develop",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v5.0.4",
-    ]
-}
-
-SPECS_DJANGO_OSCAR = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "3.2.4",
-        "3.2.6",
-    ]
-}
-
-SPECS_BEN_FRED_IMPLICIT = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v0.4.8",
-    ]
-}
-
-SPECS_NEDBATS_COVERAGEPY = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v7.7.1",
-        "v7.8.2",
-    ]
-}
-
-
-SPECS_ELASTICSEARCH_PY = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v8.19.0",
-    ]
-}
-
-SPECS_XARRAY.update({
-    k: {
-        "python": "3.12",
-        "packages": "environment.yml",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v2025.06.1",
-        "v2025.07.0",
-    ]
-})
-
-
-SPECS_TRIBLER = {
-    k: {
-        "python": "3.12",
-        "packages": "environment.yml",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v7.13.0-alpha.4",
-    ]
-}
-
-SPECS_JOKER2K_DJANGO_ENVIRON = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v0.11.2",
-    ]
-}
-
-SPECS_LIFELINES = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "v0.18.6",
-    ]
-}
-
-SPECS_GOOGLE_TIMESKETCH = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "20250408",
-        "20250521",
-        "20250112",
-    ]
-}
-
-SPECS_JIRA = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "3.9.4",
-    ]
-}
-
-SPECS_NAPALM = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "4.1.0",
-    ]
-}
-
-SPECS_RDFLIB = {
-    k: {
-        "python": "3.12",
-        "install": "python -m pip install -e .[dev]",
-        "test_cmd": TEST_PYTEST,
-    }
-    for k in [
-        "6.3.1",
-    ]
-}
-
 # Constants - Task Instance Instllation Environment
 MAP_REPO_VERSION_TO_SPECS_PY = {
     "astropy/astropy": SPECS_ASTROPY,
@@ -1132,24 +924,6 @@ MAP_REPO_VERSION_TO_SPECS_PY = {
     "sqlfluff/sqlfluff": SPECS_SQLFLUFF,
     "swe-bench/humaneval": SPECS_HUMANEVAL,
     "sympy/sympy": SPECS_SYMPY,
-
-    "graphql-python/graphene": SPECS_GRAPHENE,
-    "arrow-py/arrow": SPECS_ARROW,
-    "scipy/scipy": SPECS_SCIPY,
-    "numpy/numpy": SPECS_NUMPY,
-    "qutip/qutip": SPECS_QUTIP,
-    "django-oscar/django-oscar": SPECS_DJANGO_OSCAR,
-    "benfred/implicit": SPECS_BEN_FRED_IMPLICIT,
-    "nedbat/coveragepy": SPECS_NEDBATS_COVERAGEPY,
-    "elastic/elasticsearch-py": SPECS_ELASTICSEARCH_PY,
-    # "pydata/xarray": SPECS_XARRAY,
-    "Tribler/tribler": SPECS_TRIBLER,
-    "joke2k/django-environ": SPECS_JOKER2K_DJANGO_ENVIRON,
-    "CamDavidsonPilon/lifelines": SPECS_LIFELINES,
-    "google/timesketch": SPECS_GOOGLE_TIMESKETCH,
-    "pycontribs/jira": SPECS_JIRA,
-    "napalm-automation/napalm": SPECS_NAPALM,
-    "RDFLib/rdflib": SPECS_RDFLIB,
 }
 
 # Constants - Repository Specific Installation Instructions
@@ -1176,10 +950,6 @@ MAP_REPO_TO_REQS_PATHS = {
 MAP_REPO_TO_ENV_YML_PATHS = {
     "matplotlib/matplotlib": ["environment.yml"],
     "pydata/xarray": ["ci/requirements/environment.yml", "environment.yml"],
-    "scipy/scipy": ["environment.yml"],
-    "django-oscar/django-oscar": ["environment.yml"],
-    "benfred/implicit": ["environment.yml"],
-    "Tribler/tribler": ["environment.yml"],
 }
 
 USE_X86_PY = {

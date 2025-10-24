@@ -1,0 +1,50 @@
+# Release 7.2.0 (released Aug 17, 2023)
+
+## Dependencies
+- #11511: Drop Python 3.8 support.  
+- #11576: Require Pygments 2.14 or later.  
+
+## Deprecated
+- #11512: Deprecate `sphinx.util.md5` and `sphinx.util.sha1`. Use `hashlib` instead.  
+- #11526: Deprecate `sphinx.testing.path`. Use `os.path` or `pathlib` instead.  
+- #11528: Deprecate `sphinx.util.split_index_msg` and `sphinx.util.split_into`. Use `sphinx.util.index_entries.split_index_msg` instead.  
+- Deprecate `sphinx.builders.html.Stylesheet` and `sphinx.builders.html.Javascript`. Use `sphinx.application.Sphinx.add_css_file()` and `sphinx.application.Sphinx.add_js_file()` instead.  
+- #11582: Deprecate `sphinx.builders.html.StandaloneHTMLBuilder.css_files` and `sphinx.builders.html.StandaloneHTMLBuilder.script_files`. Use `sphinx.application.Sphinx.add_css_file()` and `sphinx.application.Sphinx.add_js_file()` instead.  
+- #11459: Deprecate `sphinx.ext.autodoc.preserve_defaults.get_function_def()`. Patch by Bénédikt Tran.  
+
+## Features added
+- #11526: Support `os.PathLike` types and `pathlib.Path` objects in many more places.  
+- #5474: coverage: Print summary statistics tables. Patch by Jorge Leitao.  
+- #6319: viewcode: Add `viewcode_line_numbers` to control whether line numbers are added to rendered source code. Patch by Ben Krikler.  
+- #9662: Add the `:no-typesetting:` option to suppress textual output and only create a linkable anchor. Patch by Latosha Maltba.  
+- #11221: C++: Support domain objects in the table of contents. Patch by Rouslan Korneychuk.  
+- #10938: doctest: Add `doctest_show_successes` option. Patch by Trey Hunner.  
+- #11533: Add `:no-index:`, `:no-index-entry:`, and `:no-contents-entry:`.  
+- #11572: Improve debug logging of reasons why files are detected as out of date. Patch by Eric Larson.  
+- #10678: Emit `source-read` events for files read via the `include` directive. Patch by Halldor Fannar.  
+- #11570: Use short names when using PEP 585 built-in generics. Patch by Riccardo Mori.  
+- #11300: Improve `SigElementFallbackTransform` fallback logic and signature text elements nodes. See the documentation for more details. Patch by Bénédikt Tran.  
+- Allow running Sphinx with `python -m sphinx build ...`.  
+
+## Bugs fixed
+- #11077: graphviz: Fix relative links from within the graph. Patch by Ralf Grubenmann.  
+- #11529: Line Block in LaTeX builder outputs spurious empty token. Patch by Adrian Vollmer.  
+- #11196: autosummary: Summary line extraction failed with “e.g.”  
+- #10614: Fixed a number of bugs in inheritance diagrams that resulted in missing or broken links. Patch by Albert Shih.  
+- #9428: Exclude substitution definitions when running the gettext builder. Patch by Alvin Wong.  
+- #10795: Raise a descriptive error if `graphviz_dot` is falsy.  
+- #11546: Translated nodes identical to their original text are now marked with the `translated=True` attribute.  
+- #10049: html: Change “Permalink” to “Link” for title text in link anchors.  
+- #4225: Relax Pygments parsing on lexing failures.  
+- #11246: Allow inline links in the first line of a docstring and one-line type comments `#: :meta ...:` when using `sphinx.ext.napoleon`. Patch by Bénédikt Tran.  
+- #10930: Highlight all search terms on the search results page. Patch by Dmitry Shachnev.  
+- #11473: Type annotations containing `Literal` enumeration values now render correctly. Patch by Bénédikt Tran.  
+- #11591: Fix support for C coverage in `sphinx.ext.coverage` extension. Patch by Stephen Finucane.  
+- #11594: HTML Theme: Enhancements to horizontal scrolling on smaller devices in the agogo theme. Patch by Lukas Engelter.  
+- #11459: Fix support for async and lambda functions in `sphinx.ext.autodoc.preserve_defaults`. Patch by Bénédikt Tran.  
+
+## Testing
+- #11577: pytest: Fail tests on “XPASS”.  
+- #11577: pytest: Use “importlib” import mode.  
+- #11577: pytest: Set `PYTHONWARNINGS=error`.  
+- #11577: pytest: Set strict config and strict markers.  

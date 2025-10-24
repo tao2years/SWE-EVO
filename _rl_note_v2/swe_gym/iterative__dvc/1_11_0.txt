@@ -1,0 +1,25 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+## 🚀 New Features and Enhancements 
+
+- tree: update hint about missing deps (#5005) @efiop
+- plots: make linear and scatter interactive (#4975) @pared
+- dvc: preserve desc on add/run/imp (#5003) @efiop
+- dvc: preserve comments/meta on add/imp/run (#5001) @efiop
+- dvc: more explict error during init when .dvc is ignored by git (#4978) @dudarev
+- cmd: matching help output to docs (#4989) @jorgeorpinel
+- repro: support glob/foreach-group to run at once through CLI (#4976) @skshetry
+- parse: parse target correctly for generated stages (#4961) @skshetry
+
+## 💣 Breaking Changes 
+
+- experiments: store experiments in refs/exps instead of heads (#4910) @pmrowla
+
+## 🔨 Maintenance 
+
+- Move `Repo.collect` and `collect_granular` to `Repo.stage` (#4993) @skshetry
+- s3: use mocked s3 instead of the real one (#4968) @skshetry
+
+Thanks again to @dudarev, @efiop, @jorgeorpinel, @pared, @pmrowla and @skshetry for the contributions! 🎉

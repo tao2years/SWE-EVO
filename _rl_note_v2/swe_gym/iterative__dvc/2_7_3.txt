@@ -1,0 +1,28 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+## 🚀 New Features and Enhancements 
+
+- Added `GitAuthError` (#6493) @daavoo
+- diff: don't forget to use dvcignore and state (#6595) @efiop
+- project: formalize extra dependencies (#6560) @isidentical
+
+## 🏇 Optimizations 
+
+- diff: don't forget to use dvcignore and state (#6595) @efiop
+
+## 🐛 Bug Fixes 
+
+- ssh: support passphrases for private keys (#6566) @isidentical
+
+## 🔨 Maintenance 
+
+- build(deps): Bump adlfs from 2021.8.2 to 2021.9.1 (#6597) @dependabot
+- objects.transfer: minor refactoring, move lazier taskset inside custom executor (#6591) @skshetry
+- build(deps): Bump grandalf from 0.6 to 0.7 (#6575) @dependabot
+- build(deps): Bump hdfs from 2.5.8 to 2.6.0 (#6577) @dependabot
+- build(deps): Bump google-cloud-storage from 1.42.0 to 1.42.1 (#6568) @dependabot
+- project: formalize extra dependencies (#6560) @isidentical
+
+Thanks again to @daavoo, @dependabot, @dependabot[bot], @efiop, @isidentical, @pared and @skshetry for the contributions! 🎉

@@ -52,29 +52,55 @@ def get_logs_eval(test_spec: TestSpec, log_fp: str) -> tuple[dict[str, str], boo
     if isinstance(test_cmd, list):
         test_cmd = test_cmd[-1]
 
-    with open(log_fp) as f:
-        content = f.read()
-        # TODO fix constant here
-        bad_codes = list(
-            filter(
-                lambda x: x in content,
-                [
-                    APPLY_PATCH_FAIL,
-                    RESET_FAILED,
-                    TESTS_ERROR,
-                    TESTS_TIMEOUT,
-                ],
+    try:
+        with open(log_fp) as f:
+            content = f.read()
+            # TODO fix constant here
+            bad_codes = list(
+                filter(
+                    lambda x: x in content,
+                    [
+                        APPLY_PATCH_FAIL,
+                        RESET_FAILED,
+                        TESTS_ERROR,
+                        TESTS_TIMEOUT,
+                    ],
+                )
             )
-        )
-        if bad_codes:
-            return {}, False
-        elif not (START_TEST_OUTPUT in content and END_TEST_OUTPUT in content):
-            # Test patch did not apply (should not happen at all)
-            return {}, False
+            if bad_codes:
+                return {}, False
+            elif not (START_TEST_OUTPUT in content and END_TEST_OUTPUT in content):
+                # Test patch did not apply (should not happen at all)
+                return {}, False
 
-        # Get status map of evaluation results
-        content = content.split(START_TEST_OUTPUT)[1].split(END_TEST_OUTPUT)[0]
-        return log_parser(content, test_spec), True
+            # Get status map of evaluation results
+            test_content = content.split(START_TEST_OUTPUT)[1].split(END_TEST_OUTPUT)[0]
+            
+            # Try parsing the content between markers first
+            # status_map = log_parser(test_content, test_spec)
+            ### (TODO): Add by TueLDT1
+            import inspect
+
+            if len(inspect.signature(log_parser).parameters) <= 1:
+                status_map = log_parser(test_content)
+            else:
+                status_map = log_parser(test_content, test_spec)
+            
+            # If no test results found between markers (common in Modal environment),
+            # try parsing the entire log content as fallback
+            if not status_map:
+                # Look for pytest output patterns in the entire log content
+                # This handles cases where pytest output goes to stderr and isn't captured between markers
+                ### (TODO): Add by TueLDT1
+                import inspect
+
+                if len(inspect.signature(log_parser).parameters) <= 1:
+                    status_map = log_parser(test_content)
+                else:
+                    status_map = log_parser(test_content, test_spec)        
+            return status_map, True
+    except:
+        return {}, False
 
 
 def get_eval_tests_report(
@@ -237,7 +263,6 @@ def get_eval_report(
         report (dict): report of metrics
     """
     report_map = {}
-
     instance_id = prediction[KEY_INSTANCE_ID]
     report_map[instance_id] = {
         "patch_is_None": False,
@@ -249,6 +274,7 @@ def get_eval_report(
     # Check if the model patch exists
     if prediction[KEY_PREDICTION] is None:
         report_map[instance_id]["patch_is_None"] = True
+        print('[Yeah1]')
         return report_map
     report_map[instance_id]["patch_exists"] = True
 
@@ -256,6 +282,7 @@ def get_eval_report(
     eval_status_map, found = get_logs_eval(test_spec, test_log_path)
 
     if not found:
+        print('[Yeah2]')
         return report_map
     report_map[instance_id]["patch_successfully_applied"] = True
 

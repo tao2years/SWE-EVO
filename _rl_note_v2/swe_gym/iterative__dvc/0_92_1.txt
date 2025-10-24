@@ -1,0 +1,6 @@
+* GDrive: use lates PyDrive2 version to fix large file uploads (#3592) @shcheklein
+* CLI: redirect warnings to logger (#3591) @shcheklein
+* push/pull/status/metrics: add support for `--all-commits` (#3587) @efiop
+* progress: better threading (#3583) @casperdcl
+* Only import speedcopy on Win > 7 (#3581) @charlesbaynham
+* metrics: diff: don't print "No changes" (#3576) @efiop

@@ -1,0 +1,11 @@
+Hotfix for Unidist.
+
+Key Features and Updates Since 0.25.0
+-------------------------------------
+* Stability and Bugfixes
+  * FIX-#6684: Adapt to pandas 2.1.2 (#6685)
+  * FIX-#0000: Pin `unidist<=0.4.1` (f0c1c03)
+
+Contributors
+------------
+@anmyachev
