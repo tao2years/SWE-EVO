@@ -12,7 +12,7 @@ except Exception:
     np = None
 
 SRC_DIR = "/mnt/data/swe_world_2/SWE-EVO-dev/output_final"
-OUT_DIR = "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out"        # sẽ tạo 2 thư mục con: hf_dataset/ và hf_jsonl/
+OUT_DIR = "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out"       
 
 def to_py(x):
     if np is not None:
@@ -30,7 +30,6 @@ def ensure_list_str(x):
     if x is None:
         return []
     if isinstance(x, str):
-        # Có khả năng là JSON string -> parse
         try:
             j = json.loads(x)
             if isinstance(j, list):
@@ -45,7 +44,6 @@ def ensure_list_str(x):
 def sanitize_instance(obj: dict) -> dict:
     obj = to_py(obj)
 
-    # Các field tối thiểu cần có
     must_be_str = [
         "repo", "instance_id", "base_commit", "patch", "test_patch",
         "problem_statement", "environment_setup_commit", "image",
@@ -55,7 +53,6 @@ def sanitize_instance(obj: dict) -> dict:
         if k in obj and obj[k] is not None:
             obj[k] = str(obj[k])
 
-    # Chuẩn hoá tests
     obj["FAIL_TO_PASS"] = ensure_list_str(obj.get("FAIL_TO_PASS"))
     obj["PASS_TO_PASS"] = ensure_list_str(obj.get("PASS_TO_PASS"))
 
@@ -72,7 +69,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", default=SRC_DIR)
     ap.add_argument("--out", default=OUT_DIR)
-    ap.add_argument("--split", default="test")  # run_infer.sh thường dùng "test"
+    ap.add_argument("--split", default="test")  # run_infer.sh 
     args = ap.parse_args()
 
     src = Path(args.src)
@@ -91,11 +88,9 @@ def main():
                 inst = json.load(f)
             rows.append(sanitize_instance(inst))
 
-    # 1) Lưu Hugging Face dataset (local)
     dd = DatasetDict({args.split: Dataset.from_list(rows)})
-    dd.save_to_disk(str(out_ds))  # load lại bằng datasets.load_from_disk(...)
+    dd.save_to_disk(str(out_ds))  
 
-    # 2) Gộp thành JSONL (đơn giản nhất cho OpenHands run_infer)
     jsonl_fp = out_jsonl / f"{args.split}.jsonl"
     with open(jsonl_fp, "w", encoding="utf-8") as fo:
         for r in rows:
