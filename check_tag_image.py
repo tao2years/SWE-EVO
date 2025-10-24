@@ -27,10 +27,6 @@ def owner_repo_to_local_path(repo: str) -> str:
     return os.path.join(LOCAL_BASE_DIR, repo.replace("/", "__"))
 
 def list_tag_commits_remote(repo: str):
-    """
-    Dùng git ls-remote --tags https://github.com/<repo>.git
-    Trả về: dict commit_sha -> list[tag_names]
-    """
     url = f"https://github.com/{repo}.git"
     out = run(["git", "ls-remote", "--tags", url])
     commit_to_tags = defaultdict(list)
@@ -97,7 +93,7 @@ def list_tag_commits_local(repo: str):
 
 def build_tag_commit_index(repos):
     """
-    repos: iterable các 'owner/repo'
+    repos: iterable 
     return: dict repo -> (dict commit_sha -> list[tag_names])
     """
     idx = {}
@@ -112,8 +108,8 @@ def build_tag_commit_index(repos):
 def match_base_commit_to_tags(commit_map, base_sha):
     """
     commit_map: dict commit_sha -> list[tag_names]
-    base_sha: 40-hex (dataset thường là full SHA)
-    Return: list tag_names trùng SHA (exact or prefix match).
+    base_sha: 40-hex 
+    Return: list tag_names
     """
     if base_sha in commit_map:
         return commit_map[base_sha]

@@ -1,7 +1,6 @@
 import os
 import requests
 
-# Thay đổi theo thực tế nếu bạn có token để tăng hạn mức truy cập
 token = "github_token"
 
 headers = {"Accept": "application/vnd.github+json"}
