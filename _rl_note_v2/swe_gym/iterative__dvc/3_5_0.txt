@@ -1,0 +1,19 @@
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🚀 New Features and Enhancements
+* output: checkout: use f-string by @skshetry in https://github.com/iterative/dvc/pull/9715
+* fetch: introduce --type metrics/plots by @efiop in https://github.com/iterative/dvc/pull/9718
+### 🐛 Bug Fixes
+* repro:  ignore --downstream if used together with --pipeline by @skshetry in https://github.com/iterative/dvc/pull/9692
+### Other Changes
+* api.get_url: use index storage for getting remote URL by @pmrowla in https://github.com/iterative/dvc/pull/9676
+* repo: site_cache_dir: take major version into account by @efiop in https://github.com/iterative/dvc/pull/9699
+* readme: point to dvc.org for packages by @efiop in https://github.com/iterative/dvc/pull/9703
+* update link for external data sources by @dberenbaum in https://github.com/iterative/dvc/pull/9706
+* output: fix formatting by @efiop in https://github.com/iterative/dvc/pull/9716
+* output: pass explicit callback to hashfile.build() by @efiop in https://github.com/iterative/dvc/pull/9714
+* deps: bump dvc-data to 2.5.0 by @efiop in https://github.com/iterative/dvc/pull/9717
+
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/3.4.0...3.5.0

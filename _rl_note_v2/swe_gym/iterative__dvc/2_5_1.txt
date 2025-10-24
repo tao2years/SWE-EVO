@@ -1,0 +1,28 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+## 🚀 New Features and Enhancements 
+
+- Fix #6205: Fixed diff summary to only show states with values. (#6229) @hadasarik
+- add: reduce os.fspath calls on recursive add (#6287) @skshetry
+- add: fix progress bar on single target (#6288) @skshetry
+- ui: Prevent tqdm from breaking on output (#6280) @skshetry
+- cleaning up add, progress bars and status (#6224) @skshetry
+
+## 🏇 Optimizations 
+
+- staging: optimize the number of info() calls (#6281) @isidentical
+- objects: hash_file: retrieve size from hash_info (#6284) @isidentical
+
+## 🐛 Bug Fixes 
+
+- ui: Prevent tqdm from breaking on output (#6280) @skshetry
+
+## 🔨 Maintenance 
+
+- Fix typos discovered by codespell (#6294) @cclauss
+- add: reduce os.fspath calls on recursive add (#6287) @skshetry
+- cleaning up add, progress bars and status (#6224) @skshetry
+
+Thanks again to @cclauss, @efiop, @hadasarik, @isidentical and @skshetry for the contributions! 🎉

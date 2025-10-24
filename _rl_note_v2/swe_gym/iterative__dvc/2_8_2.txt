@@ -1,0 +1,45 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+- git: use asyncssh as dulwich SSH vendor (#6797) @pmrowla
+- Dependabot/pip/pylint 2.11.1 (#6843) @karajan1001
+- Revert "build(deps): Bump pylint from 2.9.6 to 2.11.1" (#6842) @karajan1001
+- `dvc machine`: add a new command `rename` to it (#6633) @karajan1001
+- Exp show md (#6799) @daavoo
+- machine: Add a new command `dvc machine status` (#6649) @karajan1001
+- exp/metrics/params diff: Replaced `Old/New` with `a_rev/b_rev` (#6814) @daavoo
+- [pre-commit.ci] pre-commit autoupdate (#6829) @pre-commit-ci
+- Added `test_show_experiments_sort_by` (#6798) @daavoo
+
+## 🚀 New Features and Enhancements 
+
+- exp run: throw error if new parameters are added by --set-param (#6521) @mattlbeck
+- plots: make generator out of collect (#6793) @pared
+- plots: load templates from package (#6550) @pared
+
+## 🐛 Bug Fixes 
+
+- dvcfs: handle new workspace subdirectories in walk (#6811) @eggqq007
+- ui: write_json: don't forget json kwargs (#6810) @efiop
+- dvc: add 'repos' list to pre-commit config if it does not exist (#6795) @mjlbach
+
+## 🔨 Maintenance 
+
+- build(deps): Bump pylint from 2.9.6 to 2.11.1 (#6636) @dependabot
+- move some configs to pyproject.toml (#6834) @skshetry
+- setup: bump fsspec deps to 2021.10.1 (#6828) @efiop
+- Revert "webdav: limit httpx to fix the CI" (#6827) @skshetry
+- build(deps-dev): Bump filelock from 3.3.0 to 3.3.1 (#6825) @dependabot
+- build(deps-dev): Bump types-requests from 2.25.9 to 2.25.11 (#6820) @dependabot
+- build(deps): Bump actions/checkout from 2.3.4 to 2.3.5 (#6817) @dependabot
+- build(deps-dev): Bump types-tabulate from 0.8.2 to 0.8.3 (#6790) @dependabot
+- build(deps-dev): Bump types-toml from 0.10.0 to 0.10.1 (#6821) @dependabot
+- build(deps-dev): Bump dvclive from 0.4.0 to 0.4.1 (#6786) @dependabot
+- build(deps): Update flufl-lock requirement from <4,>=3.2 to >=5 (#6576) @dependabot
+- pathspec 0.9.0 quickfix (#6689) @endremborza
+- webdav: limit httpx to fix the CI (#6800) @isidentical
+- dvc: drop 3.6 support (#6792) @efiop
+- use setuptools_scm and build_requires (#6775) @skshetry
+
+Thanks again to @daavoo, @dependabot, @dependabot[bot], @efiop, @eggqq007, @endremborza, @isidentical, @karajan1001, @mattlbeck, @mjlbach, @pared, @pmrowla, @pre-commit-ci, @pre-commit-ci[bot] and @skshetry for the contributions! 🎉

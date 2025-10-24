@@ -38,7 +38,6 @@ class TestSpec:
     repo_script_list: list[str]
     eval_script_list: list[str]
     env_script_list: list[str]
-    test_patch: str
     arch: str
     FAIL_TO_PASS: list[str]
     PASS_TO_PASS: list[str]
@@ -52,14 +51,14 @@ class TestSpec:
     @property
     def setup_env_script(self):
         return (
-            "\n".join(["#!/bin/bash", "set -exo pipefail"] + self.env_script_list)
+            "\n".join(["#!/bin/bash", "set -euxo pipefail"] + self.env_script_list)
             + "\n"
         )
 
     @property
     def eval_script(self):
         return (
-            "\n".join(["#!/bin/bash", "set -xo pipefail"] + self.eval_script_list)
+            "\n".join(["#!/bin/bash", "set -uxo pipefail"] + self.eval_script_list)
             + "\n"
         )
         # Don't exit early because we need to revert tests at the end
@@ -67,7 +66,7 @@ class TestSpec:
     @property
     def install_repo_script(self):
         return (
-            "\n".join(["#!/bin/bash", "set -exo pipefail"] + self.repo_script_list)
+            "\n".join(["#!/bin/bash", "set -euxo pipefail"] + self.repo_script_list)
             + "\n"
         )
 
@@ -179,6 +178,7 @@ def make_test_spec(
     base_image_tag: str = LATEST,
     env_image_tag: str = LATEST,
     instance_image_tag: str = LATEST,
+    arch: str = "x86_64",
 ) -> TestSpec:
     if isinstance(instance, TestSpec):
         return instance
@@ -187,9 +187,7 @@ def make_test_spec(
     assert instance_image_tag is not None, "instance_image_tag cannot be None"
     instance_id = instance[KEY_INSTANCE_ID]
     repo = instance["repo"]
-    # version = instance.get("version")
-    version = instance.get("start_version")
-    instance['version'] = version
+    version = instance.get("version")
     base_commit = instance["base_commit"]
     problem_statement = instance.get("problem_statement")
     hints_text = instance.get("hints_text")  # Unused
@@ -197,21 +195,18 @@ def make_test_spec(
 
     def _from_json_or_obj(key: str) -> Any:
         """If key points to string, load with json"""
-        if key not in instance:
+        if key not in instance or instance[key] == "...":
             # If P2P, F2P keys not found, it's a validation instance
             return []
         if isinstance(instance[key], str):
             return json.loads(instance[key])
         return instance[key]
 
-    # pass_to_pass = _from_json_or_obj("PASS_TO_PASS")
-    # fail_to_pass = _from_json_or_obj("FAIL_TO_PASS")
-    pass_to_pass = []
-    fail_to_pass = []
+    pass_to_pass = _from_json_or_obj("PASS_TO_PASS")
+    fail_to_pass = _from_json_or_obj("FAIL_TO_PASS")
 
     env_name = "testbed"
     repo_directory = f"/{env_name}"
-
     specs = MAP_REPO_VERSION_TO_SPECS[repo][version]
     docker_specs = specs.get("docker_specs", {})
 
@@ -222,19 +217,12 @@ def make_test_spec(
     eval_script_list = make_eval_script_list(
         instance, specs, env_name, repo_directory, base_commit, test_patch
     )
-    if platform.machine() in {"aarch64", "arm64"}:
-        # use arm64 unless explicitly specified
-        arch = "arm64" if instance_id not in USE_X86 else "x86_64"
-    else:
-        arch = "x86_64"
-
     return TestSpec(
         instance_id=instance_id,
         repo=repo,
         env_script_list=env_script_list,
         repo_script_list=repo_script_list,
         eval_script_list=eval_script_list,
-        test_patch=test_patch,
         version=version,
         arch=arch,
         FAIL_TO_PASS=fail_to_pass,

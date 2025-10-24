@@ -1,0 +1,19 @@
+* dvc: remove `dvc metrics add/remove` (#3928) @efiop
+* refactor: rename utils.stage to utils.yaml (#3923) @skshetry
+* Fix modifying plot (#3926) @Suor
+* bugfix: rerun stage when command is changed (#3922) @skshetry
+* dvc: replace `pipeline` with `dag` (#3905) @efiop
+* Implement removing of the stage (#3881) @skshetry
+* dvc: rename "working tree" to "workspace" (#3914) @efiop
+* dvc: rename `dvc lock` -> `dvc freeze` (#3915) @efiop
+* Add plots props and `plots modify` params (#3911) @Suor
+* use fork of mockssh-server (#3910) @skshetry
+* pre-commit: don't run dvc in parallel (#3912) @efiop
+* use `selectors` instead of `select.select()` (#3899) @skshetry
+* Update bug report template (#3903) @jorgeorpinel
+* tests: make ssh_server session scoped (#3898) @efiop
+* dvcignore: use correct root .dvcignore for subrepos (#3895) @pmrowla
+* plots: replace --show-json with --show-vega (#3891) @efiop
+* Bugfix:  _credentials_location (#3896) @nickdelgrosso
+* brancher: only yield git revisions that contain repo_root (#3883) @pmrowla
+* modify issue template (#3887) @skshetry

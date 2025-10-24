@@ -1,0 +1,3 @@
+* CLI: Fixed cmds help strings (#3566) @xnutsive
+* remote: ADD sock attribute and pass it to SSHConnection constructor (#3562) @gio8tisu
+* pull: update help output (-R option) (#3555) @jorgeorpinel

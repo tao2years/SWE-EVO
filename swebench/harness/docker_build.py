@@ -416,7 +416,6 @@ def build_instance_image(
             image_name=image_name,
             setup_scripts={
                 "setup_repo.sh": test_spec.install_repo_script,
-                "test_patch.diff": test_spec.test_patch,
             },
             dockerfile=dockerfile,
             platform=test_spec.platform,

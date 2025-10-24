@@ -1,0 +1,9 @@
+## What's Changed
+* build: skip install fpm and ruby on Windows by @skshetry in https://github.com/iterative/dvc/pull/8169
+* import-url/update: add --no-download flag by @dtrifiro in https://github.com/iterative/dvc/pull/8024
+* fs: optimize dvc list --recursive by @rlamy in https://github.com/iterative/dvc/pull/8150
+
+## New Contributors
+* @rlamy made their first contribution in https://github.com/iterative/dvc/pull/8150
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/2.19.0...2.20.0

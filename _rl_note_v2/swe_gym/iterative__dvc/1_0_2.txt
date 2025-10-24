@@ -1,0 +1,7 @@
+* Enable pylint checks (#4092) @skshetry
+* rpm/deb/osxpkg: add url and license (#4098) @efiop
+* ui: remove: .gitignore in cmd description (#4097) @nik123
+* git-hook: don't run when not in dvc repo (#4091) @efiop
+* push/pull/fetch: unhide --run-cache (#4087) @efiop
+* tests: use pytest-lazyfixture (#4089) @skshetry
+* run: hide and forbid --file for multistage files (#4086) @efiop

@@ -1,0 +1,10 @@
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### 🐛 Bug Fixes
+* config: resolve: handle ~ home dir by @efiop in https://github.com/iterative/dvc/pull/9825
+* config: use local config from local_dvc_dir by @efiop in https://github.com/iterative/dvc/pull/9827
+* fetch: merge config instead of updating by @efiop in https://github.com/iterative/dvc/pull/9828
+
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/3.13.3...3.14.0

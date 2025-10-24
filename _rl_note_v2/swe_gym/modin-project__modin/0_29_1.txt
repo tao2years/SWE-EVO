@@ -1,0 +1,14 @@
+This release pins numpy<2.
+
+Key Features and Updates Since 0.29.0
+-------------------------------------
+* Stability and Bugfixes
+  * FIX-#7302: Pin numpy<2 (072453b)
+* New Features
+  * FEAT-#7265: Automatic publication of Modin wheel to PyPI (#7262)
+
+Contributors
+------------
+
+@anmyachev
+@sfc-gh-dpetersohn

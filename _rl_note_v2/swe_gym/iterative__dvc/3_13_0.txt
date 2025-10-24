@@ -1,0 +1,14 @@
+<!-- Release notes generated using configuration in .github/release.yml at 3.13.0 -->
+
+## What's Changed
+### 🚀 New Features and Enhancements
+* Feature/hydra config modules by @d-miketa in https://github.com/iterative/dvc/pull/9783
+* fetch: add basic onerror by @efiop in https://github.com/iterative/dvc/pull/9810
+### Other Changes
+* exp: abstract random name gen from repo by @dberenbaum in https://github.com/iterative/dvc/pull/9806
+* deps: bump dvc-data to 2.12.0 by @efiop in https://github.com/iterative/dvc/pull/9809
+
+## New Contributors
+* @d-miketa made their first contribution in https://github.com/iterative/dvc/pull/9783
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/3.12.0...3.13.0

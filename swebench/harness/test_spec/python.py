@@ -247,8 +247,29 @@ def get_test_directives(instance: SWEbenchInstance) -> list:
         d for d in directives if not any(d.endswith(ext) for ext in NON_TEST_EXTS)
     ]
 
+    # (TODO) Add by TueLDT1 (Important): the collecion process of pytest have several issues
+    # We should remove these files which are deleted or set null after apply test_patch to bypass these issues
+    hdr_re = re.compile(r'^diff --git a/(.*?) b/(.*?)$', re.M)
+    matches = list(hdr_re.finditer(test_patch))
+
+    deleted_paths = set()
+    for i, m in enumerate(matches):
+        bpath = m.group(2)  
+        start = m.end()
+        end = matches[i + 1].start() if i + 1 < len(matches) else len(test_patch)
+        block = test_patch[start:end]
+
+        # 2 signals for delete file in diff:
+        # - "deleted file mode <mode>"
+        # - "+++ /dev/null"
+        if re.search(r'(?m)^deleted file mode \d+', block) or re.search(r'(?m)^\+\+\+ /dev/null', block):
+            deleted_paths.add(bpath)
+    directives = [d for d in directives if d not in deleted_paths]
+    #############
+
+    # print(f'[Before] directives = {directives}')
     # For Django tests, remove extension + "tests/" prefix and convert slashes to dots (module referencing)
-    if instance["repo"] == "django/django":
+    if instance["repo"] == "django/django": 
         directives_transformed = []
         for d in directives:
             d = d[: -len(".py")] if d.endswith(".py") else d
@@ -256,7 +277,24 @@ def get_test_directives(instance: SWEbenchInstance) -> list:
             d = d.replace("/", ".")
             directives_transformed.append(d)
         directives = directives_transformed
-
+    elif instance["repo"] == "dask/dask":  # (TODO): Add by TueLDT1 
+        directives_transformed = []
+        for d in directives:
+            if d.endswith(".py"):
+                directives_transformed.append(d)
+        directives = directives_transformed
+    elif instance["instance_id"] == "conan-io__conan_2.0.14_2.0.15":
+        directives_transformed = []
+        for d in directives:
+            if d.endswith(".py"):
+                directives_transformed.append(d)
+        directives = directives_transformed
+    elif instance["instance_id"] == "iterative__dvc_2.8.1_2.8.2":
+        directives_transformed = []
+        for d in directives:
+            if d.endswith(".py"):
+                directives_transformed.append(d)
+        directives = directives_transformed
     return directives
 
 
@@ -272,6 +310,7 @@ def make_repo_script_list_py(
         f"chmod -R 777 {repo_directory}",  # So nonroot user can run tests
         f"cd {repo_directory}",
         f"git reset --hard {base_commit}",
+        f"git rev-parse HEAD",
         # Remove the remote so the agent won't see newer commits.
         "git remote remove origin",
         # Make sure conda is available for later use
@@ -289,10 +328,6 @@ def make_repo_script_list_py(
 
     if "install" in specs:
         setup_commands.append(specs["install"])
-    
-    setup_commands.extend([
-        "git apply --verbose --index /root/test_patch.diff",
-    ])
 
     # If the setup modifies the repository in any way, it can be
     # difficult to get a clean diff.  This ensures that `git diff`
@@ -301,7 +336,7 @@ def make_repo_script_list_py(
     clean_diff_commands = [
         "git config --global user.email setup@swebench.config",
         "git config --global user.name SWE-bench",
-        "git commit --allow-empty -am SWE-bench --no-verify",
+        "git commit --allow-empty -am SWE-bench",
     ]
 
     setup_commands += clean_diff_commands
@@ -385,18 +420,27 @@ def make_eval_script_list_py(
     HEREDOC_DELIMITER = "EOF_114329324912"
     test_files = get_modified_files(test_patch)
     # Reset test files to the state they should be in before the patch.
-    reset_tests_command = f"git checkout {' '.join(test_files)}"
-    # apply_test_patch_command = (
-    #     f"git apply -v - <<'{HEREDOC_DELIMITER}'\n{test_patch}\n{HEREDOC_DELIMITER}"
-    # )
+    reset_tests_command = f"git checkout {base_commit} {' '.join(test_files)}"
+    hot_fix = ""
+    if instance["repo"] == "dask/dask" and int(instance["start_version"].split('.')[0]) <= 2023: # (TODO): Add by TueLDT1
+        hot_fix = "pip install 'pandas<2.0'\n"
+        if instance["end_version"] == "2023.6.1":
+            hot_fix += f"pip install 'distributed==2023.6.0'\n"
+        # if instance["start_version"] == "2023.6.1" or instance["start_version"] == "2023.7.0":
+        #     hot_fix += "pip uninstall -y dask\n"
+    apply_test_patch_command = (
+        f"git apply -v - <<'{HEREDOC_DELIMITER}'\n{test_patch}\n{HEREDOC_DELIMITER}"
+    )
     test_command = " ".join(
         [
             MAP_REPO_VERSION_TO_SPECS[instance["repo"]][instance["version"]][
                 "test_cmd"
             ],
-            # *get_test_directives(instance),
+            *get_test_directives(instance),
         ]
     )
+    # --continue-on-collection-errors
+    test_command = test_command.replace("pytest", "pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning", 1) # (TODO): Add by TueLDT1
     eval_commands = [
         "source /opt/miniconda3/bin/activate",
         f"conda activate {env_name}",
@@ -414,14 +458,18 @@ def make_eval_script_list_py(
         "source /opt/miniconda3/bin/activate",
         f"conda activate {env_name}",
     ]
-    if "install" in specs:
-        eval_commands.append(specs["install"])
+    install_commands = [specs.get("install", [])]
     eval_commands += [
-        reset_tests_command,
+        # reset_tests_command, # (TODO): Add by TueLDT1
+        *install_commands,
+        hot_fix,
         # apply_test_patch_command,
         f": '{START_TEST_OUTPUT}'",
         test_command,
         f": '{END_TEST_OUTPUT}'",
-        reset_tests_command,  # Revert tests after done, leave the repo in the same state as before
+        # "cd /testbed/tests/unit/command",
+        # "ls",
+        # "cd ..",
+        # reset_tests_command,  # Revert tests after done, leave the repo in the same state as before # (TODO): Add by TueLDT1
     ]
     return eval_commands

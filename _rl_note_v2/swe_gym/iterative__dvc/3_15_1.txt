@@ -1,0 +1,8 @@
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### Other Changes
+* don't unprotect outs if not cached by @dberenbaum in https://github.com/iterative/dvc/pull/9838
+
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/3.15.0...3.15.1

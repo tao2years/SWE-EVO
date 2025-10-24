@@ -1,0 +1,3 @@
+1) Add md5 entries for cache and link to state db during `dvc add` so that sequential commands don't have to recompute checksums for it;
+2) Improve `dvc status` output;
+3) Introduce `dvc commit` command along with `--no-commit` flags for `run/add/repro`;

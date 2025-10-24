@@ -1,0 +1,1 @@
+1) [Fix bug where `dvc checkout/remove` were not able to handle broken symlinks;](https://github.com/iterative/dvc/issues/1856)

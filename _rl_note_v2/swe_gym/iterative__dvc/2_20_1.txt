@@ -1,0 +1,5 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+* pyinstaller: add fsspec hook

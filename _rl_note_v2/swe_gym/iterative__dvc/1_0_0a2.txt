@@ -1,0 +1,34 @@
+* plots: add plot markers to DVC files (#3807) @efiop
+* Newline at the end of template files on init (#3828) @nik123
+* default target: reduce loglevel to debug (#3822) @skshetry
+* repro: do not log when stage is locked and is import (#3823) @skshetry
+* plots: dont zero y axis (#3813) @pared
+* utils: support use of (GitTree) tree file objects in utils (#3819) @pmrowla
+* stage: fix commit (#3816) @efiop
+* repo: Support streaming and pulling files on `RepoTree/DvcTree.open()` (#3810) @pmrowla
+* pyupgrade: 3.6+ (#3805) @skshetry
+* dvc.yaml: remove outs_no_cache, etc. keys, merge inside outs (#3785) @skshetry
+* refactor: simplify checkouts and run, get rid of check_can_commit (#3800) @skshetry
+* dvc: rename plot to plots (#3802) @efiop
+* stage: fix --dry-run (#3799) @efiop
+* stage: moving things around, refactor (#3793) @skshetry
+* run/repro: rename "build cache" -> "run cache" (#3788) @efiop
+* diff: handle repo with no commits (#3784) @efiop
+* Drop Python 3.5 support (#3792) @pmrowla
+* tests: mark test_data_cloud::test_pull_git_imports as flaky (#3790) @pmrowla
+* plot: add doctype at the beggining of html embedding (#3787) @pared
+* plot: update some output strings (#3759) @jorgeorpinel
+* diff: autocompletion script for params, and show-md (#3786) @skshetry
+* tests: abstract remote setup to fixture (#3748) @pared
+* run-cache: support uncached files (#3778) @efiop
+* Added S3 SSEKMSKeyId config option (#3762) @jackwellsxyz
+* pipeline file: disallow punctuation characters in stage name (#3767) @skshetry
+* refactor: check if targets is instances of str (#3779) @nik123
+* import: check erepo is None before modifying url - fixes #3780 (#3781) @ned2
+* params/metrics: diff: implement tabulated markdown output (--show-md) (#3757) @skshetry
+* Import ABC from collections.abc for Python 3 compatibility. (#3772) @tirkarthi
+* fix #3588 (#3770) @karajan1001
+* Dvc remote default in list validation  (#3715) @karajan1001
+* push/pull: properly collect run cache (#3768) @efiop
+* update: --recursive flag (#3760) @nik123
+* stage: hide unwanted warnings (#3763) @efiop
