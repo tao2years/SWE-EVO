@@ -1,0 +1,16 @@
+This release pins numpy<2.
+
+Key Features and Updates Since 0.27.0
+-------------------------------------
+* Stability and Bugfixes
+  * FIX-#6968: Align API with pandas (#6969)
+  * FIX-#7302: Pin numpy<2 (072453b)
+* New Features
+  * FEAT-#7265: Automatic publication of Modin wheel to PyPI (#7262)
+
+Contributors
+------------
+
+@anmyachev
+@dchigarev
+@sfc-gh-dpetersohn

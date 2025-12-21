@@ -1,0 +1,6 @@
+* version: add supported remotes (#3498) @efiop
+* import-url: allow queries in URL (#3432) @casperdcl
+* template: pr update (#3495) @casperdcl
+* dvc: use protected mode by default (#3472) @efiop
+* gc: do not work without specifier when using -c flag (#3493) @skshetry
+* completion: add --summary flag on checkout (#3491) @skshetry

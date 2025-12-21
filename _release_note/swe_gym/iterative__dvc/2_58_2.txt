@@ -1,0 +1,9 @@
+<!-- Release notes generated using configuration in .github/release.yml at 2.x -->
+
+## What's Changed
+### Other Changes
+* (2.x) repro: Continue on RunCacheNotSupported by @mergify in https://github.com/iterative/dvc/pull/9511
+* (2.x) deps: bumps dvc-azure>=2.21.2 by @mergify in https://github.com/iterative/dvc/pull/9526
+
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/2.58.1...2.58.2

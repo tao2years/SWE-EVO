@@ -1,0 +1,7 @@
+2.17.2 (2017-05-29)
+-------------------
+
+**Improvements**
+
+-   Improved `packages` namespace identity support, for monkeypatching
+    libraries.

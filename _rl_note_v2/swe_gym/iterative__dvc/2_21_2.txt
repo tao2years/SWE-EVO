@@ -1,9 +1,0 @@
-> Refer to https://dvc.org/doc/install for installation instructions.
-
-## Changes
-
-## 🐛 Bug Fixes 
-
-- api: Fix `params_show` for untracked targets. (#8166) @daavoo
-
-Thanks again to @daavoo for the contributions! 🎉

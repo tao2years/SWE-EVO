@@ -1,0 +1,13 @@
+> Refer to https://dvc.org/doc/install for installation instructions.
+
+## Changes
+
+## 🚀 New Features and Enhancements 
+
+- plots: add `dvc plots -e/--experiment` option (#4488) @pmrowla
+
+## 🏇 Optimizations 
+
+- external: avoid unnecessary hash computation (#4486) @efiop
+
+Thanks again to @efiop and @pmrowla for the contributions! 🎉

@@ -1,0 +1,10 @@
+1) [`dvc metrics show` now nicely formats multiline metrics files like tsv/htsv, csv/hcsv, json](https://github.com/iterative/dvc/issues/1716); Kudos @mroutis :medal_sports: 
+2) [`dvc remote add` no longer silently overwrites existing sections](https://github.com/iterative/dvc/issues/1760);
+3) [Use a workaround to bypass SIP protection on osx, when accessing libSystem](https://github.com/iterative/dvc/issues/1515);
+4) [Don't try to create existing container on azure](https://github.com/iterative/dvc/issues/1811); Kudos @AmitAronovitch :medal_sports: 
+5) Dvc repository now uses read-only http remote for our images instead of s3;
+6) Fix bug in `dvc status` where an error is raised if cache is not present locally nor on the remote;
+7) [Fix progress bar on `dvc pull`](https://github.com/iterative/dvc/issues/1807); Kudos @pared :medal_sports: 
+8) [Automatically detect metrics file type by extension](https://github.com/iterative/dvc/issues/1553); Kudos @cand126 :medal_sports: 
+
+Welcome new contributor @AmitAronovitch ! :tada: 
