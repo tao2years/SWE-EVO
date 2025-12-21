@@ -1,0 +1,12 @@
+Hotfix for `sort_values`.
+
+Key Features and Updates Since 0.24.0
+-------------------------------------
+* Stability and Bugfixes
+  * FIX-#6604: HDK: Added support for list to `DataFrame.agg()` (#6606)
+  * FIX-#6607: Fix incorrect cache after `.sort_values()` (#6608)
+
+Contributors
+------------
+@AndreyPavlenko
+@dchigarev

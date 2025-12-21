@@ -3,7 +3,6 @@
 import os, json, glob, argparse
 from pathlib import Path
 
-# optional: pip install datasets
 from datasets import Dataset, DatasetDict
 
 try:
@@ -11,8 +10,8 @@ try:
 except Exception:
     np = None
 
-SRC_DIR = "/mnt/data/swe_world_2/SWE-EVO-dev/output_final"
-OUT_DIR = "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out"       
+SRC_DIR = "output_final"
+OUT_DIR = "hf_out"       
 
 def to_py(x):
     if np is not None:
@@ -104,6 +103,6 @@ if __name__ == "__main__":
 
 
 # python make_hf_dataset.py \
-#   --src /mnt/data/swe_world_2/SWE-EVO-dev/output_final \
-#   --out /mnt/data/swe_world_2/SWE-EVO-dev/hf_out \
+#   --src output_final \
+#   --out hf_out \
 #   --split test

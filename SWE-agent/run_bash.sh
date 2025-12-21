@@ -19,11 +19,11 @@ for MODEL in "${MODELS_FW[@]}"; do
     --agent.model.api_key "${FIREWORKS_API_KEY}" \
     --agent.model.api_base "https://api.fireworks.ai/inference/v1" \
     --instances.type swe_bench \
-    --instances.path_override "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out/hf_dataset" \
+    --instances.path_override "../hf_out/hf_dataset" \
     --instances.split test \
     --instances.slice :1000 \
     --num_workers 4 \
-    --output_dir "/mnt/data/swe_world_2/SWE-agent/trajectories/${MODEL}"
+    --output_dir "trajectories/${MODEL}"
 done
 
 

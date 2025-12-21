@@ -1,0 +1,1 @@
+* dvc: add trailing newline in --show-md (#4124) @efiop

@@ -1,0 +1,9 @@
+<!-- Release notes generated using configuration in .github/release.yml at main -->
+
+## What's Changed
+### Other Changes
+* ls/import/get: introduce --config by @efiop in https://github.com/iterative/dvc/pull/9747
+* Add parent ctr init call in InvalidArgumentError by @shcheklein in https://github.com/iterative/dvc/pull/9751
+
+
+**Full Changelog**: https://github.com/iterative/dvc/compare/3.6.0...3.7.0
