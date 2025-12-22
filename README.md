@@ -32,14 +32,27 @@ SWE-EVO sets a new standard for assessing long-term reasoning, multi-agent colla
 - **Public Dataset**: Includes curated instances from Python OSS projects, with tools for reproducibility and extension.
 - **Metrics**: Success rates, code quality (via linting/tests), efficiency, and qualitative analysis of failure modes.
 
-![Software Evolution Model](path/to/your/figure.png)  
+![Software Evolution Model](img/evolution_process.png)  
 *Conceptual model of software evolution in SWE-EVO, illustrating the cycle from existing system to new system through change identification, impact analysis, and the evolution process.*
 
-## Installation
+## Setup
 
-### Prerequisites
-- Python 3.8+
-- Git
+- Python >= 3.10
+- pip install -e .
 
-### Setup
-1. Clone the repository:
+## Evaluation
+
+python SWE-bench/evaluate_instance.py \
+  --trajectories_path <path-to-your-trajectories> \
+  --max_workers <num_workers> \
+  --scaffold <scaffold_name>
+
+Example with Openhands scaffold and model is gpt-5-2025-08-07:
+
+python SWE-bench/evaluate_instance.py \
+  --trajectories_path /workspace/tue/swe_world_2/OpenHands/evaluation/evaluation_outputs/outputs/__mnt__data__swe_world_2__SWE-EVO__hf_out__hf_jsonl-test/CodeActAgent/gpt-5-2025-08-07_maxiter_100_N_v0.58.0-no-hint-run_1 \
+  --max_workers 8 \
+  --scaffold OpenHands
+
+## Acknowledgements
+SWE-EVO builds on the original [SWE-bench](https://www.swebench.com/) benchmark, and we acknowledge the SWE-bench team for their foundational contribution to software-engineering evaluation.
