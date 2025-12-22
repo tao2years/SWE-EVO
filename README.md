@@ -121,6 +121,68 @@ python SWE-bench/evaluate_instance.py \
 ## Evaluation
 
 ### Using OpenHands Scaffold
+#### 1. Configure Your OpenHands Agent
+
+```bash
+cd OpenHands
+```
+
+Edit `OpenHands/config.toml` and add a new model block. You can leave `api_key = ""` and pass the real key through an environment variable (for example: `export OPENAI_API_KEY=...`).
+
+Example:
+
+```toml
+[llm.your_model]
+model = "your_model"
+api_key = ""        # leave blank and export API_KEY
+base_url = "your_url"
+temperature = 0.0
+```
+
+---
+
+#### 2. Generate Trajectories
+
+Use the OpenHands `run_infer.sh` script:
+
+```bash
+./evaluation/benchmarks/swe_bench/scripts/run_infer.sh \
+  [model_config] \
+  [git_version] \
+  [agent] \
+  [eval_limit] \
+  [num_workers] \
+  [dataset_path] \
+  [dataset_split] \
+  [n_runs] \
+  [mode]
+```
+
+Example:
+
+```bash
+./evaluation/benchmarks/swe_bench/scripts/run_infer.sh \
+  llm.your_model \
+  HEAD \
+  CodeActAgent \
+  48 \
+  3 \
+  your_project_path/SWE-EVO/hf_out/hf_jsonl \
+  test \
+  1 \
+  swe
+```
+
+Notes:
+
+* `model_config` refers to the config block name you added (for example, `llm.your_model`)
+* For more information, see the [OpenHands SWE-Bench](https://github.com/OpenHands/OpenHands/tree/main/evaluation/benchmarks/swe_bench) instructions
+
+---
+
+#### 3. Evaluate Your Results
+
+After inference finishes, evaluate the generated trajectories:
 
 ```bash
 python SWE-bench/evaluate_instance.py \
@@ -130,6 +192,51 @@ python SWE-bench/evaluate_instance.py \
 ```
 
 ### Using SWE-agent Scaffold
+
+#### 1. Generate SWE-agent Trajectories
+
+```bash
+cd SWE-agent
+
+sweagent run-batch \
+  --config config/default.yaml \
+  --agent.model.name [YOUR_MODEL] \
+  --agent.model.api_key [YOUR_API_KEY] \
+  --agent.model.api_base [YOUR_API_BASE] \
+  --agent.model.reasoning_effort "[low|medium|high]" \
+  --instances.type swe_bench \
+  --instances.path_override "your_project_path/SWE-EVO/hf_out/hf_dataset" \
+  --instances.split [dataset_split] \
+  --instances.slice :1000 \
+  --num_workers [num_workers] \
+  --output_dir [output_dir]
+```
+
+Example:
+
+```bash
+MODEL="gpt-5-2025-08-07"
+
+sweagent run-batch \
+  --config config/default.yaml \
+  --agent.model.name "$MODEL" \
+  --agent.model.api_key "$OPENAI_API_KEY" \
+  --agent.model.api_base "https://api.openai.com/v1" \
+  --agent.model.reasoning_effort "medium" \
+  --instances.type swe_bench \
+  --instances.path_override "your_project_path/SWE-EVO/hf_out/hf_dataset" \
+  --instances.split "test" \
+  --instances.slice ":1000" \
+  --num_workers 4 \
+  --output_dir "trajectories/$MODEL"
+```
+
+Notes: Please refer to [SWE-agent documentation](https://swe-agent.com/latest/usage/batch_mode/) for additional configuration details and advanced usage.
+
+---
+
+#### 2. Evaluate the Results
+After inference finishes, evaluate the generated trajectories:
 
 ```bash
 python SWE-bench/evaluate_instance.py \

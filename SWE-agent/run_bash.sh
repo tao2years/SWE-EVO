@@ -40,17 +40,32 @@ done
 # for MODEL in "${MODELS_OPENAI[@]}"; do
 #   echo ">>> Running SWE-agent with model: ${MODEL}"
 
-#   sweagent run-batch \
-#     --config config/default.yaml \
-#     --agent.model.name "${MODEL}" \
-#     --agent.model.api_key "${OPENAI_API_KEY}" \
-#     --agent.model.api_base "https://27550.https.trainingvm.thaiminhpv.id.vn/v1" \
-#     --agent.model.use_litellm "true" \
-#     --agent.model.reasoning_effort "medium" \
-#     --instances.type swe_bench \
-#     --instances.path_override "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out/hf_dataset" \
-#     --instances.split test \
-#     --instances.slice :1000 \
-#     --num_workers 4 \
-#     --output_dir "/mnt/data/swe_world_2/SWE-agent/trajectories/${MODEL}"
+  # sweagent run-batch \
+  #   --config config/default.yaml \
+  #   --agent.model.name "${MODEL}" \
+  #   --agent.model.api_key "${OPENAI_API_KEY}" \
+  #   --agent.model.api_base "https://27550.https.trainingvm.thaiminhpv.id.vn/v1" \
+  #   --agent.model.use_litellm "true" \
+  #   --agent.model.reasoning_effort "medium" \
+  #   --instances.type swe_bench \
+  #   --instances.path_override "/mnt/data/swe_world_2/SWE-EVO-dev/hf_out/hf_dataset" \
+  #   --instances.split test \
+  #   --instances.slice :1000 \
+  #   --num_workers 4 \
+  #   --output_dir "/mnt/data/swe_world_2/SWE-agent/trajectories/${MODEL}"
 # done
+
+MODEL="gpt-5-2025-08-07"
+sweagent run-batch \
+  --config config/default.yaml \
+  --agent.model.name "${MODEL}" \
+  --agent.model.api_key "${OPENAI_API_KEY}" \
+  --agent.model.api_base "api_base" \
+  --agent.model.use_litellm "true" \
+  --agent.model.reasoning_effort "medium" \
+  --instances.type swe_bench \
+  --instances.path_override "your_project_path/SWE-EVO/hf_out/hf_dataset" \
+  --instances.split test \
+  --instances.slice :1000 \
+  --num_workers 4 \
+  --output_dir "trajectories/${MODEL}"
