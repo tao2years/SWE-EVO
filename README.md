@@ -1,4 +1,6 @@
-<h1 align="center">SWE-EVO</h1>
+<p align="center">
+  <img src="./logo/logo.png" alt="SWE-EVO Logo" width="400"/>
+</p>
 
 <p align="center">
   <strong>Benchmarking Coding Agents in Long-Horizon Software Evolution Scenarios</strong>
