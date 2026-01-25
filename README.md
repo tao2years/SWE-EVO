@@ -11,7 +11,7 @@ Evaluate AI agents on realistic software evolution • Multi-step planning and a
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/XXXX.XXXXX"><img alt="Paper" src="https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg?style=flat-square" /></a>
+  <a href="https://arxiv.org/abs/2512.18470"><img alt="Paper" src="https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b.svg?style=flat-square" /></a>
   <a href="./LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square" /></a>
   <a href="https://www.python.org/downloads/"><img alt="Python" src="https://img.shields.io/badge/python-%3E%3D3.10-blue.svg?style=flat-square" /></a>
   <a href="https://github.com/FSoft-AI4Code/SWE-EVO/issues"><img alt="Issues" src="https://img.shields.io/github/issues/FSoft-AI4Code/SWE-EVO?style=flat-square" /></a>
@@ -290,11 +290,11 @@ MIT License - See [LICENSE](./LICENSE) for details.
 ## Citation
 
 ```bibtex
-@article{sweevo2024,
+@article{thai2025swe,
   title={SWE-EVO: Benchmarking Coding Agents in Long-Horizon Software Evolution Scenarios},
-  author={...},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
-  year={2024}
+  author={Thai, Minh VT and Le, Tue and Manh, Dung Nguyen and Nhat, Huy Phan and Bui, Nghi DQ},
+  journal={arXiv preprint arXiv:2512.18470},
+  year={2025}
 }
 ```
 
