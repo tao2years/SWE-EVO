@@ -1,0 +1,41 @@
+{
+    "iterative__dvc_0.30.0_0.30.1": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": true,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum"
+                ],
+                "failure": []
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/test_stage.py::TestReload::test",
+                    "tests/test_stage.py::TestSchemaCmd::test_cmd_none",
+                    "tests/test_stage.py::TestSchemaCmd::test_cmd_object",
+                    "tests/test_stage.py::TestSchemaCmd::test_cmd_str",
+                    "tests/test_stage.py::TestSchemaCmd::test_no_cmd",
+                    "tests/test_stage.py::TestSchemaDepsOuts::test_empty_list",
+                    "tests/test_stage.py::TestSchemaDepsOuts::test_list",
+                    "tests/test_stage.py::TestSchemaDepsOuts::test_none",
+                    "tests/test_stage.py::TestSchemaDepsOuts::test_object",
+                    "tests/unit/stage.py::TestStageChecksum::test",
+                    "tests/unit/stage.py::TestStageChecksum::test_wdir_default_ignored",
+                    "tests/unit/stage.py::TestStageChecksum::test_wdir_non_default_is_not_ignored"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

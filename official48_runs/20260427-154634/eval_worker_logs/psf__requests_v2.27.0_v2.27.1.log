@@ -1,0 +1,20 @@
+2026-04-28 18:44:23,451 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-28 18:44:23,451 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+Loading data ...:   0%|          | 0/48 [00:00<?, ?it/s]Loading data ...: 100%|██████████| 48/48 [00:00<00:00, 17736.46it/s]
+[pull] ghcr.io/epoch-research/swe-bench.eval.x86_64.psf__requests-6028
+[tag p1] ghcr.io/epoch-research/swe-bench.eval.x86_64.psf__requests-6028  ->  sweb.eval.x86_64.psf__requests_v2.27.0_v2.27.1:latest
+[tag p2] ghcr.io/epoch-research/swe-bench.eval.x86_64.psf__requests-6028  ->  sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest
+[ok] retag all instance images done.
+Base image sweb.base.py.x86_64:latest already exists, skipping build.
+Base images built successfully.
+No environment images need to be built.
+Found 1 existing instance images. Will reuse them.
+Running 1 instances...
+Evaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]Evaluation:   0%|          | 0/1 [00:41<?, ?it/s, ✓=1, ✖=0, error=0]Evaluation: 100%|██████████| 1/1 [00:41<00:00, 41.03s/it, ✓=1, ✖=0, error=0]Evaluation: 100%|██████████| 1/1 [00:41<00:00, 41.03s/it, ✓=1, ✖=0, error=0]
+All instances run.
+Logs & reports in: logs/run_evaluation
+[id] 0 bonus_success = 2 and bonus_failure = 0
+[bonus_success] = 2 and [bonus_failure] = 0
+[Fix rate] = 100.00%
+[Resolved rate] = 100.000%  [1/1]
+[Applied rate] = 100.000%  [1/1]

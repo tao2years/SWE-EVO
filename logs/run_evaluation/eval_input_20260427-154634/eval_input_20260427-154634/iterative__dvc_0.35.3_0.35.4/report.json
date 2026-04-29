@@ -1,0 +1,57 @@
+{
+    "iterative__dvc_0.35.3_0.35.4": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/test_remove.py::TestRemoveBrokenSymlink::test"
+                ],
+                "failure": [
+                    "tests/test_checkout.py::TestCheckoutMovedCacheDirWithSymlinks::test"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/test_checkout.py::TestCheckout::test",
+                    "tests/test_checkout.py::TestCheckoutCleanWorkingDir::test",
+                    "tests/test_checkout.py::TestCheckoutCleanWorkingDir::test_force",
+                    "tests/test_checkout.py::TestCheckoutCorruptedCacheDir::test",
+                    "tests/test_checkout.py::TestCheckoutCorruptedCacheFile::test",
+                    "tests/test_checkout.py::TestCheckoutDirectory::test",
+                    "tests/test_checkout.py::TestCheckoutEmptyDir::test",
+                    "tests/test_checkout.py::TestCheckoutHook::test",
+                    "tests/test_checkout.py::TestCheckoutMissingMd5InStageFile::test",
+                    "tests/test_checkout.py::TestCheckoutNotCachedFile::test",
+                    "tests/test_checkout.py::TestCheckoutRecursiveNotDirectory::test",
+                    "tests/test_checkout.py::TestCheckoutSelectiveRemove::test",
+                    "tests/test_checkout.py::TestCheckoutShouldHaveSelfClearingProgressBar::test",
+                    "tests/test_checkout.py::TestCheckoutSingleStage::test",
+                    "tests/test_checkout.py::TestCheckoutSuggestGit::test",
+                    "tests/test_checkout.py::TestCheckoutTargetRecursiveShouldNotRemoveOtherUsedFiles::test",
+                    "tests/test_checkout.py::TestCmdCheckout::test",
+                    "tests/test_checkout.py::TestGitIgnoreBasic::test",
+                    "tests/test_checkout.py::TestGitIgnoreWhenCheckout::test",
+                    "tests/test_checkout.py::TestRemoveFilesWhenCheckout::test",
+                    "tests/test_remove.py::TestCmdRemove::test",
+                    "tests/test_remove.py::TestRemove::test",
+                    "tests/test_remove.py::TestRemoveDirectory::test",
+                    "tests/test_remove.py::TestRemoveNonExistentFile::test",
+                    "tests/test_remove.py::TestRemovePurge::test",
+                    "tests/test_remove.py::TestRemovePurge::test_force"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

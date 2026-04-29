@@ -1,0 +1,350 @@
+2026-04-28 17:27:20,826 - INFO - Environment image sweb.env.py.x86_64.ac854d228b933236eed97a:latest found for iterative__dvc_0.35.3_0.35.4
+Building instance image sweb.eval.x86_64.iterative__dvc_0.35.3_0.35.4:latest for iterative__dvc_0.35.3_0.35.4
+2026-04-28 17:27:20,844 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.35.3_0.35.4:latest already exists, skipping build.
+2026-04-28 17:27:20,844 - INFO - Creating container for iterative__dvc_0.35.3_0.35.4...
+2026-04-28 17:27:22,999 - INFO - Container for iterative__dvc_0.35.3_0.35.4 created: dadaa89b0b3c7e54898625328030adf80fa91d1446ec31042d80777fd5d9e1b0
+2026-04-28 17:27:23,121 - INFO - Container for iterative__dvc_0.35.3_0.35.4 started: dadaa89b0b3c7e54898625328030adf80fa91d1446ec31042d80777fd5d9e1b0
+2026-04-28 17:27:23,121 - INFO - Intermediate patch for iterative__dvc_0.35.3_0.35.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.35.3_0.35.4/patch.diff, now applying to container...
+2026-04-28 17:27:23,379 - INFO - >>>>> Applied Patch:
+Checking patch tests/requirements.txt...
+Checking patch tests/test_checkout.py...
+Checking patch tests/test_remove.py...
+Checking patch dvc/remote/local.py...
+Checking patch dvc/utils/__init__.py...
+Applied patch tests/requirements.txt cleanly.
+Applied patch tests/test_checkout.py cleanly.
+Applied patch tests/test_remove.py cleanly.
+Applied patch dvc/remote/local.py cleanly.
+Applied patch dvc/utils/__init__.py cleanly.
+
+2026-04-28 17:27:23,429 - INFO - Git diff before:
+diff --git a/dvc/remote/local.py b/dvc/remote/local.py
+index 833f59bb4..c2d6ea272 100644
+--- a/dvc/remote/local.py
++++ b/dvc/remote/local.py
+@@ -316,7 +316,7 @@ class RemoteLOCAL(RemoteBase):
+         cache = self.get(checksum)
+ 
+         if not self.is_dir_cache(cache):
+-            if os.path.exists(path):
++            if os.path.lexists(path):
+                 self.safe_remove(path_info, force=force)
+ 
+             self.link(cache, path)
+@@ -327,7 +327,7 @@ class RemoteLOCAL(RemoteBase):
+ 
+         # Create dir separately so that dir is created
+         # even if there are no files in it
+-        if not os.path.exists(path):
++        if not os.path.lexists(path):
+             os.makedirs(path)
+ 
+         dir_relpath = os.path.relpath(path)
+@@ -347,7 +347,7 @@ class RemoteLOCAL(RemoteBase):
+             entry_checksum_info = {self.PARAM_CHECKSUM: m}
+ 
+             if self.changed(entry_info, entry_checksum_info):
+-                if os.path.exists(p):
++                if os.path.lexists(p):
+                     self.safe_remove(entry_info, force=force)
+ 
+                 self.link(c, p)
+diff --git a/dvc/utils/__init__.py b/dvc/utils/__init__.py
+index 553f503eb..f34bf89eb 100644
+--- a/dvc/utils/__init__.py
++++ b/dvc/utils/__init__.py
+@@ -157,13 +157,17 @@ def move(src, dst):
+ 
+ 
+ def remove(path):
+-    if not os.path.exists(path):
++    if not os.path.lexists(path):
+         return
+ 
+     logger.debug("Removing '{}'".format(os.path.relpath(path)))
+ 
++    if os.path.islink(path):
++        os.unlink(path)
++        return
++
+     def _chmod(func, p, excinfo):
+-        perm = os.stat(p).st_mode
++        perm = os.lstat(p).st_mode
+         perm |= stat.S_IWRITE
+         os.chmod(p, perm)
+         func(p)
+diff --git a/tests/requirements.txt b/tests/requirements.txt
+index 71ad79e5b..fade9c8b1 100644
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -13,3 +13,4 @@ collective.checkdocs
+ black==19.3b0 ; python_version >= '3.6'
+ flake8
+ flake8-docstrings
++jaraco.windows==3.9.2
+diff --git a/tests/test_checkout.py b/tests/test_checkout.py
+index e263c1938..f987f1376 100644
+--- a/tests/test_checkout.py
++++ b/tests/test_checkout.py
+@@ -517,3 +517,52 @@ class TestCheckoutRecursiveNotDirectory(TestDvc):
+ 
+         with self.assertRaises(TargetNotDirectoryError):
+             self.dvc.checkout(target=self.FOO, recursive=True)
++
++
++class TestCheckoutMovedCacheDirWithSymlinks(TestDvc):
++    def test(self):
++        ret = main(["config", "cache.type", "symlink"])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.FOO])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.DATA_DIR])
++        self.assertEqual(ret, 0)
++
++        if os.name == "nt":
++            from jaraco.windows.filesystem import readlink
++        else:
++            readlink = os.readlink
++
++        self.assertTrue(System.is_symlink(self.FOO))
++        old_foo_link = readlink(self.FOO)
++
++        self.assertTrue(System.is_symlink(self.DATA))
++        old_data_link = readlink(self.DATA)
++
++        old_cache_dir = self.dvc.cache.local.cache_dir
++        new_cache_dir = old_cache_dir + "_new"
++        os.rename(old_cache_dir, new_cache_dir)
++
++        ret = main(["cache", "dir", new_cache_dir])
++        self.assertEqual(ret, 0)
++
++        ret = main(["checkout", "-f"])
++        self.assertEqual(ret, 0)
++
++        self.assertTrue(System.is_symlink(self.FOO))
++        new_foo_link = readlink(self.FOO)
++
++        self.assertTrue(System.is_symlink(self.DATA))
++        new_data_link = readlink(self.DATA)
++
++        self.assertEqual(
++            os.path.relpath(old_foo_link, old_cache_dir),
++            os.path.relpath(new_foo_link, new_cache_dir),
++        )
++
++        self.assertEqual(
++            os.path.relpath(old_data_link, old_cache_dir),
++            os.path.relpath(new_data_link, new_cache_dir),
++        )
+diff --git a/tests/test_remove.py b/tests/test_remove.py
+index d0511e1e6..beab5c2b5 100644
+--- a/tests/test_remove.py
++++ b/tests/test_remove.py
+@@ -1,6 +1,8 @@
+ import os
++import shutil
+ 
+ from dvc.main import main
++from dvc.system import System
+ from dvc.stage import Stage, StageFileDoesNotExistError
+ from dvc.exceptions import DvcException
+ 
+@@ -33,6 +35,24 @@ class TestRemoveNonExistentFile(TestDvc):
+             self.dvc.remove("non_existent_dvc_file")
+ 
+ 
++class TestRemoveBrokenSymlink(TestDvc):
++    def test(self):
++        ret = main(["config", "cache.type", "symlink"])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.FOO])
++        self.assertEqual(ret, 0)
++
++        shutil.rmtree(self.dvc.cache.local.cache_dir)
++
++        self.assertTrue(System.is_symlink(self.FOO))
++
++        ret = main(["remove", self.FOO + ".dvc"])
++        self.assertEqual(ret, 0)
++
++        self.assertFalse(os.path.lexists(self.FOO))
++
++
+ class TestRemoveDirectory(TestDvc):
+     def test(self):
+         stages = self.dvc.add(self.DATA_DIR)
+2026-04-28 17:27:23,429 - INFO - Eval script for iterative__dvc_0.35.3_0.35.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.35.3_0.35.4/eval.sh; copying to container...
+2026-04-28 17:32:37,331 - INFO - Test runtime: 313.86 seconds
+2026-04-28 17:32:37,334 - INFO - Test output for iterative__dvc_0.35.3_0.35.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.35.3_0.35.4/test_output.txt
+2026-04-28 17:32:37,450 - INFO - Git diff after:
+diff --git a/dvc/remote/local.py b/dvc/remote/local.py
+index 833f59bb4..c2d6ea272 100644
+--- a/dvc/remote/local.py
++++ b/dvc/remote/local.py
+@@ -316,7 +316,7 @@ class RemoteLOCAL(RemoteBase):
+         cache = self.get(checksum)
+ 
+         if not self.is_dir_cache(cache):
+-            if os.path.exists(path):
++            if os.path.lexists(path):
+                 self.safe_remove(path_info, force=force)
+ 
+             self.link(cache, path)
+@@ -327,7 +327,7 @@ class RemoteLOCAL(RemoteBase):
+ 
+         # Create dir separately so that dir is created
+         # even if there are no files in it
+-        if not os.path.exists(path):
++        if not os.path.lexists(path):
+             os.makedirs(path)
+ 
+         dir_relpath = os.path.relpath(path)
+@@ -347,7 +347,7 @@ class RemoteLOCAL(RemoteBase):
+             entry_checksum_info = {self.PARAM_CHECKSUM: m}
+ 
+             if self.changed(entry_info, entry_checksum_info):
+-                if os.path.exists(p):
++                if os.path.lexists(p):
+                     self.safe_remove(entry_info, force=force)
+ 
+                 self.link(c, p)
+diff --git a/dvc/utils/__init__.py b/dvc/utils/__init__.py
+index 553f503eb..f34bf89eb 100644
+--- a/dvc/utils/__init__.py
++++ b/dvc/utils/__init__.py
+@@ -157,13 +157,17 @@ def move(src, dst):
+ 
+ 
+ def remove(path):
+-    if not os.path.exists(path):
++    if not os.path.lexists(path):
+         return
+ 
+     logger.debug("Removing '{}'".format(os.path.relpath(path)))
+ 
++    if os.path.islink(path):
++        os.unlink(path)
++        return
++
+     def _chmod(func, p, excinfo):
+-        perm = os.stat(p).st_mode
++        perm = os.lstat(p).st_mode
+         perm |= stat.S_IWRITE
+         os.chmod(p, perm)
+         func(p)
+diff --git a/tests/requirements.txt b/tests/requirements.txt
+index 71ad79e5b..fade9c8b1 100644
+--- a/tests/requirements.txt
++++ b/tests/requirements.txt
+@@ -13,3 +13,4 @@ collective.checkdocs
+ black==19.3b0 ; python_version >= '3.6'
+ flake8
+ flake8-docstrings
++jaraco.windows==3.9.2
+diff --git a/tests/test_checkout.py b/tests/test_checkout.py
+index e263c1938..f987f1376 100644
+--- a/tests/test_checkout.py
++++ b/tests/test_checkout.py
+@@ -517,3 +517,52 @@ class TestCheckoutRecursiveNotDirectory(TestDvc):
+ 
+         with self.assertRaises(TargetNotDirectoryError):
+             self.dvc.checkout(target=self.FOO, recursive=True)
++
++
++class TestCheckoutMovedCacheDirWithSymlinks(TestDvc):
++    def test(self):
++        ret = main(["config", "cache.type", "symlink"])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.FOO])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.DATA_DIR])
++        self.assertEqual(ret, 0)
++
++        if os.name == "nt":
++            from jaraco.windows.filesystem import readlink
++        else:
++            readlink = os.readlink
++
++        self.assertTrue(System.is_symlink(self.FOO))
++        old_foo_link = readlink(self.FOO)
++
++        self.assertTrue(System.is_symlink(self.DATA))
++        old_data_link = readlink(self.DATA)
++
++        old_cache_dir = self.dvc.cache.local.cache_dir
++        new_cache_dir = old_cache_dir + "_new"
++        os.rename(old_cache_dir, new_cache_dir)
++
++        ret = main(["cache", "dir", new_cache_dir])
++        self.assertEqual(ret, 0)
++
++        ret = main(["checkout", "-f"])
++        self.assertEqual(ret, 0)
++
++        self.assertTrue(System.is_symlink(self.FOO))
++        new_foo_link = readlink(self.FOO)
++
++        self.assertTrue(System.is_symlink(self.DATA))
++        new_data_link = readlink(self.DATA)
++
++        self.assertEqual(
++            os.path.relpath(old_foo_link, old_cache_dir),
++            os.path.relpath(new_foo_link, new_cache_dir),
++        )
++
++        self.assertEqual(
++            os.path.relpath(old_data_link, old_cache_dir),
++            os.path.relpath(new_data_link, new_cache_dir),
++        )
+diff --git a/tests/test_remove.py b/tests/test_remove.py
+index d0511e1e6..beab5c2b5 100644
+--- a/tests/test_remove.py
++++ b/tests/test_remove.py
+@@ -1,6 +1,8 @@
+ import os
++import shutil
+ 
+ from dvc.main import main
++from dvc.system import System
+ from dvc.stage import Stage, StageFileDoesNotExistError
+ from dvc.exceptions import DvcException
+ 
+@@ -33,6 +35,24 @@ class TestRemoveNonExistentFile(TestDvc):
+             self.dvc.remove("non_existent_dvc_file")
+ 
+ 
++class TestRemoveBrokenSymlink(TestDvc):
++    def test(self):
++        ret = main(["config", "cache.type", "symlink"])
++        self.assertEqual(ret, 0)
++
++        ret = main(["add", self.FOO])
++        self.assertEqual(ret, 0)
++
++        shutil.rmtree(self.dvc.cache.local.cache_dir)
++
++        self.assertTrue(System.is_symlink(self.FOO))
++
++        ret = main(["remove", self.FOO + ".dvc"])
++        self.assertEqual(ret, 0)
++
++        self.assertFalse(os.path.lexists(self.FOO))
++
++
+ class TestRemoveDirectory(TestDvc):
+     def test(self):
+         stages = self.dvc.add(self.DATA_DIR)
+2026-04-28 17:32:37,451 - INFO - Grading answer for iterative__dvc_0.35.3_0.35.4...
+2026-04-28 17:32:37,478 - INFO - report: {'iterative__dvc_0.35.3_0.35.4': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/test_remove.py::TestRemoveBrokenSymlink::test'], 'failure': ['tests/test_checkout.py::TestCheckoutMovedCacheDirWithSymlinks::test']}, 'PASS_TO_PASS': {'success': ['tests/test_checkout.py::TestCheckout::test', 'tests/test_checkout.py::TestCheckoutCleanWorkingDir::test', 'tests/test_checkout.py::TestCheckoutCleanWorkingDir::test_force', 'tests/test_checkout.py::TestCheckoutCorruptedCacheDir::test', 'tests/test_checkout.py::TestCheckoutCorruptedCacheFile::test', 'tests/test_checkout.py::TestCheckoutDirectory::test', 'tests/test_checkout.py::TestCheckoutEmptyDir::test', 'tests/test_checkout.py::TestCheckoutHook::test', 'tests/test_checkout.py::TestCheckoutMissingMd5InStageFile::test', 'tests/test_checkout.py::TestCheckoutNotCachedFile::test', 'tests/test_checkout.py::TestCheckoutRecursiveNotDirectory::test', 'tests/test_checkout.py::TestCheckoutSelectiveRemove::test', 'tests/test_checkout.py::TestCheckoutShouldHaveSelfClearingProgressBar::test', 'tests/test_checkout.py::TestCheckoutSingleStage::test', 'tests/test_checkout.py::TestCheckoutSuggestGit::test', 'tests/test_checkout.py::TestCheckoutTargetRecursiveShouldNotRemoveOtherUsedFiles::test', 'tests/test_checkout.py::TestCmdCheckout::test', 'tests/test_checkout.py::TestGitIgnoreBasic::test', 'tests/test_checkout.py::TestGitIgnoreWhenCheckout::test', 'tests/test_checkout.py::TestRemoveFilesWhenCheckout::test', 'tests/test_remove.py::TestCmdRemove::test', 'tests/test_remove.py::TestRemove::test', 'tests/test_remove.py::TestRemoveDirectory::test', 'tests/test_remove.py::TestRemoveNonExistentFile::test', 'tests/test_remove.py::TestRemovePurge::test', 'tests/test_remove.py::TestRemovePurge::test_force'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_0.35.3_0.35.4: resolved: False
+2026-04-28 17:32:37,479 - INFO - Attempting to stop container sweb.eval.iterative__dvc_0.35.3_0.35.4.eval_input_20260427-154634...
+2026-04-28 17:32:52,723 - INFO - Attempting to remove container sweb.eval.iterative__dvc_0.35.3_0.35.4.eval_input_20260427-154634...
+2026-04-28 17:32:53,062 - INFO - Container sweb.eval.iterative__dvc_0.35.3_0.35.4.eval_input_20260427-154634 removed.
+2026-04-28 17:32:53,062 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_0.35.3_0.35.4:latest...
+2026-04-28 17:32:53,065 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.35.3_0.35.4:latest removed.

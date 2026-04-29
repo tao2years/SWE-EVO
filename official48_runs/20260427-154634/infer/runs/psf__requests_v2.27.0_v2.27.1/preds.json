@@ -1,0 +1,7 @@
+{
+  "psf__requests_v2.27.0_v2.27.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "psf__requests_v2.27.0_v2.27.1",
+    "model_patch": "diff --git a/requests/utils.py b/requests/utils.py\nindex 1c2ae4e..2139bf6 100644\n--- a/requests/utils.py\n+++ b/requests/utils.py\n@@ -979,6 +979,11 @@ def prepend_scheme_if_needed(url, new_scheme):\n     if path is None:\n         path = ''\n \n+    # Rebuild netloc including auth (parsed.netloc doesn't include auth)\n+    netloc = (auth + '@' + host) if auth else host\n+    if port:\n+        netloc += ':' + str(port)\n+\n     return urlunparse((scheme, netloc, path, '', query, fragment))\n \n \n"
+  }
+}

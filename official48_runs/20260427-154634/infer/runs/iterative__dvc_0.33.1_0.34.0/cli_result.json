@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 246584,
+  "duration_api_ms": 159177,
+  "num_turns": 55,
+  "result": "The fix is complete. I identified and fixed a bug in `dvc/cli.py` where the `add` command was listed twice in the `COMMANDS` list (lines 42 and 50). This caused argparse to try to register the same subparser twice, resulting in the error \"argument COMMAND: conflicting subparser: add\".\n\n**Summary of the fix:**\n- Removed the duplicate `add` entry from the `COMMANDS` list in `dvc/cli.py`\n\n**Before:**\n```python\nCOMMANDS = [\n    init,\n    pkg,\n    destroy,\n    add,\n    remove,\n    ...\n    gc,\n    add,    # <-- duplicate\n    imp,\n    ...\n]\n```\n\n**After:**\n```python\nCOMMANDS = [\n    init,\n    pkg,\n    destroy,\n    add,\n    remove,\n    ...\n    gc,\n    imp,    # <-- no duplicate\n    ...\n]\n```\n\nThis minimal change fixes the CLI issue and allows the following tests to pass:\n- tests/test_remote.py (7 tests)\n- tests/test_config.py (5 tests)\n- tests/test_cli.py (13 tests)\n- tests/test_add.py (28 tests)",
+  "stop_reason": "end_turn",
+  "session_id": "832c6653-520a-42a0-ad2d-8b550088db29",
+  "total_cost_usd": 2.31968475,
+  "usage": {
+    "input_tokens": 712012,
+    "cache_creation_input_tokens": 4529,
+    "cache_read_input_tokens": 160200,
+    "output_tokens": 7907,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 712012,
+      "outputTokens": 7907,
+      "cacheReadInputTokens": 160200,
+      "cacheCreationInputTokens": 4529,
+      "webSearchRequests": 0,
+      "costUSD": 2.31968475,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "0f5f682f-e995-4626-acd1-4268fba526e8"
+}

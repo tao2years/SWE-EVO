@@ -1,0 +1,25 @@
+diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py
+index 5a79f54..d400861 100644
+--- a/dvc/repo/params/show.py
++++ b/dvc/repo/params/show.py
+@@ -42,7 +42,7 @@ def _collect_configs(
+     params, fs_paths = collect(
+         repo,
+         targets=targets or [],
+-        deps=True,
++        deps=deps,
+         output_filter=_is_params,
+         rev=rev,
+         duplicates=deps or stages is not None,
+@@ -89,7 +89,10 @@ def _read_params(
+                 if name in fs_paths:
+                     fs_paths.remove(name)
+     else:
+-        fs_paths += [param.fs_path for param in params]
++        for param in params:
++            name = os.sep.join(repo.fs.path.relparts(param.fs_path))
++            if name in fs_paths:
++                fs_paths.remove(name)
+ 
+     for fs_path in fs_paths:
+         from_path = _read_fs_path(repo.fs, fs_path, onerror=onerror)

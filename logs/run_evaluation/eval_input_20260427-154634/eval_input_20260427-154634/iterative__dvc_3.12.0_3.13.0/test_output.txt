@@ -1,0 +1,1123 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dvc/repo/experiments/utils.py
+	modified:   dvc/utils/hydra.py
+	modified:   tests/func/utils/test_hydra.py
+	modified:   tests/unit/repo/experiments/test_utils.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 43b371c43a090a5c05344f93538c7114a150319b
+Author: Ruslan Kuprieiev <kupruser@gmail.com>
+Date:   Fri Aug 4 05:06:07 2023 +0300
+
+    deps: bump dvc-data to 2.11.0
+
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index 913c3b9b0..130c27644 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -48,7 +48,14 @@ def _collect_indexes(  # noqa: PLR0913
+                 max_size=max_size,
+                 types=types,
+             )
+-            indexes[idx.data_tree.hash_info.value] = idx.data["repo"]
++
++            def onerror(_entry, _exc):
++                pass
++
++            data = idx.data["repo"]
++            data.onerror = onerror
++
++            indexes[idx.data_tree.hash_info.value] = data
+         except Exception as exc:  # pylint: disable=broad-except
+             collection_exc = exc
+             logger.exception("failed to collect '%s'", rev or "workspace")
+diff --git a/pyproject.toml b/pyproject.toml
+index c09495e36..3327f3f89 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,7 +34,7 @@ dependencies = [
+     "configobj>=5.0.6",
+     "distro>=1.3",
+     "dpath<3,>=2.1.0",
+-    "dvc-data>=2.10.0,<2.11.0",
++    "dvc-data>=2.11.0,<2.12.0",
+     "dvc-http>=2.29.0",
+     "dvc-render>=0.3.1,<1",
+     "dvc-studio-client>=0.9.2,<1",
+diff --git a/tests/func/test_get.py b/tests/func/test_get.py
+index 1c5d0b536..a4b29e1d4 100644
+--- a/tests/func/test_get.py
++++ b/tests/func/test_get.py
+@@ -64,6 +64,22 @@ def test_get_repo_dir(tmp_dir, erepo_dir):
+     assert (tmp_dir / "dir_imported").read_text() == {"file": "contents"}
+ 
+ 
++def test_get_repo_broken_dir(tmp_dir, erepo_dir):
++    import shutil
++
++    from dvc_data.index import DataIndexDirError
++
++    with erepo_dir.chdir():
++        erepo_dir.dvc_gen({"broken": {"file": "contents"}})
++        erepo_dir.dvc.cache.local.clear()
++        shutil.rmtree(erepo_dir / "broken")
++
++    with pytest.raises(DataIndexDirError):
++        Repo.get(os.fspath(erepo_dir), "broken", "out")
++
++    assert not (tmp_dir / "out").exists()
++
++
+ @pytest.mark.parametrize(
+     "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
+ )
+diff --git a/tests/func/test_import.py b/tests/func/test_import.py
+index 6a81dff9f..ba311dbbc 100644
+--- a/tests/func/test_import.py
++++ b/tests/func/test_import.py
+@@ -12,6 +12,7 @@ from dvc.scm import Git
+ from dvc.stage.exceptions import StagePathNotFoundError
+ from dvc.testing.tmp_dir import make_subrepo
+ from dvc.utils.fs import remove
++from dvc_data.index.index import DataIndexDirError
+ 
+ 
+ def test_import(tmp_dir, scm, dvc, erepo_dir):
+@@ -96,6 +97,19 @@ def test_import_dir(tmp_dir, scm, dvc, erepo_dir):
+     }
+ 
+ 
++def test_import_broken_dir(tmp_dir, scm, dvc, erepo_dir):
++    with erepo_dir.chdir():
++        erepo_dir.dvc_gen({"dir": {"foo": "foo content"}}, commit="create dir")
++        erepo_dir.dvc.cache.local.clear()
++        remove(erepo_dir / "dir")
++
++    with pytest.raises(DataIndexDirError):
++        dvc.imp(os.fspath(erepo_dir), "dir", "dir_imported")
++
++    assert not (tmp_dir / "dir_imported").exists()
++    assert not (tmp_dir / "dir_imported.dvc").exists()
++
++
+ def test_import_file_from_dir(tmp_dir, scm, dvc, erepo_dir):
+     with erepo_dir.chdir():
+         erepo_dir.dvc_gen(
+@@ -346,7 +360,8 @@ def test_push_wildcard_from_bare_git_repo(
+     with dvc_repo.chdir():
+         dvc_repo.dvc.imp(os.fspath(tmp_dir), "dirextra")
+ 
+-        dvc_repo.dvc.imp(os.fspath(tmp_dir), "dir123")
++        with pytest.raises(DataIndexDirError):
++            dvc_repo.dvc.imp(os.fspath(tmp_dir), "dir123")
+ 
+ 
+ @pytest.mark.parametrize("dname", [".", "dir", "dir/subdir"])
+diff --git a/tests/func/test_ls.py b/tests/func/test_ls.py
+index aa42f241d..c74e43584 100644
+--- a/tests/func/test_ls.py
++++ b/tests/func/test_ls.py
+@@ -583,3 +583,40 @@ def test_broken_symlink(tmp_dir, dvc):
+             "path": "link",
+         },
+     ]
++
++
++def test_ls_broken_dir(tmp_dir, dvc):
++    from dvc_data.index import DataIndexDirError
++
++    tmp_dir.dvc_gen(
++        {
++            "broken": {"baz": "baz"},
++        }
++    )
++
++    shutil.rmtree(tmp_dir / "broken")
++    dvc.cache.local.clear()
++
++    tmp_dir.dvc_gen(
++        {
++            "foo": "foo",
++            "dir": {"bar": "bar"},
++        }
++    )
++
++    entries = Repo.ls(os.fspath(tmp_dir))
++    assert entries == [
++        {"isdir": False, "isexec": False, "isout": False, "path": ".dvcignore"},
++        {"isdir": True, "isexec": False, "isout": True, "path": "broken"},
++        {"isdir": False, "isexec": False, "isout": False, "path": "broken.dvc"},
++        {"isdir": True, "isexec": False, "isout": True, "path": "dir"},
++        {"isdir": False, "isexec": False, "isout": False, "path": "dir.dvc"},
++        {"isdir": False, "isexec": False, "isout": True, "path": "foo"},
++        {"isdir": False, "isexec": False, "isout": False, "path": "foo.dvc"},
++    ]
++
++    with pytest.raises(DataIndexDirError):
++        Repo.ls(os.fspath(tmp_dir), "broken")
++
++    with pytest.raises(DataIndexDirError):
++        Repo.ls(os.fspath(tmp_dir), recursive=True)
++ git -c core.fileMode=false diff 43b371c43a090a5c05344f93538c7114a150319b
+diff --git a/dvc/repo/experiments/utils.py b/dvc/repo/experiments/utils.py
+index 79c2f6d4b..d930dbc3e 100644
+--- a/dvc/repo/experiments/utils.py
++++ b/dvc/repo/experiments/utils.py
+@@ -296,7 +296,7 @@ def fetch_all_exps(scm: "Git", url: str, progress: Optional[Callable] = None, **
+     )
+ 
+ 
+-def get_random_exp_name(scm, baseline_rev):
++def gen_random_name():
+     # fmt: off
+     NOUNS = ('abac', 'abbs', 'aces', 'acid', 'acne', 'acre', 'acts', 'ados', 'adze', 'afro', 'agas', 'aged', 'ages', 'agio', 'agma', 'airs', 'airt', 'aits', 'akes', 'alap', 'albs', 'alga', 'ally', 'alto', 'amah', 'ambo', 'amie', 'amyl', 'ankh', 'apex', 'aqua', 'arcs', 'areg', 'aria', 'aril', 'arks', 'army', 'auks', 'aune', 'aura', 'awls', 'awns', 'axon', 'azan', 'baby', 'bade', 'bael', 'bags', 'bait', 'ball', 'banc', 'bang', 'bani', 'barb', 'bark', 'bate', 'bats', 'bawl', 'beak', 'bean', 'beep', 'belt', 'berk', 'beth', 'bias', 'bice', 'bids', 'bind', 'bise', 'bish', 'bite', 'boar', 'boat', 'body', 'boff', 'bold', 'boll', 'bolo', 'bomb', 'bond', 'book', 'boor', 'boot', 'bort', 'bosk', 'bots', 'bott', 'bout', 'bras', 'bree', 'brig', 'brio', 'buck', 'buhl', 'bump', 'bunk', 'bunt', 'buoy', 'byes', 'byte', 'cane', 'cant', 'caps', 'care', 'cart', 'cats', 'cedi', 'ceps', 'cere', 'chad', 'cham', 'chat', 'chay', 'chic', 'chin', 'chis', 'chiv', 'choc', 'chow', 'chum', 'ciao', 'cigs', 'clay', 'clip', 'clog', 'coal', 'coat', 'code', 'coed', 'cogs', 'coho', 'cole', 'cols', 'colt', 'conk', 'cons', 'cony', 'coof', 'cook', 'cool', 'coos', 'corm', 'cors', 'coth', 'cows', 'coze', 'crag', 'craw', 'cree', 'crib', 'cuds', 'cull', 'cult', 'curb', 'curn', 'curs', 'cusp', 'cuss', 'cwms', 'cyma', 'cyst', 'dabs', 'dado', 'daff', 'dais', 'daks', 'damn', 'dams', 'darg', 'dart', 'data', 'dawk', 'dawn', 'daws', 'daze', 'dean', 'debs', 'debt', 'deep', 'dees', 'dele', 'delf', 'dent', 'deys', 'dhow', 'digs', 'dirk', 'dita', 'diva', 'divs', 'doek', 'doge', 'dogs', 'dogy', 'dohs', 'doit', 'dole', 'doll', 'dolt', 'dona', 'dook', 'door', 'dops', 'doss', 'doxy', 'drab', 'drop', 'drum', 'duad', 'duct', 'duff', 'duke', 'dunk', 'dunt', 'ears', 'ease', 'eggs', 'eild', 'emeu', 'emus', 'envy', 'epha', 'eric', 'erns', 'esne', 'esse', 'ewes', 'expo', 'eyas', 'eyot', 'eyry', 'fare', 'farl', 'farm', 'feds', 'feel', 'fees', 'feme', 'fess', 'fibs', 'fids', 'fils', 'firm', 'fish', 'flab', 'flap', 'flea', 'flew', 'flex', 'flip', 'flit', 'flus', 'flux', 'foil', 'fond', 'food', 'fool', 'ford', 'fore', 'frit', 'friz', 'froe', 'funs', 'furl', 'fuss', 'fuzz', 'gaby', 'gaff', 'gale', 'gang', 'gaol', 'gape', 'gash', 'gaur', 'gaze', 'gear', 'genu', 'gest', 'geum', 'ghat', 'gigs', 'gimp', 'gird', 'girl', 'glee', 'glen', 'glia', 'glop', 'gnat', 'goad', 'goaf', 'gobs', 'gonk', 'good', 'goos', 'gore', 'gram', 'gray', 'grig', 'grip', 'grot', 'grub', 'gude', 'gula', 'gulf', 'guns', 'gust', 'gyms', 'gyro', 'hack', 'haet', 'hajj', 'hake', 'half', 'halm', 'hard', 'harl', 'hask', 'hate', "he'd", 'heck', 'heel', 'heir', 'help', 'hems', 'here', 'hill', 'hips', 'hits', 'hobo', 'hock', 'hogs', 'hold', 'holy', 'hood', 'hoot', 'hope', 'horn', 'hose', 'hour', 'hows', 'huck', 'hugs', 'huia', 'hulk', 'hull', 'hunk', 'hunt', 'huts', 'hymn', 'ibex', 'ices', 'iglu', 'impi', 'inks', 'inti', 'ions', 'iota', 'iron', 'jabs', 'jags', 'jake', 'jass', 'jato', 'jaws', 'jean', 'jeer', 'jerk', 'jest', 'jiao', 'jigs', 'jill', 'jinn', 'jird', 'jive', 'jock', 'joey', 'jogs', 'joss', 'jota', 'jots', 'juba', 'jube', 'judo', 'jump', 'junk', 'jura', 'juts', 'jynx', 'kago', 'kail', 'kaka', 'kale', 'kana', 'keek', 'keep', 'kefs', 'kegs', 'kerf', 'kern', 'keys', 'kibe', 'kick', 'kids', 'kifs', 'kill', 'kina', 'kind', 'kine', 'kite', 'kiwi', 'knap', 'knit', 'koas', 'kobs', 'kyat', 'lack', 'lahs', 'lair', 'lama', 'lamb', 'lame', 'lats', 'lava', 'lays', 'leaf', 'leak', 'leas', 'lees', 'leks', 'leno', 'libs', 'lich', 'lick', 'lien', 'lier', 'lieu', 'life', 'lift', 'limb', 'line', 'link', 'linn', 'lira', 'loft', 'loge', 'loir', 'long', 'loof', 'look', 'loot', 'lore', 'loss', 'lots', 'loup', 'love', 'luce', 'ludo', 'luke', 'lulu', 'lure', 'lush', 'magi', 'maid', 'main', 'mako', 'male', 'mana', 'many', 'mart', 'mash', 'mast', 'mate', 'math', 'mats', 'matt', 'maul', 'maya', 'mays', 'meal', 'mean', 'meed', 'mela', 'mene', 'mere', 'merk', 'mesh', 'mete', 'mice', 'milo', 'mime', 'mina', 'mine', 'mirk', 'miss', 'mobs', 'moit', 'mold', 'molt', 'mome', 'moms', 'monk', 'moot', 'mope', 'more', 'morn', 'mows', 'moxa', 'much', 'mung', 'mush', 'muss', 'myth', 'name', 'nard', 'nark', 'nave', 'navy', 'neck', 'newt', 'nibs', 'nims', 'nine', 'nock', 'noil', 'noma', 'nosh', 'nowt', 'nuke', 'oafs', 'oast', 'oats', 'obit', 'odor', 'okra', 'omer', 'oner', 'ones', 'orcs', 'ords', 'orfe', 'orle', 'ossa', 'outs', 'over', 'owls', 'pail', 'pall', 'palp', 'pams', 'pang', 'pans', 'pant', 'paps', 'pate', 'pats', 'paws', 'pear', 'peba', 'pech', 'pecs', 'peel', 'peer', 'pees', 'pein', 'peri', 'phon', 'pice', 'pita', 'pith', 'play', 'plop', 'plot', 'plow', 'plug', 'plum', 'polo', 'pomp', 'pond', 'pons', 'pony', 'poof', 'pope', 'poss', 'pots', 'pour', 'prad', 'prat', 'prep', 'prob', 'prof', 'prow', 'puck', 'puds', 'puke', 'puku', 'pump', 'puns', 'pupa', 'purl', 'pyre', 'quad', 'quay', 'quey', 'quiz', 'raid', 'rail', 'rain', 'raja', 'rale', 'rams', 'rand', 'rant', 'raps', 'rasp', 'razz', 'rede', 'reef', 'reif', 'rein', 'repp', 'rial', 'ribs', 'rick', 'rift', 'rill', 'rime', 'rims', 'ring', 'rins', 'rise', 'rite', 'rits', 'roam', 'robe', 'rods', 'roma', 'rook', 'rort', 'rotl', 'roup', 'roux', 'rube', 'rubs', 'ruby', 'rues', 'rugs', 'ruin', 'runs', 'ryas', 'sack', 'sacs', 'saga', 'sail', 'sale', 'salp', 'salt', 'sand', 'sang', 'sash', 'saut', 'says', 'scab', 'scow', 'scud', 'scup', 'scut', 'seal', 'seam', 'sech', 'seed', 'seep', 'seer', 'self', 'sena', 'send', 'sera', 'sere', 'shad', 'shah', 'sham', 'shay', 'shes', 'ship', 'shoe', 'sick', 'sida', 'sign', 'sike', 'sima', 'sine', 'sing', 'sinh', 'sink', 'sins', 'site', 'size', 'skat', 'skin', 'skip', 'skis', 'slaw', 'sled', 'slew', 'sley', 'slob', 'slue', 'slug', 'smut', 'snap', 'snib', 'snip', 'snob', 'snog', 'snot', 'snow', 'snub', 'snug', 'soft', 'soja', 'soke', 'song', 'sons', 'sook', 'sorb', 'sori', 'souk', 'soul', 'sous', 'soya', 'spit', 'stay', 'stew', 'stir', 'stob', 'stud', 'suds', 'suer', 'suit', 'sumo', 'sums', 'sups', 'suqs', 'suss', 'sway', 'syce', 'synd', 'taal', 'tach', 'taco', 'tads', 'taka', 'tale', 'tamp', 'tams', 'tang', 'tans', 'tape', 'tare', 'taro', 'tarp', 'tart', 'tass', 'taus', 'teat', 'teds', 'teff', 'tegu', 'tell', 'term', 'thar', 'thaw', 'tics', 'tier', 'tiff', 'tils', 'tilt', 'tint', 'tipi', 'tire', 'tirl', 'toby', 'tods', 'toea', 'toff', 'toga', 'toil', 'toke', 'tola', 'tole', 'tomb', 'toms', 'torc', 'tors', 'tort', 'tosh', 'tote', 'tret', 'trey', 'trio', 'trug', 'tuck', 'tugs', 'tule', 'tune', 'tuns', 'tuts', 'tyke', 'tyne', 'typo', 'ulna', 'umbo', 'unau', 'unit', 'upas', 'user', 'uvea', 'vacs', 'vane', 'vang', 'vans', 'vara', 'vase', 'veep', 'veer', 'vega', 'veil', 'vela', 'vent', 'vies', 'view', 'vina', 'vine', 'vise', 'vlei', 'volt', 'vows', 'wads', 'waft', 'wage', 'wain', 'walk', 'want', 'wart', 'wave', 'waws', 'weal', 'wean', 'weds', 'weep', 'weft', 'weir', 'weka', 'weld', 'wens', 'weys', 'whap', 'whey', 'whin', 'whit', 'whop', 'wide', 'wife', 'wind', 'wine', 'wino', 'wins', 'wire', 'wise', 'woes', 'wont', 'wool', 'work', 'worm', 'wort', 'yack', 'yank', 'yapp', 'yard', 'yate', 'yawl', 'yegg', 'yell', 'yeuk', 'yews', 'yips', 'yobs', 'yogi', 'yoke', 'yolk', 'yoni', 'zack', 'zags', 'zest', 'zhos', 'zigs', 'zila', 'zips', 'ziti', 'zoea', 'zone', 'zoon')  # noqa: E501, Q000, N806
+     ADJECTIVES = ('about', 'above', 'abuzz', 'acerb', 'acold', 'acred', 'added', 'addle', 'adept', 'adult', 'adunc', 'adust', 'afoul', 'after', 'agape', 'agaze', 'agile', 'aging', 'agley', 'aglow', 'ahead', 'ahull', 'aided', 'alary', 'algal', 'alike', 'alive', 'alone', 'aloof', 'alpha', 'amber', 'amiss', 'amort', 'ample', 'amuck', 'angry', 'anile', 'apeak', 'apish', 'arced', 'areal', 'armed', 'aroid', 'ashen', 'aspen', 'astir', 'atilt', 'atrip', 'aulic', 'aural', 'awash', 'awful', 'awing', 'awned', 'axile', 'azoic', 'azure', 'baggy', 'baked', 'balky', 'bally', 'balmy', 'banal', 'bandy', 'bardy', 'bared', 'barer', 'barky', 'basal', 'based', 'baser', 'basic', 'batty', 'bawdy', 'beady', 'beaky', 'beamy', 'beaut', 'beefy', 'beery', 'beige', 'bendy', 'bifid', 'bijou', 'biped', 'birch', 'bitty', 'blame', 'bland', 'blank', 'blear', 'blest', 'blind', 'blond', 'blown', 'blowy', 'bluer', 'bluff', 'blunt', 'boned', 'bonny', 'boozy', 'bored', 'boric', 'bosky', 'bosom', 'bound', 'bovid', 'bowed', 'boxed', 'braky', 'brash', 'brief', 'briny', 'brisk', 'broad', 'broch', 'brood', 'brown', 'brute', 'buggy', 'bulgy', 'bumpy', 'burly', 'burnt', 'burry', 'bushy', 'busty', 'butch', 'buxom', 'cadgy', 'cagey', 'calmy', 'campy', 'canny', 'caped', 'cased', 'catty', 'cauld', 'cedar', 'cered', 'ceric', 'chary', 'cheap', 'cheek', 'chewy', 'chief', 'chill', 'chirk', 'choky', 'cissy', 'civil', 'cleft', 'coaly', 'color', 'comfy', 'comic', 'compo', 'conic', 'couth', 'coxal', 'crack', 'crank', 'crash', 'crass', 'crisp', 'cronk', 'cross', 'crude', 'cruel', 'crumb', 'cured', 'curly', 'curst', 'cushy', 'cutty', 'cynic', 'dated', 'dazed', 'dedal', 'deism', 'diazo', 'dicey', 'dingy', 'direr', 'dirty', 'dishy', 'dizzy', 'dolce', 'doped', 'dopey', 'dormy', 'dorty', 'dosed', 'dotal', 'dotty', 'dowdy', 'dowie', 'downy', 'dozen', 'drawn', 'dread', 'drear', 'dress', 'dried', 'ducky', 'duddy', 'dummy', 'dumpy', 'duple', 'dural', 'dusky', 'dusty', 'dutch', 'dying', 'eager', 'eaten', 'ebony', 'edged', 'eerie', 'eight', 'elder', 'elect', 'elfin', 'elite', 'empty', 'enate', 'enemy', 'epoxy', 'erect', 'ethic', 'every', 'extra', 'faced', 'faery', 'faint', 'famed', 'fancy', 'farci', 'fatal', 'fated', 'fatty', 'fazed', 'felon', 'fenny', 'ferny', 'fetal', 'fetid', 'fewer', 'fiery', 'fifty', 'filar', 'filmy', 'final', 'fined', 'finer', 'finny', 'fired', 'first', 'fishy', 'fixed', 'fizzy', 'flaky', 'flamy', 'flash', 'flawy', 'fleet', 'flory', 'flown', 'fluid', 'fluky', 'flush', 'focal', 'foggy', 'folio', 'forky', 'forte', 'forty', 'found', 'frail', 'frank', 'freed', 'freer', 'fresh', 'fried', 'front', 'frore', 'fuggy', 'funky', 'funny', 'furry', 'fusil', 'fussy', 'fuzzy', 'gabby', 'gamer', 'gamey', 'gamic', 'gammy', 'garni', 'gauge', 'gaunt', 'gauzy', 'gawky', 'gawsy', 'gemmy', 'genal', 'genic', 'ghast', 'gimpy', 'girly', 'glare', 'glary', 'glial', 'glued', 'gluey', 'godly', 'gooey', 'goofy', 'goosy', 'gouty', 'grade', 'grand', 'grapy', 'grave', 'gross', 'group', 'gruff', 'guest', 'gules', 'gulfy', 'gummy', 'gushy', 'gusty', 'gutsy', 'gutta', 'gypsy', 'gyral', 'hadal', 'hammy', 'handy', 'hardy', 'hasty', 'hated', 'hazel', 'heady', 'heapy', 'hefty', 'heigh', 'hempy', 'herby', 'hexed', 'hi-fi', 'hilly', 'hired', 'holey', 'honey', 'hooly', 'hoven', 'huger', 'hulky', 'humid', 'hunky', 'hyoid', 'idled', 'iliac', 'inane', 'incog', 'inert', 'inner', 'inter', 'iodic', 'ionic', 'irate', 'irony', 'itchy', 'jaggy', 'jammy', 'japan', 'jazzy', 'jerky', 'jetty', 'joint', 'jowly', 'juicy', 'jumpy', 'jural', 'kacha', 'kaput', 'kempt', 'keyed', 'kinky', 'known', 'kooky', 'kraal', 'laced', 'laigh', 'lairy', 'lamer', 'lardy', 'larky', 'lated', 'later', 'lathy', 'leady', 'leafy', 'leaky', 'leary', 'least', 'ledgy', 'leery', 'legal', 'leggy', 'lento', 'level', 'licht', 'licit', 'liege', 'light', 'liked', 'liney', 'lippy', 'lived', 'livid', 'loamy', 'loath', 'lobar', 'local', 'loony', 'loose', 'loral', 'losel', 'lousy', 'loved', 'lower', 'lowly', 'lowse', 'loyal', 'lucid', 'lucky', 'lumpy', 'lunar', 'lurid', 'lushy', 'lying', 'lyric', 'macho', 'macro', 'magic', 'major', 'malar', 'mangy', 'manky', 'manly', 'mardy', 'massy', 'mated', 'matte', 'mauve', 'mazed', 'mealy', 'meaty', 'medal', 'melic', 'mesic', 'mesne', 'messy', 'metal', 'miffy', 'milky', 'mined', 'minim', 'minor', 'minus', 'mired', 'mirky', 'misty', 'mixed', 'modal', 'model', 'moire', 'molar', 'moldy', 'moody', 'moony', 'mopey', 'moral', 'mossy', 'mothy', 'motor', 'mousy', 'moved', 'mucid', 'mucky', 'muddy', 'muggy', 'muley', 'mural', 'murky', 'mushy', 'muted', 'muzzy', 'myoid', 'naggy', 'naive', 'naked', 'named', 'nasty', 'natal', 'naval', 'nervy', 'newsy', 'nicer', 'niffy', 'nifty', 'ninth', 'nitty', 'nival', 'noble', 'nodal', 'noisy', 'non-U', 'north', 'nosed', 'noted', 'nowed', 'nubby', 'oaken', 'oared', 'oaten', 'obese', 'ocher', 'ochre', 'often', 'ohmic', 'oiled', 'olden', 'older', 'oleic', 'olive', 'optic', 'ortho', 'osmic', 'other', 'outer', 'ovoid', 'owing', 'owned', 'paced', 'pagan', 'paled', 'paler', 'pally', 'paper', 'pappy', 'parky', 'party', 'pasty', 'pavid', 'pawky', 'peaky', 'pearl', 'peart', 'peaty', 'pedal', 'peppy', 'perdu', 'perky', 'pesky', 'phony', 'piano', 'picky', 'piled', 'piney', 'pious', 'pique', 'pithy', 'platy', 'plump', 'plush', 'podgy', 'potty', 'power', 'prest', 'pricy', 'prima', 'prime', 'print', 'privy', 'prize', 'prone', 'proof', 'prosy', 'proud', 'proxy', 'pseud', 'pucka', 'pudgy', 'puffy', 'pukka', 'pupal', 'purer', 'pursy', 'pushy', 'pyoid', 'quack', 'quare', 'quasi', 'quiet', 'quits', 'rabic', 'rabid', 'radio', 'raked', 'randy', 'rapid', 'rarer', 'raspy', 'rathe', 'ratty', 'ready', 'reedy', 'reeky', 'refer', 'regal', 'riant', 'ridgy', 'right', 'riled', 'rimed', 'rindy', 'risen', 'risky', 'ritzy', 'rival', 'riven', 'robed', 'rocky', 'roily', 'roman', 'rooky', 'ropey', 'round', 'rowdy', 'ruddy', 'ruled', 'rummy', 'runic', 'runny', 'runty', 'rural', 'rusty', 'rutty', 'sable', 'salic', 'sandy', 'sappy', 'sarky', 'sassy', 'sated', 'saved', 'savvy', 'scald', 'scaly', 'scary', 'score', 'scrap', 'sedgy', 'seely', 'seral', 'sewed', 'shaky', 'sharp', 'sheen', 'shier', 'shill', 'shoal', 'shock', 'shoed', 'shore', 'short', 'shyer', 'silky', 'silly', 'silty', 'sixth', 'sixty', 'skint', 'slack', 'slant', 'sleek', 'slier', 'slimy', 'slung', 'small', 'smart', 'smoky', 'snaky', 'sneak', 'snide', 'snowy', 'snuff', 'so-so', 'soapy', 'sober', 'socko', 'solar', 'soled', 'solid', 'sonic', 'sooth', 'sooty', 'soppy', 'sorer', 'sound', 'soupy', 'spent', 'spicy', 'spiky', 'spiny', 'spiry', 'splay', 'split', 'sport', 'spumy', 'squat', 'staid', 'stiff', 'still', 'stoic', 'stone', 'stony', 'store', 'stout', 'straw', 'stray', 'strip', 'stung', 'suave', 'sudsy', 'sulfa', 'sulky', 'sunny', 'super', 'sural', 'surer', 'surfy', 'surgy', 'surly', 'swell', 'swept', 'swish', 'sworn', 'tabby', 'taboo', 'tacit', 'tacky', 'tamed', 'tamer', 'tangy', 'taped', 'tarot', 'tarry', 'tasty', 'tatty', 'taunt', 'tawie', 'teary', 'techy', 'telic', 'tenor', 'tense', 'tenth', 'tenty', 'tepid', 'terse', 'testy', 'third', 'tidal', 'tight', 'tiled', 'timid', 'tinct', 'tined', 'tippy', 'tipsy', 'tonal', 'toned', 'tonic', 'toric', 'total', 'tough', 'toxic', 'trade', 'treed', 'treen', 'trial', 'truer', 'tubal', 'tubby', 'tumid', 'tuned', 'tutti', 'twill', 'typal', 'typed', 'typic', 'umber', 'unapt', 'unbid', 'uncut', 'undue', 'undug', 'unfed', 'unfit', 'union', 'unlet', 'unmet', 'unwed', 'unwet', 'upper', 'upset', 'urban', 'utile', 'uveal', 'vagal', 'valid', 'vapid', 'varus', 'vatic', 'veiny', 'vital', 'vivid', 'vocal', 'vogie', 'volar', 'vying', 'wacky', 'wally', 'waney', 'warty', 'washy', 'waspy', 'waste', 'waugh', 'waxen', 'webby', 'wedgy', 'weeny', 'weepy', 'weest', 'weird', 'welsh', 'wersh', 'whist', 'white', 'whity', 'whole', 'wider', 'wight', 'winey', 'wired', 'wised', 'wiser', 'withy', 'wonky', 'woods', 'woozy', 'world', 'wormy', 'worse', 'worst', 'woven', 'wrath', 'wrier', 'wrong', 'wroth', 'xeric', 'yarer', 'yolky', 'young', 'yucky', 'yummy', 'zesty', 'zingy', 'zinky', 'zippy', 'zonal')  # noqa: E501, Q000, N806
+@@ -304,10 +304,14 @@ def get_random_exp_name(scm, baseline_rev):
+     # Use custom random generator to make sure that names are random even if
+     # global random seed is set (common for ML pipelines).
+     random_generator = random.Random()
++    adjective = random_generator.choice(ADJECTIVES)
++    noun = random_generator.choice(NOUNS)
++    return f"{adjective}-{noun}"
++
++
++def get_random_exp_name(scm, baseline_rev):
+     while True:
+-        adjective = random_generator.choice(ADJECTIVES)
+-        noun = random_generator.choice(NOUNS)
+-        name = f"{adjective}-{noun}"
++        name = gen_random_name()
+         exp_ref = ExpRefInfo(baseline_sha=baseline_rev, name=name)
+         if not scm.get_ref(str(exp_ref)):
+             return name
+diff --git a/dvc/utils/hydra.py b/dvc/utils/hydra.py
+index aceaa1662..91eecff0b 100644
+--- a/dvc/utils/hydra.py
++++ b/dvc/utils/hydra.py
+@@ -1,6 +1,6 @@
+ import logging
+ from pathlib import Path
+-from typing import TYPE_CHECKING, List
++from typing import TYPE_CHECKING, List, Optional
+ 
+ from dvc.exceptions import InvalidArgumentError
+ 
+@@ -15,7 +15,8 @@ logger = logging.getLogger(__name__)
+ 
+ def compose_and_dump(
+     output_file: "StrPath",
+-    config_dir: str,
++    config_dir: Optional[str],
++    config_module: Optional[str],
+     config_name: str,
+     overrides: List[str],
+ ) -> None:
+@@ -25,6 +26,8 @@ def compose_and_dump(
+         output_file: File where the composed config will be dumped.
+         config_dir: Folder containing the Hydra config files.
+             Must be absolute file system path.
++        config_module: Module containing the Hydra config files.
++            Ignored if `config_dir` is not `None`.
+         config_name: Name of the config file containing defaults,
+             without the .yaml extension.
+         overrides: List of `Hydra Override`_ patterns.
+@@ -32,12 +35,21 @@ def compose_and_dump(
+     .. _Hydra Override:
+         https://hydra.cc/docs/advanced/override_grammar/basic/
+     """
+-    from hydra import compose, initialize_config_dir
++    from hydra import compose, initialize_config_dir, initialize_config_module
+     from omegaconf import OmegaConf
+ 
+     from .serialize import DUMPERS
+ 
+-    with initialize_config_dir(config_dir, version_base=None):
++    config_source = config_dir or config_module
++    if not config_source:
++        raise ValueError("Either `config_dir` or `config_module` should be provided.")
++    initialize_config = (
++        initialize_config_dir if config_dir else initialize_config_module
++    )
++
++    with initialize_config(  # type: ignore[attr-defined]
++        config_source, version_base=None
++    ):
+         cfg = compose(config_name=config_name, overrides=overrides)
+ 
+     OmegaConf.resolve(cfg)
+diff --git a/tests/func/utils/test_hydra.py b/tests/func/utils/test_hydra.py
+index cc677a1ac..6a448e2a9 100644
+--- a/tests/func/utils/test_hydra.py
++++ b/tests/func/utils/test_hydra.py
+@@ -1,3 +1,5 @@
++from contextlib import nullcontext as does_not_raise
++
+ import pytest
+ 
+ from dvc.exceptions import InvalidArgumentError
+@@ -167,16 +169,70 @@ def hydra_setup(tmp_dir, config_dir, config_name):
+         ),
+     ],
+ )
+-def test_compose_and_dump(tmp_dir, suffix, overrides, expected):
++def test_compose_and_dump_overrides(tmp_dir, suffix, overrides, expected):
+     from dvc.utils.hydra import compose_and_dump
+ 
+     config_name = "config"
+     output_file = tmp_dir / f"params.{suffix}"
+     config_dir = hydra_setup(tmp_dir, "conf", "config")
+-    compose_and_dump(output_file, config_dir, config_name, overrides)
++    config_module = None
++    compose_and_dump(output_file, config_dir, config_module, config_name, overrides)
+     assert output_file.parse() == expected
+ 
+ 
++def hydra_setup_dir_basic(tmp_dir, config_subdir, config_name, config_content):
++    if config_subdir is None:
++        return None
++
++    config_dir = tmp_dir / config_subdir
++    config_dir.mkdir()
++    (config_dir / f"{config_name}.yaml").dump(config_content)
++    return str(config_dir)
++
++
++@pytest.mark.parametrize(
++    "config_subdir,config_module,config_content,error_context",
++    [
++        ("conf", None, {"normal_yaml_config": False}, does_not_raise()),
++        (
++            None,
++            "hydra.test_utils.configs",
++            {"normal_yaml_config": True},
++            does_not_raise(),
++        ),
++        (
++            "conf",
++            "hydra.test_utils.configs",
++            {"normal_yaml_config": False},
++            does_not_raise(),
++        ),
++        (
++            None,
++            None,
++            None,
++            pytest.raises(
++                ValueError,
++                match="Either `config_dir` or `config_module` should be provided.",
++            ),
++        ),
++    ],
++)
++def test_compose_and_dump_dir_module(
++    tmp_dir, config_subdir, config_module, config_content, error_context
++):
++    from dvc.utils.hydra import compose_and_dump
++
++    output_file = tmp_dir / "params.yaml"
++    config_name = "config"
++    config_dir = hydra_setup_dir_basic(
++        tmp_dir, config_subdir, config_name, config_content
++    )
++
++    with error_context:
++        compose_and_dump(output_file, config_dir, config_module, config_name, [])
++        assert output_file.parse() == config_content
++
++
+ def test_compose_and_dump_yaml_handles_string(tmp_dir):
+     """Regression test for https://github.com/iterative/dvc/issues/8583"""
+     from dvc.utils.hydra import compose_and_dump
+@@ -185,7 +241,7 @@ def test_compose_and_dump_yaml_handles_string(tmp_dir):
+     config.parent.mkdir()
+     config.write_text("foo: 'no'\n")
+     output_file = tmp_dir / "params.yaml"
+-    compose_and_dump(output_file, str(config.parent), "config", [])
++    compose_and_dump(output_file, str(config.parent), None, "config", [])
+     assert output_file.read_text() == "foo: 'no'\n"
+ 
+ 
+@@ -197,7 +253,7 @@ def test_compose_and_dump_resolves_interpolation(tmp_dir):
+     config.parent.mkdir()
+     config.dump({"data": {"root": "path/to/root", "raw": "${.root}/raw"}})
+     output_file = tmp_dir / "params.yaml"
+-    compose_and_dump(output_file, str(config.parent), "config", [])
++    compose_and_dump(output_file, str(config.parent), None, "config", [])
+     assert output_file.parse() == {
+         "data": {"root": "path/to/root", "raw": "path/to/root/raw"}
+     }
+diff --git a/tests/unit/repo/experiments/test_utils.py b/tests/unit/repo/experiments/test_utils.py
+index 0cc802c6e..06659de38 100644
+--- a/tests/unit/repo/experiments/test_utils.py
++++ b/tests/unit/repo/experiments/test_utils.py
+@@ -1,8 +1,15 @@
++import re
++
+ import pytest
+ 
+ from dvc.exceptions import InvalidArgumentError
+ from dvc.repo.experiments.refs import EXPS_NAMESPACE, ExpRefInfo
+-from dvc.repo.experiments.utils import check_ref_format, resolve_name, to_studio_params
++from dvc.repo.experiments.utils import (
++    check_ref_format,
++    gen_random_name,
++    resolve_name,
++    to_studio_params,
++)
+ 
+ 
+ def commit_exp_ref(tmp_dir, scm, file="foo", contents="foo", name="foo"):
+@@ -74,3 +81,7 @@ def test_run_check_ref_format(scm, name, result):
+ )
+ def test_to_studio_params(params, expected):
+     assert to_studio_params(params) == expected
++
++
++def test_gen_random_name():
++    assert re.match("[a-zA-Z]+-[a-zA-Z]+", gen_random_name())
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (24.2)
+Collecting pip
+  Downloading pip-26.1-py3-none-any.whl.metadata (4.6 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging>=24.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from wheel) (24.1)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-26.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 2.1 MB/s eta 0:00:00
+Downloading wheel-0.47.0-py3-none-any.whl (32 kB)
+Downloading gitpython-3.1.48-py3-none-any.whl (209 kB)
+Installing collected packages: wheel, pip, GitPython
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.44.0
+    Uninstalling wheel-0.44.0:
+      Successfully uninstalled wheel-0.44.0
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+  Attempting uninstall: GitPython
+    Found existing installation: GitPython 3.1.43
+    Uninstalling GitPython-3.1.43:
+      Successfully uninstalled GitPython-3.1.43
+Successfully installed GitPython-3.1.48 pip-26.1 wheel-0.47.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Requirement already satisfied: pyyaml==5.4.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (5.4.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-tk0n04hm
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-tk0n04hm
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': GnuTLS recv error (-110): The TLS connection was non-properly terminated.
+  error: subprocess-exited-with-error
+  
+  × git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-tk0n04hm did not run successfully.
+  │ exit code: 128
+  ╰─> No available output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'git+https://github.com/iterative/mock-ssh-server.git' when git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-tk0n04hm
++ true
++ python -m pip install -r tests/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tests/requirements.txt'
++ true
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: colorama>=0.3.9 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.4.6)
+Requirement already satisfied: configobj>=5.0.6 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (5.0.8)
+Requirement already satisfied: distro>=1.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.9.0)
+Requirement already satisfied: dpath<3,>=2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.2.0)
+Requirement already satisfied: dvc-data<2.12.0,>=2.11.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.11.0)
+Requirement already satisfied: dvc-http>=2.29.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.32.0)
+Requirement already satisfied: dvc-render<1,>=0.3.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.7.0)
+Requirement already satisfied: dvc-studio-client<1,>=0.9.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.21.0)
+Requirement already satisfied: dvc-task<1,>=0.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.4.0)
+Requirement already satisfied: flatten_dict<1,>=0.4.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.4.2)
+Requirement already satisfied: flufl.lock<8,>=5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (7.1.1)
+Requirement already satisfied: funcy>=1.14 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.0)
+Requirement already satisfied: grandalf<1,>=0.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.8)
+Requirement already satisfied: hydra-core>=1.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.3.2)
+Requirement already satisfied: iterative-telemetry>=0.0.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.0.8)
+Requirement already satisfied: networkx>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.3)
+Requirement already satisfied: packaging>=19 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (24.1)
+Requirement already satisfied: pathspec>=0.10.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.12.1)
+Requirement already satisfied: platformdirs<4,>=3.1.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.11.0)
+Requirement already satisfied: psutil>=5.8 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (6.0.0)
+Requirement already satisfied: pydot>=1.2.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.0.1)
+Requirement already satisfied: pygtrie>=2.3.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.5.0)
+Requirement already satisfied: pyparsing>=2.4.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.1.4)
+Requirement already satisfied: requests>=2.22 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.32.3)
+Requirement already satisfied: rich>=12 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (13.8.0)
+Requirement already satisfied: ruamel.yaml>=0.17.11 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.18.6)
+Requirement already satisfied: scmrepo<2,>=1.0.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.4.1)
+Requirement already satisfied: shortuuid>=0.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.0.13)
+Requirement already satisfied: shtab<2,>=1.3.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.7.1)
+Requirement already satisfied: tabulate>=0.8.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.9.0)
+Requirement already satisfied: tomlkit>=0.11.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.13.2)
+Requirement already satisfied: tqdm<5,>=4.63.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (4.66.5)
+Requirement already satisfied: voluptuous>=0.11.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.15.2)
+Requirement already satisfied: zc.lockfile>=1.2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.0.post1)
+WARNING: dvc 3.12.1.dev0+g43b371c43.d20260428 does not provide the extra 'all-remotes'
+Requirement already satisfied: beautifulsoup4>=4.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (4.12.3)
+Requirement already satisfied: dvc-ssh in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.22.2)
+Requirement already satisfied: filelock in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.15.4)
+Requirement already satisfied: flaky in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.8.1)
+Requirement already satisfied: pytest<8,>=7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (7.4.4)
+Requirement already satisfied: pytest-cov>=4.1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (5.0.0)
+Requirement already satisfied: pytest-docker<2,>=1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.0.1)
+Requirement already satisfied: pytest-lazy-fixture in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.6.3)
+Requirement already satisfied: pytest-mock in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.14.0)
+Requirement already satisfied: pytest-test-utils in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.1.0)
+Requirement already satisfied: pytest-timeout>=2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.3.1)
+Requirement already satisfied: pytest-xdist>=3.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.6.1)
+Requirement already satisfied: pytest-benchmark[histogram] in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (4.0.0)
+Requirement already satisfied: pytest-virtualenv in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.7.0)
+Requirement already satisfied: dictdiffer>=0.8.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.9.0)
+Requirement already satisfied: dvc-objects<1,>=0.24.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.25.0)
+Requirement already satisfied: diskcache>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.6.3)
+Requirement already satisfied: nanotime>=0.5.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.5.2)
+Requirement already satisfied: attrs>=21.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (24.2.0)
+Requirement already satisfied: sqltrie<1,>=0.6.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.11.1)
+Requirement already satisfied: fsspec>=2022.10.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-objects<1,>=0.24.1->dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.6.1)
+Requirement already satisfied: typing-extensions>=3.7.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-objects<1,>=0.24.1->dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.12.2)
+Requirement already satisfied: dulwich in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-studio-client<1,>=0.9.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.22.1)
+Requirement already satisfied: celery<6,>=5.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.4.0)
+Requirement already satisfied: kombu<6,>=5.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.4.0)
+Requirement already satisfied: billiard<5.0,>=4.2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.2.0)
+Requirement already satisfied: vine<6.0,>=5.1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.1.0)
+Requirement already satisfied: click<9.0,>=8.1.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (8.1.7)
+Requirement already satisfied: click-didyoumean>=0.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.3.1)
+Requirement already satisfied: click-repl>=0.2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.3.0)
+Requirement already satisfied: click-plugins>=1.1.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.1.1)
+Requirement already satisfied: tzdata>=2022.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.1)
+Requirement already satisfied: python-dateutil>=2.8.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.9.0.post0)
+Requirement already satisfied: six<2.0,>=1.12 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from flatten_dict<1,>=0.4.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.16.0)
+Requirement already satisfied: atpublic>=2.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from flufl.lock<8,>=5->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.0)
+Requirement already satisfied: amqp<6.0.0,>=5.1.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from kombu<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.2.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest<8,>=7->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.0.0)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest<8,>=7->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest<8,>=7->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest<8,>=7->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.0.1)
+Requirement already satisfied: gitpython>3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.1.48)
+Requirement already satisfied: pygit2>=1.13.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.15.1)
+Requirement already satisfied: asyncssh<3,>=2.13.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.16.0)
+Requirement already satisfied: cryptography>=39.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from asyncssh<3,>=2.13.1->scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (43.0.0)
+Requirement already satisfied: orjson in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from sqltrie<1,>=0.6.0->dvc-data<2.12.0,>=2.11.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.10.7)
+Requirement already satisfied: soupsieve>1.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from beautifulsoup4>=4.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.6)
+Requirement already satisfied: prompt-toolkit>=3.0.36 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from click-repl>=0.2.0->celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.0.47)
+Requirement already satisfied: cffi>=1.12 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from cryptography>=39.0->asyncssh<3,>=2.13.1->scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.17.0)
+Requirement already satisfied: pycparser in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from cffi>=1.12->cryptography>=39.0->asyncssh<3,>=2.13.1->scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.22)
+Requirement already satisfied: urllib3>=1.25 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dulwich->dvc-studio-client<1,>=0.9.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.2.2)
+Requirement already satisfied: aiohttp-retry>=2.5.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.8.3)
+Requirement already satisfied: aiohttp in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.10.5)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gitpython>3->scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.0.11)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gitdb<5,>=4.0.1->gitpython>3->scmrepo<2,>=1.0.4->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.0.1)
+Requirement already satisfied: omegaconf<2.4,>=2.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from hydra-core>=1.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.3.0)
+Requirement already satisfied: antlr4-python3-runtime==4.9.* in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from hydra-core>=1.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.9.3)
+Requirement already satisfied: PyYAML>=5.1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from omegaconf<2.4,>=2.2->hydra-core>=1.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.4.1)
+Requirement already satisfied: appdirs in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from iterative-telemetry>=0.0.7->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.4.4)
+Requirement already satisfied: wcwidth in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from prompt-toolkit>=3.0.36->click-repl>=0.2.0->celery<6,>=5.3.0->dvc-task<1,>=0.3.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.2.13)
+Requirement already satisfied: coverage>=5.2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from coverage[toml]>=5.2.1->pytest-cov>=4.1.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (7.6.1)
+Requirement already satisfied: execnet>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-xdist>=3.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.1.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from requests>=2.22->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from requests>=2.22->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.8)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from requests>=2.22->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.8.30)
+Requirement already satisfied: markdown-it-py>=2.2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from rich>=12->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from rich>=12->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.18.0)
+Requirement already satisfied: mdurl~=0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from markdown-it-py>=2.2.0->rich>=12->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.1.2)
+Requirement already satisfied: ruamel.yaml.clib>=0.2.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from ruamel.yaml>=0.17.11->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.2.8)
+Requirement already satisfied: setuptools in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from zc.lockfile>=1.2.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (72.1.0)
+Requirement already satisfied: aiohappyeyeballs>=2.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.4.0)
+Requirement already satisfied: aiosignal>=1.1.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.3.1)
+Requirement already satisfied: frozenlist>=1.1.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.4.1)
+Requirement already satisfied: multidict<7.0,>=4.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (6.0.5)
+Requirement already satisfied: yarl<2.0,>=1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.9.4)
+Requirement already satisfied: async-timeout<5.0,>=4.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiohttp->aiohttp-retry>=2.5.0->dvc-http>=2.29.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.0.3)
+Requirement already satisfied: sshfs>=2023.4.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from sshfs[bcrypt]>=2023.4.1->dvc-ssh->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.6.0)
+Requirement already satisfied: bcrypt>=3.1.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from asyncssh[bcrypt]; extra == "bcrypt"->sshfs[bcrypt]>=2023.4.1->dvc-ssh->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.2.0)
+Requirement already satisfied: mypy==1.4.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (1.4.1)
+Requirement already satisfied: pylint==2.17.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.17.5)
+Requirement already satisfied: types-colorama in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.4.15.20240311)
+Requirement already satisfied: types-psutil in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (6.0.0.20240621)
+Requirement already satisfied: types-pyinstaller in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (6.10.0.20240812)
+Requirement already satisfied: types-requests in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.32.0.20240712)
+Requirement already satisfied: types-tabulate in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.9.0.20240106)
+Requirement already satisfied: types-toml in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (0.10.8.20240310)
+Requirement already satisfied: types-tqdm in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (4.66.0.20240417)
+Requirement already satisfied: dvc-webhdfs==2.19 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.19.0)
+Requirement already satisfied: dvc-gs==2.22.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.22.1)
+Requirement already satisfied: tpi>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from tpi[ssh]>=2.1; extra == "terraform"->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.1.0)
+Requirement already satisfied: dvc-azure>=2.21.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (3.1.0)
+Requirement already satisfied: dvc-gdrive==2.20 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.20.0)
+Requirement already satisfied: dvc-webdav==2.19.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.19.1)
+Requirement already satisfied: dvc-oss==2.19 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.19.0)
+Requirement already satisfied: dvc-s3==2.23.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.23.0)
+Requirement already satisfied: dvc-hdfs==2.19 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc==3.12.1.dev0+g43b371c43.d20260428) (2.19.0)
+Requirement already satisfied: pydrive2>=1.16 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.20.0)
+Requirement already satisfied: gcsfs>=2022.11.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.6.1)
+Requirement already satisfied: ossfs in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (2023.12.0)
+Requirement already satisfied: s3fs>=2023.6.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.6.1)
+Requirement already satisfied: aiobotocore>=2.5.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.14.0)
+Requirement already satisfied: webdav4>=0.9.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.10.0)
+Requirement already satisfied: mypy-extensions>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from mypy==1.4.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.0.0)
+Requirement already satisfied: astroid<=2.17.0-dev0,>=2.15.6 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.15.8)
+Requirement already satisfied: isort<6,>=4.2.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.13.2)
+Requirement already satisfied: mccabe<0.8,>=0.6 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.7.0)
+Requirement already satisfied: dill>=0.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.3.8)
+Requirement already satisfied: lazy-object-proxy>=1.4.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from astroid<=2.17.0-dev0,>=2.15.6->pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.10.0)
+Requirement already satisfied: wrapt<2,>=1.11 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from astroid<=2.17.0-dev0,>=2.15.6->pylint==2.17.5->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.16.0)
+Requirement already satisfied: botocore<1.35.8,>=1.35.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiobotocore>=2.5.0->aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.35.7)
+Requirement already satisfied: aioitertools<1.0.0,>=0.5.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiobotocore>=2.5.0->aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.11.0)
+Requirement already satisfied: jmespath<2.0.0,>=0.7.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from botocore<1.35.8,>=1.35.0->aiobotocore>=2.5.0->aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.10.0)
+Requirement already satisfied: boto3<1.35.8,>=1.35.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.35.7)
+Requirement already satisfied: s3transfer<0.11.0,>=0.10.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from boto3<1.35.8,>=1.35.0->aiobotocore[boto3]>=2.5.0->dvc-s3==2.23.0->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.10.2)
+Requirement already satisfied: adlfs>=2023.12.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (2024.7.0)
+Requirement already satisfied: azure-identity>=1.4.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.17.1)
+Requirement already satisfied: knack in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.12.0)
+Requirement already satisfied: azure-core<2.0.0,>=1.23.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.30.2)
+Requirement already satisfied: azure-datalake-store<0.1,>=0.0.46 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.0.53)
+Requirement already satisfied: azure-storage-blob>=12.12.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (12.22.0)
+Requirement already satisfied: msal<2,>=1.16.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from azure-datalake-store<0.1,>=0.0.46->adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.30.0)
+Requirement already satisfied: PyJWT<3,>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from PyJWT[crypto]<3,>=1.0.0->msal<2,>=1.16.0->azure-datalake-store<0.1,>=0.0.46->adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.9.0)
+Requirement already satisfied: msal-extensions>=0.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from azure-identity>=1.4.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.2.0)
+Requirement already satisfied: isodate>=0.6.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from azure-storage-blob>=12.12.0->adlfs>=2023.12.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.6.1)
+Requirement already satisfied: decorator>4.1.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.1.1)
+Requirement already satisfied: google-auth>=1.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.34.0)
+Requirement already satisfied: google-auth-oauthlib in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.2.1)
+Requirement already satisfied: google-cloud-storage in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.18.2)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-auth>=1.2->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.5.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-auth>=1.2->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.4.0)
+Requirement already satisfied: rsa<5,>=3.1.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-auth>=1.2->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.9)
+Requirement already satisfied: pyasn1>=0.1.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from rsa<5,>=3.1.4->google-auth>=1.2->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.6.0)
+Requirement already satisfied: portalocker<3,>=1.4 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from msal-extensions>=0.3.0->azure-identity>=1.4.0->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.10.1)
+Requirement already satisfied: google-api-python-client>=1.12.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.143.0)
+Requirement already satisfied: oauth2client>=4.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.1.3)
+Requirement already satisfied: pyOpenSSL>=19.1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (24.2.1)
+Requirement already satisfied: httplib2<1.dev0,>=0.19.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.22.0)
+Requirement already satisfied: google-auth-httplib2<1.0.0,>=0.2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.2.0)
+Requirement already satisfied: google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.19.2)
+Requirement already satisfied: uritemplate<5,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.1.1)
+Requirement already satisfied: googleapis-common-protos<2.0.dev0,>=1.56.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.65.0)
+Requirement already satisfied: protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<6.0.0.dev0,>=3.19.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.28.0)
+Requirement already satisfied: proto-plus<2.0.0dev,>=1.22.3 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-api-core!=2.0.*,!=2.1.*,!=2.2.*,!=2.3.0,<3.0.0.dev0,>=1.31.5->google-api-python-client>=1.12.5->pydrive2>=1.16->pydrive2[fsspec]>=1.16->dvc-gdrive==2.20->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.24.0)
+Requirement already satisfied: jinja2>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from tpi>=2.1->tpi[ssh]>=2.1; extra == "terraform"->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.1.4)
+Requirement already satisfied: miutil>=0.7.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from miutil[web]>=0.7.0->tpi>=2.1->tpi[ssh]>=2.1; extra == "terraform"->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.12.0)
+Requirement already satisfied: python-terraform>=0.10.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from tpi>=2.1->tpi[ssh]>=2.1; extra == "terraform"->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.10.1)
+Requirement already satisfied: MarkupSafe>=2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from jinja2>=2.0.0->tpi>=2.1->tpi[ssh]>=2.1; extra == "terraform"->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.1.5)
+Requirement already satisfied: httpx<1,>=0.20 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from webdav4>=0.9.3->dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.27.2)
+Requirement already satisfied: anyio in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from httpx<1,>=0.20->webdav4>=0.9.3->dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (4.4.0)
+Requirement already satisfied: httpcore==1.* in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from httpx<1,>=0.20->webdav4>=0.9.3->dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.0.5)
+Requirement already satisfied: sniffio in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from httpx<1,>=0.20->webdav4>=0.9.3->dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.3.1)
+Requirement already satisfied: h11<0.15,>=0.13 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from httpcore==1.*->httpx<1,>=0.20->webdav4>=0.9.3->dvc-webdav==2.19.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.14.0)
+Requirement already satisfied: pyarrow>=1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from fsspec[arrow]->dvc-hdfs==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (17.0.0)
+Requirement already satisfied: numpy>=1.16.6 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pyarrow>=1->fsspec[arrow]->dvc-hdfs==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.1.0)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-auth-oauthlib->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.0.0)
+Requirement already satisfied: oauthlib>=3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.2.2)
+Requirement already satisfied: google-cloud-core<3.0dev,>=2.3.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-cloud-storage->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.4.1)
+Requirement already satisfied: google-resumable-media>=2.7.2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-cloud-storage->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.7.2)
+Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from google-cloud-storage->gcsfs>=2022.11.0->dvc-gs==2.22.1->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.5.0)
+Requirement already satisfied: argcomplete in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from knack->dvc-azure>=2.21.2->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.5.0)
+Requirement already satisfied: oss2==2.18.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.18.1)
+Requirement already satisfied: aiooss2>=0.2.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.2.10)
+Requirement already satisfied: crcmod>=1.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from oss2==2.18.1->ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.7)
+Requirement already satisfied: pycryptodome>=3.4.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from oss2==2.18.1->ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.20.0)
+Requirement already satisfied: aliyun-python-sdk-kms>=2.4.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from oss2==2.18.1->ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.16.5)
+Requirement already satisfied: aliyun-python-sdk-core>=2.13.12 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from oss2==2.18.1->ossfs->dvc-oss==2.19->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.15.2)
+Requirement already satisfied: py-cpuinfo in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-benchmark[histogram]; extra == "testing"->dvc==3.12.1.dev0+g43b371c43.d20260428) (9.0.0)
+Requirement already satisfied: pygal in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-benchmark[histogram]; extra == "testing"->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.0.5)
+Requirement already satisfied: pygaljs in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-benchmark[histogram]; extra == "testing"->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.0.2)
+Requirement already satisfied: importlib-metadata in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pygal->pytest-benchmark[histogram]; extra == "testing"->dvc==3.12.1.dev0+g43b371c43.d20260428) (8.4.0)
+Requirement already satisfied: zipp>=0.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from importlib-metadata->pygal->pytest-benchmark[histogram]; extra == "testing"->dvc==3.12.1.dev0+g43b371c43.d20260428) (3.20.1)
+Requirement already satisfied: pytest-fixture-config in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.7.0)
+Requirement already satisfied: pytest-shutil in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (1.7.0)
+Requirement already satisfied: virtualenv in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (20.26.3)
+Requirement already satisfied: contextlib2 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-shutil->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (21.6.0)
+Requirement already satisfied: path.py in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-shutil->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (12.5.0)
+Requirement already satisfied: mock in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-shutil->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (5.1.0)
+Requirement already satisfied: termcolor in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pytest-shutil->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (2.4.0)
+Requirement already satisfied: path in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from path.py->pytest-shutil->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (17.0.0)
+Requirement already satisfied: distlib<1,>=0.3.7 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from virtualenv->pytest-virtualenv->dvc==3.12.1.dev0+g43b371c43.d20260428) (0.3.8)
+Building wheels for collected packages: dvc
+  Building editable for dvc (pyproject.toml): started
+  Building editable for dvc (pyproject.toml): finished with status 'done'
+  Created wheel for dvc: filename=dvc-3.12.1.dev0+g43b371c43.d20260428-0.editable-py3-none-any.whl size=12981 sha256=05641eaefd689d796ecfe783d01c672f971ee9a7c6f17f542f59aafa89cf7b31
+  Stored in directory: /tmp/pip-ephem-wheel-cache-bm8889lw/wheels/0d/a6/cb/465a7b303d624cc531250fa27c75d038ddc29430bdb6ba7c9f
+Successfully built dvc
+Installing collected packages: dvc
+  Attempting uninstall: dvc
+    Found existing installation: dvc 3.12.0
+    Uninstalling dvc-3.12.0:
+      Successfully uninstalled dvc-3.12.0
+Successfully installed dvc-3.12.1.dev0+g43b371c43.d20260428
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/func/utils/test_hydra.py tests/unit/repo/experiments/test_utils.py
+/opt/miniconda3/envs/testbed/lib/python3.10/site-packages/pytest_benchmark/logger.py:46: PytestBenchmarkWarning: Benchmarks are automatically disabled because xdist plugin is active.Benchmarks cannot be performed reliably in a parallelized environment.
+  warner(PytestBenchmarkWarning(text))
+============================= test session starts ==============================
+platform linux -- Python 3.10.14, pytest-7.4.4, pluggy-1.5.0
+benchmark: 4.0.0 (defaults: timer=time.perf_counter disable_gc=False min_rounds=5 min_time=0.000005 max_time=1.0 calibration_precision=10 warmup=False warmup_iterations=100000)
+rootdir: /testbed
+configfile: pyproject.toml
+plugins: dvc-3.12.1.dev0+g43b371c43.d20260428, lazy-fixture-0.6.3, anyio-4.4.0, mock-3.14.0, test-utils-0.1.0, docker-1.0.1, hydra-core-1.3.2, cov-5.0.0, xdist-3.6.1, shutil-1.7.0, virtualenv-1.7.0, benchmark-4.0.0, flaky-3.8.1, timeout-2.3.1
+collected 81 items
+
+tests/func/utils/test_hydra.py .s..s..s..............s.................. [ 50%]
+......................                                                   [ 77%]
+tests/unit/repo/experiments/test_utils.py ..................             [100%]
+
+==================================== PASSES ====================================
+__________ test_compose_and_dump_overrides[overrides0-expected0-yaml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=UNKNOWN_NAME
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides0-expected0-toml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides0-expected0-json] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides1-expected1-yaml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides1-expected1-toml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides1-expected1-json] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides2-expected2-yaml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides2-expected2-toml] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________ test_compose_and_dump_overrides[overrides2-expected2-json] __________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__ test_compose_and_dump_dir_module[conf-None-config_content0-error_context0] __
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+_ test_compose_and_dump_dir_module[None-hydra.test_utils.configs-config_content1-error_context1] _
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+_ test_compose_and_dump_dir_module[conf-hydra.test_utils.configs-config_content2-error_context2] _
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+__________________ test_compose_and_dump_yaml_handles_string ___________________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+_________________ test_compose_and_dump_resolves_interpolation _________________
+------------------------------ Captured log call -------------------------------
+DEBUG    hydra.core.utils:utils.py:279 Setting JobRuntime:name=app
+_______________________ test_resolve_exp_ref[True-True] ________________________
+---------------------------- Captured stdout setup -----------------------------
+2026-04-28 10:20:04,466 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/config.local' to gitignore file.
+2026-04-28 10:20:04,466 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/tmp' to gitignore file.
+2026-04-28 10:20:04,466 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/cache' to gitignore file.
+2026-04-28 10:20:04,466 DEBUG: Removing '/tmp/pytest-of-root/pytest-0/mock0/site_cache_dir/repo/63a5598b07accace31e6ef469a5a5dbd'
+2026-04-28 10:20:04,497 DEBUG: Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvcignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/config', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/.gitignore'}
+Initialized DVC repository.
+
+You can now commit the changes to git.
+
+------------------------------ Captured log setup ------------------------------
+DEBUG    dvc.repo.scm_context:scm_context.py:82 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/config.local' to gitignore file.
+DEBUG    dvc.repo.scm_context:scm_context.py:82 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/tmp' to gitignore file.
+DEBUG    dvc.repo.scm_context:scm_context.py:82 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/cache' to gitignore file.
+DEBUG    dvc.utils.fs:fs.py:63 Removing '/tmp/pytest-of-root/pytest-0/mock0/site_cache_dir/repo/63a5598b07accace31e6ef469a5a5dbd'
+DEBUG    dvc.repo.scm_context:scm_context.py:68 Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvcignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/config', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster2/.dvc/.gitignore'}
+INFO     dvc.repo.init:init.py:96 Initialized DVC repository.
+
+INFO     dvc.repo.init:init.py:98 You can now commit the changes to git.
+
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'version'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_True0, stdin=None, shell=False, universal_newlines=False)
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'version'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_True0, stdin=None, shell=False, universal_newlines=False)
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'remote', 'add', '--', 'upstream', 'file:///tmp/pytest-of-root/pytest-0/git-erepo0'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_True0, stdin=None, shell=False, universal_newlines=False)
+------------------------------ Captured log call -------------------------------
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'update-ref', 'refs/exps/ab/c123/foo', '6d4f7e396928a6be5454750f2d9107b8e7e8e0d8'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_True0, stdin=None, shell=False, universal_newlines=False)
+_______________________ test_resolve_exp_ref[True-False] _______________________
+------------------------------ Captured log setup ------------------------------
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'remote', 'add', '--', 'upstream', 'file:///tmp/pytest-of-root/pytest-0/git-erepo1'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_Fals0, stdin=None, shell=False, universal_newlines=False)
+------------------------------ Captured log call -------------------------------
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'update-ref', 'refs/exps/ab/c123/foo', '6d4f7e396928a6be5454750f2d9107b8e7e8e0d8'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_True_Fals0, stdin=None, shell=False, universal_newlines=False)
+_______________________ test_resolve_exp_ref[False-True] _______________________
+------------------------------ Captured log setup ------------------------------
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'remote', 'add', '--', 'upstream', 'file:///tmp/pytest-of-root/pytest-0/git-erepo2'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_False_Tru0, stdin=None, shell=False, universal_newlines=False)
+------------------------------ Captured log call -------------------------------
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'update-ref', 'refs/exps/ab/c123/foo', '6d4f7e396928a6be5454750f2d9107b8e7e8e0d8'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_False_Tru0, stdin=None, shell=False, universal_newlines=False)
+______________________ test_resolve_exp_ref[False-False] _______________________
+------------------------------ Captured log setup ------------------------------
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.util:util.py:494 sys.platform='linux', git_executable='git'
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'remote', 'add', '--', 'upstream', 'file:///tmp/pytest-of-root/pytest-0/git-erepo3'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_False_Fal0, stdin=None, shell=False, universal_newlines=False)
+------------------------------ Captured log call -------------------------------
+DEBUG    git.cmd:cmd.py:1286 Popen(['git', 'update-ref', 'refs/exps/ab/c123/foo', '6d4f7e396928a6be5454750f2d9107b8e7e8e0d8'], cwd=/tmp/pytest-of-root/pytest-0/test_resolve_exp_ref_False_Fal0, stdin=None, shell=False, universal_newlines=False)
+=========================== short test summary info ============================
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides0-expected0-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides0-expected0-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides1-expected1-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides1-expected1-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides2-expected2-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides2-expected2-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides3-expected3-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides3-expected3-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides3-expected3-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides4-expected4-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides4-expected4-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides4-expected4-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides5-expected5-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides5-expected5-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides5-expected5-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides6-expected6-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides6-expected6-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides6-expected6-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides7-expected7-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides7-expected7-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides8-expected8-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides8-expected8-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides8-expected8-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides9-expected9-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides9-expected9-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides9-expected9-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides10-expected10-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides10-expected10-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides10-expected10-json]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides11-expected11-yaml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides11-expected11-toml]
+PASSED tests/func/utils/test_hydra.py::test_apply_overrides[overrides11-expected11-json]
+PASSED tests/func/utils/test_hydra.py::test_invalid_overrides[overrides0]
+PASSED tests/func/utils/test_hydra.py::test_invalid_overrides[overrides1]
+PASSED tests/func/utils/test_hydra.py::test_invalid_overrides[overrides2]
+PASSED tests/func/utils/test_hydra.py::test_invalid_overrides[overrides3]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides0-expected0-yaml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides0-expected0-toml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides0-expected0-json]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides1-expected1-yaml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides1-expected1-toml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides1-expected1-json]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides2-expected2-yaml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides2-expected2-toml]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_overrides[overrides2-expected2-json]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_dir_module[conf-None-config_content0-error_context0]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_dir_module[None-hydra.test_utils.configs-config_content1-error_context1]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_dir_module[conf-hydra.test_utils.configs-config_content2-error_context2]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_dir_module[None-None-None-error_context3]
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_yaml_handles_string
+PASSED tests/func/utils/test_hydra.py::test_compose_and_dump_resolves_interpolation
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides0-expected0]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides1-expected1]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides2-expected2]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides3-expected3]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides4-expected4]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides5-expected5]
+PASSED tests/func/utils/test_hydra.py::test_hydra_sweeps[overrides6-expected6]
+PASSED tests/func/utils/test_hydra.py::test_invalid_sweep
+PASSED tests/unit/repo/experiments/test_utils.py::test_resolve_exp_ref[True-True]
+PASSED tests/unit/repo/experiments/test_utils.py::test_resolve_exp_ref[True-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_resolve_exp_ref[False-True]
+PASSED tests/unit/repo/experiments/test_utils.py::test_resolve_exp_ref[False-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[name-True]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[group/name-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[na me-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[invalid/.name-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[@-result4]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[:-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[^-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[*-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[~-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_run_check_ref_format[?-False]
+PASSED tests/unit/repo/experiments/test_utils.py::test_to_studio_params[params0-expected0]
+PASSED tests/unit/repo/experiments/test_utils.py::test_to_studio_params[params1-expected1]
+PASSED tests/unit/repo/experiments/test_utils.py::test_to_studio_params[params2-expected2]
+PASSED tests/unit/repo/experiments/test_utils.py::test_gen_random_name
+SKIPPED [4] tests/func/utils/test_hydra.py:102: TOML dumper breaks when overriding a list/dict with other type or when handling `null` values.
+======================== 77 passed, 4 skipped in 1.65s =========================
++ : '>>>>> End Test Output'

@@ -1,0 +1,208 @@
+2026-04-28 17:46:49,976 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.1.0_1.1.1
+Building instance image sweb.eval.x86_64.iterative__dvc_1.1.0_1.1.1:latest for iterative__dvc_1.1.0_1.1.1
+2026-04-28 17:46:49,994 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.1.0_1.1.1:latest already exists, skipping build.
+2026-04-28 17:46:49,994 - INFO - Creating container for iterative__dvc_1.1.0_1.1.1...
+2026-04-28 17:46:52,063 - INFO - Container for iterative__dvc_1.1.0_1.1.1 created: e28857f39e05e68e4cc9434d53d324ceec6250f6a27dff2cf94673f283444500
+2026-04-28 17:46:52,195 - INFO - Container for iterative__dvc_1.1.0_1.1.1 started: e28857f39e05e68e4cc9434d53d324ceec6250f6a27dff2cf94673f283444500
+2026-04-28 17:46:52,195 - INFO - Intermediate patch for iterative__dvc_1.1.0_1.1.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.0_1.1.1/patch.diff, now applying to container...
+2026-04-28 17:46:52,538 - INFO - >>>>> Applied Patch:
+Checking patch tests/unit/command/test_diff.py...
+Checking patch tests/unit/command/test_metrics.py...
+Checking patch tests/unit/command/test_params.py...
+Checking patch dvc/utils/diff.py...
+Applied patch tests/unit/command/test_diff.py cleanly.
+Applied patch tests/unit/command/test_metrics.py cleanly.
+Applied patch tests/unit/command/test_params.py cleanly.
+Applied patch dvc/utils/diff.py cleanly.
+
+2026-04-28 17:46:52,594 - INFO - Git diff before:
+diff --git a/dvc/utils/diff.py b/dvc/utils/diff.py
+index b412aafeb..330a362bd 100644
+--- a/dvc/utils/diff.py
++++ b/dvc/utils/diff.py
+@@ -91,7 +91,7 @@ def table(header, rows, markdown=False):
+     if not rows and not markdown:
+         return ""
+ 
+-    return tabulate(
++    ret = tabulate(
+         rows,
+         header,
+         tablefmt="github" if markdown else "plain",
+@@ -99,6 +99,9 @@ def table(header, rows, markdown=False):
+         # None will be shown as "" by default, overriding
+         missingval="None",
+     )
++    if markdown:
++        ret += "\n"
++    return ret
+ 
+ 
+ def format_dict(d):
+diff --git a/tests/unit/command/test_diff.py b/tests/unit/command/test_diff.py
+index c52837f7e..529cbe37a 100644
+--- a/tests/unit/command/test_diff.py
++++ b/tests/unit/command/test_diff.py
+@@ -114,7 +114,7 @@ def test_no_changes(mocker, caplog):
+ 
+ 
+ def test_show_md_empty():
+-    assert _show_md({}) == ("| Status   | Path   |\n" "|----------|--------|")
++    assert _show_md({}) == ("| Status   | Path   |\n|----------|--------|\n")
+ 
+ 
+ def test_show_md():
+@@ -138,5 +138,5 @@ def test_show_md():
+         "| deleted  | data{sep}bar |\n"
+         "| deleted  | data{sep}foo |\n"
+         "| deleted  | zoo      |\n"
+-        "| modified | file     |"
++        "| modified | file     |\n"
+     ).format(sep=os.path.sep)
+diff --git a/tests/unit/command/test_metrics.py b/tests/unit/command/test_metrics.py
+index 45392ad91..89429eb79 100644
+--- a/tests/unit/command/test_metrics.py
++++ b/tests/unit/command/test_metrics.py
+@@ -171,7 +171,8 @@ def test_metrics_diff_markdown_empty():
+     assert _show_diff({}, markdown=True) == textwrap.dedent(
+         """\
+         | Path   | Metric   | Value   | Change   |
+-        |--------|----------|---------|----------|"""
++        |--------|----------|---------|----------|
++        """
+     )
+ 
+ 
+@@ -191,7 +192,8 @@ def test_metrics_diff_markdown():
+         |--------------|----------|---------|--------------------|
+         | metrics.yaml | a.b.c    | 2       | 1                  |
+         | metrics.yaml | a.d.e    | 4       | 1                  |
+-        | metrics.yaml | x.b      | 6       | diff not supported |"""
++        | metrics.yaml | x.b      | 6       | diff not supported |
++        """
+     )
+ 
+ 
+diff --git a/tests/unit/command/test_params.py b/tests/unit/command/test_params.py
+index 787110145..de55499cd 100644
+--- a/tests/unit/command/test_params.py
++++ b/tests/unit/command/test_params.py
+@@ -129,7 +129,8 @@ def test_params_diff_markdown_empty():
+     assert _show_diff({}, markdown=True) == textwrap.dedent(
+         """\
+         | Path   | Param   | Old   | New   |
+-        |--------|---------|-------|-------|"""
++        |--------|---------|-------|-------|
++        """
+     )
+ 
+ 
+@@ -149,7 +150,8 @@ def test_params_diff_markdown():
+         |-------------|---------|-------|-------|
+         | params.yaml | a.b.c   | 1     | None  |
+         | params.yaml | a.d.e   | None  | 4     |
+-        | params.yaml | x.b     | 5     | 6     |"""
++        | params.yaml | x.b     | 5     | 6     |
++        """
+     )
+2026-04-28 17:46:52,594 - INFO - Eval script for iterative__dvc_1.1.0_1.1.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.0_1.1.1/eval.sh; copying to container...
+2026-04-28 17:50:20,194 - INFO - Test runtime: 207.55 seconds
+2026-04-28 17:50:20,195 - INFO - Test output for iterative__dvc_1.1.0_1.1.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.0_1.1.1/test_output.txt
+2026-04-28 17:50:20,259 - INFO - Git diff after:
+diff --git a/dvc/utils/diff.py b/dvc/utils/diff.py
+index b412aafeb..330a362bd 100644
+--- a/dvc/utils/diff.py
++++ b/dvc/utils/diff.py
+@@ -91,7 +91,7 @@ def table(header, rows, markdown=False):
+     if not rows and not markdown:
+         return ""
+ 
+-    return tabulate(
++    ret = tabulate(
+         rows,
+         header,
+         tablefmt="github" if markdown else "plain",
+@@ -99,6 +99,9 @@ def table(header, rows, markdown=False):
+         # None will be shown as "" by default, overriding
+         missingval="None",
+     )
++    if markdown:
++        ret += "\n"
++    return ret
+ 
+ 
+ def format_dict(d):
+diff --git a/tests/unit/command/test_diff.py b/tests/unit/command/test_diff.py
+index c52837f7e..529cbe37a 100644
+--- a/tests/unit/command/test_diff.py
++++ b/tests/unit/command/test_diff.py
+@@ -114,7 +114,7 @@ def test_no_changes(mocker, caplog):
+ 
+ 
+ def test_show_md_empty():
+-    assert _show_md({}) == ("| Status   | Path   |\n" "|----------|--------|")
++    assert _show_md({}) == ("| Status   | Path   |\n|----------|--------|\n")
+ 
+ 
+ def test_show_md():
+@@ -138,5 +138,5 @@ def test_show_md():
+         "| deleted  | data{sep}bar |\n"
+         "| deleted  | data{sep}foo |\n"
+         "| deleted  | zoo      |\n"
+-        "| modified | file     |"
++        "| modified | file     |\n"
+     ).format(sep=os.path.sep)
+diff --git a/tests/unit/command/test_metrics.py b/tests/unit/command/test_metrics.py
+index 45392ad91..89429eb79 100644
+--- a/tests/unit/command/test_metrics.py
++++ b/tests/unit/command/test_metrics.py
+@@ -171,7 +171,8 @@ def test_metrics_diff_markdown_empty():
+     assert _show_diff({}, markdown=True) == textwrap.dedent(
+         """\
+         | Path   | Metric   | Value   | Change   |
+-        |--------|----------|---------|----------|"""
++        |--------|----------|---------|----------|
++        """
+     )
+ 
+ 
+@@ -191,7 +192,8 @@ def test_metrics_diff_markdown():
+         |--------------|----------|---------|--------------------|
+         | metrics.yaml | a.b.c    | 2       | 1                  |
+         | metrics.yaml | a.d.e    | 4       | 1                  |
+-        | metrics.yaml | x.b      | 6       | diff not supported |"""
++        | metrics.yaml | x.b      | 6       | diff not supported |
++        """
+     )
+ 
+ 
+diff --git a/tests/unit/command/test_params.py b/tests/unit/command/test_params.py
+index 787110145..de55499cd 100644
+--- a/tests/unit/command/test_params.py
++++ b/tests/unit/command/test_params.py
+@@ -129,7 +129,8 @@ def test_params_diff_markdown_empty():
+     assert _show_diff({}, markdown=True) == textwrap.dedent(
+         """\
+         | Path   | Param   | Old   | New   |
+-        |--------|---------|-------|-------|"""
++        |--------|---------|-------|-------|
++        """
+     )
+ 
+ 
+@@ -149,7 +150,8 @@ def test_params_diff_markdown():
+         |-------------|---------|-------|-------|
+         | params.yaml | a.b.c   | 1     | None  |
+         | params.yaml | a.d.e   | None  | 4     |
+-        | params.yaml | x.b     | 5     | 6     |"""
++        | params.yaml | x.b     | 5     | 6     |
++        """
+     )
+2026-04-28 17:50:20,259 - INFO - Grading answer for iterative__dvc_1.1.0_1.1.1...
+2026-04-28 17:50:20,260 - INFO - report: {'iterative__dvc_1.1.0_1.1.1': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/command/test_diff.py::test_show_md', 'tests/unit/command/test_diff.py::test_show_md_empty', 'tests/unit/command/test_metrics.py::test_metrics_diff_markdown', 'tests/unit/command/test_metrics.py::test_metrics_diff_markdown_empty', 'tests/unit/command/test_params.py::test_params_diff_markdown', 'tests/unit/command/test_params.py::test_params_diff_markdown_empty'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/unit/command/test_diff.py::test_default', 'tests/unit/command/test_diff.py::test_no_changes', 'tests/unit/command/test_diff.py::test_show_hash', 'tests/unit/command/test_diff.py::test_show_json', 'tests/unit/command/test_diff.py::test_show_json_and_hash', 'tests/unit/command/test_metrics.py::test_metrics_diff', 'tests/unit/command/test_metrics.py::test_metrics_diff_deleted_metric', 'tests/unit/command/test_metrics.py::test_metrics_diff_new_metric', 'tests/unit/command/test_metrics.py::test_metrics_diff_no_changes', 'tests/unit/command/test_metrics.py::test_metrics_diff_no_diff', 'tests/unit/command/test_metrics.py::test_metrics_diff_no_path', 'tests/unit/command/test_metrics.py::test_metrics_diff_precision', 'tests/unit/command/test_metrics.py::test_metrics_diff_sorted', 'tests/unit/command/test_metrics.py::test_metrics_diff_with_old', 'tests/unit/command/test_metrics.py::test_metrics_show', 'tests/unit/command/test_metrics.py::test_metrics_show_json_diff', 'tests/unit/command/test_metrics.py::test_metrics_show_raw_diff', 'tests/unit/command/test_params.py::test_params_diff', 'tests/unit/command/test_params.py::test_params_diff_changed', 'tests/unit/command/test_params.py::test_params_diff_deleted', 'tests/unit/command/test_params.py::test_params_diff_list', 'tests/unit/command/test_params.py::test_params_diff_new', 'tests/unit/command/test_params.py::test_params_diff_no_changes', 'tests/unit/command/test_params.py::test_params_diff_no_path', 'tests/unit/command/test_params.py::test_params_diff_prec', 'tests/unit/command/test_params.py::test_params_diff_show_json', 'tests/unit/command/test_params.py::test_params_diff_sorted', 'tests/unit/command/test_params.py::test_params_diff_unchanged'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.1.0_1.1.1: resolved: True
+2026-04-28 17:50:20,260 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.1.0_1.1.1.eval_input_20260427-154634...
+2026-04-28 17:50:35,441 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.1.0_1.1.1.eval_input_20260427-154634...
+2026-04-28 17:50:35,512 - INFO - Container sweb.eval.iterative__dvc_1.1.0_1.1.1.eval_input_20260427-154634 removed.
+2026-04-28 17:50:35,512 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.1.0_1.1.1:latest...
+2026-04-28 17:50:35,516 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.1.0_1.1.1:latest removed.

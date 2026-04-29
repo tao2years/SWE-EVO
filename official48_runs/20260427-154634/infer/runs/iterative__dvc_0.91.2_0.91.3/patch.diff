@@ -1,0 +1,324 @@
+diff --git a/dvc/remote/base.py b/dvc/remote/base.py
+index fc161d015..2a80e7298 100644
+--- a/dvc/remote/base.py
++++ b/dvc/remote/base.py
+@@ -687,7 +687,7 @@ class RemoteBASE(object):
+         parts = self.path_cls(path).parts[-2:]
+ 
+         if not (len(parts) == 2 and parts[0] and len(parts[0]) == 2):
+-            raise ValueError("Bad cache file path")
++            raise ValueError("Bad cache file path '{}'".format(path))
+ 
+         return "".join(parts)
+ 
+@@ -697,17 +697,18 @@ class RemoteBASE(object):
+     def list_cache_paths(self, prefix=None, progress_callback=None):
+         raise NotImplementedError
+ 
+-    def all(self):
++    def all(self, *args, **kwargs):
+         # NOTE: The list might be way too big(e.g. 100M entries, md5 for each
+         # is 32 bytes, so ~3200Mb list) and we don't really need all of it at
+         # the same time, so it makes sense to use a generator to gradually
+         # iterate over it, without keeping all of it in memory.
+-        for path in self.list_cache_paths():
++        for path in self.list_cache_paths(*args, **kwargs):
+             try:
+                 yield self.path_to_checksum(path)
+             except ValueError:
+-                # We ignore all the non-cache looking files
+-                pass
++                logger.debug(
++                    "'%s' doesn't look like a cache file, skipping", path
++                )
+ 
+     def gc(self, named_cache):
+         used = self.extract_used_local_checksums(named_cache)
+@@ -845,30 +846,12 @@ class RemoteBASE(object):
+         if len(checksums) == 1 or not self.CAN_TRAVERSE:
+             return self._cache_object_exists(checksums, jobs, name)
+ 
+-        # Fetch cache entries beginning with "00..." prefix for estimating the
+-        # size of entire remote cache
+         checksums = frozenset(checksums)
+-        prefix = "0" * self.TRAVERSE_PREFIX_LEN
+-        total_prefixes = pow(16, self.TRAVERSE_PREFIX_LEN)
+-        with Tqdm(
+-            desc="Estimating size of "
+-            + ("cache in '{}'".format(name) if name else "remote cache"),
+-            unit="file",
+-        ) as pbar:
+-
+-            def update(n=1):
+-                pbar.update(n * total_prefixes)
+ 
+-            paths = self.list_cache_paths(
+-                prefix=prefix, progress_callback=update
+-            )
+-            remote_checksums = set(map(self.path_to_checksum, paths))
+-
+-        if remote_checksums:
+-            remote_size = total_prefixes * len(remote_checksums)
+-        else:
+-            remote_size = total_prefixes
+-        logger.debug("Estimated remote size: {} files".format(remote_size))
++        # Max remote size allowed for us to use traverse method
++        remote_size, remote_checksums = self._estimate_cache_size(
++            checksums, name=name
++        )
+ 
+         traverse_pages = remote_size / self.LIST_OBJECT_PAGE_SIZE
+         # For sufficiently large remotes, traverse must be weighted to account
+@@ -909,6 +892,77 @@ class RemoteBASE(object):
+             checksums, remote_checksums, remote_size, jobs, name
+         )
+ 
++    def _cache_paths_with_max(
++        self, max_paths, prefix=None, progress_callback=None
++    ):
++        count = 0
++        for path in self.list_cache_paths(prefix, progress_callback):
++            yield path
++            count += 1
++            if count > max_paths:
++                logger.debug(
++                    "list_cache_paths() returned max '{}' paths, "
++                    "skipping remaining results".format(max_paths)
++                )
++                return
++
++    def _all_with_limit(self, max_paths, prefix=None, progress_callback=None):
++        count = 0
++        for checksum in self.all(prefix, progress_callback):
++            yield checksum
++            count += 1
++            if count > max_paths:
++                logger.debug(
++                    "`all()` returned max '{}' checksums, "
++                    "skipping remaining results".format(max_paths)
++                )
++                return
++
++    def _max_estimation_size(self, checksums):
++        # Max remote size allowed for us to use traverse method
++        return max(
++            self.TRAVERSE_THRESHOLD_SIZE,
++            len(checksums)
++            / self.TRAVERSE_WEIGHT_MULTIPLIER
++            * self.LIST_OBJECT_PAGE_SIZE,
++        )
++
++    def _estimate_cache_size(self, checksums, short_circuit=True, name=None):
++        """Estimate remote cache size based on number of entries beginning with
++        "00..." prefix.
++        """
++        prefix = "0" * self.TRAVERSE_PREFIX_LEN
++        total_prefixes = pow(16, self.TRAVERSE_PREFIX_LEN)
++        if short_circuit:
++            max_remote_size = self._max_estimation_size(checksums)
++        else:
++            max_remote_size = None
++
++        with Tqdm(
++            desc="Estimating size of "
++            + ("cache in '{}'".format(name) if name else "remote cache"),
++            unit="file",
++            total=max_remote_size,
++        ) as pbar:
++
++            def update(n=1):
++                pbar.update(n * total_prefixes)
++
++            if max_remote_size:
++                checksums_iter = self._all_with_limit(
++                    max_remote_size / total_prefixes, prefix, update
++                )
++            else:
++                checksums_iter = self.all(prefix, update)
++
++            remote_checksums = set(checksums_iter)
++            if remote_checksums:
++                remote_size = total_prefixes * len(remote_checksums)
++            else:
++                remote_size = total_prefixes
++            logger.debug("Estimated remote size: {} files".format(remote_size))
++        return remote_size, remote_checksums
++
+     def _cache_exists_traverse(
+         self, checksums, remote_checksums, remote_size, jobs=None, name=None
+     ):
+@@ -933,10 +987,7 @@ class RemoteBASE(object):
+         ) as pbar:
+ 
+             def list_with_update(prefix):
+-                paths = self.list_cache_paths(
+-                    prefix=prefix, progress_callback=pbar.update
+-                )
+-                return map(self.path_to_checksum, list(paths))
++                return self.all(prefix=prefix, progress_callback=pbar.update)
+ 
+             with ThreadPoolExecutor(max_workers=jobs or self.JOBS) as executor:
+                 in_remote = executor.map(list_with_update, traverse_prefixes,)
+diff --git a/dvc/remote/gdrive.py b/dvc/remote/gdrive.py
+index de4211641..1e90d5f3c 100644
+--- a/dvc/remote/gdrive.py
++++ b/dvc/remote/gdrive.py
+@@ -38,7 +38,7 @@ class GDriveMissedCredentialKeyError(DvcException):
+         )
+ 
+ 
+-def gdrive_retry(func):
++def _gdrive_retry(func):
+     def should_retry(exc):
+         from pydrive2.files import ApiRequestError
+ 
+@@ -48,12 +48,12 @@ def gdrive_retry(func):
+         retry_codes = [403, 500, 502, 503, 504]
+         result = exc.error.get("code", 0) in retry_codes
+         if result:
+-            logger.debug("Retry GDrive API call failed with {}.".format(exc))
++            logger.debug("Retrying GDrive API call, error: {}.".format(exc))
+         return result
+ 
+-    # 15 tries, start at 0.5s, multiply by golden ratio, cap at 20s
++    # 16 tries, start at 0.5s, multiply by golden ratio, cap at 20s
+     return retry(
+-        15,
++        16,
+         timeout=lambda a: min(0.5 * 1.618 ** a, 20),
+         filter_errors=should_retry,
+     )(func)
+@@ -171,7 +171,7 @@ class RemoteGDrive(RemoteBASE):
+ 
+     @wrap_prop(threading.RLock())
+     @cached_property
+-    def drive(self):
++    def _drive(self):
+         from pydrive2.auth import RefreshError
+         from pydrive2.auth import GoogleAuth
+         from pydrive2.drive import GoogleDrive
+@@ -214,18 +214,21 @@ class RemoteGDrive(RemoteBASE):
+ 
+         # Pass non existent settings path to force DEFAULT_SETTINGS loading
+         gauth = GoogleAuth(settings_file="")
++        gauth.http_timeout = 10
+ 
+         try:
+             if self._use_service_account:
+                 gauth.ServiceAuth()
+             else:
+                 gauth.CommandLineAuth()
+-        except RefreshError as exc:
+-            raise GDriveAccessTokenRefreshError from exc
+         except KeyError as exc:
+             raise GDriveMissedCredentialKeyError(
+                 self._gdrive_user_credentials_path
+             ) from exc
++        except RefreshError as exc:
++            raise GDriveAccessTokenRefreshError from exc
++        except TimeoutError as exc:
++            raise GDriveAccessTokenRefreshError from exc
+         # Handle pydrive2.auth.AuthenticationError and other auth failures
+         except Exception as exc:
+             raise DvcException("Google Drive authentication failed") from exc
+@@ -267,7 +270,7 @@ class RemoteGDrive(RemoteBASE):
+                 params["corpora"] = "drive"
+         return params
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def gdrive_upload_file(
+         self,
+         parent_id,
+@@ -296,7 +299,7 @@ class RemoteGDrive(RemoteBASE):
+                 item.Upload()
+         return item
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def gdrive_download_file(
+         self, file_id, to_file, progress_name, no_progress_bar
+     ):
+@@ -337,7 +340,7 @@ class RemoteGDrive(RemoteBASE):
+ 
+         return item["id"]
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def _create_remote_dir(self, parent_id, title):
+         parent = {"id": parent_id}
+         item = self.drive.CreateFile(
+@@ -346,7 +349,7 @@ class RemoteGDrive(RemoteBASE):
+         item.Upload()
+         return item
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def _delete_remote_file(self, remote_id):
+         from pydrive2.files import ApiRequestError
+ 
+@@ -378,7 +381,7 @@ class RemoteGDrive(RemoteBASE):
+                 ) from exc
+             raise
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def _get_remote_item(self, name, parents_ids):
+         if not parents_ids:
+             return None
+@@ -400,7 +403,7 @@ class RemoteGDrive(RemoteBASE):
+         item_list = self.drive.ListFile(param).GetList()
+         return next(iter(item_list), None)
+ 
+-    @gdrive_retry
++    @_gdrive_retry
+     def _get_remote_drive_id(self, remote_id):
+         param = {"id": remote_id}
+         # it does not create a file on the remote
+diff --git a/tests/unit/remote/test_base.py b/tests/unit/remote/test_base.py
+index 64e64bc67..ab799a78d 100644
+--- a/tests/unit/remote/test_base.py
++++ b/tests/unit/remote/test_base.py
+@@ -1,5 +1,6 @@
+ from unittest import TestCase
+ 
++import math
+ import mock
+ 
+ from dvc.path_info import PathInfo
+@@ -76,8 +77,15 @@ def test_cache_exists(path_to_checksum, object_exists, traverse):
+     ):
+         checksums = list(range(1000))
+         remote.cache_exists(checksums)
++        # verify that _cache_paths_with_max() short circuits
++        # before returning all 256 remote checksums
++        max_checksums = math.ceil(
++            remote._max_estimation_size(checksums)
++            / pow(16, remote.TRAVERSE_PREFIX_LEN)
++        )
++        assert max_checksums < 256
+         object_exists.assert_called_with(
+-            frozenset(range(256, 1000)), None, None
++            frozenset(range(max_checksums, 1000)), None, None
+         )
+         traverse.assert_not_called()
+ 
+diff --git a/tests/unit/remote/test_gdrive.py b/tests/unit/remote/test_gdrive.py
+index 72b790ea9..2e9c8f791 100644
+--- a/tests/unit/remote/test_gdrive.py
++++ b/tests/unit/remote/test_gdrive.py
+@@ -35,7 +35,7 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_TOKEN_REFRESH_ERROR
+         with pytest.raises(GDriveAccessTokenRefreshError):
+-            remote.drive
++            remote._drive
+ 
+         os.environ[RemoteGDrive.GDRIVE_CREDENTIALS_DATA] = ""
+         remote = RemoteGDrive(Repo(), self.CONFIG)
+@@ -43,4 +43,4 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_MISSED_KEY_ERROR
+         with pytest.raises(GDriveMissedCredentialKeyError):
+-            remote.drive
++            remote._drive

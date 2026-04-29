@@ -1,0 +1,80 @@
+{
+    "pydantic__pydantic_v2.6.0b1_v2.6.0": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/test_discriminated_union.py::test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/test_discriminated_union.py::test_alias_different",
+                    "tests/test_discriminated_union.py::test_alias_same",
+                    "tests/test_discriminated_union.py::test_aliases_matching_is_not_sufficient",
+                    "tests/test_discriminated_union.py::test_callable_discriminated_union_recursive",
+                    "tests/test_discriminated_union.py::test_callable_discriminated_union_with_missing_tag",
+                    "tests/test_discriminated_union.py::test_callable_discriminated_union_with_type_adapter",
+                    "tests/test_discriminated_union.py::test_discriminated_annotated_union",
+                    "tests/test_discriminated_union.py::test_discriminated_single_variant[False]",
+                    "tests/test_discriminated_union.py::test_discriminated_single_variant[True]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value",
+                    "tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value_with_alias",
+                    "tests/test_discriminated_union.py::test_discriminated_union_defined_discriminator",
+                    "tests/test_discriminated_union.py::test_discriminated_union_int",
+                    "tests/test_discriminated_union.py::test_discriminated_union_invalid_type",
+                    "tests/test_discriminated_union.py::test_discriminated_union_literal_discriminator",
+                    "tests/test_discriminated_union.py::test_discriminated_union_root_same_discriminator",
+                    "tests/test_discriminated_union.py::test_discriminated_union_single_variant",
+                    "tests/test_discriminated_union.py::test_discriminated_union_type",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_str]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_str]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_discriminator]",
+                    "tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_str]",
+                    "tests/test_discriminated_union.py::test_distinct_choices",
+                    "tests/test_discriminated_union.py::test_function_after_discriminator",
+                    "tests/test_discriminated_union.py::test_generic",
+                    "tests/test_discriminated_union.py::test_invalid_alias",
+                    "tests/test_discriminated_union.py::test_invalid_discriminated_union_type",
+                    "tests/test_discriminated_union.py::test_invalid_discriminator_type",
+                    "tests/test_discriminated_union.py::test_invalid_str_choice_discriminator_values",
+                    "tests/test_discriminated_union.py::test_lax_or_strict_definitions",
+                    "tests/test_discriminated_union.py::test_missing_discriminator_field",
+                    "tests/test_discriminated_union.py::test_nested",
+                    "tests/test_discriminated_union.py::test_nested_discriminated_union",
+                    "tests/test_discriminated_union.py::test_nested_optional_unions",
+                    "tests/test_discriminated_union.py::test_nested_unwrapping",
+                    "tests/test_discriminated_union.py::test_none_schema",
+                    "tests/test_discriminated_union.py::test_optional_union",
+                    "tests/test_discriminated_union.py::test_optional_union_with_defaults",
+                    "tests/test_discriminated_union.py::test_plain_function_schema_is_invalid",
+                    "tests/test_discriminated_union.py::test_sequence_discriminated_union",
+                    "tests/test_discriminated_union.py::test_union_discriminator_literals",
+                    "tests/test_discriminated_union.py::test_union_in_submodel",
+                    "tests/test_discriminated_union.py::test_unions_of_optionals",
+                    "tests/test_discriminated_union.py::test_various_syntax_options_for_callable_union",
+                    "tests/test_discriminated_union.py::test_wrap_function_schema",
+                    "tests/test_discriminated_union.py::test_wrapped_nullable_union"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

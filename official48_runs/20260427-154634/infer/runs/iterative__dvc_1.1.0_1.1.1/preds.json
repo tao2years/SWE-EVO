@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_1.1.0_1.1.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_1.1.0_1.1.1",
+    "model_patch": "diff --git a/dvc/utils/diff.py b/dvc/utils/diff.py\nindex b412aaf..330a362 100644\n--- a/dvc/utils/diff.py\n+++ b/dvc/utils/diff.py\n@@ -91,7 +91,7 @@ def table(header, rows, markdown=False):\n     if not rows and not markdown:\n         return \"\"\n \n-    return tabulate(\n+    ret = tabulate(\n         rows,\n         header,\n         tablefmt=\"github\" if markdown else \"plain\",\n@@ -99,6 +99,9 @@ def table(header, rows, markdown=False):\n         # None will be shown as \"\" by default, overriding\n         missingval=\"None\",\n     )\n+    if markdown:\n+        ret += \"\\n\"\n+    return ret\n \n \n def format_dict(d):\n"
+  }
+}

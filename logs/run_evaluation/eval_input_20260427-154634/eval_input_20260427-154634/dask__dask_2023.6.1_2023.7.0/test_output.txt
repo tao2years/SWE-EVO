@@ -1,0 +1,2607 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\''
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh"'
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\''
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh"'
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh
++++ _la_log 'Beginning libarrow activation.'
++++ '[' '' = 1 ']'
++++ _la_gdb_prefix=/opt/miniconda3/envs/testbed/share/gdb/auto-load
++++ '[' '!' -w /opt/miniconda3/envs/testbed/share/gdb/auto-load ']'
++++ _la_placeholder=replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX
++++ _la_symlink_dir=/opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib
++++ _la_orig_install_dir=/opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
++++ _la_log '          _la_gdb_prefix: /opt/miniconda3/envs/testbed/share/gdb/auto-load'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_placeholder: replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_symlink_dir: /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib'
++++ '[' '' = 1 ']'
++++ _la_log '    _la_orig_install_dir: /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib'
++++ '[' '' = 1 ']'
++++ _la_log '  content of that folder:'
++++ '[' '' = 1 ']'
+++++ ls -al /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
+++++ sed 's/^/      /'
++++ _la_log '      total 12
+      drwxr-xr-x 2 root root 4096 Aug 30  2024 .
+      drwxr-xr-x 3 root root 4096 Aug 30  2024 ..
+      -rw-r--r-- 1 root root  971 Aug 30  2024 libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ for _la_target in "$_la_orig_install_dir/"*.py
++++ '[' '!' -e /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py ']'
+++++ basename /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py
++++ _la_symlink=/opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py
++++ _la_log '   _la_target: /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ _la_log '  _la_symlink: /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ '[' -L /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py ']'
+++++ readlink /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py
++++ '[' /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py = /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py ']'
++++ _la_log 'symlink $_la_symlink already exists and points to $_la_target, skipping.'
++++ '[' '' = 1 ']'
++++ continue
++++ _la_log 'Libarrow activation complete.'
++++ '[' '' = 1 ']'
++++ unset _la_gdb_prefix
++++ unset _la_log
++++ unset _la_orig_install_dir
++++ unset _la_placeholder
++++ unset _la_symlink
++++ unset _la_symlink_dir
++++ unset _la_target
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/opt/miniconda3/envs/testbed/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/opt/miniconda3/envs/testbed/share/glib-2.0/schemas
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/opt/miniconda3/envs/testbed
++++ for pre in ${rem}
++++ test '' = /opt/miniconda3/envs/testbed
++++ conda_catalog_files=/opt/miniconda3/envs/testbed
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dask/base.py
+	modified:   dask/cli.py
+	modified:   dask/dataframe/core.py
+	modified:   dask/dataframe/io/io.py
+	modified:   dask/dataframe/io/tests/test_io.py
+	modified:   dask/dataframe/tests/test_dataframe.py
+	modified:   dask/tests/test_cli.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 85c99bc20abc382774cfb6e5bf5f2db76ac09378
+Author: James Bourbeau <jrbourbeau@gmail.com>
+Date:   Mon Jun 26 15:34:00 2023 -0500
+
+    bump version to 2023.6.1
+
+diff --git a/docs/source/changelog.rst b/docs/source/changelog.rst
+index fcd66e263..eb6467f3b 100644
+--- a/docs/source/changelog.rst
++++ b/docs/source/changelog.rst
+@@ -1,6 +1,47 @@
+ Changelog
+ =========
+ 
++.. _v2023.6.1:
++
++2023.6.1
++--------
++
++Released on June 26, 2023
++
++Enhancements
++^^^^^^^^^^^^
++- Remove no longer supported ``clip_lower`` and ``clip_upper`` (:pr:`10371`) `Patrick Hoefler`_
++- Support ``DataFrame.set_index(..., sort=False)`` (:pr:`10342`) `Miles`_
++- Cleanup remote tracebacks (:pr:`10354`) `Irina Truong`_
++- Add dispatching mechanisms for ``pyarrow.Table`` conversion (:pr:`10312`) `Richard (Rick) Zamora`_
++- Choose P2P even if fusion is enabled (:pr:`10344`) `Hendrik Makait`_
++- Validate that rechunking is possible earlier in graph generation (:pr:`10336`) `Hendrik Makait`_
++
++Bug Fixes
++^^^^^^^^^
++- Fix issue with ``header`` passed to ``read_csv`` (:pr:`10355`) `GALI PREM SAGAR`_
++- Respect ``dropna`` and ``observed`` in ``GroupBy.var`` and ``GroupBy.std`` (:pr:`10350`) `Patrick Hoefler`_
++- Fix ``H5FD_lock`` error when writing to hdf with distributed client (:pr:`10309`) `Irina Truong`_
++- Fix for ``total_mem_usage`` of ``bag.map()`` (:pr:`10341`) `Irina Truong`_
++
++Deprecations
++^^^^^^^^^^^^
++- Deprecate ``DataFrame.fillna``/``Series.fillna`` with ``method`` (:pr:`10349`) `Irina Truong`_
++- Deprecate ``DataFrame.first`` and ``Series.first`` (:pr:`10352`) `Irina Truong`_
++
++Maintenance
++^^^^^^^^^^^
++- Deprecate ``numpy.compat`` (:pr:`10370`) `Irina Truong`_
++- Fix annotations and spans leaking between threads (:pr:`10367`) `Irina Truong`_
++- Use general kwargs in ``pyarrow_table_dispatch`` functions (:pr:`10364`) `Richard (Rick) Zamora`_
++- Remove unnecessary ``try``/``except`` in ``isna`` (:pr:`10363`) `Patrick Hoefler`_
++- ``mypy`` support for numpy 1.25 (:pr:`10362`) `crusaderky`_
++- Bump ``actions/checkout`` from 3.5.2 to 3.5.3 (:pr:`10348`)
++- Restore ``numba`` in ``upstream`` build (:pr:`10330`) `James Bourbeau`_
++- Update nightly wheel index for ``pandas``/``numpy``/``scipy`` (:pr:`10346`) `Matthew Roeschke`_
++- Add rechunk config values to yaml (:pr:`10343`) `Hendrik Makait`_
++
++
+ .. _v2023.6.0:
+ 
+ 2023.6.0
+diff --git a/pyproject.toml b/pyproject.toml
+index b024d3d61..ababcc972 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -55,7 +55,7 @@ dataframe = [
+     "numpy >= 1.21",
+     "pandas >= 1.3",
+ ]
+-distributed = ["distributed == 2023.6.0"]
++distributed = ["distributed == 2023.6.1"]
+ diagnostics = [
+     "bokeh >= 2.4.2",
+     "jinja2 >= 2.10.3",
++ git -c core.fileMode=false diff 85c99bc20abc382774cfb6e5bf5f2db76ac09378
+diff --git a/dask/base.py b/dask/base.py
+index b03140c58..286f4f3cd 100644
+--- a/dask/base.py
++++ b/dask/base.py
+@@ -79,7 +79,7 @@ def _clean_ipython_traceback(self, etype, value, tb, tb_offset=None):
+     stb = self.InteractiveTB.structured_traceback(
+         etype, short_exc, short_tb, tb_offset=tb_offset
+     )
+-    self._showtraceback(type, short_exc, stb)
++    self._showtraceback(etype, short_exc, stb)
+ 
+ 
+ try:
+diff --git a/dask/cli.py b/dask/cli.py
+index b41729267..bfe0c488c 100644
+--- a/dask/cli.py
++++ b/dask/cli.py
+@@ -94,7 +94,13 @@ def _register_command_ep(interface, entry_point):
+         sub-group in `interface`.
+ 
+     """
+-    command = entry_point.load()
++    try:
++        command = entry_point.load()
++    except Exception as e:
++        warnings.warn(
++            f"Failed to load entry point '{entry_point.name}': {e}"
++        )
++        return
+     if not isinstance(command, (click.Command, click.Group)):
+         warnings.warn(
+             "entry points in 'dask_cli' must be instances of "
+diff --git a/dask/dataframe/core.py b/dask/dataframe/core.py
+index 9978de1b3..e60bb68ab 100644
+--- a/dask/dataframe/core.py
++++ b/dask/dataframe/core.py
+@@ -3960,6 +3960,10 @@ Dask Name: {name}, {layers}""".format(
+                 else:
+                     res = res.clear_divisions()
+             if inplace:
++                warnings.warn(
++                    "'inplace' argument for dask series will be removed in future versions",
++                    PendingDeprecationWarning,
++                )
+                 self.dask = res.dask
+                 self._name = res._name
+                 self._divisions = res.divisions
+diff --git a/dask/dataframe/io/io.py b/dask/dataframe/io/io.py
+index 5c344f252..6d3a5829c 100644
+--- a/dask/dataframe/io/io.py
++++ b/dask/dataframe/io/io.py
+@@ -277,6 +277,9 @@ def from_pandas(
+ 
+     name = name or ("from_pandas-" + tokenize(data, chunksize, npartitions))
+ 
++    # Make a copy to ensure input data is immutable
++    data = data.copy()
++
+     if not nrows:
+         return new_dd_object({(name, 0): data}, name, data, [None, None])
+ 
+diff --git a/dask/dataframe/io/tests/test_io.py b/dask/dataframe/io/tests/test_io.py
+index 8b5ac7186..79eb5a1cc 100644
+--- a/dask/dataframe/io/tests/test_io.py
++++ b/dask/dataframe/io/tests/test_io.py
+@@ -335,6 +335,16 @@ def test_from_pandas_convert_string_config_raises():
+             dd.from_pandas(df, npartitions=2)
+ 
+ 
++@pytest.mark.parametrize("index", [[1, 2, 3], [3, 2, 1]])
++@pytest.mark.parametrize("sort", [True, False])
++def test_from_pandas_immutable(sort, index):
++    pdf = pd.DataFrame({"a": [1, 2, 3]}, index=index)
++    expected = pdf.copy()
++    df = dd.from_pandas(pdf, npartitions=2, sort=sort)
++    pdf.iloc[0, 0] = 100
++    assert_eq(df, expected)
++
++
+ @pytest.mark.gpu
+ def test_gpu_from_pandas_npartitions_duplicates():
+     cudf = pytest.importorskip("cudf")
+diff --git a/dask/dataframe/tests/test_dataframe.py b/dask/dataframe/tests/test_dataframe.py
+index 0068b4e91..f4bb03c2e 100644
+--- a/dask/dataframe/tests/test_dataframe.py
++++ b/dask/dataframe/tests/test_dataframe.py
+@@ -397,7 +397,8 @@ def test_rename_series_method_2():
+     assert_eq(res, s.rename(lambda x: x**2))
+     assert not res.known_divisions
+ 
+-    res = ds.rename(lambda x: x**2, inplace=True, sorted_index=True)
++    with pytest.warns(FutureWarning, match="inplace"):
++        res = ds.rename(lambda x: x**2, inplace=True, sorted_index=True)
+     assert res is ds
+     s.rename(lambda x: x**2, inplace=True)
+     assert_eq(ds, s)
+@@ -4541,7 +4542,6 @@ def test_first_and_last(method):
+     f = lambda x, offset: getattr(x, method)(offset)
+     freqs = ["12h", "D"]
+     offsets = ["0d", "100h", "20d", "20B", "3W", "3M", "400d", "13M"]
+-    should_warn = PANDAS_GT_210 and method == "first"
+ 
+     for freq in freqs:
+         index = pd.date_range("1/1/2000", "1/1/2001", freq=freq)[::4]
+@@ -4550,15 +4550,15 @@ def test_first_and_last(method):
+         )
+         ddf = dd.from_pandas(df, npartitions=10)
+         for offset in offsets:
+-            with _check_warning(should_warn, FutureWarning, "first"):
++            with _check_warning(PANDAS_GT_210, FutureWarning, method):
+                 expected = f(df, offset)
+-            with _check_warning(should_warn, FutureWarning, "first"):
++            with _check_warning(PANDAS_GT_210, FutureWarning, method):
+                 actual = f(ddf, offset)
+             assert_eq(actual, expected)
+ 
+-            with _check_warning(should_warn, FutureWarning, "first"):
++            with _check_warning(PANDAS_GT_210, FutureWarning, method):
+                 expected = f(df.A, offset)
+-            with _check_warning(should_warn, FutureWarning, "first"):
++            with _check_warning(PANDAS_GT_210, FutureWarning, method):
+                 actual = f(ddf.A, offset)
+             assert_eq(actual, expected)
+ 
+@@ -5579,22 +5579,6 @@ def test_attrs_series():
+     assert s.fillna(1).attrs == ds.fillna(1).attrs
+ 
+ 
+-@pytest.mark.xfail(
+-    not PANDAS_GT_150 or pd.options.mode.copy_on_write is False,
+-    reason="df.iloc[:0] does not keep the series attrs without CoW",
+-)
+-def test_attrs_series_in_dataframes():
+-    df = pd.DataFrame({"A": [1, 2], "B": [3, 4], "C": [5, 6]})
+-    df.A.attrs["unit"] = "kg"
+-    ddf = dd.from_pandas(df, 2)
+-
+-    # Fails because the pandas iloc method doesn't currently persist
+-    # the attrs dict for series in a dataframe. Dask uses df.iloc[:0]
+-    # when creating the _meta dataframe in make_meta_pandas(x, index=None).
+-    # Should start xpassing when df.iloc works. Remove the xfail then.
+-    assert df.A.attrs == ddf.A.attrs
+-
+-
+ def test_join_series():
+     df = pd.DataFrame({"x": [1, 2, 3, 4, 5, 6, 7, 8]})
+     ddf = dd.from_pandas(df, npartitions=1)
+diff --git a/dask/tests/test_cli.py b/dask/tests/test_cli.py
+index d22a46e11..11f4ea102 100644
+--- a/dask/tests/test_cli.py
++++ b/dask/tests/test_cli.py
+@@ -104,9 +104,20 @@ def test_register_command_ep():
+         group="dask_cli",
+     )
+ 
++    class ErrorEP:
++        @property
++        def name(self):
++            return "foo"
++
++        def load(self):
++            raise ImportError("Entrypoint could not be imported")
++
+     with pytest.warns(UserWarning, match="must be instances of"):
+         _register_command_ep(dummy_cli, bad_ep)
+ 
++    with pytest.warns(UserWarning, match="exception ocurred"):
++        _register_command_ep(dummy_cli, ErrorEP())
++
+     _register_command_ep(dummy_cli, good_ep)
+     assert "good" in dummy_cli.commands
+     assert dummy_cli.commands["good"] is good_command
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='. "/opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval '. "/opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libxml2_deactivate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libglib_deactivate.sh"
+PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ . /opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libxml2_deactivate.sh
+++++ test -n ''
+++++ unset XML_CATALOG_FILES
+++++ unset xml_catalog_files_libxml2
++++ . /opt/miniconda3/envs/testbed/etc/conda/deactivate.d/libglib_deactivate.sh
+++++ export GSETTINGS_SCHEMA_DIR=
+++++ GSETTINGS_SCHEMA_DIR=
+++++ unset GSETTINGS_SCHEMA_DIR_CONDA_BACKUP
+++++ '[' -z ']'
+++++ unset GSETTINGS_SCHEMA_DIR
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\''
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh"'
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\''
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh"
+. "/opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh"'
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libarrow_activate.sh
++++ _la_log 'Beginning libarrow activation.'
++++ '[' '' = 1 ']'
++++ _la_gdb_prefix=/opt/miniconda3/envs/testbed/share/gdb/auto-load
++++ '[' '!' -w /opt/miniconda3/envs/testbed/share/gdb/auto-load ']'
++++ _la_placeholder=replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX
++++ _la_symlink_dir=/opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib
++++ _la_orig_install_dir=/opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
++++ _la_log '          _la_gdb_prefix: /opt/miniconda3/envs/testbed/share/gdb/auto-load'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_placeholder: replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX'
++++ '[' '' = 1 ']'
++++ _la_log '         _la_symlink_dir: /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib'
++++ '[' '' = 1 ']'
++++ _la_log '    _la_orig_install_dir: /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib'
++++ '[' '' = 1 ']'
++++ _la_log '  content of that folder:'
++++ '[' '' = 1 ']'
+++++ ls -al /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib
+++++ sed 's/^/      /'
++++ _la_log '      total 12
+      drwxr-xr-x 2 root root 4096 Aug 30  2024 .
+      drwxr-xr-x 3 root root 4096 Aug 30  2024 ..
+      -rw-r--r-- 1 root root  971 Aug 30  2024 libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ for _la_target in "$_la_orig_install_dir/"*.py
++++ '[' '!' -e /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py ']'
+++++ basename /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py
++++ _la_symlink=/opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py
++++ _la_log '   _la_target: /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ _la_log '  _la_symlink: /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py'
++++ '[' '' = 1 ']'
++++ '[' -L /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py ']'
+++++ readlink /opt/miniconda3/envs/testbed/share/gdb/auto-load//opt/miniconda3/envs/testbed/lib/libarrow.so.1000.1.0-gdb.py
++++ '[' /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py = /opt/miniconda3/envs/testbed/share/gdb/auto-load/replace_this_section_with_absolute_slashed_path_to_CONDA_PREFIX/lib/libarrow.so.1000.1.0-gdb.py ']'
++++ _la_log 'symlink $_la_symlink already exists and points to $_la_target, skipping.'
++++ '[' '' = 1 ']'
++++ continue
++++ _la_log 'Libarrow activation complete.'
++++ '[' '' = 1 ']'
++++ unset _la_gdb_prefix
++++ unset _la_log
++++ unset _la_orig_install_dir
++++ unset _la_placeholder
++++ unset _la_symlink
++++ unset _la_symlink_dir
++++ unset _la_target
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libglib_activate.sh
++++ export GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ GSETTINGS_SCHEMA_DIR_CONDA_BACKUP=
++++ export GSETTINGS_SCHEMA_DIR=/opt/miniconda3/envs/testbed/share/glib-2.0/schemas
++++ GSETTINGS_SCHEMA_DIR=/opt/miniconda3/envs/testbed/share/glib-2.0/schemas
+++ . /opt/miniconda3/envs/testbed/etc/conda/activate.d/libxml2_activate.sh
++++ test -n ''
++++ xml_catalog_files_libxml2=
++++ XML_CATALOG_FILES=
++++ conda_catalog_files=
++++ ifs_libxml2=' 	
+'
++++ IFS=' '
++++ rem=/opt/miniconda3/envs/testbed
++++ for pre in ${rem}
++++ test '' = /opt/miniconda3/envs/testbed
++++ conda_catalog_files=/opt/miniconda3/envs/testbed
++++ rem=
++++ IFS=' 	
+'
++++ conda_catalog_files='file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ export 'XML_CATALOG_FILES=file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ XML_CATALOG_FILES='file:///opt/miniconda3/envs/testbed/etc/xml/catalog file:///etc/xml/catalog'
++++ unset conda_catalog_files ifs_libxml2 rem
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --no-deps -e .
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: dask
+  Building editable for dask (pyproject.toml): started
+  Building editable for dask (pyproject.toml): finished with status 'done'
+  Created wheel for dask: filename=dask-2023.6.1+0.g85c99bc20.dirty-0.editable-py3-none-any.whl size=6629 sha256=a7b20d2eac42cf58e95da391a7d03a3e1fee61f207f357dfbc54b56436d1b0ae
+  Stored in directory: /tmp/pip-ephem-wheel-cache-rp_43pdy/wheels/0d/a6/cb/465a7b303d624cc531250fa27c75d038ddc29430bdb6ba7c9f
+Successfully built dask
+Installing collected packages: dask
+  Attempting uninstall: dask
+    Found existing installation: dask 2023.6.1
+    Uninstalling dask-2023.6.1:
+      Successfully uninstalled dask-2023.6.1
+Successfully installed dask-2023.6.1+0.g85c99bc20.dirty
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ pip install 'pandas<2.0'
+Requirement already satisfied: pandas<2.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (1.5.3)
+Requirement already satisfied: python-dateutil>=2.8.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pandas<2.0) (2.9.0)
+Requirement already satisfied: pytz>=2020.1 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pandas<2.0) (2024.1)
+Requirement already satisfied: numpy>=1.21.0 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from pandas<2.0) (1.23.5)
+Requirement already satisfied: six>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.10/site-packages (from python-dateutil>=2.8.1->pandas<2.0) (1.16.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -n0 -rA --color=no dask/dataframe/io/tests/test_io.py dask/dataframe/tests/test_dataframe.py dask/tests/test_cli.py
+============================= test session starts ==============================
+platform linux -- Python 3.10.14, pytest-8.3.2, pluggy-1.5.0 -- /opt/miniconda3/envs/testbed/bin/python3.10
+cachedir: .pytest_cache
+rootdir: /testbed
+configfile: pyproject.toml
+plugins: rerunfailures-14.0, cov-5.0.0, xdist-3.6.1, timeout-2.3.1
+collecting ... collected 842 items
+
+dask/dataframe/io/tests/test_io.py::test_meta_from_array PASSED          [  0%]
+dask/dataframe/io/tests/test_io.py::test_meta_from_1darray PASSED        [  0%]
+dask/dataframe/io/tests/test_io.py::test_meta_from_recarray PASSED       [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_array PASSED               [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_array_with_record_dtype PASSED [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_dataframe PASSED    [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_small PASSED        [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[1] PASSED [  0%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[2] PASSED [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[4] PASSED [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[5] PASSED [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_series PASSED       [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_non_sorted PASSED   [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_single_row PASSED   [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_with_datetime_index PASSED [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[None] PASSED [  1%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[null_value1] PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[null_value2] PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_with_wrong_args PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_chunksize_one PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index0] PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index1] PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index2] PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_convert_string_config SKIPPED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_convert_string_config_raises PASSED [  2%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[True-index0] PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[True-index1] PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[False-index0] PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[False-index1] PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_gpu_from_pandas_npartitions_duplicates SKIPPED [  3%]
+dask/dataframe/io/tests/test_io.py::test_DataFrame_from_dask_array PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_DataFrame_from_dask_array_with_blockwise_ops PASSED [  3%]
+dask/dataframe/io/tests/test_io.py::test_Series_from_dask_array PASSED   [  3%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_index[True] PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_index[False] PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_index_raises PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_array_raises_more_than_2D PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_compat_numpy_array PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_array_wrong_column_shape_error PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_array_with_column_names PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_compat_numpy_array_1d PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_array_1d_with_column_names PASSED [  4%]
+dask/dataframe/io/tests/test_io.py::test_from_array_1d_list_of_columns_gives_dataframe PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_struct_dtype PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_unknown_chunks PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes0-expected_divisions0] PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes1-expected_divisions1] PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes2-expected_divisions2] PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_unknown_width_error PASSED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_array_dispatching[cupy-cudf] SKIPPED [  5%]
+dask/dataframe/io/tests/test_io.py::test_from_array_dispatching[numpy-pandas] PASSED [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_bag PASSED                   [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_bag_frame PASSED             [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_records PASSED               [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_records_with_lengths[lengths0] PASSED [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_records_with_lengths[True] PASSED [  6%]
+dask/dataframe/io/tests/test_io.py::test_to_records_raises PASSED        [  6%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed PASSED             [  6%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed_optimize_fusion PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed_to_dask_array PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed_preserves_hlgs PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed_misordered_meta PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_delayed_sorted PASSED      [  7%]
+dask/dataframe/io/tests/test_io.py::test_to_delayed PASSED               [  7%]
+dask/dataframe/io/tests/test_io.py::test_to_delayed_optimize_graph PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_dask_array_index_dtype PASSED [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals0] PASSED   [  7%]
+dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals1] PASSED   [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals2] PASSED   [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_multi PASSED           [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_args PASSED            [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_divisions PASSED       [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_meta PASSED            [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_custom_name PASSED     [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[iterable0] PASSED [  8%]
+dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[iterable1] PASSED [  9%]
+dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[_generator] PASSED [  9%]
+dask/dataframe/io/tests/test_io.py::test_from_map_column_projection PASSED [  9%]
+dask/dataframe/io/tests/test_io.py::test_from_dict_backends[pandas] PASSED [  9%]
+dask/dataframe/io/tests/test_io.py::test_from_dict_backends[cudf] SKIPPED [  9%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_doc PASSED        [  9%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_doc_from_non_pandas PASSED [  9%]
+dask/dataframe/tests/test_dataframe.py::test_Dataframe PASSED            [  9%]
+dask/dataframe/tests/test_dataframe.py::test_head_tail PASSED            [  9%]
+dask/dataframe/tests/test_dataframe.py::test_head_npartitions PASSED     [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_head_npartitions_warn PASSED [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_index_head PASSED           [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_Series PASSED               [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_Index PASSED                [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_axes PASSED                 [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_series_axes PASSED          [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_Scalar PASSED               [ 10%]
+dask/dataframe/tests/test_dataframe.py::test_scalar_raises PASSED        [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_attributes PASSED           [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_column_names PASSED         [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_columns_named_divisions_and_meta PASSED [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_index_names PASSED          [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_rename_columns PASSED       [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_rename_series PASSED        [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_rename_series_method PASSED [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_rename_series_method_2 FAILED [ 11%]
+dask/dataframe/tests/test_dataframe.py::test_describe_numeric[tdigest-test_values0] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe_numeric[dask-test_values1] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset0] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset1] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset2] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset3] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset4] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[all-None-None-None] PASSED [ 12%]
+dask/dataframe/tests/test_dataframe.py::test_describe[include6-None-percentiles6-None] PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe[include7-None-None-None] PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe[include8-None-percentiles8-None] PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe[None-exclude9-None-None] PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe[include10-None-None-None] PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe_without_datetime_is_numeric PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe_empty PASSED       [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe_empty_tdigest PASSED [ 13%]
+dask/dataframe/tests/test_dataframe.py::test_describe_for_possibly_unsorted_q PASSED [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative PASSED           [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func0] PASSED [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func1] PASSED [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func2] XFAIL [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func3] XFAIL [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_dropna PASSED               [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_clip[2-5] PASSED            [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_clip[2.5-3.5] PASSED        [ 14%]
+dask/dataframe/tests/test_dataframe.py::test_squeeze PASSED              [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_where_mask PASSED           [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_multi_argument PASSED [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions PASSED       [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_type PASSED  [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_partition_info PASSED [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_names PASSED [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_column_info PASSED [ 15%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_method_names PASSED [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_propagates_index_metadata PASSED [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_keeps_kwargs_readable XFAIL [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_with_delayed_collection PASSED [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_metadata_inference_single_partition_aligned_args PASSED [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_align_dataframes PASSED     [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_drop_duplicates PASSED      [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_drop_duplicates_subset PASSED [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_get_partition PASSED        [ 16%]
+dask/dataframe/tests/test_dataframe.py::test_ndim PASSED                 [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_dtype PASSED                [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts PASSED         [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts_not_sorted PASSED [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts_with_dropna PASSED [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize PASSED [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize_and_dropna[True] PASSED [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize_and_dropna[False] PASSED [ 17%]
+dask/dataframe/tests/test_dataframe.py::test_unique PASSED               [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_isin PASSED                 [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_contains_frame PASSED       [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_len PASSED                  [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_size PASSED                 [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_shape PASSED                [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_nbytes PASSED               [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_quantile[tdigest-expected0] FAILED [ 18%]
+dask/dataframe/tests/test_dataframe.py::test_quantile[dask-expected1] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_missing[tdigest] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_missing[dask] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_empty_quantile[tdigest] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_empty_quantile[dask] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[None-tdigest-expected0] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[None-dask-expected1] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[True-tdigest-expected0] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[True-dask-expected1] PASSED [ 19%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[False-tdigest-expected0] PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[False-dask-expected1] PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_datetime_numeric_only_false PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_for_possibly_unsorted_q PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_tiny_partitions PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_quantile_trivial_partitions PASSED [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_index PASSED                [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_assign PASSED               [ 20%]
+dask/dataframe/tests/test_dataframe.py::test_assign_callable PASSED      [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_assign_dtypes PASSED        [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_assign_pandas_series PASSED [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_map PASSED                  [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_concat PASSED               [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_args PASSED                 [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_known_divisions PASSED      [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_unknown_divisions PASSED    [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_with_min_count PASSED       [ 21%]
+dask/dataframe/tests/test_dataframe.py::test_align[inner] PASSED         [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align[outer] PASSED         [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align[left] PASSED          [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align[right] PASSED         [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align_axis[inner] PASSED    [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align_axis[outer] PASSED    [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align_axis[left] PASSED     [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_align_axis[right] PASSED    [ 22%]
+dask/dataframe/tests/test_dataframe.py::test_combine PASSED              [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_combine_first PASSED        [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_picklable PASSED  [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_random_partitions PASSED    [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_series_round PASSED         [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_repartition SKIPPED (ne...) [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_divisions PASSED [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_on_pandas_dataframe PASSED [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-1-True] PASSED [ 23%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-1-False] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-2-True] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-2-False] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-4-True] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-4-False] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-5-True] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-5-False] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-1-True] PASSED [ 24%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-1-False] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-2-True] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-2-False] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-4-True] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-4-False] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-5-True] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-5-False] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-1-True] PASSED [ 25%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-1-False] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-2-True] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-2-False] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-4-True] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-4-False] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-5-True] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-5-False] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-1-True] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-1-False] PASSED [ 26%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-2-True] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-2-False] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-4-True] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-4-False] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-5-True] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-5-False] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-1-True] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-1-False] PASSED [ 27%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-2-True] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-2-False] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-4-True] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-4-False] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-5-True] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-5-False] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-1-True] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-1-False] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-2-True] PASSED [ 28%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-2-False] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-4-True] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-4-False] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-5-True] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-5-False] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-1-True] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-1-False] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-2-True] PASSED [ 29%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-2-False] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-4-True] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-4-False] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-5-True] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-5-False] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-1-True] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-1-False] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-2-True] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-2-False] PASSED [ 30%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-4-True] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-4-False] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-5-True] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-5-False] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-1-True] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-1-False] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-2-True] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-2-False] PASSED [ 31%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-4-True] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-4-False] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-5-True] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-5-False] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-1-True] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-1-False] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-2-True] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-2-False] PASSED [ 32%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-4-True] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-4-False] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-5-True] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-5-False] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-1-True] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-1-False] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-2-True] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-2-False] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-4-True] PASSED [ 33%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-4-False] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-5-True] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-5-False] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-1-True] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-1-False] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-2-True] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-2-False] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-4-True] PASSED [ 34%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-4-False] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-5-True] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-5-False] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-1-True] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-1-False] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-2-True] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-2-False] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-4-True] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-4-False] PASSED [ 35%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-5-True] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-5-False] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-1-True] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-1-False] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-2-True] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-2-False] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-4-True] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-4-False] PASSED [ 36%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-5-True] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-5-False] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-1-True] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-1-False] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-2-True] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-2-False] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-4-True] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-4-False] PASSED [ 37%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-5-True] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-5-False] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-1-True] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-1-False] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-2-True] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-2-False] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-4-True] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-4-False] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-5-True] PASSED [ 38%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-5-False] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-2-True] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-2-False] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-5-True] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-5-False] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-2-True] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-2-False] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-5-True] PASSED [ 39%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-5-False] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-2-True] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-2-False] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-5-True] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-5-False] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-2-True] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-2-False] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-5-True] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-5-False] PASSED [ 40%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size_arg PASSED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions_same_limits PASSED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions_numeric_edge_case PASSED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_object_index PASSED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_datetime_tz_index PASSED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1D-1] SKIPPED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1D-20] SKIPPED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1D-243] SKIPPED [ 41%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-7D-1] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-7D-20] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-7D-243] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-28h-1] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-28h-20] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-28h-243] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1h-1] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1h-20] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15-1h-243] SKIPPED [ 42%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1D-1] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1D-20] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1D-243] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-7D-1] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-7D-20] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-7D-243] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-28h-1] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-28h-20] SKIPPED [ 43%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-28h-243] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1h-1] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1h-20] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-04-15 12:37:01-1h-243] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1D-1] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1D-20] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1D-243] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-7D-1] SKIPPED [ 44%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-7D-20] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-7D-243] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-28h-1] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-28h-20] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-28h-243] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1h-1] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1h-20] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01-2000-01-01 12:37:00-1h-243] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1D-1] SKIPPED [ 45%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1D-20] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1D-243] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-7D-1] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-7D-20] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-7D-243] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-28h-1] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-28h-20] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-28h-243] SKIPPED [ 46%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1h-1] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1h-20] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15-1h-243] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1D-1] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1D-20] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1D-243] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-7D-1] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-7D-20] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-7D-243] SKIPPED [ 47%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-28h-1] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-28h-20] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-28h-243] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1h-1] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1h-20] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-04-15 12:37:01-1h-243] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1D-1] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1D-20] SKIPPED [ 48%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1D-243] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-7D-1] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-7D-20] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-7D-243] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-28h-1] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-28h-20] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-28h-243] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1h-1] SKIPPED [ 49%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1h-20] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_0-2000-01-01 12:37:00-1h-243] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1D-1] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1D-20] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1D-243] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-7D-1] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-7D-20] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-7D-243] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-28h-1] SKIPPED [ 50%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-28h-20] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-28h-243] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1h-1] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1h-20] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15-1h-243] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1D-1] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1D-20] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1D-243] SKIPPED [ 51%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-7D-1] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-7D-20] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-7D-243] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-28h-1] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-28h-20] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-28h-243] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1h-1] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1h-20] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-04-15 12:37:01-1h-243] SKIPPED [ 52%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1D-1] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1D-20] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1D-243] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-7D-1] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-7D-20] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-7D-243] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-28h-1] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-28h-20] SKIPPED [ 53%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-28h-243] SKIPPED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1h-1] SKIPPED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1h-20] SKIPPED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq[2000-01-01 12:30:00_1-2000-01-01 12:37:00-1h-243] SKIPPED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq_divisions PASSED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq_errors PASSED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq_month PASSED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_freq_day PASSED [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_noop PASSED     [ 54%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[M-MS] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[MS-MS] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2M-2MS] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Q-QS] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Q-FEB-QS-FEB] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2Q-2QS] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2Q-FEB-2QS-FEB] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2QS-FEB-2QS-FEB] PASSED [ 55%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BQ-BQS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2BQ-2BQS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[SM-SMS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[A-AS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[A-JUN-AS-JUN] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BA-BAS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2BA-2BAS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BY-BAS] PASSED [ 56%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Y-AS] PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[freq17-expected_freq17] PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_repartition_input_errors PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_embarrassingly_parallel_operations PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_fillna PASSED               [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_ffill PASSED                [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_bfill PASSED                [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_delayed_roundtrip[True] PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_delayed_roundtrip[False] PASSED [ 57%]
+dask/dataframe/tests/test_dataframe.py::test_from_delayed_lazy_if_meta_provided PASSED [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_from_delayed_empty_meta_provided PASSED [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_fillna_duplicate_index PASSED [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_fillna_multi_dataframe PASSED [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_fillna_dask_dataframe_input PASSED [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_ffill_bfill PASSED          [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_fillna_series_types PASSED  [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_sample PASSED               [ 58%]
+dask/dataframe/tests/test_dataframe.py::test_sample_without_replacement PASSED [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_sample_raises PASSED        [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_empty_max PASSED            [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_query PASSED                [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_eval PASSED                 [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include0-None] PASSED [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_select_dtypes[None-exclude1] PASSED [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include2-exclude2] PASSED [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include3-None] PASSED [ 59%]
+dask/dataframe/tests/test_dataframe.py::test_deterministic_apply_concat_apply_names PASSED [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_aca_meta_infer PASSED       [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_aca_split_every PASSED      [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_reduction_method PASSED     [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_reduction_method_split_every PASSED [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_pipe PASSED                 [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_gh_517 PASSED               [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_drop_axis_1 PASSED          [ 60%]
+dask/dataframe/tests/test_dataframe.py::test_drop_columns[columns0] PASSED [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_drop_columns[columns1] PASSED [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_drop_meta_mismatch PASSED   [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_gh580 PASSED                [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_gh6305 PASSED               [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_rename_dict PASSED          [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_rename_function PASSED      [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_rename_index PASSED         [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_to_timestamp PASSED         [ 61%]
+dask/dataframe/tests/test_dataframe.py::test_to_frame PASSED             [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array_raises[False0] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array_raises[False1] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array_unknown[False] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array_unknown[True] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array[lengths0-False-None] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array[True-False-None] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_to_dask_array[True-False-meta2] PASSED [ 62%]
+dask/dataframe/tests/test_dataframe.py::test_apply FAILED                [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[None] PASSED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[True] PASSED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[False] PASSED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_apply_warns PASSED          [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_apply_warns_with_invalid_meta PASSED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_map[None] SKIPPED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_map[ignore] SKIPPED [ 63%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_map_raises PASSED [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_applymap FAILED             [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_add_prefix PASSED           [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_add_suffix PASSED           [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_abs PASSED                  [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_round PASSED                [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[None] PASSED  [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[True] PASSED  [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[False] PASSED [ 64%]
+dask/dataframe/tests/test_dataframe.py::test_cov_series PASSED           [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_cov_gpu[None] SKIPPED (...) [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_cov_gpu[True] SKIPPED (...) [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_cov_gpu[False] SKIPPED      [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_corr PASSED                 [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_corr_gpu SKIPPED (could...) [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_corr_same_name PASSED       [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_meta[1] PASSED     [ 65%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_meta[2] PASSED     [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_stable SKIPPED     [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[None] PASSED [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[True] PASSED [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[False] XFAIL [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_autocorr PASSED             [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_apply_infer_columns FAILED  [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_index_time_properties PASSED [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_nlargest_nsmallest PASSED   [ 66%]
+dask/dataframe/tests/test_dataframe.py::test_nlargest_nsmallest_raises PASSED [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_reset_index PASSED          [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_compute_forward_kwargs PASSED [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_contains_series_raises_deprecated_warning_preserves_behavior PASSED [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_series_iteritems PASSED     [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_series_iter PASSED          [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_iterrows PASSED   [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples PASSED [ 67%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns0] PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns1] PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns2] PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples_with_index_false PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples_with_name_none PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_astype PASSED               [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_astype_categoricals PASSED  [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_astype_categoricals_known PASSED [ 68%]
+dask/dataframe/tests/test_dataframe.py::test_groupby_callable PASSED     [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_methods_tokenize_differently PASSED [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_info PASSED                 [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_groupby_multilevel_info PASSED [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_categorize_info PASSED      [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_gh_1301 PASSED              [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_timeseries_sorted PASSED    [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_index_errors PASSED         [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_index_nulls[None] PASSED    [ 69%]
+dask/dataframe/tests/test_dataframe.py::test_index_nulls[null_value1] PASSED [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_index_nulls[null_value2] PASSED [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_set_index_with_index PASSED [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_column_assignment PASSED    [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_array_assignment PASSED     [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_columns_assignment PASSED   [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_attribute_assignment PASSED [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_setitem_triggering_realign PASSED [ 70%]
+dask/dataframe/tests/test_dataframe.py::test_inplace_operators PASSED    [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx0-True] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx0-False] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx1-True] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx1-False] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx2-True] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx2-False] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_numeric_only[idxmin] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_numeric_only[idxmax] PASSED [ 71%]
+dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_empty_partitions PASSED [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_mode_numeric_only PASSED    [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_meta PASSED         [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_multilevel PASSED   [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_string_subclass PASSED [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[list] PASSED [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[array] PASSED [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[Series] PASSED [ 72%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[Index] PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_with_bool_dataframe_as_key PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_getitem_with_non_series PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_ipython_completion PASSED   [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_diff PASSED                 [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_shift PASSED                [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[B-False] PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[D-True] PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[H-True] PASSED [ 73%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[B-False] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[D-True] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[H-True] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_TimedeltaIndex PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_errors PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_first_and_last[first] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_first_and_last[last] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-1] PASSED [ 74%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-4] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-20] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-1] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-4] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-20] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-1] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-4] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-20] PASSED [ 75%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-1] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-4] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-20] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-1] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-4] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-20] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-1] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-4] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-20] PASSED [ 76%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-1] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-4] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-20] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-1] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-4] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-20] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_split_out_drop_duplicates[None] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_split_out_drop_duplicates[2] PASSED [ 77%]
+dask/dataframe/tests/test_dataframe.py::test_split_out_value_counts[None] PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_split_out_value_counts[2] PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_values PASSED               [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_values_extension_dtypes PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_copy PASSED                 [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_del PASSED                  [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[True-True] PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[True-False] PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[False-True] PASSED [ 78%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[False-False] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[True-True] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[True-False] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[False-True] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[False-False] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_index[True] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_index[False] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[True-True] PASSED [ 79%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[True-False] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[False-True] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[False-False] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[sum] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[mean] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[std] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[var] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[count] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[min] PASSED [ 80%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[max] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[idxmin] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[idxmax] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[prod] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[all] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[sem] PASSED [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_mode PASSED       [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_median PASSED               [ 81%]
+dask/dataframe/tests/test_dataframe.py::test_median_approximate[dask] PASSED [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_median_approximate[tdigest] PASSED [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_datetime_loc_open_slicing PASSED [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_to_datetime[False] PASSED   [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_to_datetime[True] SKIPPED   [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_to_timedelta PASSED         [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_isna[values0] PASSED        [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_isna[values1] PASSED        [ 82%]
+dask/dataframe/tests/test_dataframe.py::test_slice_on_filtered_boundary[0] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_slice_on_filtered_boundary[9] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_nonmonotonic PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_empty PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1-None-False-False-drop0] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1-None-False-True-drop1] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3-False-False-drop2] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3-True-False-drop3] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[-0.5-None-False-False-drop4] PASSED [ 83%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[-0.5-None-False-True-drop5] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1.5-None-False-True-drop6] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3.5-False-False-drop7] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3.5-True-False-drop8] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-2.5-False-False-drop9] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index0-0-9] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index1--1-None] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index2-None-10] PASSED [ 84%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index3-None-None] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index4--1-None] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index5-None-2] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index6--2-3] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index7-None-None] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index8-left8-None] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index9-None-right9] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index10-left10-None] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index11-None-right11] PASSED [ 85%]
+dask/dataframe/tests/test_dataframe.py::test_better_errors_object_reductions PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_sample_empty_partitions PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_coerce PASSED               [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_bool PASSED                 [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_cumulative_multiple_columns PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_map_partition_array[asarray] PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_map_partition_array[func1] PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_map_partition_sparse PASSED [ 86%]
+dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_operations PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_operations_errors PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_multi_dimensional PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_meta_raises PASSED          [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_meta_nonempty_uses_meta_value_if_provided PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_dask_dataframe_holds_scipy_sparse_containers PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_delays_large_inputs PASSED [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_partitions_indexer PASSED   [ 87%]
+dask/dataframe/tests/test_dataframe.py::test_mod_eq PASSED               [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_setitem PASSED              [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_setitem_with_bool_dataframe_as_key PASSED [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_setitem_with_bool_series_as_key PASSED [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_setitem_with_numeric_column_name_raises_not_implemented PASSED [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_broadcast PASSED            [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_scalar_with_array PASSED    [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_has_parallel_type PASSED    [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_meta_error_message PASSED   [ 88%]
+dask/dataframe/tests/test_dataframe.py::test_map_index PASSED            [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_assign_index PASSED         [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_index_divisions PASSED      [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_replace PASSED              [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_map_partitions_delays_lists PASSED [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_dtype_cast PASSED           [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-1-1] PASSED [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-1-4] PASSED [ 89%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-3-1] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-3-4] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-1-1] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-1-4] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-3-1] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-3-4] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-1-1] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-1-4] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-3-1] PASSED [ 90%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-3-4] PASSED [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-1-1] PASSED [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-1-4] PASSED [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-3-1] PASSED [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-3-4] PASSED [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_explode PASSED    [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_series_explode PASSED       [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_pop PASSED                  [ 91%]
+dask/dataframe/tests/test_dataframe.py::test_nunique[0-True] PASSED      [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_nunique[0-False] PASSED     [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_nunique[1-True] PASSED      [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_nunique[1-False] PASSED     [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_view PASSED                 [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_simple_map_partitions PASSED [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_iter PASSED                 [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_groupby_cumsum_agg_empty_partitions PASSED [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_dataframe_groupby_cumprod_agg_empty_partitions PASSED [ 92%]
+dask/dataframe/tests/test_dataframe.py::test_fuse_roots PASSED           [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_attrs_dataframe PASSED      [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_attrs_series PASSED         [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_join_series PASSED          [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_dask_layers PASSED          [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_repr_html_dataframe_highlevelgraph PASSED [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_assign_na_float_columns PASSED [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_dot PASSED                  [ 93%]
+dask/dataframe/tests/test_dataframe.py::test_dot_nan PASSED              [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_use_of_weakref_proxy PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_is_monotonic_numeric PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_is_monotonic_deprecated PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_is_monotonic_dt64 PASSED    [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_numeric PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_deprecated PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_dt64 PASSED [ 94%]
+dask/dataframe/tests/test_dataframe.py::test_is_monotonic_empty_partitions PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_custom_map_reduce PASSED    [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[2-columns-int] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[2-columns-float] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[2-index-int] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[2-index-float] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[5-columns-int] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[5-columns-float] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[5-index-int] PASSED [ 95%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict[5-index-float] PASSED [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_from_dict_raises PASSED     [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_empty PASSED                [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_repr_materialize PASSED     [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[int64[pyarrow]] PASSED [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[int32[pyarrow]] PASSED [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[float64[pyarrow]] PASSED [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[float32[pyarrow]] PASSED [ 96%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[uint8[pyarrow]] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_decimal_extension_dtype PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_to_backend PASSED           [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_transform_getitem_works[max] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_transform_getitem_works[sum] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df0-cond0] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df1-cond1] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df2-cond2] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df3-cond3] PASSED [ 97%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df4-cond4] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[select_dtypes-kwargs0] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[describe-kwargs1] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[nunique-kwargs2] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[quantile-kwargs3] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_mask_where_callable PASSED  [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_conversion_dispatch[True] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_conversion_dispatch[False] PASSED [ 98%]
+dask/dataframe/tests/test_dataframe.py::test_pyarrow_conversion_dispatch_cudf SKIPPED [ 99%]
+dask/tests/test_cli.py::test_config_get PASSED                           [ 99%]
+dask/tests/test_cli.py::test_config_get_value PASSED                     [ 99%]
+dask/tests/test_cli.py::test_config_get_bad_value PASSED                 [ 99%]
+dask/tests/test_cli.py::test_config_list PASSED                          [ 99%]
+dask/tests/test_cli.py::test_version PASSED                              [ 99%]
+dask/tests/test_cli.py::test_info_versions PASSED                        [ 99%]
+dask/tests/test_cli.py::test_register_command_ep FAILED                  [ 99%]
+dask/tests/test_cli.py::test_repeated_name_registration_warn PASSED      [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_rename_series_method_2 __________________________
+
+    def test_rename_series_method_2():
+        # Series index
+        s = pd.Series(["a", "b", "c", "d", "e", "f", "g"], name="x")
+        ds = dd.from_pandas(s, 2)
+    
+        for is_sorted in [True, False]:
+            res = ds.rename(lambda x: x**2, sorted_index=is_sorted)
+            assert_eq(res, s.rename(lambda x: x**2))
+            assert res.known_divisions == is_sorted
+    
+            res = ds.rename(s, sorted_index=is_sorted)
+            assert_eq(res, s.rename(s))
+            assert res.known_divisions == is_sorted
+    
+        with pytest.raises(ValueError):
+            ds.rename(lambda x: -x, sorted_index=True)
+        assert_eq(ds.rename(lambda x: -x), s.rename(lambda x: -x))
+    
+        res = ds.rename(ds)
+        assert_eq(res, s.rename(s))
+        assert not res.known_divisions
+    
+        ds2 = ds.clear_divisions()
+        res = ds2.rename(lambda x: x**2, sorted_index=True)
+        assert_eq(res, s.rename(lambda x: x**2))
+        assert not res.known_divisions
+    
+>       with pytest.warns(FutureWarning, match="inplace"):
+E       Failed: DID NOT WARN. No warnings of type (<class 'FutureWarning'>,) were emitted.
+E        Emitted warnings: [ PendingDeprecationWarning("'inplace' argument for dask series will be removed in future versions")].
+
+dask/dataframe/tests/test_dataframe.py:400: Failed
+_______________________ test_quantile[tdigest-expected0] _______________________
+
+method = 'tdigest', expected = (0.35, 3.8, 2.5, 6.5, 2.0)
+
+    @pytest.mark.parametrize(
+        "method,expected",
+        [
+            pytest.param(
+                "tdigest",
+                (0.35, 3.80, 2.5, 6.5, 2.0),
+                marks=pytest.mark.skipif(not crick, reason="Requires crick"),
+            ),
+            ("dask", (0.0, 4.0, 1.2, 6.2, 2.0)),
+        ],
+    )
+    def test_quantile(method, expected):
+        # series / multiple
+        result = d.b.quantile([0.3, 0.7], method=method)
+    
+        exp = full.b.quantile([0.3, 0.7])  # result may different
+        assert len(result) == 2
+        assert result.divisions == (0.3, 0.7)
+        assert_eq(result.index, exp.index)
+        assert isinstance(result, dd.Series)
+    
+        result = result.compute()
+        assert isinstance(result, pd.Series)
+    
+>       assert result.iloc[0] == pytest.approx(expected[0])
+E       assert 0.19999999999999973 == 0.35 ± 3.5e-07
+E         
+E         comparison failed
+E         Obtained: 0.19999999999999973
+E         Expected: 0.35 ± 3.5e-07
+
+dask/dataframe/tests/test_dataframe.py:1431: AssertionError
+__________________________________ test_apply __________________________________
+
+    def test_apply():
+        df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [10, 20, 30, 40]})
+        ddf = dd.from_pandas(df, npartitions=2)
+    
+        assert_eq(
+            ddf.x.apply(lambda x: x + 1, meta=("x", int)), df.x.apply(lambda x: x + 1)
+        )
+    
+        # specify meta
+        assert_eq(
+            ddf.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis=1, meta=(None, int)),
+            df.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis=1),
+        )
+        assert_eq(
+            ddf.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis="columns", meta=(None, int)),
+            df.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis="columns"),
+        )
+    
+        # inference
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+            assert_eq(
+                ddf.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis=1),
+                df.apply(lambda xy: xy.iloc[0] + xy.iloc[1], axis=1),
+            )
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+            assert_eq(ddf.apply(lambda xy: xy, axis=1), df.apply(lambda xy: xy, axis=1))
+    
+        warning = FutureWarning if PANDAS_GT_210 else None
+        # specify meta
+        func = lambda x: pd.Series([x, x])
+>       with pytest.warns(warning, match="Returning a DataFrame"):
+
+dask/dataframe/tests/test_dataframe.py:3206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = WarningsChecker(record=True), expected_warning = None
+match_expr = 'Returning a DataFrame'
+
+    def __init__(
+        self,
+        expected_warning: type[Warning] | tuple[type[Warning], ...] = Warning,
+        match_expr: str | Pattern[str] | None = None,
+        *,
+        _ispytest: bool = False,
+    ) -> None:
+        check_ispytest(_ispytest)
+        super().__init__(_ispytest=True)
+    
+        msg = "exceptions must be derived from Warning, not %s"
+        if isinstance(expected_warning, tuple):
+            for exc in expected_warning:
+                if not issubclass(exc, Warning):
+                    raise TypeError(msg % type(exc))
+            expected_warning_tup = expected_warning
+        elif isinstance(expected_warning, type) and issubclass(
+            expected_warning, Warning
+        ):
+            expected_warning_tup = (expected_warning,)
+        else:
+>           raise TypeError(msg % type(expected_warning))
+E           TypeError: exceptions must be derived from Warning, not <class 'NoneType'>
+
+/opt/miniconda3/envs/testbed/lib/python3.10/site-packages/_pytest/recwarn.py:280: TypeError
+________________________________ test_applymap _________________________________
+
+    def test_applymap():
+        df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [10, 20, 30, 40]})
+        ddf = dd.from_pandas(df, npartitions=2)
+        msg = "DataFrame.applymap has been deprecated"
+        warning = FutureWarning if PANDAS_GT_210 else None
+>       with pytest.warns(warning, match=msg):
+
+dask/dataframe/tests/test_dataframe.py:3306: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = WarningsChecker(record=True), expected_warning = None
+match_expr = 'DataFrame.applymap has been deprecated'
+
+    def __init__(
+        self,
+        expected_warning: type[Warning] | tuple[type[Warning], ...] = Warning,
+        match_expr: str | Pattern[str] | None = None,
+        *,
+        _ispytest: bool = False,
+    ) -> None:
+        check_ispytest(_ispytest)
+        super().__init__(_ispytest=True)
+    
+        msg = "exceptions must be derived from Warning, not %s"
+        if isinstance(expected_warning, tuple):
+            for exc in expected_warning:
+                if not issubclass(exc, Warning):
+                    raise TypeError(msg % type(exc))
+            expected_warning_tup = expected_warning
+        elif isinstance(expected_warning, type) and issubclass(
+            expected_warning, Warning
+        ):
+            expected_warning_tup = (expected_warning,)
+        else:
+>           raise TypeError(msg % type(expected_warning))
+E           TypeError: exceptions must be derived from Warning, not <class 'NoneType'>
+
+/opt/miniconda3/envs/testbed/lib/python3.10/site-packages/_pytest/recwarn.py:280: TypeError
+___________________________ test_apply_infer_columns ___________________________
+
+    def test_apply_infer_columns():
+        df = pd.DataFrame({"x": [1, 2, 3, 4], "y": [10, 20, 30, 40]})
+        ddf = dd.from_pandas(df, npartitions=2)
+    
+        def return_df(x):
+            # will create new DataFrame which columns is ['sum', 'mean']
+            return pd.Series([x.sum(), x.mean()], index=["sum", "mean"])
+    
+        # DataFrame to completely different DataFrame
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+            result = ddf.apply(return_df, axis=1)
+        assert isinstance(result, dd.DataFrame)
+        tm.assert_index_equal(result.columns, pd.Index(["sum", "mean"]))
+        assert_eq(result, df.apply(return_df, axis=1))
+    
+        # DataFrame to Series
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+            result = ddf.apply(lambda x: 1, axis=1)
+        assert isinstance(result, dd.Series)
+        assert result.name is None
+        assert_eq(result, df.apply(lambda x: 1, axis=1))
+    
+        def return_df2(x):
+            return pd.Series([x * 2, x * 3], index=["x2", "x3"])
+    
+        warning = FutureWarning if PANDAS_GT_210 else None
+        # Series to completely different DataFrame
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", UserWarning)
+>           with pytest.warns(warning, match="Returning a DataFrame"):
+
+dask/dataframe/tests/test_dataframe.py:3677: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = WarningsChecker(record=True), expected_warning = None
+match_expr = 'Returning a DataFrame'
+
+    def __init__(
+        self,
+        expected_warning: type[Warning] | tuple[type[Warning], ...] = Warning,
+        match_expr: str | Pattern[str] | None = None,
+        *,
+        _ispytest: bool = False,
+    ) -> None:
+        check_ispytest(_ispytest)
+        super().__init__(_ispytest=True)
+    
+        msg = "exceptions must be derived from Warning, not %s"
+        if isinstance(expected_warning, tuple):
+            for exc in expected_warning:
+                if not issubclass(exc, Warning):
+                    raise TypeError(msg % type(exc))
+            expected_warning_tup = expected_warning
+        elif isinstance(expected_warning, type) and issubclass(
+            expected_warning, Warning
+        ):
+            expected_warning_tup = (expected_warning,)
+        else:
+>           raise TypeError(msg % type(expected_warning))
+E           TypeError: exceptions must be derived from Warning, not <class 'NoneType'>
+
+/opt/miniconda3/envs/testbed/lib/python3.10/site-packages/_pytest/recwarn.py:280: TypeError
+___________________________ test_register_command_ep ___________________________
+
+    def test_register_command_ep():
+        from dask.cli import _register_command_ep
+    
+        bad_ep = importlib_metadata.EntryPoint(
+            name="bad",
+            value="dask.tests.test_cli:bad_command",
+            group="dask_cli",
+        )
+    
+        good_ep = importlib_metadata.EntryPoint(
+            name="good",
+            value="dask.tests.test_cli:good_command",
+            group="dask_cli",
+        )
+    
+        class ErrorEP:
+            @property
+            def name(self):
+                return "foo"
+    
+            def load(self):
+                raise ImportError("Entrypoint could not be imported")
+    
+        with pytest.warns(UserWarning, match="must be instances of"):
+            _register_command_ep(dummy_cli, bad_ep)
+    
+>       with pytest.warns(UserWarning, match="exception ocurred"):
+E       Failed: DID NOT WARN. No warnings of type (<class 'UserWarning'>,) matching the regex were emitted.
+E        Regex: exception ocurred
+E        Emitted warnings: [ UserWarning("Failed to load entry point 'foo': Entrypoint could not be imported")].
+
+dask/tests/test_cli.py:118: Failed
+=============================== warnings summary ===============================
+dask/dataframe/tests/test_dataframe.py::test_rename_series_method_2
+  /testbed/dask/dataframe/core.py:3963: PendingDeprecationWarning: 'inplace' argument for dask series will be removed in future versions
+    warnings.warn(
+
+dask/tests/test_cli.py::test_register_command_ep
+  /testbed/dask/cli.py:100: UserWarning: Failed to load entry point 'foo': Entrypoint could not be imported
+    warnings.warn(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+__________________________________ test_info ___________________________________
+----------------------------- Captured stdout call -----------------------------
+<class 'dask.dataframe.core.DataFrame'>
+Columns: 2 entries, x to y
+dtypes: int64(2)
+============================= slowest 10 durations =============================
+9.30s call     dask/dataframe/io/tests/test_io.py::test_to_bag
+2.10s call     dask/dataframe/tests/test_dataframe.py::test_where_mask
+1.75s call     dask/dataframe/tests/test_dataframe.py::test_map_partition_sparse
+0.64s call     dask/dataframe/tests/test_dataframe.py::test_split_out_drop_duplicates[2]
+0.56s call     dask/dataframe/tests/test_dataframe.py::test_cumulative
+0.42s call     dask/dataframe/tests/test_dataframe.py::test_with_min_count
+0.32s call     dask/dataframe/tests/test_dataframe.py::test_corr
+0.30s call     dask/dataframe/tests/test_dataframe.py::test_describe_numeric[tdigest-test_values0]
+0.27s call     dask/dataframe/tests/test_dataframe.py::test_cumulative_multiple_columns
+0.27s call     dask/dataframe/tests/test_dataframe.py::test_describe_numeric[dask-test_values1]
+=========================== short test summary info ============================
+PASSED dask/dataframe/io/tests/test_io.py::test_meta_from_array
+PASSED dask/dataframe/io/tests/test_io.py::test_meta_from_1darray
+PASSED dask/dataframe/io/tests/test_io.py::test_meta_from_recarray
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_with_record_dtype
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_dataframe
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_small
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[2]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[4]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_is_accurate[5]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_series
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_non_sorted
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_single_row
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_with_datetime_index
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[None]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[null_value1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_with_index_nulls[null_value2]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_with_wrong_args
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_chunksize_one
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_npartitions_duplicates[index2]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_convert_string_config_raises
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[True-index0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[True-index1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[False-index0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_pandas_immutable[False-index1]
+PASSED dask/dataframe/io/tests/test_io.py::test_DataFrame_from_dask_array
+PASSED dask/dataframe/io/tests/test_io.py::test_DataFrame_from_dask_array_with_blockwise_ops
+PASSED dask/dataframe/io/tests/test_io.py::test_Series_from_dask_array
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_index[True]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_index[False]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_index_raises
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_raises_more_than_2D
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_compat_numpy_array
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_wrong_column_shape_error
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_with_column_names
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_compat_numpy_array_1d
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_1d_with_column_names
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_1d_list_of_columns_gives_dataframe
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_struct_dtype
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_unknown_chunks
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes0-expected_divisions0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes1-expected_divisions1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_empty_chunks[chunksizes2-expected_divisions2]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_unknown_width_error
+PASSED dask/dataframe/io/tests/test_io.py::test_from_array_dispatching[numpy-pandas]
+PASSED dask/dataframe/io/tests/test_io.py::test_to_bag
+PASSED dask/dataframe/io/tests/test_io.py::test_to_bag_frame
+PASSED dask/dataframe/io/tests/test_io.py::test_to_records
+PASSED dask/dataframe/io/tests/test_io.py::test_to_records_with_lengths[lengths0]
+PASSED dask/dataframe/io/tests/test_io.py::test_to_records_with_lengths[True]
+PASSED dask/dataframe/io/tests/test_io.py::test_to_records_raises
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed_optimize_fusion
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed_to_dask_array
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed_preserves_hlgs
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed_misordered_meta
+PASSED dask/dataframe/io/tests/test_io.py::test_from_delayed_sorted
+PASSED dask/dataframe/io/tests/test_io.py::test_to_delayed
+PASSED dask/dataframe/io/tests/test_io.py::test_to_delayed_optimize_graph
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dask_array_index_dtype
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_simple[vals2]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_multi
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_args
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_divisions
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_meta
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_custom_name
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[iterable0]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[iterable1]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_other_iterables[_generator]
+PASSED dask/dataframe/io/tests/test_io.py::test_from_map_column_projection
+PASSED dask/dataframe/io/tests/test_io.py::test_from_dict_backends[pandas]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_doc
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_doc_from_non_pandas
+PASSED dask/dataframe/tests/test_dataframe.py::test_Dataframe
+PASSED dask/dataframe/tests/test_dataframe.py::test_head_tail
+PASSED dask/dataframe/tests/test_dataframe.py::test_head_npartitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_head_npartitions_warn
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_head
+PASSED dask/dataframe/tests/test_dataframe.py::test_Series
+PASSED dask/dataframe/tests/test_dataframe.py::test_Index
+PASSED dask/dataframe/tests/test_dataframe.py::test_axes
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_axes
+PASSED dask/dataframe/tests/test_dataframe.py::test_Scalar
+PASSED dask/dataframe/tests/test_dataframe.py::test_scalar_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_attributes
+PASSED dask/dataframe/tests/test_dataframe.py::test_column_names
+PASSED dask/dataframe/tests/test_dataframe.py::test_columns_named_divisions_and_meta
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_names
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_columns
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_series_method
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_numeric[tdigest-test_values0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_numeric[dask-test_values1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset3]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-None-None-subset4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[all-None-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[include6-None-percentiles6-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[include7-None-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[include8-None-percentiles8-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[None-exclude9-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe[include10-None-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_without_datetime_is_numeric
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_empty
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_empty_tdigest
+PASSED dask/dataframe/tests/test_dataframe.py::test_describe_for_possibly_unsorted_q
+PASSED dask/dataframe/tests/test_dataframe.py::test_cumulative
+PASSED dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dropna
+PASSED dask/dataframe/tests/test_dataframe.py::test_clip[2-5]
+PASSED dask/dataframe/tests/test_dataframe.py::test_clip[2.5-3.5]
+PASSED dask/dataframe/tests/test_dataframe.py::test_squeeze
+PASSED dask/dataframe/tests/test_dataframe.py::test_where_mask
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_multi_argument
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_type
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_partition_info
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_names
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_column_info
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_method_names
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_propagates_index_metadata
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_with_delayed_collection
+PASSED dask/dataframe/tests/test_dataframe.py::test_metadata_inference_single_partition_aligned_args
+PASSED dask/dataframe/tests/test_dataframe.py::test_align_dataframes
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_duplicates
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_duplicates_subset
+PASSED dask/dataframe/tests/test_dataframe.py::test_get_partition
+PASSED dask/dataframe/tests/test_dataframe.py::test_ndim
+PASSED dask/dataframe/tests/test_dataframe.py::test_dtype
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts_not_sorted
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts_with_dropna
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize_and_dropna[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_value_counts_with_normalize_and_dropna[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_unique
+PASSED dask/dataframe/tests/test_dataframe.py::test_isin
+PASSED dask/dataframe/tests/test_dataframe.py::test_contains_frame
+PASSED dask/dataframe/tests/test_dataframe.py::test_len
+PASSED dask/dataframe/tests/test_dataframe.py::test_size
+PASSED dask/dataframe/tests/test_dataframe.py::test_shape
+PASSED dask/dataframe/tests/test_dataframe.py::test_nbytes
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile[dask-expected1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_missing[tdigest]
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_missing[dask]
+PASSED dask/dataframe/tests/test_dataframe.py::test_empty_quantile[tdigest]
+PASSED dask/dataframe/tests/test_dataframe.py::test_empty_quantile[dask]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[None-tdigest-expected0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[None-dask-expected1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[True-tdigest-expected0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[True-dask-expected1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[False-tdigest-expected0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_quantile[False-dask-expected1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_datetime_numeric_only_false
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_for_possibly_unsorted_q
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_tiny_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_quantile_trivial_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign_callable
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign_dtypes
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign_pandas_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_map
+PASSED dask/dataframe/tests/test_dataframe.py::test_concat
+PASSED dask/dataframe/tests/test_dataframe.py::test_args
+PASSED dask/dataframe/tests/test_dataframe.py::test_known_divisions
+PASSED dask/dataframe/tests/test_dataframe.py::test_unknown_divisions
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_min_count
+PASSED dask/dataframe/tests/test_dataframe.py::test_align[inner]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align[outer]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align[left]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align[right]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align_axis[inner]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align_axis[outer]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align_axis[left]
+PASSED dask/dataframe/tests/test_dataframe.py::test_align_axis[right]
+PASSED dask/dataframe/tests/test_dataframe.py::test_combine
+PASSED dask/dataframe/tests/test_dataframe.py::test_combine_first
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_picklable
+PASSED dask/dataframe/tests/test_dataframe.py::test_random_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_round
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_divisions
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_on_pandas_dataframe
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-1-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-2-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-4-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-float-5-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-1-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-2-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-4-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>0-M8[ns]-5-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-1-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-2-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-4-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-float-5-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-1-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-2-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-4-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-4-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-4-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions[<lambda>1-M8[ns]-5-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-1kiB-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>0-379-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-1kiB-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-5-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size[<lambda>1-379-5-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_partition_size_arg
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions_same_limits
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_npartitions_numeric_edge_case
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_object_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_datetime_tz_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_freq_divisions
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_freq_errors
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_freq_month
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_freq_day
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_noop
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[M-MS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[MS-MS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2M-2MS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Q-QS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Q-FEB-QS-FEB]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2Q-2QS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2Q-FEB-2QS-FEB]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2QS-FEB-2QS-FEB]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BQ-BQS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2BQ-2BQS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[SM-SMS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[A-AS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[A-JUN-AS-JUN]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BA-BAS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[2BA-2BAS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[BY-BAS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[Y-AS]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_freq_to_period_start[freq17-expected_freq17]
+PASSED dask/dataframe/tests/test_dataframe.py::test_repartition_input_errors
+PASSED dask/dataframe/tests/test_dataframe.py::test_embarrassingly_parallel_operations
+PASSED dask/dataframe/tests/test_dataframe.py::test_fillna
+PASSED dask/dataframe/tests/test_dataframe.py::test_ffill
+PASSED dask/dataframe/tests/test_dataframe.py::test_bfill
+PASSED dask/dataframe/tests/test_dataframe.py::test_delayed_roundtrip[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_delayed_roundtrip[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_delayed_lazy_if_meta_provided
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_delayed_empty_meta_provided
+PASSED dask/dataframe/tests/test_dataframe.py::test_fillna_duplicate_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_fillna_multi_dataframe
+PASSED dask/dataframe/tests/test_dataframe.py::test_fillna_dask_dataframe_input
+PASSED dask/dataframe/tests/test_dataframe.py::test_ffill_bfill
+PASSED dask/dataframe/tests/test_dataframe.py::test_fillna_series_types
+PASSED dask/dataframe/tests/test_dataframe.py::test_sample
+PASSED dask/dataframe/tests/test_dataframe.py::test_sample_without_replacement
+PASSED dask/dataframe/tests/test_dataframe.py::test_sample_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_empty_max
+PASSED dask/dataframe/tests/test_dataframe.py::test_query
+PASSED dask/dataframe/tests/test_dataframe.py::test_eval
+PASSED dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include0-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_select_dtypes[None-exclude1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include2-exclude2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_select_dtypes[include3-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_deterministic_apply_concat_apply_names
+PASSED dask/dataframe/tests/test_dataframe.py::test_aca_meta_infer
+PASSED dask/dataframe/tests/test_dataframe.py::test_aca_split_every
+PASSED dask/dataframe/tests/test_dataframe.py::test_reduction_method
+PASSED dask/dataframe/tests/test_dataframe.py::test_reduction_method_split_every
+PASSED dask/dataframe/tests/test_dataframe.py::test_pipe
+PASSED dask/dataframe/tests/test_dataframe.py::test_gh_517
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_axis_1
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_columns[columns0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_columns[columns1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_drop_meta_mismatch
+PASSED dask/dataframe/tests/test_dataframe.py::test_gh580
+PASSED dask/dataframe/tests/test_dataframe.py::test_gh6305
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_dict
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_function
+PASSED dask/dataframe/tests/test_dataframe.py::test_rename_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_timestamp
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_frame
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array_raises[False0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array_raises[False1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array_unknown[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array_unknown[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array[lengths0-False-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array[True-False-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_dask_array[True-False-meta2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_apply_convert_dtype[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_apply_warns
+PASSED dask/dataframe/tests/test_dataframe.py::test_apply_warns_with_invalid_meta
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_map_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_add_prefix
+PASSED dask/dataframe/tests/test_dataframe.py::test_add_suffix
+PASSED dask/dataframe/tests/test_dataframe.py::test_abs
+PASSED dask/dataframe/tests/test_dataframe.py::test_round
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_dataframe[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_corr
+PASSED dask/dataframe/tests/test_dataframe.py::test_corr_same_name
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_corr_meta[1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_corr_meta[2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_autocorr
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_time_properties
+PASSED dask/dataframe/tests/test_dataframe.py::test_nlargest_nsmallest
+PASSED dask/dataframe/tests/test_dataframe.py::test_nlargest_nsmallest_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_reset_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_compute_forward_kwargs
+PASSED dask/dataframe/tests/test_dataframe.py::test_contains_series_raises_deprecated_warning_preserves_behavior
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_iteritems
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_iter
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_iterrows
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_items[columns2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples_with_index_false
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_itertuples_with_name_none
+PASSED dask/dataframe/tests/test_dataframe.py::test_astype
+PASSED dask/dataframe/tests/test_dataframe.py::test_astype_categoricals
+PASSED dask/dataframe/tests/test_dataframe.py::test_astype_categoricals_known
+PASSED dask/dataframe/tests/test_dataframe.py::test_groupby_callable
+PASSED dask/dataframe/tests/test_dataframe.py::test_methods_tokenize_differently
+PASSED dask/dataframe/tests/test_dataframe.py::test_info
+PASSED dask/dataframe/tests/test_dataframe.py::test_groupby_multilevel_info
+PASSED dask/dataframe/tests/test_dataframe.py::test_categorize_info
+PASSED dask/dataframe/tests/test_dataframe.py::test_gh_1301
+PASSED dask/dataframe/tests/test_dataframe.py::test_timeseries_sorted
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_errors
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_nulls[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_nulls[null_value1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_nulls[null_value2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_set_index_with_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_column_assignment
+PASSED dask/dataframe/tests/test_dataframe.py::test_array_assignment
+PASSED dask/dataframe/tests/test_dataframe.py::test_columns_assignment
+PASSED dask/dataframe/tests/test_dataframe.py::test_attribute_assignment
+PASSED dask/dataframe/tests/test_dataframe.py::test_setitem_triggering_realign
+PASSED dask/dataframe/tests/test_dataframe.py::test_inplace_operators
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx0-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx0-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx2-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin[idx2-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_numeric_only[idxmin]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_numeric_only[idxmax]
+PASSED dask/dataframe/tests/test_dataframe.py::test_idxmaxmin_empty_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_mode_numeric_only
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_meta
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_multilevel
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_string_subclass
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[list]
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[array]
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[Series]
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_column_types[Index]
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_with_bool_dataframe_as_key
+PASSED dask/dataframe/tests/test_dataframe.py::test_getitem_with_non_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_ipython_completion
+PASSED dask/dataframe/tests/test_dataframe.py::test_diff
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[B-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[D-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_DatetimeIndex[H-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[B-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[D-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_PeriodIndex[H-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_TimedeltaIndex
+PASSED dask/dataframe/tests/test_dataframe.py::test_shift_with_freq_errors
+PASSED dask/dataframe/tests/test_dataframe.py::test_first_and_last[first]
+PASSED dask/dataframe/tests/test_dataframe.py::test_first_and_last[last]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-2-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[None-5-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-2-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[1-5-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-2-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[5-5-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-2-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_hash_split_unique[20-5-20]
+PASSED dask/dataframe/tests/test_dataframe.py::test_split_out_drop_duplicates[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_split_out_drop_duplicates[2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_split_out_value_counts[None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_split_out_value_counts[2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_values
+PASSED dask/dataframe/tests/test_dataframe.py::test_values_extension_dtypes
+PASSED dask/dataframe/tests/test_dataframe.py::test_copy
+PASSED dask/dataframe/tests/test_dataframe.py::test_del
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[True-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[True-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[False-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_dataframe[False-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[True-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[True-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[False-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_series[False-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_index[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_index[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[True-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[True-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[False-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_memory_usage_per_partition[False-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[sum]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[mean]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[std]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[var]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[count]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[min]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[max]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[idxmin]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[idxmax]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[prod]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[all]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_reductions_arithmetic[sem]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_mode
+PASSED dask/dataframe/tests/test_dataframe.py::test_median
+PASSED dask/dataframe/tests/test_dataframe.py::test_median_approximate[dask]
+PASSED dask/dataframe/tests/test_dataframe.py::test_median_approximate[tdigest]
+PASSED dask/dataframe/tests/test_dataframe.py::test_datetime_loc_open_slicing
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_datetime[False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_timedelta
+PASSED dask/dataframe/tests/test_dataframe.py::test_isna[values0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_isna[values1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_slice_on_filtered_boundary[0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_slice_on_filtered_boundary[9]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_nonmonotonic
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_empty
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1-None-False-False-drop0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1-None-False-True-drop1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3-False-False-drop2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3-True-False-drop3]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[-0.5-None-False-False-drop4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[-0.5-None-False-True-drop5]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[-1.5-None-False-True-drop6]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3.5-False-False-drop7]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-3.5-True-False-drop8]
+PASSED dask/dataframe/tests/test_dataframe.py::test_with_boundary[None-2.5-False-False-drop9]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index0-0-9]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index1--1-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index2-None-10]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index3-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index4--1-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index5-None-2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index6--2-3]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index7-None-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index8-left8-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index9-None-right9]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index10-left10-None]
+PASSED dask/dataframe/tests/test_dataframe.py::test_boundary_slice_same[index11-None-right11]
+PASSED dask/dataframe/tests/test_dataframe.py::test_better_errors_object_reductions
+PASSED dask/dataframe/tests/test_dataframe.py::test_sample_empty_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_coerce
+PASSED dask/dataframe/tests/test_dataframe.py::test_bool
+PASSED dask/dataframe/tests/test_dataframe.py::test_cumulative_multiple_columns
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partition_array[asarray]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partition_array[func1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partition_sparse
+PASSED dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_operations
+PASSED dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_operations_errors
+PASSED dask/dataframe/tests/test_dataframe.py::test_mixed_dask_array_multi_dimensional
+PASSED dask/dataframe/tests/test_dataframe.py::test_meta_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_meta_nonempty_uses_meta_value_if_provided
+PASSED dask/dataframe/tests/test_dataframe.py::test_dask_dataframe_holds_scipy_sparse_containers
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_delays_large_inputs
+PASSED dask/dataframe/tests/test_dataframe.py::test_partitions_indexer
+PASSED dask/dataframe/tests/test_dataframe.py::test_mod_eq
+PASSED dask/dataframe/tests/test_dataframe.py::test_setitem
+PASSED dask/dataframe/tests/test_dataframe.py::test_setitem_with_bool_dataframe_as_key
+PASSED dask/dataframe/tests/test_dataframe.py::test_setitem_with_bool_series_as_key
+PASSED dask/dataframe/tests/test_dataframe.py::test_setitem_with_numeric_column_name_raises_not_implemented
+PASSED dask/dataframe/tests/test_dataframe.py::test_broadcast
+PASSED dask/dataframe/tests/test_dataframe.py::test_scalar_with_array
+PASSED dask/dataframe/tests/test_dataframe.py::test_has_parallel_type
+PASSED dask/dataframe/tests/test_dataframe.py::test_meta_error_message
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign_index
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_divisions
+PASSED dask/dataframe/tests/test_dataframe.py::test_replace
+PASSED dask/dataframe/tests/test_dataframe.py::test_map_partitions_delays_lists
+PASSED dask/dataframe/tests/test_dataframe.py::test_dtype_cast
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-1-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-1-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-3-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-False-3-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-1-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-1-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-3-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[False-True-3-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-1-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-1-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-3-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-False-3-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-1-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-1-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-3-1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_map[True-True-3-4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_explode
+PASSED dask/dataframe/tests/test_dataframe.py::test_series_explode
+PASSED dask/dataframe/tests/test_dataframe.py::test_pop
+PASSED dask/dataframe/tests/test_dataframe.py::test_nunique[0-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_nunique[0-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_nunique[1-True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_nunique[1-False]
+PASSED dask/dataframe/tests/test_dataframe.py::test_view
+PASSED dask/dataframe/tests/test_dataframe.py::test_simple_map_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_iter
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_groupby_cumsum_agg_empty_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_dataframe_groupby_cumprod_agg_empty_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_fuse_roots
+PASSED dask/dataframe/tests/test_dataframe.py::test_attrs_dataframe
+PASSED dask/dataframe/tests/test_dataframe.py::test_attrs_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_join_series
+PASSED dask/dataframe/tests/test_dataframe.py::test_dask_layers
+PASSED dask/dataframe/tests/test_dataframe.py::test_repr_html_dataframe_highlevelgraph
+PASSED dask/dataframe/tests/test_dataframe.py::test_assign_na_float_columns
+PASSED dask/dataframe/tests/test_dataframe.py::test_dot
+PASSED dask/dataframe/tests/test_dataframe.py::test_dot_nan
+PASSED dask/dataframe/tests/test_dataframe.py::test_use_of_weakref_proxy
+PASSED dask/dataframe/tests/test_dataframe.py::test_is_monotonic_numeric
+PASSED dask/dataframe/tests/test_dataframe.py::test_is_monotonic_deprecated
+PASSED dask/dataframe/tests/test_dataframe.py::test_is_monotonic_dt64
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_numeric
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_deprecated
+PASSED dask/dataframe/tests/test_dataframe.py::test_index_is_monotonic_dt64
+PASSED dask/dataframe/tests/test_dataframe.py::test_is_monotonic_empty_partitions
+PASSED dask/dataframe/tests/test_dataframe.py::test_custom_map_reduce
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[2-columns-int]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[2-columns-float]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[2-index-int]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[2-index-float]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[5-columns-int]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[5-columns-float]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[5-index-int]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict[5-index-float]
+PASSED dask/dataframe/tests/test_dataframe.py::test_from_dict_raises
+PASSED dask/dataframe/tests/test_dataframe.py::test_empty
+PASSED dask/dataframe/tests/test_dataframe.py::test_repr_materialize
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[int64[pyarrow]]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[int32[pyarrow]]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[float64[pyarrow]]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[float32[pyarrow]]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_extension_dtype[uint8[pyarrow]]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_decimal_extension_dtype
+PASSED dask/dataframe/tests/test_dataframe.py::test_to_backend
+PASSED dask/dataframe/tests/test_dataframe.py::test_transform_getitem_works[max]
+PASSED dask/dataframe/tests/test_dataframe.py::test_transform_getitem_works[sum]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df0-cond0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df1-cond1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df2-cond2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df3-cond3]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_array_like[df4-cond4]
+PASSED dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[select_dtypes-kwargs0]
+PASSED dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[describe-kwargs1]
+PASSED dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[nunique-kwargs2]
+PASSED dask/dataframe/tests/test_dataframe.py::test_duplicate_columns[quantile-kwargs3]
+PASSED dask/dataframe/tests/test_dataframe.py::test_mask_where_callable
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_conversion_dispatch[True]
+PASSED dask/dataframe/tests/test_dataframe.py::test_pyarrow_conversion_dispatch[False]
+PASSED dask/tests/test_cli.py::test_config_get
+PASSED dask/tests/test_cli.py::test_config_get_value
+PASSED dask/tests/test_cli.py::test_config_get_bad_value
+PASSED dask/tests/test_cli.py::test_config_list
+PASSED dask/tests/test_cli.py::test_version
+PASSED dask/tests/test_cli.py::test_info_versions
+PASSED dask/tests/test_cli.py::test_repeated_name_registration_warn
+SKIPPED [1] dask/dataframe/io/tests/test_io.py:282: dataframe.convert-string requires pandas>=2.0
+SKIPPED [1] dask/dataframe/io/tests/test_io.py:350: could not import 'cudf': No module named 'cudf'
+SKIPPED [1] dask/dataframe/io/tests/test_io.py:561: could not import 'cupy': No module named 'cupy'
+SKIPPED [1] dask/dataframe/io/tests/test_io.py:1079: could not import 'cudf': No module named 'cudf'
+SKIPPED [110] conftest.py:61: need --runslow option to run
+SKIPPED [2] dask/dataframe/tests/test_dataframe.py:3281: Not available before
+SKIPPED [3] dask/dataframe/tests/test_dataframe.py:3441: could not import 'cudf': No module named 'cudf'
+SKIPPED [1] dask/dataframe/tests/test_dataframe.py:3509: could not import 'cudf': No module named 'cudf'
+SKIPPED [1] dask/dataframe/tests/test_dataframe.py:4876: could not import 'cudf': No module named 'cudf'
+SKIPPED [1] dask/dataframe/tests/test_dataframe.py:6063: could not import 'cudf': No module named 'cudf'
+XFAIL dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func2] - ValueError: Can only compare identically-labeled Series objects
+XFAIL dask/dataframe/tests/test_dataframe.py::test_cumulative_empty_partitions[func3] - ValueError: Can only compare identically-labeled Series objects
+XFAIL dask/dataframe/tests/test_dataframe.py::test_map_partitions_keeps_kwargs_readable - now we use SubgraphCallables
+XFAIL dask/dataframe/tests/test_dataframe.py::test_cov_corr_mixed[False] - fails with non-numeric data
+FAILED dask/dataframe/tests/test_dataframe.py::test_rename_series_method_2 - ...
+FAILED dask/dataframe/tests/test_dataframe.py::test_quantile[tdigest-expected0]
+FAILED dask/dataframe/tests/test_dataframe.py::test_apply - TypeError: except...
+FAILED dask/dataframe/tests/test_dataframe.py::test_applymap - TypeError: exc...
+FAILED dask/dataframe/tests/test_dataframe.py::test_apply_infer_columns - Typ...
+FAILED dask/tests/test_cli.py::test_register_command_ep - Failed: DID NOT WAR...
+====== 6 failed, 710 passed, 122 skipped, 4 xfailed, 2 warnings in 35.56s ======
++ : '>>>>> End Test Output'

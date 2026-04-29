@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 254649,
+  "duration_api_ms": 227995,
+  "num_turns": 70,
+  "result": "The fixes are complete. Here's a summary of the changes:\n\n**1. dask/config.py** - Restored previous `override_with` behavior:\n- Changed default value of `override_with` from `no_default` to `None`\n- Changed the check from `if override_with is not no_default:` to `if override_with is not None:`\n- This ensures `override_with=None` correctly looks up the config value (previous behavior) instead of returning `None` (broken 2023.9.2 behavior)\n\n**2. dask/array/reductions.py** - Added support for complex dtypes in Dask Array reductions:\n- Added `implicit_complex_dtype` parameter to `moment_chunk` function\n- Modified moment calculations to use absolute values for complex dtypes\n- Updated `moment_combine` and `moment_agg` to handle complex dtypes properly  \n- Updated `moment`, `var`, and `nanvar` functions to pass `implicit_complex_dtype`\n- Added `ComplexWarning` suppression when processing meta data",
+  "stop_reason": "end_turn",
+  "session_id": "d04ced04-5b06-4a62-ac10-df23b9cb192a",
+  "total_cost_usd": 3.90744705,
+  "usage": {
+    "input_tokens": 1194878,
+    "cache_creation_input_tokens": 721,
+    "cache_read_input_tokens": 256281,
+    "output_tokens": 16215,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 1194878,
+      "outputTokens": 16215,
+      "cacheReadInputTokens": 256281,
+      "cacheCreationInputTokens": 721,
+      "webSearchRequests": 0,
+      "costUSD": 3.90744705,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "854cee03-4b5d-4272-9432-076fae00e0a9"
+}

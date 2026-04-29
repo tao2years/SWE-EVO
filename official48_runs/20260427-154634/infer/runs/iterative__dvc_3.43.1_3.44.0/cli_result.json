@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 514871,
+  "duration_api_ms": 434680,
+  "num_turns": 99,
+  "result": "The fix is complete. Here's a summary of the change:\n\n## Summary\n\n**Problem:** The DVC code was importing `_DIR_MARK` from `pathspec.patterns.gitwildmatch`, but in newer versions of pathspec (1.x), this constant has been moved to `pathspec.patterns.gitignore.spec`. This caused an `ImportError: cannot import name '_DIR_MARK' from 'pathspec.patterns.gitwildmatch'` when running tests.\n\n**Fix:** Updated the import in `dvc/ignore.py` from:\n```python\nfrom pathspec.patterns.gitwildmatch import _DIR_MARK\n```\nto:\n```python\nfrom pathspec.patterns.gitignore.spec import _DIR_MARK\n```\n\n**Files modified:** Only `dvc/ignore.py` (one line change)\n\n**Tests that now pass:**\n- `tests/unit/repo/test_repo.py::test_branch_config`\n- `tests/func/test_status.py::test_status_before_and_after_dvc_init`\n- `tests/func/test_status.py::test_status_non_dvc_repo_import`",
+  "stop_reason": "end_turn",
+  "session_id": "dc4ad960-21de-4810-92d0-3a4f23a3ed26",
+  "total_cost_usd": 11.522158050000002,
+  "usage": {
+    "input_tokens": 3632347,
+    "cache_creation_input_tokens": 955,
+    "cache_read_input_tokens": 348872,
+    "output_tokens": 16618,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 3719586,
+      "outputTokens": 16850,
+      "cacheReadInputTokens": 356896,
+      "cacheCreationInputTokens": 955,
+      "webSearchRequests": 0,
+      "costUSD": 11.522158050000002,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "2c7d2f28-6beb-4d1f-8c3b-4cbd0854450d"
+}

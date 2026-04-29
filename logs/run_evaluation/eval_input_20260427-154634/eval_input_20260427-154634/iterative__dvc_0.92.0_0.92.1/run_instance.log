@@ -1,0 +1,536 @@
+2026-04-28 17:36:13,836 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_0.92.0_0.92.1
+Building instance image sweb.eval.x86_64.iterative__dvc_0.92.0_0.92.1:latest for iterative__dvc_0.92.0_0.92.1
+2026-04-28 17:36:13,851 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.92.0_0.92.1:latest already exists, skipping build.
+2026-04-28 17:36:13,851 - INFO - Creating container for iterative__dvc_0.92.0_0.92.1...
+2026-04-28 17:36:17,901 - INFO - Container for iterative__dvc_0.92.0_0.92.1 created: 7718cc30e531f6efd6184add6904dfb0a709696d8ea279b3e69567961603225c
+2026-04-28 17:36:18,030 - INFO - Container for iterative__dvc_0.92.0_0.92.1 started: 7718cc30e531f6efd6184add6904dfb0a709696d8ea279b3e69567961603225c
+2026-04-28 17:36:18,031 - INFO - Intermediate patch for iterative__dvc_0.92.0_0.92.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.92.0_0.92.1/patch.diff, now applying to container...
+2026-04-28 17:36:18,340 - INFO - >>>>> Applied Patch:
+Checking patch tests/unit/command/test_data_sync.py...
+Checking patch tests/unit/command/test_metrics.py...
+Checking patch tests/unit/command/test_status.py...
+Checking patch dvc/command/data_sync.py...
+Checking patch dvc/command/status.py...
+Checking patch dvc/repo/fetch.py...
+Checking patch dvc/repo/pull.py...
+Checking patch dvc/repo/push.py...
+Checking patch dvc/repo/status.py...
+Applied patch tests/unit/command/test_data_sync.py cleanly.
+Applied patch tests/unit/command/test_metrics.py cleanly.
+Applied patch tests/unit/command/test_status.py cleanly.
+Applied patch dvc/command/data_sync.py cleanly.
+Applied patch dvc/command/status.py cleanly.
+Applied patch dvc/repo/fetch.py cleanly.
+Applied patch dvc/repo/pull.py cleanly.
+Applied patch dvc/repo/push.py cleanly.
+Applied patch dvc/repo/status.py cleanly.
+
+2026-04-28 17:36:18,402 - INFO - Git diff before:
+diff --git a/dvc/command/data_sync.py b/dvc/command/data_sync.py
+index e44e8ea7a..3e6a3b8ed 100644
+--- a/dvc/command/data_sync.py
++++ b/dvc/command/data_sync.py
+@@ -26,6 +26,7 @@ class CmdDataPull(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 force=self.args.force,
+                 recursive=self.args.recursive,
+@@ -49,6 +50,7 @@ class CmdDataPush(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -68,6 +70,7 @@ class CmdDataFetch(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -128,6 +131,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    pull_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     pull_parser.add_argument(
+         "-f",
+         "--force",
+@@ -178,6 +187,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Push cache for all tags.",
+     )
++    push_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Push cache for all commits.",
++    )
+     push_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -224,6 +239,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    fetch_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     fetch_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -289,6 +310,13 @@ def add_parser(subparsers, _parent_parser):
+         help="Show status of a local cache compared to a remote repository "
+         "for all tags.",
+     )
++    status_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Show status of a local cache compared to a remote repository "
++        "for all commits.",
++    )
+     status_parser.add_argument(
+         "-d",
+         "--with-deps",
+diff --git a/dvc/command/status.py b/dvc/command/status.py
+index 640294860..a441f7136 100644
+--- a/dvc/command/status.py
++++ b/dvc/command/status.py
+@@ -47,6 +47,7 @@ class CmdDataStatus(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+             )
+             if st:
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index fbbaab1be..6398cc69c 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -19,6 +19,7 @@ def _fetch(
+     show_checksums=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     """Download data items from a cloud and imported repositories
+@@ -37,6 +38,7 @@ def _fetch(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/pull.py b/dvc/repo/pull.py
+index 993d50be8..a6ca9c870 100644
+--- a/dvc/repo/pull.py
++++ b/dvc/repo/pull.py
+@@ -15,6 +15,7 @@ def pull(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     force=False,
+     recursive=False,
+ ):
+@@ -24,6 +25,7 @@ def pull(
+         remote=remote,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         recursive=recursive,
+     )
+diff --git a/dvc/repo/push.py b/dvc/repo/push.py
+index 4ea1dd0b3..a8ef322d8 100644
+--- a/dvc/repo/push.py
++++ b/dvc/repo/push.py
+@@ -10,12 +10,14 @@ def push(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     used = self.used_cache(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/status.py b/dvc/repo/status.py
+index b8c3a8fcf..fd77e218b 100644
+--- a/dvc/repo/status.py
++++ b/dvc/repo/status.py
+@@ -44,6 +44,7 @@ def _cloud_status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     """Returns a dictionary with the files that are new or deleted.
+ 
+@@ -77,6 +78,7 @@ def _cloud_status(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+@@ -108,6 +110,7 @@ def status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     if cloud or remote:
+         return _cloud_status(
+@@ -118,6 +121,7 @@ def status(
+             with_deps=with_deps,
+             remote=remote,
+             all_tags=all_tags,
++            all_commits=all_commits,
+         )
+ 
+     ignored = list(
+diff --git a/tests/unit/command/test_metrics.py b/tests/unit/command/test_metrics.py
+index 2127c5c78..7a520dddf 100644
+--- a/tests/unit/command/test_metrics.py
++++ b/tests/unit/command/test_metrics.py
+@@ -1,5 +1,5 @@
+ from dvc.cli import parse_args
+-from dvc.command.metrics import CmdMetricsDiff, _show_diff
++from dvc.command.metrics import CmdMetricsDiff, _show_diff, CmdMetricsShow
+ 
+ 
+ def test_metrics_diff(dvc, mocker):
+@@ -64,7 +64,7 @@ def test_metrics_diff_no_diff():
+ 
+ 
+ def test_metrics_diff_no_changes():
+-    assert _show_diff({}) == "No changes."
++    assert _show_diff({}) == ""
+ 
+ 
+ def test_metrics_diff_new_metric():
+@@ -83,3 +83,39 @@ def test_metrics_diff_deleted_metric():
+         "   Path      Metric   Value         Change      \n"
+         "other.json   a.b.d    None    diff not supported"
+     )
++
++
++def test_metrics_show(dvc, mocker):
++    cli_args = parse_args(
++        [
++            "metrics",
++            "show",
++            "-t",
++            "json",
++            "-x",
++            "x.path",
++            "-R",
++            "--all-tags",
++            "--all-branches",
++            "--all-commits",
++            "target1",
++            "target2",
++        ]
++    )
++    assert cli_args.func == CmdMetricsShow
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.metrics.show.show", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(
++        cmd.repo,
++        ["target1", "target2"],
++        typ="json",
++        xpath="x.path",
++        recursive=True,
++        all_tags=True,
++        all_branches=True,
++        all_commits=True,
++    )
+2026-04-28 17:36:18,402 - INFO - Eval script for iterative__dvc_0.92.0_0.92.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.92.0_0.92.1/eval.sh; copying to container...
+2026-04-28 17:40:29,198 - INFO - Test runtime: 250.75 seconds
+2026-04-28 17:40:29,199 - INFO - Test output for iterative__dvc_0.92.0_0.92.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.92.0_0.92.1/test_output.txt
+2026-04-28 17:40:29,255 - INFO - Git diff after:
+diff --git a/dvc/command/data_sync.py b/dvc/command/data_sync.py
+index e44e8ea7a..3e6a3b8ed 100644
+--- a/dvc/command/data_sync.py
++++ b/dvc/command/data_sync.py
+@@ -26,6 +26,7 @@ class CmdDataPull(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 force=self.args.force,
+                 recursive=self.args.recursive,
+@@ -49,6 +50,7 @@ class CmdDataPush(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -68,6 +70,7 @@ class CmdDataFetch(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -128,6 +131,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    pull_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     pull_parser.add_argument(
+         "-f",
+         "--force",
+@@ -178,6 +187,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Push cache for all tags.",
+     )
++    push_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Push cache for all commits.",
++    )
+     push_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -224,6 +239,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    fetch_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     fetch_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -289,6 +310,13 @@ def add_parser(subparsers, _parent_parser):
+         help="Show status of a local cache compared to a remote repository "
+         "for all tags.",
+     )
++    status_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Show status of a local cache compared to a remote repository "
++        "for all commits.",
++    )
+     status_parser.add_argument(
+         "-d",
+         "--with-deps",
+diff --git a/dvc/command/status.py b/dvc/command/status.py
+index 640294860..a441f7136 100644
+--- a/dvc/command/status.py
++++ b/dvc/command/status.py
+@@ -47,6 +47,7 @@ class CmdDataStatus(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+             )
+             if st:
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index fbbaab1be..6398cc69c 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -19,6 +19,7 @@ def _fetch(
+     show_checksums=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     """Download data items from a cloud and imported repositories
+@@ -37,6 +38,7 @@ def _fetch(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/pull.py b/dvc/repo/pull.py
+index 993d50be8..a6ca9c870 100644
+--- a/dvc/repo/pull.py
++++ b/dvc/repo/pull.py
+@@ -15,6 +15,7 @@ def pull(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     force=False,
+     recursive=False,
+ ):
+@@ -24,6 +25,7 @@ def pull(
+         remote=remote,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         recursive=recursive,
+     )
+diff --git a/dvc/repo/push.py b/dvc/repo/push.py
+index 4ea1dd0b3..a8ef322d8 100644
+--- a/dvc/repo/push.py
++++ b/dvc/repo/push.py
+@@ -10,12 +10,14 @@ def push(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     used = self.used_cache(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/status.py b/dvc/repo/status.py
+index b8c3a8fcf..fd77e218b 100644
+--- a/dvc/repo/status.py
++++ b/dvc/repo/status.py
+@@ -44,6 +44,7 @@ def _cloud_status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     """Returns a dictionary with the files that are new or deleted.
+ 
+@@ -77,6 +78,7 @@ def _cloud_status(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+@@ -108,6 +110,7 @@ def status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     if cloud or remote:
+         return _cloud_status(
+@@ -118,6 +121,7 @@ def status(
+             with_deps=with_deps,
+             remote=remote,
+             all_tags=all_tags,
++            all_commits=all_commits,
+         )
+ 
+     ignored = list(
+diff --git a/tests/unit/command/test_metrics.py b/tests/unit/command/test_metrics.py
+index 2127c5c78..7a520dddf 100644
+--- a/tests/unit/command/test_metrics.py
++++ b/tests/unit/command/test_metrics.py
+@@ -1,5 +1,5 @@
+ from dvc.cli import parse_args
+-from dvc.command.metrics import CmdMetricsDiff, _show_diff
++from dvc.command.metrics import CmdMetricsDiff, _show_diff, CmdMetricsShow
+ 
+ 
+ def test_metrics_diff(dvc, mocker):
+@@ -64,7 +64,7 @@ def test_metrics_diff_no_diff():
+ 
+ 
+ def test_metrics_diff_no_changes():
+-    assert _show_diff({}) == "No changes."
++    assert _show_diff({}) == ""
+ 
+ 
+ def test_metrics_diff_new_metric():
+@@ -83,3 +83,39 @@ def test_metrics_diff_deleted_metric():
+         "   Path      Metric   Value         Change      \n"
+         "other.json   a.b.d    None    diff not supported"
+     )
++
++
++def test_metrics_show(dvc, mocker):
++    cli_args = parse_args(
++        [
++            "metrics",
++            "show",
++            "-t",
++            "json",
++            "-x",
++            "x.path",
++            "-R",
++            "--all-tags",
++            "--all-branches",
++            "--all-commits",
++            "target1",
++            "target2",
++        ]
++    )
++    assert cli_args.func == CmdMetricsShow
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.metrics.show.show", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(
++        cmd.repo,
++        ["target1", "target2"],
++        typ="json",
++        xpath="x.path",
++        recursive=True,
++        all_tags=True,
++        all_branches=True,
++        all_commits=True,
++    )
+2026-04-28 17:40:29,255 - INFO - Grading answer for iterative__dvc_0.92.0_0.92.1...
+2026-04-28 17:40:29,256 - INFO - report: {'iterative__dvc_0.92.0_0.92.1': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/command/test_data_sync.py::test_fetch', 'tests/unit/command/test_data_sync.py::test_pull', 'tests/unit/command/test_data_sync.py::test_push', 'tests/unit/command/test_status.py::test_cloud_status'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/unit/command/test_metrics.py::test_metrics_diff', 'tests/unit/command/test_metrics.py::test_metrics_diff_deleted_metric', 'tests/unit/command/test_metrics.py::test_metrics_diff_new_metric', 'tests/unit/command/test_metrics.py::test_metrics_diff_no_diff', 'tests/unit/command/test_metrics.py::test_metrics_show_json_diff', 'tests/unit/command/test_metrics.py::test_metrics_show_raw_diff'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_0.92.0_0.92.1: resolved: True
+2026-04-28 17:40:29,256 - INFO - Attempting to stop container sweb.eval.iterative__dvc_0.92.0_0.92.1.eval_input_20260427-154634...
+2026-04-28 17:40:46,969 - INFO - Attempting to remove container sweb.eval.iterative__dvc_0.92.0_0.92.1.eval_input_20260427-154634...
+2026-04-28 17:40:47,025 - INFO - Container sweb.eval.iterative__dvc_0.92.0_0.92.1.eval_input_20260427-154634 removed.
+2026-04-28 17:40:47,025 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_0.92.0_0.92.1:latest...
+2026-04-28 17:40:47,030 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.92.0_0.92.1:latest removed.

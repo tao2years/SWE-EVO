@@ -1,0 +1,17 @@
+diff --git a/dvc/config.py b/dvc/config.py
+index 77f086c..dd8c8ce 100644
+--- a/dvc/config.py
++++ b/dvc/config.py
+@@ -259,6 +259,12 @@ class Config(dict):
+             if os.path.isabs(path) or re.match(r"\w+://", path):
+                 return path
+ 
++            # handle ~ home dir
++            if path.startswith("~"):
++                path = os.path.expanduser(path)
++                if os.path.isabs(path):
++                    return path
++
+             # on windows convert slashes to backslashes
+             # to have path compatible with abs_conf_dir
+             if os.path.sep == "\\" and "/" in path:

@@ -1,0 +1,136 @@
+2026-04-28 18:01:15,299 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_2.21.1_2.21.2
+Building instance image sweb.eval.x86_64.iterative__dvc_2.21.1_2.21.2:latest for iterative__dvc_2.21.1_2.21.2
+2026-04-28 18:01:15,314 - INFO - Image sweb.eval.x86_64.iterative__dvc_2.21.1_2.21.2:latest already exists, skipping build.
+2026-04-28 18:01:15,315 - INFO - Creating container for iterative__dvc_2.21.1_2.21.2...
+2026-04-28 18:01:18,933 - INFO - Container for iterative__dvc_2.21.1_2.21.2 created: c8e9d6fcc872909b04e7a0e1a34c710c4c5dc0439ad464b63901968c4b7329ea
+2026-04-28 18:01:19,057 - INFO - Container for iterative__dvc_2.21.1_2.21.2 started: c8e9d6fcc872909b04e7a0e1a34c710c4c5dc0439ad464b63901968c4b7329ea
+2026-04-28 18:01:19,057 - INFO - Intermediate patch for iterative__dvc_2.21.1_2.21.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.21.1_2.21.2/patch.diff, now applying to container...
+2026-04-28 18:01:19,408 - INFO - >>>>> Applied Patch:
+Checking patch tests/func/api/test_params.py...
+Checking patch dvc/repo/params/show.py...
+Applied patch tests/func/api/test_params.py cleanly.
+Applied patch dvc/repo/params/show.py cleanly.
+
+2026-04-28 18:01:19,460 - INFO - Git diff before:
+diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py
+index 5a79f54a4..d40086119 100644
+--- a/dvc/repo/params/show.py
++++ b/dvc/repo/params/show.py
+@@ -42,7 +42,7 @@ def _collect_configs(
+     params, fs_paths = collect(
+         repo,
+         targets=targets or [],
+-        deps=True,
++        deps=deps,
+         output_filter=_is_params,
+         rev=rev,
+         duplicates=deps or stages is not None,
+@@ -89,7 +89,10 @@ def _read_params(
+                 if name in fs_paths:
+                     fs_paths.remove(name)
+     else:
+-        fs_paths += [param.fs_path for param in params]
++        for param in params:
++            name = os.sep.join(repo.fs.path.relparts(param.fs_path))
++            if name in fs_paths:
++                fs_paths.remove(name)
+ 
+     for fs_path in fs_paths:
+         from_path = _read_fs_path(repo.fs, fs_path, onerror=onerror)
+diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py
+index b2e954539..85e82ae88 100644
+--- a/tests/func/api/test_params.py
++++ b/tests/func/api/test_params.py
+@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):
+         "bar": 2,
+         "foobar": 3,
+     }
++    assert api.params_show("params.yaml", stages="stage-1") == {
++        "foo": 5,
++    }
+ 
+ 
+ def test_params_show_deps(params_repo):
+@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):
+ 
+     with pytest.raises(DvcException, match="No params found"):
+         api.params_show(deps=True)
++
++
++def test_params_show_untracked_target(params_repo, tmp_dir):
++    tmp_dir.gen("params_foo.yaml", "foo: 1")
++
++    assert api.params_show("params_foo.yaml") == {"foo": 1}
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", stages="stage-0")
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", deps=True)
+2026-04-28 18:01:19,460 - INFO - Eval script for iterative__dvc_2.21.1_2.21.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.21.1_2.21.2/eval.sh; copying to container...
+2026-04-28 18:05:03,370 - INFO - Test runtime: 223.86 seconds
+2026-04-28 18:05:03,371 - INFO - Test output for iterative__dvc_2.21.1_2.21.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.21.1_2.21.2/test_output.txt
+2026-04-28 18:05:03,434 - INFO - Git diff after:
+diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py
+index 5a79f54a4..d40086119 100644
+--- a/dvc/repo/params/show.py
++++ b/dvc/repo/params/show.py
+@@ -42,7 +42,7 @@ def _collect_configs(
+     params, fs_paths = collect(
+         repo,
+         targets=targets or [],
+-        deps=True,
++        deps=deps,
+         output_filter=_is_params,
+         rev=rev,
+         duplicates=deps or stages is not None,
+@@ -89,7 +89,10 @@ def _read_params(
+                 if name in fs_paths:
+                     fs_paths.remove(name)
+     else:
+-        fs_paths += [param.fs_path for param in params]
++        for param in params:
++            name = os.sep.join(repo.fs.path.relparts(param.fs_path))
++            if name in fs_paths:
++                fs_paths.remove(name)
+ 
+     for fs_path in fs_paths:
+         from_path = _read_fs_path(repo.fs, fs_path, onerror=onerror)
+diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py
+index b2e954539..85e82ae88 100644
+--- a/tests/func/api/test_params.py
++++ b/tests/func/api/test_params.py
+@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):
+         "bar": 2,
+         "foobar": 3,
+     }
++    assert api.params_show("params.yaml", stages="stage-1") == {
++        "foo": 5,
++    }
+ 
+ 
+ def test_params_show_deps(params_repo):
+@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):
+ 
+     with pytest.raises(DvcException, match="No params found"):
+         api.params_show(deps=True)
++
++
++def test_params_show_untracked_target(params_repo, tmp_dir):
++    tmp_dir.gen("params_foo.yaml", "foo: 1")
++
++    assert api.params_show("params_foo.yaml") == {"foo": 1}
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", stages="stage-0")
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", deps=True)
+2026-04-28 18:05:03,434 - INFO - Grading answer for iterative__dvc_2.21.1_2.21.2...
+2026-04-28 18:05:03,437 - INFO - report: {'iterative__dvc_2.21.1_2.21.2': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/func/api/test_params.py::test_params_show_untracked_target']}, 'PASS_TO_PASS': {'success': ['tests/func/api/test_params.py::test_params_show_deps', 'tests/func/api/test_params.py::test_params_show_no_params_found', 'tests/func/api/test_params.py::test_params_show_repo', 'tests/func/api/test_params.py::test_params_show_stage_without_params', 'tests/func/api/test_params.py::test_params_show_targets'], 'failure': ['tests/func/api/test_params.py::test_params_show_no_args', 'tests/func/api/test_params.py::test_params_show_stages', 'tests/func/api/test_params.py::test_params_show_while_running_stage']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_2.21.1_2.21.2: resolved: False
+2026-04-28 18:05:03,437 - INFO - Attempting to stop container sweb.eval.iterative__dvc_2.21.1_2.21.2.eval_input_20260427-154634...
+2026-04-28 18:05:18,656 - INFO - Attempting to remove container sweb.eval.iterative__dvc_2.21.1_2.21.2.eval_input_20260427-154634...
+2026-04-28 18:05:18,780 - INFO - Container sweb.eval.iterative__dvc_2.21.1_2.21.2.eval_input_20260427-154634 removed.
+2026-04-28 18:05:18,780 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_2.21.1_2.21.2:latest...
+2026-04-28 18:05:18,783 - INFO - Image sweb.eval.x86_64.iterative__dvc_2.21.1_2.21.2:latest removed.

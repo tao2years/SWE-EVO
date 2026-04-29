@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_1.0.1_1.0.2": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_1.0.1_1.0.2",
+    "model_patch": "diff --git a/dvc/command/git_hook.py b/dvc/command/git_hook.py\nindex 6c64c58..719a54c 100644\n--- a/dvc/command/git_hook.py\n+++ b/dvc/command/git_hook.py\n@@ -52,7 +52,7 @@ class CmdPostCheckout(CmdHookBase):\n \n \n class CmdPrePush(CmdHookBase):\n-    def run(self):\n+    def _run(self):\n         from dvc.main import main\n \n         return main([\"push\"])\ndiff --git a/dvc/command/run.py b/dvc/command/run.py\nindex 1a3ac6d..fa839d9 100644\n--- a/dvc/command/run.py\n+++ b/dvc/command/run.py\n@@ -31,6 +31,12 @@ class CmdRun(CmdBase):\n             )\n             return 1\n \n+        if self.args.file and not self.args.single_stage:\n+            logger.error(\n+                \"option `--file` is only allowed with `--single-stage`\"\n+            )\n+            return 1\n+\n         try:\n             self.repo.run(\n                 cmd=self._parsed_cmd(),\n@@ -160,7 +166,7 @@ def add_parser(subparsers, parent_parser):\n     )\n     run_parser.add_argument(\n         \"--file\",\n-        help=\"Specify name of the DVC-file this command will generate.\",\n+        help=argparse.SUPPRESS,\n         metavar=\"<filename>\",\n     )\n     run_parser.add_argument(\n"
+  }
+}

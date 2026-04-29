@@ -1,0 +1,234 @@
+2026-04-28 18:49:52,289 - INFO - Environment image sweb.env.py.x86_64.ac854d228b933236eed97a:latest found for pydantic__pydantic_v2.6.0b1_v2.6.0
+Building instance image sweb.eval.x86_64.pydantic__pydantic_v2.6.0b1_v2.6.0:latest for pydantic__pydantic_v2.6.0b1_v2.6.0
+2026-04-28 18:49:52,304 - INFO - Image sweb.eval.x86_64.pydantic__pydantic_v2.6.0b1_v2.6.0:latest already exists, skipping build.
+2026-04-28 18:49:52,304 - INFO - Creating container for pydantic__pydantic_v2.6.0b1_v2.6.0...
+2026-04-28 18:49:56,002 - INFO - Container for pydantic__pydantic_v2.6.0b1_v2.6.0 created: fca1a423b28f649ec87950770aa00ed61e29e8369751def3046ab1004a634c87
+2026-04-28 18:49:56,133 - INFO - Container for pydantic__pydantic_v2.6.0b1_v2.6.0 started: fca1a423b28f649ec87950770aa00ed61e29e8369751def3046ab1004a634c87
+2026-04-28 18:49:56,133 - INFO - Intermediate patch for pydantic__pydantic_v2.6.0b1_v2.6.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/pydantic__pydantic_v2.6.0b1_v2.6.0/patch.diff, now applying to container...
+2026-04-28 18:49:56,470 - INFO - >>>>> Applied Patch:
+Checking patch tests/test_discriminated_union.py...
+Checking patch pydantic/json_schema.py...
+Applied patch tests/test_discriminated_union.py cleanly.
+Applied patch pydantic/json_schema.py cleanly.
+
+2026-04-28 18:49:56,529 - INFO - Git diff before:
+diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py
+index eee9e60eb..aa6b98fc7 100644
+--- a/pydantic/json_schema.py
++++ b/pydantic/json_schema.py
+@@ -1128,7 +1128,7 @@ class GenerateJsonSchema:
+             # property on all choices. If so, that property will be used as the OpenAPI discriminator.
+             for alias_path in schema['discriminator']:
+                 if not isinstance(alias_path, list):
+-                    break  # this means that the discriminator is not a list of alias paths
++                    continue  # this means that the discriminator element is not an alias path, skip it
+                 if len(alias_path) != 1:
+                     continue  # this means that the "alias" does not represent a single field
+                 alias = alias_path[0]
+diff --git a/tests/test_discriminated_union.py b/tests/test_discriminated_union.py
+index 251fee3d3..24e319da3 100644
+--- a/tests/test_discriminated_union.py
++++ b/tests/test_discriminated_union.py
+@@ -2,7 +2,7 @@ import re
+ import sys
+ from enum import Enum, IntEnum
+ from types import SimpleNamespace
+-from typing import Any, Callable, Generic, Optional, Sequence, TypeVar, Union
++from typing import Any, Callable, Generic, List, Optional, Sequence, TypeVar, Union
+ 
+ import pytest
+ from dirty_equals import HasRepr, IsStr
+@@ -12,6 +12,8 @@ from typing_extensions import Annotated, Literal
+ from pydantic import BaseModel, ConfigDict, Discriminator, Field, TypeAdapter, ValidationError, field_validator
+ from pydantic._internal._discriminated_union import apply_discriminator
+ from pydantic.errors import PydanticUserError
++from pydantic.fields import FieldInfo
++from pydantic.json_schema import GenerateJsonSchema
+ from pydantic.types import Tag
+ 
+ 
+@@ -1696,3 +1698,68 @@ def test_callable_discriminated_union_with_missing_tag() -> None:
+             ]
+     except PydanticUserError as exc_info:
+         assert exc_info.code == 'callable-discriminator-no-tag'
++
++
++def test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions() -> None:
++    class ItemType(str, Enum):
++        ITEM1 = 'item1'
++        ITEM2 = 'item2'
++
++    class CreateItem1(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM1], Field(alias='type')]
++        id: int
++
++    class CreateItem2(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM2], Field(alias='type')]
++        id: int
++
++    class CreateObjectDto(BaseModel):
++        id: int
++        items: List[
++            Annotated[
++                Union[
++                    CreateItem1,
++                    CreateItem2,
++                ],
++                Field(discriminator='item_type'),
++            ]
++        ]
++
++    adaptor = TypeAdapter(
++        Annotated[CreateObjectDto, FieldInfo(examples=[{'id': 1, 'items': [{'id': 3, 'type': 'ITEM1'}]}])]
++    )
++
++    schema_map, definitions = GenerateJsonSchema().generate_definitions([(adaptor, 'validation', adaptor.core_schema)])
++    assert definitions == {
++        'CreateItem1': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item1', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem1',
++            'type': 'object',
++        },
++        'CreateItem2': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item2', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem2',
++            'type': 'object',
++        },
++        'CreateObjectDto': {
++            'properties': {
++                'id': {'title': 'Id', 'type': 'integer'},
++                'items': {
++                    'items': {
++                        'discriminator': {
++                            'mapping': {'item1': '#/$defs/CreateItem1', 'item2': '#/$defs/CreateItem2'},
++                            'propertyName': 'type',
++                        },
++                        'oneOf': [{'$ref': '#/$defs/CreateItem1'}, {'$ref': '#/$defs/CreateItem2'}],
++                    },
++                    'title': 'Items',
++                    'type': 'array',
++                },
++            },
++            'required': ['id', 'items'],
++            'title': 'CreateObjectDto',
++            'type': 'object',
++        },
++    }
+2026-04-28 18:49:56,530 - INFO - Eval script for pydantic__pydantic_v2.6.0b1_v2.6.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/pydantic__pydantic_v2.6.0b1_v2.6.0/eval.sh; copying to container...
+2026-04-28 18:51:54,800 - INFO - Test runtime: 118.21 seconds
+2026-04-28 18:51:54,800 - INFO - Test output for pydantic__pydantic_v2.6.0b1_v2.6.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/pydantic__pydantic_v2.6.0b1_v2.6.0/test_output.txt
+2026-04-28 18:51:54,849 - INFO - Git diff after:
+diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py
+index eee9e60eb..aa6b98fc7 100644
+--- a/pydantic/json_schema.py
++++ b/pydantic/json_schema.py
+@@ -1128,7 +1128,7 @@ class GenerateJsonSchema:
+             # property on all choices. If so, that property will be used as the OpenAPI discriminator.
+             for alias_path in schema['discriminator']:
+                 if not isinstance(alias_path, list):
+-                    break  # this means that the discriminator is not a list of alias paths
++                    continue  # this means that the discriminator element is not an alias path, skip it
+                 if len(alias_path) != 1:
+                     continue  # this means that the "alias" does not represent a single field
+                 alias = alias_path[0]
+diff --git a/tests/test_discriminated_union.py b/tests/test_discriminated_union.py
+index 251fee3d3..24e319da3 100644
+--- a/tests/test_discriminated_union.py
++++ b/tests/test_discriminated_union.py
+@@ -2,7 +2,7 @@ import re
+ import sys
+ from enum import Enum, IntEnum
+ from types import SimpleNamespace
+-from typing import Any, Callable, Generic, Optional, Sequence, TypeVar, Union
++from typing import Any, Callable, Generic, List, Optional, Sequence, TypeVar, Union
+ 
+ import pytest
+ from dirty_equals import HasRepr, IsStr
+@@ -12,6 +12,8 @@ from typing_extensions import Annotated, Literal
+ from pydantic import BaseModel, ConfigDict, Discriminator, Field, TypeAdapter, ValidationError, field_validator
+ from pydantic._internal._discriminated_union import apply_discriminator
+ from pydantic.errors import PydanticUserError
++from pydantic.fields import FieldInfo
++from pydantic.json_schema import GenerateJsonSchema
+ from pydantic.types import Tag
+ 
+ 
+@@ -1696,3 +1698,68 @@ def test_callable_discriminated_union_with_missing_tag() -> None:
+             ]
+     except PydanticUserError as exc_info:
+         assert exc_info.code == 'callable-discriminator-no-tag'
++
++
++def test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions() -> None:
++    class ItemType(str, Enum):
++        ITEM1 = 'item1'
++        ITEM2 = 'item2'
++
++    class CreateItem1(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM1], Field(alias='type')]
++        id: int
++
++    class CreateItem2(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM2], Field(alias='type')]
++        id: int
++
++    class CreateObjectDto(BaseModel):
++        id: int
++        items: List[
++            Annotated[
++                Union[
++                    CreateItem1,
++                    CreateItem2,
++                ],
++                Field(discriminator='item_type'),
++            ]
++        ]
++
++    adaptor = TypeAdapter(
++        Annotated[CreateObjectDto, FieldInfo(examples=[{'id': 1, 'items': [{'id': 3, 'type': 'ITEM1'}]}])]
++    )
++
++    schema_map, definitions = GenerateJsonSchema().generate_definitions([(adaptor, 'validation', adaptor.core_schema)])
++    assert definitions == {
++        'CreateItem1': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item1', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem1',
++            'type': 'object',
++        },
++        'CreateItem2': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item2', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem2',
++            'type': 'object',
++        },
++        'CreateObjectDto': {
++            'properties': {
++                'id': {'title': 'Id', 'type': 'integer'},
++                'items': {
++                    'items': {
++                        'discriminator': {
++                            'mapping': {'item1': '#/$defs/CreateItem1', 'item2': '#/$defs/CreateItem2'},
++                            'propertyName': 'type',
++                        },
++                        'oneOf': [{'$ref': '#/$defs/CreateItem1'}, {'$ref': '#/$defs/CreateItem2'}],
++                    },
++                    'title': 'Items',
++                    'type': 'array',
++                },
++            },
++            'required': ['id', 'items'],
++            'title': 'CreateObjectDto',
++            'type': 'object',
++        },
++    }
+2026-04-28 18:51:54,850 - INFO - Grading answer for pydantic__pydantic_v2.6.0b1_v2.6.0...
+2026-04-28 18:51:54,851 - INFO - report: {'pydantic__pydantic_v2.6.0b1_v2.6.0': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/test_discriminated_union.py::test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions']}, 'PASS_TO_PASS': {'success': ['tests/test_discriminated_union.py::test_alias_different', 'tests/test_discriminated_union.py::test_alias_same', 'tests/test_discriminated_union.py::test_aliases_matching_is_not_sufficient', 'tests/test_discriminated_union.py::test_callable_discriminated_union_recursive', 'tests/test_discriminated_union.py::test_callable_discriminated_union_with_missing_tag', 'tests/test_discriminated_union.py::test_callable_discriminated_union_with_type_adapter', 'tests/test_discriminated_union.py::test_discriminated_annotated_union', 'tests/test_discriminated_union.py::test_discriminated_single_variant[False]', 'tests/test_discriminated_union.py::test_discriminated_single_variant[True]', 'tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value', 'tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value_with_alias', 'tests/test_discriminated_union.py::test_discriminated_union_defined_discriminator', 'tests/test_discriminated_union.py::test_discriminated_union_int', 'tests/test_discriminated_union.py::test_discriminated_union_invalid_type', 'tests/test_discriminated_union.py::test_discriminated_union_literal_discriminator', 'tests/test_discriminated_union.py::test_discriminated_union_root_same_discriminator', 'tests/test_discriminated_union.py::test_discriminated_union_single_variant', 'tests/test_discriminated_union.py::test_discriminated_union_type', 'tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_str]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_str]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_discriminator]', 'tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_str]', 'tests/test_discriminated_union.py::test_distinct_choices', 'tests/test_discriminated_union.py::test_function_after_discriminator', 'tests/test_discriminated_union.py::test_generic', 'tests/test_discriminated_union.py::test_invalid_alias', 'tests/test_discriminated_union.py::test_invalid_discriminated_union_type', 'tests/test_discriminated_union.py::test_invalid_discriminator_type', 'tests/test_discriminated_union.py::test_invalid_str_choice_discriminator_values', 'tests/test_discriminated_union.py::test_lax_or_strict_definitions', 'tests/test_discriminated_union.py::test_missing_discriminator_field', 'tests/test_discriminated_union.py::test_nested', 'tests/test_discriminated_union.py::test_nested_discriminated_union', 'tests/test_discriminated_union.py::test_nested_optional_unions', 'tests/test_discriminated_union.py::test_nested_unwrapping', 'tests/test_discriminated_union.py::test_none_schema', 'tests/test_discriminated_union.py::test_optional_union', 'tests/test_discriminated_union.py::test_optional_union_with_defaults', 'tests/test_discriminated_union.py::test_plain_function_schema_is_invalid', 'tests/test_discriminated_union.py::test_sequence_discriminated_union', 'tests/test_discriminated_union.py::test_union_discriminator_literals', 'tests/test_discriminated_union.py::test_union_in_submodel', 'tests/test_discriminated_union.py::test_unions_of_optionals', 'tests/test_discriminated_union.py::test_various_syntax_options_for_callable_union', 'tests/test_discriminated_union.py::test_wrap_function_schema', 'tests/test_discriminated_union.py::test_wrapped_nullable_union'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for pydantic__pydantic_v2.6.0b1_v2.6.0: resolved: False
+2026-04-28 18:51:54,851 - INFO - Attempting to stop container sweb.eval.pydantic__pydantic_v2.6.0b1_v2.6.0.eval_input_20260427-154634...
+2026-04-28 18:52:10,012 - INFO - Attempting to remove container sweb.eval.pydantic__pydantic_v2.6.0b1_v2.6.0.eval_input_20260427-154634...
+2026-04-28 18:52:10,089 - INFO - Container sweb.eval.pydantic__pydantic_v2.6.0b1_v2.6.0.eval_input_20260427-154634 removed.
+2026-04-28 18:52:10,089 - INFO - Attempting to remove image sweb.eval.x86_64.pydantic__pydantic_v2.6.0b1_v2.6.0:latest...
+2026-04-28 18:52:10,093 - INFO - Image sweb.eval.x86_64.pydantic__pydantic_v2.6.0b1_v2.6.0:latest removed.

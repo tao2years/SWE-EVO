@@ -1,0 +1,2023 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dvc/repo/params/show.py
+	modified:   tests/func/api/test_params.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 512bfc4305a7607f63514dc734663c973ed954b2
+Author: Peter Rowlands (변기호) <peter@pmrowla.com>
+Date:   Fri Aug 26 00:19:05 2022 +0900
+
+    tests: mark exp queue func tests xfail (#8186)
+
+diff --git a/tests/func/experiments/test_queue.py b/tests/func/experiments/test_queue.py
+index 6802da0c7..7cb4c5c53 100644
+--- a/tests/func/experiments/test_queue.py
++++ b/tests/func/experiments/test_queue.py
+@@ -42,6 +42,7 @@ def failed_tasks(tmp_dir, dvc, scm, test_queue, failed_exp_stage):
+     return name_list
+ 
+ 
++@pytest.mark.xfail(strict=False, reason="pytest-celery flaky")
+ @pytest.mark.parametrize("follow", [True, False])
+ def test_celery_logs(
+     tmp_dir,
+@@ -64,7 +65,7 @@ def test_celery_logs(
+     assert "failed to reproduce 'failed-copy-file'" in captured.out
+ 
+ 
+-@pytest.mark.flaky(max_runs=3, min_passes=1)
++@pytest.mark.xfail(strict=False, reason="pytest-celery flaky")
+ def test_queue_remove_done(dvc, failed_tasks, success_tasks):
+     assert len(dvc.experiments.celery_queue.failed_stash) == 3
+     status = to_dict(dvc.experiments.celery_queue.status())
++ git -c core.fileMode=false diff 512bfc4305a7607f63514dc734663c973ed954b2
+diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py
+index 5a79f54a4..d40086119 100644
+--- a/dvc/repo/params/show.py
++++ b/dvc/repo/params/show.py
+@@ -42,7 +42,7 @@ def _collect_configs(
+     params, fs_paths = collect(
+         repo,
+         targets=targets or [],
+-        deps=True,
++        deps=deps,
+         output_filter=_is_params,
+         rev=rev,
+         duplicates=deps or stages is not None,
+@@ -89,7 +89,10 @@ def _read_params(
+                 if name in fs_paths:
+                     fs_paths.remove(name)
+     else:
+-        fs_paths += [param.fs_path for param in params]
++        for param in params:
++            name = os.sep.join(repo.fs.path.relparts(param.fs_path))
++            if name in fs_paths:
++                fs_paths.remove(name)
+ 
+     for fs_path in fs_paths:
+         from_path = _read_fs_path(repo.fs, fs_path, onerror=onerror)
+diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py
+index b2e954539..85e82ae88 100644
+--- a/tests/func/api/test_params.py
++++ b/tests/func/api/test_params.py
+@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):
+         "bar": 2,
+         "foobar": 3,
+     }
++    assert api.params_show("params.yaml", stages="stage-1") == {
++        "foo": 5,
++    }
+ 
+ 
+ def test_params_show_deps(params_repo):
+@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):
+ 
+     with pytest.raises(DvcException, match="No params found"):
+         api.params_show(deps=True)
++
++
++def test_params_show_untracked_target(params_repo, tmp_dir):
++    tmp_dir.gen("params_foo.yaml", "foo: 1")
++
++    assert api.params_show("params_foo.yaml") == {"foo": 1}
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", stages="stage-0")
++
++    with pytest.raises(DvcException, match="No params found"):
++        api.params_show("params_foo.yaml", deps=True)
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (24.2)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging>=24.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from wheel) (24.1)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.12.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 27.8 kB/s eta 0:00:00
+Downloading wheel-0.47.0-py3-none-any.whl (32 kB)
+Downloading gitpython-3.1.48-py3-none-any.whl (209 kB)
+Installing collected packages: wheel, pip, GitPython
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.44.0
+    Uninstalling wheel-0.44.0:
+      Successfully uninstalled wheel-0.44.0
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+  Attempting uninstall: GitPython
+    Found existing installation: GitPython 3.1.43
+    Uninstalling GitPython-3.1.43:
+      Successfully uninstalled GitPython-3.1.43
+Successfully installed GitPython-3.1.48 pip-26.0.1 wheel-0.47.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Requirement already satisfied: pyyaml==5.4.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (5.4.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-mbk3ssc_
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-mbk3ssc_
+  Resolved https://github.com/iterative/mock-ssh-server.git to commit cd2032aeb04bb142dbc964e50839133c3584cf08
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × installing build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> [2 lines of output]
+      ERROR: Could not find a version that satisfies the requirement setuptools>=40.8.0 (from versions: none)
+      ERROR: No matching distribution found for setuptools>=40.8.0
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'git+https://github.com/iterative/mock-ssh-server.git' when installing build dependencies
++ true
++ python -m pip install -r tests/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tests/requirements.txt'
++ true
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × installing build dependencies did not run successfully.
+  │ exit code: 1
+  ╰─> [4 lines of output]
+      Collecting setuptools>=48
+        Downloading setuptools-82.0.1-py3-none-any.whl.metadata (6.5 kB)
+      ERROR: Could not find a version that satisfies the requirement setuptools_scm>=7 (from versions: none)
+      ERROR: No matching distribution found for setuptools_scm>=7
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+ERROR: Failed to build 'file:///testbed' when installing build dependencies
++ python -m pip install 'numpy<=1.20'
+Requirement already satisfied: numpy<=1.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (1.20.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'pytest<8'
+Requirement already satisfied: pytest<8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (7.1.2)
+Requirement already satisfied: attrs>=19.2.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (21.4.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.5.0)
+Requirement already satisfied: py>=1.8.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.11.0)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/func/api/test_params.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-7.1.2, pluggy-1.5.0
+rootdir: /testbed, configfile: pyproject.toml
+plugins: lazy-fixture-0.6.3, docker-0.11.0, hydra-core-1.3.2, flaky-3.7.0, cov-3.0.0, mock-3.8.2, anyio-4.6.0, timeout-2.1.0, forked-1.6.0, xdist-2.5.0, test-utils-0.0.8
+collected 10 items
+
+tests/func/api/test_params.py F..FFF...F                                 [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_params_show_no_args ___________________________
+
+params_repo = None
+
+    def test_params_show_no_args(params_repo):
+>       assert api.params_show() == {
+            "params.yaml:foo": 5,
+            "bar": 2,
+            "foobar": 3,
+            "other_params.json:foo": {"bar": 4},
+        }
+E       AssertionError: assert {'foo': 5} == {'bar': 2, 'f....yaml:foo': 5}
+E         Left contains 1 more item:
+E         {'foo': 5}
+E         Right contains 4 more items:
+E         {'bar': 2,
+E          'foobar': 3,
+E          'other_params.json:foo': {'bar': 4},
+E          'params.yaml:foo': 5}...
+E         
+E         ...Full output truncated (2 lines hidden), use '-vv' to show
+
+/testbed/tests/func/api/test_params.py:55: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+2026-04-28 10:05:00,601 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/config.local' to gitignore file.
+2026-04-28 10:05:00,601 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/tmp' to gitignore file.
+2026-04-28 10:05:00,602 DEBUG: Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/cache' to gitignore file.
+2026-04-28 10:05:00,602 DEBUG: Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/.gitignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/config', '../dvc-test-cachemaster0/.dvc/.gitignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvcignore'}
+Initialized DVC repository.
+
+You can now commit the changes to git.
+
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:00,861 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:00,898 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:00,921 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:00,948 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+DEBUG    dvc.repo.scm_context:scm_context.py:84 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/config.local' to gitignore file.
+DEBUG    dvc.repo.scm_context:scm_context.py:84 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/tmp' to gitignore file.
+DEBUG    dvc.repo.scm_context:scm_context.py:84 Added '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/cache' to gitignore file.
+DEBUG    dvc.repo.scm_context:scm_context.py:70 Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/.gitignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvc/config', '../dvc-test-cachemaster0/.dvc/.gitignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster0/.dvcignore'}
+INFO     dvc.repo.init:init.py:88 Initialized DVC repository.
+
+INFO     dvc.repo.init:init.py:90 You can now commit the changes to git.
+
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+___________________________ test_params_show_stages ____________________________
+
+params_repo = None
+
+    def test_params_show_stages(params_repo):
+>       assert api.params_show(stages="stage-2") == {"foo": {"bar": 4}}
+
+/testbed/tests/func/api/test_params.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/api/params.py:274: in params_show
+    return _postprocess(params)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+params = {}
+
+    def _postprocess(params):
+        processed = {}
+        for rev, rev_data in params.items():
+            processed[rev] = {}
+    
+            counts = Counter()
+            for file_data in rev_data["data"].values():
+                for k in file_data["data"]:
+                    counts[k] += 1
+    
+            for file_name, file_data in rev_data["data"].items():
+                to_merge = {
+                    (k if counts[k] == 1 else f"{file_name}:{k}"): v
+                    for k, v in file_data["data"].items()
+                }
+                processed[rev] = {**processed[rev], **to_merge}
+    
+        if "workspace" in processed:
+            del processed["workspace"]
+    
+        if not processed:
+>           raise DvcException("No params found")
+E           dvc.exceptions.DvcException: No params found
+
+/testbed/dvc/api/params.py:261: DvcException
+---------------------------- Captured stdout setup -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:01,663 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:01,685 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,708 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,733 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+____________________________ test_params_show_revs _____________________________
+
+params_repo = None
+
+    def test_params_show_revs(params_repo):
+>       assert api.params_show(rev="HEAD~1") == {
+            "params.yaml:foo": 1,
+            "bar": 2,
+            "foobar": 3,
+            "other_params.json:foo": {"bar": 4},
+        }
+
+/testbed/tests/func/api/test_params.py:99: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/api/params.py:266: in params_show
+    params = _repo.params.show(
+/testbed/dvc/repo/params/__init__.py:8: in show
+    return show(self.repo, *args, **kwargs)
+/testbed/dvc/repo/__init__.py:49: in wrapper
+    return f(repo, *args, **kwargs)
+/testbed/dvc/repo/params/show.py:140: in show
+    for branch in repo.brancher(revs=revs):
+/testbed/dvc/repo/brancher.py:65: in brancher
+    found_revs = iter_revs(
+/testbed/dvc/scm.py:257: in iter_revs
+    return group_by(rev_resolver, results)
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/seqs.py:313: in group_by
+    result[f(item)].append(item)
+/testbed/dvc/scm.py:159: in resolve_rev
+    return scm.resolve_rev(fix_exp_head(scm, rev))
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/scmrepo/git/__init__.py:289: in _backend_func
+    result = func(*args, **kwargs)
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/scmrepo/git/backend/pygit2.py:289: in resolve_rev
+    commit, _ref = self._resolve_refish(rev)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <scmrepo.git.backend.pygit2.Pygit2Backend object at 0x733db73b7a00>
+refish = 'HEAD~1'
+
+    def _resolve_refish(self, refish: str):
+>       from pygit2 import GIT_OBJ_COMMIT, Tag
+E       ImportError: cannot import name 'GIT_OBJ_COMMIT' from 'pygit2' (/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pygit2/__init__.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/scmrepo/git/backend/pygit2.py:122: ImportError
+---------------------------- Captured stdout setup -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:01,884 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:01,909 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,934 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,961 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+_____________________ test_params_show_while_running_stage _____________________
+
+G = <networkx.classes.digraph.DiGraph object at 0x733db7720070>
+stages = [Stage: 'merge'], downstream = False, single_item = False
+on_unchanged = None, kwargs = {'interactive': False}, steps = [Stage: 'merge']
+force_downstream = False, result = [], unchanged = [], ret = []
+checkpoint_func = None, stage = Stage: 'merge'
+
+    def _reproduce_stages(
+        G, stages, downstream=False, single_item=False, on_unchanged=None, **kwargs
+    ):
+        r"""Derive the evaluation of the given node for the given graph.
+    
+        When you _reproduce a stage_, you want to _evaluate the descendants_
+        to know if it make sense to _recompute_ it. A post-ordered search
+        will give us an order list of the nodes we want.
+    
+        For example, let's say that we have the following pipeline:
+    
+                                   E
+                                  / \
+                                 D   F
+                                / \   \
+                               B   C   G
+                                \ /
+                                 A
+    
+        The derived evaluation of D would be: [A, B, C, D]
+    
+        In case that `downstream` option is specified, the desired effect
+        is to derive the evaluation starting from the given stage up to the
+        ancestors. However, the `networkx.ancestors` returns a set, without
+        any guarantee of any order, so we are going to reverse the graph and
+        use a reverse post-ordered search using the given stage as a starting
+        point.
+    
+                       E                                   A
+                      / \                                 / \
+                     D   F                               B   C   G
+                    / \   \        --- reverse -->        \ /   /
+                   B   C   G                               D   F
+                    \ /                                     \ /
+                     A                                       E
+    
+        The derived evaluation of _downstream_ B would be: [B, D, E]
+        """
+        steps = _get_steps(G, stages, downstream, single_item)
+    
+        force_downstream = kwargs.pop("force_downstream", False)
+        result = []
+        unchanged = []
+        # `ret` is used to add a cosmetic newline.
+        ret = []
+        checkpoint_func = kwargs.pop("checkpoint_func", None)
+        for stage in steps:
+            if ret:
+                logger.info("")
+    
+            if checkpoint_func:
+                kwargs["checkpoint_func"] = partial(
+                    _repro_callback, checkpoint_func, unchanged
+                )
+    
+            from dvc.stage.monitor import CheckpointKilledError
+    
+            try:
+>               ret = _reproduce_stage(stage, **kwargs)
+
+/testbed/dvc/repo/reproduce.py:206: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+stage = Stage: 'merge', kwargs = {'interactive': False}
+_run_callback = <function _reproduce_stage.<locals>._run_callback at 0x733db6e9c4c0>
+checkpoint_func = None
+
+    def _reproduce_stage(stage: "Stage", **kwargs):
+        def _run_callback(repro_callback):
+            _dump_stage(stage)
+            _track_stage(stage)
+            repro_callback([stage])
+    
+        checkpoint_func = kwargs.pop("checkpoint_func", None)
+        if stage.is_checkpoint:
+            if checkpoint_func:
+                kwargs["checkpoint_func"] = partial(_run_callback, checkpoint_func)
+            else:
+                raise DvcException(
+                    "Checkpoint stages are not supported in 'dvc repro'. "
+                    "Checkpoint stages must be reproduced with 'dvc exp run'. "
+                )
+    
+        if stage.frozen and not stage.is_import:
+            logger.warning(
+                "%s is frozen. Its dependencies are"
+                " not going to be reproduced.",
+                stage,
+            )
+    
+>       stage = stage.reproduce(**kwargs)
+
+/testbed/dvc/repo/reproduce.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (Stage: 'merge',), kwargs = {'interactive': False}
+call = <Call Stage.reproduce(stage: 'merge', interactive=False)>
+
+    def wrapper(*args, **kwargs):
+        call = Call(func, args, kwargs)
+>       return deco(call, *dargs, **dkwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+call = <Call Stage.reproduce(stage: 'merge', interactive=False)>
+read = ['deps'], write = ['outs']
+
+    @decorator
+    def rwlocked(call, read=None, write=None):
+        import sys
+    
+        from dvc.dependency.repo import RepoDependency
+        from dvc.rwlock import rwlock
+    
+        if read is None:
+            read = []
+    
+        if write is None:
+            write = []
+    
+        stage = call._args[0]  # pylint: disable=protected-access
+    
+        assert stage.repo.lock.is_locked
+    
+        def _chain(names):
+            return [
+                item.fs_path
+                for attr in names
+                for item in getattr(stage, attr)
+                # There is no need to lock RepoDependency deps, as there is no
+                # corresponding OutputREPO, so we can't even write it.
+                if not isinstance(item, RepoDependency)
+            ]
+    
+        cmd = " ".join(sys.argv)
+    
+        with rwlock(
+            stage.repo.tmp_dir,
+            stage.repo.fs,
+            cmd,
+            _chain(read),
+            _chain(write),
+            stage.repo.config["core"].get("hardlink_lock", False),
+        ):
+>           return call()
+
+/testbed/dvc/stage/decorators.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Call Stage.reproduce(stage: 'merge', interactive=False)>, a = ()
+kw = {}
+
+    def __call__(self, *a, **kw):
+        if not a and not kw:
+>           return self._func(*self._args, **self._kwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Stage: 'merge', interactive = False, kwargs = {}
+msg = "Going to reproduce stage: 'merge'. Are you sure you want to continue?"
+
+    @rwlocked(read=["deps"], write=["outs"])
+    def reproduce(self, interactive=False, **kwargs):
+        if not (kwargs.get("force", False) or self.changed()):
+            if not isinstance(self, PipelineStage) and self.is_data_source:
+                logger.info("'%s' didn't change, skipping", self.addressing)
+            else:
+                logger.info(
+                    "Stage '%s' didn't change, skipping", self.addressing
+                )
+            return None
+    
+        msg = (
+            "Going to reproduce {stage}. "
+            "Are you sure you want to continue?".format(stage=self)
+        )
+    
+        if interactive and not prompt.confirm(msg):
+            raise DvcException("reproduction aborted by the user")
+    
+>       self.run(**kwargs)
+
+/testbed/dvc/stage/__init__.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (Stage: 'merge',), kwargs = {}, call = <Call Stage.run(stage: 'merge')>
+
+    def wrapper(*args, **kwargs):
+        call = Call(func, args, kwargs)
+>       return deco(call, *dargs, **dkwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+call = <Call Stage.run(stage: 'merge')>, read = ['deps', 'outs'], write = []
+
+    @decorator
+    def rwlocked(call, read=None, write=None):
+        import sys
+    
+        from dvc.dependency.repo import RepoDependency
+        from dvc.rwlock import rwlock
+    
+        if read is None:
+            read = []
+    
+        if write is None:
+            write = []
+    
+        stage = call._args[0]  # pylint: disable=protected-access
+    
+        assert stage.repo.lock.is_locked
+    
+        def _chain(names):
+            return [
+                item.fs_path
+                for attr in names
+                for item in getattr(stage, attr)
+                # There is no need to lock RepoDependency deps, as there is no
+                # corresponding OutputREPO, so we can't even write it.
+                if not isinstance(item, RepoDependency)
+            ]
+    
+        cmd = " ".join(sys.argv)
+    
+        with rwlock(
+            stage.repo.tmp_dir,
+            stage.repo.fs,
+            cmd,
+            _chain(read),
+            _chain(write),
+            stage.repo.config["core"].get("hardlink_lock", False),
+        ):
+>           return call()
+
+/testbed/dvc/stage/decorators.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Call Stage.run(stage: 'merge')>, a = (), kw = {}
+
+    def __call__(self, *a, **kw):
+        if not a and not kw:
+>           return self._func(*self._args, **self._kwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Stage: 'merge', dry = False, no_commit = False, force = False
+allow_missing = False, no_download = False, kwargs = {}
+
+    @rwlocked(read=["deps", "outs"])
+    def run(
+        self,
+        dry=False,
+        no_commit=False,
+        force=False,
+        allow_missing=False,
+        no_download=False,
+        **kwargs,
+    ):
+        if (self.cmd or self.is_import) and not self.frozen and not dry:
+            self.remove_outs(ignore_remove=False, force=False)
+    
+        if (not self.frozen and self.is_import) or self.is_partial_import:
+            jobs = kwargs.get("jobs", None)
+            self._sync_import(
+                dry, force, jobs, no_download, check_changed=self.frozen
+            )
+        elif not self.frozen and self.cmd:
+>           self._run_stage(dry, force, **kwargs)
+
+/testbed/dvc/stage/__init__.py:562: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = (Stage: 'merge', False, False), kwargs = {}
+call = <Call Stage._run_stage(stage: 'merge', False, False)>
+
+    def wrapper(*args, **kwargs):
+        call = Call(func, args, kwargs)
+>       return deco(call, *dargs, **dkwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:47: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+call = <Call Stage._run_stage(stage: 'merge', False, False)>, read = ['deps']
+write = ['outs']
+
+    @decorator
+    def rwlocked(call, read=None, write=None):
+        import sys
+    
+        from dvc.dependency.repo import RepoDependency
+        from dvc.rwlock import rwlock
+    
+        if read is None:
+            read = []
+    
+        if write is None:
+            write = []
+    
+        stage = call._args[0]  # pylint: disable=protected-access
+    
+        assert stage.repo.lock.is_locked
+    
+        def _chain(names):
+            return [
+                item.fs_path
+                for attr in names
+                for item in getattr(stage, attr)
+                # There is no need to lock RepoDependency deps, as there is no
+                # corresponding OutputREPO, so we can't even write it.
+                if not isinstance(item, RepoDependency)
+            ]
+    
+        cmd = " ".join(sys.argv)
+    
+        with rwlock(
+            stage.repo.tmp_dir,
+            stage.repo.fs,
+            cmd,
+            _chain(read),
+            _chain(write),
+            stage.repo.config["core"].get("hardlink_lock", False),
+        ):
+>           return call()
+
+/testbed/dvc/stage/decorators.py:43: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <Call Stage._run_stage(stage: 'merge', False, False)>, a = (), kw = {}
+
+    def __call__(self, *a, **kw):
+        if not a and not kw:
+>           return self._func(*self._args, **self._kwargs)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/funcy/decorators.py:68: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Stage: 'merge', dry = False, force = False, kwargs = {}
+
+    @rwlocked(read=["deps"], write=["outs"])
+    def _run_stage(self, dry, force, **kwargs):
+>       return run_stage(self, dry, force, **kwargs)
+
+/testbed/dvc/stage/__init__.py:580: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+stage = Stage: 'merge', dry = False, force = False, checkpoint_func = None
+run_env = None, kwargs = {}
+RunCacheNotFoundError = <class 'dvc.stage.cache.RunCacheNotFoundError'>
+run = <function cmd_run at 0x733db6dfcd30>
+
+    def run_stage(
+        stage, dry=False, force=False, checkpoint_func=None, run_env=None, **kwargs
+    ):
+        if not (dry or force or checkpoint_func):
+            from .cache import RunCacheNotFoundError
+    
+            try:
+                stage.repo.stage_cache.restore(stage, **kwargs)
+                return
+            except RunCacheNotFoundError:
+                stage.save_deps()
+    
+        run = cmd_run if dry else unlocked_repo(cmd_run)
+>       run(stage, dry=dry, checkpoint_func=checkpoint_func, run_env=run_env)
+
+/testbed/dvc/stage/run.py:152: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+stage = Stage: 'merge', args = ()
+kwargs = {'checkpoint_func': None, 'dry': False, 'run_env': None}
+
+    @wraps(f)
+    def wrapper(stage, *args, **kwargs):
+        stage.repo.lock.unlock()
+        stage.repo._reset()  # pylint: disable=protected-access
+        try:
+>           ret = f(stage, *args, **kwargs)
+
+/testbed/dvc/stage/decorators.py:52: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+stage = Stage: 'merge', dry = False, checkpoint_func = None, run_env = None
+
+    def cmd_run(stage, dry=False, checkpoint_func=None, run_env=None):
+        logger.info("Running stage '%s':", stage.addressing)
+        commands = _enforce_cmd_list(stage.cmd)
+        kwargs = prepare_kwargs(
+            stage, checkpoint_func=checkpoint_func, run_env=run_env
+        )
+        executable = get_executable()
+    
+        if not dry:
+            warn_if_fish(executable)
+    
+        for cmd in commands:
+            display_command(cmd)
+            if dry:
+                continue
+    
+>           _run(stage, executable, cmd, checkpoint_func=checkpoint_func, **kwargs)
+
+/testbed/dvc/stage/run.py:136: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+stage = Stage: 'merge', executable = '/bin/sh', cmd = 'python merge.py'
+checkpoint_func = None
+kwargs = {'close_fds': True, 'cwd': '/tmp/pytest-of-root/pytest-0/test_params_show_while_running0', 'env': {'CONDA_DEFAULT_ENV'.../bin/conda', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_1': '/opt/miniconda3', ...}, 'shell': False}
+main_thread = True, exec_cmd = ['/bin/sh', '-c', 'python merge.py']
+old_handler = <built-in function default_int_handler>
+p = <Popen: returncode: 1 args: ['/bin/sh', '-c', 'python merge.py']>
+tasks = []
+
+    def _run(stage, executable, cmd, checkpoint_func, **kwargs):
+        main_thread = isinstance(
+            threading.current_thread(),
+            threading._MainThread,  # pylint: disable=protected-access
+        )
+    
+        exec_cmd = _make_cmd(executable, cmd)
+        old_handler = None
+    
+        try:
+            p = subprocess.Popen(exec_cmd, **kwargs)
+            if main_thread:
+                old_handler = signal.signal(signal.SIGINT, signal.SIG_IGN)
+    
+            tasks = _get_monitor_tasks(stage, checkpoint_func, p)
+    
+            if tasks:
+                with Monitor(tasks):
+                    p.communicate()
+            else:
+                p.communicate()
+    
+            if p.returncode != 0:
+                for t in tasks:
+                    if t.killed.is_set():
+                        raise t.error_cls(cmd, p.returncode)
+>               raise StageCmdFailedError(cmd, p.returncode)
+E               dvc.stage.exceptions.StageCmdFailedError: failed to run: python merge.py, exited with 1
+
+/testbed/dvc/stage/run.py:103: StageCmdFailedError
+
+The above exception was the direct cause of the following exception:
+
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_params_show_while_running0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_params_show_while_running0'
+
+    def test_params_show_while_running_stage(tmp_dir, dvc):
+        (tmp_dir / "params.yaml").dump({"foo": {"bar": 1}})
+        (tmp_dir / "params.json").dump({"bar": 2})
+    
+        tmp_dir.gen(
+            "merge.py",
+            dedent(
+                """
+                import json
+                from dvc import api
+                with open("merged.json", "w") as f:
+                    json.dump(api.params_show(stages="merge"), f)
+            """
+            ),
+        )
+        dvc.stage.add(
+            name="merge",
+            cmd="python merge.py",
+            params=["foo.bar", {"params.json": ["bar"]}],
+            outs=["merged.json"],
+        )
+    
+>       dvc.reproduce()
+
+/testbed/tests/func/api/test_params.py:129: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:49: in wrapper
+    return f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:156: in run
+    return method(repo, *args, **kw)
+/testbed/dvc/repo/reproduce.py:145: in reproduce
+    return _reproduce_stages(self.index.graph, list(stages), **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+G = <networkx.classes.digraph.DiGraph object at 0x733db7720070>
+stages = [Stage: 'merge'], downstream = False, single_item = False
+on_unchanged = None, kwargs = {'interactive': False}, steps = [Stage: 'merge']
+force_downstream = False, result = [], unchanged = [], ret = []
+checkpoint_func = None, stage = Stage: 'merge'
+
+    def _reproduce_stages(
+        G, stages, downstream=False, single_item=False, on_unchanged=None, **kwargs
+    ):
+        r"""Derive the evaluation of the given node for the given graph.
+    
+        When you _reproduce a stage_, you want to _evaluate the descendants_
+        to know if it make sense to _recompute_ it. A post-ordered search
+        will give us an order list of the nodes we want.
+    
+        For example, let's say that we have the following pipeline:
+    
+                                   E
+                                  / \
+                                 D   F
+                                / \   \
+                               B   C   G
+                                \ /
+                                 A
+    
+        The derived evaluation of D would be: [A, B, C, D]
+    
+        In case that `downstream` option is specified, the desired effect
+        is to derive the evaluation starting from the given stage up to the
+        ancestors. However, the `networkx.ancestors` returns a set, without
+        any guarantee of any order, so we are going to reverse the graph and
+        use a reverse post-ordered search using the given stage as a starting
+        point.
+    
+                       E                                   A
+                      / \                                 / \
+                     D   F                               B   C   G
+                    / \   \        --- reverse -->        \ /   /
+                   B   C   G                               D   F
+                    \ /                                     \ /
+                     A                                       E
+    
+        The derived evaluation of _downstream_ B would be: [B, D, E]
+        """
+        steps = _get_steps(G, stages, downstream, single_item)
+    
+        force_downstream = kwargs.pop("force_downstream", False)
+        result = []
+        unchanged = []
+        # `ret` is used to add a cosmetic newline.
+        ret = []
+        checkpoint_func = kwargs.pop("checkpoint_func", None)
+        for stage in steps:
+            if ret:
+                logger.info("")
+    
+            if checkpoint_func:
+                kwargs["checkpoint_func"] = partial(
+                    _repro_callback, checkpoint_func, unchanged
+                )
+    
+            from dvc.stage.monitor import CheckpointKilledError
+    
+            try:
+                ret = _reproduce_stage(stage, **kwargs)
+    
+                if len(ret) == 0:
+                    unchanged.extend([stage])
+                elif force_downstream:
+                    # NOTE: we are walking our pipeline from the top to the
+                    # bottom. If one stage is changed, it will be reproduced,
+                    # which tells us that we should force reproducing all of
+                    # the other stages down below, even if their direct
+                    # dependencies didn't change.
+                    kwargs["force"] = True
+    
+                if ret:
+                    result.extend(ret)
+            except CheckpointKilledError:
+                raise
+            except Exception as exc:
+>               raise ReproductionError(stage.addressing) from exc
+E               dvc.exceptions.ReproductionError: failed to reproduce 'merge'
+
+/testbed/dvc/repo/reproduce.py:223: ReproductionError
+---------------------------- Captured stdout setup -----------------------------
+2026-04-28 10:05:02,218 DEBUG: Writing '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvc/config'.
+2026-04-28 10:05:02,251 DEBUG: Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvcignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvc/config'}
+Initialized DVC repository.
+
+------------------------------ Captured log setup ------------------------------
+DEBUG    dvc.config:config.py:190 Writing '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvc/config'.
+DEBUG    dvc.repo.scm_context:scm_context.py:70 Staging files: {'/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvcignore', '/tmp/pytest-of-root/pytest-0/dvc-test-cachemaster1/.dvc/config'}
+INFO     dvc.repo.init:init.py:88 Initialized DVC repository.
+----------------------------- Captured stdout call -----------------------------
+Creating 'dvc.yaml'
+Adding stage 'merge' in 'dvc.yaml'
+2026-04-28 10:05:02,291 DEBUG: Lockfile for 'dvc.yaml' not found
+2026-04-28 10:05:02,293 DEBUG: Lockfile for 'dvc.yaml' not found
+2026-04-28 10:05:02,295 DEBUG: Dependency 'params.yaml' of stage: 'merge' changed because it is 'new'.
+2026-04-28 10:05:02,296 DEBUG: stage: 'merge' changed.
+2026-04-28 10:05:02,297 DEBUG: Removing output 'merged.json' of stage: 'merge'.
+2026-04-28 10:05:02,299 DEBUG: {'params.yaml': 'new'}
+Running stage 'merge':
+> python merge.py
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <https://man.dvc.org/config#core>                                                                      Traceback (most recent call last):
+  File "/tmp/pytest-of-root/pytest-0/test_params_show_while_running0/merge.py", line 5, in <module>
+    json.dump(api.params_show(stages="merge"), f)
+  File "/testbed/dvc/api/params.py", line 274, in params_show
+    return _postprocess(params)
+  File "/testbed/dvc/api/params.py", line 261, in _postprocess
+    raise DvcException("No params found")
+dvc.exceptions.DvcException: No params found
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log call -------------------------------
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'merge' in 'dvc.yaml'
+DEBUG    dvc.stage.loader:loader.py:44 Lockfile for 'dvc.yaml' not found
+DEBUG    dvc.stage.loader:loader.py:44 Lockfile for 'dvc.yaml' not found
+DEBUG    dvc.stage:__init__.py:334 Dependency 'params.yaml' of stage: 'merge' changed because it is 'new'.
+DEBUG    dvc.stage:__init__.py:374 stage: 'merge' changed.
+DEBUG    dvc.stage:__init__.py:385 Removing output 'merged.json' of stage: 'merge'.
+DEBUG    dvc.output:output.py:492 {'params.yaml': 'new'}
+INFO     dvc.stage.run:run.py:121 Running stage 'merge':
+INFO     dvc.stage.run:run.py:70 > python merge.py
+______________________ test_params_show_untracked_target _______________________
+
+params_repo = None
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_params_show_untracked_tar0')
+
+    def test_params_show_untracked_target(params_repo, tmp_dir):
+        tmp_dir.gen("params_foo.yaml", "foo: 1")
+    
+        assert api.params_show("params_foo.yaml") == {"foo": 1}
+    
+        with pytest.raises(DvcException, match="No params found"):
+>           api.params_show("params_foo.yaml", stages="stage-0")
+E           Failed: DID NOT RAISE <class 'dvc.exceptions.DvcException'>
+
+/testbed/tests/func/api/test_params.py:182: Failed
+---------------------------- Captured stdout setup -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:03,037 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:03,061 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:03,091 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:03,117 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+=============================== warnings summary ===============================
+tests/func/api/test_params.py::test_params_show_no_args
+tests/func/api/test_params.py::test_params_show_targets
+tests/func/api/test_params.py::test_params_show_deps
+tests/func/api/test_params.py::test_params_show_stages
+tests/func/api/test_params.py::test_params_show_revs
+tests/func/api/test_params.py::test_params_show_while_running_stage
+tests/func/api/test_params.py::test_params_show_repo
+tests/func/api/test_params.py::test_params_show_untracked_target
+  /testbed/dvc/dependency/param.py:83: DeprecationWarning: The dpath.util package is being deprecated. All util functions have been moved to dpath package top level.
+    ret[param] = dpath.util.get(config, param, separator=".")
+
+tests/func/api/test_params.py::test_params_show_deps
+  /testbed/dvc/dependency/param.py:93: DeprecationWarning: The dpath.util package is being deprecated. All util functions have been moved to dpath package top level.
+    dpath.util.search(config, param, separator="."),
+
+tests/func/api/test_params.py::test_params_show_deps
+  /testbed/dvc/dependency/param.py:91: DeprecationWarning: The dpath.util package is being deprecated. All util functions have been moved to dpath package top level.
+    merge(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+___________________________ test_params_show_targets ___________________________
+---------------------------- Captured stdout setup -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:01,182 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:01,204 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,227 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,253 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+____________________________ test_params_show_deps _____________________________
+---------------------------- Captured stdout setup -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:01,447 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:01,469 DEBUG: Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+Adding stage 'stage-1' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-2':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,492 DEBUG: Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+Adding stage 'stage-2' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+Running stage 'stage-3':
+> echo stage-2
+stage-2
+2026-04-28 10:05:01,519 DEBUG: Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+Adding stage 'stage-3' in 'dvc.yaml'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+---------------------------- Captured stderr setup -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '4f738393f4b27258d770d7b323c6bb86'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-2':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-2' md5: '555e18d9293c98f31231b6329dbf95dc'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-2' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-3':
+INFO     dvc.stage.run:run.py:70 > echo stage-2
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-3' md5: '3f743ff1f2280f35472de09402659b0b'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-3' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+____________________________ test_params_show_repo _____________________________
+----------------------------- Captured stdout call -----------------------------
+Running stage 'stage-1':
+> echo stage-1
+stage-1
+2026-04-28 10:05:02,800 DEBUG: Computed stage: 'stage-1' md5: '6339562fa7aceaa0e91eeaf6abb2c986'
+Creating 'dvc.yaml'
+Adding stage 'stage-1' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+
+To enable auto staging, run:
+
+	dvc config core.autostage true
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log call -------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-1':
+INFO     dvc.stage.run:run.py:70 > echo stage-1
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-1' md5: '6339562fa7aceaa0e91eeaf6abb2c986'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-1' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+INFO     dvc.repo.scm_context:scm_context.py:133 
+To track the changes with git, run:
+
+	git add dvc.yaml dvc.lock
+INFO     dvc.repo.scm_context:scm_context.py:136 
+To enable auto staging, run:
+
+	dvc config core.autostage true
+_______________________ test_params_show_no_params_found _______________________
+----------------------------- Captured stdout call -----------------------------
+Creating 'dvc.yaml'
+Adding stage 'echo' in 'dvc.yaml'
+2026-04-28 10:05:02,899 DEBUG: Lockfile for 'dvc.yaml' not found
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log call -------------------------------
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'echo' in 'dvc.yaml'
+DEBUG    dvc.stage.loader:loader.py:44 Lockfile for 'dvc.yaml' not found
+____________________ test_params_show_stage_without_params _____________________
+----------------------------- Captured stdout call -----------------------------
+Running stage 'stage-0':
+> echo stage-0
+stage-0
+2026-04-28 10:05:02,944 DEBUG: Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+Creating 'dvc.yaml'
+Adding stage 'stage-0' in 'dvc.yaml'
+Generating lock file 'dvc.lock'
+Updating lock file 'dvc.lock'
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+------------------------------ Captured log call -------------------------------
+INFO     dvc.stage.run:run.py:121 Running stage 'stage-0':
+INFO     dvc.stage.run:run.py:70 > echo stage-0
+DEBUG    dvc.stage:__init__.py:476 Computed stage: 'stage-0' md5: 'c0b6ae400dd2ae420805f9e204e2cf71'
+INFO     dvc.dvcfile:dvcfile.py:256 Creating 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:261 Adding stage 'stage-0' in 'dvc.yaml'
+INFO     dvc.dvcfile:dvcfile.py:379 Generating lock file 'dvc.lock'
+INFO     dvc.dvcfile:dvcfile.py:386 Updating lock file 'dvc.lock'
+=========================== short test summary info ============================
+PASSED tests/func/api/test_params.py::test_params_show_targets
+PASSED tests/func/api/test_params.py::test_params_show_deps
+PASSED tests/func/api/test_params.py::test_params_show_repo
+PASSED tests/func/api/test_params.py::test_params_show_no_params_found
+PASSED tests/func/api/test_params.py::test_params_show_stage_without_params
+FAILED tests/func/api/test_params.py::test_params_show_no_args - AssertionErr...
+FAILED tests/func/api/test_params.py::test_params_show_stages - dvc.exception...
+FAILED tests/func/api/test_params.py::test_params_show_revs - ImportError: ca...
+FAILED tests/func/api/test_params.py::test_params_show_while_running_stage - ...
+FAILED tests/func/api/test_params.py::test_params_show_untracked_target - Fai...
+=================== 5 failed, 5 passed, 10 warnings in 2.82s ===================
++ : '>>>>> End Test Output'

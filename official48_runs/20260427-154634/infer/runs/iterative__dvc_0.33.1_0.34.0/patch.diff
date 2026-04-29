@@ -1,0 +1,12 @@
+diff --git a/dvc/cli.py b/dvc/cli.py
+index 63d674c..dfec15c 100644
+--- a/dvc/cli.py
++++ b/dvc/cli.py
+@@ -47,7 +47,6 @@ COMMANDS = [
+     repro,
+     data_sync,
+     gc,
+-    add,
+     imp,
+     config,
+     checkout,

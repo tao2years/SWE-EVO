@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_2.21.1_2.21.2": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_2.21.1_2.21.2",
+    "model_patch": "diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py\nindex 5a79f54..d400861 100644\n--- a/dvc/repo/params/show.py\n+++ b/dvc/repo/params/show.py\n@@ -42,7 +42,7 @@ def _collect_configs(\n     params, fs_paths = collect(\n         repo,\n         targets=targets or [],\n-        deps=True,\n+        deps=deps,\n         output_filter=_is_params,\n         rev=rev,\n         duplicates=deps or stages is not None,\n@@ -89,7 +89,10 @@ def _read_params(\n                 if name in fs_paths:\n                     fs_paths.remove(name)\n     else:\n-        fs_paths += [param.fs_path for param in params]\n+        for param in params:\n+            name = os.sep.join(repo.fs.path.relparts(param.fs_path))\n+            if name in fs_paths:\n+                fs_paths.remove(name)\n \n     for fs_path in fs_paths:\n         from_path = _read_fs_path(repo.fs, fs_path, onerror=onerror)\n"
+  }
+}

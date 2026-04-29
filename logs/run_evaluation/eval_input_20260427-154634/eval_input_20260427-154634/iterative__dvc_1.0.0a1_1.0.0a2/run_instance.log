@@ -1,0 +1,1675 @@
+2026-04-28 18:17:32,191 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.0.0a1_1.0.0a2
+Building instance image sweb.eval.x86_64.iterative__dvc_1.0.0a1_1.0.0a2:latest for iterative__dvc_1.0.0a1_1.0.0a2
+2026-04-28 18:17:32,205 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.0.0a1_1.0.0a2:latest already exists, skipping build.
+2026-04-28 18:17:32,205 - INFO - Creating container for iterative__dvc_1.0.0a1_1.0.0a2...
+2026-04-28 18:17:34,947 - INFO - Container for iterative__dvc_1.0.0a1_1.0.0a2 created: b1154ed908924a164726b91759d77293ffe53489b8ada9d8f0d2aee40fcf3229
+2026-04-28 18:17:35,071 - INFO - Container for iterative__dvc_1.0.0a1_1.0.0a2 started: b1154ed908924a164726b91759d77293ffe53489b8ada9d8f0d2aee40fcf3229
+2026-04-28 18:17:35,071 - INFO - Intermediate patch for iterative__dvc_1.0.0a1_1.0.0a2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.0a1_1.0.0a2/patch.diff, now applying to container...
+2026-04-28 18:17:35,386 - INFO - Failed to apply patch to container: git apply --verbose
+2026-04-28 18:17:35,453 - INFO - Failed to apply patch to container: git apply --verbose --reject
+2026-04-28 18:17:35,529 - INFO - >>>>> Applied Patch:
+patching file tests/basic_env.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/conftest.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/dir_helpers.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/metrics/test_diff.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/params/test_diff.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would empty out the file tests/func/plots/__init__.py,
+which is already empty!  Assuming -R.
+patching file tests/func/plots/__init__.py
+The next patch would create the file tests/func/plots/test_diff.py,
+which already exists!  Assuming -R.
+patching file tests/func/plots/test_diff.py
+patching file tests/func/plots/test_plots.py (already renamed from tests/func/test_plot.py)
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/remote/test_gdrive.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/remote/test_index.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_add.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_analytics.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_api.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_checkout.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_cli.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_commit.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_config.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_data_cloud.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_diff.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_external_repo.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_gc.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_get.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_ignore.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_import.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_import_url.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_init.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_install.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_lockfile.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_ls.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_move.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_pipeline.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_remote.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_repo.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_repro.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_repro_multistage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_run_multistage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_run_single_stage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_scm.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_stage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_status.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_tree.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_update.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_utils.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/remotes.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_diff.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_metrics.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_params.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would delete the file tests/unit/command/test_plot.py,
+which does not exist!  Assuming -R.
+patching file tests/unit/command/test_plot.py
+The next patch would create the file tests/unit/command/test_plots.py,
+which already exists!  Assuming -R.
+patching file tests/unit/command/test_plots.py
+patching file tests/unit/command/test_repro.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_run.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_update.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/ssh/test_connection.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/ssh/test_ssh.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_azure.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_base.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_gdrive.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_gs.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_http.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_oss.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_remote.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_remote_dir.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_s3.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would empty out the file tests/unit/repo/plots/__init__.py,
+which is already empty!  Assuming -R.
+patching file tests/unit/repo/plots/__init__.py
+patching file tests/unit/repo/plots/test_data.py (already renamed from tests/unit/test_plot.py)
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would create the file tests/unit/repo/plots/test_diff.py,
+which already exists!  Assuming -R.
+patching file tests/unit/repo/plots/test_diff.py
+The next patch would create the file tests/unit/repo/test_repo_tree.py,
+which already exists!  Assuming -R.
+patching file tests/unit/repo/test_repo_tree.py
+patching file tests/unit/repo/test_tree.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/scm/test_git.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would create the file tests/unit/stage/test_run.py,
+which already exists!  Assuming -R.
+patching file tests/unit/stage/test_run.py
+patching file tests/unit/stage/test_stage.py (already renamed from tests/unit/test_stage.py)
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/test_rwlock.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/test_updater.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/utils/test_fs.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/utils/test_http.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/utils/__init__.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/utils/httpd.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/path_info.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/stage/loader.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/dir_helpers.py
+
+2026-04-28 18:17:35,595 - INFO - Git diff before:
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8e1d87630..ea88f9e93 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,12 +74,8 @@ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+             cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                "cannot instantiate %r on your system" % (cls.__name__,)
+-            )
+-        self._init()
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     # Not needed in Python 3.6+
+diff --git a/tests/func/test_plot.py b/tests/func/test_plot.py
+deleted file mode 100644
+index cd1acc6bb..000000000
+--- a/tests/func/test_plot.py
++++ /dev/null
+@@ -1,517 +0,0 @@
+-import csv
+-import json
+-import logging
+-import shutil
+-from collections import OrderedDict
+-
+-import pytest
+-import yaml
+-from bs4 import BeautifulSoup
+-from funcy import first
+-
+-from dvc.compat import fspath
+-from dvc.repo.plot import NoDataOrTemplateProvided
+-from dvc.repo.plot.data import (
+-    NoMetricInHistoryError,
+-    PlotData,
+-    PlotMetricTypeError,
+-)
+-from dvc.repo.plot.template import (
+-    NoDataForTemplateError,
+-    NoFieldInDataError,
+-    TemplateNotFoundError,
+-)
+-
+-
+-def _remove_whitespace(value):
+-    return value.replace(" ", "").replace("\n", "")
+-
+-
+-def _run_with_metric(tmp_dir, metric_filename, commit=None, tag=None):
+-    tmp_dir.dvc.run(metrics_no_cache=[metric_filename], single_stage=True)
+-    if hasattr(tmp_dir.dvc, "scm"):
+-        tmp_dir.dvc.scm.add([metric_filename, metric_filename + ".dvc"])
+-        if commit:
+-            tmp_dir.dvc.scm.commit(commit)
+-        if tag:
+-            tmp_dir.dvc.scm.tag(tag)
+-
+-
+-def _write_csv(metric, filename, header=True):
+-    with open(filename, "w", newline="") as csvobj:
+-        if header:
+-            writer = csv.DictWriter(
+-                csvobj, fieldnames=list(first(metric).keys())
+-            )
+-            writer.writeheader()
+-            writer.writerows(metric)
+-        else:
+-            writer = csv.writer(csvobj)
+-            for d in metric:
+-                assert len(d) == 1
+-                writer.writerow(list(d.values()))
+-
+-
+-def _write_json(tmp_dir, metric, filename):
+-    tmp_dir.gen(filename, json.dumps(metric, sort_keys=True))
+-
+-
+-def test_plot_csv_one_column(tmp_dir, scm, dvc):
+-    # no header
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_csv(metric, "metric.csv", header=False)
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv",
+-        csv_header=False,
+-        x_title="x_title",
+-        y_title="y_title",
+-        title="mytitle",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["title"] == "mytitle"
+-    assert plot_content["data"]["values"] == [
+-        {"0": "2", PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"0": "3", PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "0"
+-    assert plot_content["encoding"]["x"]["title"] == "x_title"
+-    assert plot_content["encoding"]["y"]["title"] == "y_title"
+-
+-
+-def test_plot_csv_multiple_columns(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot("metric.csv")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            PlotData.INDEX_FIELD: 0,
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            PlotData.INDEX_FIELD: 1,
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_csv_choose_axes(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv", x_field="first_val", y_field="second_val"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "first_val"
+-    assert plot_content["encoding"]["y"]["field"] == "second_val"
+-
+-
+-def test_plot_json_single_val(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_json = json.loads(plot_string)
+-    assert plot_json["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_json["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_json["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_json_multiple_val(tmp_dir, scm, dvc):
+-    metric = [
+-        {"first_val": 100, "val": 2},
+-        {"first_val": 200, "val": 3},
+-    ]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": 2,
+-            PlotData.INDEX_FIELD: 0,
+-            "first_val": 100,
+-            "rev": "workspace",
+-        },
+-        {
+-            "val": 3,
+-            PlotData.INDEX_FIELD: 1,
+-            "first_val": 200,
+-            "rev": "workspace",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_confusion(tmp_dir, dvc):
+-    confusion_matrix = [
+-        {"predicted": "B", "actual": "A"},
+-        {"predicted": "A", "actual": "A"},
+-    ]
+-    _write_json(tmp_dir, confusion_matrix, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric.json",
+-        template="confusion",
+-        x_field="predicted",
+-        y_field="actual",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"predicted": "B", "actual": "A", "rev": "workspace"},
+-        {"predicted": "A", "actual": "A", "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "predicted"
+-    assert plot_content["encoding"]["y"]["field"] == "actual"
+-
+-
+-def test_plot_multiple_revs_default(tmp_dir, scm, dvc):
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fields={"y"}, revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_multiple_revs(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"), "template.json"
+-    )
+-
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        template="template.json",
+-        revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_even_if_metric_missing(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    metric = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "there is metric", "v2")
+-
+-    caplog.clear()
+-    with caplog.at_level(logging.WARNING, "dvc"):
+-        plot_string = dvc.plot("metric.json", revisions=["v1", "v2"])
+-        assert (
+-            "File 'metric.json' was not found at: 'v1'. "
+-            "It will not be plotted." in caplog.text
+-        )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_throw_on_no_metric_at_all(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    tmp_dir.gen("some_file", "make repo dirty")
+-
+-    caplog.clear()
+-    with pytest.raises(NoMetricInHistoryError) as error, caplog.at_level(
+-        logging.WARNING, "dvc"
+-    ):
+-        dvc.plot("metric.json", revisions=["v1"])
+-
+-        # do not warn if none found
+-        assert len(caplog.messages) == 0
+-
+-    assert str(error.value) == "Could not find 'metric.json'."
+-
+-
+-@pytest.fixture()
+-def custom_template(tmp_dir, dvc):
+-    custom_template = tmp_dir / "custom_template.json"
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(custom_template),
+-    )
+-    return custom_template
+-
+-
+-def test_custom_template(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fspath(custom_template), x_field="a", y_field="b"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def _replace(path, src, dst):
+-    path.write_text(path.read_text().replace(src, dst))
+-
+-
+-def test_custom_template_with_specified_data(
+-    tmp_dir, scm, dvc, custom_template
+-):
+-    _replace(
+-        custom_template, "DVC_METRIC_DATA", "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile=None,
+-        template=fspath(custom_template),
+-        x_field="a",
+-        y_field="b",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_override_specified_data_source(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(tmp_dir / "newtemplate.json"),
+-    )
+-    _replace(
+-        tmp_dir / "newtemplate.json",
+-        "DVC_METRIC_DATA",
+-        "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric2.json")
+-    _run_with_metric(tmp_dir, "metric2.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric2.json", template="newtemplate.json", x_field="a"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_should_raise_on_no_template_and_datafile(tmp_dir, dvc):
+-    with pytest.raises(NoDataOrTemplateProvided):
+-        dvc.plot()
+-
+-
+-def test_should_raise_on_no_template(tmp_dir, dvc):
+-    with pytest.raises(TemplateNotFoundError):
+-        dvc.plot("metric.json", "non_existing_template.json")
+-
+-
+-def test_plot_no_data(tmp_dir, dvc):
+-    with pytest.raises(NoDataForTemplateError):
+-        dvc.plot(template="default")
+-
+-
+-def test_plot_wrong_metric_type(tmp_dir, scm, dvc):
+-    tmp_dir.scm_gen("metric.txt", "content", commit="initial")
+-    with pytest.raises(PlotMetricTypeError):
+-        dvc.plot(datafile="metric.txt")
+-
+-
+-def test_plot_choose_columns(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        fspath(custom_template),
+-        fields={"b", "c"},
+-        x_field="b",
+-        y_field="c",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"b": 2, "c": 3, "rev": "workspace"},
+-        {"b": 3, "c": 4, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "b"
+-    assert plot_content["encoding"]["y"]["field"] == "c"
+-
+-
+-def test_plot_default_choose_column(tmp_dir, scm, dvc):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot("metric.json", fields={"b"})
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {PlotData.INDEX_FIELD: 0, "b": 2, "rev": "workspace"},
+-        {PlotData.INDEX_FIELD: 1, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_embed(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json", embed=True, y_field="val")
+-
+-    page_content = BeautifulSoup(plot_string)
+-    data_dump = json.dumps(
+-        [
+-            {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-            {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-        ],
+-        sort_keys=True,
+-    )
+-
+-    assert _remove_whitespace(data_dump) in _remove_whitespace(
+-        first(page_content.body.script.contents)
+-    )
+-
+-
+-def test_plot_yaml(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    with open("metric.yaml", "w") as fobj:
+-        yaml.dump(metric, fobj)
+-
+-    _run_with_metric(tmp_dir, metric_filename="metric.yaml")
+-
+-    plot_string = dvc.plot("metric.yaml",)
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-
+-
+-def test_raise_on_wrong_field(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", x_field="no_val")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", y_field="no_val")
+diff --git a/tests/unit/test_plot.py b/tests/unit/test_plot.py
+deleted file mode 100644
+index 016f63d7c..000000000
+--- a/tests/unit/test_plot.py
++++ /dev/null
+@@ -1,48 +0,0 @@
+-from collections import OrderedDict
+-
+-import pytest
+-
+-from dvc.repo.plot.data import _apply_path, _find_data, _lists
+-
+-
+-@pytest.mark.parametrize(
+-    "path,expected_result",
+-    [
+-        ("$.some.path[*].a", [{"a": 1}, {"a": 4}]),
+-        ("$.some.path", [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]),
+-    ],
+-)
+-def test_parse_json(path, expected_result):
+-    value = {
+-        "some": {"path": [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]}
+-    }
+-
+-    result = _apply_path(value, path=path)
+-
+-    assert result == expected_result
+-
+-
+-@pytest.mark.parametrize(
+-    "dictionary, expected_result",
+-    [
+-        ({}, []),
+-        ({"x": ["a", "b", "c"]}, [["a", "b", "c"]]),
+-        (
+-            OrderedDict([("x", {"y": ["a", "b"]}), ("z", {"w": ["c", "d"]})]),
+-            [["a", "b"], ["c", "d"]],
+-        ),
+-    ],
+-)
+-def test_finding_lists(dictionary, expected_result):
+-    result = _lists(dictionary)
+-
+-    assert list(result) == expected_result
+-
+-
+-@pytest.mark.parametrize("fields", [{"x"}, set()])
+-def test_finding_data(fields):
+-    data = {"a": {"b": [{"x": 2, "y": 3}, {"x": 1, "y": 5}]}}
+-
+-    result = _find_data(data, fields=fields)
+-
+-    assert result == [{"x": 2, "y": 3}, {"x": 1, "y": 5}]
+diff --git a/tests/unit/test_stage.py b/tests/unit/test_stage.py
+deleted file mode 100644
+index dcfb771c4..000000000
+--- a/tests/unit/test_stage.py
++++ /dev/null
+@@ -1,140 +0,0 @@
+-import os
+-import signal
+-import subprocess
+-import threading
+-from unittest import TestCase
+-
+-import mock
+-import pytest
+-
+-from dvc.dependency.repo import RepoDependency
+-from dvc.stage import Stage
+-from dvc.stage.exceptions import StageUpdateError
+-
+-TEST_STAGE_DICT = {
+-    "md5": "123456",
+-    "cmd": "mycmd",
+-    "outs": [{"path": "a", "md5": "123456789"}],
+-    "deps": [{"path": "b", "md5": "987654321"}],
+-}
+-
+-
+-def test_stage_checksum():
+-    stage = Stage(None, "path")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=TEST_STAGE_DICT):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_default_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir=".")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_non_default_is_not_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir="..")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "2ceba15e87f6848aa756502c1e6d24e9"
+-
+-
+-def test_meta_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, meta={"author": "Suor"})
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-class TestPathConversion(TestCase):
+-    def test(self):
+-        stage = Stage(None, "path")
+-
+-        stage.wdir = os.path.join("..", "..")
+-        self.assertEqual(stage.dumpd()["wdir"], "../..")
+-
+-
+-def test_stage_update(mocker):
+-    dep = RepoDependency({"url": "example.com"}, None, "dep_path")
+-    mocker.patch.object(dep, "update", return_value=None)
+-
+-    stage = Stage(None, "path", deps=[dep])
+-    reproduce = mocker.patch.object(stage, "reproduce")
+-    is_repo_import = mocker.patch(
+-        __name__ + ".Stage.is_repo_import", new_callable=mocker.PropertyMock
+-    )
+-
+-    is_repo_import.return_value = True
+-    stage.update()
+-    assert reproduce.called_once_with()
+-
+-    is_repo_import.return_value = False
+-    with pytest.raises(StageUpdateError):
+-        stage.update()
+-
+-
+-@pytest.mark.skipif(
+-    not isinstance(threading.current_thread(), threading._MainThread),
+-    reason="Not running in the main thread.",
+-)
+-def test_stage_run_ignore_sigint(dvc, mocker):
+-    proc = mocker.Mock()
+-    communicate = mocker.Mock()
+-    proc.configure_mock(returncode=0, communicate=communicate)
+-    popen = mocker.patch.object(subprocess, "Popen", return_value=proc)
+-    signal_mock = mocker.patch("signal.signal")
+-
+-    dvc.run(cmd="path", single_stage=True)
+-
+-    assert popen.called_once()
+-    assert communicate.called_once_with()
+-    signal_mock.assert_any_call(signal.SIGINT, signal.SIG_IGN)
+-    assert signal.getsignal(signal.SIGINT) == signal.default_int_handler
+-
+-
+-def test_always_changed(dvc):
+-    stage = Stage(dvc, "path", always_changed=True)
+-    stage.save()
+-    with dvc.lock:
+-        assert stage.changed()
+-        assert stage.status()["path"] == ["always changed"]
+-
+-
+-def test_stage_cache(tmp_dir, dvc, run_copy, mocker):
+-    tmp_dir.gen("dep", "dep")
+-    stage = run_copy("dep", "out", single_stage=True)
+-
+-    with dvc.lock, dvc.state:
+-        stage.remove(remove_outs=True, force=True)
+-
+-    assert not (tmp_dir / "out").exists()
+-    assert not (tmp_dir / "out.dvc").exists()
+-
+-    cache_dir = os.path.join(
+-        dvc.stage_cache.cache_dir,
+-        "75",
+-        "75f8a9097d76293ff4b3684d52e4ad0e83686d31196f27eb0b2ea9fd5085565e",
+-    )
+-    cache_file = os.path.join(
+-        cache_dir,
+-        "c1747e52065bc7801262fdaed4d63f5775e5da304008bd35e2fea4e6b1ccb272",
+-    )
+-
+-    assert os.path.isdir(cache_dir)
+-    assert os.listdir(cache_dir) == [os.path.basename(cache_file)]
+-    assert os.path.isfile(cache_file)
+-
+-    run_spy = mocker.spy(stage, "_run")
+-    checkout_spy = mocker.spy(stage, "checkout")
+-    with dvc.lock, dvc.state:
+-        stage.run()
+-
+-    assert not run_spy.called
+-    assert checkout_spy.call_count == 1
+-
+-    assert (tmp_dir / "out").exists()
+-    assert (tmp_dir / "out").read_text() == "dep"
+2026-04-28 18:17:35,595 - INFO - Eval script for iterative__dvc_1.0.0a1_1.0.0a2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.0a1_1.0.0a2/eval.sh; copying to container...
+2026-04-28 18:21:10,232 - INFO - Test runtime: 214.58 seconds
+2026-04-28 18:21:10,232 - INFO - Test output for iterative__dvc_1.0.0a1_1.0.0a2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.0a1_1.0.0a2/test_output.txt
+2026-04-28 18:21:10,296 - INFO - Git diff after:
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8e1d87630..ea88f9e93 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,12 +74,8 @@ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+             cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                "cannot instantiate %r on your system" % (cls.__name__,)
+-            )
+-        self._init()
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     # Not needed in Python 3.6+
+diff --git a/tests/func/test_plot.py b/tests/func/test_plot.py
+deleted file mode 100644
+index cd1acc6bb..000000000
+--- a/tests/func/test_plot.py
++++ /dev/null
+@@ -1,517 +0,0 @@
+-import csv
+-import json
+-import logging
+-import shutil
+-from collections import OrderedDict
+-
+-import pytest
+-import yaml
+-from bs4 import BeautifulSoup
+-from funcy import first
+-
+-from dvc.compat import fspath
+-from dvc.repo.plot import NoDataOrTemplateProvided
+-from dvc.repo.plot.data import (
+-    NoMetricInHistoryError,
+-    PlotData,
+-    PlotMetricTypeError,
+-)
+-from dvc.repo.plot.template import (
+-    NoDataForTemplateError,
+-    NoFieldInDataError,
+-    TemplateNotFoundError,
+-)
+-
+-
+-def _remove_whitespace(value):
+-    return value.replace(" ", "").replace("\n", "")
+-
+-
+-def _run_with_metric(tmp_dir, metric_filename, commit=None, tag=None):
+-    tmp_dir.dvc.run(metrics_no_cache=[metric_filename], single_stage=True)
+-    if hasattr(tmp_dir.dvc, "scm"):
+-        tmp_dir.dvc.scm.add([metric_filename, metric_filename + ".dvc"])
+-        if commit:
+-            tmp_dir.dvc.scm.commit(commit)
+-        if tag:
+-            tmp_dir.dvc.scm.tag(tag)
+-
+-
+-def _write_csv(metric, filename, header=True):
+-    with open(filename, "w", newline="") as csvobj:
+-        if header:
+-            writer = csv.DictWriter(
+-                csvobj, fieldnames=list(first(metric).keys())
+-            )
+-            writer.writeheader()
+-            writer.writerows(metric)
+-        else:
+-            writer = csv.writer(csvobj)
+-            for d in metric:
+-                assert len(d) == 1
+-                writer.writerow(list(d.values()))
+-
+-
+-def _write_json(tmp_dir, metric, filename):
+-    tmp_dir.gen(filename, json.dumps(metric, sort_keys=True))
+-
+-
+-def test_plot_csv_one_column(tmp_dir, scm, dvc):
+-    # no header
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_csv(metric, "metric.csv", header=False)
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv",
+-        csv_header=False,
+-        x_title="x_title",
+-        y_title="y_title",
+-        title="mytitle",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["title"] == "mytitle"
+-    assert plot_content["data"]["values"] == [
+-        {"0": "2", PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"0": "3", PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "0"
+-    assert plot_content["encoding"]["x"]["title"] == "x_title"
+-    assert plot_content["encoding"]["y"]["title"] == "y_title"
+-
+-
+-def test_plot_csv_multiple_columns(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot("metric.csv")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            PlotData.INDEX_FIELD: 0,
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            PlotData.INDEX_FIELD: 1,
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_csv_choose_axes(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv", x_field="first_val", y_field="second_val"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "first_val"
+-    assert plot_content["encoding"]["y"]["field"] == "second_val"
+-
+-
+-def test_plot_json_single_val(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_json = json.loads(plot_string)
+-    assert plot_json["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_json["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_json["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_json_multiple_val(tmp_dir, scm, dvc):
+-    metric = [
+-        {"first_val": 100, "val": 2},
+-        {"first_val": 200, "val": 3},
+-    ]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": 2,
+-            PlotData.INDEX_FIELD: 0,
+-            "first_val": 100,
+-            "rev": "workspace",
+-        },
+-        {
+-            "val": 3,
+-            PlotData.INDEX_FIELD: 1,
+-            "first_val": 200,
+-            "rev": "workspace",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_confusion(tmp_dir, dvc):
+-    confusion_matrix = [
+-        {"predicted": "B", "actual": "A"},
+-        {"predicted": "A", "actual": "A"},
+-    ]
+-    _write_json(tmp_dir, confusion_matrix, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric.json",
+-        template="confusion",
+-        x_field="predicted",
+-        y_field="actual",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"predicted": "B", "actual": "A", "rev": "workspace"},
+-        {"predicted": "A", "actual": "A", "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "predicted"
+-    assert plot_content["encoding"]["y"]["field"] == "actual"
+-
+-
+-def test_plot_multiple_revs_default(tmp_dir, scm, dvc):
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fields={"y"}, revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_multiple_revs(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"), "template.json"
+-    )
+-
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        template="template.json",
+-        revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_even_if_metric_missing(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    metric = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "there is metric", "v2")
+-
+-    caplog.clear()
+-    with caplog.at_level(logging.WARNING, "dvc"):
+-        plot_string = dvc.plot("metric.json", revisions=["v1", "v2"])
+-        assert (
+-            "File 'metric.json' was not found at: 'v1'. "
+-            "It will not be plotted." in caplog.text
+-        )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_throw_on_no_metric_at_all(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    tmp_dir.gen("some_file", "make repo dirty")
+-
+-    caplog.clear()
+-    with pytest.raises(NoMetricInHistoryError) as error, caplog.at_level(
+-        logging.WARNING, "dvc"
+-    ):
+-        dvc.plot("metric.json", revisions=["v1"])
+-
+-        # do not warn if none found
+-        assert len(caplog.messages) == 0
+-
+-    assert str(error.value) == "Could not find 'metric.json'."
+-
+-
+-@pytest.fixture()
+-def custom_template(tmp_dir, dvc):
+-    custom_template = tmp_dir / "custom_template.json"
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(custom_template),
+-    )
+-    return custom_template
+-
+-
+-def test_custom_template(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fspath(custom_template), x_field="a", y_field="b"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def _replace(path, src, dst):
+-    path.write_text(path.read_text().replace(src, dst))
+-
+-
+-def test_custom_template_with_specified_data(
+-    tmp_dir, scm, dvc, custom_template
+-):
+-    _replace(
+-        custom_template, "DVC_METRIC_DATA", "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile=None,
+-        template=fspath(custom_template),
+-        x_field="a",
+-        y_field="b",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_override_specified_data_source(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(tmp_dir / "newtemplate.json"),
+-    )
+-    _replace(
+-        tmp_dir / "newtemplate.json",
+-        "DVC_METRIC_DATA",
+-        "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric2.json")
+-    _run_with_metric(tmp_dir, "metric2.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric2.json", template="newtemplate.json", x_field="a"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_should_raise_on_no_template_and_datafile(tmp_dir, dvc):
+-    with pytest.raises(NoDataOrTemplateProvided):
+-        dvc.plot()
+-
+-
+-def test_should_raise_on_no_template(tmp_dir, dvc):
+-    with pytest.raises(TemplateNotFoundError):
+-        dvc.plot("metric.json", "non_existing_template.json")
+-
+-
+-def test_plot_no_data(tmp_dir, dvc):
+-    with pytest.raises(NoDataForTemplateError):
+-        dvc.plot(template="default")
+-
+-
+-def test_plot_wrong_metric_type(tmp_dir, scm, dvc):
+-    tmp_dir.scm_gen("metric.txt", "content", commit="initial")
+-    with pytest.raises(PlotMetricTypeError):
+-        dvc.plot(datafile="metric.txt")
+-
+-
+-def test_plot_choose_columns(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        fspath(custom_template),
+-        fields={"b", "c"},
+-        x_field="b",
+-        y_field="c",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"b": 2, "c": 3, "rev": "workspace"},
+-        {"b": 3, "c": 4, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "b"
+-    assert plot_content["encoding"]["y"]["field"] == "c"
+-
+-
+-def test_plot_default_choose_column(tmp_dir, scm, dvc):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot("metric.json", fields={"b"})
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {PlotData.INDEX_FIELD: 0, "b": 2, "rev": "workspace"},
+-        {PlotData.INDEX_FIELD: 1, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_embed(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json", embed=True, y_field="val")
+-
+-    page_content = BeautifulSoup(plot_string)
+-    data_dump = json.dumps(
+-        [
+-            {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-            {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-        ],
+-        sort_keys=True,
+-    )
+-
+-    assert _remove_whitespace(data_dump) in _remove_whitespace(
+-        first(page_content.body.script.contents)
+-    )
+-
+-
+-def test_plot_yaml(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    with open("metric.yaml", "w") as fobj:
+-        yaml.dump(metric, fobj)
+-
+-    _run_with_metric(tmp_dir, metric_filename="metric.yaml")
+-
+-    plot_string = dvc.plot("metric.yaml",)
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-
+-
+-def test_raise_on_wrong_field(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", x_field="no_val")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", y_field="no_val")
+diff --git a/tests/unit/test_plot.py b/tests/unit/test_plot.py
+deleted file mode 100644
+index 016f63d7c..000000000
+--- a/tests/unit/test_plot.py
++++ /dev/null
+@@ -1,48 +0,0 @@
+-from collections import OrderedDict
+-
+-import pytest
+-
+-from dvc.repo.plot.data import _apply_path, _find_data, _lists
+-
+-
+-@pytest.mark.parametrize(
+-    "path,expected_result",
+-    [
+-        ("$.some.path[*].a", [{"a": 1}, {"a": 4}]),
+-        ("$.some.path", [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]),
+-    ],
+-)
+-def test_parse_json(path, expected_result):
+-    value = {
+-        "some": {"path": [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]}
+-    }
+-
+-    result = _apply_path(value, path=path)
+-
+-    assert result == expected_result
+-
+-
+-@pytest.mark.parametrize(
+-    "dictionary, expected_result",
+-    [
+-        ({}, []),
+-        ({"x": ["a", "b", "c"]}, [["a", "b", "c"]]),
+-        (
+-            OrderedDict([("x", {"y": ["a", "b"]}), ("z", {"w": ["c", "d"]})]),
+-            [["a", "b"], ["c", "d"]],
+-        ),
+-    ],
+-)
+-def test_finding_lists(dictionary, expected_result):
+-    result = _lists(dictionary)
+-
+-    assert list(result) == expected_result
+-
+-
+-@pytest.mark.parametrize("fields", [{"x"}, set()])
+-def test_finding_data(fields):
+-    data = {"a": {"b": [{"x": 2, "y": 3}, {"x": 1, "y": 5}]}}
+-
+-    result = _find_data(data, fields=fields)
+-
+-    assert result == [{"x": 2, "y": 3}, {"x": 1, "y": 5}]
+diff --git a/tests/unit/test_stage.py b/tests/unit/test_stage.py
+deleted file mode 100644
+index dcfb771c4..000000000
+--- a/tests/unit/test_stage.py
++++ /dev/null
+@@ -1,140 +0,0 @@
+-import os
+-import signal
+-import subprocess
+-import threading
+-from unittest import TestCase
+-
+-import mock
+-import pytest
+-
+-from dvc.dependency.repo import RepoDependency
+-from dvc.stage import Stage
+-from dvc.stage.exceptions import StageUpdateError
+-
+-TEST_STAGE_DICT = {
+-    "md5": "123456",
+-    "cmd": "mycmd",
+-    "outs": [{"path": "a", "md5": "123456789"}],
+-    "deps": [{"path": "b", "md5": "987654321"}],
+-}
+-
+-
+-def test_stage_checksum():
+-    stage = Stage(None, "path")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=TEST_STAGE_DICT):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_default_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir=".")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_non_default_is_not_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir="..")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "2ceba15e87f6848aa756502c1e6d24e9"
+-
+-
+-def test_meta_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, meta={"author": "Suor"})
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-class TestPathConversion(TestCase):
+-    def test(self):
+-        stage = Stage(None, "path")
+-
+-        stage.wdir = os.path.join("..", "..")
+-        self.assertEqual(stage.dumpd()["wdir"], "../..")
+-
+-
+-def test_stage_update(mocker):
+-    dep = RepoDependency({"url": "example.com"}, None, "dep_path")
+-    mocker.patch.object(dep, "update", return_value=None)
+-
+-    stage = Stage(None, "path", deps=[dep])
+-    reproduce = mocker.patch.object(stage, "reproduce")
+-    is_repo_import = mocker.patch(
+-        __name__ + ".Stage.is_repo_import", new_callable=mocker.PropertyMock
+-    )
+-
+-    is_repo_import.return_value = True
+-    stage.update()
+-    assert reproduce.called_once_with()
+-
+-    is_repo_import.return_value = False
+-    with pytest.raises(StageUpdateError):
+-        stage.update()
+-
+-
+-@pytest.mark.skipif(
+-    not isinstance(threading.current_thread(), threading._MainThread),
+-    reason="Not running in the main thread.",
+-)
+-def test_stage_run_ignore_sigint(dvc, mocker):
+-    proc = mocker.Mock()
+-    communicate = mocker.Mock()
+-    proc.configure_mock(returncode=0, communicate=communicate)
+-    popen = mocker.patch.object(subprocess, "Popen", return_value=proc)
+-    signal_mock = mocker.patch("signal.signal")
+-
+-    dvc.run(cmd="path", single_stage=True)
+-
+-    assert popen.called_once()
+-    assert communicate.called_once_with()
+-    signal_mock.assert_any_call(signal.SIGINT, signal.SIG_IGN)
+-    assert signal.getsignal(signal.SIGINT) == signal.default_int_handler
+-
+-
+-def test_always_changed(dvc):
+-    stage = Stage(dvc, "path", always_changed=True)
+-    stage.save()
+-    with dvc.lock:
+-        assert stage.changed()
+-        assert stage.status()["path"] == ["always changed"]
+-
+-
+-def test_stage_cache(tmp_dir, dvc, run_copy, mocker):
+-    tmp_dir.gen("dep", "dep")
+-    stage = run_copy("dep", "out", single_stage=True)
+-
+-    with dvc.lock, dvc.state:
+-        stage.remove(remove_outs=True, force=True)
+-
+-    assert not (tmp_dir / "out").exists()
+-    assert not (tmp_dir / "out.dvc").exists()
+-
+-    cache_dir = os.path.join(
+-        dvc.stage_cache.cache_dir,
+-        "75",
+-        "75f8a9097d76293ff4b3684d52e4ad0e83686d31196f27eb0b2ea9fd5085565e",
+-    )
+-    cache_file = os.path.join(
+-        cache_dir,
+-        "c1747e52065bc7801262fdaed4d63f5775e5da304008bd35e2fea4e6b1ccb272",
+-    )
+-
+-    assert os.path.isdir(cache_dir)
+-    assert os.listdir(cache_dir) == [os.path.basename(cache_file)]
+-    assert os.path.isfile(cache_file)
+-
+-    run_spy = mocker.spy(stage, "_run")
+-    checkout_spy = mocker.spy(stage, "checkout")
+-    with dvc.lock, dvc.state:
+-        stage.run()
+-
+-    assert not run_spy.called
+-    assert checkout_spy.call_count == 1
+-
+-    assert (tmp_dir / "out").exists()
+-    assert (tmp_dir / "out").read_text() == "dep"
+2026-04-28 18:21:10,297 - INFO - Grading answer for iterative__dvc_1.0.0a1_1.0.0a2...
+2026-04-28 18:21:10,297 - INFO - report: {'iterative__dvc_1.0.0a1_1.0.0a2': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/func/metrics/test_diff.py::test_no_commits', 'tests/func/params/test_diff.py::test_no_commits', 'tests/func/plots/test_plots.py::test_plot_no_data', 'tests/func/plots/test_plots.py::test_plot_wrong_metric_type', 'tests/func/plots/test_plots.py::test_should_raise_on_no_template', 'tests/func/plots/test_plots.py::test_should_raise_on_no_template_and_datafile', 'tests/func/plots/test_plots.py::test_throw_on_no_metric_at_all', 'tests/func/test_diff.py::test_no_commits', 'tests/func/test_remote.py::test_remote_modify_default', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[#]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[$]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[,]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[.]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[;]', 'tests/unit/command/test_diff.py::test_default', 'tests/unit/command/test_diff.py::test_no_changes', 'tests/unit/command/test_diff.py::test_show_hash', 'tests/unit/command/test_diff.py::test_show_json', 'tests/unit/command/test_diff.py::test_show_json_and_hash', 'tests/unit/command/test_plots.py::test_metrics_diff', 'tests/unit/command/test_plots.py::test_metrics_show', 'tests/unit/command/test_plots.py::test_plots_show_json', 'tests/unit/command/test_repro.py::test_default_arguments', 'tests/unit/command/test_repro.py::test_downstream', 'tests/unit/command/test_run.py::test_run', 'tests/unit/command/test_run.py::test_run_args_from_cli', 'tests/unit/command/test_run.py::test_run_args_with_spaces', 'tests/unit/command/test_update.py::test_update', 'tests/unit/remote/test_s3.py::test_sse_kms_key_id', 'tests/unit/repo/plots/test_data.py::test_finding_data[fields0]', 'tests/unit/repo/plots/test_data.py::test_finding_data[fields1]', 'tests/unit/repo/plots/test_data.py::test_finding_lists[dictionary0-expected_result0]', 'tests/unit/repo/plots/test_data.py::test_finding_lists[dictionary1-expected_result1]', 'tests/unit/repo/plots/test_data.py::test_finding_lists[dictionary2-expected_result2]', 'tests/unit/repo/plots/test_data.py::test_parse_json[$.some.path-expected_result1]', 'tests/unit/repo/plots/test_data.py::test_parse_json[$.some.path[*].a-expected_result0]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions0-False-expected_revisions0]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions1-True-expected_revisions1]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions2-False-expected_revisions2]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions3-True-expected_revisions3]', 'tests/unit/scm/test_git.py::test_no_commits', 'tests/unit/stage/test_run.py::test_run_stage_dry', 'tests/unit/stage/test_stage.py::test_meta_ignored', 'tests/unit/stage/test_stage.py::test_stage_checksum', 'tests/unit/stage/test_stage.py::test_wdir_default_ignored', 'tests/unit/stage/test_stage.py::test_wdir_non_default_is_not_ignored', 'tests/unit/utils/test_fs.py::TestContainsLink::test_path_object_and_str_are_valid_arg_types', 'tests/unit/utils/test_fs.py::TestContainsLink::test_should_raise_exception_on_base_path_not_in_path', 'tests/unit/utils/test_fs.py::TestContainsLink::test_should_return_false_on_no_more_dirs_below_path', 'tests/unit/utils/test_fs.py::TestContainsLink::test_should_return_false_on_path_eq_to_base_path', 'tests/unit/utils/test_fs.py::TestContainsLink::test_should_return_false_when_base_path_is_symlink', 'tests/unit/utils/test_fs.py::TestContainsLink::test_should_return_true_on_symlink_in_path', 'tests/unit/utils/test_fs.py::TestMtimeAndSize::test', 'tests/unit/utils/test_fs.py::test_copy_fobj_to_file', 'tests/unit/utils/test_fs.py::test_copyfile[dir]', 'tests/unit/utils/test_fs.py::test_copyfile[file]', 'tests/unit/utils/test_fs.py::test_get_inode', 'tests/unit/utils/test_fs.py::test_makedirs', 'tests/unit/utils/test_fs.py::test_move', 'tests/unit/utils/test_fs.py::test_path_isin_accepts_pathinfo', 'tests/unit/utils/test_fs.py::test_path_isin_on_common_substring_path', 'tests/unit/utils/test_fs.py::test_path_isin_on_same_path', 'tests/unit/utils/test_fs.py::test_path_isin_positive', 'tests/unit/utils/test_fs.py::test_path_isin_with_absolute_path', 'tests/unit/utils/test_fs.py::test_path_object_and_str_are_valid_types_get_mtime_and_size', 'tests/unit/utils/test_fs.py::test_remove', 'tests/unit/utils/test_fs.py::test_should_call_recursive_on_no_condition_matched', 'tests/unit/utils/test_fs.py::test_walk_files']}, 'PASS_TO_PASS': {'success': [], 'failure': ['tests/func/metrics/test_diff.py::test_metrics_diff_no_metrics', 'tests/func/params/test_diff.py::test_diff_no_params', 'tests/func/remote/test_gdrive.py::test_relative_user_credentials_file_config_setting', 'tests/func/test_analytics.py::test_daemon_analytics', 'tests/func/test_analytics.py::test_scm_dvc_only', 'tests/func/test_analytics.py::test_scm_git', 'tests/func/test_analytics.py::test_scm_subrepo', 'tests/func/test_api.py::test_get_url_requires_dvc', 'tests/func/test_api.py::test_open_scm_controlled', 'tests/func/test_cli.py::TestAdd::test', 'tests/func/test_cli.py::TestArgParse::test', 'tests/func/test_cli.py::TestCheckout::test', 'tests/func/test_cli.py::TestConfig::test', 'tests/func/test_cli.py::TestFindRoot::test', 'tests/func/test_cli.py::TestGC::test', 'tests/func/test_cli.py::TestGCMultipleDvcRepos::test', 'tests/func/test_cli.py::TestPull::test', 'tests/func/test_cli.py::TestPush::test', 'tests/func/test_cli.py::TestRemove::test', 'tests/func/test_cli.py::TestRepro::test', 'tests/func/test_cli.py::TestRun::test', 'tests/func/test_cli.py::TestStatus::test', 'tests/func/test_config.py::TestConfigCLI::test', 'tests/func/test_config.py::TestConfigCLI::test_local', 'tests/func/test_config.py::TestConfigCLI::test_non_existing', 'tests/func/test_config.py::TestConfigCLI::test_root', 'tests/func/test_config.py::test_config_loads_without_error_for_non_dvc_repo', 'tests/func/test_config.py::test_merging_two_levels', 'tests/func/test_config.py::test_set_invalid_key', 'tests/func/test_data_cloud.py::TestDataCloud::test', 'tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error', 'tests/func/test_data_cloud.py::test_fetch_stats[fs2-Everything', 'tests/func/test_data_cloud.py::test_push_stats[fs2-Everything', 'tests/func/test_external_repo.py::test_known_sha', 'tests/func/test_external_repo.py::test_source_change', 'tests/func/test_gc.py::test_gc_cloud_positive', 'tests/func/test_gc.py::test_gc_cloud_with_or_without_specifier', 'tests/func/test_gc.py::test_gc_cloud_without_any_specifier', 'tests/func/test_gc.py::test_gc_with_possible_args_positive', 'tests/func/test_gc.py::test_gc_without_workspace', 'tests/func/test_gc.py::test_gc_without_workspace_on_tags_branches_commits', 'tests/func/test_gc.py::test_gc_without_workspace_raises_error', 'tests/func/test_get.py::test_absolute_file_outside_git_repo', 'tests/func/test_get.py::test_absolute_file_outside_repo', 'tests/func/test_get.py::test_get_a_dvc_file', 'tests/func/test_get.py::test_get_from_non_dvc_repo', 'tests/func/test_get.py::test_get_git_dir', 'tests/func/test_get.py::test_get_git_file', 'tests/func/test_get.py::test_get_url_git_only_repo', 'tests/func/test_get.py::test_get_url_not_existing', 'tests/func/test_get.py::test_unknown_path', 'tests/func/test_ignore.py::test_ignore', 'tests/func/test_ignore.py::test_ignore_collecting_dvcignores[dir/subdir]', 'tests/func/test_ignore.py::test_ignore_collecting_dvcignores[dir]', 'tests/func/test_ignore.py::test_ignore_external', 'tests/func/test_ignore.py::test_ignore_on_branch', 'tests/func/test_ignore.py::test_ignore_unicode', 'tests/func/test_ignore.py::test_match_nested', 'tests/func/test_ignore.py::test_remove_file', 'tests/func/test_ignore.py::test_remove_ignored_file', 'tests/func/test_ignore.py::test_rename_file', 'tests/func/test_ignore.py::test_rename_ignored_file', 'tests/func/test_import_url.py::TestCmdImport::test_unsupported', 'tests/func/test_init.py::TestDoubleInit::test', 'tests/func/test_init.py::TestDoubleInit::test_api', 'tests/func/test_init.py::TestDoubleInit::test_cli', 'tests/func/test_init.py::TestInit::test_api', 'tests/func/test_init.py::TestInit::test_cli', 'tests/func/test_init.py::TestInitNoSCMFail::test_api', 'tests/func/test_init.py::TestInitNoSCMFail::test_cli', 'tests/func/test_init.py::test_allow_init_dvc_subdir', 'tests/func/test_init.py::test_init_no_scm_api', 'tests/func/test_init.py::test_init_no_scm_cli', 'tests/func/test_init.py::test_init_quiet_should_not_display_welcome_screen', 'tests/func/test_init.py::test_subdir_init_no_option', 'tests/func/test_install.py::TestInstall::test_create_hooks', 'tests/func/test_install.py::TestInstall::test_fail_if_hook_exists', 'tests/func/test_ls.py::test_ls_not_existed_url', 'tests/func/test_ls.py::test_ls_remote_git_only_repo_recursive', 'tests/func/test_move.py::TestMoveNonExistentFile::test', 'tests/func/test_remote.py::TestRemote::test', 'tests/func/test_remote.py::TestRemote::test_overwrite', 'tests/func/test_remote.py::TestRemote::test_referencing_other_remotes', 'tests/func/test_remote.py::TestRemote::test_relative_path', 'tests/func/test_remote.py::TestRemoteDefault::test', 'tests/func/test_remote.py::TestRemoteRemove::test', 'tests/func/test_remote.py::test_dir_checksum_should_be_key_order_agnostic', 'tests/func/test_remote.py::test_modify_missing_remote', 'tests/func/test_remote.py::test_remote_modify_validation', 'tests/func/test_remote.py::test_remove_default', 'tests/func/test_remote.py::test_show_default', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[/]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[:]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[@:]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[\\\\]', 'tests/func/test_run_single_stage.py::TestRunBadCwd::test', 'tests/func/test_run_single_stage.py::TestRunBadCwd::test_same_prefix', 'tests/func/test_run_single_stage.py::TestRunBadName::test', 'tests/func/test_run_single_stage.py::TestRunBadName::test_not_found', 'tests/func/test_run_single_stage.py::TestRunBadName::test_same_prefix', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_not_dir', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_not_found', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_same_prefix', 'tests/func/test_run_single_stage.py::TestRunCircularDependency::test', 'tests/func/test_run_single_stage.py::TestRunCircularDependency::test_non_normalized_paths', 'tests/func/test_run_single_stage.py::TestRunCircularDependency::test_outs_no_cache', 'tests/func/test_run_single_stage.py::TestRunDuplicatedArguments::test', 'tests/func/test_run_single_stage.py::TestRunDuplicatedArguments::test_non_normalized_paths', 'tests/func/test_run_single_stage.py::TestRunDuplicatedArguments::test_outs_no_cache', 'tests/func/test_run_single_stage.py::test_should_raise_on_stage_dependency', 'tests/func/test_scm.py::TestSCMGit::test_commit', 'tests/func/test_scm.py::TestSCMGit::test_is_tracked', 'tests/func/test_scm.py::TestSCMGitSubmodule::test_commit_in_submodule', 'tests/func/test_scm.py::TestSCMGitSubmodule::test_git_submodule', 'tests/func/test_scm.py::test_get_gitignore', 'tests/func/test_scm.py::test_get_gitignore_subdir', 'tests/func/test_scm.py::test_get_gitignore_symlink', 'tests/func/test_scm.py::test_gitignore_should_append_newline_to_gitignore', 'tests/func/test_scm.py::test_gitignore_should_end_with_newline', 'tests/func/test_scm.py::test_ignore', 'tests/func/test_scm.py::test_ignored', 'tests/func/test_scm.py::test_init_git', 'tests/func/test_scm.py::test_init_no_git', 'tests/func/test_scm.py::test_init_none', 'tests/func/test_scm.py::test_init_sub_dir', 'tests/func/test_stage.py::test_cmd_none', 'tests/func/test_stage.py::test_cmd_obj', 'tests/func/test_stage.py::test_cmd_str', 'tests/func/test_stage.py::test_empty_list', 'tests/func/test_stage.py::test_list', 'tests/func/test_stage.py::test_no_cmd', 'tests/func/test_stage.py::test_none', 'tests/func/test_stage.py::test_object', 'tests/func/test_status.py::TestStatus::test_implied_cloud', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_exists', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_isdir', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_isfile', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_open', 'tests/func/test_tree.py::TestGitTree::test_exists', 'tests/func/test_tree.py::TestGitTree::test_isdir', 'tests/func/test_tree.py::TestGitTree::test_isfile', 'tests/func/test_tree.py::TestGitTree::test_open', 'tests/func/test_tree.py::TestWalkInGit::test_branch', 'tests/func/test_tree.py::TestWalkInGit::test_nobranch', 'tests/func/test_tree.py::TestWalkInNoSCM::test', 'tests/func/test_tree.py::TestWalkInNoSCM::test_subdir', 'tests/func/test_tree.py::TestWorkingTree::test_exists', 'tests/func/test_tree.py::TestWorkingTree::test_isdir', 'tests/func/test_tree.py::TestWorkingTree::test_isfile', 'tests/func/test_tree.py::TestWorkingTree::test_open', 'tests/func/test_utils.py::test_boxify', 'tests/func/test_utils.py::test_dict_md5', 'tests/func/test_utils.py::test_file_md5_crlf', 'tests/unit/command/test_metrics.py::test_metrics_diff', 'tests/unit/command/test_metrics.py::test_metrics_show', 'tests/unit/command/test_params.py::test_params_diff', 'tests/unit/command/test_params.py::test_params_diff_show_json', 'tests/unit/remote/ssh/test_connection.py::test_exists', 'tests/unit/remote/ssh/test_connection.py::test_isdir', 'tests/unit/remote/ssh/test_connection.py::test_isfile', 'tests/unit/remote/ssh/test_connection.py::test_makedirs', 'tests/unit/remote/ssh/test_connection.py::test_move', 'tests/unit/remote/ssh/test_connection.py::test_remove_dir', 'tests/unit/remote/ssh/test_connection.py::test_symlink', 'tests/unit/remote/ssh/test_connection.py::test_walk', 'tests/unit/remote/ssh/test_ssh.py::test_hardlink_optimization', 'tests/unit/remote/ssh/test_ssh.py::test_no_path', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_gss_auth[config0-True]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_gss_auth[config1-False]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_gss_auth[config2-False]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_host_override_from_config[config0-1.2.3.4]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_host_override_from_config[config1-not_in_ssh_config.com]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_keyfile[config0-dvc_config.key]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_keyfile[config1-/root/.ssh/not_default.key]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_keyfile[config2-dvc_config.key]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_keyfile[config3-None]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config0-2222]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config1-1234]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config2-4321]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config3-22]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config4-2222]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_port[config5-4321]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config0-test1]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config1-test2]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config2-ubuntu]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config3-test1]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config4-test2]', 'tests/unit/remote/ssh/test_ssh.py::test_ssh_user[config5-root]', 'tests/unit/remote/ssh/test_ssh.py::test_url', 'tests/unit/remote/test_azure.py::test_init', 'tests/unit/remote/test_azure.py::test_init_compat', 'tests/unit/remote/test_base.py::test_cache_checksums', 'tests/unit/remote/test_base.py::test_cache_checksums_traverse', 'tests/unit/remote/test_base.py::test_cache_exists', 'tests/unit/remote/test_base.py::test_cmd_error', 'tests/unit/remote/test_base.py::test_missing_deps', 'tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_drive', 'tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_init', 'tests/unit/remote/test_gs.py::test_dynamic_chunk_size', 'tests/unit/remote/test_gs.py::test_gs', 'tests/unit/remote/test_gs.py::test_gs_no_credspath', 'tests/unit/remote/test_gs.py::test_init', 'tests/unit/remote/test_http.py::test_basic_auth_method', 'tests/unit/remote/test_http.py::test_custom_auth_method', 'tests/unit/remote/test_http.py::test_digest_auth_method', 'tests/unit/remote/test_http.py::test_download_fails_on_error_code', 'tests/unit/remote/test_http.py::test_public_auth_method', 'tests/unit/remote/test_oss.py::test_init', 'tests/unit/remote/test_remote.py::test_makedirs_not_create_for_top_level_path[GSRemote]', 'tests/unit/remote/test_remote.py::test_makedirs_not_create_for_top_level_path[S3Remote]', 'tests/unit/remote/test_remote.py::test_remote_with_checksum_jobs', 'tests/unit/remote/test_remote.py::test_remote_without_checksum_jobs', 'tests/unit/remote/test_remote.py::test_remote_without_checksum_jobs_default', 'tests/unit/remote/test_remote_dir.py::test_copy_preserve_etag_across_buckets[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_download_dir[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_exists[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_isdir[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_isfile[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_makedirs[S3Mocked]', 'tests/unit/remote/test_remote_dir.py::test_walk_files[S3Mocked]', 'tests/unit/remote/test_s3.py::test_grants', 'tests/unit/remote/test_s3.py::test_grants_mutually_exclusive_acl_error', 'tests/unit/remote/test_s3.py::test_init', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_false', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_true_on_git_internal', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_true_on_gitignore', 'tests/unit/scm/test_git.py::test_is_tracked', 'tests/unit/scm/test_git.py::test_is_tracked_unicode', 'tests/unit/scm/test_git.py::test_walk_with_submodules', 'tests/unit/stage/test_stage.py::TestPathConversion::test', 'tests/unit/stage/test_stage.py::test_always_changed', 'tests/unit/stage/test_stage.py::test_stage_update', 'tests/unit/test_rwlock.py::test_broken_rwlock', 'tests/unit/test_rwlock.py::test_rwlock', 'tests/unit/test_rwlock.py::test_rwlock_reentrant', 'tests/unit/test_rwlock.py::test_rwlock_subdirs', 'tests/unit/test_updater.py::test_fetch', 'tests/unit/test_updater.py::test_is_outdated[0.20.8-0.19.0-True]', 'tests/unit/test_updater.py::test_is_outdated[0.20.8-0.20.8-False]', 'tests/unit/test_updater.py::test_is_outdated[0.20.8-0.21.0-False]', 'tests/unit/utils/test_http.py::test_open_url']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.0.0a1_1.0.0a2: resolved: False
+2026-04-28 18:21:10,298 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.0.0a1_1.0.0a2.eval_input_20260427-154634...
+2026-04-28 18:21:28,007 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.0.0a1_1.0.0a2.eval_input_20260427-154634...
+2026-04-28 18:21:28,097 - INFO - Container sweb.eval.iterative__dvc_1.0.0a1_1.0.0a2.eval_input_20260427-154634 removed.
+2026-04-28 18:21:28,097 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.0.0a1_1.0.0a2:latest...
+2026-04-28 18:21:28,101 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.0.0a1_1.0.0a2:latest removed.

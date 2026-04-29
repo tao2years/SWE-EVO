@@ -1,0 +1,917 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dvc/command/data_sync.py
+	modified:   dvc/command/status.py
+	modified:   dvc/repo/fetch.py
+	modified:   dvc/repo/pull.py
+	modified:   dvc/repo/push.py
+	modified:   dvc/repo/status.py
+	modified:   tests/unit/command/test_metrics.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	tests/unit/command/test_data_sync.py
+	tests/unit/command/test_status.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit a338fad036bd9ac8bdd79ecec964f8c5558609c4
+Author: Ruslan Kuprieiev <kupruser@gmail.com>
+Date:   Thu Apr 2 01:15:02 2020 +0300
+
+    dvc: bump to 0.92.0
+
+diff --git a/dvc/version.py b/dvc/version.py
+index 2439dd0d3..655743fa7 100644
+--- a/dvc/version.py
++++ b/dvc/version.py
+@@ -7,7 +7,7 @@ import os
+ import subprocess
+ 
+ 
+-_BASE_VERSION = "0.91.4"
++_BASE_VERSION = "0.92.0"
+ 
+ 
+ def _generate_version(base_version):
++ git -c core.fileMode=false diff a338fad036bd9ac8bdd79ecec964f8c5558609c4
+diff --git a/dvc/command/data_sync.py b/dvc/command/data_sync.py
+index e44e8ea7a..3e6a3b8ed 100644
+--- a/dvc/command/data_sync.py
++++ b/dvc/command/data_sync.py
+@@ -26,6 +26,7 @@ class CmdDataPull(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 force=self.args.force,
+                 recursive=self.args.recursive,
+@@ -49,6 +50,7 @@ class CmdDataPush(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -68,6 +70,7 @@ class CmdDataFetch(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -128,6 +131,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    pull_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     pull_parser.add_argument(
+         "-f",
+         "--force",
+@@ -178,6 +187,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Push cache for all tags.",
+     )
++    push_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Push cache for all commits.",
++    )
+     push_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -224,6 +239,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    fetch_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     fetch_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -289,6 +310,13 @@ def add_parser(subparsers, _parent_parser):
+         help="Show status of a local cache compared to a remote repository "
+         "for all tags.",
+     )
++    status_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Show status of a local cache compared to a remote repository "
++        "for all commits.",
++    )
+     status_parser.add_argument(
+         "-d",
+         "--with-deps",
+diff --git a/dvc/command/status.py b/dvc/command/status.py
+index 640294860..a441f7136 100644
+--- a/dvc/command/status.py
++++ b/dvc/command/status.py
+@@ -47,6 +47,7 @@ class CmdDataStatus(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+             )
+             if st:
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index fbbaab1be..6398cc69c 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -19,6 +19,7 @@ def _fetch(
+     show_checksums=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     """Download data items from a cloud and imported repositories
+@@ -37,6 +38,7 @@ def _fetch(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/pull.py b/dvc/repo/pull.py
+index 993d50be8..a6ca9c870 100644
+--- a/dvc/repo/pull.py
++++ b/dvc/repo/pull.py
+@@ -15,6 +15,7 @@ def pull(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     force=False,
+     recursive=False,
+ ):
+@@ -24,6 +25,7 @@ def pull(
+         remote=remote,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         recursive=recursive,
+     )
+diff --git a/dvc/repo/push.py b/dvc/repo/push.py
+index 4ea1dd0b3..a8ef322d8 100644
+--- a/dvc/repo/push.py
++++ b/dvc/repo/push.py
+@@ -10,12 +10,14 @@ def push(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     used = self.used_cache(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/status.py b/dvc/repo/status.py
+index b8c3a8fcf..fd77e218b 100644
+--- a/dvc/repo/status.py
++++ b/dvc/repo/status.py
+@@ -44,6 +44,7 @@ def _cloud_status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     """Returns a dictionary with the files that are new or deleted.
+ 
+@@ -77,6 +78,7 @@ def _cloud_status(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+@@ -108,6 +110,7 @@ def status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     if cloud or remote:
+         return _cloud_status(
+@@ -118,6 +121,7 @@ def status(
+             with_deps=with_deps,
+             remote=remote,
+             all_tags=all_tags,
++            all_commits=all_commits,
+         )
+ 
+     ignored = list(
+diff --git a/tests/unit/command/test_metrics.py b/tests/unit/command/test_metrics.py
+index 2127c5c78..7a520dddf 100644
+--- a/tests/unit/command/test_metrics.py
++++ b/tests/unit/command/test_metrics.py
+@@ -1,5 +1,5 @@
+ from dvc.cli import parse_args
+-from dvc.command.metrics import CmdMetricsDiff, _show_diff
++from dvc.command.metrics import CmdMetricsDiff, _show_diff, CmdMetricsShow
+ 
+ 
+ def test_metrics_diff(dvc, mocker):
+@@ -64,7 +64,7 @@ def test_metrics_diff_no_diff():
+ 
+ 
+ def test_metrics_diff_no_changes():
+-    assert _show_diff({}) == "No changes."
++    assert _show_diff({}) == ""
+ 
+ 
+ def test_metrics_diff_new_metric():
+@@ -83,3 +83,39 @@ def test_metrics_diff_deleted_metric():
+         "   Path      Metric   Value         Change      \n"
+         "other.json   a.b.d    None    diff not supported"
+     )
++
++
++def test_metrics_show(dvc, mocker):
++    cli_args = parse_args(
++        [
++            "metrics",
++            "show",
++            "-t",
++            "json",
++            "-x",
++            "x.path",
++            "-R",
++            "--all-tags",
++            "--all-branches",
++            "--all-commits",
++            "target1",
++            "target2",
++        ]
++    )
++    assert cli_args.func == CmdMetricsShow
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.metrics.show.show", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(
++        cmd.repo,
++        ["target1", "target2"],
++        typ="json",
++        xpath="x.path",
++        recursive=True,
++        all_tags=True,
++        all_branches=True,
++        all_commits=True,
++    )
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (24.2)
+Collecting pip
+  Downloading pip-25.0.1-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from GitPython) (4.12.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-25.0.1-py3-none-any.whl (1.8 MB)
+                                            0.0/1.8 MB ? eta -:--:--
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/http/client.py", line 459, in read
+    n = self.readinto(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/http/client.py", line 503, in readinto
+    n = self.fp.readinto(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/socket.py", line 669, in readinto
+    return self._sock.recv_into(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/ssl.py", line 1274, in recv_into
+    return self.read(nbytes, buffer)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/ssl.py", line 1132, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 105, in _run_wrapper
+    status = _inner_run()
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 96, in _inner_run
+    return self.run(options, args)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/req_command.py", line 67, in wrapper
+    return func(self, options, args)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/commands/install.py", line 379, in run
+    requirement_set = resolver.resolve(
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 179, in resolve
+    self.factory.preparer.prepare_linked_requirements_more(reqs)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 554, in prepare_linked_requirements_more
+    self._complete_partial_requirements(
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 469, in _complete_partial_requirements
+    for link, (filepath, _) in batch_download:
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/network/download.py", line 184, in __call__
+    for chunk in chunks:
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/progress_bars.py", line 55, in _rich_progress_bar
+    for chunk in iterable:
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/network/utils.py", line 65, in response_chunks
+    for chunk in response.raw.stream(
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 587, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/contextlib.py", line 131, in __exit__
+    self.gen.throw(type, value, traceback)
+  File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Collecting pyyaml==5.4.1
+  Using cached PyYAML-5.4.1-cp38-cp38-manylinux1_x86_64.whl.metadata (2.1 kB)
+Using cached PyYAML-5.4.1-cp38-cp38-manylinux1_x86_64.whl (662 kB)
+Installing collected packages: pyyaml
+  Attempting uninstall: pyyaml
+    Found existing installation: PyYAML 5.3.1
+    Uninstalling PyYAML-5.3.1:
+      Successfully uninstalled PyYAML-5.3.1
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+dvc 0.92.0+a338fa.mod requires PyYAML<5.4,>=5.1.2, but you have pyyaml 5.4.1 which is incompatible.
+Successfully installed pyyaml-5.4.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-wwk9k_hc
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-wwk9k_hc
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': Failed to connect to github.com port 443 after 133655 ms: Connection timed out
+  error: subprocess-exited-with-error
+  
+  × git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-wwk9k_hc did not run successfully.
+  │ exit code: 128
+  ╰─> See above for output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-wwk9k_hc did not run successfully.
+│ exit code: 128
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
++ true
++ python -m pip install -r tests/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tests/requirements.txt'
++ true
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'error'
+  error: subprocess-exited-with-error
+  
+  × pip subprocess to install build dependencies did not run successfully.
+  │ exit code: 2
+  ╰─> [58 lines of output]
+      Collecting setuptools>=40.8.0
+        Downloading setuptools-75.3.4-py3-none-any.whl.metadata (6.9 kB)
+      Downloading setuptools-75.3.4-py3-none-any.whl (1.3 MB)
+                                                  0.0/1.3 MB ? eta -:--:--
+      ERROR: Exception:
+      Traceback (most recent call last):
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+          yield
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+          data = self._fp_read(amt) if not fp_closed else b""
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+          return self._fp.read(amt) if amt is not None else self._fp.read()
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+          data: bytes = self.__fp.read(amt)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/http/client.py", line 459, in read
+          n = self.readinto(b)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/http/client.py", line 503, in readinto
+          n = self.fp.readinto(b)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/socket.py", line 669, in readinto
+          return self._sock.recv_into(b)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/ssl.py", line 1274, in recv_into
+          return self.read(nbytes, buffer)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/ssl.py", line 1132, in read
+          return self._sslobj.read(len, buffer)
+      socket.timeout: The read operation timed out
+      
+      During handling of the above exception, another exception occurred:
+      
+      Traceback (most recent call last):
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 105, in _run_wrapper
+          status = _inner_run()
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/base_command.py", line 96, in _inner_run
+          return self.run(options, args)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/req_command.py", line 67, in wrapper
+          return func(self, options, args)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/commands/install.py", line 379, in run
+          requirement_set = resolver.resolve(
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 179, in resolve
+          self.factory.preparer.prepare_linked_requirements_more(reqs)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 554, in prepare_linked_requirements_more
+          self._complete_partial_requirements(
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/operations/prepare.py", line 469, in _complete_partial_requirements
+          for link, (filepath, _) in batch_download:
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/network/download.py", line 184, in __call__
+          for chunk in chunks:
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/cli/progress_bars.py", line 55, in _rich_progress_bar
+          for chunk in iterable:
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_internal/network/utils.py", line 65, in response_chunks
+          for chunk in response.raw.stream(
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+          data = self.read(amt=amt, decode_content=decode_content)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 587, in read
+          raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/contextlib.py", line 131, in __exit__
+          self.gen.throw(type, value, traceback)
+        File "/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+          raise ReadTimeoutError(self._pool, None, "Read timed out.")
+      pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
+      [end of output]
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× pip subprocess to install build dependencies did not run successfully.
+│ exit code: 2
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
++ python -m pip install 'numpy<=1.20'
+Requirement already satisfied: numpy<=1.20 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (1.20.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'pytest<8'
+Requirement already satisfied: pytest<8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (7.4.4)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (2.0.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/unit/command/test_data_sync.py tests/unit/command/test_metrics.py tests/unit/command/test_status.py
+============================= test session starts ==============================
+platform linux -- Python 3.8.19, pytest-7.4.4, pluggy-1.5.0
+rootdir: /testbed
+plugins: cov-5.0.0, xdist-3.6.1, flaky-3.8.1, mock-1.11.2, timeout-2.3.1
+collected 12 items
+
+tests/unit/command/test_data_sync.py ...                                 [ 25%]
+tests/unit/command/test_metrics.py ....F..F                              [ 91%]
+tests/unit/command/test_status.py .                                      [100%]
+
+=================================== FAILURES ===================================
+_________________________ test_metrics_diff_no_changes _________________________
+
+    def test_metrics_diff_no_changes():
+>       assert _show_diff({}) == ""
+E       AssertionError: assert 'No changes.' == ''
+E         + No changes.
+
+tests/unit/command/test_metrics.py:67: AssertionError
+______________________________ test_metrics_show _______________________________
+
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_metrics_show0'
+mocker = <pytest_mock.plugin.MockFixture object at 0x77afca502fa0>
+
+    def test_metrics_show(dvc, mocker):
+>       cli_args = parse_args(
+            [
+                "metrics",
+                "show",
+                "-t",
+                "json",
+                "-x",
+                "x.path",
+                "-R",
+                "--all-tags",
+                "--all-branches",
+                "--all-commits",
+                "target1",
+                "target2",
+            ]
+        )
+
+/testbed/tests/unit/command/test_metrics.py:89: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/cli.py:187: in parse_args
+    args = parser.parse_args(argv)
+/opt/miniconda3/envs/testbed/lib/python3.8/argparse.py:1771: in parse_args
+    self.error(msg % ' '.join(argv))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = DvcParser(prog='dvc', usage=None, description='Data Version Control', formatter_class=<class 'argparse.RawTextHelpFormatter'>, conflict_handler='error', add_help=False)
+message = 'unrecognized arguments: --all-commits'
+
+    def error(self, message):
+        """Custom error method.
+        Args:
+            message (str): error message.
+    
+        Raises:
+            dvc.exceptions.DvcParser: dvc parser exception.
+        """
+        logger.error(message)
+        self.print_help()
+>       raise DvcParserError()
+E       dvc.exceptions.DvcParserError: parser error
+
+/testbed/dvc/cli.py:93: DvcParserError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:44 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stdout call -----------------------------
+usage: dvc [-q | -v] [-h] [-V] COMMAND ...
+
+Data Version Control
+
+optional arguments:
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+  -h, --help     Show this help message and exit.
+  -V, --version  Show program's version.
+
+Available Commands:
+  COMMAND        Use `dvc COMMAND --help` for command-specific help.
+    init         Initialize DVC in the current directory.
+    get          Download file or directory tracked by DVC or by Git.
+    get-url      Download or copy files from URL.
+    destroy      Remove DVC-files, local DVC config and data cache.
+    add          Track data files or directories with DVC.
+    remove       Remove DVC-tracked files or directories.
+    move         Rename or move a DVC controlled data file or a directory.
+    unprotect    Unprotect tracked files or directories (when hardlinks or symlinks have been enabled with `dvc config cache.type`)
+    run          Generate a stage file from a command and execute the command.
+    repro        Reproduce complete or partial pipelines by executing their stages.
+    pull         Download tracked files or directories from remote storage.
+    push         Upload tracked files or directories to remote storage.
+    fetch        Get tracked files or directories from remote storage into the cache.
+    status       Show changed stages, compare local cache and a remote storage.
+    gc           Garbage collect unused objects from cache or remote storage.
+    import       Download file or directory tracked by DVC or by Git into the workspace, and track it.
+    import-url   Download or copy file from URL and take it under DVC control.
+    config       Get or set config options.
+    checkout     Checkout data files from cache.
+    remote       Set up and manage data remotes.
+    cache        Manage cache settings.
+    metrics      Commands to add, manage, collect, and display metrics.
+    install      Install DVC git hooks into the repository.
+    root         Return the relative path to the root of the DVC project.
+    list         List repository contents, including files and directories tracked by DVC and by Git.
+    lock         Lock DVC-files.
+    unlock       Unlock DVC-files.
+    pipeline     Manage pipelines.
+    commit       Save changed data to cache and update DVC-files.
+    diff         Show changes between commits in the DVC repository, or between a commit and the workspace. Prints the list of paths added, modified, or deleted.
+    version      Display the DVC version and system/environment information.
+    update       Update data artifacts imported from other DVC repositories.
+----------------------------- Captured stderr call -----------------------------
+ERROR: unrecognized arguments: --all-commits
+------------------------------ Captured log call -------------------------------
+ERROR    dvc.cli:cli.py:91 unrecognized arguments: --all-commits
+==================================== PASSES ====================================
+__________________________________ test_pull ___________________________________
+----------------------------- Captured stdout call -----------------------------
+0 added, 0 deleted and 0 modified
+------------------------------ Captured log call -------------------------------
+INFO     dvc.command.checkout:checkout.py:34 0 added, 0 deleted and 0 modified
+______________________________ test_metrics_diff _______________________________
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:44 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stdout call -----------------------------
+{}
+------------------------------ Captured log call -------------------------------
+INFO     dvc.command.metrics:metrics.py:150 {}
+______________________________ test_cloud_status _______________________________
+----------------------------- Captured stdout call -----------------------------
+Data and pipelines are up to date.
+------------------------------ Captured log call -------------------------------
+INFO     dvc.command.status:status.py:59 Data and pipelines are up to date.
+=========================== short test summary info ============================
+PASSED tests/unit/command/test_data_sync.py::test_fetch
+PASSED tests/unit/command/test_data_sync.py::test_pull
+PASSED tests/unit/command/test_data_sync.py::test_push
+PASSED tests/unit/command/test_metrics.py::test_metrics_diff
+PASSED tests/unit/command/test_metrics.py::test_metrics_show_json_diff
+PASSED tests/unit/command/test_metrics.py::test_metrics_show_raw_diff
+PASSED tests/unit/command/test_metrics.py::test_metrics_diff_no_diff
+PASSED tests/unit/command/test_metrics.py::test_metrics_diff_new_metric
+PASSED tests/unit/command/test_metrics.py::test_metrics_diff_deleted_metric
+PASSED tests/unit/command/test_status.py::test_cloud_status
+FAILED tests/unit/command/test_metrics.py::test_metrics_diff_no_changes - Ass...
+FAILED tests/unit/command/test_metrics.py::test_metrics_show - dvc.exceptions...
+========================= 2 failed, 10 passed in 0.59s =========================
++ : '>>>>> End Test Output'

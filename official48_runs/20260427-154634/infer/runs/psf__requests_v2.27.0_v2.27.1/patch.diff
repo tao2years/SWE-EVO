@@ -1,0 +1,16 @@
+diff --git a/requests/utils.py b/requests/utils.py
+index 1c2ae4e..2139bf6 100644
+--- a/requests/utils.py
++++ b/requests/utils.py
+@@ -979,6 +979,11 @@ def prepend_scheme_if_needed(url, new_scheme):
+     if path is None:
+         path = ''
+ 
++    # Rebuild netloc including auth (parsed.netloc doesn't include auth)
++    netloc = (auth + '@' + host) if auth else host
++    if port:
++        netloc += ':' + str(port)
++
+     return urlunparse((scheme, netloc, path, '', query, fragment))
+ 
+ 

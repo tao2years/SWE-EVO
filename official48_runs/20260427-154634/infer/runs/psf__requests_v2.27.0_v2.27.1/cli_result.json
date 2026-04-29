@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 137462,
+  "duration_api_ms": 135054,
+  "num_turns": 30,
+  "result": "The fix is correct. `parsed.netloc` includes port but not auth. The fix rebuilds `netloc` to always include auth (and port), which correctly handles all cases including the previously failing URLs with embedded credentials.",
+  "stop_reason": "end_turn",
+  "session_id": "509f6825-96d3-437d-950b-aa736833e3c8",
+  "total_cost_usd": 0.48732749999999997,
+  "usage": {
+    "input_tokens": 120615,
+    "cache_creation_input_tokens": 486,
+    "cache_read_input_tokens": 83800,
+    "output_tokens": 6568,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 120615,
+      "outputTokens": 6568,
+      "cacheReadInputTokens": 83800,
+      "cacheCreationInputTokens": 486,
+      "webSearchRequests": 0,
+      "costUSD": 0.48732749999999997,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "fc791108-d1de-4a1f-90dd-34acb054eefc"
+}

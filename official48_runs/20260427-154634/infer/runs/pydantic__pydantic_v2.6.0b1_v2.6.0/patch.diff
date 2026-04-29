@@ -1,0 +1,13 @@
+diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py
+index eee9e60..aa6b98f 100644
+--- a/pydantic/json_schema.py
++++ b/pydantic/json_schema.py
+@@ -1128,7 +1128,7 @@ class GenerateJsonSchema:
+             # property on all choices. If so, that property will be used as the OpenAPI discriminator.
+             for alias_path in schema['discriminator']:
+                 if not isinstance(alias_path, list):
+-                    break  # this means that the discriminator is not a list of alias paths
++                    continue  # this means that the discriminator element is not an alias path, skip it
+                 if len(alias_path) != 1:
+                     continue  # this means that the "alias" does not represent a single field
+                 alias = alias_path[0]

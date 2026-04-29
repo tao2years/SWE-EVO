@@ -1,0 +1,2858 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   pydantic/_internal/_known_annotated_metadata.py
+	modified:   pydantic/json_schema.py
+	modified:   pydantic/main.py
+	modified:   pydantic/types.py
+	modified:   tests/test_construction.py
+	modified:   tests/test_discriminated_union.py
+	modified:   tests/test_json_schema.py
+	modified:   tests/test_main.py
+	modified:   tests/test_networks.py
+	modified:   tests/test_root_model.py
+	modified:   tests/test_types.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 7af856a1098406aea84bcadfd0f3de6b7901526c
+Author: Sydney Runkle <54324534+sydney-runkle@users.noreply.github.com>
+Date:   Thu Apr 11 11:26:32 2024 -0500
+
+    Prep for 2.7 Release (#9212)
+
+diff --git a/HISTORY.md b/HISTORY.md
+index 1f68f5227..f899c9adf 100644
+--- a/HISTORY.md
++++ b/HISTORY.md
+@@ -1,13 +1,15 @@
+-## v2.7.0b1 (2024-04-03)
++## v2.7.0 (2024-04-11)
++
++[GitHub release](https://github.com/pydantic/pydantic/releases/tag/v2.7.0)
+ 
+-[GitHub release](https://github.com/pydantic/pydantic/releases/tag/v2.7.0b1)
++The code released in v2.7.0 is practically identical to that of v2.7.0b1.
+ 
+ ### What's Changed
+ 
+ #### Packaging
+ 
+ * Reorganize `pyproject.toml` sections by @Viicos in [#8899](https://github.com/pydantic/pydantic/pull/8899)
+-* Bump `pydantic-core` to `v2.18.0` by @sydney-runkle in [#9153](https://github.com/pydantic/pydantic/pull/9153)
++* Bump `pydantic-core` to `v2.18.1` by @sydney-runkle in [#9211](https://github.com/pydantic/pydantic/pull/9211)
+ * Adopt `jiter` `v0.2.0` by @samuelcolvin in [pydantic/pydantic-core#1250](https://github.com/pydantic/pydantic-core/pull/1250)
+ 
+ #### New Features
+@@ -30,6 +32,10 @@
+ * Add feedback widget to docs with flarelytics integration by @sydney-runkle in [#9129](https://github.com/pydantic/pydantic/pull/9129)
+ * Support for parsing partial JSON strings in Python by @samuelcolvin in [pydantic/jiter#66](https://github.com/pydantic/jiter/pull/66)
+ 
++**Finalized in v2.7.0, rather than v2.7.0b1:**
++* Add support for field level number to str coercion option by @NeevCohen in [#9137](https://github.com/pydantic/pydantic/pull/9137)
++* Update `warnings` parameter for serialization utilities to allow raising a warning by @Lance-Drane in [#9166](https://github.com/pydantic/pydantic/pull/9166)
++
+ #### Changes
+ 
+ * Correct docs, logic for `model_construct` behavior with `extra` by @sydney-runkle in [#8807](https://github.com/pydantic/pydantic/pull/8807)
+@@ -98,6 +104,7 @@
+ * Init private attributes from super-types in `model_post_init` by @Viicos in [#9134](https://github.com/pydantic/pydantic/pull/9134)
+ * fix `model_construct` with `validation_alias` by @ornariece in [#9144](https://github.com/pydantic/pydantic/pull/9144)
+ * Ensure json-schema generator handles `Literal` `null` types by @bruno-f-cruz in [#9135](https://github.com/pydantic/pydantic/pull/9135)
++* **Fixed in v2.7.0**: Fix allow extra generic by @dmontagu in [#9193](https://github.com/pydantic/pydantic/pull/9193)
+ 
+ ### New Contributors
+ 
+@@ -128,6 +135,11 @@
+ * @Youssefares made their first contribution in [#9023](https://github.com/pydantic/pydantic/pull/9023)
+ * @chan-vince made their first contribution in [#9105](https://github.com/pydantic/pydantic/pull/9105)
+ * @bruno-f-cruz made their first contribution in [#9135](https://github.com/pydantic/pydantic/pull/9135)
++* @Lance-Drane made their first contribution in [#9166](https://github.com/pydantic/pydantic/pull/9166)
++
++## v2.7.0b1 (2024-04-03)
++
++Pre-release, see [the GitHub release](https://github.com/pydantic/pydantic/releases/tag/v2.7.0b1) for details.
+ 
+ ## v2.6.4 (2024-03-12)
+ 
+diff --git a/pydantic/version.py b/pydantic/version.py
+index e470fa5fc..83dcf831a 100644
+--- a/pydantic/version.py
++++ b/pydantic/version.py
+@@ -3,7 +3,7 @@ from __future__ import annotations as _annotations
+ 
+ __all__ = 'VERSION', 'version_info'
+ 
+-VERSION = '2.7.0b1'
++VERSION = '2.7.0'
+ """The version of Pydantic."""
+ 
+ 
++ git -c core.fileMode=false diff 7af856a1098406aea84bcadfd0f3de6b7901526c
+diff --git a/pydantic/_internal/_known_annotated_metadata.py b/pydantic/_internal/_known_annotated_metadata.py
+index ee7f7b248..3d34976ec 100644
+--- a/pydantic/_internal/_known_annotated_metadata.py
++++ b/pydantic/_internal/_known_annotated_metadata.py
+@@ -202,6 +202,9 @@ def apply_known_metadata(annotation: Any, schema: CoreSchema) -> CoreSchema | No
+                 schema[constraint] = value
+             continue
+ 
++        if constraint == 'strict' and value is True and schema_type == 'function-after':
++            return cs.lax_or_strict_schema(lax_schema=schema, strict_schema=schema)
++
+         if constraint == 'allow_inf_nan' and value is False:
+             return cs.no_info_after_validator_function(
+                 _validators.forbid_inf_nan_check,
+diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py
+index 3e63ecc08..ef46a15c6 100644
+--- a/pydantic/json_schema.py
++++ b/pydantic/json_schema.py
+@@ -1393,7 +1393,8 @@ class GenerateJsonSchema:
+ 
+         json_schema_extra = config.get('json_schema_extra')
+         if cls.__pydantic_root_model__:
+-            root_json_schema_extra = cls.model_fields['root'].json_schema_extra
++            root_field = cls.model_fields['root']
++            root_json_schema_extra = root_field.json_schema_extra
+             if json_schema_extra and root_json_schema_extra:
+                 raise ValueError(
+                     '"model_config[\'json_schema_extra\']" and "Field.json_schema_extra" on "RootModel.root"'
+@@ -1401,6 +1402,8 @@ class GenerateJsonSchema:
+                 )
+             if root_json_schema_extra:
+                 json_schema_extra = root_json_schema_extra
++            if root_field.is_required() and root_field.description:
++                json_schema['description'] = root_field.description
+ 
+         json_schema = self._update_class_schema(json_schema, title, config.get('extra', None), cls, json_schema_extra)
+ 
+diff --git a/pydantic/main.py b/pydantic/main.py
+index 647f13506..d8399219f 100644
+--- a/pydantic/main.py
++++ b/pydantic/main.py
+@@ -27,6 +27,7 @@ from ._internal import (
+     _utils,
+ )
+ from ._migration import getattr_migration
++from .aliases import AliasChoices, AliasPath
+ from .annotated_handlers import GetCoreSchemaHandler, GetJsonSchemaHandler
+ from .config import ConfigDict
+ from .errors import PydanticUndefinedAnnotation, PydanticUserError
+@@ -225,10 +226,27 @@ class BaseModel(metaclass=_model_construction.ModelMetaclass):
+             if field.alias is not None and field.alias in values:
+                 fields_values[name] = values.pop(field.alias)
+                 fields_set.add(name)
+-            elif field.validation_alias is not None and field.validation_alias in values:
+-                fields_values[name] = values.pop(field.validation_alias)
+-                fields_set.add(name)
+-            elif name in values:
++            elif field.validation_alias is not None:
++                if isinstance(field.validation_alias, AliasChoices):
++                    for choice in field.validation_alias.choices:
++                        if isinstance(choice, AliasPath):
++                            if choice.path[0] in values:
++                                fields_values[name] = values.pop(choice.path[0])
++                                fields_set.add(name)
++                                break
++                        else:
++                            if choice in values:
++                                fields_values[name] = values.pop(choice)
++                                fields_set.add(name)
++                                break
++                elif isinstance(field.validation_alias, AliasPath):
++                    if field.validation_alias.path[0] in values:
++                        fields_values[name] = values.pop(field.validation_alias.path[0])
++                        fields_set.add(name)
++                elif field.validation_alias in values:
++                    fields_values[name] = values.pop(field.validation_alias)
++                    fields_set.add(name)
++            if name not in fields_values and name in values:
+                 fields_values[name] = values.pop(name)
+                 fields_set.add(name)
+             elif not field.is_required():
+@@ -244,18 +262,15 @@ class BaseModel(metaclass=_model_construction.ModelMetaclass):
+         if not cls.__pydantic_root_model__:
+             _object_setattr(m, '__pydantic_extra__', _extra)
+ 
+-        if cls.__pydantic_post_init__:
+-            m.model_post_init(None)
+-            # update private attributes with values set
+-            if hasattr(m, '__pydantic_private__') and m.__pydantic_private__ is not None:
+-                for k, v in values.items():
+-                    if k in m.__private_attributes__:
+-                        m.__pydantic_private__[k] = v
+-
+-        elif not cls.__pydantic_root_model__:
+-            # Note: if there are any private attributes, cls.__pydantic_post_init__ would exist
+-            # Since it doesn't, that means that `__pydantic_private__` should be set to None
++        if not cls.__pydantic_root_model__:
+             _object_setattr(m, '__pydantic_private__', None)
++            if cls.__pydantic_post_init__:
++                m.model_post_init(None)
++                # update private attributes with values set
++                if m.__pydantic_private__ is not None:
++                    for k, v in values.items():
++                        if k in m.__private_attributes__:
++                            m.__pydantic_private__[k] = v
+ 
+         return m
+ 
+diff --git a/pydantic/types.py b/pydantic/types.py
+index 1db3b67cc..706063749 100644
+--- a/pydantic/types.py
++++ b/pydantic/types.py
+@@ -1561,15 +1561,15 @@ class Secret(_SecretBase[SecretType]):
+             validated_inner = handler(value)
+             return cls(validated_inner)
+ 
++        def serialize_secret_value(value: Any, info: core_schema.SerializationInfo) -> Any:
++            if isinstance(value, Secret):
++                return value._display()
++            return value
++
+         return core_schema.json_or_python_schema(
+-            python_schema=core_schema.no_info_wrap_validator_function(
+-                validate_secret_value,
+-                inner_schema,
+-                serialization=core_schema.plain_serializer_function_ser_schema(lambda x: x),
+-            ),
+-            json_schema=core_schema.no_info_after_validator_function(
+-                lambda x: cls(x), inner_schema, serialization=core_schema.to_string_ser_schema(when_used='json')
+-            ),
++            python_schema=core_schema.no_info_wrap_validator_function(validate_secret_value, inner_schema),
++            json_schema=core_schema.no_info_after_validator_function(lambda x: cls(x), inner_schema),
++            serialization=core_schema.to_string_ser_schema(when_used='json'),
+         )
+ 
+ 
+diff --git a/tests/test_construction.py b/tests/test_construction.py
+index d8fd06bcf..c5188604d 100644
+--- a/tests/test_construction.py
++++ b/tests/test_construction.py
+@@ -4,7 +4,7 @@ from typing import Any, List, Optional
+ import pytest
+ from pydantic_core import PydanticUndefined, ValidationError
+ 
+-from pydantic import BaseModel, ConfigDict, Field, PrivateAttr, PydanticDeprecatedSince20
++from pydantic import AliasChoices, AliasPath, BaseModel, ConfigDict, Field, PrivateAttr, PydanticDeprecatedSince20
+ 
+ 
+ class Model(BaseModel):
+@@ -561,3 +561,29 @@ def test_initialize_with_private_attr():
+ 
+     assert m._a == 'a'
+     assert '_a' in m.__pydantic_private__
++
++
++def test_model_construct_with_alias_choices() -> None:
++    class MyModel(BaseModel):
++        a: str = Field(validation_alias=AliasChoices('aaa', 'AAA'))
++
++    assert MyModel.model_construct(a='a_value').a == 'a_value'
++    assert MyModel.model_construct(aaa='a_value').a == 'a_value'
++    assert MyModel.model_construct(AAA='a_value').a == 'a_value'
++
++
++def test_model_construct_with_alias_path() -> None:
++    class MyModel(BaseModel):
++        a: str = Field(validation_alias=AliasPath('aaa', 'AAA'))
++
++    assert MyModel.model_construct(a='a_value').a == 'a_value'
++    assert MyModel.model_construct(aaa={'AAA': 'a_value'}).a == 'a_value'
++
++
++def test_model_construct_with_alias_choices_and_path() -> None:
++    class MyModel(BaseModel):
++        a: str = Field(validation_alias=AliasChoices('aaa', AliasPath('AAA', 'aaa')))
++
++    assert MyModel.model_construct(a='a_value').a == 'a_value'
++    assert MyModel.model_construct(aaa='a_value').a == 'a_value'
++    assert MyModel.model_construct(AAA={'aaa': 'a_value'}).a == 'a_value'
+diff --git a/tests/test_discriminated_union.py b/tests/test_discriminated_union.py
+index 779ae5f04..804dcbb50 100644
+--- a/tests/test_discriminated_union.py
++++ b/tests/test_discriminated_union.py
+@@ -2031,3 +2031,29 @@ def test_discriminated_union_with_unsubstituted_type_var() -> None:
+     assert ta.validate_python(int_dog).id == 1
+     assert ta.validate_python(int_dog).friends[0].id == 2
+     assert ta.validate_python(int_dog).friends[1].id == 3
++
++
++@pytest.mark.xfail(
++    reason='model_dump does not properly serialize the discriminator field to string if it is using an Enum. Issue: https://github.com/pydantic/pydantic/issues/9235'
++)
++def test_discriminated_union_model_dump_with_nested_class():
++    class SomeEnum(str, Enum):
++        CAT = 'cat'
++        DOG = 'dog'
++
++    class Dog(BaseModel):
++        type: Literal[SomeEnum.DOG] = SomeEnum.DOG
++        name: str
++
++    class Cat(BaseModel):
++        type: Literal[SomeEnum.CAT] = SomeEnum.CAT
++        name: str
++
++    class Yard(BaseModel):
++        pet: Union[Dog, Cat] = Field(discriminator='type')
++
++    yard = Yard(pet=Dog(name='Rex'))
++    yard_dict = yard.model_dump(mode='json')
++    assert isinstance(yard_dict['pet']['type'], str)
++    assert not isinstance(yard_dict['pet']['type'], SomeEnum)
++    assert str(yard_dict['pet']['type']) == 'dog'
+diff --git a/tests/test_json_schema.py b/tests/test_json_schema.py
+index 46637d9da..084728042 100644
+--- a/tests/test_json_schema.py
++++ b/tests/test_json_schema.py
+@@ -1,3 +1,4 @@
++import dataclasses
+ import json
+ import math
+ import re
+@@ -6030,3 +6031,108 @@ def test_default_value_encoding(field_type, default_value, expected_schema):
+ 
+     schema = Model.model_json_schema()
+     assert schema == expected_schema
++
++
++@dataclasses.dataclass
++class BuiltinDataclassParent:
++    name: str
++
++
++@pydantic.dataclasses.dataclass
++class PydanticDataclassParent:
++    name: str
++
++
++class TypedDictParent(TypedDict):
++    name: str
++
++
++class ModelParent(BaseModel):
++    name: str
++
++
++@pytest.mark.parametrize(
++    'pydantic_type,expected_json_schema',
++    [
++        pytest.param(
++            BuiltinDataclassParent,
++            {
++                '$defs': {
++                    'BuiltinDataclassParent': {
++                        'properties': {'name': {'title': 'Name', 'type': 'string'}},
++                        'required': ['name'],
++                        'title': 'BuiltinDataclassParent',
++                        'type': 'object',
++                    }
++                },
++                'properties': {
++                    'parent': {'allOf': [{'$ref': '#/$defs/BuiltinDataclassParent'}], 'default': {'name': 'Jon Doe'}}
++                },
++                'title': 'child',
++                'type': 'object',
++            },
++            id='builtin-dataclass',
++        ),
++        pytest.param(
++            PydanticDataclassParent,
++            {
++                '$defs': {
++                    'PydanticDataclassParent': {
++                        'properties': {'name': {'title': 'Name', 'type': 'string'}},
++                        'required': ['name'],
++                        'title': 'PydanticDataclassParent',
++                        'type': 'object',
++                    }
++                },
++                'properties': {
++                    'parent': {'allOf': [{'$ref': '#/$defs/PydanticDataclassParent'}], 'default': {'name': 'Jon Doe'}}
++                },
++                'title': 'child',
++                'type': 'object',
++            },
++            id='pydantic-dataclass',
++        ),
++        pytest.param(
++            TypedDictParent,
++            {
++                '$defs': {
++                    'TypedDictParent': {
++                        'properties': {'name': {'title': 'Name', 'type': 'string'}},
++                        'required': ['name'],
++                        'title': 'TypedDictParent',
++                        'type': 'object',
++                    }
++                },
++                'properties': {
++                    'parent': {'allOf': [{'$ref': '#/$defs/TypedDictParent'}], 'default': {'name': 'Jon Doe'}}
++                },
++                'title': 'child',
++                'type': 'object',
++            },
++            id='typeddict',
++        ),
++        pytest.param(
++            ModelParent,
++            {
++                '$defs': {
++                    'ModelParent': {
++                        'properties': {'name': {'title': 'Name', 'type': 'string'}},
++                        'required': ['name'],
++                        'title': 'ModelParent',
++                        'type': 'object',
++                    }
++                },
++                'properties': {'parent': {'allOf': [{'$ref': '#/$defs/ModelParent'}], 'default': {'name': 'Jon Doe'}}},
++                'title': 'child',
++                'type': 'object',
++            },
++            id='model',
++        ),
++    ],
++)
++def test_pydantic_types_as_default_values(pydantic_type, expected_json_schema):
++    class Child(BaseModel):
++        model_config = ConfigDict(title='child')
++        parent: pydantic_type = pydantic_type(name='Jon Doe')
++
++    assert Child.model_json_schema() == expected_json_schema
+diff --git a/tests/test_main.py b/tests/test_main.py
+index 555ba3611..1a19c3465 100644
+--- a/tests/test_main.py
++++ b/tests/test_main.py
+@@ -3280,3 +3280,17 @@ def test_validation_works_for_cyclical_forward_refs() -> None:
+         x: Union[X, None]
+ 
+     assert Y(x={'y': None}).x.y is None
++
++
++def test_model_construct_with_model_post_init_and_model_copy() -> None:
++    class Model(BaseModel):
++        id: int
++
++        def model_post_init(self, context: Any) -> None:
++            super().model_post_init(context)
++
++    m = Model.model_construct(id=1)
++    copy = m.model_copy(deep=True)
++
++    assert m == copy
++    assert id(m) != id(copy)
+diff --git a/tests/test_networks.py b/tests/test_networks.py
+index bdd5e6967..d0b18001b 100644
+--- a/tests/test_networks.py
++++ b/tests/test_networks.py
+@@ -12,6 +12,7 @@ from pydantic import (
+     ClickHouseDsn,
+     CockroachDsn,
+     FileUrl,
++    FtpUrl,
+     HttpUrl,
+     KafkaDsn,
+     MariaDBDsn,
+@@ -24,6 +25,7 @@ from pydantic import (
+     Strict,
+     UrlConstraints,
+     ValidationError,
++    WebsocketUrl,
+ )
+ from pydantic.networks import validate_email
+ 
+@@ -368,6 +370,104 @@ def test_http_urls_default_port(url, expected_port, expected_str):
+     assert str(m.v) == expected_str
+ 
+ 
++@pytest.mark.parametrize(
++    'value,expected',
++    [
++        ('ws://example.com', 'ws://example.com/'),
++        ('wss://example.com', 'wss://example.com/'),
++        ('wss://ws.example.com/', 'wss://ws.example.com/'),
++        ('ws://ws.example.com/', 'ws://ws.example.com/'),
++        ('ws://example.com:8080', 'ws://example.com:8080/'),
++        ('ws://example.com/path', 'ws://example.com/path'),
++        ('wss://example.com:4433', 'wss://example.com:4433/'),
++        ('wss://example.com/path', 'wss://example.com/path'),
++    ],
++)
++def test_websocket_url_success(value, expected):
++    class Schema(BaseModel):
++        ws: WebsocketUrl
++
++    assert Schema(ws=value).ws.unicode_string() == expected
++
++
++@pytest.mark.parametrize(
++    'value,expected',
++    [
++        ('ws://example.com', 80),
++        ('wss://example.com', 443),
++        ('wss://ws.example.com/', 443),
++        ('ws://ws.example.com/', 80),
++        ('ws://example.com:8080', 8080),
++        ('ws://example.com:9999/path', 9999),
++        ('wss://example.com:4433', 4433),
++        ('wss://example.com/path', 443),
++    ],
++)
++def test_websocket_url_port_success(value, expected):
++    class Schema(BaseModel):
++        ws: WebsocketUrl
++
++    assert Schema(ws=value).ws.port == expected
++
++
++@pytest.mark.parametrize(
++    'value,expected',
++    [
++        ('ws://example.com', '/'),
++        ('wss://example.com', '/'),
++        ('wss://ws.example.com/', '/'),
++        ('ws://ws.example.com/', '/'),
++        ('ws://example.com:8080', '/'),
++        ('ws://example.com:9999/path', '/path'),
++        ('wss://example.com:4433', '/'),
++        ('wss://example.com/path/to/ws', '/path/to/ws'),
++    ],
++)
++def test_websocket_url_path_success(value, expected):
++    class Schema(BaseModel):
++        ws: WebsocketUrl
++
++    assert Schema(ws=value).ws.path == expected
++
++
++@pytest.mark.parametrize(
++    'value,expected',
++    [
++        ('ftp://example.com', 'ftp://example.com/'),
++        ('ftp://example.com/path/to/ftp', 'ftp://example.com/path/to/ftp'),
++        ('ftp://example.com:21', 'ftp://example.com/'),
++        ('ftp://example.com:21/path/to/ftp', 'ftp://example.com/path/to/ftp'),
++        ('ftp://example.com', 'ftp://example.com/'),
++        ('ftp://example.com/path/to/ftp', 'ftp://example.com/path/to/ftp'),
++        ('ftp://example.com:990', 'ftp://example.com:990/'),
++        ('ftp://example.com:990/path/to/ftp', 'ftp://example.com:990/path/to/ftp'),
++    ],
++)
++def test_ftp_url_success(value, expected):
++    class Schema(BaseModel):
++        ftp: FtpUrl
++
++    assert Schema(ftp=value).ftp.unicode_string() == expected
++
++
++@pytest.mark.parametrize(
++    'value,expected',
++    [
++        ('ftp://example.com', 21),
++        ('ftp://example.com/path/to/ftp', 21),
++        ('ftp://example.com:21', 21),
++        ('ftp://exaMplФ.com:221/path/to/ftp', 221),
++        ('ftp://example.com:144', 144),
++        ('ftp://example.com:990/path/to/ftp', 990),
++    ],
++)
++def test_ftp_url_port_success(value, expected):
++    class Schema(BaseModel):
++        ftp: FtpUrl
++
++    assert Schema(ftp=value).ftp.port == expected
++
++
+ @pytest.mark.parametrize(
+     'dsn',
+     [
+diff --git a/tests/test_root_model.py b/tests/test_root_model.py
+index a4402b693..50793b93d 100644
+--- a/tests/test_root_model.py
++++ b/tests/test_root_model.py
+@@ -657,3 +657,25 @@ def test_model_construction_with_invalid_generic_specification() -> None:
+ 
+         class GenericRootModel(RootModel, Generic[T_]):
+             root: Union[T_, int]
++
++
++def test_model_with_field_description() -> None:
++    class AModel(RootModel):
++        root: int = Field(description='abc')
++
++    assert AModel.model_json_schema() == {'title': 'AModel', 'type': 'integer', 'description': 'abc'}
++
++
++def test_model_with_both_docstring_and_field_description() -> None:
++    """Check if the docstring is used as the description when both are present."""
++
++    class AModel(RootModel):
++        """More detailed description"""
++
++        root: int = Field(description='abc')
++
++    assert AModel.model_json_schema() == {
++        'title': 'AModel',
++        'type': 'integer',
++        'description': 'More detailed description',
++    }
+diff --git a/tests/test_types.py b/tests/test_types.py
+index 34d19a564..8bfadd19c 100644
+--- a/tests/test_types.py
++++ b/tests/test_types.py
+@@ -4463,6 +4463,15 @@ def test_secretdate_idempotent():
+     assert m.value.get_secret_value() == date(2017, 1, 1)
+ 
+ 
++def test_secret_union_serializable() -> None:
++    class Base(BaseModel):
++        x: Union[Secret[int], Secret[str]]
++
++    model = Base(x=1)
++    assert model.model_dump() == {'x': Secret[int](1)}
++    assert model.model_dump_json() == '{"x":"**********"}'
++
++
+ @pytest.mark.parametrize(
+     'pydantic_type',
+     [
+@@ -6649,3 +6658,19 @@ def test_can_serialize_deque_passed_to_sequence() -> None:
+ 
+     assert ta.dump_python(my_dec) == my_dec
+     assert ta.dump_json(my_dec) == b'[1,2,3]'
++
++
++def test_strict_enum_with_use_enum_values() -> None:
++    class SomeEnum(int, Enum):
++        SOME_KEY = 1
++
++    class Foo(BaseModel):
++        model_config = ConfigDict(strict=False, use_enum_values=True)
++        foo: Annotated[SomeEnum, Strict(strict=True)]
++
++    f = Foo(foo=SomeEnum.SOME_KEY)
++    assert f.foo == 1
++
++    # validation error raised bc foo field uses strict mode
++    with pytest.raises(ValidationError):
++        Foo(foo='1')
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ export PATH=/root/.local/bin:/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/root/.local/bin:/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ pdm add pre-commit
+Adding packages to default dependencies: pre-commit
+DEPRECATED: `cross_platform` strategy is deprecated in favor of the new lock targets.
+See docs: http://pdm-project.org/en/latest/usage/lock-targets/
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.6.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.6.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.5.1 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.5.1, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.5.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.5.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.4.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.4.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.3.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.3.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.2.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.2.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.1.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.1.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.0.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.0.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.0.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.0.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.8.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.8.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.7.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.7.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.7.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.7.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.2 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.2, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+⠋ 0:02:13 Resolve for environment (>=3.8) None
+See /root/.local/state/pdm/log/pdm-lock-_ttn2dux.log for detailed debug log.
+[ReadTimeout]: The read operation timed out
+WARNING: Add '-v' to see the detailed traceback
++ make install
+PDM, version 2.19.1
+pre-commit 3.5.0
+pdm info
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+PDM version:
+  2.19.1
+Python Interpreter:
+  /opt/miniconda3/envs/testbed/bin/python (3.8)
+Project Root:
+  /testbed
+Local Packages:
+  
+INFO: PDM 2.19.1 is installed, while 2.26.8 is available.
+Please run `pipx upgrade pdm` to upgrade.
+Run `pdm config check_update false` to disable the check.
+pdm install --group :all
+WARNING: Lockfile is generated on an older version of PDM
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+STATUS: Resolving packages from lockfile...
+See /root/.local/state/pdm/log/pdm-install-resolve-kh_3b0wo.log for detailed debug log.
+[ReadTimeout]: The read operation timed out
+WARNING: Add '-v' to see the detailed traceback
+make: *** [Makefile:15: install] Error 1
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA --tb=short -vv -o console_output_style=classic --no-header tests/test_construction.py tests/test_discriminated_union.py tests/test_json_schema.py tests/test_main.py tests/test_networks.py tests/test_root_model.py tests/test_types.py
+============================= test session starts ==============================
+collecting ... collected 1644 items / 1 error
+
+tests/test_construction.py::test_simple_construct PASSED
+tests/test_construction.py::test_construct_misuse PASSED
+tests/test_construction.py::test_construct_fields_set PASSED
+tests/test_construction.py::test_construct_allow_extra PASSED
+tests/test_construction.py::test_construct_ignore_extra[ignore] PASSED
+tests/test_construction.py::test_construct_ignore_extra[forbid] PASSED
+tests/test_construction.py::test_construct_keep_order PASSED
+tests/test_construction.py::test_construct_with_aliases PASSED
+tests/test_construction.py::test_construct_with_validation_aliases PASSED
+tests/test_construction.py::test_large_any_str PASSED
+tests/test_construction.py::test_simple_copy[copy] PASSED
+tests/test_construction.py::test_simple_copy[model_copy] PASSED
+tests/test_construction.py::test_deep_copy[copy] PASSED
+tests/test_construction.py::test_deep_copy[model_copy] PASSED
+tests/test_construction.py::test_copy_exclude PASSED
+tests/test_construction.py::test_copy_include PASSED
+tests/test_construction.py::test_copy_include_exclude PASSED
+tests/test_construction.py::test_copy_advanced_exclude PASSED
+tests/test_construction.py::test_copy_advanced_include PASSED
+tests/test_construction.py::test_copy_advanced_include_exclude PASSED
+tests/test_construction.py::test_copy_update[copy] PASSED
+tests/test_construction.py::test_copy_update[model_copy] PASSED
+tests/test_construction.py::test_copy_update_unset[copy] PASSED
+tests/test_construction.py::test_copy_update_unset[model_copy] PASSED
+tests/test_construction.py::test_copy_deep_extra[copy] PASSED
+tests/test_construction.py::test_copy_deep_extra[model_copy] PASSED
+tests/test_construction.py::test_copy_set_fields[copy] PASSED
+tests/test_construction.py::test_copy_set_fields[model_copy] PASSED
+tests/test_construction.py::test_simple_pickle PASSED
+tests/test_construction.py::test_recursive_pickle PASSED
+tests/test_construction.py::test_pickle_undefined PASSED
+tests/test_construction.py::test_copy_undefined[copy] PASSED
+tests/test_construction.py::test_copy_undefined[model_copy] PASSED
+tests/test_construction.py::test_immutable_copy_with_frozen[copy] PASSED
+tests/test_construction.py::test_immutable_copy_with_frozen[model_copy] PASSED
+tests/test_construction.py::test_pickle_fields_set PASSED
+tests/test_construction.py::test_pickle_preserves_extra PASSED
+tests/test_construction.py::test_copy_update_exclude PASSED
+tests/test_construction.py::test_shallow_copy_modify[copy] PASSED
+tests/test_construction.py::test_shallow_copy_modify[model_copy] PASSED
+tests/test_construction.py::test_construct_default_factory PASSED
+tests/test_construction.py::test_copy_with_excluded_fields PASSED
+tests/test_construction.py::test_dunder_copy PASSED
+tests/test_construction.py::test_dunder_deepcopy PASSED
+tests/test_construction.py::test_model_copy PASSED
+tests/test_construction.py::test_pydantic_extra PASSED
+tests/test_construction.py::test_retain_order_of_fields PASSED
+tests/test_construction.py::test_initialize_with_private_attr PASSED
+tests/test_construction.py::test_model_construct_with_alias_choices PASSED
+tests/test_construction.py::test_model_construct_with_alias_path FAILED  [  3%]
+tests/test_construction.py:574 test_model_construct_with_alias_path
+tests/test_construction.py::test_model_construct_with_alias_choices_and_path FAILED [  3%]
+tests/test_construction.py:582 test_model_construct_with_alias_choices_and_path
+tests/test_discriminated_union.py::test_discriminated_union_type PASSED
+tests/test_discriminated_union.py::test_discriminated_single_variant[True] PASSED
+tests/test_discriminated_union.py::test_discriminated_single_variant[False] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_single_variant PASSED
+tests/test_discriminated_union.py::test_discriminated_union_invalid_type PASSED
+tests/test_discriminated_union.py::test_discriminated_union_defined_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_literal_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_root_same_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_annotated_union PASSED
+tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value PASSED
+tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value_with_alias PASSED
+tests/test_discriminated_union.py::test_discriminated_union_int PASSED
+tests/test_discriminated_union.py::test_discriminated_union_enum[Enum-choices0] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[Enum-choices1] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[FooIntEnum-choices2] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[IntEnum-choices3] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[FooStrEnum-choices4] SKIPPED
+tests/test_discriminated_union.py::test_alias_different PASSED
+tests/test_discriminated_union.py::test_alias_same PASSED
+tests/test_discriminated_union.py::test_nested PASSED
+tests/test_discriminated_union.py::test_generic PASSED
+tests/test_discriminated_union.py::test_optional_union PASSED
+tests/test_discriminated_union.py::test_optional_union_with_defaults PASSED
+tests/test_discriminated_union.py::test_aliases_matching_is_not_sufficient PASSED
+tests/test_discriminated_union.py::test_nested_optional_unions PASSED
+tests/test_discriminated_union.py::test_nested_discriminated_union PASSED
+tests/test_discriminated_union.py::test_unions_of_optionals PASSED
+tests/test_discriminated_union.py::test_union_discriminator_literals PASSED
+tests/test_discriminated_union.py::test_none_schema PASSED
+tests/test_discriminated_union.py::test_nested_unwrapping PASSED
+tests/test_discriminated_union.py::test_distinct_choices PASSED
+tests/test_discriminated_union.py::test_invalid_discriminated_union_type PASSED
+tests/test_discriminated_union.py::test_invalid_alias PASSED
+tests/test_discriminated_union.py::test_invalid_discriminator_type PASSED
+tests/test_discriminated_union.py::test_missing_discriminator_field PASSED
+tests/test_discriminated_union.py::test_wrap_function_schema PASSED
+tests/test_discriminated_union.py::test_plain_function_schema_is_invalid PASSED
+tests/test_discriminated_union.py::test_invalid_str_choice_discriminator_values PASSED
+tests/test_discriminated_union.py::test_lax_or_strict_definitions PASSED
+tests/test_discriminated_union.py::test_wrapped_nullable_union PASSED
+tests/test_discriminated_union.py::test_union_in_submodel PASSED
+tests/test_discriminated_union.py::test_function_after_discriminator PASSED
+tests/test_discriminated_union.py::test_sequence_discriminated_union PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_with_type_adapter PASSED
+tests/test_discriminated_union.py::test_various_syntax_options_for_callable_union PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_recursive PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_with_missing_tag PASSED
+tests/test_discriminated_union.py::test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions XFAIL8271.)
+tests/test_discriminated_union.py::test_nested_discriminator PASSED
+tests/test_discriminated_union.py::test_nested_schema_gen_uses_tagged_union_in_ref PASSED
+tests/test_discriminated_union.py::test_recursive_discriminiated_union_with_typed_dict PASSED
+tests/test_discriminated_union.py::test_recursive_discriminiated_union_with_base_model PASSED
+tests/test_discriminated_union.py::test_recursive_discriminated_union_with_pydantic_dataclass PASSED
+tests/test_discriminated_union.py::test_discriminated_union_with_nested_dataclass PASSED
+tests/test_discriminated_union.py::test_discriminated_union_with_nested_typed_dicts PASSED
+tests/test_discriminated_union.py::test_discriminated_union_with_unsubstituted_type_var PASSED
+tests/test_discriminated_union.py::test_discriminated_union_model_dump_with_nested_class XFAILng if it is using an Enum. Issue:
+https://github.com/pydantic/pydantic/issues/9235)
+tests/test_json_schema.py::test_by_alias PASSED
+tests/test_json_schema.py::test_ref_template PASSED
+tests/test_json_schema.py::test_by_alias_generator PASSED
+tests/test_json_schema.py::test_sub_model PASSED
+tests/test_json_schema.py::test_schema_class PASSED
+tests/test_json_schema.py::test_schema_repr PASSED
+tests/test_json_schema.py::test_schema_class_by_alias PASSED
+tests/test_json_schema.py::test_choices PASSED
+tests/test_json_schema.py::test_enum_modify_schema PASSED
+tests/test_json_schema.py::test_enum_schema_custom_field PASSED
+tests/test_json_schema.py::test_enum_and_model_have_same_behaviour PASSED
+tests/test_json_schema.py::test_enum_includes_extra_without_other_params PASSED
+tests/test_json_schema.py::test_invalid_json_schema_extra PASSED
+tests/test_json_schema.py::test_list_enum_schema_extras PASSED
+tests/test_json_schema.py::test_enum_schema_cleandoc PASSED
+tests/test_json_schema.py::test_decimal_json_schema PASSED
+tests/test_json_schema.py::test_list_sub_model PASSED
+tests/test_json_schema.py::test_optional PASSED
+tests/test_json_schema.py::test_optional_modify_schema PASSED
+tests/test_json_schema.py::test_any PASSED
+tests/test_json_schema.py::test_set PASSED
+tests/test_json_schema.py::test_tuple[tuple] PASSED
+tests/test_json_schema.py::test_tuple[Tuple] PASSED
+tests/test_json_schema.py::test_tuple[Tuple[str, int, Union[str, int, float], float]] PASSED
+tests/test_json_schema.py::test_tuple[Tuple[str]] PASSED
+tests/test_json_schema.py::test_tuple[Tuple[()]] PASSED
+tests/test_json_schema.py::test_tuple[Tuple[str, ...]] PASSED
+tests/test_json_schema.py::test_deque PASSED
+tests/test_json_schema.py::test_bool PASSED
+tests/test_json_schema.py::test_strict_bool PASSED
+tests/test_json_schema.py::test_dict PASSED
+tests/test_json_schema.py::test_list PASSED
+tests/test_json_schema.py::test_list_union_dict[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_list_union_dict[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_list_union_dict[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_list_union_dict[field_type3-expected_schema3] PASSED
+tests/test_json_schema.py::test_list_union_dict[int-expected_schema4] PASSED
+tests/test_json_schema.py::test_list_union_dict[field_type5-expected_schema5] PASSED
+tests/test_json_schema.py::test_date_types[datetime-expected_schema0] PASSED
+tests/test_json_schema.py::test_date_types[date-expected_schema1] PASSED
+tests/test_json_schema.py::test_date_types[time-expected_schema2] PASSED
+tests/test_json_schema.py::test_date_types[timedelta-expected_schema3] PASSED
+tests/test_json_schema.py::test_date_constrained_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_date_constrained_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_date_constrained_types[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_str_basic_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_str_basic_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_str_basic_types[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_str_basic_types[field_type3-expected_schema3] PASSED
+tests/test_json_schema.py::test_pattern[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_pattern[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_pattern[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_str_constrained_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_str_constrained_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_special_str_types[Url-expected_schema0] PASSED
+tests/test_json_schema.py::test_special_str_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_special_str_types[MultiHostUrl-expected_schema2] PASSED
+tests/test_json_schema.py::test_email_str_types[EmailStr-email] PASSED
+tests/test_json_schema.py::test_email_str_types[NameEmail-name-email] PASSED
+tests/test_json_schema.py::test_secret_types[SecretBytes-string] PASSED
+tests/test_json_schema.py::test_secret_types[SecretStr-string] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type3-expected_schema3] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type4-expected_schema4] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type5-expected_schema5] PASSED
+tests/test_json_schema.py::test_special_int_types[field_type6-expected_schema6] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type3-expected_schema3] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type4-expected_schema4] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type5-expected_schema5] PASSED
+tests/test_json_schema.py::test_special_float_types[field_type6-expected_schema6] PASSED
+tests/test_json_schema.py::test_special_decimal_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_special_decimal_types[field_type1-expected_schema1] PASSED
+tests/test_json_schema.py::test_special_decimal_types[field_type2-expected_schema2] PASSED
+tests/test_json_schema.py::test_uuid_types[UUID-uuid] PASSED
+tests/test_json_schema.py::test_uuid_types[field_type1-uuid1] PASSED
+tests/test_json_schema.py::test_uuid_types[field_type2-uuid3] PASSED
+tests/test_json_schema.py::test_uuid_types[field_type3-uuid4] PASSED
+tests/test_json_schema.py::test_uuid_types[field_type4-uuid5] PASSED
+tests/test_json_schema.py::test_path_types[field_type0-file-path] PASSED
+tests/test_json_schema.py::test_path_types[field_type1-directory-path] PASSED
+tests/test_json_schema.py::test_path_types[field_type2-path] PASSED
+tests/test_json_schema.py::test_path_types[Path-path] PASSED
+tests/test_json_schema.py::test_json_type PASSED
+tests/test_json_schema.py::test_ipv4address_type PASSED
+tests/test_json_schema.py::test_ipv6address_type PASSED
+tests/test_json_schema.py::test_ipvanyaddress_type PASSED
+tests/test_json_schema.py::test_ipv4interface_type PASSED
+tests/test_json_schema.py::test_ipv6interface_type PASSED
+tests/test_json_schema.py::test_ipvanyinterface_type PASSED
+tests/test_json_schema.py::test_ipv4network_type PASSED
+tests/test_json_schema.py::test_ipv6network_type PASSED
+tests/test_json_schema.py::test_ipvanynetwork_type PASSED
+tests/test_json_schema.py::test_callable_type[base_json_schema0-properties0-type_0-default_value0] PASSED
+tests/test_json_schema.py::test_callable_type[base_json_schema0-properties0-type_1-<lambda>] PASSED
+tests/test_json_schema.py::test_callable_type[base_json_schema0-properties0-type_2-default_value2] PASSED
+tests/test_json_schema.py::test_callable_type[base_json_schema0-properties0-type_3-<lambda>] PASSED
+tests/test_json_schema.py::test_callable_type[None-properties1-type_0-default_value0] PASSED
+tests/test_json_schema.py::test_callable_type[None-properties1-type_1-<lambda>] PASSED
+tests/test_json_schema.py::test_callable_type[None-properties1-type_2-default_value2] PASSED
+tests/test_json_schema.py::test_callable_type[None-properties1-type_3-<lambda>] PASSED
+tests/test_json_schema.py::test_callable_type_with_fallback[default_value0-properties0] PASSED
+tests/test_json_schema.py::test_callable_type_with_fallback[1-properties1] PASSED
+tests/test_json_schema.py::test_byte_size_type PASSED
+tests/test_json_schema.py::test_non_serializable_default[type_0-default_value0-properties0] PASSED
+tests/test_json_schema.py::test_non_serializable_default[type_1-<lambda>-properties1] PASSED
+tests/test_json_schema.py::test_callable_fallback_with_non_serializable_default[Cannot generate a JsonSchema for core_schema.CallableSchema \\[skipped-choice\\]] PASSED
+tests/test_json_schema.py::test_callable_fallback_with_non_serializable_default[Default value .* is not JSON serializable; excluding default from JSON schema \\[non-serializable-default\\]] PASSED
+tests/test_json_schema.py::test_error_non_supported_types PASSED
+tests/test_json_schema.py::test_schema_overrides PASSED
+tests/test_json_schema.py::test_schema_overrides_w_union PASSED
+tests/test_json_schema.py::test_schema_from_models PASSED
+tests/test_json_schema.py::test_schema_with_refs PASSED
+tests/test_json_schema.py::test_schema_with_custom_ref_template PASSED
+tests/test_json_schema.py::test_schema_ref_template_key_error PASSED
+tests/test_json_schema.py::test_schema_no_definitions PASSED
+tests/test_json_schema.py::test_list_default PASSED
+tests/test_json_schema.py::test_enum_str_default PASSED
+tests/test_json_schema.py::test_enum_int_default PASSED
+tests/test_json_schema.py::test_dict_default PASSED
+tests/test_json_schema.py::test_model_default PASSED
+tests/test_json_schema.py::test_model_default_timedelta[float-properties0] PASSED
+tests/test_json_schema.py::test_model_default_timedelta[iso8601-properties1] PASSED
+tests/test_json_schema.py::test_model_default_bytes[base64-properties0] PASSED
+tests/test_json_schema.py::test_model_default_bytes[utf8-properties1] PASSED
+tests/test_json_schema.py::test_dataclass_default_timedelta[float-properties0] PASSED
+tests/test_json_schema.py::test_dataclass_default_timedelta[iso8601-properties1] PASSED
+tests/test_json_schema.py::test_dataclass_default_bytes[base64-properties0] PASSED
+tests/test_json_schema.py::test_dataclass_default_bytes[utf8-properties1] PASSED
+tests/test_json_schema.py::test_typeddict_default_timedelta[float-properties0] PASSED
+tests/test_json_schema.py::test_typeddict_default_timedelta[iso8601-properties1] PASSED
+tests/test_json_schema.py::test_typeddict_default_bytes[base64-properties0] PASSED
+tests/test_json_schema.py::test_typeddict_default_bytes[utf8-properties1] PASSED
+tests/test_json_schema.py::test_model_subclass_metadata PASSED
+tests/test_json_schema.py::test_docstring[foobar-foobar] PASSED
+tests/test_json_schema.py::test_docstring[\n     foobar\n    -foobar] PASSED
+tests/test_json_schema.py::test_docstring[foobar\n    -foobar\n    ] PASSED
+tests/test_json_schema.py::test_docstring[foo\n    bar\n    -foo\nbar] PASSED
+tests/test_json_schema.py::test_docstring[\n    foo\n    bar\n    -foo\nbar] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs0-str-expected_extra0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs1-type_1-expected_extra1] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs2-str-expected_extra2] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs3-bytes-expected_extra3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs4-str-expected_extra4] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs5-int-expected_extra5] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs6-int-expected_extra6] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs7-int-expected_extra7] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs8-int-expected_extra8] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs9-int-expected_extra9] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs10-float-expected_extra10] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs11-float-expected_extra11] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs12-float-expected_extra12] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs13-float-expected_extra13] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs14-float-expected_extra14] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs15-float-expected_extra15] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs16-float-expected_extra16] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs17-float-expected_extra17] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs18-float-expected_extra18] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs19-Decimal-expected_extra19] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs20-Decimal-expected_extra20] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs21-Decimal-expected_extra21] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs22-Decimal-expected_extra22] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation[kwargs23-Decimal-expected_extra23] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs0-str-expected_extra0] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs1-type_1-expected_extra1] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs2-str-expected_extra2] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs3-bytes-expected_extra3] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs4-str-expected_extra4] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs5-int-expected_extra5] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs6-int-expected_extra6] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs7-int-expected_extra7] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs8-int-expected_extra8] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs9-int-expected_extra9] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs10-float-expected_extra10] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs11-float-expected_extra11] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs12-float-expected_extra12] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs13-float-expected_extra13] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs14-float-expected_extra14] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs15-float-expected_extra15] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs16-float-expected_extra16] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs17-float-expected_extra17] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs18-float-expected_extra18] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs19-Decimal-expected_extra19] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs20-Decimal-expected_extra20] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs21-Decimal-expected_extra21] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs22-Decimal-expected_extra22] PASSED
+tests/test_json_schema.py::test_constraints_schema_serialization[kwargs23-Decimal-expected_extra23] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs0-str-foo] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs1-str-foo] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs2-bytes-foo] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs3-str-foo] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs4-int-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs5-int-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs6-int-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs7-int-2] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs8-int-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs9-int-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs10-int-5] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs11-float-3.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs12-float-2.1] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs13-float-3.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs14-float-4.9] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs15-float-3.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs16-float-2.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs17-float-3.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs18-float-5.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs19-float-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs20-float-3] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs21-Decimal-value21] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs22-Decimal-value22] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs23-Decimal-value23] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs24-Decimal-value24] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs25-Decimal-value25] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_passes[kwargs26-Decimal-value26] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs0-str-foobar] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs1-str-f] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs2-str-bar] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs3-int-2] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs4-int-5] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs5-int-1] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs6-int-6] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs7-float-2.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs8-float-5.0] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs9-float-1.9] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs10-float-5.1] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs11-Decimal-value11] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs12-Decimal-value12] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs13-Decimal-value13] PASSED
+tests/test_json_schema.py::test_constraints_schema_validation_raises[kwargs14-Decimal-value14] PASSED
+tests/test_json_schema.py::test_schema_kwargs PASSED
+tests/test_json_schema.py::test_schema_dict_constr PASSED
+tests/test_json_schema.py::test_bytes_constrained_types[field_type0-expected_schema0] PASSED
+tests/test_json_schema.py::test_optional_dict PASSED
+tests/test_json_schema.py::test_optional_validator PASSED
+tests/test_json_schema.py::test_field_with_validator PASSED
+tests/test_json_schema.py::test_unparameterized_schema_generation PASSED
+tests/test_json_schema.py::test_known_model_optimization PASSED
+tests/test_json_schema.py::test_new_type_schema PASSED
+tests/test_json_schema.py::test_literal_schema PASSED
+tests/test_json_schema.py::test_literal_enum PASSED
+tests/test_json_schema.py::test_literal_types SKIPPED (ListEnum doesn't
+work in 3.8)
+tests/test_json_schema.py::test_color_type PASSED
+tests/test_json_schema.py::test_model_with_extra_forbidden PASSED
+tests/test_json_schema.py::test_model_with_extra_allow PASSED
+tests/test_json_schema.py::test_model_with_extra_ignore PASSED
+tests/test_json_schema.py::test_dataclass_with_extra_allow PASSED
+tests/test_json_schema.py::test_dataclass_with_extra_ignore PASSED
+tests/test_json_schema.py::test_dataclass_with_extra_forbid PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_allow PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_behavior_allow PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_ignore PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_behavior_ignore PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_forbid PASSED
+tests/test_json_schema.py::test_typeddict_with_extra_behavior_forbid PASSED
+tests/test_json_schema.py::test_typeddict_with_title PASSED
+tests/test_json_schema.py::test_typeddict_with_json_schema_extra PASSED
+tests/test_json_schema.py::test_typeddict_with__callable_json_schema_extra PASSED
+tests/test_json_schema.py::test_enforced_constraints[int-kwargs0-field_schema0] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation1-kwargs1-field_schema1] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation2-kwargs2-field_schema2] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation3-kwargs3-field_schema3] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation4-kwargs4-field_schema4] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation5-kwargs5-field_schema5] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation6-kwargs6-field_schema6] PASSED
+tests/test_json_schema.py::test_enforced_constraints[annotation7-kwargs7-field_schema7] PASSED
+tests/test_json_schema.py::test_real_constraints PASSED
+tests/test_json_schema.py::test_subfield_field_info PASSED
+tests/test_json_schema.py::test_dataclass PASSED
+tests/test_json_schema.py::test_schema_attributes PASSED
+tests/test_json_schema.py::test_tuple_with_extra_schema PASSED
+tests/test_json_schema.py::test_path_modify_schema PASSED
+tests/test_json_schema.py::test_frozen_set PASSED
+tests/test_json_schema.py::test_iterable PASSED
+tests/test_json_schema.py::test_new_type PASSED
+tests/test_json_schema.py::test_multiple_models_with_same_input_output PASSED
+tests/test_json_schema.py::test_multiple_models_with_same_name_different_input_output PASSED
+tests/test_json_schema.py::test_multiple_enums_with_same_name PASSED
+tests/test_json_schema.py::test_mode_name_causes_no_conflict PASSED
+tests/test_json_schema.py::test_ref_conflict_resolution_without_mode_difference PASSED
+tests/test_json_schema.py::test_ref_conflict_resolution_with_mode_difference PASSED
+tests/test_json_schema.py::test_conflicting_names PASSED
+tests/test_json_schema.py::test_schema_for_generic_field PASSED
+tests/test_json_schema.py::test_namedtuple_default PASSED
+tests/test_json_schema.py::test_namedtuple_modify_schema PASSED
+tests/test_json_schema.py::test_advanced_generic_schema PASSED
+tests/test_json_schema.py::test_nested_generic PASSED
+tests/test_json_schema.py::test_nested_generic_model PASSED
+tests/test_json_schema.py::test_complex_nested_generic PASSED
+tests/test_json_schema.py::test_modify_schema_dict_keys PASSED
+tests/test_json_schema.py::test_remove_anyof_redundancy PASSED
+tests/test_json_schema.py::test_discriminated_union PASSED
+tests/test_json_schema.py::test_discriminated_annotated_union PASSED
+tests/test_json_schema.py::test_nested_discriminated_union PASSED
+tests/test_json_schema.py::test_deeper_nested_discriminated_annotated_union PASSED
+tests/test_json_schema.py::test_discriminated_annotated_union_literal_enum PASSED
+tests/test_json_schema.py::test_alias_same PASSED
+tests/test_json_schema.py::test_nested_python_dataclasses PASSED
+tests/test_json_schema.py::test_discriminated_union_in_list PASSED
+tests/test_json_schema.py::test_model_with_type_attributes PASSED
+tests/test_json_schema.py::test_secrets_schema[min-constraint-SecretStr] PASSED
+tests/test_json_schema.py::test_secrets_schema[min-constraint-SecretBytes] PASSED
+tests/test_json_schema.py::test_secrets_schema[max-constraint-SecretStr] PASSED
+tests/test_json_schema.py::test_secrets_schema[max-constraint-SecretBytes] PASSED
+tests/test_json_schema.py::test_secrets_schema[min-max-constraints-SecretStr] PASSED
+tests/test_json_schema.py::test_secrets_schema[min-max-constraints-SecretBytes] PASSED
+tests/test_json_schema.py::test_override_generate_json_schema PASSED
+tests/test_json_schema.py::test_generate_json_schema_generate_twice PASSED
+tests/test_json_schema.py::test_nested_default_json_schema PASSED
+tests/test_json_schema.py::test_get_pydantic_core_schema_calls XFAIL (We
+are calling __get_pydantic_json_schema__ too many times. The second time
+we analyze a model we get the CoreSchema from __pydantic_core_schema__.
+But then we proceed to append to the metadata json schema functions.)
+tests/test_json_schema.py::test_annotated_get_json_schema PASSED
+tests/test_json_schema.py::test_model_with_strict_mode PASSED
+tests/test_json_schema.py::test_model_with_schema_extra PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable_no_model_class PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable_config_class PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable_no_model_class_config_class PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable_classmethod PASSED
+tests/test_json_schema.py::test_model_with_schema_extra_callable_instance_method PASSED
+tests/test_json_schema.py::test_serialization_validation_interaction PASSED
+tests/test_json_schema.py::test_extras_and_examples_are_json_encoded PASSED
+tests/test_json_schema.py::test_computed_field PASSED
+tests/test_json_schema.py::test_serialization_schema_with_exclude PASSED
+tests/test_json_schema.py::test_mappings_str_int_json_schema[mapping_type0] PASSED
+tests/test_json_schema.py::test_mappings_str_int_json_schema[mapping_type1] PASSED
+tests/test_json_schema.py::test_sequence_schema[sequence_type0] PASSED
+tests/test_json_schema.py::test_sequence_schema[sequence_type1] PASSED
+tests/test_json_schema.py::test_sequences_int_json_schema[sequence_type0] PASSED
+tests/test_json_schema.py::test_sequences_int_json_schema[sequence_type1] PASSED
+tests/test_json_schema.py::test_arbitrary_type_json_schema[True-None-model_schema0] PASSED
+tests/test_json_schema.py::test_arbitrary_type_json_schema[True-field_schema1-model_schema1] PASSED
+tests/test_json_schema.py::test_arbitrary_type_json_schema[False-None-model_schema0] PASSED
+tests/test_json_schema.py::test_arbitrary_type_json_schema[False-field_schema1-model_schema1] PASSED
+tests/test_json_schema.py::test_hashable_types[metadata0-json_schema0] PASSED
+tests/test_json_schema.py::test_hashable_types[metadata1-json_schema1] PASSED
+tests/test_json_schema.py::test_root_model PASSED
+tests/test_json_schema.py::test_core_metadata_core_schema_metadata PASSED
+tests/test_json_schema.py::test_build_metadata_dict_initial_metadata PASSED
+tests/test_json_schema.py::test_type_adapter_json_schemas_title_description PASSED
+tests/test_json_schema.py::test_type_adapter_json_schemas_without_definitions PASSED
+tests/test_json_schema.py::test_custom_chain_schema PASSED
+tests/test_json_schema.py::test_json_or_python_schema PASSED
+tests/test_json_schema.py::test_lax_or_strict_schema PASSED
+tests/test_json_schema.py::test_override_enum_json_schema PASSED
+tests/test_json_schema.py::test_json_schema_extras_on_ref PASSED
+tests/test_json_schema.py::test_inclusion_of_defaults PASSED
+tests/test_json_schema.py::test_resolve_def_schema_from_core_schema PASSED
+tests/test_json_schema.py::test_examples_annotation PASSED
+tests/test_json_schema.py::test_skip_json_schema_annotation PASSED
+tests/test_json_schema.py::test_skip_json_schema_exclude_default PASSED
+tests/test_json_schema.py::test_typeddict_field_required_missing PASSED
+tests/test_json_schema.py::test_json_schema_keys_sorting PASSED
+tests/test_json_schema.py::test_custom_type_gets_unpacked_ref PASSED
+tests/test_json_schema.py::test_field_json_schema_metadata[typing_extensions.Annotated[int, FieldInfo(annotation=NoneType, required=True, json_schema_extra={'title': 'abc'})]-{'type': 'integer', 'title': 'abc'}] PASSED
+tests/test_json_schema.py::test_field_json_schema_metadata[typing_extensions.Annotated[int, FieldInfo(annotation=NoneType, required=True, title='abc'), FieldInfo(annotation=NoneType, required=True, description='xyz')]-{'type': 'integer', 'title': 'abc', 'description': 'xyz'}] PASSED
+tests/test_json_schema.py::test_field_json_schema_metadata[typing_extensions.Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)])]-{'type': 'integer', 'exclusiveMinimum': 0}] PASSED
+tests/test_json_schema.py::test_field_json_schema_metadata[typing_extensions.Annotated[int, FieldInfo(annotation=NoneType, required=True, metadata=[Gt(gt=0)]), FieldInfo(annotation=NoneType, required=True, metadata=[Lt(lt=100)])]-{'type': 'integer', 'exclusiveMinimum': 0, 'exclusiveMaximum': 100}] PASSED
+tests/test_json_schema.py::test_field_json_schema_metadata[typing_extensions.Annotated[int, FieldInfo(annotation=NoneType, required=True, examples={'number': 1})]-{'type': 'integer', 'examples': {'number': 1}}] PASSED
+tests/test_json_schema.py::test_multiple_models_with_same_qualname PASSED
+tests/test_json_schema.py::test_generate_definitions_for_no_ref_schemas PASSED
+tests/test_json_schema.py::test_chain_schema PASSED
+tests/test_json_schema.py::test_deferred_json_schema PASSED
+tests/test_json_schema.py::test_dollar_ref_alias PASSED
+tests/test_json_schema.py::test_multiple_parametrization_of_generic_model PASSED
+tests/test_json_schema.py::test_callable_json_schema_extra PASSED
+tests/test_json_schema.py::test_callable_json_schema_extra_dataclass PASSED
+tests/test_json_schema.py::test_model_rebuild_happens_even_with_parent_classes PASSED
+tests/test_json_schema.py::test_enum_complex_value PASSED
+tests/test_json_schema.py::test_json_schema_serialization_defaults_required PASSED
+tests/test_json_schema.py::test_json_schema_mode_override PASSED
+tests/test_json_schema.py::test_models_json_schema_generics PASSED
+tests/test_json_schema.py::test_recursive_non_generic_model PASSED
+tests/test_json_schema.py::test_module_with_colon_in_name PASSED
+tests/test_json_schema.py::test_repeated_custom_type PASSED
+tests/test_json_schema.py::test_description_not_included_for_basemodel PASSED
+tests/test_json_schema.py::test_recursive_json_schema_build PASSED
+tests/test_json_schema.py::test_json_schema_annotated_with_field PASSED
+tests/test_json_schema.py::test_required_fields_in_annotated_with_create_model PASSED
+tests/test_json_schema.py::test_required_fields_in_annotated_with_basemodel PASSED
+tests/test_json_schema.py::test_default_value_encoding[IPvAnyAddress-default_value0-expected_schema0] PASSED
+tests/test_json_schema.py::test_default_value_encoding[IPvAnyAddress-default_value1-expected_schema1] PASSED
+tests/test_json_schema.py::test_pydantic_types_as_default_values[builtin-dataclass] FAILED [ 30%]
+tests/test_json_schema.py:6053 test_pydantic_types_as_default_values[builtin-dataclass]
+tests/test_json_schema.py::test_pydantic_types_as_default_values[pydantic-dataclass] PASSED
+tests/test_json_schema.py::test_pydantic_types_as_default_values[typeddict] PASSED
+tests/test_json_schema.py::test_pydantic_types_as_default_values[model] PASSED
+tests/test_main.py::test_success PASSED
+tests/test_main.py::test_ultra_simple_missing PASSED
+tests/test_main.py::test_ultra_simple_failed PASSED
+tests/test_main.py::test_ultra_simple_repr PASSED
+tests/test_main.py::test_default_factory_field PASSED
+tests/test_main.py::test_comparing PASSED
+tests/test_main.py::test_nullable_strings_success PASSED
+tests/test_main.py::test_nullable_strings_fails PASSED
+tests/test_main.py::test_parent_sub_model PASSED
+tests/test_main.py::test_parent_sub_model_fails PASSED
+tests/test_main.py::test_not_required PASSED
+tests/test_main.py::test_allow_extra PASSED
+tests/test_main.py::test_allow_extra_from_attributes[ignore] PASSED
+tests/test_main.py::test_allow_extra_from_attributes[forbid] PASSED
+tests/test_main.py::test_allow_extra_from_attributes[allow] PASSED
+tests/test_main.py::test_allow_extra_repr PASSED
+tests/test_main.py::test_forbidden_extra_success PASSED
+tests/test_main.py::test_forbidden_extra_fails PASSED
+tests/test_main.py::test_assign_extra_no_validate PASSED
+tests/test_main.py::test_assign_extra_validate PASSED
+tests/test_main.py::test_model_property_attribute_error PASSED
+tests/test_main.py::test_extra_allowed PASSED
+tests/test_main.py::test_reassign_instance_method_with_extra_allow PASSED
+tests/test_main.py::test_extra_ignored PASSED
+tests/test_main.py::test_field_order_is_preserved_with_extra PASSED
+tests/test_main.py::test_extra_broken_via_pydantic_extra_interference PASSED
+tests/test_main.py::test_model_extra_is_none_when_extra_is_forbid PASSED
+tests/test_main.py::test_set_attr PASSED
+tests/test_main.py::test_set_attr_invalid PASSED
+tests/test_main.py::test_any PASSED
+tests/test_main.py::test_population_by_field_name PASSED
+tests/test_main.py::test_field_order PASSED
+tests/test_main.py::test_required PASSED
+tests/test_main.py::test_mutability PASSED
+tests/test_main.py::test_frozen_model PASSED
+tests/test_main.py::test_frozen_field PASSED
+tests/test_main.py::test_not_frozen_are_not_hashable PASSED
+tests/test_main.py::test_with_declared_hash PASSED
+tests/test_main.py::test_frozen_with_hashable_fields_are_hashable PASSED
+tests/test_main.py::test_frozen_with_unhashable_fields_are_not_hashable PASSED
+tests/test_main.py::test_hash_function_empty_model PASSED
+tests/test_main.py::test_hash_function_give_different_result_for_different_object PASSED
+tests/test_main.py::test_hash_function_works_when_instance_dict_modified PASSED
+tests/test_main.py::test_default_hash_function_overrides_default_hash_function PASSED
+tests/test_main.py::test_hash_method_is_inherited_for_frozen_models PASSED
+tests/test_main.py::test_validating_assignment_pass PASSED
+tests/test_main.py::test_validating_assignment_fail PASSED
+tests/test_main.py::test_enum_values[Foo.foo] PASSED
+tests/test_main.py::test_enum_values[foo0] PASSED
+tests/test_main.py::test_enum_values[foo1] PASSED
+tests/test_main.py::test_literal_enum_values PASSED
+tests/test_main.py::test_strict_enum_values PASSED
+tests/test_main.py::test_union_enum_values PASSED
+tests/test_main.py::test_enum_raw PASSED
+tests/test_main.py::test_set_tuple_values PASSED
+tests/test_main.py::test_default_copy PASSED
+tests/test_main.py::test_arbitrary_type_allowed_validation_success PASSED
+tests/test_main.py::test_arbitrary_type_allowed_validation_fails PASSED
+tests/test_main.py::test_arbitrary_types_not_allowed PASSED
+tests/test_main.py::test_type_type_validation_success PASSED
+tests/test_main.py::test_type_type_subclass_validation_success PASSED
+tests/test_main.py::test_type_type_validation_fails[OtherClass] PASSED
+tests/test_main.py::test_type_type_validation_fails[1] PASSED
+tests/test_main.py::test_bare_type_type_validation_success[type] PASSED
+tests/test_main.py::test_bare_type_type_validation_success[bare_type1] PASSED
+tests/test_main.py::test_bare_type_type_validation_fails[type] PASSED
+tests/test_main.py::test_bare_type_type_validation_fails[bare_type1] PASSED
+tests/test_main.py::test_annotation_field_name_shadows_attribute PASSED
+tests/test_main.py::test_value_field_name_shadows_attribute PASSED
+tests/test_main.py::test_class_var PASSED
+tests/test_main.py::test_fields_set PASSED
+tests/test_main.py::test_exclude_unset_dict PASSED
+tests/test_main.py::test_exclude_unset_recursive PASSED
+tests/test_main.py::test_dict_exclude_unset_populated_by_alias PASSED
+tests/test_main.py::test_dict_exclude_unset_populated_by_alias_with_extra PASSED
+tests/test_main.py::test_exclude_defaults PASSED
+tests/test_main.py::test_dir_fields PASSED
+tests/test_main.py::test_dict_with_extra_keys PASSED
+tests/test_main.py::test_ignored_types PASSED
+tests/test_main.py::test_model_iteration PASSED
+tests/test_main.py::test_model_iteration_extra PASSED
+tests/test_main.py::test_model_export_nested_list[exclude nothing] PASSED
+tests/test_main.py::test_model_export_nested_list[excluding fields of indexed list items] PASSED
+tests/test_main.py::test_model_export_nested_list[Trying to exclude string keys on list field should be ignored (1)] PASSED
+tests/test_main.py::test_model_export_nested_list[Trying to exclude string keys on list field should be ignored (2)] PASSED
+tests/test_main.py::test_model_export_nested_list[value as int should be an error] PASSED
+tests/test_main.py::test_model_export_nested_list[excluding int in dict should have no effect] PASSED
+tests/test_main.py::test_model_export_nested_list[using "__all__" to exclude specific nested field] PASSED
+tests/test_main.py::test_model_export_nested_list[using "__all__" to exclude specific nested field in combination with more specific exclude] PASSED
+tests/test_main.py::test_model_export_nested_list[using "__all__" to exclude all list items] PASSED
+tests/test_main.py::test_model_export_nested_list[using "__all__" and other items should get merged together, still excluding all list items] PASSED
+tests/test_main.py::test_model_export_nested_list[negative indexes] PASSED
+tests/test_main.py::test_model_export_dict_exclusion[excluding first item from list field using index] PASSED
+tests/test_main.py::test_model_export_dict_exclusion[using "__all__" to exclude all list items] PASSED
+tests/test_main.py::test_model_export_dict_exclusion[exclude single dict key from all list items] PASSED
+tests/test_main.py::test_field_exclude PASSED
+tests/test_main.py::test_revalidate_instances_never PASSED
+tests/test_main.py::test_revalidate_instances_sub_instances PASSED
+tests/test_main.py::test_revalidate_instances_always PASSED
+tests/test_main.py::test_revalidate_instances_always_list_of_model_instance PASSED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds0] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds1] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds2] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds3] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds4] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds5] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[None-expected0-kinds6] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds0] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds1] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds2] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds3] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds4] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds5] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude1-expected1-kinds6] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds0] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds1] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds2] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds3] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds4] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds5] SKIPPED
+tests/test_main.py::test_model_export_exclusion_with_fields_and_config[exclude2-expected2-kinds6] SKIPPED
+tests/test_main.py::test_model_export_exclusion_inheritance SKIPPED (not
+implemented)
+tests/test_main.py::test_model_export_with_true_instead_of_ellipsis SKIPPED
+tests/test_main.py::test_model_export_inclusion SKIPPED (not
+implemented)
+tests/test_main.py::test_model_export_inclusion_inheritance SKIPPED (not
+implemented)
+tests/test_main.py::test_untyped_fields_warning PASSED
+tests/test_main.py::test_untyped_fields_error PASSED
+tests/test_main.py::test_custom_init_subclass_params PASSED
+tests/test_main.py::test_recursive_model PASSED
+tests/test_main.py::test_recursive_cycle_with_repeated_field PASSED
+tests/test_main.py::test_two_defaults PASSED
+tests/test_main.py::test_default_factory PASSED
+tests/test_main.py::test_default_factory_called_once PASSED
+tests/test_main.py::test_default_factory_called_once_2 PASSED
+tests/test_main.py::test_default_factory_validate_children PASSED
+tests/test_main.py::test_default_factory_parse PASSED
+tests/test_main.py::test_reuse_same_field PASSED
+tests/test_main.py::test_base_config_type_hinting PASSED
+tests/test_main.py::test_frozen_field_with_validate_assignment PASSED
+tests/test_main.py::test_repr_field PASSED
+tests/test_main.py::test_inherited_model_field_copy PASSED
+tests/test_main.py::test_mapping_subclass_as_input PASSED
+tests/test_main.py::test_typing_coercion_dict PASSED
+tests/test_main.py::test_class_kwargs_config PASSED
+tests/test_main.py::test_class_kwargs_config_and_attr_conflict PASSED
+tests/test_main.py::test_class_kwargs_custom_config PASSED
+tests/test_main.py::test_new_union_origin PASSED
+tests/test_main.py::test_frozen_field_decl_without_default_val[none-no-arg] PASSED
+tests/test_main.py::test_frozen_field_decl_without_default_val[none-with-arg] PASSED
+tests/test_main.py::test_frozen_field_decl_without_default_val[field-no-arg] PASSED
+tests/test_main.py::test_frozen_field_decl_without_default_val[field-with-arg] PASSED
+tests/test_main.py::test_final_field_decl_with_default_val[no-arg] PASSED
+tests/test_main.py::test_final_field_decl_with_default_val[with-arg] PASSED
+tests/test_main.py::test_final_field_reassignment PASSED
+tests/test_main.py::test_field_by_default_is_not_frozen PASSED
+tests/test_main.py::test_annotated_final PASSED
+tests/test_main.py::test_post_init PASSED
+tests/test_main.py::test_post_init_call_signatures[True] PASSED
+tests/test_main.py::test_post_init_call_signatures[False] PASSED
+tests/test_main.py::test_post_init_not_called_without_override PASSED
+tests/test_main.py::test_model_post_init_subclass_private_attrs PASSED
+tests/test_main.py::test_model_post_init_supertype_private_attrs PASSED
+tests/test_main.py::test_model_post_init_subclass_setting_private_attrs PASSED
+tests/test_main.py::test_model_post_init_correct_mro PASSED
+tests/test_main.py::test_deeper_recursive_model PASSED
+tests/test_main.py::test_model_rebuild_localns PASSED
+tests/test_main.py::test_model_rebuild_zero_depth PASSED
+tests/test_main.py::test_model_equality PASSED
+tests/test_main.py::test_model_equality_type PASSED
+tests/test_main.py::test_model_equality_dump PASSED
+tests/test_main.py::test_model_equality_fields_set PASSED
+tests/test_main.py::test_model_equality_private_attrs PASSED
+tests/test_main.py::test_model_copy_extra PASSED
+tests/test_main.py::test_model_parametrized_name_not_generic PASSED
+tests/test_main.py::test_model_equality_generics PASSED
+tests/test_main.py::test_model_validate_strict PASSED
+tests/test_main.py::test_model_validate_list_strict XFAIL (strict=True
+in model_validate_json does not overwrite strict=False given in
+ConfigDictSee issue: https://github.com/pydantic/pydantic/issues/8930)
+tests/test_main.py::test_model_validate_json_strict PASSED
+tests/test_main.py::test_validate_python_context PASSED
+tests/test_main.py::test_validate_json_context PASSED
+tests/test_main.py::test_pydantic_init_subclass PASSED
+tests/test_main.py::test_model_validate_with_context PASSED
+tests/test_main.py::test_extra_equality PASSED
+tests/test_main.py::test_equality_delegation PASSED
+tests/test_main.py::test_recursion_loop_error PASSED
+tests/test_main.py::test_protected_namespace_default PASSED
+tests/test_main.py::test_protected_namespace_real_conflict PASSED
+tests/test_main.py::test_custom_protected_namespace PASSED
+tests/test_main.py::test_multiple_protected_namespace PASSED
+tests/test_main.py::test_model_get_core_schema PASSED
+tests/test_main.py::test_nested_types_ignored PASSED
+tests/test_main.py::test_validate_python_from_attributes PASSED
+tests/test_main.py::test_model_validate_strings[<class 'bool'>-'true'-True-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'bool'>-'true'-True-None-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'bool'>-'false'-False-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'bool'>-'e'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=bool_parsing'-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'int'>-'1'-1-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'int'>-'1'-1-None-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'int'>-'xxx'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=int_parsing'-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'float'>-'1.1'-1.1-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'float'>-'1.10'-1.1-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'float'>-'1.1'-1.1-None-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'float'>-'1.10'-1.1-None-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01'-datetime.date(2017, 1, 1)-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01'-datetime.date(2017, 1, 1)-None-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T12:13:14.567'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_from_datetime_inexact'-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T12:13:14.567'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_parsing'-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T00:00:00'-datetime.date(2017, 1, 1)-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T00:00:00'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_parsing'-True] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.datetime'>-'2017-01-01T12:13:14.567'-datetime.datetime(2017, 1, 1, 12, 13, 14, 567000)-None-False] PASSED
+tests/test_main.py::test_model_validate_strings[<class 'datetime.datetime'>-'2017-01-01T12:13:14.567'-datetime.datetime(2017, 1, 1, 12, 13, 14, 567000)-None-True] PASSED
+tests/test_main.py::test_model_validate_strings_dict[True] PASSED
+tests/test_main.py::test_model_validate_strings_dict[False] PASSED
+tests/test_main.py::test_model_signature_annotated PASSED
+tests/test_main.py::test_get_core_schema_unpacks_refs_for_source_type PASSED
+tests/test_main.py::test_get_core_schema_return_new_ref PASSED
+tests/test_main.py::test_resolve_def_schema_from_core_schema PASSED
+tests/test_main.py::test_extra_validator_scalar PASSED
+tests/test_main.py::test_extra_validator_named PASSED
+tests/test_main.py::test_super_getattr_extra PASSED
+tests/test_main.py::test_super_getattr_private PASSED
+tests/test_main.py::test_super_delattr_extra PASSED
+tests/test_main.py::test_super_delattr_private PASSED
+tests/test_main.py::test_arbitrary_types_not_a_type PASSED
+tests/test_main.py::test_deferred_core_schema PASSED
+tests/test_main.py::test_help PASSED
+tests/test_main.py::test_cannot_use_leading_underscore_field_names PASSED
+tests/test_main.py::test_schema_generator_customize_type PASSED
+tests/test_main.py::test_schema_generator_customize_type_constraints PASSED
+tests/test_main.py::test_schema_generator_customize_type_constraints_order PASSED
+tests/test_main.py::test_shadow_attribute PASSED
+tests/test_main.py::test_shadow_attribute_warn_for_redefined_fields PASSED
+tests/test_main.py::test_eval_type_backport PASSED
+tests/test_main.py::test_inherited_class_vars PASSED
+tests/test_main.py::test_schema_valid_for_inner_generic PASSED
+tests/test_main.py::test_validation_works_for_cyclical_forward_refs PASSED
+tests/test_main.py::test_model_construct_with_model_post_init_and_model_copy PASSED
+tests/test_root_model.py::test_root_model_specialized[int] PASSED
+tests/test_root_model.py::test_root_model_specialized[str] PASSED
+tests/test_root_model.py::test_root_model_specialized[dict[int, bool]] PASSED
+tests/test_root_model.py::test_root_model_specialized[list[int]] PASSED
+tests/test_root_model.py::test_root_model_specialized[InnerModel] PASSED
+tests/test_root_model.py::test_root_model_inherited[int] PASSED
+tests/test_root_model.py::test_root_model_inherited[str] PASSED
+tests/test_root_model.py::test_root_model_inherited[dict[int, bool]] PASSED
+tests/test_root_model.py::test_root_model_inherited[list[int]] PASSED
+tests/test_root_model.py::test_root_model_inherited[InnerModel] PASSED
+tests/test_root_model.py::test_root_model_validation_error PASSED
+tests/test_root_model.py::test_root_model_repr PASSED
+tests/test_root_model.py::test_root_model_recursive PASSED
+tests/test_root_model.py::test_root_model_nested PASSED
+tests/test_root_model.py::test_root_model_as_field PASSED
+tests/test_root_model.py::test_v1_compatibility_serializer PASSED
+tests/test_root_model.py::test_construct PASSED
+tests/test_root_model.py::test_construct_nested PASSED
+tests/test_root_model.py::test_assignment PASSED
+tests/test_root_model.py::test_model_validator_before PASSED
+tests/test_root_model.py::test_model_validator_after PASSED
+tests/test_root_model.py::test_private_attr PASSED
+tests/test_root_model.py::test_validate_assignment_false PASSED
+tests/test_root_model.py::test_validate_assignment_true PASSED
+tests/test_root_model.py::test_root_model_literal PASSED
+tests/test_root_model.py::test_root_model_equality PASSED
+tests/test_root_model.py::test_root_model_with_private_attrs_equality PASSED
+tests/test_root_model.py::test_root_model_nested_equality PASSED
+tests/test_root_model.py::test_root_model_base_model_equality PASSED
+tests/test_root_model.py::test_extra_error[ignore] PASSED
+tests/test_root_model.py::test_extra_error[allow] PASSED
+tests/test_root_model.py::test_extra_error[forbid] PASSED
+tests/test_root_model.py::test_root_model_default_value PASSED
+tests/test_root_model.py::test_root_model_default_factory PASSED
+tests/test_root_model.py::test_root_model_wrong_default_value_without_validate_default PASSED
+tests/test_root_model.py::test_root_model_default_value_with_validate_default PASSED
+tests/test_root_model.py::test_root_model_default_value_with_validate_default_on_field PASSED
+tests/test_root_model.py::test_root_model_as_attr_with_validate_default PASSED
+tests/test_root_model.py::test_root_model_in_root_model_default PASSED
+tests/test_root_model.py::test_nested_root_model_naive_default PASSED
+tests/test_root_model.py::test_nested_root_model_proper_default PASSED
+tests/test_root_model.py::test_root_model_json_schema_meta PASSED
+tests/test_root_model.py::test_root_model_dump_with_base_model[BR] PASSED
+tests/test_root_model.py::test_root_model_dump_with_base_model[RB] PASSED
+tests/test_root_model.py::test_mixed_discriminated_union[IModel] PASSED
+tests/test_root_model.py::test_mixed_discriminated_union[SModel] PASSED
+tests/test_root_model.py::test_list_rootmodel PASSED
+tests/test_root_model.py::test_root_and_data_error PASSED
+tests/test_root_model.py::test_pickle_root_model PASSED
+tests/test_root_model.py::test_json_schema_extra_on_model PASSED
+tests/test_root_model.py::test_json_schema_extra_on_field PASSED
+tests/test_root_model.py::test_json_schema_extra_on_model_and_on_field PASSED
+tests/test_root_model.py::test_help PASSED
+tests/test_root_model.py::test_copy_preserves_equality PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'bool'>-'true'-True-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'bool'>-'true'-True-None-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'bool'>-'false'-False-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'bool'>-'e'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=bool_parsing'-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'int'>-'1'-1-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'int'>-'1'-1-None-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'int'>-'xxx'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=int_parsing'-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'float'>-'1.1'-1.1-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'float'>-'1.10'-1.1-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'float'>-'1.1'-1.1-None-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'float'>-'1.10'-1.1-None-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01'-datetime.date(2017, 1, 1)-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01'-datetime.date(2017, 1, 1)-None-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T12:13:14.567'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_from_datetime_inexact'-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T12:13:14.567'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_parsing'-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T00:00:00'-datetime.date(2017, 1, 1)-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.date'>-'2017-01-01T00:00:00'-<class 'pydantic_core._pydantic_core.ValidationError'>-'type=date_parsing'-True] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.datetime'>-'2017-01-01T12:13:14.567'-datetime.datetime(2017, 1, 1, 12, 13, 14, 567000)-None-False] PASSED
+tests/test_root_model.py::test_model_validate_strings[<class 'datetime.datetime'>-'2017-01-01T12:13:14.567'-datetime.datetime(2017, 1, 1, 12, 13, 14, 567000)-None-True] PASSED
+tests/test_root_model.py::test_model_construction_with_invalid_generic_specification PASSED
+tests/test_root_model.py::test_model_with_field_description PASSED
+tests/test_root_model.py::test_model_with_both_docstring_and_field_description FAILED [ 49%]
+tests/test_root_model.py:668 test_model_with_both_docstring_and_field_description
+tests/test_types.py::test_constrained_bytes_good PASSED
+tests/test_types.py::test_constrained_bytes_default PASSED
+tests/test_types.py::test_strict_raw_type PASSED
+tests/test_types.py::test_constrained_bytes_too_long[this is too long-False] PASSED
+tests/test_types.py::test_constrained_bytes_too_long[\xe2\xaa\xb6\xe2\x93\xb2\xe2\xbd\xb701-False] PASSED
+tests/test_types.py::test_constrained_bytes_too_long[not long90-True] PASSED
+tests/test_types.py::test_constrained_bytes_too_long[\xe2\xaa\xb6\xe2\x93\xb2\xe2\xbd\xb70-True] PASSED
+tests/test_types.py::test_constrained_bytes_strict_true PASSED
+tests/test_types.py::test_constrained_bytes_strict_false PASSED
+tests/test_types.py::test_constrained_bytes_strict_default PASSED
+tests/test_types.py::test_constrained_list_good PASSED
+tests/test_types.py::test_constrained_list_default PASSED
+tests/test_types.py::test_constrained_list_too_long PASSED
+tests/test_types.py::test_constrained_list_too_short PASSED
+tests/test_types.py::test_constrained_list_optional PASSED
+tests/test_types.py::test_constrained_list_constraints PASSED
+tests/test_types.py::test_constrained_list_item_type_fails PASSED
+tests/test_types.py::test_conlist PASSED
+tests/test_types.py::test_conlist_wrong_type_default PASSED
+tests/test_types.py::test_constrained_set_good PASSED
+tests/test_types.py::test_constrained_set_default PASSED
+tests/test_types.py::test_constrained_set_default_invalid PASSED
+tests/test_types.py::test_constrained_set_too_long PASSED
+tests/test_types.py::test_constrained_set_too_short PASSED
+tests/test_types.py::test_constrained_set_optional PASSED
+tests/test_types.py::test_constrained_set_constraints PASSED
+tests/test_types.py::test_constrained_set_item_type_fails PASSED
+tests/test_types.py::test_conset PASSED
+tests/test_types.py::test_conset_not_required PASSED
+tests/test_types.py::test_confrozenset PASSED
+tests/test_types.py::test_confrozenset_not_required PASSED
+tests/test_types.py::test_constrained_frozenset_optional PASSED
+tests/test_types.py::test_constrained_str_good PASSED
+tests/test_types.py::test_constrained_str_default PASSED
+tests/test_types.py::test_constrained_str_too_long[this is too long-False] PASSED
+tests/test_types.py::test_constrained_str_too_long[\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4-False] PASSED
+tests/test_types.py::test_constrained_str_too_long[not long90-True] PASSED
+tests/test_types.py::test_constrained_str_too_long[\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4\u26c4-True] PASSED
+tests/test_types.py::test_constrained_str_upper[True-abcd-ABCD] PASSED
+tests/test_types.py::test_constrained_str_upper[False-aBcD-aBcD] PASSED
+tests/test_types.py::test_constrained_str_lower[True-ABCD-abcd] PASSED
+tests/test_types.py::test_constrained_str_lower[False-ABCD-ABCD] PASSED
+tests/test_types.py::test_constrained_str_max_length_0 PASSED
+tests/test_types.py::test_string_import_callable[annotation0] PASSED
+tests/test_types.py::test_string_import_callable[annotation1] PASSED
+tests/test_types.py::test_string_import_any[math:cos-math.cos-json] PASSED
+tests/test_types.py::test_string_import_any[math:cos-cos-python] PASSED
+tests/test_types.py::test_string_import_any[math.cos-math.cos-json] PASSED
+tests/test_types.py::test_string_import_any[math.cos-cos-python] PASSED
+tests/test_types.py::test_string_import_any[os.path-posixpath-json] PASSED
+tests/test_types.py::test_string_import_any[os.path-ntpath-json] SKIPPED
+tests/test_types.py::test_string_import_any[os.path-posixpath-python] PASSED
+tests/test_types.py::test_string_import_any[value7-expected7-json] PASSED
+tests/test_types.py::test_string_import_any[value8-expected8-python] PASSED
+tests/test_types.py::test_string_import_any[math-math-json] PASSED
+tests/test_types.py::test_string_import_any[math-math-python] PASSED
+tests/test_types.py::test_string_import_any[builtins.list-builtins.list-json] PASSED
+tests/test_types.py::test_string_import_any[builtins.list-list-python] PASSED
+tests/test_types.py::test_string_import_any[list-builtins.list-json] PASSED
+tests/test_types.py::test_string_import_any[list-list-python] PASSED
+tests/test_types.py::test_string_import_any[tests.test_types.pytest-pytest-json] PASSED
+tests/test_types.py::test_string_import_any[tests.test_types.pytest-pytest-python] PASSED
+tests/test_types.py::test_string_import_default_value[cos-True-cos] PASSED
+tests/test_types.py::test_string_import_default_value[math:cos-True-cos] PASSED
+tests/test_types.py::test_string_import_default_value[cos-False-cos] PASSED
+tests/test_types.py::test_string_import_default_value[math:cos-False-math:cos] PASSED
+tests/test_types.py::test_string_import_any_expected_failure[oss] PASSED
+tests/test_types.py::test_string_import_any_expected_failure[os.os] PASSED
+tests/test_types.py::test_string_import_any_expected_failure[tests.test_types.x] PASSED
+tests/test_types.py::test_string_import_constraints[annotation0] PASSED
+tests/test_types.py::test_string_import_constraints[annotation1] PASSED
+tests/test_types.py::test_string_import_examples PASSED
+tests/test_types.py::test_string_import_errors[collections.abc.def-errors0] PASSED
+tests/test_types.py::test_string_import_errors[collections.abc:def-errors1] PASSED
+tests/test_types.py::test_string_import_errors[collections:abc:Mapping-errors2] PASSED
+tests/test_types.py::test_string_import_errors[123_collections:Mapping-errors3] PASSED
+tests/test_types.py::test_string_import_errors[:Mapping-errors4] PASSED
+tests/test_types.py::test_decimal PASSED
+tests/test_types.py::test_decimal_allow_inf PASSED
+tests/test_types.py::test_decimal_dont_allow_inf PASSED
+tests/test_types.py::test_decimal_strict PASSED
+tests/test_types.py::test_decimal_precision PASSED
+tests/test_types.py::test_strict_date PASSED
+tests/test_types.py::test_strict_datetime PASSED
+tests/test_types.py::test_strict_time PASSED
+tests/test_types.py::test_strict_timedelta PASSED
+tests/test_types.py::test_default_validators[bool_check-True-True0] PASSED
+tests/test_types.py::test_default_validators[bool_check-1-True0] PASSED
+tests/test_types.py::test_default_validators[bool_check-1.0-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-value3-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-y-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-Y-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-yes-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-Yes-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-YES-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-true-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-True-True1] PASSED
+tests/test_types.py::test_default_validators[bool_check-TRUE-True0] PASSED
+tests/test_types.py::test_default_validators[bool_check-on-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-On-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-ON-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-1-True1] PASSED
+tests/test_types.py::test_default_validators[bool_check-t-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-T-True] PASSED
+tests/test_types.py::test_default_validators[bool_check-TRUE-True1] PASSED
+tests/test_types.py::test_default_validators[bool_check-False-False0] PASSED
+tests/test_types.py::test_default_validators[bool_check-0-False0] PASSED
+tests/test_types.py::test_default_validators[bool_check-0.0-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-value22-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-n-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-N-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-no-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-No-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-NO-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-false-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-False-False1] PASSED
+tests/test_types.py::test_default_validators[bool_check-FALSE-False0] PASSED
+tests/test_types.py::test_default_validators[bool_check-off-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-Off-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-OFF-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-0-False1] PASSED
+tests/test_types.py::test_default_validators[bool_check-f-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-F-False] PASSED
+tests/test_types.py::test_default_validators[bool_check-FALSE-False1] PASSED
+tests/test_types.py::test_default_validators[bool_check-None-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check--ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value40-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value41-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value42-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value43-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-2-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[bool_check-2-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[bool_check-2-ValidationError2] PASSED
+tests/test_types.py::test_default_validators[bool_check-2.0-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value48-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-\x81-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bool_check-value50-ValidationError] PASSED
+tests/test_types.py::test_default_validators[str_check-s-s0] PASSED
+tests/test_types.py::test_default_validators[str_check-  s  -s0] PASSED
+tests/test_types.py::test_default_validators[str_check-s-s1] PASSED
+tests/test_types.py::test_default_validators[str_check-  s  -s1] PASSED
+tests/test_types.py::test_default_validators[str_check-value55-sssss] PASSED
+tests/test_types.py::test_default_validators[str_check-1-ValidationError] PASSED
+tests/test_types.py::test_default_validators[str_check-xxxxxxxxxxx-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[str_check-xxxxxxxxxxx-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[str_check-\x81-ValidationError] PASSED
+tests/test_types.py::test_default_validators[str_check-value60-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bytes_check-s-s0] PASSED
+tests/test_types.py::test_default_validators[bytes_check-  s  -  s  ] PASSED
+tests/test_types.py::test_default_validators[bytes_check-s-s1] PASSED
+tests/test_types.py::test_default_validators[bytes_check-1-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bytes_check-value65-xx] PASSED
+tests/test_types.py::test_default_validators[bytes_check-True-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bytes_check-False-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bytes_check-value68-ValidationError] PASSED
+tests/test_types.py::test_default_validators[bytes_check-xxxxxxxxxxx-xxxxxxxxxxx0] PASSED
+tests/test_types.py::test_default_validators[bytes_check-xxxxxxxxxxx-xxxxxxxxxxx1] PASSED
+tests/test_types.py::test_default_validators[int_check-1-10] PASSED
+tests/test_types.py::test_default_validators[int_check-1.0-1] PASSED
+tests/test_types.py::test_default_validators[int_check-1.9-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[int_check-value74-1] PASSED
+tests/test_types.py::test_default_validators[int_check-value75-ValidationError] PASSED
+tests/test_types.py::test_default_validators[int_check-1-11] PASSED
+tests/test_types.py::test_default_validators[int_check-1.9-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[int_check-1-12] PASSED
+tests/test_types.py::test_default_validators[int_check-12-120] PASSED
+tests/test_types.py::test_default_validators[int_check-12-121] PASSED
+tests/test_types.py::test_default_validators[int_check-12-122] PASSED
+tests/test_types.py::test_default_validators[float_check-1-1.00] PASSED
+tests/test_types.py::test_default_validators[float_check-1.0-1.00] PASSED
+tests/test_types.py::test_default_validators[float_check-value84-1.0] PASSED
+tests/test_types.py::test_default_validators[float_check-1.0-1.01] PASSED
+tests/test_types.py::test_default_validators[float_check-1-1.01] PASSED
+tests/test_types.py::test_default_validators[float_check-1.0-1.02] PASSED
+tests/test_types.py::test_default_validators[float_check-1-1.02] PASSED
+tests/test_types.py::test_default_validators[float_check-True-1.0] PASSED
+tests/test_types.py::test_default_validators[float_check-False-0.0] PASSED
+tests/test_types.py::test_default_validators[float_check-t-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[float_check-t-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[uuid_check-ebcdab58-6eb8-46fb-a190-d07a33e9eac8-result93] PASSED
+tests/test_types.py::test_default_validators[uuid_check-value94-result94] PASSED
+tests/test_types.py::test_default_validators[uuid_check-ebcdab58-6eb8-46fb-a190-d07a33e9eac8-result95] PASSED
+tests/test_types.py::test_default_validators[uuid_check-\x124Vx\x124Vx\x124Vx\x124Vx-result96] PASSED
+tests/test_types.py::test_default_validators[uuid_check-ebcdab58-6eb8-46fb-a190--ValidationError] PASSED
+tests/test_types.py::test_default_validators[uuid_check-123-ValidationError] PASSED
+tests/test_types.py::test_default_validators[decimal_check-42.24-result99] PASSED
+tests/test_types.py::test_default_validators[decimal_check-42.24-result100] PASSED
+tests/test_types.py::test_default_validators[decimal_check-42.24-ValidationError] PASSED
+tests/test_types.py::test_default_validators[decimal_check-  42.24  -result102] PASSED
+tests/test_types.py::test_default_validators[decimal_check-value103-result103] PASSED
+tests/test_types.py::test_default_validators[decimal_check-not a valid decimal-ValidationError] PASSED
+tests/test_types.py::test_default_validators[decimal_check-NaN-ValidationError] PASSED
+tests/test_types.py::test_default_validators[date_check-value106-result106] PASSED
+tests/test_types.py::test_default_validators[date_check-value107-result107] PASSED
+tests/test_types.py::test_default_validators[date_check-2017-05-05-result108] PASSED
+tests/test_types.py::test_default_validators[date_check-2017-05-05-result109] PASSED
+tests/test_types.py::test_default_validators[date_check-1493942400000-result110] PASSED
+tests/test_types.py::test_default_validators[date_check-1493942400-result111] PASSED
+tests/test_types.py::test_default_validators[date_check-1493942400000.0-result112] PASSED
+tests/test_types.py::test_default_validators[date_check-value113-result113] PASSED
+tests/test_types.py::test_default_validators[date_check-value114-ValidationError] PASSED
+tests/test_types.py::test_default_validators[date_check-2017-5-5-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[date_check-2017-5-5-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[date_check-1493942401000-ValidationError] PASSED
+tests/test_types.py::test_default_validators[date_check-1493942401000.0-ValidationError] PASSED
+tests/test_types.py::test_default_validators[date_check-value119-ValidationError] PASSED
+tests/test_types.py::test_default_validators[datetime_check-value120-result120] PASSED
+tests/test_types.py::test_default_validators[datetime_check-value121-result121] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-05-05T10:10:10.0002-result122] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-05-05 10:10:10-result123] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-05-05 10:10:10+00:00-result124] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-05-05T10:10:10.0002-result125] PASSED
+tests/test_types.py::test_default_validators[datetime_check-1493979010000-result126] PASSED
+tests/test_types.py::test_default_validators[datetime_check-1493979010-result127] PASSED
+tests/test_types.py::test_default_validators[datetime_check-1493979010000.0-result128] PASSED
+tests/test_types.py::test_default_validators[datetime_check-value129-result129] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-5-5T10:10:10-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[datetime_check-2017-5-5T10:10:10-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[time_check-value132-result132] PASSED
+tests/test_types.py::test_default_validators[time_check-10:10:10.0002-result133] PASSED
+tests/test_types.py::test_default_validators[time_check-10:10:10.0002-result134] PASSED
+tests/test_types.py::test_default_validators[time_check-3720-result135] PASSED
+tests/test_types.py::test_default_validators[time_check-3720.0002-result136] FAILED [ 63%]
+tests/test_types.py:1224 test_default_validators[time_check-3720.0002-result136]
+tests/test_types.py::test_default_validators[time_check-value137-result137] FAILED [ 63%]
+tests/test_types.py:1224 test_default_validators[time_check-value137-result137]
+tests/test_types.py::test_default_validators[time_check-1:1:1-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[time_check-1:1:1-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[time_check--1-ValidationError] PASSED
+tests/test_types.py::test_default_validators[time_check-86400-ValidationError] PASSED
+tests/test_types.py::test_default_validators[time_check-86400.0-ValidationError] PASSED
+tests/test_types.py::test_default_validators[time_check-value143-ValidationError] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-value144-result144] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-1 days 10:10-result145] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-1 d 10:10-result146] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-1 days 10:10-result147] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-123000-result148] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-123000.0002-result149] FAILED [ 64%]
+tests/test_types.py:1224 test_default_validators[timedelta_check-123000.0002-result149]
+tests/test_types.py::test_default_validators[timedelta_check-value150-result150] FAILED [ 64%]
+tests/test_types.py:1224 test_default_validators[timedelta_check-value150-result150]
+tests/test_types.py::test_default_validators[timedelta_check-1 10:10-ValidationError0] PASSED
+tests/test_types.py::test_default_validators[timedelta_check-1 10:10-ValidationError1] PASSED
+tests/test_types.py::test_default_validators[list_check-value153-result153] PASSED
+tests/test_types.py::test_default_validators[list_check-value154-result154] PASSED
+tests/test_types.py::test_default_validators[list_check-value155-result155] PASSED
+tests/test_types.py::test_default_validators[list_check-value156-result156] PASSED
+tests/test_types.py::test_default_validators[list_check-value157-result157] PASSED
+tests/test_types.py::test_default_validators[list_check-value158-result158] PASSED
+tests/test_types.py::test_default_validators[list_check-value159-ValidationError] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value160-result160] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value161-result161] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value162-result162] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value163-result163] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value164-result164] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value165-result165] PASSED
+tests/test_types.py::test_default_validators[tuple_check-value166-ValidationError] PASSED
+tests/test_types.py::test_default_validators[set_check-value167-result167] PASSED
+tests/test_types.py::test_default_validators[set_check-value168-result168] PASSED
+tests/test_types.py::test_default_validators[set_check-value169-result169] PASSED
+tests/test_types.py::test_default_validators[set_check-value170-result170] PASSED
+tests/test_types.py::test_default_validators[set_check-value171-result171] PASSED
+tests/test_types.py::test_default_validators[set_check-value172-result172] PASSED
+tests/test_types.py::test_default_validators[set_check-value173-ValidationError] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value174-result174] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value175-result175] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value176-result176] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value177-result177] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value178-result178] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value179-result179] PASSED
+tests/test_types.py::test_default_validators[frozenset_check-value180-ValidationError] PASSED
+tests/test_types.py::test_string_too_long PASSED
+tests/test_types.py::test_string_too_short PASSED
+tests/test_types.py::test_datetime_successful PASSED
+tests/test_types.py::test_datetime_errors PASSED
+tests/test_types.py::test_enum_successful PASSED
+tests/test_types.py::test_enum_fails PASSED
+tests/test_types.py::test_enum_fails_error_msg PASSED
+tests/test_types.py::test_int_enum_successful_for_str_int PASSED
+tests/test_types.py::test_plain_enum_validate PASSED
+tests/test_types.py::test_plain_enum_validate_json PASSED
+tests/test_types.py::test_enum_type PASSED
+tests/test_types.py::test_enum_missing_default PASSED
+tests/test_types.py::test_enum_missing_custom PASSED
+tests/test_types.py::test_int_enum_type PASSED
+tests/test_types.py::test_enum_from_json[Enum-False] PASSED
+tests/test_types.py::test_enum_from_json[IntEnum-False] PASSED
+tests/test_types.py::test_enum_from_json[IntEnum-True] PASSED
+tests/test_types.py::test_strict_enum PASSED
+tests/test_types.py::test_enum_with_no_cases PASSED
+tests/test_types.py::test_invalid_schema_constraints[kwargs0-int] XFAILat schema build time)
+tests/test_types.py::test_invalid_schema_constraints[kwargs1-type_1] PASSED
+tests/test_types.py::test_invalid_schema_constraints[kwargs2-type_2] PASSED
+tests/test_types.py::test_invalid_schema_constraints[kwargs3-type_3] PASSED
+tests/test_types.py::test_invalid_decimal_constraint PASSED
+tests/test_types.py::test_string_success PASSED
+tests/test_types.py::test_string_fails PASSED
+tests/test_types.py::test_email_validator_not_installed_email_str SKIPPED
+tests/test_types.py::test_email_validator_not_installed_name_email SKIPPED
+tests/test_types.py::test_dict PASSED
+tests/test_types.py::test_list_success[value0-result0] PASSED
+tests/test_types.py::test_list_success[value1-result1] PASSED
+tests/test_types.py::test_list_success[<genexpr>-result2] PASSED
+tests/test_types.py::test_list_success[value3-result3] PASSED
+tests/test_types.py::test_list_success[value4-result4] PASSED
+tests/test_types.py::test_list_fails[1230] PASSED
+tests/test_types.py::test_list_fails[1231] PASSED
+tests/test_types.py::test_ordered_dict PASSED
+tests/test_types.py::test_tuple_success[value0-result0] PASSED
+tests/test_types.py::test_tuple_success[value1-result1] PASSED
+tests/test_types.py::test_tuple_success[<genexpr>-result2] PASSED
+tests/test_types.py::test_tuple_success[value3-result3] PASSED
+tests/test_types.py::test_tuple_success[value4-result4] PASSED
+tests/test_types.py::test_tuple_fails[1230] PASSED
+tests/test_types.py::test_tuple_fails[1231] PASSED
+tests/test_types.py::test_tuple_variable_len_success[value0-int-result0] PASSED
+tests/test_types.py::test_tuple_variable_len_success[value1-int-result1] PASSED
+tests/test_types.py::test_tuple_variable_len_success[<genexpr>-int-result2] PASSED
+tests/test_types.py::test_tuple_variable_len_success[value3-str-result3] PASSED
+tests/test_types.py::test_tuple_variable_len_fails[value0-str-exc0] PASSED
+tests/test_types.py::test_tuple_variable_len_fails[value1-str-exc1] PASSED
+tests/test_types.py::test_set_success[value0-result0] PASSED
+tests/test_types.py::test_set_success[value1-result1] PASSED
+tests/test_types.py::test_set_success[value2-result2] PASSED
+tests/test_types.py::test_set_success[value3-result3] PASSED
+tests/test_types.py::test_set_fails[1230] PASSED
+tests/test_types.py::test_set_fails[1231] PASSED
+tests/test_types.py::test_list_type_fails PASSED
+tests/test_types.py::test_set_type_fails PASSED
+tests/test_types.py::test_sequence_success[int-value0-result0] PASSED
+tests/test_types.py::test_sequence_success[int-value1-result1] PASSED
+tests/test_types.py::test_sequence_success[int-value2-result2] PASSED
+tests/test_types.py::test_sequence_success[int-value3-result3] PASSED
+tests/test_types.py::test_sequence_success[cls4-value4-result4] PASSED
+tests/test_types.py::test_sequence_success[cls5-value5-result5] PASSED
+tests/test_types.py::test_infinite_iterable_int PASSED
+tests/test_types.py::test_iterable_any[type_annotation0] PASSED
+tests/test_types.py::test_iterable_any[type_annotation1] PASSED
+tests/test_types.py::test_invalid_iterable PASSED
+tests/test_types.py::test_iterable_error_hide_input[config0-type=iterable_type, input_value=5, input_type=int] PASSED
+tests/test_types.py::test_iterable_error_hide_input[config1-type=iterable_type, input_value=5, input_type=int] PASSED
+tests/test_types.py::test_iterable_error_hide_input[config2-type=iterable_type] PASSED
+tests/test_types.py::test_infinite_iterable_validate_first PASSED
+tests/test_types.py::test_sequence_generator_fails PASSED
+tests/test_types.py::test_sequence_fails[<class 'int'>-[1, 'a', 3]-[{'type': 'int_parsing', 'loc': ('v', 1), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'a'}]] PASSED
+tests/test_types.py::test_sequence_fails[<class 'int'>-(1, 2, 'a')-[{'type': 'int_parsing', 'loc': ('v', 2), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'a'}]] PASSED
+tests/test_types.py::test_sequence_fails[<class 'float'>-('a', 2.2, 3.3)-[{'type': 'float_parsing', 'loc': ('v', 0), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'a'}]] PASSED
+tests/test_types.py::test_sequence_fails[<class 'float'>-(1.1, 2.2, 'a')-[{'type': 'float_parsing', 'loc': ('v', 2), 'msg': 'Input should be a valid number, unable to parse string as a number', 'input': 'a'}]] PASSED
+tests/test_types.py::test_sequence_fails[<class 'float'>-{1.0, 2.0, 3.0}-[{'type': 'is_instance_of', 'loc': ('v',), 'msg': 'Input should be an instance of Sequence', 'input': {1.0, 2.0, 3.0}, 'ctx': {'class': 'Sequence'}}]] PASSED
+tests/test_types.py::test_sequence_fails[typing.Set[int]-[{1, 2}, {2, 3}, {'d'}]-[{'type': 'int_parsing', 'loc': ('v', 2, 0), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'd'}]] PASSED
+tests/test_types.py::test_sequence_fails[typing.Tuple[int, str]-((1, 'a'), ('a', 'a'), (3, 'c'))-[{'type': 'int_parsing', 'loc': ('v', 1, 0), 'msg': 'Input should be a valid integer, unable to parse string as an integer', 'input': 'a'}]] PASSED
+tests/test_types.py::test_sequence_fails[typing.List[int]-[{'a': 1, 'b': 2}, [1, 2], [2, 3]]-[{'type': 'list_type', 'loc': ('v', 0), 'msg': 'Input should be a valid list', 'input': {'a': 1, 'b': 2}}]] PASSED
+tests/test_types.py::test_sequence_strict PASSED
+tests/test_types.py::test_list_strict PASSED
+tests/test_types.py::test_set_strict PASSED
+tests/test_types.py::test_frozenset_strict PASSED
+tests/test_types.py::test_tuple_strict PASSED
+tests/test_types.py::test_int_validation PASSED
+tests/test_types.py::test_float_validation PASSED
+tests/test_types.py::test_infinite_float_validation PASSED
+tests/test_types.py::test_infinite_float_json_serialization[null-inf-null-None] PASSED
+tests/test_types.py::test_infinite_float_json_serialization[null--inf-null-None] PASSED
+tests/test_types.py::test_infinite_float_json_serialization[null-nan-null-None] PASSED
+tests/test_types.py::test_infinite_float_json_serialization[constants-inf-Infinity-inf] PASSED
+tests/test_types.py::test_infinite_float_json_serialization[constants--inf--Infinity--inf] PASSED
+tests/test_types.py::test_infinite_float_json_serialization[constants-nan-NaN-IsFloatNan] PASSED
+tests/test_types.py::test_finite_float_validation_error[inf] PASSED
+tests/test_types.py::test_finite_float_validation_error[-inf] PASSED
+tests/test_types.py::test_finite_float_validation_error[nan] PASSED
+tests/test_types.py::test_finite_float_config PASSED
+tests/test_types.py::test_strict_bytes PASSED
+tests/test_types.py::test_strict_bytes_max_length PASSED
+tests/test_types.py::test_strict_str PASSED
+tests/test_types.py::test_strict_str_max_length PASSED
+tests/test_types.py::test_strict_bool PASSED
+tests/test_types.py::test_strict_int PASSED
+tests/test_types.py::test_big_int_json[9223372036854775807-9223372036854775807] PASSED
+tests/test_types.py::test_big_int_json[-9223372036854775807--9223372036854775807] PASSED
+tests/test_types.py::test_big_int_json[1433352099889938534014333520998899385340-1433352099889938534014333520998899385340] PASSED
+tests/test_types.py::test_big_int_json[-1433352099889938534014333520998899385340--1433352099889938534014333520998899385340] PASSED
+tests/test_types.py::test_strict_float PASSED
+tests/test_types.py::test_bool_unhashable_fails PASSED
+tests/test_types.py::test_uuid_error PASSED
+tests/test_types.py::test_uuid_json PASSED
+tests/test_types.py::test_uuid_validation PASSED
+tests/test_types.py::test_uuid_strict PASSED
+tests/test_types.py::test_str_strip_whitespace[True-  123  -123] PASSED
+tests/test_types.py::test_str_strip_whitespace[True-  123\t\n-123] PASSED
+tests/test_types.py::test_str_strip_whitespace[False-  123  -  123  ] PASSED
+tests/test_types.py::test_str_to_upper[True-ABCDefG-ABCDEFG] PASSED
+tests/test_types.py::test_str_to_upper[False-ABCDefG-ABCDefG] PASSED
+tests/test_types.py::test_str_to_lower[True-ABCDefG-abcdefg] PASSED
+tests/test_types.py::test_str_to_lower[False-ABCDefG-ABCDefG] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args0-value0-result0] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args1-value1-result1] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args2-value2-result2] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args3-value3-result3] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args4-value4-result4] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args5-value5-result5] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args6-value6-result6] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args7-value7-result7] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args8-value8-result8] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args9-value9-result9] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args10-value10-result10] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args11-value11-result11] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args12-value12-result12] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args13-value13-result13] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args14-value14-result14] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args15-value15-result15] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args16-value16-result16] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args17-value17-result17] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args18-value18-result18] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args19-value19-result19] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args20-value20-result20] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args21-value21-result21] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args22-value22-result22] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args23-NaN-result23] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args24--NaN-result24] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args25-+NaN-result25] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args26-sNaN-result26] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args27--sNaN-result27] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args28-+sNaN-result28] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args29-Inf-result29] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args30-+Inf-result30] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args31-Infinity-result31] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args32-+Infinity-result32] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args33--Inf-result33] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args34--Infinity-result34] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args35-value35-result35] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args36-value36-result36] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args37-value37-result37] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args38-value38-result38] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args39-value39-result39] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args40-value40-result40] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args41-value41-result41] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args42-value42-result42] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args43-value43-result43] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args44-value44-result44] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args45-value45-result45] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args46-value46-result46] PASSED
+tests/test_types.py::test_decimal_validation[Field-type_args47-value47-result47] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args0-value0-result0] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args1-value1-result1] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args2-value2-result2] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args3-value3-result3] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args4-value4-result4] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args5-value5-result5] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args6-value6-result6] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args7-value7-result7] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args8-value8-result8] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args9-value9-result9] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args10-value10-result10] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args11-value11-result11] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args12-value12-result12] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args13-value13-result13] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args14-value14-result14] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args15-value15-result15] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args16-value16-result16] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args17-value17-result17] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args18-value18-result18] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args19-value19-result19] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args20-value20-result20] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args21-value21-result21] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args22-value22-result22] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args23-NaN-result23] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args24--NaN-result24] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args25-+NaN-result25] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args26-sNaN-result26] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args27--sNaN-result27] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args28-+sNaN-result28] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args29-Inf-result29] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args30-+Inf-result30] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args31-Infinity-result31] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args32-+Infinity-result32] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args33--Inf-result33] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args34--Infinity-result34] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args35-value35-result35] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args36-value36-result36] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args37-value37-result37] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args38-value38-result38] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args39-value39-result39] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args40-value40-result40] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args41-value41-result41] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args42-value42-result42] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args43-value43-result43] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args44-value44-result44] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args45-value45-result45] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args46-value46-result46] PASSED
+tests/test_types.py::test_decimal_validation[condecimal-type_args47-value47-result47] PASSED
+tests/test_types.py::test_decimal_not_finite[value0-unchanged] PASSED
+tests/test_types.py::test_decimal_not_finite[NaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[-NaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[+NaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[sNaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[-sNaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[+sNaN-is_nan] PASSED
+tests/test_types.py::test_decimal_not_finite[Inf-is_pos_inf] PASSED
+tests/test_types.py::test_decimal_not_finite[+Inf-is_pos_inf] PASSED
+tests/test_types.py::test_decimal_not_finite[Infinity-is_pos_inf] PASSED
+tests/test_types.py::test_decimal_not_finite[+Infinity-is_pos_inf] PASSED
+tests/test_types.py::test_decimal_not_finite[-Inf-is_neg_inf] PASSED
+tests/test_types.py::test_decimal_not_finite[-Infinity-is_neg_inf] PASSED
+tests/test_types.py::test_decimal_invalid PASSED
+tests/test_types.py::test_path_validation_success[/test/path-result0] PASSED
+tests/test_types.py::test_path_validation_success[value1-result1] PASSED
+tests/test_types.py::test_path_validation_constrained PASSED
+tests/test_types.py::test_path_like PASSED
+tests/test_types.py::test_path_like_strict PASSED
+tests/test_types.py::test_path_strict_override PASSED
+tests/test_types.py::test_path_validation_fails PASSED
+tests/test_types.py::test_path_validation_strict PASSED
+tests/test_types.py::test_file_path_validation_success[tests/test_types.py-result0] PASSED
+tests/test_types.py::test_file_path_validation_success[value1-result1] PASSED
+tests/test_types.py::test_file_path_validation_fails[nonexistentfile] PASSED
+tests/test_types.py::test_file_path_validation_fails[value1] PASSED
+tests/test_types.py::test_file_path_validation_fails[tests] PASSED
+tests/test_types.py::test_file_path_validation_fails[value3] PASSED
+tests/test_types.py::test_directory_path_validation_success[tests-result0] PASSED
+tests/test_types.py::test_directory_path_validation_success[value1-result1] PASSED
+tests/test_types.py::test_directory_path_validation_fails[nonexistentdirectory] PASSED
+tests/test_types.py::test_directory_path_validation_fails[value1] PASSED
+tests/test_types.py::test_directory_path_validation_fails[tests/test_t.py] PASSED
+tests/test_types.py::test_directory_path_validation_fails[value3] PASSED
+tests/test_types.py::test_new_path_validation_path_already_exists[tests/test_types.py] PASSED
+tests/test_types.py::test_new_path_validation_path_already_exists[value1] PASSED
+tests/test_types.py::test_new_path_validation_parent_does_not_exist[/nonexistentdir/foo.py] PASSED
+tests/test_types.py::test_new_path_validation_parent_does_not_exist[value1] PASSED
+tests/test_types.py::test_new_path_validation_success[tests/foo.py-result0] PASSED
+tests/test_types.py::test_new_path_validation_success[value1-result1] PASSED
+tests/test_types.py::test_number_gt PASSED
+tests/test_types.py::test_number_ge PASSED
+tests/test_types.py::test_number_lt PASSED
+tests/test_types.py::test_number_le PASSED
+tests/test_types.py::test_number_multiple_of_int_valid[10] PASSED
+tests/test_types.py::test_number_multiple_of_int_valid[100] PASSED
+tests/test_types.py::test_number_multiple_of_int_valid[20] PASSED
+tests/test_types.py::test_number_multiple_of_int_invalid[1337] PASSED
+tests/test_types.py::test_number_multiple_of_int_invalid[23] PASSED
+tests/test_types.py::test_number_multiple_of_int_invalid[6] PASSED
+tests/test_types.py::test_number_multiple_of_int_invalid[14] PASSED
+tests/test_types.py::test_number_multiple_of_float_valid[0.2] PASSED
+tests/test_types.py::test_number_multiple_of_float_valid[0.3] PASSED
+tests/test_types.py::test_number_multiple_of_float_valid[0.4] PASSED
+tests/test_types.py::test_number_multiple_of_float_valid[0.5] PASSED
+tests/test_types.py::test_number_multiple_of_float_valid[1] PASSED
+tests/test_types.py::test_number_multiple_of_float_invalid[0.07] PASSED
+tests/test_types.py::test_number_multiple_of_float_invalid[1.27] PASSED
+tests/test_types.py::test_number_multiple_of_float_invalid[1.003] PASSED
+tests/test_types.py::test_new_type_success PASSED
+tests/test_types.py::test_new_type_fails PASSED
+tests/test_types.py::test_valid_simple_json PASSED
+tests/test_types.py::test_valid_simple_json_any PASSED
+tests/test_types.py::test_invalid_simple_json[<lambda>0] PASSED
+tests/test_types.py::test_invalid_simple_json[<lambda>1] PASSED
+tests/test_types.py::test_valid_simple_json_bytes PASSED
+tests/test_types.py::test_valid_detailed_json PASSED
+tests/test_types.py::test_valid_model_json PASSED
+tests/test_types.py::test_invalid_model_json PASSED
+tests/test_types.py::test_invalid_detailed_json_type_error PASSED
+tests/test_types.py::test_json_not_str PASSED
+tests/test_types.py::test_json_before_validator PASSED
+tests/test_types.py::test_json_optional_simple PASSED
+tests/test_types.py::test_json_optional_complex PASSED
+tests/test_types.py::test_json_required PASSED
+tests/test_types.py::test_pattern[re.Pattern] PASSED
+tests/test_types.py::test_pattern[Pattern] PASSED
+tests/test_types.py::test_pattern[Pattern[str]] PASSED
+tests/test_types.py::test_pattern[Pattern[bytes]] PASSED
+tests/test_types.py::test_compiled_pattern_in_field[Field] PASSED
+tests/test_types.py::test_compiled_pattern_in_field[constr] PASSED
+tests/test_types.py::test_pattern_with_invalid_param PASSED
+tests/test_types.py::test_pattern_error[re.Pattern-pattern_regex0] PASSED
+tests/test_types.py::test_pattern_error[re.Pattern-pattern_regex1] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern-pattern_type0] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern-pattern_type1] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[str]-pattern_str_type-non_str] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[str]-pattern_str_type-bytes] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[str]-pattern_type] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[bytes]-pattern_bytes_type-non_bytes] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[bytes]-pattern_bytes_type-str] PASSED
+tests/test_types.py::test_pattern_error[typing.Pattern[bytes]-pattern_type] PASSED
+tests/test_types.py::test_secretstr[True] PASSED
+tests/test_types.py::test_secretstr[False] PASSED
+tests/test_types.py::test_secretstr_subclass PASSED
+tests/test_types.py::test_secretstr_equality PASSED
+tests/test_types.py::test_secretstr_idempotent PASSED
+tests/test_types.py::test_secretdate[1493942400-result0] PASSED
+tests/test_types.py::test_secretdate[1493942400000-result1] PASSED
+tests/test_types.py::test_secretdate[0-result2] PASSED
+tests/test_types.py::test_secretdate[2012-04-23-result3] PASSED
+tests/test_types.py::test_secretdate[2012-04-23-result4] PASSED
+tests/test_types.py::test_secretdate[value5-result5] PASSED
+tests/test_types.py::test_secretdate[value6-result6] PASSED
+tests/test_types.py::test_secretdate[1549238400-result7] PASSED
+tests/test_types.py::test_secretdate[1549238400000-result8] PASSED
+tests/test_types.py::test_secretdate[19999958400-result9] PASSED
+tests/test_types.py::test_secretdate_json_serializable PASSED
+tests/test_types.py::test_secretenum_json_serializable PASSED
+tests/test_types.py::test_strict_secretfield_by_config[SecretDate-not-a-date-Input should be a valid date] PASSED
+tests/test_types.py::test_strict_secretfield_by_config[SecretStr-0-Input should be a valid string \\[type=string_type,] PASSED
+tests/test_types.py::test_strict_secretfield_by_config[SecretBytes-0-Input should be a valid bytes \\[type=bytes_type,] PASSED
+tests/test_types.py::test_strict_secretfield_by_config[SecretField3-0-Input should be an instance of SampleEnum] PASSED
+tests/test_types.py::test_strict_secretfield_annotated[date-not-a-date-Input should be a valid date] PASSED
+tests/test_types.py::test_strict_secretfield_annotated[str-0-Input should be a valid string \\[type=string_type,] PASSED
+tests/test_types.py::test_strict_secretfield_annotated[bytes-0-Input should be a valid bytes \\[type=bytes_type,] PASSED
+tests/test_types.py::test_strict_secretfield_annotated[SampleEnum-0-Input should be an instance of SampleEnum] PASSED
+tests/test_types.py::test_secretdate_parsing[value0] PASSED
+tests/test_types.py::test_secretdate_parsing[x20120423] PASSED
+tests/test_types.py::test_secretdate_parsing[2012-04-56] PASSED
+tests/test_types.py::test_secretdate_parsing[20000044800] PASSED
+tests/test_types.py::test_secretdate_parsing[1549238400000000] PASSED
+tests/test_types.py::test_secretdate_parsing[1549238400000000000] PASSED
+tests/test_types.py::test_secretdate_parsing[infinity] PASSED
+tests/test_types.py::test_secretdate_parsing[inf0] PASSED
+tests/test_types.py::test_secretdate_parsing[10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000] PASSED
+tests/test_types.py::test_secretdate_parsing[inf1] PASSED
+tests/test_types.py::test_secretdate_parsing[-inf] PASSED
+tests/test_types.py::test_secretdate_parsing[nan] PASSED
+tests/test_types.py::test_secretdate_equality PASSED
+tests/test_types.py::test_secretdate_idempotent PASSED
+tests/test_types.py::test_secret_union_serializable PASSED
+tests/test_types.py::test_is_hashable[Strict] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type1] PASSED
+tests/test_types.py::test_is_hashable[conint] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type3] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type4] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type5] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type6] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type7] PASSED
+tests/test_types.py::test_is_hashable[confloat] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type9] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type10] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type11] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type12] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type13] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type14] PASSED
+tests/test_types.py::test_is_hashable[conbytes] PASSED
+tests/test_types.py::test_is_hashable[Secret] PASSED
+tests/test_types.py::test_is_hashable[SecretBytes] PASSED
+tests/test_types.py::test_is_hashable[constr] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type19] PASSED
+tests/test_types.py::test_is_hashable[SecretStr] PASSED
+tests/test_types.py::test_is_hashable[ImportString] PASSED
+tests/test_types.py::test_is_hashable[conset] PASSED
+tests/test_types.py::test_is_hashable[confrozenset] PASSED
+tests/test_types.py::test_is_hashable[conlist] PASSED
+tests/test_types.py::test_is_hashable[condecimal] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type26] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type27] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type28] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type29] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type30] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type31] PASSED
+tests/test_types.py::test_is_hashable[pydantic_type32] PASSED
+tests/test_types.py::test_is_hashable[Json] PASSED
+tests/test_types.py::test_is_hashable[ByteSize] PASSED
+tests/test_types.py::test_is_hashable[condate] PASSED
+tests/test_types.py::test_is_hashable[PastDate] PASSED
+tests/test_types.py::test_is_hashable[FutureDate] PASSED
+tests/test_types.py::test_is_hashable[PastDatetime] PASSED
+tests/test_types.py::test_is_hashable[FutureDatetime] PASSED
+tests/test_types.py::test_is_hashable[AwareDatetime] PASSED
+tests/test_types.py::test_is_hashable[NaiveDatetime] PASSED
+tests/test_types.py::test_model_contain_hashable_type PASSED
+tests/test_types.py::test_secretstr_error PASSED
+tests/test_types.py::test_secret_str_hashable PASSED
+tests/test_types.py::test_secret_bytes_hashable PASSED
+tests/test_types.py::test_secret_str_min_max_length PASSED
+tests/test_types.py::test_secretbytes_json PASSED
+tests/test_types.py::test_secretbytes PASSED
+tests/test_types.py::test_secretbytes_equality PASSED
+tests/test_types.py::test_secretbytes_idempotent PASSED
+tests/test_types.py::test_secretbytes_error PASSED
+tests/test_types.py::test_secret_bytes_min_max_length PASSED
+tests/test_types.py::test_generic_without_params PASSED
+tests/test_types.py::test_generic_without_params_error PASSED
+tests/test_types.py::test_literal_single PASSED
+tests/test_types.py::test_literal_multiple PASSED
+tests/test_types.py::test_typing_mutable_set PASSED
+tests/test_types.py::test_frozenset_field PASSED
+tests/test_types.py::test_frozenset_field_conversion[value0-result0] PASSED
+tests/test_types.py::test_frozenset_field_conversion[value1-result1] PASSED
+tests/test_types.py::test_frozenset_field_conversion[value2-result2] PASSED
+tests/test_types.py::test_frozenset_field_conversion[value3-result3] PASSED
+tests/test_types.py::test_frozenset_field_not_convertible PASSED
+tests/test_types.py::test_bytesize_conversions[1-1-1B-1B-1 B0] PASSED
+tests/test_types.py::test_bytesize_conversions[1-1-1B-1B-1 B1] PASSED
+tests/test_types.py::test_bytesize_conversions[1.0-1-1B-1B-1 B] PASSED
+tests/test_types.py::test_bytesize_conversions[1b-1-1B-1B-1 B] PASSED
+tests/test_types.py::test_bytesize_conversions[1.5 KB-1500-1.5KiB-1.5KB-1.5 KiB] PASSED
+tests/test_types.py::test_bytesize_conversions[1.5 K-1500-1.5KiB-1.5KB-1.5 KiB] PASSED
+tests/test_types.py::test_bytesize_conversions[1.5 MB-1500000-1.4MiB-1.5MB-1.4 MiB] PASSED
+tests/test_types.py::test_bytesize_conversions[1.5 M-1500000-1.4MiB-1.5MB-1.4 MiB] PASSED
+tests/test_types.py::test_bytesize_conversions[5.1kib-5222-5.1KiB-5.2KB-5.1 KiB] PASSED
+tests/test_types.py::test_bytesize_conversions[6.2EiB-7148113328562451456-6.2EiB-7.1EB-6.2 EiB] PASSED
+tests/test_types.py::test_bytesize_conversions[8bit-1-1B-1B-1 B] PASSED
+tests/test_types.py::test_bytesize_conversions[1kbit-125-125B-125B-125 B] PASSED
+tests/test_types.py::test_bytesize_to PASSED
+tests/test_types.py::test_bytesize_raises PASSED
+tests/test_types.py::test_deque_success PASSED
+tests/test_types.py::test_deque_generic_success[int-value0-result0] PASSED
+tests/test_types.py::test_deque_generic_success[int-value1-result1] PASSED
+tests/test_types.py::test_deque_generic_success[int-value2-result2] PASSED
+tests/test_types.py::test_deque_generic_success[float-value3-result3] PASSED
+tests/test_types.py::test_deque_generic_success[cls4-value4-result4] PASSED
+tests/test_types.py::test_deque_generic_success[cls5-value5-result5] PASSED
+tests/test_types.py::test_deque_generic_success[str-value6-result6] PASSED
+tests/test_types.py::test_deque_generic_success[int-value7-result7] PASSED
+tests/test_types.py::test_deque_generic_success[int-value8-result8] PASSED
+tests/test_types.py::test_deque_generic_success[cls9-value9-result9] PASSED
+tests/test_types.py::test_deque_generic_success[float-value10-result10] PASSED
+tests/test_types.py::test_deque_generic_success[float-value11-result11] PASSED
+tests/test_types.py::test_deque_generic_success_strict[int-value0-result0] PASSED
+tests/test_types.py::test_deque_generic_success_strict[str-value1-result1] PASSED
+tests/test_types.py::test_deque_fails[int-value0-expected_error0] PASSED
+tests/test_types.py::test_deque_fails[int-value1-expected_error1] PASSED
+tests/test_types.py::test_deque_fails[cls2-value2-expected_error2] PASSED
+tests/test_types.py::test_deque_fails[cls3-value3-expected_error3] PASSED
+tests/test_types.py::test_deque_model PASSED
+tests/test_types.py::test_deque_json PASSED
+tests/test_types.py::test_deque_any_maxlen PASSED
+tests/test_types.py::test_deque_typed_maxlen PASSED
+tests/test_types.py::test_deque_set_maxlen PASSED
+tests/test_types.py::test_none[None] PASSED
+tests/test_types.py::test_none[NoneType0] PASSED
+tests/test_types.py::test_none[NoneType1] PASSED
+tests/test_types.py::test_none_literal PASSED
+tests/test_types.py::test_default_union_types PASSED
+tests/test_types.py::test_default_union_types_left_to_right PASSED
+tests/test_types.py::test_union_enum_int_left_to_right PASSED
+tests/test_types.py::test_union_uuid_str_left_to_right PASSED
+tests/test_types.py::test_default_union_class PASSED
+tests/test_types.py::test_union_subclass[10] PASSED
+tests/test_types.py::test_union_subclass[None] PASSED
+tests/test_types.py::test_union_compound_types PASSED
+tests/test_types.py::test_smart_union_compounded_types_edge_case PASSED
+tests/test_types.py::test_union_typeddict PASSED
+tests/test_types.py::test_custom_generic_containers PASSED
+tests/test_types.py::test_base64[Base64Bytes-reversible] PASSED
+tests/test_types.py::test_base64[Base64Str-reversible] PASSED
+tests/test_types.py::test_base64[Base64Bytes-bytes-input] PASSED
+tests/test_types.py::test_base64[Base64Bytes-str-input] PASSED
+tests/test_types.py::test_base64[Base64Bytes-bytearray-input] PASSED
+tests/test_types.py::test_base64[Base64Str-bytes-input] PASSED
+tests/test_types.py::test_base64[Base64Str-str-input] PASSED
+tests/test_types.py::test_base64[Base64Str-bytearray-input] PASSED
+tests/test_types.py::test_base64[Base64Bytes-bytes-alphabet-vanilla] PASSED
+tests/test_types.py::test_base64_invalid[Base64Bytes-invalid-base64-bytes] PASSED
+tests/test_types.py::test_base64_invalid[Base64Bytes-invalid-base64-str] PASSED
+tests/test_types.py::test_base64_invalid[Base64Str-invalid-base64-bytes] PASSED
+tests/test_types.py::test_base64_invalid[Base64Str-invalid-base64-str] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-reversible] PASSED
+tests/test_types.py::test_base64url[Base64UrlStr-reversible] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-bytes-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-str-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-bytearray-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlStr-bytes-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlStr-str-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlStr-bytearray-input] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-bytes-alphabet-url] PASSED
+tests/test_types.py::test_base64url[Base64UrlBytes-bytes-alphabet-vanilla] PASSED
+tests/test_types.py::test_base64url_invalid[Base64UrlBytes-invalid-base64-bytes] PASSED
+tests/test_types.py::test_base64url_invalid[Base64UrlBytes-invalid-base64-str] PASSED
+tests/test_types.py::test_base64url_invalid[Base64UrlStr-invalid-base64-bytes] PASSED
+tests/test_types.py::test_base64url_invalid[Base64UrlStr-invalid-base64-str] PASSED
+tests/test_types.py::test_sequence_subclass_without_core_schema PASSED
+tests/test_types.py::test_typing_coercion_defaultdict PASSED
+tests/test_types.py::test_typing_coercion_counter PASSED
+tests/test_types.py::test_typing_counter_value_validation PASSED
+tests/test_types.py::test_mapping_subclass_without_core_schema PASSED
+tests/test_types.py::test_defaultdict_unknown_default_factory PASSED
+tests/test_types.py::test_defaultdict_infer_default_factory PASSED
+tests/test_types.py::test_defaultdict_explicit_default_factory PASSED
+tests/test_types.py::test_defaultdict_default_factory_preserved PASSED
+tests/test_types.py::test_custom_default_dict PASSED
+tests/test_types.py::test_ordered_dict_from_ordered_dict[field_type0] PASSED
+tests/test_types.py::test_ordered_dict_from_ordered_dict[OrderedDict] PASSED
+tests/test_types.py::test_ordered_dict_from_ordered_dict_typed PASSED
+tests/test_types.py::test_ordered_dict_from_dict[field_type0] PASSED
+tests/test_types.py::test_ordered_dict_from_dict[OrderedDict] PASSED
+tests/test_types.py::test_handle_3rd_party_custom_type_reusing_known_metadata PASSED
+tests/test_types.py::test_skip_validation[True] PASSED
+tests/test_types.py::test_skip_validation[False] PASSED
+tests/test_types.py::test_skip_validation_model_reference PASSED
+tests/test_types.py::test_skip_validation_serialization PASSED
+tests/test_types.py::test_skip_validation_json_schema PASSED
+tests/test_types.py::test_transform_schema PASSED
+tests/test_types.py::test_transform_schema_for_first_party_class PASSED
+tests/test_types.py::test_constraint_dataclass PASSED
+tests/test_types.py::test_transform_schema_for_third_party_class PASSED
+tests/test_types.py::test_iterable_arbitrary_type PASSED
+tests/test_types.py::test_typing_extension_literal_field PASSED
+tests/test_types.py::test_typing_literal_field PASSED
+tests/test_types.py::test_instance_of_annotation PASSED
+tests/test_types.py::test_instanceof_invalid_core_schema PASSED
+tests/test_types.py::test_instanceof_serialization PASSED
+tests/test_types.py::test_constraints_arbitrary_type PASSED
+tests/test_types.py::test_annotated_default_value PASSED
+tests/test_types.py::test_annotated_default_value_validate_default PASSED
+tests/test_types.py::test_annotated_default_value_functional_validator PASSED
+tests/test_types.py::test_types_repr[Json-Json] PASSED
+tests/test_types.py::test_types_repr[PastDate-PastDate] PASSED
+tests/test_types.py::test_types_repr[FutureDate-FutureDate] PASSED
+tests/test_types.py::test_types_repr[AwareDatetime-AwareDatetime] PASSED
+tests/test_types.py::test_types_repr[NaiveDatetime-NaiveDatetime] PASSED
+tests/test_types.py::test_types_repr[PastDatetime-PastDatetime] PASSED
+tests/test_types.py::test_types_repr[FutureDatetime-FutureDatetime] PASSED
+tests/test_types.py::test_types_repr[ImportString-ImportString] PASSED
+tests/test_types.py::test_enum_custom_schema PASSED
+tests/test_types.py::test_get_pydantic_core_schema_marker_unrelated_type PASSED
+tests/test_types.py::test_string_constraints PASSED
+tests/test_types.py::test_decimal_float_precision PASSED
+tests/test_types.py::test_coerce_numbers_to_str_disabled_in_strict_mode PASSED
+tests/test_types.py::test_coerce_numbers_to_str_raises_for_bool[True] PASSED
+tests/test_types.py::test_coerce_numbers_to_str_raises_for_bool[False] PASSED
+tests/test_types.py::test_coerce_numbers_to_str[42] PASSED
+tests/test_types.py::test_coerce_numbers_to_str[42.0] PASSED
+tests/test_types.py::test_coerce_numbers_to_str[Decimal('42.0')] PASSED
+tests/test_types.py::test_coerce_numbers_to_str_from_json[42] PASSED
+tests/test_types.py::test_coerce_numbers_to_str_from_json[42.0] PASSED
+tests/test_types.py::test_coerce_numbers_to_str_from_json[42.13] PASSED
+tests/test_types.py::test_union_tags_in_errors PASSED
+tests/test_types.py::test_json_value PASSED
+tests/test_types.py::test_json_value_with_subclassed_types PASSED
+tests/test_types.py::test_json_value_roundtrip PASSED
+tests/test_types.py::test_on_error_omit PASSED
+tests/test_types.py::test_on_error_omit_top_level PASSED
+tests/test_types.py::test_diff_enums_diff_configs PASSED
+tests/test_types.py::test_can_serialize_deque_passed_to_sequence PASSED
+tests/test_types.py::test_strict_enum_with_use_enum_values FAILED        [100%]
+tests/test_types.py:6662 test_strict_enum_with_use_enum_values
+==================================== ERRORS ====================================
+___________________ ERROR collecting tests/test_networks.py ____________________
+ImportError while importing test module '/testbed/tests/test_networks.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/_pytest/python.py:617: in _importtestmodule
+    mod = import_path(self.path, mode=importmode, root=self.config.rootpath)
+/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/_pytest/pathlib.py:567: in import_path
+    importlib.import_module(module_name)
+/opt/miniconda3/envs/testbed/lib/python3.8/importlib/__init__.py:127: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+<frozen importlib._bootstrap>:1014: in _gcd_import
+    ???
+<frozen importlib._bootstrap>:991: in _find_and_load
+    ???
+<frozen importlib._bootstrap>:975: in _find_and_load_unlocked
+    ???
+<frozen importlib._bootstrap>:671: in _load_unlocked
+    ???
+/opt/miniconda3/envs/testbed/lib/python3.8/site-packages/_pytest/assertion/rewrite.py:186: in exec_module
+    exec(co, module.__dict__)
+tests/test_networks.py:8: in <module>
+    from pydantic import (
+E   ImportError: cannot import name 'FtpUrl' from 'pydantic' (/testbed/pydantic/__init__.py)
+=================================== FAILURES ===================================
+_____________________ test_model_construct_with_alias_path _____________________
+tests/test_construction.py:580: in test_model_construct_with_alias_path
+    assert MyModel.model_construct(aaa={'AAA': 'a_value'}).a == 'a_value'
+E   AssertionError: assert {'AAA': 'a_value'} == 'a_value'
+E    +  where {'AAA': 'a_value'} = MyModel(a={'AAA': 'a_value'}).a
+E    +    where MyModel(a={'AAA': 'a_value'}) = <bound method BaseModel.model_construct of <class 'tests.test_construction.test_model_construct_with_alias_path.<locals>.MyModel'>>(aaa={'AAA': 'a_value'})
+E    +      where <bound method BaseModel.model_construct of <class 'tests.test_construction.test_model_construct_with_alias_path.<locals>.MyModel'>> = <class 'tests.test_construction.test_model_construct_with_alias_path.<locals>.MyModel'>.model_construct
+_______________ test_model_construct_with_alias_choices_and_path _______________
+tests/test_construction.py:589: in test_model_construct_with_alias_choices_and_path
+    assert MyModel.model_construct(AAA={'aaa': 'a_value'}).a == 'a_value'
+E   AssertionError: assert {'aaa': 'a_value'} == 'a_value'
+E    +  where {'aaa': 'a_value'} = MyModel(a={'aaa': 'a_value'}).a
+E    +    where MyModel(a={'aaa': 'a_value'}) = <bound method BaseModel.model_construct of <class 'tests.test_construction.test_model_construct_with_alias_choices_and_path.<locals>.MyModel'>>(AAA={'aaa': 'a_value'})
+E    +      where <bound method BaseModel.model_construct of <class 'tests.test_construction.test_model_construct_with_alias_choices_and_path.<locals>.MyModel'>> = <class 'tests.test_construction.test_model_construct_with_alias_choices_and_path.<locals>.MyModel'>.model_construct
+___________ test_pydantic_types_as_default_values[builtin-dataclass] ___________
+tests/test_json_schema.py:6138: in test_pydantic_types_as_default_values
+    assert Child.model_json_schema() == expected_json_schema
+pydantic/main.py:429: in model_json_schema
+    return model_json_schema(
+pydantic/json_schema.py:2244: in model_json_schema
+    return schema_generator_instance.generate(cls.__pydantic_core_schema__, mode=mode)
+pydantic/json_schema.py:412: in generate
+    json_schema: JsonSchemaValue = self.generate_inner(schema)
+pydantic/json_schema.py:551: in generate_inner
+    json_schema = current_handler(schema)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:525: in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+pydantic/main.py:648: in __get_pydantic_json_schema__
+    return handler(core_schema)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:525: in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+pydantic/_internal/_generate_schema.py:219: in modify_model_json_schema
+    json_schema = handler(schema_or_field)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:508: in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+pydantic/json_schema.py:1392: in model_schema
+    json_schema = self.generate_inner(schema['schema'])
+pydantic/json_schema.py:551: in generate_inner
+    json_schema = current_handler(schema)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:508: in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+pydantic/json_schema.py:1487: in model_fields_schema
+    json_schema = self._named_required_fields_schema(named_required_fields)
+pydantic/json_schema.py:1295: in _named_required_fields_schema
+    field_json_schema = self.generate_inner(field).copy()
+pydantic/json_schema.py:551: in generate_inner
+    json_schema = current_handler(schema)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:543: in new_handler_func
+    json_schema = js_modify_function(schema_or_field, current_handler)
+pydantic/_internal/_generate_schema.py:2176: in json_schema_update_func
+    json_schema = {**handler(core_schema_or_field), **json_schema_update}
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:508: in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+pydantic/json_schema.py:1363: in model_field_schema
+    return self.generate_inner(schema['schema'])
+pydantic/json_schema.py:551: in generate_inner
+    json_schema = current_handler(schema)
+pydantic/_internal/_schema_generation_shared.py:36: in __call__
+    return self.handler(core_schema)
+pydantic/json_schema.py:508: in handler_func
+    json_schema = generate_for_schema_type(schema_or_field)
+pydantic/json_schema.py:1056: in default_schema
+    encoded_default = self.encode_default(default)
+pydantic/json_schema.py:2050: in encode_default
+    else TypeAdapter(type(dft), config=config.config_dict).dump_python(dft, mode='json')
+pydantic/type_adapter.py:198: in __init__
+    raise PydanticUserError(
+E   pydantic.errors.PydanticUserError: Cannot use `config` when the type is a BaseModel, dataclass or TypedDict. These types can have their own config and setting the config via the `config` parameter to TypeAdapter will not override it, thus the `config` you passed to TypeAdapter becomes meaningless, which is probably not what you want.
+E   
+E   For further information visit https://errors.pydantic.dev/2.7/u/type-adapter-config-unused
+_____________ test_model_with_both_docstring_and_field_description _____________
+tests/test_root_model.py:677: in test_model_with_both_docstring_and_field_description
+    assert AModel.model_json_schema() == {
+E   AssertionError: assert {'description': 'abc', 'title': 'AModel', 'type': 'integer'} == {'title': 'AModel', 'type': 'integer', 'description': 'More detailed description'}
+E     Common items:
+E     {'title': 'AModel', 'type': 'integer'}
+E     Differing items:
+E     {'description': 'abc'} != {'description': 'More detailed description'}
+E     Full diff:
+E       {
+E     -  'description': 'More detailed description',
+E     +  'description': 'abc',
+E        'title': 'AModel',
+E        'type': 'integer',
+E       }
+___________ test_default_validators[time_check-3720.0002-result136] ____________
+tests/test_types.py:1417: in test_default_validators
+    assert CheckModel(**kwargs).model_dump()[field] == result
+E   assert datetime.time(1, 2, tzinfo=TzInfo(UTC)) == datetime.time(1, 2, 0, 200, tzinfo=datetime.timezone.utc)
+____________ test_default_validators[time_check-value137-result137] ____________
+tests/test_types.py:1417: in test_default_validators
+    assert CheckModel(**kwargs).model_dump()[field] == result
+E   assert datetime.time(1, 2, tzinfo=TzInfo(UTC)) == datetime.time(1, 2, 0, 200, tzinfo=datetime.timezone.utc)
+________ test_default_validators[timedelta_check-123000.0002-result149] ________
+tests/test_types.py:1417: in test_default_validators
+    assert CheckModel(**kwargs).model_dump()[field] == result
+E   assert datetime.timedelta(days=1, seconds=36600) == datetime.timedelta(days=1, seconds=36600, microseconds=200)
+_________ test_default_validators[timedelta_check-value150-result150] __________
+tests/test_types.py:1417: in test_default_validators
+    assert CheckModel(**kwargs).model_dump()[field] == result
+E   assert datetime.timedelta(days=1, seconds=36600) == datetime.timedelta(days=1, seconds=36600, microseconds=200)
+____________________ test_strict_enum_with_use_enum_values _____________________
+tests/test_types.py:6676: in test_strict_enum_with_use_enum_values
+    Foo(foo='1')
+E   Failed: DID NOT RAISE <class 'pydantic_core._pydantic_core.ValidationError'>
+=============================== warnings summary ===============================
+tests/test_discriminated_union.py::test_generic
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/_pytest/_code/code.py:710: DeprecationWarning: PYDANTIC_ERRORS_OMIT_URL is deprecated, use PYDANTIC_ERRORS_INCLUDE_URL instead
+    value = str(self.value)
+
+tests/test_types.py::test_default_validators[bool_check-1.0-True]
+tests/test_types.py::test_default_validators[bool_check-0.0-False]
+tests/test_types.py::test_default_validators[bool_check-2.0-ValidationError]
+tests/test_types.py::test_default_validators[date_check-1493942400000.0-result112]
+tests/test_types.py::test_default_validators[date_check-1493942401000.0-ValidationError]
+tests/test_types.py::test_default_validators[datetime_check-1493979010000.0-result128]
+tests/test_types.py::test_default_validators[time_check-3720.0002-result136]
+tests/test_types.py::test_default_validators[time_check-86400.0-ValidationError]
+tests/test_types.py::test_default_validators[timedelta_check-123000.0002-result149]
+  /testbed/pydantic/main.py:176: DeprecationWarning: an integer is required (got type float).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+
+tests/test_types.py::test_default_validators[bool_check-value3-True]
+tests/test_types.py::test_default_validators[bool_check-value22-False]
+tests/test_types.py::test_default_validators[bool_check-value48-ValidationError]
+tests/test_types.py::test_default_validators[date_check-value113-result113]
+tests/test_types.py::test_default_validators[date_check-value119-ValidationError]
+tests/test_types.py::test_default_validators[datetime_check-value129-result129]
+tests/test_types.py::test_default_validators[time_check-value137-result137]
+tests/test_types.py::test_default_validators[time_check-value143-ValidationError]
+tests/test_types.py::test_default_validators[timedelta_check-value150-result150]
+  /testbed/pydantic/main.py:176: DeprecationWarning: an integer is required (got type decimal.Decimal).  Implicit conversion to integers using __int__ is deprecated, and may be removed in a future version of Python.
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+_____________________________ test_byte_size_type ______________________________
+----------------------------- Captured stdout call -----------------------------
+{'properties': {'a': {'minimum': 0, 'title': 'A', 'type': 'integer'}, 'b': {'default': '1MB', 'minimum': 0, 'title': 'B', 'type': 'integer'}}, 'required': ['a'], 'title': 'Model', 'type': 'object'}
+____________________ test_default_union_types_left_to_right ____________________
+----------------------------- Captured stdout call -----------------------------
+{'type': 'model', 'cls': <class 'tests.test_types.test_default_union_types_left_to_right.<locals>.DefaultModel'>, 'schema': {'type': 'model-fields', 'fields': {'v': {'type': 'model-field', 'schema': {'type': 'union', 'choices': [{'type': 'int'}, {'type': 'bool'}, {'type': 'str'}], 'mode': 'left_to_right'}, 'metadata': {'pydantic_js_functions': [], 'pydantic_js_annotation_functions': [<function get_json_schema_update_func.<locals>.json_schema_update_func at 0x7ac0f50dac10>]}}}, 'model_name': 'DefaultModel', 'computed_fields': []}, 'custom_init': False, 'root_model': False, 'config': {'title': 'DefaultModel'}, 'ref': 'tests.test_types.test_default_union_types_left_to_right.<locals>.DefaultModel:395707296', 'metadata': {'pydantic_js_functions': [functools.partial(<function modify_model_json_schema at 0x7ac0f85d4820>, cls=<class 'tests.test_types.test_default_union_types_left_to_right.<locals>.DefaultModel'>), <bound method BaseModel.__get_pydantic_json_schema__ of <class 'tests.test_types.test_default_union_types_left_to_right.<locals>.DefaultModel'>>], 'pydantic_js_annotation_functions': []}}
+                              Summary of Failures                               
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃               ┃               ┃  Function     ┃              ┃               ┃
+┃  File         ┃  Function     ┃  Line         ┃  Error Line  ┃  Error        ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│  tests/test…  │  test_model…  │  575          │  580         │  in           │
+│               │               │               │              │  test_model…  │
+│  tests/test…  │  test_model…  │  583          │  589         │  in           │
+│               │               │               │              │  test_model…  │
+│  tests/test…  │  test_pydan…  │  6054         │  6138        │  in __init__  │
+│  tests/test…  │  test_model…  │  669          │  677         │  in           │
+│               │               │               │              │  test_model…  │
+│  tests/test…  │  test_defau…  │  1225         │  1417        │  in           │
+│               │               │               │              │  test_defau…  │
+│  tests/test…  │  test_defau…  │  1225         │  1417        │  in           │
+│               │               │               │              │  test_defau…  │
+│  tests/test…  │  test_defau…  │  1225         │  1417        │  in           │
+│               │               │               │              │  test_defau…  │
+│  tests/test…  │  test_defau…  │  1225         │  1417        │  in           │
+│               │               │               │              │  test_defau…  │
+│  tests/test…  │  test_stric…  │  6663         │  6676        │  in           │
+│               │               │               │              │  test_stric…  │
+└───────────────┴───────────────┴───────────────┴──────────────┴───────────────┘
+Results (7.56s):
+         9 failed
+      1596 passed
+        34 skipped
+         5 xfailed
+        19 warnings
+         1 error
++ : '>>>>> End Test Output'

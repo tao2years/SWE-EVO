@@ -1,0 +1,474 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   requests/models.py
+	modified:   tests/test_requests.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit ca15d4808734c86801c8f3d80c9152c35a163dc3
+Author: Cory Benfield <lukasaoz@gmail.com>
+Date:   Wed Nov 30 12:38:26 2016 +0000
+
+    v2.12.2
+
+diff --git a/HISTORY.rst b/HISTORY.rst
+index 8854f572..78184790 100644
+--- a/HISTORY.rst
++++ b/HISTORY.rst
+@@ -3,6 +3,26 @@
+ Release History
+ ---------------
+ 
++2.12.2 (2016-11-30)
+++++++++++++++++++++
++
++**Bugfixes**
++
++- Fixed several issues with IDNA-encoding URLs that are technically invalid but
++  which are widely accepted. Requests will now attempt to IDNA-encode a URL if
++  it can but, if it fails, and the host contains only ASCII characters, it will
++  be passed through optimistically. This will allow users to opt-in to using
++  IDNA2003 themselves if they want to, and will also allow technically invalid
++  but still common hostnames.
++- Fixed an issue where URLs with leading whitespace would raise
++  ``InvalidSchema`` errors.
++- Fixed an issue where some URLs without the HTTP or HTTPS schemes would still
++  have HTTP URL preparation applied to them.
++- Fixed an issue where Unicode strings could not be used in basic auth.
++- Fixed an issue encountered by some Requests plugins where constructing a
++  Response object would cause ``Response.content`` to raise an
++  ``AttributeError``.
++
+ 2.12.1 (2016-11-16)
+ +++++++++++++++++++
+ 
+diff --git a/requests/__init__.py b/requests/__init__.py
+index 2e37bd25..cf76ae04 100644
+--- a/requests/__init__.py
++++ b/requests/__init__.py
+@@ -41,8 +41,8 @@ is at <http://python-requests.org>.
+ """
+ 
+ __title__ = 'requests'
+-__version__ = '2.12.1'
+-__build__ = 0x021201
++__version__ = '2.12.2'
++__build__ = 0x021202
+ __author__ = 'Kenneth Reitz'
+ __license__ = 'Apache 2.0'
+ __copyright__ = 'Copyright 2016 Kenneth Reitz'
++ git -c core.fileMode=false diff ca15d4808734c86801c8f3d80c9152c35a163dc3
+diff --git a/requests/models.py b/requests/models.py
+index cb44eddd..4b3d4082 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -347,9 +347,10 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         url = url.lstrip()
+ 
+         # Don't do any URL preparation for non-HTTP schemes like `mailto`,
+-        # `data`, `http+unix` etc to work around exceptions from `url_parse`,
++        # `data`, etc to work around exceptions from `url_parse`,
+         # which handles RFC 3986 only.
+-        if ':' in url and not url.lower().startswith(('http://', 'https://')):
++        scheme, _, _ = url.partition(':')
++        if ':' in url and (not scheme.lower().startswith('http')):
+             self.url = url
+             return
+ 
+@@ -374,11 +375,14 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         # may fail to encode. On failure, we verify the hostname meets a
+         # minimum standard of only containing ASCII characters, and not starting
+         # with a wildcard (*), before allowing the unencoded hostname through.
+-        try:
+-            host = idna.encode(host, uts46=True).decode('utf-8')
+-        except (UnicodeError, idna.IDNAError):
+-            if not unicode_is_ascii(host) or host.startswith(u'*'):
+-                raise InvalidURL('URL has an invalid label.')
++        # We also skip IDNA encoding for non-standard http schemes (e.g. http+unix),
++        # which have valid non-DNS hostnames that IDNA cannot encode.
++        if scheme.lower() in (‘http’, ‘https’):
++            try:
++                host = idna.encode(host, uts46=True).decode(‘utf-8’)
++            except (UnicodeError, idna.IDNAError):
++                if not unicode_is_ascii(host) or host.startswith(u’*’):
++                    raise InvalidURL(‘URL has an invalid label.’)
+ 
+         # Carefully reconstruct the network location
+         netloc = auth or ''
+diff --git a/tests/test_requests.py b/tests/test_requests.py
+index ca90297e..2c298bab 100755
+--- a/tests/test_requests.py
++++ b/tests/test_requests.py
+@@ -2177,18 +2177,72 @@ class TestPreparingURLs(object):
+             r.prepare()
+ 
+     @pytest.mark.parametrize(
+-        'protocol, url',
++        'input, expected',
+         (
+-            ("http+unix://", b"http+unix://%2Fvar%2Frun%2Fsocket/path"),
+-            ("http+unix://", u"http+unix://%2Fvar%2Frun%2Fsocket/path"),
+-            ("mailto", b"mailto:user@example.org"),
+-            ("mailto", u"mailto:user@example.org"),
+-            ("data", b"data:SSDimaUgUHl0aG9uIQ=="),
++            (
++                b"http+unix://%2Fvar%2Frun%2Fsocket/path",
++                u"http+unix://%2fvar%2frun%2fsocket/path",
++            ),
++            (
++                u"http+unix://%2Fvar%2Frun%2Fsocket/path",
++                u"http+unix://%2fvar%2frun%2fsocket/path",
++            ),
++            (
++                b"mailto:user@example.org",
++                u"mailto:user@example.org",
++            ),
++            (
++                u"mailto:user@example.org",
++                u"mailto:user@example.org",
++            ),
++            (
++                b"data:SSDimaUgUHl0aG9uIQ==",
++                u"data:SSDimaUgUHl0aG9uIQ==",
++            )
+         )
+     )
+-    def test_url_passthrough(self, protocol, url):
+-        session = requests.Session()
+-        session.mount(protocol, HTTPAdapter())
+-        p = requests.Request('GET', url=url)
+-        p.prepare()
+-        assert p.url == url
++    def test_url_mutation(self, input, expected):
++        """
++        This test validates that we correctly exclude some URLs from
++        preparation, and that we handle others. Specifically, it tests that
++        any URL whose scheme doesn't begin with "http" is left alone, and
++        those whose scheme *does* begin with "http" are mutated.
++        """
++        r = requests.Request('GET', url=input)
++        p = r.prepare()
++        assert p.url == expected
++
++    @pytest.mark.parametrize(
++        'input, params, expected',
++        (
++            (
++                b"http+unix://%2Fvar%2Frun%2Fsocket/path",
++                {"key": "value"},
++                u"http+unix://%2fvar%2frun%2fsocket/path?key=value",
++            ),
++            (
++                u"http+unix://%2Fvar%2Frun%2Fsocket/path",
++                {"key": "value"},
++                u"http+unix://%2fvar%2frun%2fsocket/path?key=value",
++            ),
++            (
++                b"mailto:user@example.org",
++                {"key": "value"},
++                u"mailto:user@example.org",
++            ),
++            (
++                u"mailto:user@example.org",
++                {"key": "value"},
++                u"mailto:user@example.org",
++            ),
++        )
++    )
++    def test_parameters_for_nonstandard_schemes(self, input, params, expected):
++        """
++        Setting paramters for nonstandard schemes is allowed if those schemes
++        begin with "http", and is forbidden otherwise.
++        """
++        r = requests.Request('GET', url=input, params=params)
++        p = r.prepare()
++        assert p.url == expected
++
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install .
+Processing /testbed
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Building wheels for collected packages: requests
+  Building wheel for requests (setup.py): started
+  Building wheel for requests (setup.py): finished with status 'done'
+  Created wheel for requests: filename=requests-2.12.2-py3-none-any.whl size=566013 sha256=348aaf1e3ce9e94968d95d51c898dc20050f33d70148d3f16ce8f018ef9c4775
+  Stored in directory: /tmp/pip-ephem-wheel-cache-qvjslop9/wheels/7d/66/67/70d1ee2124ccf21d601c352e25cdca10f611f7c8b3f9ffb9e4
+Successfully built requests
+Installing collected packages: requests
+  Attempting uninstall: requests
+    Found existing installation: requests 2.12.2
+    Uninstalling requests-2.12.2:
+      Successfully uninstalled requests-2.12.2
+Successfully installed requests-2.12.2
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/test_requests.py
+ImportError while loading conftest '/testbed/tests/conftest.py'.
+tests/__init__.py:12: in <module>
+    from requests.packages import urllib3 as urllib3_bundle
+requests/__init__.py:64: in <module>
+    from .models import Request, Response, PreparedRequest
+E     File "/testbed/requests/models.py", line 380
+E       if scheme.lower() in (‘http’, ‘https’):
+E                             ^
+E   SyntaxError: invalid character '‘' (U+2018)
++ : '>>>>> End Test Output'

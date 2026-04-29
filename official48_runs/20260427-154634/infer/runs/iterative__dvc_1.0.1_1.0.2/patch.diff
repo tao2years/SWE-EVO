@@ -1,0 +1,39 @@
+diff --git a/dvc/command/git_hook.py b/dvc/command/git_hook.py
+index 6c64c58..719a54c 100644
+--- a/dvc/command/git_hook.py
++++ b/dvc/command/git_hook.py
+@@ -52,7 +52,7 @@ class CmdPostCheckout(CmdHookBase):
+ 
+ 
+ class CmdPrePush(CmdHookBase):
+-    def run(self):
++    def _run(self):
+         from dvc.main import main
+ 
+         return main(["push"])
+diff --git a/dvc/command/run.py b/dvc/command/run.py
+index 1a3ac6d..fa839d9 100644
+--- a/dvc/command/run.py
++++ b/dvc/command/run.py
+@@ -31,6 +31,12 @@ class CmdRun(CmdBase):
+             )
+             return 1
+ 
++        if self.args.file and not self.args.single_stage:
++            logger.error(
++                "option `--file` is only allowed with `--single-stage`"
++            )
++            return 1
++
+         try:
+             self.repo.run(
+                 cmd=self._parsed_cmd(),
+@@ -160,7 +166,7 @@ def add_parser(subparsers, parent_parser):
+     )
+     run_parser.add_argument(
+         "--file",
+-        help="Specify name of the DVC-file this command will generate.",
++        help=argparse.SUPPRESS,
+         metavar="<filename>",
+     )
+     run_parser.add_argument(

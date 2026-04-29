@@ -1,0 +1,1534 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dvc/stage.py
+	modified:   tests/test_stage.py
+	modified:   tests/unit/stage.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit 9175c45b1472070e02521380e4db8315d7c910c4
+Author: Ruslan Kuprieiev <kupruser@gmail.com>
+Date:   Fri Mar 1 21:26:42 2019 +0200
+
+    dvc: bump to 0.30.0
+
+diff --git a/dvc/__init__.py b/dvc/__init__.py
+index 81ccf01dc..9871551e3 100644
+--- a/dvc/__init__.py
++++ b/dvc/__init__.py
+@@ -10,7 +10,7 @@ import os
+ import warnings
+ 
+ 
+-VERSION_BASE = "0.29.0"
++VERSION_BASE = "0.30.0"
+ __version__ = VERSION_BASE
+ 
+ PACKAGEPATH = os.path.abspath(os.path.dirname(__file__))
++ git -c core.fileMode=false diff 9175c45b1472070e02521380e4db8315d7c910c4
+diff --git a/dvc/stage.py b/dvc/stage.py
+index 29f176fa7..dcf9213a5 100644
+--- a/dvc/stage.py
++++ b/dvc/stage.py
+@@ -527,7 +527,7 @@ class Stage(object):
+             for key, value in {
+                 Stage.PARAM_MD5: self.md5,
+                 Stage.PARAM_CMD: self.cmd,
+-                Stage.PARAM_WDIR: self.wdir,
++                Stage.PARAM_WDIR: os.path.relpath(self.wdir, os.path.dirname(self.path)),
+                 Stage.PARAM_LOCKED: self.locked,
+                 Stage.PARAM_DEPS: [d.dumpd() for d in self.deps],
+                 Stage.PARAM_OUTS: [o.dumpd() for o in self.outs],
+diff --git a/tests/test_stage.py b/tests/test_stage.py
+index b1ef539ee..67266ada9 100644
+--- a/tests/test_stage.py
++++ b/tests/test_stage.py
+@@ -103,6 +103,9 @@ class TestDefaultWorkingDirectory(TestDvc):
+             outs=[self.FOO],
+         )
+ 
++        d = stage.dumpd()
++        self.assertEqual(d[stage.PARAM_WDIR], ".")
++
+         with open(stage.relpath, "r") as fobj:
+             d = yaml.safe_load(fobj)
+         self.assertEqual(d[stage.PARAM_WDIR], ".")
+@@ -111,6 +114,10 @@ class TestDefaultWorkingDirectory(TestDvc):
+         with open(stage.relpath, "w") as fobj:
+             yaml.safe_dump(d, fobj, default_flow_style=False)
+ 
++        with open(stage.relpath, "r") as fobj:
++            d = yaml.safe_load(fobj)
++        self.assertIsNone(d.get(stage.PARAM_WDIR))
++
+         with self.dvc.state:
+             stage = Stage.load(self.dvc, stage.relpath)
+             self.assertFalse(stage.changed())
+diff --git a/tests/unit/stage.py b/tests/unit/stage.py
+index add84d171..39aea09b2 100644
+--- a/tests/unit/stage.py
++++ b/tests/unit/stage.py
+@@ -14,3 +14,37 @@ class TestStageChecksum(TestCase):
+             self.assertEqual(
+                 stage._compute_md5(), "e9521a22111493406ea64a88cda63e0b"
+             )
++
++    def test_wdir_default_ignored(self):
++        stage = Stage(None, "path")
++        outs = [{"path": "a", "md5": "123456789"}]
++        deps = [{"path": "b", "md5": "987654321"}]
++        d = {
++            "md5": "123456",
++            "cmd": "mycmd",
++            "outs": outs,
++            "deps": deps,
++            "wdir": ".",
++        }
++
++        with mock.patch.object(stage, "dumpd", return_value=d):
++            self.assertEqual(
++                stage._compute_md5(), "e9521a22111493406ea64a88cda63e0b"
++            )
++
++    def test_wdir_non_default_is_not_ignored(self):
++        stage = Stage(None, "path")
++        outs = [{"path": "a", "md5": "123456789"}]
++        deps = [{"path": "b", "md5": "987654321"}]
++        d = {
++            "md5": "123456",
++            "cmd": "mycmd",
++            "outs": outs,
++            "deps": deps,
++            "wdir": "..",
++        }
++
++        with mock.patch.object(stage, "dumpd", return_value=d):
++            self.assertEqual(
++                stage._compute_md5(), "2ceba15e87f6848aa756502c1e6d24e9"
++            )
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (24.2)
+Collecting pip
+  Downloading pip-25.0.1-py3-none-any.whl.metadata (3.7 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.45.1-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from GitPython) (4.12.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-25.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 36.7 kB/s eta 0:00:00
+Downloading wheel-0.45.1-py3-none-any.whl (72 kB)
+Downloading gitpython-3.1.48-py3-none-any.whl (209 kB)
+Installing collected packages: wheel, pip, GitPython
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.44.0
+    Uninstalling wheel-0.44.0:
+      Successfully uninstalled wheel-0.44.0
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+  Attempting uninstall: GitPython
+    Found existing installation: GitPython 3.1.43
+    Uninstalling GitPython-3.1.43:
+      Successfully uninstalled GitPython-3.1.43
+Successfully installed GitPython-3.1.48 pip-25.0.1 wheel-0.45.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Requirement already satisfied: pyyaml==5.4.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (5.4.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-h34vk9i2
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-h34vk9i2
+  error: RPC failed; curl 16 Error in the HTTP2 framing layer
+  fatal: error reading section header 'shallow-info'
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': GnuTLS recv error (-110): The TLS connection was non-properly terminated.
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': Failed to connect to github.com port 443 after 133128 ms: Connection timed out
+  error: unable to read sha1 file of .gitignore (b6a6170bd3c1167d9f12c51b9017c272fe18c484)
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': Failed to connect to github.com port 443 after 135159 ms: Connection timed out
+  fatal: unable to checkout working tree
+  warning: Clone succeeded, but checkout failed.
+  You can inspect what was checked out with 'git status'
+  and retry with 'git restore --source=HEAD :/'
+
+  error: subprocess-exited-with-error
+  
+  × git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-h34vk9i2 did not run successfully.
+  │ exit code: 128
+  ╰─> See above for output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-h34vk9i2 did not run successfully.
+│ exit code: 128
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
++ true
++ python -m pip install -r tests/requirements.txt
+Ignoring pywin32: markers 'sys_platform == "win32"' don't match your environment
+Requirement already satisfied: pytest>=3.3.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 1)) (7.4.4)
+Requirement already satisfied: nose>=1.3.7 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 2)) (1.3.7)
+Requirement already satisfied: flaky>=3.5.3 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 3)) (3.8.1)
+Requirement already satisfied: mock>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 4)) (5.1.0)
+Requirement already satisfied: coverage>=4.5.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 5)) (7.6.1)
+Requirement already satisfied: codecov>=2.0.15 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 6)) (2.1.13)
+Requirement already satisfied: xmltodict>=0.11.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 7)) (0.13.0)
+Requirement already satisfied: awscli>=1.14.18 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 8)) (1.34.9)
+Requirement already satisfied: google-compute-engine in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 9)) (2.8.13)
+Requirement already satisfied: Pygments in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 11)) (2.18.0)
+Requirement already satisfied: collective.checkdocs in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 12)) (0.2)
+Requirement already satisfied: black in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 13)) (24.8.0)
+Requirement already satisfied: flake8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 14)) (7.1.1)
+Requirement already satisfied: flake8-docstrings in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from -r tests/requirements.txt (line 15)) (1.7.0)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest>=3.3.1->-r tests/requirements.txt (line 1)) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest>=3.3.1->-r tests/requirements.txt (line 1)) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest>=3.3.1->-r tests/requirements.txt (line 1)) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest>=3.3.1->-r tests/requirements.txt (line 1)) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest>=3.3.1->-r tests/requirements.txt (line 1)) (2.0.1)
+Requirement already satisfied: requests>=2.7.9 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from codecov>=2.0.15->-r tests/requirements.txt (line 6)) (2.32.3)
+Collecting botocore==1.35.9 (from awscli>=1.14.18->-r tests/requirements.txt (line 8))
+  Using cached botocore-1.35.9-py3-none-any.whl.metadata (5.7 kB)
+Requirement already satisfied: docutils<0.17,>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from awscli>=1.14.18->-r tests/requirements.txt (line 8)) (0.16)
+Collecting s3transfer<0.11.0,>=0.10.0 (from awscli>=1.14.18->-r tests/requirements.txt (line 8))
+  Downloading s3transfer-0.10.4-py3-none-any.whl.metadata (1.7 kB)
+Requirement already satisfied: PyYAML<6.1,>=3.10 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from awscli>=1.14.18->-r tests/requirements.txt (line 8)) (5.4.1)
+Requirement already satisfied: colorama<0.4.7,>=0.2.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from awscli>=1.14.18->-r tests/requirements.txt (line 8)) (0.4.6)
+Requirement already satisfied: rsa<4.8,>=3.1.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from awscli>=1.14.18->-r tests/requirements.txt (line 8)) (4.7.2)
+Requirement already satisfied: jmespath<2.0.0,>=0.7.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from botocore==1.35.9->awscli>=1.14.18->-r tests/requirements.txt (line 8)) (0.10.0)
+Requirement already satisfied: python-dateutil<3.0.0,>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from botocore==1.35.9->awscli>=1.14.18->-r tests/requirements.txt (line 8)) (2.9.0.post0)
+Requirement already satisfied: urllib3<1.27,>=1.25.4 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from botocore==1.35.9->awscli>=1.14.18->-r tests/requirements.txt (line 8)) (1.26.20)
+Requirement already satisfied: boto in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-compute-engine->-r tests/requirements.txt (line 9)) (2.49.0)
+Requirement already satisfied: setuptools in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-compute-engine->-r tests/requirements.txt (line 9)) (72.1.0)
+Requirement already satisfied: distro in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-compute-engine->-r tests/requirements.txt (line 9)) (1.9.0)
+Requirement already satisfied: click>=8.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from black->-r tests/requirements.txt (line 13)) (8.1.7)
+Requirement already satisfied: mypy-extensions>=0.4.3 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from black->-r tests/requirements.txt (line 13)) (1.0.0)
+Requirement already satisfied: pathspec>=0.9.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from black->-r tests/requirements.txt (line 13)) (0.12.1)
+Requirement already satisfied: platformdirs>=2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from black->-r tests/requirements.txt (line 13)) (4.2.2)
+Requirement already satisfied: typing-extensions>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from black->-r tests/requirements.txt (line 13)) (4.12.2)
+Requirement already satisfied: mccabe<0.8.0,>=0.7.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from flake8->-r tests/requirements.txt (line 14)) (0.7.0)
+Requirement already satisfied: pycodestyle<2.13.0,>=2.12.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from flake8->-r tests/requirements.txt (line 14)) (2.12.1)
+Requirement already satisfied: pyflakes<3.3.0,>=3.2.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from flake8->-r tests/requirements.txt (line 14)) (3.2.0)
+Requirement already satisfied: pydocstyle>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from flake8-docstrings->-r tests/requirements.txt (line 15)) (6.3.0)
+Requirement already satisfied: snowballstemmer>=2.2.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pydocstyle>=2.1->flake8-docstrings->-r tests/requirements.txt (line 15)) (2.2.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.7.9->codecov>=2.0.15->-r tests/requirements.txt (line 6)) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.7.9->codecov>=2.0.15->-r tests/requirements.txt (line 6)) (3.8)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.7.9->codecov>=2.0.15->-r tests/requirements.txt (line 6)) (2024.8.30)
+Requirement already satisfied: pyasn1>=0.1.3 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from rsa<4.8,>=3.1.2->awscli>=1.14.18->-r tests/requirements.txt (line 8)) (0.6.0)
+Requirement already satisfied: six>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from python-dateutil<3.0.0,>=2.1->botocore==1.35.9->awscli>=1.14.18->-r tests/requirements.txt (line 8)) (1.16.0)
+Using cached botocore-1.35.9-py3-none-any.whl (12.5 MB)
+Downloading s3transfer-0.10.4-py3-none-any.whl (83 kB)
+Installing collected packages: botocore, s3transfer
+  Attempting uninstall: botocore
+    Found existing installation: botocore 1.10.84
+    Uninstalling botocore-1.10.84:
+      Successfully uninstalled botocore-1.10.84
+  Attempting uninstall: s3transfer
+    Found existing installation: s3transfer 0.1.13
+    Uninstalling s3transfer-0.1.13:
+      Successfully uninstalled s3transfer-0.1.13
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+boto3 1.7.4 requires botocore<1.11.0,>=1.10.4, but you have botocore 1.35.9 which is incompatible.
+boto3 1.7.4 requires s3transfer<0.2.0,>=0.1.10, but you have s3transfer 0.10.4 which is incompatible.
+Successfully installed botocore-1.35.9 s3transfer-0.10.4
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: ply>=3.9 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (3.11)
+Requirement already satisfied: configparser>=3.5.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (7.1.0)
+Requirement already satisfied: zc.lockfile>=1.2.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (3.0.post1)
+Requirement already satisfied: future>=0.16.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.0.0)
+Requirement already satisfied: colorama>=0.3.9 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (0.4.6)
+Requirement already satisfied: configobj>=5.0.6 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (5.0.8)
+Requirement already satisfied: networkx>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (3.1)
+Requirement already satisfied: pyyaml>=3.12 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (5.4.1)
+Requirement already satisfied: gitpython>=2.1.8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (3.1.48)
+Requirement already satisfied: setuptools>=34.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (72.1.0)
+Requirement already satisfied: nanotime>=0.5.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (0.5.2)
+Requirement already satisfied: pyasn1>=0.4.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (0.6.0)
+Requirement already satisfied: schema>=0.6.7 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (0.7.7)
+Requirement already satisfied: jsonpath-rw==1.4.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.4.0)
+Requirement already satisfied: requests>=2.18.4 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (2.32.3)
+Requirement already satisfied: grandalf==0.6 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (0.6)
+Requirement already satisfied: asciimatics>=1.10.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.15.0)
+Requirement already satisfied: distro>=1.3.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.9.0)
+Requirement already satisfied: appdirs>=1.4.3 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.4.4)
+Requirement already satisfied: pyparsing in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from grandalf==0.6->dvc==0.30.0) (3.1.4)
+Requirement already satisfied: decorator in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from jsonpath-rw==1.4.0->dvc==0.30.0) (5.1.1)
+Requirement already satisfied: six in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from jsonpath-rw==1.4.0->dvc==0.30.0) (1.16.0)
+WARNING: dvc 0.30.0 does not provide the extra 'all-remotes'
+WARNING: dvc 0.30.0 does not provide the extra 'dev'
+WARNING: dvc 0.30.0 does not provide the extra 'testing'
+WARNING: dvc 0.30.0 does not provide the extra 'tests'
+Requirement already satisfied: google-cloud-storage==1.13.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.13.0)
+Requirement already satisfied: boto3==1.7.4 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.7.4)
+Requirement already satisfied: azure-storage-blob==1.3.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (1.3.0)
+Requirement already satisfied: paramiko>=2.4.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from dvc==0.30.0) (3.4.1)
+Requirement already satisfied: azure-common>=1.1.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from azure-storage-blob==1.3.0->dvc==0.30.0) (1.1.28)
+Requirement already satisfied: azure-storage-common<1.4.0,>=1.3.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from azure-storage-blob==1.3.0->dvc==0.30.0) (1.3.0)
+Requirement already satisfied: azure-storage-nspkg>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from azure-storage-blob==1.3.0->dvc==0.30.0) (3.1.0)
+Collecting botocore<1.11.0,>=1.10.4 (from boto3==1.7.4->dvc==0.30.0)
+  Using cached botocore-1.10.84-py2.py3-none-any.whl.metadata (2.7 kB)
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from boto3==1.7.4->dvc==0.30.0) (0.10.0)
+Collecting s3transfer<0.2.0,>=0.1.10 (from boto3==1.7.4->dvc==0.30.0)
+  Using cached s3transfer-0.1.13-py2.py3-none-any.whl.metadata (1.6 kB)
+Requirement already satisfied: google-cloud-core<0.29dev,>=0.28.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-cloud-storage==1.13.0->dvc==0.30.0) (0.28.1)
+Requirement already satisfied: google-api-core<2.0.0dev,>=0.1.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-cloud-storage==1.13.0->dvc==0.30.0) (1.34.1)
+Requirement already satisfied: google-resumable-media>=0.3.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-cloud-storage==1.13.0->dvc==0.30.0) (2.7.2)
+Requirement already satisfied: pyfiglet>=0.7.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from asciimatics>=1.10.0->dvc==0.30.0) (0.8.post1)
+Requirement already satisfied: Pillow>=2.7.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from asciimatics>=1.10.0->dvc==0.30.0) (10.4.0)
+Requirement already satisfied: wcwidth in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from asciimatics>=1.10.0->dvc==0.30.0) (0.2.13)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from gitpython>=2.1.8->dvc==0.30.0) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from gitpython>=2.1.8->dvc==0.30.0) (4.12.2)
+Requirement already satisfied: bcrypt>=3.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from paramiko>=2.4.1->dvc==0.30.0) (4.2.0)
+Requirement already satisfied: cryptography>=3.3 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from paramiko>=2.4.1->dvc==0.30.0) (43.0.0)
+Requirement already satisfied: pynacl>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from paramiko>=2.4.1->dvc==0.30.0) (1.5.0)
+Requirement already satisfied: charset-normalizer<4,>=2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.18.4->dvc==0.30.0) (3.3.2)
+Requirement already satisfied: idna<4,>=2.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.18.4->dvc==0.30.0) (3.8)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.18.4->dvc==0.30.0) (1.26.20)
+Requirement already satisfied: certifi>=2017.4.17 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from requests>=2.18.4->dvc==0.30.0) (2024.8.30)
+Requirement already satisfied: python-dateutil in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from azure-storage-common<1.4.0,>=1.3.0->azure-storage-blob==1.3.0->dvc==0.30.0) (2.9.0.post0)
+Requirement already satisfied: azure-nspkg>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from azure-storage-nspkg>=2.0.0->azure-storage-blob==1.3.0->dvc==0.30.0) (3.0.2)
+Requirement already satisfied: docutils>=0.10 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from botocore<1.11.0,>=1.10.4->boto3==1.7.4->dvc==0.30.0) (0.16)
+Requirement already satisfied: cffi>=1.12 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from cryptography>=3.3->paramiko>=2.4.1->dvc==0.30.0) (1.17.0)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from gitdb<5,>=4.0.1->gitpython>=2.1.8->dvc==0.30.0) (5.0.1)
+Requirement already satisfied: googleapis-common-protos<2.0dev,>=1.56.2 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (1.65.0)
+Requirement already satisfied: protobuf!=3.20.0,!=3.20.1,!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<4.0.0dev,>=3.19.5 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (3.20.3)
+Requirement already satisfied: google-auth<3.0dev,>=1.25.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (2.34.0)
+Requirement already satisfied: google-crc32c<2.0dev,>=1.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-resumable-media>=0.3.1->google-cloud-storage==1.13.0->dvc==0.30.0) (1.5.0)
+Requirement already satisfied: pycparser in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from cffi>=1.12->cryptography>=3.3->paramiko>=2.4.1->dvc==0.30.0) (2.22)
+Requirement already satisfied: cachetools<6.0,>=2.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-auth<3.0dev,>=1.25.0->google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (5.5.0)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-auth<3.0dev,>=1.25.0->google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (0.4.0)
+Requirement already satisfied: rsa<5,>=3.1.4 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from google-auth<3.0dev,>=1.25.0->google-api-core<2.0.0dev,>=0.1.1->google-cloud-storage==1.13.0->dvc==0.30.0) (4.7.2)
+Using cached botocore-1.10.84-py2.py3-none-any.whl (4.5 MB)
+Using cached s3transfer-0.1.13-py2.py3-none-any.whl (59 kB)
+Building wheels for collected packages: dvc
+  Building editable for dvc (pyproject.toml): started
+  Building editable for dvc (pyproject.toml): finished with status 'done'
+  Created wheel for dvc: filename=dvc-0.30.0-0.editable-py2.py3-none-any.whl size=10183 sha256=75545a219c331987adce0d406edabd10633c1f9dc043f9a1a301a52fa37cf4d0
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ebngz0qw/wheels/b2/50/f1/218f2e9962a80d01a4b1297698978f9fb3b60056aa24343f24
+Successfully built dvc
+Installing collected packages: botocore, s3transfer, dvc
+  Attempting uninstall: botocore
+    Found existing installation: botocore 1.35.9
+    Uninstalling botocore-1.35.9:
+      Successfully uninstalled botocore-1.35.9
+  Attempting uninstall: s3transfer
+    Found existing installation: s3transfer 0.10.4
+    Uninstalling s3transfer-0.10.4:
+      Successfully uninstalled s3transfer-0.10.4
+  Attempting uninstall: dvc
+    Found existing installation: dvc 0.30.0
+    Uninstalling dvc-0.30.0:
+      Successfully uninstalled dvc-0.30.0
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+awscli 1.34.9 requires botocore==1.35.9, but you have botocore 1.10.84 which is incompatible.
+awscli 1.34.9 requires s3transfer<0.11.0,>=0.10.0, but you have s3transfer 0.1.13 which is incompatible.
+Successfully installed botocore-1.10.84 dvc-0.30.0 s3transfer-0.1.13
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'numpy<=1.20'
+Requirement already satisfied: numpy<=1.20 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (1.20.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'pytest<8'
+Requirement already satisfied: pytest<8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (7.4.4)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.8/site-packages (from pytest<8) (2.0.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/test_stage.py tests/unit/stage.py
+============================= test session starts ==============================
+platform linux -- Python 3.8.19, pytest-7.4.4, pluggy-1.5.0
+rootdir: /testbed
+plugins: flaky-3.8.1
+collected 13 items
+
+tests/test_stage.py ..........                                           [ 76%]
+tests/unit/stage.py ...                                                  [100%]
+
+=============================== warnings summary ===============================
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/google/cloud/storage/__init__.py:34
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/google/cloud/storage/__init__.py:34: DeprecationWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html
+    from pkg_resources import get_distribution
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('collective')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google.cloud')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:2553
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:2553: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('google')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(parent)
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/pkg_resources/__init__.py:3144: DeprecationWarning: Deprecated call to `pkg_resources.declare_namespace('zc')`.
+  Implementing implicit namespace packages (as specified in PEP 420) is preferred to `pkg_resources.declare_namespace`. See https://setuptools.pypa.io/en/latest/references/keywords.html#keyword-namespace-packages
+    declare_namespace(pkg)
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/google/cloud/iam.py:38
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/google/cloud/iam.py:38: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working
+    class Policy(collections.MutableMapping):
+
+../opt/miniconda3/envs/testbed/lib/python3.8/site-packages/botocore/vendored/requests/packages/urllib3/_collections.py:1
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/botocore/vendored/requests/packages/urllib3/_collections.py:1: DeprecationWarning: Using or importing the ABCs from 'collections' instead of from 'collections.abc' is deprecated since Python 3.3, and in 3.10 it will stop working
+    from collections import Mapping, MutableMapping
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+_________________________ TestSchemaCmd.test_cmd_none __________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+________________________ TestSchemaCmd.test_cmd_object _________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_object (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_object (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_object (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_object (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+__________________________ TestSchemaCmd.test_cmd_str __________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_str (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_str (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_str (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_cmd_str (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+__________________________ TestSchemaCmd.test_no_cmd ___________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_no_cmd (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_no_cmd (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_no_cmd (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaCmd::test_no_cmd (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+______________________ TestSchemaDepsOuts.test_empty_list ______________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_empty_list (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_empty_list (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_empty_list (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_empty_list (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+_________________________ TestSchemaDepsOuts.test_list _________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_list (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_list (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_list (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_list (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+_________________________ TestSchemaDepsOuts.test_none _________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_none (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_none (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_none (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_none (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+________________________ TestSchemaDepsOuts.test_object ________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_object (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_object (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_object (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestSchemaDepsOuts::test_object (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+_______________________________ TestReload.test ________________________________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestReload::test (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestReload::test (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+[34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+[34mDebug[39m: PRAGMA user_version = 3;
+[34mDebug[39m: Skipping copying for '/tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo', since it is not a symlink or a hardlink.
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+[34mDebug[39m: fetched: []
+[34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358130, "1777368372398396672", "3", "acbd18db4cc2f85cedef654fccc4a4d8", "1777368372521387776")
+Adding 'foo' to '.gitignore'.
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+[34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372521387776')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372535929088" WHERE inode = 26358130
+[34mDebug[39m: Computed stage 'foo.dvc' md5: 'ee343f2482f53efffc109be83cc976ac'
+Saving 'foo' to cache '.dvc/cache'.
+[34mDebug[39m: File '/tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8', md5 'acbd18db4cc2f85cedef654fccc4a4d8', actual 'None'
+[34mDebug[39m: Cache type 'reflink' is not supported: reflink is not supported
+[34mDebug[39m: Created 'hardlink': /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8 -> /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+[34mDebug[39m: REPLACE INTO link_state(path, inode, mtime) VALUES ("foo", 26358130, "1777368372398396672")
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+[34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372535929088')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372538044928" WHERE inode = 26358130
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8 inode 26358130
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+[34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372538044928')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372538309120" WHERE inode = 26358130
+[34mDebug[39m: SELECT count from state_info WHERE rowid=1
+[34mDebug[39m: fetched: [(0,)]
+[34mDebug[39m: UPDATE state_info SET count = 1 WHERE rowid = 1
+[34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache inode 26358189
+[34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358189, "8195", "1777368372536399360", "1777368372538794240", "")
+Saving information to 'foo.dvc'.
+
+To track the changes with git run:
+
+	git add .gitignore foo.dvc
+Saving information to 'foo.dvc'.
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestReload::test (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestReload::test (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version = 3;
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Skipping copying for '/tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo', since it is not a symlink or a hardlink.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: []
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358130, "1777368372398396672", "3", "acbd18db4cc2f85cedef654fccc4a4d8", "1777368372521387776")
+INFO     dvc:logger.py:22 Adding 'foo' to '.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372521387776')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372535929088" WHERE inode = 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'foo.dvc' md5: 'ee343f2482f53efffc109be83cc976ac'
+INFO     dvc:logger.py:22 Saving 'foo' to cache '.dvc/cache'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: File '/tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8', md5 'acbd18db4cc2f85cedef654fccc4a4d8', actual 'None'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Cache type 'reflink' is not supported: reflink is not supported
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Created 'hardlink': /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8 -> /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: REPLACE INTO link_state(path, inode, mtime) VALUES ("foo", 26358130, "1777368372398396672")
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/foo inode 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372535929088')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372538044928" WHERE inode = 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache/ac/bd18db4cc2f85cedef654fccc4a4d8 inode 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372398396672', '3', 'acbd18db4cc2f85cedef654fccc4a4d8', '1777368372538044928')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372538309120" WHERE inode = 26358130
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT count from state_info WHERE rowid=1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(0,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state_info SET count = 1 WHERE rowid = 1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.yysxd_9w.861c98b4-2c13-4a43-be90-2d55717618df/.dvc/cache inode 26358189
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358189, "8195", "1777368372536399360", "1777368372538794240", "")
+INFO     dvc:logger.py:22 Saving information to 'foo.dvc'.
+INFO     dvc:logger.py:22 
+To track the changes with git run:
+
+	git add .gitignore foo.dvc
+INFO     dvc:logger.py:22 Saving information to 'foo.dvc'.
+_____________ TestDefaultWorkingDirectory.test_ignored_in_checksum _____________
+----------------------------- Captured stdout call -----------------------------
+Adding '.dvc/state' to '.dvc/.gitignore'.
+Adding '.dvc/lock' to '.dvc/.gitignore'.
+Adding '.dvc/config.local' to '.dvc/.gitignore'.
+Adding '.dvc/updater' to '.dvc/.gitignore'.
+Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+Adding '.dvc/cache' to '.dvc/.gitignore'.
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+
+You can now commit the changes to git.
+
+[31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+[33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+[34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum (call)', 'PYTHONPATH': '/testbed'}'
+[34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+[34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+[34mDebug[39m: PRAGMA user_version = 3;
+[34mDebug[39m: Skipping copying for '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo', since it is not a symlink or a hardlink.
+[34mDebug[39m: SELECT count from state_info WHERE rowid=1
+[34mDebug[39m: fetched: [(0,)]
+[34mDebug[39m: UPDATE state_info SET count = 0 WHERE rowid = 1
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+[34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "4096", "1777368372875406336", "1777368372912751616", "")
+[34mDebug[39m: PRAGMA user_version;
+[34mDebug[39m: fetched: [(3,)]
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+[34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+[34mDebug[39m: PRAGMA user_version = 3;
+Running command:
+	echo test > foo
+[34mDebug[39m: Computed stage 'foo.dvc' md5: 'da456e861db38915095d86de43d2bfa3'
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/bar inode 26358203
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358203
+[34mDebug[39m: fetched: []
+[34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358203, "1777368372843405824", "4", "8978c98bb5a48c2fb5f2c4c905768afa", "1777368372928177152")
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: []
+[34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358202, "1777368372926407424", "5", "d8e8fca2dc0f896fd7cb4cb0031ba249", "1777368372928721664")
+Adding 'foo' to '.gitignore'.
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372928721664')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372937612288" WHERE inode = 26358202
+[34mDebug[39m: Computed stage 'foo.dvc' md5: '4614fcf980a8011447f808d4ea8da0e6'
+Saving 'foo' to cache '.dvc/cache'.
+[34mDebug[39m: File '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249', md5 'd8e8fca2dc0f896fd7cb4cb0031ba249', actual 'None'
+[34mDebug[39m: Created 'hardlink': /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 -> /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+[34mDebug[39m: REPLACE INTO link_state(path, inode, mtime) VALUES ("foo", 26358202, "1777368372926407424")
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372937612288')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372939274240" WHERE inode = 26358202
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372939274240')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372939544832" WHERE inode = 26358202
+[34mDebug[39m: SELECT count from state_info WHERE rowid=1
+[34mDebug[39m: fetched: [(0,)]
+[34mDebug[39m: UPDATE state_info SET count = 2 WHERE rowid = 1
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+[34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "8197", "1777368372938407424", "1777368372940034560", "")
+Saving information to 'foo.dvc'.
+
+To track the changes with git run:
+
+	git add .gitignore foo.dvc
+[34mDebug[39m: PRAGMA user_version;
+[34mDebug[39m: fetched: [(3,)]
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+[34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+[34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+[34mDebug[39m: PRAGMA user_version = 3;
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/bar inode 26358203
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358203
+[34mDebug[39m: fetched: [('1777368372843405824', '4', '8978c98bb5a48c2fb5f2c4c905768afa', '1777368372928177152')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372952407296" WHERE inode = 26358203
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372939544832')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372952766464" WHERE inode = 26358202
+[34mDebug[39m: File '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249', md5 'd8e8fca2dc0f896fd7cb4cb0031ba249', actual 'd8e8fca2dc0f896fd7cb4cb0031ba249'
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+[34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+[34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372952766464')]
+[34mDebug[39m: UPDATE state SET timestamp = "1777368372953056256" WHERE inode = 26358202
+[34mDebug[39m: Computed stage 'foo.dvc' md5: '4614fcf980a8011447f808d4ea8da0e6'
+[32mStage 'foo.dvc' didn't change.[39m
+[34mDebug[39m: SELECT count from state_info WHERE rowid=1
+[34mDebug[39m: fetched: [(2,)]
+[34mDebug[39m: UPDATE state_info SET count = 2 WHERE rowid = 1
+[34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+[34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "8197", "1777368372938407424", "1777368372953685504", "")
+------------------------------ Captured log call -------------------------------
+INFO     dvc:logger.py:22 Adding '.dvc/state' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/config.local' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/updater.lock' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-journal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/state-wal' to '.dvc/.gitignore'.
+INFO     dvc:logger.py:22 Adding '.dvc/cache' to '.dvc/.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+INFO     dvc:logger.py:22 
+You can now commit the changes to git.
+
+INFO     dvc:logger.py:120 [31m+---------------------------------------------------------------------+
+[39m[31m|[39m                                                                     [31m|[39m
+[31m|[39m        DVC has enabled anonymous aggregate usage analytics.         [31m|[39m
+[31m|[39m     Read the analytics documentation (and how to opt-out) here:     [31m|[39m
+[31m|[39m              [34mhttps://dvc.org/doc/user-guide/analytics[39m               [31m|[39m
+[31m|[39m                                                                     [31m|[39m
+[31m+---------------------------------------------------------------------+
+[39m
+INFO     dvc:logger.py:22 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Trying to spawn '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']' with env '{'CONDA_EXE': '/opt/miniconda3/bin/conda', '_CE_M': '', 'HOSTNAME': 'c5ba0019c055', 'PWD': '/testbed', 'CONDA_PREFIX': '/opt/miniconda3/envs/testbed', 'TZ': 'Etc/UTC', 'HOME': '/root', 'CONDA_PROMPT_MODIFIER': '(testbed) ', '_CE_CONDA': '', 'CONDA_SHLVL': '4', 'SHLVL': '1', 'CONDA_PYTHON_EXE': '/opt/miniconda3/bin/python', 'CONDA_DEFAULT_ENV': 'testbed', 'PATH': '/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'CONDA_PREFIX_1': '/opt/miniconda3', 'CONDA_PREFIX_2': '/opt/miniconda3/envs/testbed', 'CONDA_PREFIX_3': '/opt/miniconda3', 'OLDPWD': '/testbed', '_': '/opt/miniconda3/envs/testbed/bin/pytest', 'LC_CTYPE': 'C.UTF-8', 'PYTEST_CURRENT_TEST': 'tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum (call)', 'PYTHONPATH': '/testbed'}'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Spawned '['/opt/miniconda3/envs/testbed/bin/python', '-m', 'dvc', 'daemon', '-q', 'updater']'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version = 3;
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Skipping copying for '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo', since it is not a symlink or a hardlink.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT count from state_info WHERE rowid=1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(0,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state_info SET count = 0 WHERE rowid = 1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "4096", "1777368372875406336", "1777368372912751616", "")
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version;
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(3,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version = 3;
+INFO     dvc:logger.py:22 Running command:
+	echo test > foo
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'foo.dvc' md5: 'da456e861db38915095d86de43d2bfa3'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/bar inode 26358203
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358203
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: []
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358203, "1777368372843405824", "4", "8978c98bb5a48c2fb5f2c4c905768afa", "1777368372928177152")
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: []
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT INTO state(inode, mtime, size, md5, timestamp) VALUES (26358202, "1777368372926407424", "5", "d8e8fca2dc0f896fd7cb4cb0031ba249", "1777368372928721664")
+INFO     dvc:logger.py:22 Adding 'foo' to '.gitignore'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372928721664')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372937612288" WHERE inode = 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'foo.dvc' md5: '4614fcf980a8011447f808d4ea8da0e6'
+INFO     dvc:logger.py:22 Saving 'foo' to cache '.dvc/cache'.
+DEBUG    dvc:logger.py:31 [34mDebug[39m: File '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249', md5 'd8e8fca2dc0f896fd7cb4cb0031ba249', actual 'None'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Created 'hardlink': /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 -> /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: REPLACE INTO link_state(path, inode, mtime) VALUES ("foo", 26358202, "1777368372926407424")
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372937612288')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372939274240" WHERE inode = 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372939274240')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372939544832" WHERE inode = 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT count from state_info WHERE rowid=1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(0,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state_info SET count = 2 WHERE rowid = 1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "8197", "1777368372938407424", "1777368372940034560", "")
+INFO     dvc:logger.py:22 Saving information to 'foo.dvc'.
+INFO     dvc:logger.py:22 
+To track the changes with git run:
+
+	git add .gitignore foo.dvc
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version;
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(3,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state (inode INTEGER PRIMARY KEY, mtime TEXT NOT NULL, size TEXT NOT NULL, md5 TEXT NOT NULL, timestamp TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS state_info (count INTEGER)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: CREATE TABLE IF NOT EXISTS link_state (path TEXT PRIMARY KEY, inode INTEGER NOT NULL, mtime TEXT NOT NULL)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR IGNORE INTO state_info (count) SELECT 0 WHERE NOT EXISTS (SELECT * FROM state_info)
+DEBUG    dvc:logger.py:31 [34mDebug[39m: PRAGMA user_version = 3;
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/bar inode 26358203
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358203
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372843405824', '4', '8978c98bb5a48c2fb5f2c4c905768afa', '1777368372928177152')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372952407296" WHERE inode = 26358203
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249 inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372939544832')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372952766464" WHERE inode = 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: File '/tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache/d8/e8fca2dc0f896fd7cb4cb0031ba249', md5 'd8e8fca2dc0f896fd7cb4cb0031ba249', actual 'd8e8fca2dc0f896fd7cb4cb0031ba249'
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/foo inode 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT mtime, size, md5, timestamp from state WHERE inode=26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [('1777368372926407424', '5', 'd8e8fca2dc0f896fd7cb4cb0031ba249', '1777368372952766464')]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state SET timestamp = "1777368372953056256" WHERE inode = 26358202
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'foo.dvc' md5: '4614fcf980a8011447f808d4ea8da0e6'
+INFO     dvc:logger.py:22 [32mStage 'foo.dvc' didn't change.[39m
+DEBUG    dvc:logger.py:31 [34mDebug[39m: SELECT count from state_info WHERE rowid=1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: fetched: [(2,)]
+DEBUG    dvc:logger.py:31 [34mDebug[39m: UPDATE state_info SET count = 2 WHERE rowid = 1
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Path /tmp/dvc-test.270.u96l0m6y.6b544750-4680-41f3-be57-886512a99e7d/.dvc/cache inode 26358275
+DEBUG    dvc:logger.py:31 [34mDebug[39m: INSERT OR REPLACE INTO state(inode, size, mtime, timestamp, md5) VALUES (26358275, "8197", "1777368372938407424", "1777368372953685504", "")
+____________________________ TestStageChecksum.test ____________________________
+----------------------------- Captured stdout call -----------------------------
+[34mDebug[39m: Computed stage 'path' md5: 'e9521a22111493406ea64a88cda63e0b'
+------------------------------ Captured log call -------------------------------
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'path' md5: 'e9521a22111493406ea64a88cda63e0b'
+_________________ TestStageChecksum.test_wdir_default_ignored __________________
+----------------------------- Captured stdout call -----------------------------
+[34mDebug[39m: Computed stage 'path' md5: 'e9521a22111493406ea64a88cda63e0b'
+------------------------------ Captured log call -------------------------------
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'path' md5: 'e9521a22111493406ea64a88cda63e0b'
+____________ TestStageChecksum.test_wdir_non_default_is_not_ignored ____________
+----------------------------- Captured stdout call -----------------------------
+[34mDebug[39m: Computed stage 'path' md5: '2ceba15e87f6848aa756502c1e6d24e9'
+------------------------------ Captured log call -------------------------------
+DEBUG    dvc:logger.py:31 [34mDebug[39m: Computed stage 'path' md5: '2ceba15e87f6848aa756502c1e6d24e9'
+=========================== short test summary info ============================
+PASSED tests/test_stage.py::TestSchemaCmd::test_cmd_none
+PASSED tests/test_stage.py::TestSchemaCmd::test_cmd_object
+PASSED tests/test_stage.py::TestSchemaCmd::test_cmd_str
+PASSED tests/test_stage.py::TestSchemaCmd::test_no_cmd
+PASSED tests/test_stage.py::TestSchemaDepsOuts::test_empty_list
+PASSED tests/test_stage.py::TestSchemaDepsOuts::test_list
+PASSED tests/test_stage.py::TestSchemaDepsOuts::test_none
+PASSED tests/test_stage.py::TestSchemaDepsOuts::test_object
+PASSED tests/test_stage.py::TestReload::test
+PASSED tests/test_stage.py::TestDefaultWorkingDirectory::test_ignored_in_checksum
+PASSED tests/unit/stage.py::TestStageChecksum::test
+PASSED tests/unit/stage.py::TestStageChecksum::test_wdir_default_ignored
+PASSED tests/unit/stage.py::TestStageChecksum::test_wdir_non_default_is_not_ignored
+======================== 13 passed, 8 warnings in 1.42s ========================
++ : '>>>>> End Test Output'

@@ -1,0 +1,130 @@
+2026-04-28 17:34:50,721 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_0.91.2_0.91.3
+Building instance image sweb.eval.x86_64.iterative__dvc_0.91.2_0.91.3:latest for iterative__dvc_0.91.2_0.91.3
+2026-04-28 17:34:50,739 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.91.2_0.91.3:latest already exists, skipping build.
+2026-04-28 17:34:50,739 - INFO - Creating container for iterative__dvc_0.91.2_0.91.3...
+2026-04-28 17:34:51,911 - INFO - Container for iterative__dvc_0.91.2_0.91.3 created: 3d61cc8b23babb309c9e82e9ce6d10f2684b026bb5dad19058d2c15588c72964
+2026-04-28 17:34:52,059 - INFO - Container for iterative__dvc_0.91.2_0.91.3 started: 3d61cc8b23babb309c9e82e9ce6d10f2684b026bb5dad19058d2c15588c72964
+2026-04-28 17:34:52,059 - INFO - Intermediate patch for iterative__dvc_0.91.2_0.91.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.91.2_0.91.3/patch.diff, now applying to container...
+2026-04-28 17:34:52,379 - INFO - Failed to apply patch to container: git apply --verbose
+2026-04-28 17:34:52,430 - INFO - Failed to apply patch to container: git apply --verbose --reject
+2026-04-28 17:34:52,477 - INFO - >>>>> Applied Patch:
+patching file tests/func/test_data_cloud.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_base.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_gdrive.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/remote/base.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/remote/gdrive.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/remote/test_base.py
+patching file tests/unit/remote/test_gdrive.py
+
+2026-04-28 17:34:52,542 - INFO - Git diff before:
+diff --git a/tests/unit/remote/test_base.py b/tests/unit/remote/test_base.py
+index 64e64bc67..ab799a78d 100644
+--- a/tests/unit/remote/test_base.py
++++ b/tests/unit/remote/test_base.py
+@@ -1,5 +1,6 @@
+ from unittest import TestCase
+ 
++import math
+ import mock
+ 
+ from dvc.path_info import PathInfo
+@@ -76,8 +77,15 @@ def test_cache_exists(path_to_checksum, object_exists, traverse):
+     ):
+         checksums = list(range(1000))
+         remote.cache_exists(checksums)
++        # verify that _cache_paths_with_max() short circuits
++        # before returning all 256 remote checksums
++        max_checksums = math.ceil(
++            remote._max_estimation_size(checksums)
++            / pow(16, remote.TRAVERSE_PREFIX_LEN)
++        )
++        assert max_checksums < 256
+         object_exists.assert_called_with(
+-            frozenset(range(256, 1000)), None, None
++            frozenset(range(max_checksums, 1000)), None, None
+         )
+         traverse.assert_not_called()
+ 
+diff --git a/tests/unit/remote/test_gdrive.py b/tests/unit/remote/test_gdrive.py
+index 72b790ea9..2e9c8f791 100644
+--- a/tests/unit/remote/test_gdrive.py
++++ b/tests/unit/remote/test_gdrive.py
+@@ -35,7 +35,7 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_TOKEN_REFRESH_ERROR
+         with pytest.raises(GDriveAccessTokenRefreshError):
+-            remote.drive
++            remote._drive
+ 
+         os.environ[RemoteGDrive.GDRIVE_CREDENTIALS_DATA] = ""
+         remote = RemoteGDrive(Repo(), self.CONFIG)
+@@ -43,4 +43,4 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_MISSED_KEY_ERROR
+         with pytest.raises(GDriveMissedCredentialKeyError):
+-            remote.drive
++            remote._drive
+2026-04-28 17:34:52,543 - INFO - Eval script for iterative__dvc_0.91.2_0.91.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.91.2_0.91.3/eval.sh; copying to container...
+2026-04-28 17:39:05,984 - INFO - Test runtime: 253.38 seconds
+2026-04-28 17:39:05,985 - INFO - Test output for iterative__dvc_0.91.2_0.91.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.91.2_0.91.3/test_output.txt
+2026-04-28 17:39:06,042 - INFO - Git diff after:
+diff --git a/tests/unit/remote/test_base.py b/tests/unit/remote/test_base.py
+index 64e64bc67..ab799a78d 100644
+--- a/tests/unit/remote/test_base.py
++++ b/tests/unit/remote/test_base.py
+@@ -1,5 +1,6 @@
+ from unittest import TestCase
+ 
++import math
+ import mock
+ 
+ from dvc.path_info import PathInfo
+@@ -76,8 +77,15 @@ def test_cache_exists(path_to_checksum, object_exists, traverse):
+     ):
+         checksums = list(range(1000))
+         remote.cache_exists(checksums)
++        # verify that _cache_paths_with_max() short circuits
++        # before returning all 256 remote checksums
++        max_checksums = math.ceil(
++            remote._max_estimation_size(checksums)
++            / pow(16, remote.TRAVERSE_PREFIX_LEN)
++        )
++        assert max_checksums < 256
+         object_exists.assert_called_with(
+-            frozenset(range(256, 1000)), None, None
++            frozenset(range(max_checksums, 1000)), None, None
+         )
+         traverse.assert_not_called()
+ 
+diff --git a/tests/unit/remote/test_gdrive.py b/tests/unit/remote/test_gdrive.py
+index 72b790ea9..2e9c8f791 100644
+--- a/tests/unit/remote/test_gdrive.py
++++ b/tests/unit/remote/test_gdrive.py
+@@ -35,7 +35,7 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_TOKEN_REFRESH_ERROR
+         with pytest.raises(GDriveAccessTokenRefreshError):
+-            remote.drive
++            remote._drive
+ 
+         os.environ[RemoteGDrive.GDRIVE_CREDENTIALS_DATA] = ""
+         remote = RemoteGDrive(Repo(), self.CONFIG)
+@@ -43,4 +43,4 @@ class TestRemoteGDrive(object):
+             RemoteGDrive.GDRIVE_CREDENTIALS_DATA
+         ] = USER_CREDS_MISSED_KEY_ERROR
+         with pytest.raises(GDriveMissedCredentialKeyError):
+-            remote.drive
++            remote._drive
+2026-04-28 17:39:06,042 - INFO - Grading answer for iterative__dvc_0.91.2_0.91.3...
+2026-04-28 17:39:06,049 - INFO - report: {'iterative__dvc_0.91.2_0.91.3': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/unit/remote/test_base.py::test_cache_exists', 'tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_drive']}, 'PASS_TO_PASS': {'success': ['tests/func/test_data_cloud.py::TestDataCloud::test', 'tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error', 'tests/func/test_data_cloud.py::TestRecursiveSyncOperations::test', 'tests/func/test_data_cloud.py::TestRemoteHTTP::test', 'tests/func/test_data_cloud.py::TestRemoteLOCAL::test', 'tests/func/test_data_cloud.py::TestRemoteLOCALCLI::test', 'tests/func/test_data_cloud.py::TestRemoteSSHMocked::test', 'tests/func/test_data_cloud.py::TestShouldWarnOnNoChecksumInLocalAndRemoteCache::test', 'tests/func/test_data_cloud.py::TestWarnOnOutdatedStage::test', 'tests/func/test_data_cloud.py::test_checksum_recalculation', 'tests/func/test_data_cloud.py::test_pull_external_dvc_imports', 'tests/func/test_data_cloud.py::test_pull_git_imports[erepo_dir]', 'tests/func/test_data_cloud.py::test_verify_checksums', 'tests/unit/remote/test_base.py::TestCmdError::test', 'tests/unit/remote/test_base.py::TestMissingDeps::test', 'tests/unit/remote/test_base.py::test_cache_exists_traverse', 'tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_init'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_0.91.2_0.91.3: resolved: False
+2026-04-28 17:39:06,050 - INFO - Attempting to stop container sweb.eval.iterative__dvc_0.91.2_0.91.3.eval_input_20260427-154634...
+2026-04-28 17:39:21,244 - INFO - Attempting to remove container sweb.eval.iterative__dvc_0.91.2_0.91.3.eval_input_20260427-154634...
+2026-04-28 17:39:21,321 - INFO - Container sweb.eval.iterative__dvc_0.91.2_0.91.3.eval_input_20260427-154634 removed.
+2026-04-28 17:39:21,321 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_0.91.2_0.91.3:latest...
+2026-04-28 17:39:21,324 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.91.2_0.91.3:latest removed.

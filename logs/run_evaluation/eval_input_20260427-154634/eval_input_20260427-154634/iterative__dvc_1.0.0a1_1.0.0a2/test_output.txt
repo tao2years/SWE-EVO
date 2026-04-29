@@ -1,0 +1,1315 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   tests/dir_helpers.py
+	deleted:    tests/func/test_plot.py
+	deleted:    tests/unit/test_plot.py
+	deleted:    tests/unit/test_stage.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	dvc/path_info.py.orig
+	dvc/stage/loader.py.orig
+	tests/basic_env.py.orig
+	tests/conftest.py.orig
+	tests/dir_helpers.py.orig
+	tests/dir_helpers.py.rej
+	tests/func/metrics/test_diff.py.orig
+	tests/func/params/test_diff.py.orig
+	tests/func/plots/
+	tests/func/remote/test_gdrive.py.orig
+	tests/func/remote/test_index.py.orig
+	tests/func/test_add.py.orig
+	tests/func/test_analytics.py.orig
+	tests/func/test_api.py.orig
+	tests/func/test_checkout.py.orig
+	tests/func/test_cli.py.orig
+	tests/func/test_commit.py.orig
+	tests/func/test_config.py.orig
+	tests/func/test_data_cloud.py.orig
+	tests/func/test_diff.py.orig
+	tests/func/test_external_repo.py.orig
+	tests/func/test_gc.py.orig
+	tests/func/test_get.py.orig
+	tests/func/test_ignore.py.orig
+	tests/func/test_import.py.orig
+	tests/func/test_import_url.py.orig
+	tests/func/test_init.py.orig
+	tests/func/test_install.py.orig
+	tests/func/test_lockfile.py.orig
+	tests/func/test_ls.py.orig
+	tests/func/test_move.py.orig
+	tests/func/test_pipeline.py.orig
+	tests/func/test_remote.py.orig
+	tests/func/test_repo.py.orig
+	tests/func/test_repro.py.orig
+	tests/func/test_repro_multistage.py.orig
+	tests/func/test_run_multistage.py.orig
+	tests/func/test_run_single_stage.py.orig
+	tests/func/test_scm.py.orig
+	tests/func/test_stage.py.orig
+	tests/func/test_status.py.orig
+	tests/func/test_tree.py.orig
+	tests/func/test_update.py.orig
+	tests/func/test_utils.py.orig
+	tests/remotes.py.orig
+	tests/unit/command/test_diff.py.orig
+	tests/unit/command/test_metrics.py.orig
+	tests/unit/command/test_params.py.orig
+	tests/unit/command/test_repro.py.orig
+	tests/unit/command/test_run.py.orig
+	tests/unit/command/test_update.py.orig
+	tests/unit/remote/ssh/test_connection.py.orig
+	tests/unit/remote/ssh/test_ssh.py.orig
+	tests/unit/remote/test_azure.py.orig
+	tests/unit/remote/test_base.py.orig
+	tests/unit/remote/test_gdrive.py.orig
+	tests/unit/remote/test_gs.py.orig
+	tests/unit/remote/test_http.py.orig
+	tests/unit/remote/test_oss.py.orig
+	tests/unit/remote/test_remote.py.orig
+	tests/unit/remote/test_remote_dir.py.orig
+	tests/unit/remote/test_s3.py.orig
+	tests/unit/repo/plots/
+	tests/unit/repo/test_tree.py.orig
+	tests/unit/scm/test_git.py.orig
+	tests/unit/stage/
+	tests/unit/test_rwlock.py.orig
+	tests/unit/test_updater.py.orig
+	tests/unit/utils/test_fs.py.orig
+	tests/unit/utils/test_http.py.orig
+	tests/utils/__init__.py.orig
+	tests/utils/httpd.py.orig
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit fc42ca721c25bdd24875c999e37fb4f589ecd63c
+Author: Ruslan Kuprieiev <kupruser@gmail.com>
+Date:   Thu May 7 19:33:30 2020 +0300
+
+    dvc: bump to 1.0.0a1
+
+diff --git a/dvc/version.py b/dvc/version.py
+index 35a1620dd..0c92fd93a 100644
+--- a/dvc/version.py
++++ b/dvc/version.py
+@@ -6,7 +6,7 @@
+ import os
+ import subprocess
+ 
+-_BASE_VERSION = "1.0.0a0"
++_BASE_VERSION = "1.0.0a1"
+ 
+ 
+ def _generate_version(base_version):
++ git -c core.fileMode=false diff fc42ca721c25bdd24875c999e37fb4f589ecd63c
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8e1d87630..ea88f9e93 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,12 +74,8 @@ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+             cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                "cannot instantiate %r on your system" % (cls.__name__,)
+-            )
+-        self._init()
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     # Not needed in Python 3.6+
+diff --git a/tests/func/test_plot.py b/tests/func/test_plot.py
+deleted file mode 100644
+index cd1acc6bb..000000000
+--- a/tests/func/test_plot.py
++++ /dev/null
+@@ -1,517 +0,0 @@
+-import csv
+-import json
+-import logging
+-import shutil
+-from collections import OrderedDict
+-
+-import pytest
+-import yaml
+-from bs4 import BeautifulSoup
+-from funcy import first
+-
+-from dvc.compat import fspath
+-from dvc.repo.plot import NoDataOrTemplateProvided
+-from dvc.repo.plot.data import (
+-    NoMetricInHistoryError,
+-    PlotData,
+-    PlotMetricTypeError,
+-)
+-from dvc.repo.plot.template import (
+-    NoDataForTemplateError,
+-    NoFieldInDataError,
+-    TemplateNotFoundError,
+-)
+-
+-
+-def _remove_whitespace(value):
+-    return value.replace(" ", "").replace("\n", "")
+-
+-
+-def _run_with_metric(tmp_dir, metric_filename, commit=None, tag=None):
+-    tmp_dir.dvc.run(metrics_no_cache=[metric_filename], single_stage=True)
+-    if hasattr(tmp_dir.dvc, "scm"):
+-        tmp_dir.dvc.scm.add([metric_filename, metric_filename + ".dvc"])
+-        if commit:
+-            tmp_dir.dvc.scm.commit(commit)
+-        if tag:
+-            tmp_dir.dvc.scm.tag(tag)
+-
+-
+-def _write_csv(metric, filename, header=True):
+-    with open(filename, "w", newline="") as csvobj:
+-        if header:
+-            writer = csv.DictWriter(
+-                csvobj, fieldnames=list(first(metric).keys())
+-            )
+-            writer.writeheader()
+-            writer.writerows(metric)
+-        else:
+-            writer = csv.writer(csvobj)
+-            for d in metric:
+-                assert len(d) == 1
+-                writer.writerow(list(d.values()))
+-
+-
+-def _write_json(tmp_dir, metric, filename):
+-    tmp_dir.gen(filename, json.dumps(metric, sort_keys=True))
+-
+-
+-def test_plot_csv_one_column(tmp_dir, scm, dvc):
+-    # no header
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_csv(metric, "metric.csv", header=False)
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv",
+-        csv_header=False,
+-        x_title="x_title",
+-        y_title="y_title",
+-        title="mytitle",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["title"] == "mytitle"
+-    assert plot_content["data"]["values"] == [
+-        {"0": "2", PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"0": "3", PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "0"
+-    assert plot_content["encoding"]["x"]["title"] == "x_title"
+-    assert plot_content["encoding"]["y"]["title"] == "y_title"
+-
+-
+-def test_plot_csv_multiple_columns(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot("metric.csv")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            PlotData.INDEX_FIELD: 0,
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            PlotData.INDEX_FIELD: 1,
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_csv_choose_axes(tmp_dir, scm, dvc):
+-    metric = [
+-        OrderedDict([("first_val", 100), ("second_val", 100), ("val", 2)]),
+-        OrderedDict([("first_val", 200), ("second_val", 300), ("val", 3)]),
+-    ]
+-    _write_csv(metric, "metric.csv")
+-    _run_with_metric(tmp_dir, metric_filename="metric.csv")
+-
+-    plot_string = dvc.plot(
+-        "metric.csv", x_field="first_val", y_field="second_val"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": "2",
+-            "rev": "workspace",
+-            "first_val": "100",
+-            "second_val": "100",
+-        },
+-        {
+-            "val": "3",
+-            "rev": "workspace",
+-            "first_val": "200",
+-            "second_val": "300",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "first_val"
+-    assert plot_content["encoding"]["y"]["field"] == "second_val"
+-
+-
+-def test_plot_json_single_val(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_json = json.loads(plot_string)
+-    assert plot_json["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-    assert plot_json["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_json["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_json_multiple_val(tmp_dir, scm, dvc):
+-    metric = [
+-        {"first_val": 100, "val": 2},
+-        {"first_val": 200, "val": 3},
+-    ]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json")
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {
+-            "val": 2,
+-            PlotData.INDEX_FIELD: 0,
+-            "first_val": 100,
+-            "rev": "workspace",
+-        },
+-        {
+-            "val": 3,
+-            PlotData.INDEX_FIELD: 1,
+-            "first_val": 200,
+-            "rev": "workspace",
+-        },
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "val"
+-
+-
+-def test_plot_confusion(tmp_dir, dvc):
+-    confusion_matrix = [
+-        {"predicted": "B", "actual": "A"},
+-        {"predicted": "A", "actual": "A"},
+-    ]
+-    _write_json(tmp_dir, confusion_matrix, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric.json",
+-        template="confusion",
+-        x_field="predicted",
+-        y_field="actual",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"predicted": "B", "actual": "A", "rev": "workspace"},
+-        {"predicted": "A", "actual": "A", "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "predicted"
+-    assert plot_content["encoding"]["y"]["field"] == "actual"
+-
+-
+-def test_plot_multiple_revs_default(tmp_dir, scm, dvc):
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fields={"y"}, revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_multiple_revs(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"), "template.json"
+-    )
+-
+-    metric_1 = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric_1, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    metric_2 = [{"y": 3}, {"y": 5}]
+-    _write_json(tmp_dir, metric_2, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "second", "v2")
+-
+-    metric_3 = [{"y": 5}, {"y": 6}]
+-    _write_json(tmp_dir, metric_3, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "third")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        template="template.json",
+-        revisions=["HEAD", "v2", "v1"],
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 5, PlotData.INDEX_FIELD: 0, "rev": "HEAD"},
+-        {"y": 6, PlotData.INDEX_FIELD: 1, "rev": "HEAD"},
+-        {"y": 3, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 5, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v1"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v1"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_plot_even_if_metric_missing(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    metric = [{"y": 2}, {"y": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "there is metric", "v2")
+-
+-    caplog.clear()
+-    with caplog.at_level(logging.WARNING, "dvc"):
+-        plot_string = dvc.plot("metric.json", revisions=["v1", "v2"])
+-        assert (
+-            "File 'metric.json' was not found at: 'v1'. "
+-            "It will not be plotted." in caplog.text
+-        )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"y": 2, PlotData.INDEX_FIELD: 0, "rev": "v2"},
+-        {"y": 3, PlotData.INDEX_FIELD: 1, "rev": "v2"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "y"
+-
+-
+-def test_throw_on_no_metric_at_all(tmp_dir, scm, dvc, caplog):
+-    tmp_dir.scm_gen("some_file", "content", commit="there is no metric")
+-    scm.tag("v1")
+-
+-    tmp_dir.gen("some_file", "make repo dirty")
+-
+-    caplog.clear()
+-    with pytest.raises(NoMetricInHistoryError) as error, caplog.at_level(
+-        logging.WARNING, "dvc"
+-    ):
+-        dvc.plot("metric.json", revisions=["v1"])
+-
+-        # do not warn if none found
+-        assert len(caplog.messages) == 0
+-
+-    assert str(error.value) == "Could not find 'metric.json'."
+-
+-
+-@pytest.fixture()
+-def custom_template(tmp_dir, dvc):
+-    custom_template = tmp_dir / "custom_template.json"
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(custom_template),
+-    )
+-    return custom_template
+-
+-
+-def test_custom_template(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json", fspath(custom_template), x_field="a", y_field="b"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def _replace(path, src, dst):
+-    path.write_text(path.read_text().replace(src, dst))
+-
+-
+-def test_custom_template_with_specified_data(
+-    tmp_dir, scm, dvc, custom_template
+-):
+-    _replace(
+-        custom_template, "DVC_METRIC_DATA", "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile=None,
+-        template=fspath(custom_template),
+-        x_field="a",
+-        y_field="b",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_override_specified_data_source(tmp_dir, scm, dvc):
+-    shutil.copy(
+-        fspath(tmp_dir / ".dvc" / "plot" / "default.json"),
+-        fspath(tmp_dir / "newtemplate.json"),
+-    )
+-    _replace(
+-        tmp_dir / "newtemplate.json",
+-        "DVC_METRIC_DATA",
+-        "DVC_METRIC_DATA,metric.json",
+-    )
+-
+-    metric = [{"a": 1, "b": 2}, {"a": 2, "b": 3}]
+-    _write_json(tmp_dir, metric, "metric2.json")
+-    _run_with_metric(tmp_dir, "metric2.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        datafile="metric2.json", template="newtemplate.json", x_field="a"
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"a": 1, "b": 2, "rev": "workspace"},
+-        {"a": 2, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "a"
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_should_raise_on_no_template_and_datafile(tmp_dir, dvc):
+-    with pytest.raises(NoDataOrTemplateProvided):
+-        dvc.plot()
+-
+-
+-def test_should_raise_on_no_template(tmp_dir, dvc):
+-    with pytest.raises(TemplateNotFoundError):
+-        dvc.plot("metric.json", "non_existing_template.json")
+-
+-
+-def test_plot_no_data(tmp_dir, dvc):
+-    with pytest.raises(NoDataForTemplateError):
+-        dvc.plot(template="default")
+-
+-
+-def test_plot_wrong_metric_type(tmp_dir, scm, dvc):
+-    tmp_dir.scm_gen("metric.txt", "content", commit="initial")
+-    with pytest.raises(PlotMetricTypeError):
+-        dvc.plot(datafile="metric.txt")
+-
+-
+-def test_plot_choose_columns(tmp_dir, scm, dvc, custom_template):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot(
+-        "metric.json",
+-        fspath(custom_template),
+-        fields={"b", "c"},
+-        x_field="b",
+-        y_field="c",
+-    )
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"b": 2, "c": 3, "rev": "workspace"},
+-        {"b": 3, "c": 4, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == "b"
+-    assert plot_content["encoding"]["y"]["field"] == "c"
+-
+-
+-def test_plot_default_choose_column(tmp_dir, scm, dvc):
+-    metric = [{"a": 1, "b": 2, "c": 3}, {"a": 2, "b": 3, "c": 4}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "init", "v1")
+-
+-    plot_string = dvc.plot("metric.json", fields={"b"})
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {PlotData.INDEX_FIELD: 0, "b": 2, "rev": "workspace"},
+-        {PlotData.INDEX_FIELD: 1, "b": 3, "rev": "workspace"},
+-    ]
+-    assert plot_content["encoding"]["x"]["field"] == PlotData.INDEX_FIELD
+-    assert plot_content["encoding"]["y"]["field"] == "b"
+-
+-
+-def test_plot_embed(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    plot_string = dvc.plot("metric.json", embed=True, y_field="val")
+-
+-    page_content = BeautifulSoup(plot_string)
+-    data_dump = json.dumps(
+-        [
+-            {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-            {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-        ],
+-        sort_keys=True,
+-    )
+-
+-    assert _remove_whitespace(data_dump) in _remove_whitespace(
+-        first(page_content.body.script.contents)
+-    )
+-
+-
+-def test_plot_yaml(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    with open("metric.yaml", "w") as fobj:
+-        yaml.dump(metric, fobj)
+-
+-    _run_with_metric(tmp_dir, metric_filename="metric.yaml")
+-
+-    plot_string = dvc.plot("metric.yaml",)
+-
+-    plot_content = json.loads(plot_string)
+-    assert plot_content["data"]["values"] == [
+-        {"val": 2, PlotData.INDEX_FIELD: 0, "rev": "workspace"},
+-        {"val": 3, PlotData.INDEX_FIELD: 1, "rev": "workspace"},
+-    ]
+-
+-
+-def test_raise_on_wrong_field(tmp_dir, scm, dvc):
+-    metric = [{"val": 2}, {"val": 3}]
+-    _write_json(tmp_dir, metric, "metric.json")
+-    _run_with_metric(tmp_dir, "metric.json", "first run")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", x_field="no_val")
+-
+-    with pytest.raises(NoFieldInDataError):
+-        dvc.plot("metric.json", y_field="no_val")
+diff --git a/tests/unit/test_plot.py b/tests/unit/test_plot.py
+deleted file mode 100644
+index 016f63d7c..000000000
+--- a/tests/unit/test_plot.py
++++ /dev/null
+@@ -1,48 +0,0 @@
+-from collections import OrderedDict
+-
+-import pytest
+-
+-from dvc.repo.plot.data import _apply_path, _find_data, _lists
+-
+-
+-@pytest.mark.parametrize(
+-    "path,expected_result",
+-    [
+-        ("$.some.path[*].a", [{"a": 1}, {"a": 4}]),
+-        ("$.some.path", [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]),
+-    ],
+-)
+-def test_parse_json(path, expected_result):
+-    value = {
+-        "some": {"path": [{"a": 1, "b": 2, "c": 3}, {"a": 4, "b": 5, "c": 6}]}
+-    }
+-
+-    result = _apply_path(value, path=path)
+-
+-    assert result == expected_result
+-
+-
+-@pytest.mark.parametrize(
+-    "dictionary, expected_result",
+-    [
+-        ({}, []),
+-        ({"x": ["a", "b", "c"]}, [["a", "b", "c"]]),
+-        (
+-            OrderedDict([("x", {"y": ["a", "b"]}), ("z", {"w": ["c", "d"]})]),
+-            [["a", "b"], ["c", "d"]],
+-        ),
+-    ],
+-)
+-def test_finding_lists(dictionary, expected_result):
+-    result = _lists(dictionary)
+-
+-    assert list(result) == expected_result
+-
+-
+-@pytest.mark.parametrize("fields", [{"x"}, set()])
+-def test_finding_data(fields):
+-    data = {"a": {"b": [{"x": 2, "y": 3}, {"x": 1, "y": 5}]}}
+-
+-    result = _find_data(data, fields=fields)
+-
+-    assert result == [{"x": 2, "y": 3}, {"x": 1, "y": 5}]
+diff --git a/tests/unit/test_stage.py b/tests/unit/test_stage.py
+deleted file mode 100644
+index dcfb771c4..000000000
+--- a/tests/unit/test_stage.py
++++ /dev/null
+@@ -1,140 +0,0 @@
+-import os
+-import signal
+-import subprocess
+-import threading
+-from unittest import TestCase
+-
+-import mock
+-import pytest
+-
+-from dvc.dependency.repo import RepoDependency
+-from dvc.stage import Stage
+-from dvc.stage.exceptions import StageUpdateError
+-
+-TEST_STAGE_DICT = {
+-    "md5": "123456",
+-    "cmd": "mycmd",
+-    "outs": [{"path": "a", "md5": "123456789"}],
+-    "deps": [{"path": "b", "md5": "987654321"}],
+-}
+-
+-
+-def test_stage_checksum():
+-    stage = Stage(None, "path")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=TEST_STAGE_DICT):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_default_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir=".")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-def test_wdir_non_default_is_not_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, wdir="..")
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "2ceba15e87f6848aa756502c1e6d24e9"
+-
+-
+-def test_meta_ignored():
+-    stage = Stage(None, "path")
+-    d = dict(TEST_STAGE_DICT, meta={"author": "Suor"})
+-
+-    with mock.patch.object(stage, "dumpd", return_value=d):
+-        assert stage._compute_md5() == "e9521a22111493406ea64a88cda63e0b"
+-
+-
+-class TestPathConversion(TestCase):
+-    def test(self):
+-        stage = Stage(None, "path")
+-
+-        stage.wdir = os.path.join("..", "..")
+-        self.assertEqual(stage.dumpd()["wdir"], "../..")
+-
+-
+-def test_stage_update(mocker):
+-    dep = RepoDependency({"url": "example.com"}, None, "dep_path")
+-    mocker.patch.object(dep, "update", return_value=None)
+-
+-    stage = Stage(None, "path", deps=[dep])
+-    reproduce = mocker.patch.object(stage, "reproduce")
+-    is_repo_import = mocker.patch(
+-        __name__ + ".Stage.is_repo_import", new_callable=mocker.PropertyMock
+-    )
+-
+-    is_repo_import.return_value = True
+-    stage.update()
+-    assert reproduce.called_once_with()
+-
+-    is_repo_import.return_value = False
+-    with pytest.raises(StageUpdateError):
+-        stage.update()
+-
+-
+-@pytest.mark.skipif(
+-    not isinstance(threading.current_thread(), threading._MainThread),
+-    reason="Not running in the main thread.",
+-)
+-def test_stage_run_ignore_sigint(dvc, mocker):
+-    proc = mocker.Mock()
+-    communicate = mocker.Mock()
+-    proc.configure_mock(returncode=0, communicate=communicate)
+-    popen = mocker.patch.object(subprocess, "Popen", return_value=proc)
+-    signal_mock = mocker.patch("signal.signal")
+-
+-    dvc.run(cmd="path", single_stage=True)
+-
+-    assert popen.called_once()
+-    assert communicate.called_once_with()
+-    signal_mock.assert_any_call(signal.SIGINT, signal.SIG_IGN)
+-    assert signal.getsignal(signal.SIGINT) == signal.default_int_handler
+-
+-
+-def test_always_changed(dvc):
+-    stage = Stage(dvc, "path", always_changed=True)
+-    stage.save()
+-    with dvc.lock:
+-        assert stage.changed()
+-        assert stage.status()["path"] == ["always changed"]
+-
+-
+-def test_stage_cache(tmp_dir, dvc, run_copy, mocker):
+-    tmp_dir.gen("dep", "dep")
+-    stage = run_copy("dep", "out", single_stage=True)
+-
+-    with dvc.lock, dvc.state:
+-        stage.remove(remove_outs=True, force=True)
+-
+-    assert not (tmp_dir / "out").exists()
+-    assert not (tmp_dir / "out.dvc").exists()
+-
+-    cache_dir = os.path.join(
+-        dvc.stage_cache.cache_dir,
+-        "75",
+-        "75f8a9097d76293ff4b3684d52e4ad0e83686d31196f27eb0b2ea9fd5085565e",
+-    )
+-    cache_file = os.path.join(
+-        cache_dir,
+-        "c1747e52065bc7801262fdaed4d63f5775e5da304008bd35e2fea4e6b1ccb272",
+-    )
+-
+-    assert os.path.isdir(cache_dir)
+-    assert os.listdir(cache_dir) == [os.path.basename(cache_file)]
+-    assert os.path.isfile(cache_file)
+-
+-    run_spy = mocker.spy(stage, "_run")
+-    checkout_spy = mocker.spy(stage, "checkout")
+-    with dvc.lock, dvc.state:
+-        stage.run()
+-
+-    assert not run_spy.called
+-    assert checkout_spy.call_count == 1
+-
+-    assert (tmp_dir / "out").exists()
+-    assert (tmp_dir / "out").read_text() == "dep"
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (24.2)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging>=24.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from wheel) (24.1)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.12.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+                                            0.0/1.8 MB ? eta -:--:--
+ERROR: Exception:
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 438, in _error_catcher
+    yield
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 561, in read
+    data = self._fp_read(amt) if not fp_closed else b""
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 527, in _fp_read
+    return self._fp.read(amt) if amt is not None else self._fp.read()
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/cachecontrol/filewrapper.py", line 98, in read
+    data: bytes = self.__fp.read(amt)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/http/client.py", line 463, in read
+    n = self.readinto(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/http/client.py", line 507, in readinto
+    n = self.fp.readinto(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/ssl.py", line 1275, in recv_into
+    return self.read(nbytes, buffer)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/ssl.py", line 1133, in read
+    return self._sslobj.read(len, buffer)
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/cli/base_command.py", line 105, in _run_wrapper
+    status = _inner_run()
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/cli/base_command.py", line 96, in _inner_run
+    return self.run(options, args)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/cli/req_command.py", line 67, in wrapper
+    return func(self, options, args)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/commands/install.py", line 379, in run
+    requirement_set = resolver.resolve(
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/resolution/resolvelib/resolver.py", line 179, in resolve
+    self.factory.preparer.prepare_linked_requirements_more(reqs)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/operations/prepare.py", line 554, in prepare_linked_requirements_more
+    self._complete_partial_requirements(
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/operations/prepare.py", line 469, in _complete_partial_requirements
+    for link, (filepath, _) in batch_download:
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/network/download.py", line 184, in __call__
+    for chunk in chunks:
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/cli/progress_bars.py", line 55, in _rich_progress_bar
+    for chunk in iterable:
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_internal/network/utils.py", line 65, in response_chunks
+    for chunk in response.raw.stream(
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 622, in stream
+    data = self.read(amt=amt, decode_content=decode_content)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 587, in read
+    raise IncompleteRead(self._fp_bytes_read, self.length_remaining)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/contextlib.py", line 137, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/pip/_vendor/urllib3/response.py", line 443, in _error_catcher
+    raise ReadTimeoutError(self._pool, None, "Read timed out.")
+pip._vendor.urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='files.pythonhosted.org', port=443): Read timed out.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Collecting pyyaml==5.4.1
+  Using cached PyYAML-5.4.1-cp39-cp39-manylinux1_x86_64.whl.metadata (2.1 kB)
+Using cached PyYAML-5.4.1-cp39-cp39-manylinux1_x86_64.whl (630 kB)
+Installing collected packages: pyyaml
+  Attempting uninstall: pyyaml
+    Found existing installation: PyYAML 5.3.1
+    Uninstalling PyYAML-5.3.1:
+      Successfully uninstalled PyYAML-5.3.1
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+dvc 1.0.0a1+fc42ca.mod requires PyYAML<5.4,>=5.1.2, but you have pyyaml 5.4.1 which is incompatible.
+Successfully installed pyyaml-5.4.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-yspyfvzm
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-yspyfvzm
+  fatal: unable to access 'https://github.com/iterative/mock-ssh-server.git/': Failed to connect to github.com port 443 after 132893 ms: Connection timed out
+  error: subprocess-exited-with-error
+  
+  × git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-yspyfvzm did not run successfully.
+  │ exit code: 128
+  ╰─> See above for output.
+  
+  note: This error originates from a subprocess, and is likely not a problem with pip.
+error: subprocess-exited-with-error
+
+× git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-yspyfvzm did not run successfully.
+│ exit code: 128
+╰─> See above for output.
+
+note: This error originates from a subprocess, and is likely not a problem with pip.
++ true
++ python -m pip install -r tests/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tests/requirements.txt'
++ true
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: ply>=3.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.11)
+Requirement already satisfied: colorama>=0.3.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.4.6)
+Requirement already satisfied: configobj>=5.0.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (5.0.9)
+Requirement already satisfied: gitpython>3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.1.43)
+Requirement already satisfied: setuptools>=34.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (75.1.0)
+Requirement already satisfied: nanotime>=0.5.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.5.2)
+Requirement already satisfied: pyasn1>=0.4.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.6.1)
+Requirement already satisfied: voluptuous>=0.11.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.15.2)
+Requirement already satisfied: jsonpath-ng>=1.5.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.6.1)
+Requirement already satisfied: requests>=2.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.32.3)
+Requirement already satisfied: grandalf==0.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.6)
+Requirement already satisfied: distro>=1.3.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.9.0)
+Requirement already satisfied: appdirs>=1.4.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.4.4)
+Requirement already satisfied: treelib>=1.5.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.7.0)
+Requirement already satisfied: inflect<4,>=2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.0.2)
+Requirement already satisfied: humanize>=0.5.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (4.10.0)
+Collecting PyYAML<5.4,>=5.1.2 (from dvc==1.0.0a1+fc42ca.mod)
+  Using cached PyYAML-5.3.1-cp39-cp39-linux_x86_64.whl
+Requirement already satisfied: ruamel.yaml>=0.16.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.18.6)
+Requirement already satisfied: funcy>=1.14 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.0)
+Requirement already satisfied: pathspec>=0.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.12.1)
+Requirement already satisfied: shortuuid>=0.5.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.0.13)
+Requirement already satisfied: tqdm<5,>=4.45.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (4.66.5)
+Requirement already satisfied: packaging>=19.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (24.1)
+Requirement already satisfied: zc.lockfile>=1.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.0.post1)
+Requirement already satisfied: flufl.lock>=3.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (8.1.0)
+Requirement already satisfied: networkx<2.4,>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.3)
+Requirement already satisfied: pydot>=1.2.4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.0.1)
+Requirement already satisfied: flatten_json>=0.1.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.1.14)
+Requirement already satisfied: texttable>=0.5.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.7.0)
+Requirement already satisfied: pygtrie==2.3.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.3.2)
+Requirement already satisfied: dpath<3,>=2.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.2.0)
+Requirement already satisfied: pyparsing in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from grandalf==0.6->dvc==1.0.0a1+fc42ca.mod) (3.1.4)
+Requirement already satisfied: future in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from grandalf==0.6->dvc==1.0.0a1+fc42ca.mod) (1.0.0)
+WARNING: dvc 1.0.0a1+fc42ca.mod does not provide the extra 'all-remotes'
+WARNING: dvc 1.0.0a1+fc42ca.mod does not provide the extra 'dev'
+WARNING: dvc 1.0.0a1+fc42ca.mod does not provide the extra 'testing'
+Requirement already satisfied: google-cloud-storage==1.19.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.19.0)
+Requirement already satisfied: boto3>=1.9.201 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.35.26)
+Requirement already satisfied: azure-storage-blob==2.1.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.1.0)
+Requirement already satisfied: paramiko>=2.5.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.5.0)
+Requirement already satisfied: oss2==2.6.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.6.1)
+Requirement already satisfied: pydrive2>=1.4.13 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.20.0)
+Requirement already satisfied: wheel>=0.31.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.44.0)
+Requirement already satisfied: pytest>=4.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (7.4.4)
+Requirement already satisfied: pytest-timeout>=1.3.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.3.1)
+Requirement already satisfied: pytest-cov>=2.6.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (5.0.0)
+Requirement already satisfied: pytest-xdist>=1.26.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.6.1)
+Requirement already satisfied: pytest-mock==1.11.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.11.2)
+Requirement already satisfied: flaky>=3.5.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.8.1)
+Requirement already satisfied: mock>=3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (5.1.0)
+Requirement already satisfied: xmltodict>=0.11.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.13.0)
+Requirement already satisfied: awscli>=1.16.297 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.34.26)
+Requirement already satisfied: google-compute-engine==2.8.13 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.8.13)
+Requirement already satisfied: Pygments in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (2.18.0)
+Requirement already satisfied: collective.checkdocs in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.2)
+Requirement already satisfied: flake8==3.7.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.7.9)
+Requirement already satisfied: psutil in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (6.0.0)
+Requirement already satisfied: flake8-docstrings in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (1.7.0)
+Requirement already satisfied: pydocstyle<4.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.0.0)
+Requirement already satisfied: jaraco.windows==3.9.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (3.9.2)
+Requirement already satisfied: mock-ssh-server>=0.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0a1+fc42ca.mod) (0.8.1)
+INFO: pip is looking at multiple versions of dvc[all,all-remotes,dev,testing,tests] to determine which version is compatible with other requirements. This could take a while.
+ERROR: Could not find a version that satisfies the requirement moto==1.3.14.dev464; extra == "tests" (from dvc[all,all-remotes,dev,testing,tests]) (from versions: 1.0.0, 1.0.1, 1.1.0, 1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.1.5, 1.1.6, 1.1.7, 1.1.8, 1.1.9, 1.1.10, 1.1.11, 1.1.12, 1.1.13, 1.1.14, 1.1.15, 1.1.16, 1.1.18, 1.1.19, 1.1.20, 1.1.21, 1.1.22, 1.1.23, 1.1.24, 1.1.25, 1.2.0, 1.3.0, 1.3.1, 1.3.2, 1.3.3, 1.3.4, 1.3.5, 1.3.6, 1.3.7, 1.3.8, 1.3.9, 1.3.10, 1.3.11, 1.3.12, 1.3.13, 1.3.14, 1.3.15, 1.3.16, 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.0.4, 2.0.5, 2.0.6, 2.0.7, 2.0.8, 2.0.9, 2.0.10, 2.0.11, 2.1.0, 2.2.0, 2.2.1, 2.2.2, 2.2.3, 2.2.4, 2.2.5, 2.2.6, 2.2.7, 2.2.8, 2.2.9, 2.2.10, 2.2.11, 2.2.12, 2.2.13, 2.2.14, 2.2.15, 2.2.16, 2.2.17, 2.2.18, 2.2.19, 2.2.20, 2.3.0, 2.3.1, 2.3.2, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.5, 3.0.6, 3.0.7, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.1.5, 3.1.6, 3.1.7, 3.1.8, 3.1.9, 3.1.10, 3.1.11, 3.1.12, 3.1.13, 3.1.14, 3.1.15, 3.1.16, 3.1.17, 3.1.18, 3.1.19, 4.0.0, 4.0.1, 4.0.2, 4.0.3, 4.0.5, 4.0.6, 4.0.7, 4.0.8, 4.0.9, 4.0.10, 4.0.11, 4.0.12, 4.0.13, 4.1.0, 4.1.1, 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7, 4.1.8, 4.1.9, 4.1.10, 4.1.11, 4.1.12.dev7, 4.1.12, 4.1.13.dev2, 4.1.13.dev3, 4.1.13.dev4, 4.1.13.dev6, 4.1.13.dev7, 4.1.13.dev8, 4.1.13.dev9, 4.1.13.dev10, 4.1.13.dev11, 4.1.13.dev12, 4.1.13.dev14, 4.1.13.dev15, 4.1.13.dev16, 4.1.13.dev17, 4.1.13.dev18, 4.1.13.dev23, 4.1.13.dev24, 4.1.13.dev25, 4.1.13.dev26, 4.1.13.dev28, 4.1.13.dev29, 4.1.13.dev30, 4.1.13.dev32, 4.1.13.dev33, 4.1.13.dev34, 4.1.13.dev35, 4.1.13.dev36, 4.1.13.dev37, 4.1.13.dev38, 4.1.13.dev39, 4.1.13.dev40, 4.1.13.dev41, 4.1.13.dev42, 4.1.13.dev43, 4.1.13.dev44, 4.1.13.dev45, 4.1.13.dev46, 4.1.13.dev47, 4.1.13.dev48, 4.1.13.dev49, 4.1.13.dev50, 4.1.13.dev52, 4.1.13.dev53, 4.1.13.dev54, 4.1.13.dev55, 4.1.13.dev56, 4.1.13.dev57, 4.1.13.dev58, 4.1.13.dev59, 4.1.13.dev60, 4.1.13.dev61, 4.1.13.dev62, 4.1.13.dev63, 4.1.13.dev64, 4.1.13, 4.1.14.dev2, 4.1.14.dev3, 4.1.14.dev4, 4.1.14.dev5, 4.1.14.dev6, 4.1.14.dev8, 4.1.14.dev9, 4.1.14.dev10, 4.1.14.dev11, 4.1.14.dev12, 4.1.14.dev13, 4.1.14.dev14, 4.1.14.dev15, 4.1.14.dev16, 4.1.14.dev17, 4.1.14.dev18, 4.1.14.dev19, 4.1.14.dev20, 4.1.14.dev22, 4.1.14.dev23, 4.1.14.dev24, 4.1.14.dev25, 4.1.14.dev26, 4.1.14.dev27, 4.1.14.dev30, 4.1.14.dev31, 4.1.14.dev32, 4.1.14.dev33, 4.1.14.dev36, 4.1.14.dev37, 4.1.14.dev38, 4.1.14.dev39, 4.1.14.dev41, 4.1.14.dev42, 4.1.14.dev43, 4.1.14, 4.1.15.dev2, 4.1.15.dev4, 4.1.15.dev5, 4.1.15.dev6, 4.1.15.dev7, 4.1.15.dev8, 4.1.15.dev12, 4.1.15.dev13, 4.1.15.dev14, 4.1.15.dev15, 4.1.15.dev17, 4.1.15.dev19, 4.1.15.dev20, 4.1.15.dev22, 4.1.15.dev23, 4.1.15.dev24, 4.1.15.dev25, 4.1.15.dev26, 4.1.15.dev27, 4.1.15.dev28, 4.1.15.dev30, 4.1.15.dev38, 4.1.15.dev40, 4.1.15.dev42, 4.1.15.dev43, 4.1.15.dev44, 4.1.15.dev45, 4.1.15.dev46, 4.1.15.dev72, 4.1.15.dev74, 4.1.15.dev82, 4.1.15.dev83, 4.1.15.dev90, 4.1.15.dev91, 4.1.15.dev92, 4.1.15.dev93, 4.1.15.dev94, 4.1.15.dev95, 4.1.15.dev96, 4.1.15.dev98, 4.1.15.dev99, 4.1.15.dev100, 4.1.15.dev101, 4.1.15.dev103, 4.1.15, 4.2.0.dev2, 4.2.0, 4.2.1.dev2, 4.2.1.dev3, 4.2.1.dev4, 4.2.1.dev5, 4.2.1.dev7, 4.2.1.dev13, 4.2.1.dev14, 4.2.1.dev16, 4.2.1.dev17, 4.2.1.dev19, 4.2.1.dev20, 4.2.1.dev23, 4.2.1.dev26, 4.2.1.dev27, 4.2.1.dev28, 4.2.1.dev29, 4.2.1.dev30, 4.2.1.dev31, 4.2.1.dev32, 4.2.1.dev33, 4.2.1.dev34, 4.2.1.dev35, 4.2.1.dev37, 4.2.1, 4.2.2, 4.2.3.dev4, 4.2.3.dev5, 4.2.3.dev8, 4.2.3.dev9, 4.2.3.dev10, 4.2.3.dev11, 4.2.3.dev13, 4.2.3.dev14, 4.2.3.dev15, 4.2.3.dev16, 4.2.3.dev17, 4.2.3.dev18, 4.2.3.dev19, 4.2.3.dev20, 4.2.3.dev21, 4.2.3.dev22, 4.2.3.dev23, 4.2.3.dev26, 4.2.3.dev28, 4.2.3.dev30, 4.2.3.dev31, 4.2.3.dev32, 4.2.3.dev33, 4.2.3.dev35, 4.2.3.dev37, 4.2.3.dev38, 4.2.3.dev39, 4.2.3.dev40, 4.2.3.dev41, 4.2.3.dev42, 4.2.3.dev44, 4.2.3.dev46, 4.2.3, 4.2.4.dev5, 4.2.4.dev6, 4.2.4.dev7, 4.2.4.dev8, 4.2.4.dev12, 4.2.4.dev13, 4.2.4.dev18, 4.2.4.dev19, 4.2.4.dev20, 4.2.4, 4.2.5.dev5, 4.2.5.dev6, 4.2.5.dev7, 4.2.5.dev10, 4.2.5.dev12, 4.2.5.dev16, 4.2.5.dev17, 4.2.5, 4.2.6.dev3, 4.2.6.dev8, 4.2.6.dev9, 4.2.6.dev10, 4.2.6.dev12, 4.2.6.dev13, 4.2.6.dev14, 4.2.6.dev15, 4.2.6.dev16, 4.2.6.dev18, 4.2.6.dev21, 4.2.6.dev22, 4.2.6.dev26, 4.2.6.dev27, 4.2.6.dev29, 4.2.6.dev30, 4.2.6.dev31, 4.2.6.dev33, 4.2.6.dev35, 4.2.6, 4.2.7.dev3, 4.2.7.dev5, 4.2.7.dev6, 4.2.7.dev7, 4.2.7.dev8, 4.2.7.dev9, 4.2.7.dev11, 4.2.7.dev12, 4.2.7.dev14, 4.2.7.dev15, 4.2.7.dev16, 4.2.7.dev18, 4.2.7.dev19, 4.2.7.dev20, 4.2.7.dev23, 4.2.7.dev24, 4.2.7.dev25, 4.2.7.dev28, 4.2.7.dev29, 4.2.7.dev30, 4.2.7.dev31, 4.2.7.dev32, 4.2.7, 4.2.8.dev2, 4.2.8.dev3, 4.2.8.dev4, 4.2.8.dev5, 4.2.8.dev7, 4.2.8.dev9, 4.2.8.dev16, 4.2.8.dev18, 4.2.8.dev23, 4.2.8.dev24, 4.2.8.dev25, 4.2.8.dev30, 4.2.8.dev31, 4.2.8.dev32, 4.2.8.dev35, 4.2.8.dev37, 4.2.8, 4.2.9.dev4, 4.2.9.dev6, 4.2.9.dev9, 4.2.9.dev10, 4.2.9, 4.2.10.dev3, 4.2.10.dev6, 4.2.10.dev8, 4.2.10.dev17, 4.2.10.dev19, 4.2.10.dev20, 4.2.10.dev21, 4.2.10.dev22, 4.2.10.dev25, 4.2.10.dev26, 4.2.10, 4.2.11.dev2, 4.2.11.dev3, 4.2.11.dev4, 4.2.11.dev5, 4.2.11.dev6, 4.2.11.dev7, 4.2.11.dev9, 4.2.11.dev10, 4.2.11.dev11, 4.2.11.dev12, 4.2.11.dev13, 4.2.11.dev14, 4.2.11.dev15, 4.2.11.dev16, 4.2.11.dev17, 4.2.11.dev18, 4.2.11.dev19, 4.2.11.dev20, 4.2.11, 4.2.12.dev2, 4.2.12.dev3, 4.2.12.dev4, 4.2.12.dev5, 4.2.12.dev6, 4.2.12.dev7, 4.2.12.dev8, 4.2.12.dev9, 4.2.12.dev10, 4.2.12.dev11, 4.2.12.dev12, 4.2.12.dev14, 4.2.12.dev15, 4.2.12.dev16, 4.2.12.dev17, 4.2.12.dev19, 4.2.12.dev20, 4.2.12.dev21, 4.2.12.dev23, 4.2.12.dev24, 4.2.12.dev28, 4.2.12.dev29, 4.2.12.dev31, 4.2.12, 4.2.13.dev3, 4.2.13.dev5, 4.2.13.dev8, 4.2.13.dev9, 4.2.13.dev11, 4.2.13.dev12, 4.2.13.dev13, 4.2.13.dev15, 4.2.13.dev16, 4.2.13.dev17, 4.2.13.dev18, 4.2.13.dev19, 4.2.13.dev21, 4.2.13.dev22, 4.2.13.dev23, 4.2.13.dev24, 4.2.13.dev28, 4.2.13.dev33, 4.2.13.dev34, 4.2.13.dev37, 4.2.13.dev40, 4.2.13.dev44, 4.2.13, 4.2.14.dev2, 4.2.14.dev6, 4.2.14.dev7, 4.2.14.dev8, 4.2.14.dev10, 4.2.14.dev11, 4.2.14.dev12, 4.2.14.dev18, 4.2.14.dev19, 4.2.14.dev22, 4.2.14.dev23, 4.2.14.dev24, 4.2.14.dev25, 4.2.14.dev26, 4.2.14.dev29, 4.2.14.dev30, 4.2.14.dev31, 4.2.14, 5.0.0.dev17, 5.0.0a1, 5.0.0a2, 5.0.0a3, 5.0.0, 5.0.1.dev3, 5.0.1.dev4, 5.0.1.dev5, 5.0.1.dev6, 5.0.1.dev7, 5.0.1.dev8, 5.0.1.dev11, 5.0.1.dev12, 5.0.1.dev13, 5.0.1.dev14, 5.0.1.dev17, 5.0.1.dev18, 5.0.1.dev19, 5.0.1.dev20, 5.0.1.dev21, 5.0.1.dev22, 5.0.1.dev23, 5.0.1.dev25, 5.0.1.dev28, 5.0.1.dev29, 5.0.1.dev33, 5.0.1, 5.0.2.dev2, 5.0.2.dev5, 5.0.2.dev6, 5.0.2.dev7, 5.0.2.dev8, 5.0.2.dev9, 5.0.2.dev10, 5.0.2.dev11, 5.0.2.dev12, 5.0.2.dev13, 5.0.2.dev14, 5.0.2.dev15, 5.0.2.dev16, 5.0.2.dev17, 5.0.2.dev18, 5.0.2.dev19, 5.0.2.dev20, 5.0.2.dev21, 5.0.2.dev22, 5.0.2.dev23, 5.0.2.dev24, 5.0.2.dev26, 5.0.2.dev27, 5.0.2.dev28, 5.0.2.dev29, 5.0.2.dev30, 5.0.2.dev31, 5.0.2.dev32, 5.0.2, 5.0.3.dev2, 5.0.3.dev3, 5.0.3.dev4, 5.0.3.dev5, 5.0.3.dev6, 5.0.3.dev7, 5.0.3.dev8, 5.0.3.dev9, 5.0.3.dev10, 5.0.3.dev11, 5.0.3.dev12, 5.0.3.dev13, 5.0.3.dev14, 5.0.3.dev15, 5.0.3.dev16, 5.0.3.dev17, 5.0.3.dev18, 5.0.3.dev19, 5.0.3.dev20, 5.0.3.dev21, 5.0.3.dev22, 5.0.3.dev23, 5.0.3.dev24, 5.0.3.dev25, 5.0.3.dev26, 5.0.3.dev27, 5.0.3.dev28, 5.0.3.dev29, 5.0.3.dev30, 5.0.3.dev31, 5.0.3.dev32, 5.0.3.dev33, 5.0.3.dev34, 5.0.3.dev35, 5.0.3.dev36, 5.0.3.dev37, 5.0.3.dev38, 5.0.3.dev39, 5.0.3.dev40, 5.0.3.dev41, 5.0.3.dev42, 5.0.3.dev43, 5.0.3.dev44, 5.0.3.dev45, 5.0.3.dev46, 5.0.3.dev47, 5.0.3.dev48, 5.0.3.dev49, 5.0.3.dev50, 5.0.3.dev51, 5.0.3.dev52, 5.0.3.dev53, 5.0.3.dev54, 5.0.3.dev55, 5.0.3.dev56, 5.0.3.dev57, 5.0.3.dev58, 5.0.3.dev59, 5.0.3.dev60, 5.0.3, 5.0.4.dev3, 5.0.4.dev5, 5.0.4.dev6, 5.0.4.dev7, 5.0.4.dev8, 5.0.4.dev9, 5.0.4.dev10, 5.0.4.dev11, 5.0.4.dev12, 5.0.4.dev13, 5.0.4.dev14, 5.0.4.dev15, 5.0.4.dev16, 5.0.4.dev17, 5.0.4.dev18, 5.0.4.dev19, 5.0.4.dev20, 5.0.4.dev21, 5.0.4.dev22, 5.0.4.dev23, 5.0.4.dev24, 5.0.4.dev25, 5.0.4.dev26, 5.0.4.dev27, 5.0.4.dev28, 5.0.4.dev29, 5.0.4.dev30, 5.0.4.dev31, 5.0.4.dev33, 5.0.4.dev34, 5.0.4.dev35, 5.0.4.dev36, 5.0.4.dev38, 5.0.4.dev39, 5.0.4.dev40, 5.0.4.dev41, 5.0.4.dev43, 5.0.4.dev44, 5.0.4.dev45, 5.0.4.dev46, 5.0.4.dev47, 5.0.4.dev48, 5.0.4.dev49, 5.0.4.dev50, 5.0.4, 5.0.5.dev2, 5.0.5.dev3, 5.0.5.dev4, 5.0.5.dev5, 5.0.5.dev6, 5.0.5.dev7, 5.0.5.dev8, 5.0.5.dev9, 5.0.5.dev10, 5.0.5.dev11, 5.0.5.dev12, 5.0.5.dev13, 5.0.5.dev15, 5.0.5.dev16, 5.0.5.dev17, 5.0.5.dev18, 5.0.5.dev19, 5.0.5.dev21, 5.0.5.dev22, 5.0.5.dev23, 5.0.5.dev24, 5.0.5.dev25, 5.0.5.dev27, 5.0.5.dev28, 5.0.5.dev29, 5.0.5, 5.0.6.dev2, 5.0.6.dev4, 5.0.6.dev6, 5.0.6.dev7, 5.0.6.dev8, 5.0.6.dev9, 5.0.6.dev11, 5.0.6.dev12, 5.0.6.dev13, 5.0.6.dev14, 5.0.6.dev15, 5.0.6.dev16, 5.0.6.dev17, 5.0.6.dev18, 5.0.6.dev19, 5.0.6.dev20, 5.0.6.dev21, 5.0.6.dev22, 5.0.6.dev23, 5.0.6.dev24, 5.0.6.dev25, 5.0.6.dev26, 5.0.6.dev27, 5.0.6.dev28, 5.0.6.dev29, 5.0.6.dev30, 5.0.6.dev32, 5.0.6.dev33, 5.0.6.dev34, 5.0.6.dev35, 5.0.6.dev36, 5.0.6.dev37, 5.0.6.dev38, 5.0.6.dev39, 5.0.6.dev40, 5.0.6.dev41, 5.0.6.dev42, 5.0.6.dev43, 5.0.6.dev44, 5.0.6.dev45, 5.0.6, 5.0.7.dev2, 5.0.7.dev3, 5.0.7.dev4, 5.0.7.dev5, 5.0.7.dev6, 5.0.7.dev8, 5.0.7.dev9, 5.0.7.dev11, 5.0.7.dev12, 5.0.7.dev13, 5.0.7.dev14, 5.0.7.dev15, 5.0.7.dev16, 5.0.7.dev28, 5.0.7.dev31, 5.0.7.dev32, 5.0.7.dev33, 5.0.7.dev34, 5.0.7.dev35, 5.0.7.dev36, 5.0.7.dev37, 5.0.7.dev38, 5.0.7.dev40, 5.0.7.dev41, 5.0.7.dev42, 5.0.7.dev43, 5.0.7.dev44, 5.0.7.dev45, 5.0.7, 5.0.8.dev2, 5.0.8.dev3, 5.0.8.dev4, 5.0.8.dev5, 5.0.8.dev6, 5.0.8.dev7, 5.0.8.dev8, 5.0.8.dev9, 5.0.8.dev10, 5.0.8.dev11, 5.0.8.dev12, 5.0.8.dev13, 5.0.8.dev14, 5.0.8.dev16, 5.0.8.dev17, 5.0.8.dev18, 5.0.8.dev19, 5.0.8.dev20, 5.0.8.dev21, 5.0.8.dev22, 5.0.8.dev23, 5.0.8.dev24, 5.0.8, 5.0.9.dev2, 5.0.9.dev4, 5.0.9.dev5, 5.0.9.dev8, 5.0.9.dev9, 5.0.9.dev10, 5.0.9, 5.0.10.dev7, 5.0.10.dev8, 5.0.10.dev9, 5.0.10.dev10, 5.0.10.dev11, 5.0.10.dev12, 5.0.10.dev13, 5.0.10.dev14, 5.0.10.dev15, 5.0.10.dev16, 5.0.10.dev18, 5.0.10.dev19, 5.0.10.dev20, 5.0.10.dev22, 5.0.10.dev23, 5.0.10.dev24, 5.0.10.dev32, 5.0.10.dev33, 5.0.10.dev34, 5.0.10.dev35, 5.0.10.dev36, 5.0.10.dev37, 5.0.10.dev39, 5.0.10.dev41, 5.0.10, 5.0.11.dev2, 5.0.11.dev11, 5.0.11.dev12, 5.0.11.dev15, 5.0.11.dev16, 5.0.11.dev17, 5.0.11, 5.0.12.dev2, 5.0.12.dev3, 5.0.12.dev4, 5.0.12.dev5, 5.0.12.dev6, 5.0.12.dev7, 5.0.12.dev10, 5.0.12.dev11, 5.0.12.dev12, 5.0.12.dev13, 5.0.12.dev14, 5.0.12.dev15, 5.0.12.dev18, 5.0.12.dev19, 5.0.12.dev20, 5.0.12.dev21, 5.0.12.dev30, 5.0.12.dev31, 5.0.12.dev32, 5.0.12.dev33, 5.0.12.dev35, 5.0.12.dev36, 5.0.12.dev37, 5.0.12.dev38, 5.0.12.dev40, 5.0.12.dev41, 5.0.12.dev42, 5.0.12.dev43, 5.0.12.dev44, 5.0.12.dev45, 5.0.12.dev46, 5.0.12.dev50, 5.0.12.dev51, 5.0.12.dev52, 5.0.12.dev53, 5.0.12.dev54, 5.0.12.dev60, 5.0.12.dev61, 5.0.12.dev63, 5.0.12.dev64, 5.0.12.dev65, 5.0.12.dev67, 5.0.12.dev68, 5.0.12, 5.0.13.dev4, 5.0.13.dev5, 5.0.13.dev6, 5.0.13.dev7, 5.0.13.dev8, 5.0.13.dev9, 5.0.13.dev10, 5.0.13.dev11, 5.0.13.dev12, 5.0.13.dev13, 5.0.13.dev15, 5.0.13.dev16, 5.0.13.dev17, 5.0.13.dev18, 5.0.13.dev19, 5.0.13.dev20, 5.0.13.dev21, 5.0.13.dev22, 5.0.13.dev23, 5.0.13.dev24, 5.0.13.dev27, 5.0.13.dev28, 5.0.13.dev29, 5.0.13.dev30, 5.0.13.dev31, 5.0.13.dev32, 5.0.13.dev33, 5.0.13.dev34, 5.0.13.dev35, 5.0.13.dev36, 5.0.13.dev37, 5.0.13.dev38, 5.0.13.dev44, 5.0.13.dev45, 5.0.13.dev46, 5.0.13.dev47, 5.0.13.dev48, 5.0.13.dev49, 5.0.13.dev50, 5.0.13.dev52, 5.0.13.dev53, 5.0.13.dev54, 5.0.13.dev55, 5.0.13.dev56, 5.0.13.dev57, 5.0.13.dev58, 5.0.13.dev59, 5.0.13, 5.0.14.dev5, 5.0.14.dev6, 5.0.14.dev7, 5.0.14.dev8, 5.0.14.dev10, 5.0.14.dev11, 5.0.14.dev12, 5.0.14.dev13, 5.0.14.dev14, 5.0.14.dev16, 5.0.14.dev17, 5.0.14.dev18, 5.0.14.dev19, 5.0.14.dev20, 5.0.14.dev21, 5.0.14.dev22, 5.0.14.dev27, 5.0.14.dev30, 5.0.14.dev32, 5.0.14.dev33, 5.0.14.dev35, 5.0.14.dev37, 5.0.14.dev39, 5.0.14.dev40, 5.0.14.dev41, 5.0.14.dev42, 5.0.14.dev43, 5.0.14.dev47, 5.0.14.dev53, 5.0.14.dev55, 5.0.14.dev56, 5.0.14.dev57, 5.0.14.dev58, 5.0.14.dev60, 5.0.14.dev61, 5.0.14.dev62, 5.0.14.dev63, 5.0.14.dev64, 5.0.14.dev65, 5.0.14.dev66, 5.0.14.dev67, 5.0.14.dev68, 5.0.14.dev69, 5.0.14.dev70, 5.0.14, 5.0.15.dev2, 5.0.15.dev4, 5.0.15.dev6, 5.0.15.dev8, 5.0.15.dev9, 5.0.15.dev10, 5.0.15.dev13, 5.0.15.dev16, 5.0.15.dev18, 5.0.15.dev19, 5.0.15.dev27, 5.0.15.dev28, 5.0.15, 5.0.16.dev5, 5.0.16.dev20, 5.0.16.dev23, 5.0.16, 5.0.17.dev5, 5.0.17.dev16, 5.0.17, 5.0.18, 5.0.19.dev7, 5.0.19, 5.0.20, 5.0.21.dev13, 5.0.21, 5.0.22, 5.0.23.dev23, 5.0.23, 5.0.24, 5.0.25, 5.0.26, 5.0.27.dev16, 5.0.27, 5.0.28.dev16, 5.0.28, 5.0.29.dev41, 5.0.29.dev79, 5.1.0, 5.1.1, 5.1.2.dev43, 5.1.2.dev69, 5.1.2, 5.1.3, 5.1.4, 5.1.5, 5.1.6, 5.1.8, 5.1.9, 5.1.10.dev2, 5.1.10, 5.1.11, 5.1.12.dev52, 5.1.12, 5.1.13, 5.1.14, 5.1.15, 5.1.16, 5.1.17, 5.1.18, 5.1.19, 5.1.20.dev59, 5.1.20, 5.1.21, 5.1.22.dev74, 5.1.22, 5.1.23.dev86)
+ERROR: No matching distribution found for moto==1.3.14.dev464; extra == "tests"
++ python -m pip install 'numpy<=1.20'
+Requirement already satisfied: numpy<=1.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (1.20.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'pytest<8'
+Requirement already satisfied: pytest<8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (7.4.4)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/basic_env.py tests/conftest.py tests/dir_helpers.py tests/func/metrics/test_diff.py tests/func/params/test_diff.py tests/func/plots/__init__.py tests/func/plots/test_diff.py tests/func/plots/test_plots.py tests/func/remote/test_gdrive.py tests/func/remote/test_index.py tests/func/test_add.py tests/func/test_analytics.py tests/func/test_api.py tests/func/test_checkout.py tests/func/test_cli.py tests/func/test_commit.py tests/func/test_config.py tests/func/test_data_cloud.py tests/func/test_diff.py tests/func/test_external_repo.py tests/func/test_gc.py tests/func/test_get.py tests/func/test_ignore.py tests/func/test_import.py tests/func/test_import_url.py tests/func/test_init.py tests/func/test_install.py tests/func/test_lockfile.py tests/func/test_ls.py tests/func/test_move.py tests/func/test_pipeline.py tests/func/test_remote.py tests/func/test_repo.py tests/func/test_repro.py tests/func/test_repro_multistage.py tests/func/test_run_multistage.py tests/func/test_run_single_stage.py tests/func/test_scm.py tests/func/test_stage.py tests/func/test_status.py tests/func/test_tree.py tests/func/test_update.py tests/func/test_utils.py tests/remotes.py tests/unit/command/test_diff.py tests/unit/command/test_metrics.py tests/unit/command/test_params.py tests/unit/command/test_plots.py tests/unit/command/test_repro.py tests/unit/command/test_run.py tests/unit/command/test_update.py tests/unit/remote/ssh/test_connection.py tests/unit/remote/ssh/test_ssh.py tests/unit/remote/test_azure.py tests/unit/remote/test_base.py tests/unit/remote/test_gdrive.py tests/unit/remote/test_gs.py tests/unit/remote/test_http.py tests/unit/remote/test_oss.py tests/unit/remote/test_remote.py tests/unit/remote/test_remote_dir.py tests/unit/remote/test_s3.py tests/unit/repo/plots/__init__.py tests/unit/repo/plots/test_data.py tests/unit/repo/plots/test_diff.py tests/unit/repo/test_repo_tree.py tests/unit/repo/test_tree.py tests/unit/scm/test_git.py tests/unit/stage/test_run.py tests/unit/stage/test_stage.py tests/unit/test_rwlock.py tests/unit/test_updater.py tests/unit/utils/test_fs.py tests/unit/utils/test_http.py tests/utils/__init__.py tests/utils/httpd.py
+ERROR: file or directory not found: tests/func/plots/__init__.py
+
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-7.4.4, pluggy-1.5.0
+rootdir: /testbed
+plugins: cov-5.0.0, xdist-3.6.1, flaky-3.8.1, mock-1.11.2, timeout-2.3.1
+collected 0 items
+
+============================ no tests ran in 0.00s =============================
++ : '>>>>> End Test Output'

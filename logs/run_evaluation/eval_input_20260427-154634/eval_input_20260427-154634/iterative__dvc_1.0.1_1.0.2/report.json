@@ -1,0 +1,50 @@
+{
+    "iterative__dvc_1.0.1_1.0.2": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_git_hook.py::test_out_of_repo[pre-push-CmdPrePush]"
+                ],
+                "failure": [
+                    "tests/unit/repo/test_run.py::test_file"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error",
+                    "tests/func/test_data_cloud.py::test_fetch_stats[fs2-Everything",
+                    "tests/func/test_data_cloud.py::test_push_stats[fs2-Everything",
+                    "tests/func/test_get.py::test_absolute_file_outside_git_repo",
+                    "tests/func/test_get.py::test_absolute_file_outside_repo",
+                    "tests/func/test_get.py::test_get_a_dvc_file",
+                    "tests/func/test_get.py::test_get_from_non_dvc_repo",
+                    "tests/func/test_get.py::test_get_git_dir[erepo_dir]",
+                    "tests/func/test_get.py::test_get_git_dir[git_dir]",
+                    "tests/func/test_get.py::test_get_git_file[erepo_dir]",
+                    "tests/func/test_get.py::test_get_git_file[git_dir]",
+                    "tests/func/test_get.py::test_get_url_git_only_repo",
+                    "tests/func/test_get.py::test_get_url_not_existing",
+                    "tests/func/test_get.py::test_unknown_path",
+                    "tests/unit/command/test_git_hook.py::test_out_of_repo[post-checkout-CmdPostCheckout]",
+                    "tests/unit/command/test_git_hook.py::test_out_of_repo[pre-commit-CmdPreCommit]",
+                    "tests/unit/repo/test_repo.py::test_is_dvc_internal",
+                    "tests/unit/repo/test_repo.py::test_locked",
+                    "tests/unit/repo/test_repo.py::test_skip_graph_checks"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

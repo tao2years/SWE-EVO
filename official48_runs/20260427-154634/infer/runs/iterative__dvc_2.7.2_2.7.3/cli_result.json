@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 22721,
+  "duration_api_ms": 909620,
+  "num_turns": 4,
+  "result": "The changes are complete and ready. Here's a final summary:\n\n**Modified files:**\n1. **`dvc/exceptions.py`** - Added `GitAuthError(DvcException)` class\n2. **`dvc/fs/ssh.py`** - Added `passphrase` support for SSH private keys  \n3. **`dvc/scm/git/backend/dulwich.py`** - Updated `iter_remote_refs`, `push_refspec`, and `fetch_refspecs` to raise `GitAuthError` for authentication failures",
+  "stop_reason": "end_turn",
+  "session_id": "e34f5002-98ba-4a35-9766-a1e64a8901e1",
+  "total_cost_usd": 17.634959999999996,
+  "usage": {
+    "input_tokens": 124711,
+    "cache_creation_input_tokens": 61789,
+    "cache_read_input_tokens": 12015,
+    "output_tokens": 408,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 5514637,
+      "outputTokens": 46362,
+      "cacheReadInputTokens": 536505,
+      "cacheCreationInputTokens": 62578,
+      "webSearchRequests": 0,
+      "costUSD": 17.634959999999996,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "1d003995-a55d-4ced-bf3f-115d2c43551f"
+}

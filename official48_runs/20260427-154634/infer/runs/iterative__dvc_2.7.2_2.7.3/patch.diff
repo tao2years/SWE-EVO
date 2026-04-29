@@ -1,0 +1,127 @@
+diff --git a/dvc/exceptions.py b/dvc/exceptions.py
+index 6d5db86..71be5ac 100644
+--- a/dvc/exceptions.py
++++ b/dvc/exceptions.py
+@@ -14,6 +14,10 @@ class InvalidArgumentError(ValueError, DvcException):
+     """Thrown if arguments are invalid."""
+ 
+ 
++class GitAuthError(DvcException):
++    """Thrown if authentication to git remote fails."""
++
++
+ class OutputDuplicationError(DvcException):
+     """Thrown if a file/directory is specified as an output in more than one
+     stage.
+diff --git a/dvc/fs/ssh.py b/dvc/fs/ssh.py
+index 23f15f8..8926423 100644
+--- a/dvc/fs/ssh.py
++++ b/dvc/fs/ssh.py
+@@ -67,6 +67,7 @@ class SSHFileSystem(CallbackMixin, FSSpecWrapper):
+         )
+ 
+         login_info["password"] = config.get("password")
++        login_info["passphrase"] = config.get("passphrase")
+ 
+         raw_keys = []
+         if config.get("keyfile"):
+diff --git a/dvc/scm/git/backend/dulwich.py b/dvc/scm/git/backend/dulwich.py
+index 9132720..5fa250c 100644
+--- a/dvc/scm/git/backend/dulwich.py
++++ b/dvc/scm/git/backend/dulwich.py
+@@ -356,9 +356,11 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+ 
+     def iter_remote_refs(self, url: str, base: Optional[str] = None):
+         from dulwich.client import get_transport_and_path
+-        from dulwich.errors import NotGitRepository
++        from dulwich.errors import GitProtocolError, NotGitRepository
+         from dulwich.porcelain import get_remote_repo
+ 
++        from dvc.exceptions import GitAuthError
++
+         try:
+             _remote, location = get_remote_repo(self.repo, url)
+             client, path = get_transport_and_path(location)
+@@ -374,6 +376,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 )
+             else:
+                 yield from (os.fsdecode(ref) for ref in client.get_refs(path))
++        except GitProtocolError as exc:
++            raise GitAuthError(f"Auth error while accessing '{url}'") from exc
+         except NotGitRepository as exc:
+             raise InvalidRemoteSCMRepo(url) from exc
+ 
+@@ -396,6 +400,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         dest_refs, values = self._push_dest_refs(src, dest)
+ 
+         try:
+@@ -445,8 +451,10 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                     self.repo.object_store.generate_pack_data,
+                     progress=progress,
+                 )
+-        except (NotGitRepository, SendPackError) as exc:
+-            raise SCMError("Git failed to push '{src}' to '{url}'") from exc
++        except SendPackError as exc:
++            raise GitAuthError(f"Auth error while pushing to '{url}'") from exc
++        except (NotGitRepository,) as exc:
++            raise SCMError(f"Git failed to push '{src}' to '{url}'") from exc
+ 
+     def _push_dest_refs(
+         self, src: Optional[str], dest: str
+@@ -481,6 +489,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         fetch_refs = []
+ 
+         def determine_wants(remote_refs):
+@@ -506,22 +516,26 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 f"'{url}' is not a valid Git remote or URL"
+             ) from exc
+ 
+-        with Tqdm(
+-            desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
+-        ) as pbar:
+-
+-            def progress(msg_b):
+-                msg = msg_b.decode("ascii").strip()
+-                pbar.update_msg(msg)
+-                pbar.refresh()
+-                logger.trace(msg)
+-
+-            fetch_result = client.fetch(
+-                path,
+-                self.repo,
+-                progress=progress,
+-                determine_wants=determine_wants,
+-            )
++        try:
++            with Tqdm(
++                desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
++            ) as pbar:
++
++                def progress(msg_b):
++                    msg = msg_b.decode("ascii").strip()
++                    pbar.update_msg(msg)
++                    pbar.refresh()
++                    logger.trace(msg)
++
++                fetch_result = client.fetch(
++                    path,
++                    self.repo,
++                    progress=progress,
++                    determine_wants=determine_wants,
++                )
++        except Exception as exc:
++            raise GitAuthError(f"Auth error while fetching from '{url}'") from exc
++
+         for (lh, rh, _) in fetch_refs:
+             try:
+                 if rh in self.repo.refs:

@@ -1,0 +1,13 @@
+diff --git a/modin/core/dataframe/pandas/metadata/index.py b/modin/core/dataframe/pandas/metadata/index.py
+index 0d4ec3e..f6ae4a9 100644
+--- a/modin/core/dataframe/pandas/metadata/index.py
++++ b/modin/core/dataframe/pandas/metadata/index.py
+@@ -106,7 +106,7 @@ class ModinIndex:
+         ModinIndex
+             New ModinIndex with the reference updated.
+         """
+-        if not callable(self._value) or not self._is_default_callable:
++        if not callable(self._value):
+             return self
+ 
+         new_index = self.copy(copy_lengths=True)

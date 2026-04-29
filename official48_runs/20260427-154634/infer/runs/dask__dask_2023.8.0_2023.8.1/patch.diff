@@ -1,0 +1,238 @@
+diff --git a/dask/dataframe/backends.py b/dask/dataframe/backends.py
+index 73130d4..da6be2e 100644
+--- a/dask/dataframe/backends.py
++++ b/dask/dataframe/backends.py
+@@ -224,8 +224,12 @@ def get_pyarrow_table_from_pandas(obj, **kwargs):
+ 
+ 
+ @from_pyarrow_table_dispatch.register((pd.DataFrame,))
+-def get_pandas_dataframe_from_pyarrow(_, table, **kwargs):
++def get_pandas_dataframe_from_pyarrow(_, table, types_mapper=None, **kwargs):
+     # `kwargs` must be supported by `pyarrow.Table.to_pandas`
++    import pyarrow as pa
++
++    if types_mapper is not None:
++        kwargs["types_mapper"] = types_mapper
+     return table.to_pandas(**kwargs)
+ 
+ 
+diff --git a/dask/dataframe/core.py b/dask/dataframe/core.py
+index efa3700..84161a5 100644
+--- a/dask/dataframe/core.py
++++ b/dask/dataframe/core.py
+@@ -774,6 +774,28 @@ Dask Name: {name}, {layers}"""
+ 
+         return compute_divisions(self, col=col)
+ 
++    def enforce_runtime_divisions(self):
++        """Enforce divisions based on the actual data at runtime.
++
++        This method computes the divisions from the actual data, which is
++        potentially expensive. It returns a new DataFrame with known divisions.
++
++        Returns
++        -------
++        DataFrame
++            A new DataFrame with divisions enforced based on the current data.
++
++        Examples
++        --------
++        >>> import dask
++        >>> ddf = dask.datasets.timeseries(start="2021-01-01", end="2021-01-07", freq="1H").clear_divisions()
++        >>> ddf = ddf.enforce_runtime_divisions()
++        >>> ddf.known_divisions
++        True
++        """
++        divisions = self.compute_current_divisions()
++        return type(self)(self.dask, self._name, self._meta, divisions)
++
+     def get_partition(self, n):
+         """
+         Get a dask DataFrame/Series representing the `nth` partition.
+diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py
+index b8ccd52..24ce9d1 100644
+--- a/dask/dataframe/groupby.py
++++ b/dask/dataframe/groupby.py
+@@ -3279,33 +3279,57 @@ def _shuffle_aggregate(
+         aggregate_kwargs = aggregate_kwargs or {}
+         aggregate_kwargs["sort"] = sort
+ 
+-    if sort is None and split_out > 1:
+-        idx = set(chunked._meta.columns) - set(chunked._meta.reset_index().columns)
+-        if len(idx) > 1:
+-            warnings.warn(
+-                "In the future, `sort` for groupby operations will default to `True`"
+-                " to match the behavior of pandas. However, `sort=True` does not work"
+-                " with `split_out>1` when grouping by multiple columns. To retain the"
+-                " current behavior for multiple output partitions, set `sort=False`.",
+-                FutureWarning,
+-            )
+-
+     # Perform global sort or shuffle
+     if sort and split_out > 1:
+         cols = set(chunked.columns)
+         chunked = chunked.reset_index()
+         index_cols = set(chunked.columns) - cols
++        index_cols_list = list(index_cols)
+         if len(index_cols) > 1:
+-            raise NotImplementedError(
+-                "Cannot guarantee sorted keys for `split_out>1` when "
+-                "grouping on multiple columns. "
+-                "Try using split_out=1, or grouping with sort=False."
+-            )
+-        result = chunked.set_index(
+-            list(index_cols),
+-            npartitions=shuffle_npartitions,
+-            shuffle=shuffle,
+-        ).map_partitions(aggregate, **aggregate_kwargs)
++            # For multi-column grouping, create a combined column for shuffling
++            # and set_index. The aggregate function will use level=0 to group by
++            # this combined column.
++            import uuid
++
++            combined_col = "__combined_index__" + str(uuid.uuid4())[:8]
++            # Create combined column from index columns
++            if len(index_cols_list) == 2:
++                chunked = chunked.assign(
++                    **{
++                        combined_col: chunked[index_cols_list[0]].astype(str)
++                        + "_"
++                        + chunked[index_cols_list[1]].astype(str)
++                    }
++                )
++            else:
++                chunked = chunked.assign(
++                    **{
++                        combined_col: chunked[index_cols_list[0]].astype(str)
++                    }
++                )
++                for i in range(1, len(index_cols_list)):
++                    chunked = chunked.assign(
++                        **{
++                            combined_col: chunked[combined_col]
++                            + "_"
++                            + chunked[index_cols_list[i]].astype(str)
++                        }
++                    )
++            # Update level to single level for the combined column
++            aggregate_kwargs = aggregate_kwargs.copy()
++            if "level" in aggregate_kwargs:
++                aggregate_kwargs["level"] = 0
++            result = chunked.set_index(
++                combined_col,
++                npartitions=shuffle_npartitions,
++                shuffle=shuffle,
++            ).map_partitions(aggregate, **aggregate_kwargs)
++        else:
++            result = chunked.set_index(
++                index_cols_list,
++                npartitions=shuffle_npartitions,
++                shuffle=shuffle,
++            ).map_partitions(aggregate, **aggregate_kwargs)
+     else:
+         result = chunked.shuffle(
+             chunked.index,
+diff --git a/dask/dataframe/io/csv.py b/dask/dataframe/io/csv.py
+index 025e2e2..0815140 100644
+--- a/dask/dataframe/io/csv.py
++++ b/dask/dataframe/io/csv.py
+@@ -941,7 +941,12 @@ def to_csv(
+     if single_file:
+         first_file = open_file(filename, mode=mode, **file_options)
+         value = to_csv_chunk(dfs[0], first_file, **kwargs)
+-        append_mode = mode.replace("w", "") + "a"
++        # For single_file mode with 'w' or 'x' mode, append subsequent partitions
++        # For 'a' mode, continue appending
++        if mode in ("w", "wt", "x", "xt"):
++            append_mode = "a"
++        else:
++            append_mode = mode
+         append_file = open_file(filename, mode=append_mode, **file_options)
+         kwargs["header"] = False
+         for d in dfs[1:]:
+diff --git a/dask/dataframe/tests/test_groupby.py b/dask/dataframe/tests/test_groupby.py
+index be494c6..3b8f376 100644
+--- a/dask/dataframe/tests/test_groupby.py
++++ b/dask/dataframe/tests/test_groupby.py
+@@ -1240,11 +1240,13 @@ def test_shuffle_aggregate_sort(shuffle_method, sort):
+     assert_eq(expect, result)
+ 
+     if sort:
+-        # Cannot use sort=True with multiple groupby keys
+-        with pytest.raises(NotImplementedError):
+-            ddf.groupby(["a", "b"], sort=sort).agg(
+-                spec, split_out=2, shuffle=shuffle_method
+-            )
++        # Test multi-column groupby with sort=True and split_out>1
++        result = ddf.groupby(["a", "b"], sort=sort).agg(
++            spec, split_out=2, shuffle=shuffle_method
++        )
++        expect = pdf.groupby(["a", "b"], sort=sort).agg(spec)
++        expect[("b", "mean")] = expect[("b", "mean")].astype(result[("b", "mean")].dtype)
++        assert_eq(expect, result)
+ 
+ 
+ def test_shuffle_aggregate_defaults(shuffle_method):
+diff --git a/dask/system.py b/dask/system.py
+index 77a17c5..00ee764 100644
+--- a/dask/system.py
++++ b/dask/system.py
+@@ -34,20 +34,35 @@ def cpu_count():
+ 
+     # Check cgroups if available
+     if sys.platform == "linux":
+-        # The directory name isn't standardized across linux distros, check both
+-        for dirname in ["cpuacct,cpu", "cpu,cpuacct"]:
+-            try:
+-                with open("/sys/fs/cgroup/%s/cpu.cfs_quota_us" % dirname) as f:
+-                    quota = int(f.read())
+-                with open("/sys/fs/cgroup/%s/cpu.cfs_period_us" % dirname) as f:
+-                    period = int(f.read())
++        # Check for cgroups v2 first (cpu.max file)
++        try:
++            with open("/sys/fs/cgroup/cpu.max") as f:
++                cpu_max = f.read().strip()
++            # cpu.max format: "<quota>/<period>" or "max" if no limit
++            if cpu_max != "max":
++                quota_str, period_str = cpu_max.split()
++                quota = int(quota_str)
++                period = int(period_str)
+                 # We round up on fractional CPUs
+                 cgroups_count = math.ceil(quota / period)
+                 if cgroups_count > 0:
+                     count = min(count, cgroups_count)
+-                break
+-            except Exception:
+-                pass
++        except Exception:
++            # Fall back to cgroups v1
++            # The directory name isn't standardized across linux distros, check both
++            for dirname in ["cpuacct,cpu", "cpu,cpuacct"]:
++                try:
++                    with open("/sys/fs/cgroup/%s/cpu.cfs_quota_us" % dirname) as f:
++                        quota = int(f.read())
++                    with open("/sys/fs/cgroup/%s/cpu.cfs_period_us" % dirname) as f:
++                        period = int(f.read())
++                    # We round up on fractional CPUs
++                    cgroups_count = math.ceil(quota / period)
++                    if cgroups_count > 0:
++                        count = min(count, cgroups_count)
++                    break
++                except Exception:
++                    pass
+ 
+     return count
+ 
+diff --git a/dask/utils.py b/dask/utils.py
+index 6b66f1b..d9746e0 100644
+--- a/dask/utils.py
++++ b/dask/utils.py
+@@ -804,7 +804,7 @@ def _derived_from(
+         method_args = get_named_args(method)
+         original_args = get_named_args(original_method)
+         not_supported = [m for m in original_args if m not in method_args]
+-    except ValueError:
++    except (ValueError, TypeError):
+         not_supported = []
+     if len(ua_args) > 0:
+         not_supported.extend(ua_args)

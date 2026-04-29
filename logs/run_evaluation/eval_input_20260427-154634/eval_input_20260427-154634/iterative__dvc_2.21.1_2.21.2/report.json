@@ -1,0 +1,38 @@
+{
+    "iterative__dvc_2.21.1_2.21.2": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/func/api/test_params.py::test_params_show_untracked_target"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/api/test_params.py::test_params_show_deps",
+                    "tests/func/api/test_params.py::test_params_show_no_params_found",
+                    "tests/func/api/test_params.py::test_params_show_repo",
+                    "tests/func/api/test_params.py::test_params_show_stage_without_params",
+                    "tests/func/api/test_params.py::test_params_show_targets"
+                ],
+                "failure": [
+                    "tests/func/api/test_params.py::test_params_show_no_args",
+                    "tests/func/api/test_params.py::test_params_show_stages",
+                    "tests/func/api/test_params.py::test_params_show_while_running_stage"
+                ]
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

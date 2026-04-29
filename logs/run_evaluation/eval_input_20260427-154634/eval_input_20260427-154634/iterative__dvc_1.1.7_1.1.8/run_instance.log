@@ -1,0 +1,1300 @@
+2026-04-28 17:48:35,926 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.1.7_1.1.8
+Building instance image sweb.eval.x86_64.iterative__dvc_1.1.7_1.1.8:latest for iterative__dvc_1.1.7_1.1.8
+2026-04-28 17:48:35,941 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.1.7_1.1.8:latest already exists, skipping build.
+2026-04-28 17:48:35,941 - INFO - Creating container for iterative__dvc_1.1.7_1.1.8...
+2026-04-28 17:48:39,059 - INFO - Container for iterative__dvc_1.1.7_1.1.8 created: 13bf72170ae68acd76813b7e9ea05a4ff1ee9ed0da1385d147a7bfa057a96ec5
+2026-04-28 17:48:39,179 - INFO - Container for iterative__dvc_1.1.7_1.1.8 started: 13bf72170ae68acd76813b7e9ea05a4ff1ee9ed0da1385d147a7bfa057a96ec5
+2026-04-28 17:48:39,180 - INFO - Intermediate patch for iterative__dvc_1.1.7_1.1.8 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.7_1.1.8/patch.diff, now applying to container...
+2026-04-28 17:48:39,516 - INFO - >>>>> Applied Patch:
+Checking patch tests/docker-compose.yml...
+Checking patch tests/func/test_ignore.py...
+Checking patch tests/func/test_run_multistage.py...
+Checking patch tests/remotes/__init__.py...
+Checking patch tests/remotes/azure.py...
+Checking patch tests/remotes/oss.py...
+Checking patch tests/unit/dependency/test_params.py...
+Checking patch tests/unit/remote/test_azure.py...
+Checking patch tests/unit/test_ignore.py...
+Checking patch dvc/dependency/param.py...
+Checking patch dvc/ignore.py...
+Applied patch tests/docker-compose.yml cleanly.
+Applied patch tests/func/test_ignore.py cleanly.
+Applied patch tests/func/test_run_multistage.py cleanly.
+Applied patch tests/remotes/__init__.py cleanly.
+Applied patch tests/remotes/azure.py cleanly.
+Applied patch tests/remotes/oss.py cleanly.
+Applied patch tests/unit/dependency/test_params.py cleanly.
+Applied patch tests/unit/remote/test_azure.py cleanly.
+Applied patch tests/unit/test_ignore.py cleanly.
+Applied patch dvc/dependency/param.py cleanly.
+Applied patch dvc/ignore.py cleanly.
+
+2026-04-28 17:48:39,576 - INFO - Git diff before:
+diff --git a/dvc/dependency/param.py b/dvc/dependency/param.py
+index 4df6087f5..74f97fd6a 100644
+--- a/dvc/dependency/param.py
++++ b/dvc/dependency/param.py
+@@ -42,11 +42,11 @@ class ParamsDependency(LocalDependency):
+ 
+     def fill_values(self, values=None):
+         """Load params values dynamically."""
+-        if not values:
++        if values is None:
+             return
+         for param in self.params:
+             value = values.get(param)
+-            if value:
++            if value is not None:
+                 self.info[param] = value
+ 
+     def save(self):
+diff --git a/dvc/ignore.py b/dvc/ignore.py
+index c9257e520..d976bddac 100644
+--- a/dvc/ignore.py
++++ b/dvc/ignore.py
+@@ -225,7 +225,8 @@ class CleanTree(BaseTree):
+             if basename == ".":
+                 # parent_dir == tree_root
+                 continue
+-            dirs, _ = self.dvcignore(os.path.abspath(dirname), [basename], [])
++            dirname = os.path.join(self.tree_root, dirname)
++            dirs, _ = self.dvcignore(dirname, [basename], [])
+             if not dirs:
+                 return False
+         return True
+diff --git a/tests/func/test_ignore.py b/tests/func/test_ignore.py
+index 03b1e9567..ee9abd943 100644
+--- a/tests/func/test_ignore.py
++++ b/tests/func/test_ignore.py
+@@ -173,3 +173,66 @@ def test_ignore_blank_line(tmp_dir, dvc):
+     tmp_dir.gen(DvcIgnore.DVCIGNORE_FILE, "foo\n\ndir/ignored")
+ 
+     assert _files_set("dir", dvc.tree) == {"dir/other"}
++
++
++# It is not possible to re-include a file if a parent directory of
++# that file is excluded.
++# Git doesn’t list excluded directories for performance reasons,
++# so any patterns on contained files have no effect,
++# no matter where they are defined.
++@pytest.mark.parametrize(
++    "data_struct, pattern_list, result_set",
++    [
++        (
++            {"dir": {"subdir": {"not_ignore": "121"}}},
++            ["subdir/*", "!not_ignore"],
++            {"dir/subdir/not_ignore"},
++        ),
++        (
++            {"dir": {"subdir": {"should_ignore": "121"}}},
++            ["subdir", "!should_ignore"],
++            set(),
++        ),
++        (
++            {"dir": {"subdir": {"should_ignore": "121"}}},
++            ["subdir/", "!should_ignore"],
++            set(),
++        ),
++    ],
++)
++def test_ignore_file_in_parent_path(
++    tmp_dir, dvc, data_struct, pattern_list, result_set
++):
++    tmp_dir.gen(data_struct)
++    tmp_dir.gen(DvcIgnore.DVCIGNORE_FILE, "\n".join(pattern_list))
++    assert _files_set("dir", dvc.tree) == result_set
++
++
++# If there is a separator at the end of the pattern then the pattern
++# will only match directories,
++# otherwise the pattern can match both files and directories.
++# For example, a pattern doc/frotz/ matches doc/frotz directory,
++# but not a/doc/frotz directory;
++def test_ignore_sub_directory(tmp_dir, dvc):
++    tmp_dir.gen(
++        {
++            "dir": {
++                "doc": {"fortz": {"b": "b"}},
++                "a": {"doc": {"fortz": {"a": "a"}}},
++            }
++        }
++    )
++    tmp_dir.gen({"dir": {DvcIgnore.DVCIGNORE_FILE: "doc/fortz"}})
++    assert _files_set("dir", dvc.tree) == {
++        "dir/a/doc/fortz/a",
++        "dir/{}".format(DvcIgnore.DVCIGNORE_FILE),
++    }
++
++
++# however frotz/ matches frotz and a/frotz that is a directory
++def test_ignore_directory(tmp_dir, dvc):
++    tmp_dir.gen({"dir": {"fortz": {}, "a": {"fortz": {}}}})
++    tmp_dir.gen({"dir": {DvcIgnore.DVCIGNORE_FILE: "fortz"}})
++    assert _files_set("dir", dvc.tree) == {
++        "dir/{}".format(DvcIgnore.DVCIGNORE_FILE),
++    }
+diff --git a/tests/func/test_run_multistage.py b/tests/func/test_run_multistage.py
+index daf9c0c2e..056052342 100644
+--- a/tests/func/test_run_multistage.py
++++ b/tests/func/test_run_multistage.py
+@@ -244,7 +244,7 @@ def test_run_params_default(tmp_dir, dvc):
+         params=["nested.nested1.nested2"],
+         cmd="cat params.yaml",
+     )
+-    isinstance(stage.deps[0], ParamsDependency)
++    assert isinstance(stage.deps[0], ParamsDependency)
+     assert stage.deps[0].params == ["nested.nested1.nested2"]
+ 
+     lockfile = stage.dvcfile._lockfile
+diff --git a/tests/remotes/__init__.py b/tests/remotes/__init__.py
+index 7ac0e58cb..877b1f74d 100644
+--- a/tests/remotes/__init__.py
++++ b/tests/remotes/__init__.py
+@@ -1,10 +1,12 @@
++import subprocess
++
+ import pytest
+ 
+-from .azure import Azure, azure  # noqa: F401
++from .azure import Azure, azure, azure_server  # noqa: F401
+ from .hdfs import HDFS, hdfs  # noqa: F401
+ from .http import HTTP, http, http_server  # noqa: F401
+ from .local import Local, local_cloud, local_remote  # noqa: F401
+-from .oss import OSS, TEST_OSS_REPO_BUCKET, oss  # noqa: F401
++from .oss import OSS, TEST_OSS_REPO_BUCKET, oss, oss_server  # noqa: F401
+ from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+ 
+ TEST_REMOTE = "upstream"
+@@ -35,6 +37,14 @@ from .ssh import (  # noqa: F401; noqa: F401
+ )
+ 
+ 
++@pytest.fixture(scope="session")
++def docker_compose():
++    try:
++        subprocess.check_output("docker-compose version", shell=True)
++    except (subprocess.CalledProcessError, OSError):
++        pytest.skip("no docker-compose installed")
++
++
+ @pytest.fixture
+ def remote(tmp_dir, dvc, request):
+     cloud = request.param
+diff --git a/tests/remotes/azure.py b/tests/remotes/azure.py
+index bad780a68..8dae521d2 100644
+--- a/tests/remotes/azure.py
++++ b/tests/remotes/azure.py
+@@ -1,36 +1,61 @@
+ # pylint:disable=abstract-method
+ 
+-import os
+ import uuid
+ 
+ import pytest
+ 
+ from dvc.path_info import CloudURLInfo
+-from dvc.utils import env2bool
+ 
+ from .base import Base
+ 
++TEST_AZURE_CONTAINER = "tests"
++TEST_AZURE_CONNECTION_STRING = (
++    "DefaultEndpointsProtocol=http;"
++    "AccountName=devstoreaccount1;"
++    "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSR"
++    "Z6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
++    "BlobEndpoint=http://127.0.0.1:{port}/devstoreaccount1;"
++)
++
+ 
+ class Azure(Base, CloudURLInfo):
+-    @staticmethod
+-    def should_test():
+-        do_test = env2bool("DVC_TEST_AZURE", undefined=None)
+-        if do_test is not None:
+-            return do_test
++    pass
++
++
++@pytest.fixture(scope="session")
++def azure_server(docker_compose, docker_services):
++    from azure.storage.blob import (  # pylint: disable=no-name-in-module
++        BlockBlobService,
++    )
++    from azure.common import (  # pylint: disable=no-name-in-module
++        AzureException,
++    )
++
++    port = docker_services.port_for("azurite", 10000)
++    connection_string = TEST_AZURE_CONNECTION_STRING.format(port=port)
++
++    def _check():
++        try:
++            BlockBlobService(
++                connection_string=connection_string,
++            ).list_containers()
++            return True
++        except AzureException:
++            return False
+ 
+-        return os.getenv("AZURE_STORAGE_CONTAINER_NAME") and os.getenv(
+-            "AZURE_STORAGE_CONNECTION_STRING"
+-        )
++    docker_services.wait_until_responsive(
++        timeout=60.0, pause=0.1, check=_check
++    )
+ 
+-    @staticmethod
+-    def get_url():
+-        container_name = os.getenv("AZURE_STORAGE_CONTAINER_NAME")
+-        assert container_name is not None
+-        return "azure://{}/{}".format(container_name, str(uuid.uuid4()))
++    return connection_string
+ 
+ 
+ @pytest.fixture
+-def azure():
+-    if not Azure.should_test():
+-        pytest.skip("no azure running")
+-    yield Azure(Azure.get_url())
++def azure(azure_server):
++    url = f"azure://{TEST_AZURE_CONTAINER}/{uuid.uuid4()}"
++    ret = Azure(url)
++    ret.config = {
++        "url": url,
++        "connection_string": azure_server,
++    }
++    return ret
+diff --git a/tests/remotes/oss.py b/tests/remotes/oss.py
+index c0749fa8a..1a163cd3c 100644
+--- a/tests/remotes/oss.py
++++ b/tests/remotes/oss.py
+@@ -1,41 +1,54 @@
+ # pylint:disable=abstract-method
+-import os
+ import uuid
+ 
+ import pytest
+ 
+ from dvc.path_info import CloudURLInfo
+-from dvc.utils import env2bool
+ 
+ from .base import Base
+ 
+ TEST_OSS_REPO_BUCKET = "dvc-test"
++TEST_OSS_ENDPOINT = "127.0.0.1:{port}"
++TEST_OSS_ACCESS_KEY_ID = "AccessKeyID"
++TEST_OSS_ACCESS_KEY_SECRET = "AccessKeySecret"
+ 
+ 
+ class OSS(Base, CloudURLInfo):
+-    @staticmethod
+-    def should_test():
+-        do_test = env2bool("DVC_TEST_OSS", undefined=None)
+-        if do_test is not None:
+-            return do_test
++    pass
+ 
+-        return (
+-            os.getenv("OSS_ENDPOINT")
+-            and os.getenv("OSS_ACCESS_KEY_ID")
+-            and os.getenv("OSS_ACCESS_KEY_SECRET")
+-        )
+ 
+-    @staticmethod
+-    def _get_storagepath():
+-        return f"{TEST_OSS_REPO_BUCKET}/{uuid.uuid4()}"
++@pytest.fixture(scope="session")
++def oss_server(docker_compose, docker_services):
++    import oss2
+ 
+-    @staticmethod
+-    def get_url():
+-        return f"oss://{OSS._get_storagepath()}"
++    port = docker_services.port_for("oss", 8880)
++    endpoint = TEST_OSS_ENDPOINT.format(port=port)
++
++    def _check():
++        try:
++            auth = oss2.Auth(
++                TEST_OSS_ACCESS_KEY_ID, TEST_OSS_ACCESS_KEY_SECRET
++            )
++            oss2.Bucket(auth, endpoint, "mybucket").get_bucket_info()
++            return True
++        except oss2.exceptions.NoSuchBucket:
++            return True
++        except oss2.exceptions.OssError:
++            return False
++
++    docker_services.wait_until_responsive(timeout=30.0, pause=5, check=_check)
++
++    return endpoint
+ 
+ 
+ @pytest.fixture
+-def oss():
+-    if not OSS.should_test():
+-        pytest.skip("no oss running")
+-    yield OSS(OSS.get_url())
++def oss(oss_server):
++    url = f"oss://{TEST_OSS_REPO_BUCKET}/{uuid.uuid4()}"
++    ret = OSS(url)
++    ret.config = {
++        "url": url,
++        "oss_key_id": TEST_OSS_ACCESS_KEY_ID,
++        "oss_key_secret": TEST_OSS_ACCESS_KEY_SECRET,
++        "oss_endpoint": oss_server,
++    }
++    return ret
+diff --git a/tests/unit/dependency/test_params.py b/tests/unit/dependency/test_params.py
+index b4edf53d6..2667feabb 100644
+--- a/tests/unit/dependency/test_params.py
++++ b/tests/unit/dependency/test_params.py
+@@ -4,6 +4,7 @@ import yaml
+ from dvc.dependency import ParamsDependency, loadd_from, loads_params
+ from dvc.dependency.param import BadParamFileError, MissingParamsError
+ from dvc.stage import Stage
++from dvc.utils.yaml import load_yaml
+ 
+ PARAMS = {
+     "foo": 1,
+@@ -11,6 +12,7 @@ PARAMS = {
+     "baz": "str",
+     "qux": None,
+ }
++DEFAULT_PARAMS_FILE = ParamsDependency.DEFAULT_PARAMS_FILE
+ 
+ 
+ def test_loads_params(dvc):
+@@ -63,7 +65,7 @@ def test_loadd_from(dvc):
+ def test_dumpd_with_info(dvc):
+     dep = ParamsDependency(Stage(dvc), None, PARAMS)
+     assert dep.dumpd() == {
+-        "path": "params.yaml",
++        "path": DEFAULT_PARAMS_FILE,
+         "params": PARAMS,
+     }
+ 
+@@ -71,7 +73,7 @@ def test_dumpd_with_info(dvc):
+ def test_dumpd_without_info(dvc):
+     dep = ParamsDependency(Stage(dvc), None, list(PARAMS.keys()))
+     assert dep.dumpd() == {
+-        "path": "params.yaml",
++        "path": DEFAULT_PARAMS_FILE,
+         "params": list(PARAMS.keys()),
+     }
+ 
+@@ -82,7 +84,7 @@ def test_read_params_nonexistent_file(dvc):
+ 
+ 
+ def test_read_params_unsupported_format(tmp_dir, dvc):
+-    tmp_dir.gen("params.yaml", b"\0\1\2\3\4\5\6\7")
++    tmp_dir.gen(DEFAULT_PARAMS_FILE, b"\0\1\2\3\4\5\6\7")
+     dep = ParamsDependency(Stage(dvc), None, ["foo"])
+     with pytest.raises(BadParamFileError):
+         dep.read_params()
+@@ -90,7 +92,8 @@ def test_read_params_unsupported_format(tmp_dir, dvc):
+ 
+ def test_read_params_nested(tmp_dir, dvc):
+     tmp_dir.gen(
+-        "params.yaml", yaml.dump({"some": {"path": {"foo": ["val1", "val2"]}}})
++        DEFAULT_PARAMS_FILE,
++        yaml.dump({"some": {"path": {"foo": ["val1", "val2"]}}}),
+     )
+     dep = ParamsDependency(Stage(dvc), None, ["some.path.foo"])
+     assert dep.read_params() == {"some.path.foo": ["val1", "val2"]}
+@@ -103,7 +106,24 @@ def test_save_info_missing_config(dvc):
+ 
+ 
+ def test_save_info_missing_param(tmp_dir, dvc):
+-    tmp_dir.gen("params.yaml", "bar: baz")
++    tmp_dir.gen(DEFAULT_PARAMS_FILE, "bar: baz")
+     dep = ParamsDependency(Stage(dvc), None, ["foo"])
+     with pytest.raises(MissingParamsError):
+         dep.save_info()
++
++
++@pytest.mark.parametrize(
++    "param_value",
++    ["", "false", "[]", "{}", "null", "no", "off"]
++    # we use pyyaml to load params.yaml, which only supports YAML 1.1
++    # so, some of the above are boolean values
++)
++def test_params_with_false_values(tmp_dir, dvc, param_value):
++    key = "param"
++    dep = ParamsDependency(Stage(dvc), DEFAULT_PARAMS_FILE, [key])
++    (tmp_dir / DEFAULT_PARAMS_FILE).write_text(f"{key}: {param_value}")
++
++    dep.fill_values(load_yaml(DEFAULT_PARAMS_FILE))
++
++    with dvc.state:
++        assert dep.status() == {}
+diff --git a/tests/unit/remote/test_azure.py b/tests/unit/remote/test_azure.py
+index 2c601c30d..200639e11 100644
+--- a/tests/unit/remote/test_azure.py
++++ b/tests/unit/remote/test_azure.py
+@@ -1,8 +1,5 @@
+-import pytest
+-
+ from dvc.path_info import PathInfo
+ from dvc.remote.azure import AzureRemoteTree
+-from tests.remotes import Azure
+ 
+ container_name = "container-name"
+ connection_string = (
+@@ -32,14 +29,11 @@ def test_init(dvc):
+     assert tree._conn_kwargs["connection_string"] == connection_string
+ 
+ 
+-def test_get_file_hash(tmp_dir):
+-    if not Azure.should_test():
+-        pytest.skip("no azurite running")
+-
++def test_get_file_hash(tmp_dir, azure):
+     tmp_dir.gen("foo", "foo")
+ 
+-    tree = AzureRemoteTree(None, {})
+-    to_info = tree.PATH_CLS(Azure.get_url())
++    tree = AzureRemoteTree(None, azure.config)
++    to_info = azure
+     tree.upload(PathInfo("foo"), to_info)
+     assert tree.exists(to_info)
+     hash_ = tree.get_file_hash(to_info)
+diff --git a/tests/unit/test_ignore.py b/tests/unit/test_ignore.py
+index 40f936d09..85c46edee 100644
+--- a/tests/unit/test_ignore.py
++++ b/tests/unit/test_ignore.py
+@@ -14,34 +14,51 @@ def mock_dvcignore(dvcignore_path, patterns):
+     return ignore_patterns
+ 
+ 
+-def test_ignore_from_file_should_filter_dirs_and_files():
+-    dvcignore_path = os.path.join(
+-        os.path.sep, "full", "path", "to", "ignore", "file", ".dvcignore"
+-    )
+-
+-    patterns = ["dir_to_ignore", "file_to_ignore"]
+-
+-    root = os.path.dirname(dvcignore_path)
+-    dirs = ["dir1", "dir2", "dir_to_ignore"]
+-    files = ["file1", "file2", "file_to_ignore"]
+-
+-    ignore = mock_dvcignore(dvcignore_path, patterns)
+-    new_dirs, new_files = ignore(root, dirs, files)
+-
+-    assert {"dir1", "dir2"} == set(new_dirs)
+-    assert {"file1", "file2"} == set(new_files)
+-
+-
+ @pytest.mark.parametrize(
+     "file_to_ignore_relpath, patterns,  expected_match",
+     [
++        # all rules from https://git-scm.com/docs/gitignore
+         ("to_ignore", ["to_ignore"], True),
++        ("dont_ignore.txt", ["dont_ignore"], False),
++        # A blank line matches no files, so it can serve as a separator for
++        # readability.
++        ("to_ignore", ["", "to_ignore"], True),
++        # A line starting with # serves as a comment.
++        # Put a backslash ("\") in front of the first hash for patterns
++        # that begin with a hash.
++        ("#to_ignore", ["\\#to_ignore"], True),
++        ("#to_ignore", ["#to_ignore"], False),
++        # Trailing spaces are ignored unless they are quoted with
++        # backslash ("\").
++        (" to_ignore", [" to_ignore"], False),
++        (" to_ignore", ["\\ to_ignore"], True),
++        # An optional prefix "!" which negates the pattern; any matching file
++        # excluded by a previous pattern will become included again.
+         ("to_ignore.txt", ["to_ignore*"], True),
+-        (
+-            os.path.join("rel", "p", "p2", "to_ignore"),
+-            ["rel/**/to_ignore"],
+-            True,
+-        ),
++        ("to_ignore.txt", ["to_ignore*", "!to_ignore.txt"], False),
++        ("to_ignore.txt", ["!to_ignore.txt", "to_ignore*"], True),
++        # It is not possible to re-include a file if a parent directory of
++        # that file is excluded.
++        # Git doesn’t list excluded directories for performance reasons,
++        # so any patterns on contained files have no effect,
++        # no matter where they are defined.
++        # see (`tests/func/test_ignore.py::test_ignore_parent_path`)
++        # Put a backslash ("\") in front of the first "!"
++        # for patterns that begin with a literal "!",
++        # for example, "\!important!.txt".
++        ("!to_ignore.txt", ["\\!to_ignore.txt"], True),
++        # The slash / is used as the directory separator.
++        # Separators may occur at the beginning, middle or end of the
++        # .gitignore search pattern.
++        # If there is a separator at the beginning or middle (or both)
++        # of the pattern, then the pattern is relative to the directory
++        # level of the particular .gitignore file itself.
++        # Otherwise the pattern may also match at any level below
++        # the .gitignore level.
++        ("file", ["/file"], True),
++        (os.path.join("data", "file"), ["/file"], False),
++        (os.path.join("data", "file"), ["data/file"], True),
++        (os.path.join("other", "data", "file"), ["data/file"], False),
+         (
+             os.path.join(
+                 os.path.sep,
+@@ -55,20 +72,96 @@ def test_ignore_from_file_should_filter_dirs_and_files():
+             ["to_ignore"],
+             True,
+         ),
++        # If there is a separator at the end of the pattern then the pattern
++        # will only match directories,
++        # otherwise the pattern can match both files and directories.
++        # For example, a pattern doc/frotz/ matches doc/frotz directory,
++        # but not a/doc/frotz directory;
++        # see (`tests/func/test_ignore.py::test_ignore_sub_directory`)
++        # however frotz/ matches frotz and a/frotz that is a directory
++        # (all paths are relative from the .gitignore file).
++        # see (`tests/func/test_ignore.py::test_ignore_directory`)
++        # An asterisk "*" matches anything except a slash.
+         ("to_ignore.txt", ["/*.txt"], True),
++        (os.path.join("path", "to_ignore.txt"), ["/*.txt"], False),
++        (os.path.join("data", "file.txt"), ["data/*"], True),
++        # wait for Git
++        # (os.path.join("data", "sub", "file.txt"), ["data/*"], True),
+         (
+             os.path.join("rel", "path", "path2", "to_ignore"),
+             ["rel/*/to_ignore"],
+             False,
+         ),
+-        (os.path.join("path", "to_ignore.txt"), ["/*.txt"], False),
++        ("file.txt", ["file.*"], True),
++        # The character "?" matches any one character except "/".
++        ("file.txt", ["fi?e.t?t"], True),
++        ("fi/e.txt", ["fi?e.t?t"], False),
++        # The range notation, e.g. [a-zA-Z], can be used
++        # to match one of the characters in a range. See fnmatch(3) and
++        # the FNM_PATHNAME flag for a more detailed description.
++        ("file.txt", ["[a-zA-Z]ile.txt"], True),
++        ("2ile.txt", ["[a-zA-Z]ile.txt"], False),
++        # Two consecutive asterisks ("**") in patterns matched against
++        # full pathname may have special meaning:
++        # A leading "**" followed by a slash means match in all directories.
++        # For example, "**/foo" matches file or directory "foo" anywhere, the
++        # same as pattern "foo".
++        # "**/foo/bar" matches file or directory "bar" anywhere that is
++        # directly under directory "foo".
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["**/to_ignore"], True,),
++        (
++            os.path.join("rel", "p", "p2", "to_ignore"),
++            ["**/p2/to_ignore"],
++            True,
++        ),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["**/to_ignore"],
++            False,
++        ),
++        # A trailing "/**" matches everything inside.
++        # For example, "abc/**" matches all files inside directory "abc",
++        # relative to the location of the .gitignore file, with infinite depth.
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["rel/**"], True,),
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["p/**"], False,),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["rel/**"],
++            True,
++        ),
++        # A slash followed by two consecutive asterisks then a slash matches
++        # zero or more directories.
++        # For example, "a/**/b" matches "a/b", "a/x/b", "a/x/y/b" and so on.
++        (os.path.join("rel", "p", "to_ignore"), ["rel/**/to_ignore"], True,),
++        (
++            os.path.join("rel", "p", "p2", "to_ignore"),
++            ["rel/**/to_ignore"],
++            True,
++        ),
+         (
+             os.path.join("rel", "path", "path2", "dont_ignore"),
+             ["rel/**/to_ignore"],
+             False,
+         ),
+-        ("dont_ignore.txt", ["dont_ignore"], False),
+-        ("dont_ignore.txt", ["dont*", "!dont_ignore.txt"], False),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["path/**/dont_ignore"],
++            False,
++        ),
++        # Other consecutive asterisks are considered regular asterisks
++        # and will match according to the previous rules.
++        ("to_ignore.txt", ["/***.txt"], True),
++        (os.path.join("path", "to_ignore.txt"), ["/****.txt"], False),
++        (os.path.join("path", "to_ignore.txt"), ["****.txt"], True),
++        (os.path.join("data", "file.txt"), ["data/***"], True),
++        # bug from PathSpec
++        # (os.path.join("data", "p", "file.txt"), ["data/***"], False),
++        (os.path.join("data", "p", "file.txt"), ["***/file.txt"], False),
++        (
++            os.path.join("rel", "path", "path2", "to_ignore"),
++            ["rel/***/to_ignore"],
++            False,
++        ),
+     ],
+ )
+ def test_match_ignore_from_file(
+@@ -99,18 +192,3 @@ def test_should_ignore_dir(omit_dir):
+     new_dirs, _ = ignore(root, dirs, files)
+ 
+     assert set(new_dirs) == {"dir1", "dir2"}
+-
+-
+-def test_ignore_order():
+-    dvcignore_path = os.path.join(os.path.sep, "ignore_order", ".dvcignore")
+-
+-    patterns = ["!ac*", "a*", "!ab*"]
+-
+-    root = os.path.dirname(dvcignore_path)
+-    dirs = ["ignore_order"]
+-    files = ["ac", "ab", "aa"]
+-
+-    ignore = mock_dvcignore(dvcignore_path, patterns)
+-    _, new_files = ignore(root, dirs, files)
+-
+-    assert {"ab"} == set(new_files)
+2026-04-28 17:48:39,577 - INFO - Eval script for iterative__dvc_1.1.7_1.1.8 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.7_1.1.8/eval.sh; copying to container...
+2026-04-28 17:51:24,326 - INFO - Test runtime: 164.70 seconds
+2026-04-28 17:51:24,326 - INFO - Test output for iterative__dvc_1.1.7_1.1.8 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.1.7_1.1.8/test_output.txt
+2026-04-28 17:51:24,383 - INFO - Git diff after:
+diff --git a/dvc/dependency/param.py b/dvc/dependency/param.py
+index 4df6087f5..74f97fd6a 100644
+--- a/dvc/dependency/param.py
++++ b/dvc/dependency/param.py
+@@ -42,11 +42,11 @@ class ParamsDependency(LocalDependency):
+ 
+     def fill_values(self, values=None):
+         """Load params values dynamically."""
+-        if not values:
++        if values is None:
+             return
+         for param in self.params:
+             value = values.get(param)
+-            if value:
++            if value is not None:
+                 self.info[param] = value
+ 
+     def save(self):
+diff --git a/dvc/ignore.py b/dvc/ignore.py
+index c9257e520..d976bddac 100644
+--- a/dvc/ignore.py
++++ b/dvc/ignore.py
+@@ -225,7 +225,8 @@ class CleanTree(BaseTree):
+             if basename == ".":
+                 # parent_dir == tree_root
+                 continue
+-            dirs, _ = self.dvcignore(os.path.abspath(dirname), [basename], [])
++            dirname = os.path.join(self.tree_root, dirname)
++            dirs, _ = self.dvcignore(dirname, [basename], [])
+             if not dirs:
+                 return False
+         return True
+diff --git a/tests/func/test_ignore.py b/tests/func/test_ignore.py
+index 03b1e9567..ee9abd943 100644
+--- a/tests/func/test_ignore.py
++++ b/tests/func/test_ignore.py
+@@ -173,3 +173,66 @@ def test_ignore_blank_line(tmp_dir, dvc):
+     tmp_dir.gen(DvcIgnore.DVCIGNORE_FILE, "foo\n\ndir/ignored")
+ 
+     assert _files_set("dir", dvc.tree) == {"dir/other"}
++
++
++# It is not possible to re-include a file if a parent directory of
++# that file is excluded.
++# Git doesn’t list excluded directories for performance reasons,
++# so any patterns on contained files have no effect,
++# no matter where they are defined.
++@pytest.mark.parametrize(
++    "data_struct, pattern_list, result_set",
++    [
++        (
++            {"dir": {"subdir": {"not_ignore": "121"}}},
++            ["subdir/*", "!not_ignore"],
++            {"dir/subdir/not_ignore"},
++        ),
++        (
++            {"dir": {"subdir": {"should_ignore": "121"}}},
++            ["subdir", "!should_ignore"],
++            set(),
++        ),
++        (
++            {"dir": {"subdir": {"should_ignore": "121"}}},
++            ["subdir/", "!should_ignore"],
++            set(),
++        ),
++    ],
++)
++def test_ignore_file_in_parent_path(
++    tmp_dir, dvc, data_struct, pattern_list, result_set
++):
++    tmp_dir.gen(data_struct)
++    tmp_dir.gen(DvcIgnore.DVCIGNORE_FILE, "\n".join(pattern_list))
++    assert _files_set("dir", dvc.tree) == result_set
++
++
++# If there is a separator at the end of the pattern then the pattern
++# will only match directories,
++# otherwise the pattern can match both files and directories.
++# For example, a pattern doc/frotz/ matches doc/frotz directory,
++# but not a/doc/frotz directory;
++def test_ignore_sub_directory(tmp_dir, dvc):
++    tmp_dir.gen(
++        {
++            "dir": {
++                "doc": {"fortz": {"b": "b"}},
++                "a": {"doc": {"fortz": {"a": "a"}}},
++            }
++        }
++    )
++    tmp_dir.gen({"dir": {DvcIgnore.DVCIGNORE_FILE: "doc/fortz"}})
++    assert _files_set("dir", dvc.tree) == {
++        "dir/a/doc/fortz/a",
++        "dir/{}".format(DvcIgnore.DVCIGNORE_FILE),
++    }
++
++
++# however frotz/ matches frotz and a/frotz that is a directory
++def test_ignore_directory(tmp_dir, dvc):
++    tmp_dir.gen({"dir": {"fortz": {}, "a": {"fortz": {}}}})
++    tmp_dir.gen({"dir": {DvcIgnore.DVCIGNORE_FILE: "fortz"}})
++    assert _files_set("dir", dvc.tree) == {
++        "dir/{}".format(DvcIgnore.DVCIGNORE_FILE),
++    }
+diff --git a/tests/func/test_run_multistage.py b/tests/func/test_run_multistage.py
+index daf9c0c2e..056052342 100644
+--- a/tests/func/test_run_multistage.py
++++ b/tests/func/test_run_multistage.py
+@@ -244,7 +244,7 @@ def test_run_params_default(tmp_dir, dvc):
+         params=["nested.nested1.nested2"],
+         cmd="cat params.yaml",
+     )
+-    isinstance(stage.deps[0], ParamsDependency)
++    assert isinstance(stage.deps[0], ParamsDependency)
+     assert stage.deps[0].params == ["nested.nested1.nested2"]
+ 
+     lockfile = stage.dvcfile._lockfile
+diff --git a/tests/remotes/__init__.py b/tests/remotes/__init__.py
+index 7ac0e58cb..877b1f74d 100644
+--- a/tests/remotes/__init__.py
++++ b/tests/remotes/__init__.py
+@@ -1,10 +1,12 @@
++import subprocess
++
+ import pytest
+ 
+-from .azure import Azure, azure  # noqa: F401
++from .azure import Azure, azure, azure_server  # noqa: F401
+ from .hdfs import HDFS, hdfs  # noqa: F401
+ from .http import HTTP, http, http_server  # noqa: F401
+ from .local import Local, local_cloud, local_remote  # noqa: F401
+-from .oss import OSS, TEST_OSS_REPO_BUCKET, oss  # noqa: F401
++from .oss import OSS, TEST_OSS_REPO_BUCKET, oss, oss_server  # noqa: F401
+ from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+ 
+ TEST_REMOTE = "upstream"
+@@ -35,6 +37,14 @@ from .ssh import (  # noqa: F401; noqa: F401
+ )
+ 
+ 
++@pytest.fixture(scope="session")
++def docker_compose():
++    try:
++        subprocess.check_output("docker-compose version", shell=True)
++    except (subprocess.CalledProcessError, OSError):
++        pytest.skip("no docker-compose installed")
++
++
+ @pytest.fixture
+ def remote(tmp_dir, dvc, request):
+     cloud = request.param
+diff --git a/tests/remotes/azure.py b/tests/remotes/azure.py
+index bad780a68..8dae521d2 100644
+--- a/tests/remotes/azure.py
++++ b/tests/remotes/azure.py
+@@ -1,36 +1,61 @@
+ # pylint:disable=abstract-method
+ 
+-import os
+ import uuid
+ 
+ import pytest
+ 
+ from dvc.path_info import CloudURLInfo
+-from dvc.utils import env2bool
+ 
+ from .base import Base
+ 
++TEST_AZURE_CONTAINER = "tests"
++TEST_AZURE_CONNECTION_STRING = (
++    "DefaultEndpointsProtocol=http;"
++    "AccountName=devstoreaccount1;"
++    "AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSR"
++    "Z6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;"
++    "BlobEndpoint=http://127.0.0.1:{port}/devstoreaccount1;"
++)
++
+ 
+ class Azure(Base, CloudURLInfo):
+-    @staticmethod
+-    def should_test():
+-        do_test = env2bool("DVC_TEST_AZURE", undefined=None)
+-        if do_test is not None:
+-            return do_test
++    pass
++
++
++@pytest.fixture(scope="session")
++def azure_server(docker_compose, docker_services):
++    from azure.storage.blob import (  # pylint: disable=no-name-in-module
++        BlockBlobService,
++    )
++    from azure.common import (  # pylint: disable=no-name-in-module
++        AzureException,
++    )
++
++    port = docker_services.port_for("azurite", 10000)
++    connection_string = TEST_AZURE_CONNECTION_STRING.format(port=port)
++
++    def _check():
++        try:
++            BlockBlobService(
++                connection_string=connection_string,
++            ).list_containers()
++            return True
++        except AzureException:
++            return False
+ 
+-        return os.getenv("AZURE_STORAGE_CONTAINER_NAME") and os.getenv(
+-            "AZURE_STORAGE_CONNECTION_STRING"
+-        )
++    docker_services.wait_until_responsive(
++        timeout=60.0, pause=0.1, check=_check
++    )
+ 
+-    @staticmethod
+-    def get_url():
+-        container_name = os.getenv("AZURE_STORAGE_CONTAINER_NAME")
+-        assert container_name is not None
+-        return "azure://{}/{}".format(container_name, str(uuid.uuid4()))
++    return connection_string
+ 
+ 
+ @pytest.fixture
+-def azure():
+-    if not Azure.should_test():
+-        pytest.skip("no azure running")
+-    yield Azure(Azure.get_url())
++def azure(azure_server):
++    url = f"azure://{TEST_AZURE_CONTAINER}/{uuid.uuid4()}"
++    ret = Azure(url)
++    ret.config = {
++        "url": url,
++        "connection_string": azure_server,
++    }
++    return ret
+diff --git a/tests/remotes/oss.py b/tests/remotes/oss.py
+index c0749fa8a..1a163cd3c 100644
+--- a/tests/remotes/oss.py
++++ b/tests/remotes/oss.py
+@@ -1,41 +1,54 @@
+ # pylint:disable=abstract-method
+-import os
+ import uuid
+ 
+ import pytest
+ 
+ from dvc.path_info import CloudURLInfo
+-from dvc.utils import env2bool
+ 
+ from .base import Base
+ 
+ TEST_OSS_REPO_BUCKET = "dvc-test"
++TEST_OSS_ENDPOINT = "127.0.0.1:{port}"
++TEST_OSS_ACCESS_KEY_ID = "AccessKeyID"
++TEST_OSS_ACCESS_KEY_SECRET = "AccessKeySecret"
+ 
+ 
+ class OSS(Base, CloudURLInfo):
+-    @staticmethod
+-    def should_test():
+-        do_test = env2bool("DVC_TEST_OSS", undefined=None)
+-        if do_test is not None:
+-            return do_test
++    pass
+ 
+-        return (
+-            os.getenv("OSS_ENDPOINT")
+-            and os.getenv("OSS_ACCESS_KEY_ID")
+-            and os.getenv("OSS_ACCESS_KEY_SECRET")
+-        )
+ 
+-    @staticmethod
+-    def _get_storagepath():
+-        return f"{TEST_OSS_REPO_BUCKET}/{uuid.uuid4()}"
++@pytest.fixture(scope="session")
++def oss_server(docker_compose, docker_services):
++    import oss2
+ 
+-    @staticmethod
+-    def get_url():
+-        return f"oss://{OSS._get_storagepath()}"
++    port = docker_services.port_for("oss", 8880)
++    endpoint = TEST_OSS_ENDPOINT.format(port=port)
++
++    def _check():
++        try:
++            auth = oss2.Auth(
++                TEST_OSS_ACCESS_KEY_ID, TEST_OSS_ACCESS_KEY_SECRET
++            )
++            oss2.Bucket(auth, endpoint, "mybucket").get_bucket_info()
++            return True
++        except oss2.exceptions.NoSuchBucket:
++            return True
++        except oss2.exceptions.OssError:
++            return False
++
++    docker_services.wait_until_responsive(timeout=30.0, pause=5, check=_check)
++
++    return endpoint
+ 
+ 
+ @pytest.fixture
+-def oss():
+-    if not OSS.should_test():
+-        pytest.skip("no oss running")
+-    yield OSS(OSS.get_url())
++def oss(oss_server):
++    url = f"oss://{TEST_OSS_REPO_BUCKET}/{uuid.uuid4()}"
++    ret = OSS(url)
++    ret.config = {
++        "url": url,
++        "oss_key_id": TEST_OSS_ACCESS_KEY_ID,
++        "oss_key_secret": TEST_OSS_ACCESS_KEY_SECRET,
++        "oss_endpoint": oss_server,
++    }
++    return ret
+diff --git a/tests/unit/dependency/test_params.py b/tests/unit/dependency/test_params.py
+index b4edf53d6..2667feabb 100644
+--- a/tests/unit/dependency/test_params.py
++++ b/tests/unit/dependency/test_params.py
+@@ -4,6 +4,7 @@ import yaml
+ from dvc.dependency import ParamsDependency, loadd_from, loads_params
+ from dvc.dependency.param import BadParamFileError, MissingParamsError
+ from dvc.stage import Stage
++from dvc.utils.yaml import load_yaml
+ 
+ PARAMS = {
+     "foo": 1,
+@@ -11,6 +12,7 @@ PARAMS = {
+     "baz": "str",
+     "qux": None,
+ }
++DEFAULT_PARAMS_FILE = ParamsDependency.DEFAULT_PARAMS_FILE
+ 
+ 
+ def test_loads_params(dvc):
+@@ -63,7 +65,7 @@ def test_loadd_from(dvc):
+ def test_dumpd_with_info(dvc):
+     dep = ParamsDependency(Stage(dvc), None, PARAMS)
+     assert dep.dumpd() == {
+-        "path": "params.yaml",
++        "path": DEFAULT_PARAMS_FILE,
+         "params": PARAMS,
+     }
+ 
+@@ -71,7 +73,7 @@ def test_dumpd_with_info(dvc):
+ def test_dumpd_without_info(dvc):
+     dep = ParamsDependency(Stage(dvc), None, list(PARAMS.keys()))
+     assert dep.dumpd() == {
+-        "path": "params.yaml",
++        "path": DEFAULT_PARAMS_FILE,
+         "params": list(PARAMS.keys()),
+     }
+ 
+@@ -82,7 +84,7 @@ def test_read_params_nonexistent_file(dvc):
+ 
+ 
+ def test_read_params_unsupported_format(tmp_dir, dvc):
+-    tmp_dir.gen("params.yaml", b"\0\1\2\3\4\5\6\7")
++    tmp_dir.gen(DEFAULT_PARAMS_FILE, b"\0\1\2\3\4\5\6\7")
+     dep = ParamsDependency(Stage(dvc), None, ["foo"])
+     with pytest.raises(BadParamFileError):
+         dep.read_params()
+@@ -90,7 +92,8 @@ def test_read_params_unsupported_format(tmp_dir, dvc):
+ 
+ def test_read_params_nested(tmp_dir, dvc):
+     tmp_dir.gen(
+-        "params.yaml", yaml.dump({"some": {"path": {"foo": ["val1", "val2"]}}})
++        DEFAULT_PARAMS_FILE,
++        yaml.dump({"some": {"path": {"foo": ["val1", "val2"]}}}),
+     )
+     dep = ParamsDependency(Stage(dvc), None, ["some.path.foo"])
+     assert dep.read_params() == {"some.path.foo": ["val1", "val2"]}
+@@ -103,7 +106,24 @@ def test_save_info_missing_config(dvc):
+ 
+ 
+ def test_save_info_missing_param(tmp_dir, dvc):
+-    tmp_dir.gen("params.yaml", "bar: baz")
++    tmp_dir.gen(DEFAULT_PARAMS_FILE, "bar: baz")
+     dep = ParamsDependency(Stage(dvc), None, ["foo"])
+     with pytest.raises(MissingParamsError):
+         dep.save_info()
++
++
++@pytest.mark.parametrize(
++    "param_value",
++    ["", "false", "[]", "{}", "null", "no", "off"]
++    # we use pyyaml to load params.yaml, which only supports YAML 1.1
++    # so, some of the above are boolean values
++)
++def test_params_with_false_values(tmp_dir, dvc, param_value):
++    key = "param"
++    dep = ParamsDependency(Stage(dvc), DEFAULT_PARAMS_FILE, [key])
++    (tmp_dir / DEFAULT_PARAMS_FILE).write_text(f"{key}: {param_value}")
++
++    dep.fill_values(load_yaml(DEFAULT_PARAMS_FILE))
++
++    with dvc.state:
++        assert dep.status() == {}
+diff --git a/tests/unit/remote/test_azure.py b/tests/unit/remote/test_azure.py
+index 2c601c30d..200639e11 100644
+--- a/tests/unit/remote/test_azure.py
++++ b/tests/unit/remote/test_azure.py
+@@ -1,8 +1,5 @@
+-import pytest
+-
+ from dvc.path_info import PathInfo
+ from dvc.remote.azure import AzureRemoteTree
+-from tests.remotes import Azure
+ 
+ container_name = "container-name"
+ connection_string = (
+@@ -32,14 +29,11 @@ def test_init(dvc):
+     assert tree._conn_kwargs["connection_string"] == connection_string
+ 
+ 
+-def test_get_file_hash(tmp_dir):
+-    if not Azure.should_test():
+-        pytest.skip("no azurite running")
+-
++def test_get_file_hash(tmp_dir, azure):
+     tmp_dir.gen("foo", "foo")
+ 
+-    tree = AzureRemoteTree(None, {})
+-    to_info = tree.PATH_CLS(Azure.get_url())
++    tree = AzureRemoteTree(None, azure.config)
++    to_info = azure
+     tree.upload(PathInfo("foo"), to_info)
+     assert tree.exists(to_info)
+     hash_ = tree.get_file_hash(to_info)
+diff --git a/tests/unit/test_ignore.py b/tests/unit/test_ignore.py
+index 40f936d09..85c46edee 100644
+--- a/tests/unit/test_ignore.py
++++ b/tests/unit/test_ignore.py
+@@ -14,34 +14,51 @@ def mock_dvcignore(dvcignore_path, patterns):
+     return ignore_patterns
+ 
+ 
+-def test_ignore_from_file_should_filter_dirs_and_files():
+-    dvcignore_path = os.path.join(
+-        os.path.sep, "full", "path", "to", "ignore", "file", ".dvcignore"
+-    )
+-
+-    patterns = ["dir_to_ignore", "file_to_ignore"]
+-
+-    root = os.path.dirname(dvcignore_path)
+-    dirs = ["dir1", "dir2", "dir_to_ignore"]
+-    files = ["file1", "file2", "file_to_ignore"]
+-
+-    ignore = mock_dvcignore(dvcignore_path, patterns)
+-    new_dirs, new_files = ignore(root, dirs, files)
+-
+-    assert {"dir1", "dir2"} == set(new_dirs)
+-    assert {"file1", "file2"} == set(new_files)
+-
+-
+ @pytest.mark.parametrize(
+     "file_to_ignore_relpath, patterns,  expected_match",
+     [
++        # all rules from https://git-scm.com/docs/gitignore
+         ("to_ignore", ["to_ignore"], True),
++        ("dont_ignore.txt", ["dont_ignore"], False),
++        # A blank line matches no files, so it can serve as a separator for
++        # readability.
++        ("to_ignore", ["", "to_ignore"], True),
++        # A line starting with # serves as a comment.
++        # Put a backslash ("\") in front of the first hash for patterns
++        # that begin with a hash.
++        ("#to_ignore", ["\\#to_ignore"], True),
++        ("#to_ignore", ["#to_ignore"], False),
++        # Trailing spaces are ignored unless they are quoted with
++        # backslash ("\").
++        (" to_ignore", [" to_ignore"], False),
++        (" to_ignore", ["\\ to_ignore"], True),
++        # An optional prefix "!" which negates the pattern; any matching file
++        # excluded by a previous pattern will become included again.
+         ("to_ignore.txt", ["to_ignore*"], True),
+-        (
+-            os.path.join("rel", "p", "p2", "to_ignore"),
+-            ["rel/**/to_ignore"],
+-            True,
+-        ),
++        ("to_ignore.txt", ["to_ignore*", "!to_ignore.txt"], False),
++        ("to_ignore.txt", ["!to_ignore.txt", "to_ignore*"], True),
++        # It is not possible to re-include a file if a parent directory of
++        # that file is excluded.
++        # Git doesn’t list excluded directories for performance reasons,
++        # so any patterns on contained files have no effect,
++        # no matter where they are defined.
++        # see (`tests/func/test_ignore.py::test_ignore_parent_path`)
++        # Put a backslash ("\") in front of the first "!"
++        # for patterns that begin with a literal "!",
++        # for example, "\!important!.txt".
++        ("!to_ignore.txt", ["\\!to_ignore.txt"], True),
++        # The slash / is used as the directory separator.
++        # Separators may occur at the beginning, middle or end of the
++        # .gitignore search pattern.
++        # If there is a separator at the beginning or middle (or both)
++        # of the pattern, then the pattern is relative to the directory
++        # level of the particular .gitignore file itself.
++        # Otherwise the pattern may also match at any level below
++        # the .gitignore level.
++        ("file", ["/file"], True),
++        (os.path.join("data", "file"), ["/file"], False),
++        (os.path.join("data", "file"), ["data/file"], True),
++        (os.path.join("other", "data", "file"), ["data/file"], False),
+         (
+             os.path.join(
+                 os.path.sep,
+@@ -55,20 +72,96 @@ def test_ignore_from_file_should_filter_dirs_and_files():
+             ["to_ignore"],
+             True,
+         ),
++        # If there is a separator at the end of the pattern then the pattern
++        # will only match directories,
++        # otherwise the pattern can match both files and directories.
++        # For example, a pattern doc/frotz/ matches doc/frotz directory,
++        # but not a/doc/frotz directory;
++        # see (`tests/func/test_ignore.py::test_ignore_sub_directory`)
++        # however frotz/ matches frotz and a/frotz that is a directory
++        # (all paths are relative from the .gitignore file).
++        # see (`tests/func/test_ignore.py::test_ignore_directory`)
++        # An asterisk "*" matches anything except a slash.
+         ("to_ignore.txt", ["/*.txt"], True),
++        (os.path.join("path", "to_ignore.txt"), ["/*.txt"], False),
++        (os.path.join("data", "file.txt"), ["data/*"], True),
++        # wait for Git
++        # (os.path.join("data", "sub", "file.txt"), ["data/*"], True),
+         (
+             os.path.join("rel", "path", "path2", "to_ignore"),
+             ["rel/*/to_ignore"],
+             False,
+         ),
+-        (os.path.join("path", "to_ignore.txt"), ["/*.txt"], False),
++        ("file.txt", ["file.*"], True),
++        # The character "?" matches any one character except "/".
++        ("file.txt", ["fi?e.t?t"], True),
++        ("fi/e.txt", ["fi?e.t?t"], False),
++        # The range notation, e.g. [a-zA-Z], can be used
++        # to match one of the characters in a range. See fnmatch(3) and
++        # the FNM_PATHNAME flag for a more detailed description.
++        ("file.txt", ["[a-zA-Z]ile.txt"], True),
++        ("2ile.txt", ["[a-zA-Z]ile.txt"], False),
++        # Two consecutive asterisks ("**") in patterns matched against
++        # full pathname may have special meaning:
++        # A leading "**" followed by a slash means match in all directories.
++        # For example, "**/foo" matches file or directory "foo" anywhere, the
++        # same as pattern "foo".
++        # "**/foo/bar" matches file or directory "bar" anywhere that is
++        # directly under directory "foo".
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["**/to_ignore"], True,),
++        (
++            os.path.join("rel", "p", "p2", "to_ignore"),
++            ["**/p2/to_ignore"],
++            True,
++        ),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["**/to_ignore"],
++            False,
++        ),
++        # A trailing "/**" matches everything inside.
++        # For example, "abc/**" matches all files inside directory "abc",
++        # relative to the location of the .gitignore file, with infinite depth.
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["rel/**"], True,),
++        (os.path.join("rel", "p", "p2", "to_ignore"), ["p/**"], False,),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["rel/**"],
++            True,
++        ),
++        # A slash followed by two consecutive asterisks then a slash matches
++        # zero or more directories.
++        # For example, "a/**/b" matches "a/b", "a/x/b", "a/x/y/b" and so on.
++        (os.path.join("rel", "p", "to_ignore"), ["rel/**/to_ignore"], True,),
++        (
++            os.path.join("rel", "p", "p2", "to_ignore"),
++            ["rel/**/to_ignore"],
++            True,
++        ),
+         (
+             os.path.join("rel", "path", "path2", "dont_ignore"),
+             ["rel/**/to_ignore"],
+             False,
+         ),
+-        ("dont_ignore.txt", ["dont_ignore"], False),
+-        ("dont_ignore.txt", ["dont*", "!dont_ignore.txt"], False),
++        (
++            os.path.join("rel", "path", "path2", "dont_ignore"),
++            ["path/**/dont_ignore"],
++            False,
++        ),
++        # Other consecutive asterisks are considered regular asterisks
++        # and will match according to the previous rules.
++        ("to_ignore.txt", ["/***.txt"], True),
++        (os.path.join("path", "to_ignore.txt"), ["/****.txt"], False),
++        (os.path.join("path", "to_ignore.txt"), ["****.txt"], True),
++        (os.path.join("data", "file.txt"), ["data/***"], True),
++        # bug from PathSpec
++        # (os.path.join("data", "p", "file.txt"), ["data/***"], False),
++        (os.path.join("data", "p", "file.txt"), ["***/file.txt"], False),
++        (
++            os.path.join("rel", "path", "path2", "to_ignore"),
++            ["rel/***/to_ignore"],
++            False,
++        ),
+     ],
+ )
+ def test_match_ignore_from_file(
+@@ -99,18 +192,3 @@ def test_should_ignore_dir(omit_dir):
+     new_dirs, _ = ignore(root, dirs, files)
+ 
+     assert set(new_dirs) == {"dir1", "dir2"}
+-
+-
+-def test_ignore_order():
+-    dvcignore_path = os.path.join(os.path.sep, "ignore_order", ".dvcignore")
+-
+-    patterns = ["!ac*", "a*", "!ab*"]
+-
+-    root = os.path.dirname(dvcignore_path)
+-    dirs = ["ignore_order"]
+-    files = ["ac", "ab", "aa"]
+-
+-    ignore = mock_dvcignore(dvcignore_path, patterns)
+-    _, new_files = ignore(root, dirs, files)
+-
+-    assert {"ab"} == set(new_files)
+2026-04-28 17:51:24,383 - INFO - Grading answer for iterative__dvc_1.1.7_1.1.8...
+2026-04-28 17:51:24,389 - INFO - report: {'iterative__dvc_1.1.7_1.1.8': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/dependency/test_params.py::test_params_with_false_values[[]]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[false]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[no]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[off]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[{}]'], 'failure': ['tests/func/test_ignore.py::test_ignore_file_in_parent_path[data_struct2-pattern_list2-result_set2]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[]', 'tests/unit/dependency/test_params.py::test_params_with_false_values[null]']}, 'PASS_TO_PASS': {'success': ['tests/func/test_ignore.py::test_ignore', 'tests/func/test_ignore.py::test_ignore_blank_line', 'tests/func/test_ignore.py::test_ignore_collecting_dvcignores[dir/subdir]', 'tests/func/test_ignore.py::test_ignore_collecting_dvcignores[dir]', 'tests/func/test_ignore.py::test_ignore_directory', 'tests/func/test_ignore.py::test_ignore_file_in_parent_path[data_struct0-pattern_list0-result_set0]', 'tests/func/test_ignore.py::test_ignore_file_in_parent_path[data_struct1-pattern_list1-result_set1]', 'tests/func/test_ignore.py::test_ignore_on_branch', 'tests/func/test_ignore.py::test_ignore_sub_directory', 'tests/func/test_ignore.py::test_ignore_subrepo', 'tests/func/test_ignore.py::test_ignore_unicode', 'tests/func/test_ignore.py::test_remove_file', 'tests/func/test_ignore.py::test_remove_ignored_file', 'tests/func/test_ignore.py::test_rename_file', 'tests/func/test_ignore.py::test_rename_ignored_file', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[#]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[$]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[,]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[.]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[/]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[:]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[;]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[@:]', 'tests/func/test_run_multistage.py::test_run_with_invalid_stage_name[\\\\]', 'tests/func/test_run_multistage.py::test_run_without_cmd[kwargs0]', 'tests/func/test_run_multistage.py::test_run_without_cmd[kwargs1]', 'tests/unit/dependency/test_params.py::test_dumpd_with_info', 'tests/unit/dependency/test_params.py::test_dumpd_without_info', 'tests/unit/dependency/test_params.py::test_loadd_from', 'tests/unit/dependency/test_params.py::test_loads_params', 'tests/unit/dependency/test_params.py::test_params_error[params0]', 'tests/unit/dependency/test_params.py::test_params_error[params1]', 'tests/unit/dependency/test_params.py::test_read_params_nested', 'tests/unit/dependency/test_params.py::test_read_params_nonexistent_file', 'tests/unit/dependency/test_params.py::test_read_params_unsupported_format', 'tests/unit/dependency/test_params.py::test_save_info_missing_config', 'tests/unit/dependency/test_params.py::test_save_info_missing_param', 'tests/unit/remote/test_azure.py::test_init', 'tests/unit/remote/test_azure.py::test_init_env_var', 'tests/unit/test_ignore.py::test_match_ignore_from_file[', 'tests/unit/test_ignore.py::test_match_ignore_from_file[!to_ignore.txt-patterns10-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[#to_ignore-patterns3-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[#to_ignore-patterns4-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[/full/path/to/ignore/file/to_ignore-patterns15-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[2ile.txt-patterns24-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[data/file-patterns12-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[data/file-patterns13-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[data/file.txt-patterns18-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[data/file.txt-patterns38-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[data/p/file.txt-patterns39-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[dont_ignore.txt-patterns1-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[fi/e.txt-patterns22-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[file-patterns11-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[file.txt-patterns20-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[file.txt-patterns21-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[file.txt-patterns23-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[other/data/file-patterns14-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[path/to_ignore.txt-patterns17-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[path/to_ignore.txt-patterns36-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[path/to_ignore.txt-patterns37-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/p2/to_ignore-patterns25-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/p2/to_ignore-patterns26-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/p2/to_ignore-patterns28-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/p2/to_ignore-patterns29-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/p2/to_ignore-patterns32-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/p/to_ignore-patterns31-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/dont_ignore-patterns27-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/dont_ignore-patterns30-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/dont_ignore-patterns33-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/dont_ignore-patterns34-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/to_ignore-patterns19-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[rel/path/path2/to_ignore-patterns40-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore-patterns0-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore-patterns2-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore.txt-patterns16-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore.txt-patterns35-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore.txt-patterns7-True]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore.txt-patterns8-False]', 'tests/unit/test_ignore.py::test_match_ignore_from_file[to_ignore.txt-patterns9-True]', 'tests/unit/test_ignore.py::test_should_ignore_dir[.dvc]', 'tests/unit/test_ignore.py::test_should_ignore_dir[.git]', 'tests/unit/test_ignore.py::test_should_ignore_dir[.hg]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.1.7_1.1.8: resolved: False
+2026-04-28 17:51:24,390 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.1.7_1.1.8.eval_input_20260427-154634...
+2026-04-28 17:51:39,553 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.1.7_1.1.8.eval_input_20260427-154634...
+2026-04-28 17:51:39,707 - INFO - Container sweb.eval.iterative__dvc_1.1.7_1.1.8.eval_input_20260427-154634 removed.
+2026-04-28 17:51:39,707 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.1.7_1.1.8:latest...
+2026-04-28 17:51:39,711 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.1.7_1.1.8:latest removed.

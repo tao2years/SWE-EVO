@@ -1,0 +1,47 @@
+{
+    "iterative__dvc_0.91.2_0.91.3": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/unit/remote/test_base.py::test_cache_exists",
+                    "tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_drive"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/test_data_cloud.py::TestDataCloud::test",
+                    "tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error",
+                    "tests/func/test_data_cloud.py::TestRecursiveSyncOperations::test",
+                    "tests/func/test_data_cloud.py::TestRemoteHTTP::test",
+                    "tests/func/test_data_cloud.py::TestRemoteLOCAL::test",
+                    "tests/func/test_data_cloud.py::TestRemoteLOCALCLI::test",
+                    "tests/func/test_data_cloud.py::TestRemoteSSHMocked::test",
+                    "tests/func/test_data_cloud.py::TestShouldWarnOnNoChecksumInLocalAndRemoteCache::test",
+                    "tests/func/test_data_cloud.py::TestWarnOnOutdatedStage::test",
+                    "tests/func/test_data_cloud.py::test_checksum_recalculation",
+                    "tests/func/test_data_cloud.py::test_pull_external_dvc_imports",
+                    "tests/func/test_data_cloud.py::test_pull_git_imports[erepo_dir]",
+                    "tests/func/test_data_cloud.py::test_verify_checksums",
+                    "tests/unit/remote/test_base.py::TestCmdError::test",
+                    "tests/unit/remote/test_base.py::TestMissingDeps::test",
+                    "tests/unit/remote/test_base.py::test_cache_exists_traverse",
+                    "tests/unit/remote/test_gdrive.py::TestRemoteGDrive::test_init"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

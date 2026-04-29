@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_3.15.0_3.15.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_3.15.0_3.15.1",
+    "model_patch": "diff --git a/dvc/output.py b/dvc/output.py\nindex 43387e7..6b85304 100644\n--- a/dvc/output.py\n+++ b/dvc/output.py\n@@ -1090,7 +1090,7 @@ class Output:\n         return len(obj) if obj else 0\n \n     def unprotect(self):\n-        if self.exists:\n+        if self.exists and not self.changed_cache():\n             self.cache.unprotect(self.fs_path)\n \n     def get_dir_cache(self, **kwargs) -> Optional[\"Tree\"]:\n"
+  }
+}

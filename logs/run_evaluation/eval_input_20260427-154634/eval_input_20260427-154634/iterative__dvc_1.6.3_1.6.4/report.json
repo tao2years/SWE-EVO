@@ -1,0 +1,40 @@
+{
+    "iterative__dvc_1.6.3_1.6.4": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_plots.py::test_plots_diff"
+                ],
+                "failure": [
+                    "tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions0-False-expected_revisions0]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions1-True-expected_revisions1]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions2-False-expected_revisions2]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions3-True-expected_revisions3]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions0-v0-expected_revisions0]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions1-None-expected_revisions1]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions2-v0-expected_revisions2]",
+                    "tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions3-None-expected_revisions3]"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_plots.py::test_plots_show",
+                    "tests/unit/command/test_plots.py::test_plots_show_vega"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

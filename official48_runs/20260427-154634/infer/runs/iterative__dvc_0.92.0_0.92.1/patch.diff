@@ -1,0 +1,188 @@
+diff --git a/dvc/command/data_sync.py b/dvc/command/data_sync.py
+index e44e8ea..3e6a3b8 100644
+--- a/dvc/command/data_sync.py
++++ b/dvc/command/data_sync.py
+@@ -26,6 +26,7 @@ class CmdDataPull(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 force=self.args.force,
+                 recursive=self.args.recursive,
+@@ -49,6 +50,7 @@ class CmdDataPush(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -68,6 +70,7 @@ class CmdDataFetch(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+                 recursive=self.args.recursive,
+             )
+@@ -128,6 +131,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    pull_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     pull_parser.add_argument(
+         "-f",
+         "--force",
+@@ -178,6 +187,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Push cache for all tags.",
+     )
++    push_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Push cache for all commits.",
++    )
+     push_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -224,6 +239,12 @@ def add_parser(subparsers, _parent_parser):
+         default=False,
+         help="Fetch cache for all tags.",
+     )
++    fetch_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Fetch cache for all commits.",
++    )
+     fetch_parser.add_argument(
+         "-d",
+         "--with-deps",
+@@ -289,6 +310,13 @@ def add_parser(subparsers, _parent_parser):
+         help="Show status of a local cache compared to a remote repository "
+         "for all tags.",
+     )
++    status_parser.add_argument(
++        "--all-commits",
++        action="store_true",
++        default=False,
++        help="Show status of a local cache compared to a remote repository "
++        "for all commits.",
++    )
+     status_parser.add_argument(
+         "-d",
+         "--with-deps",
+diff --git a/dvc/command/status.py b/dvc/command/status.py
+index 6402948..a441f71 100644
+--- a/dvc/command/status.py
++++ b/dvc/command/status.py
+@@ -47,6 +47,7 @@ class CmdDataStatus(CmdDataBase):
+                 remote=self.args.remote,
+                 all_branches=self.args.all_branches,
+                 all_tags=self.args.all_tags,
++                all_commits=self.args.all_commits,
+                 with_deps=self.args.with_deps,
+             )
+             if st:
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index fbbaab1..6398cc6 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -19,6 +19,7 @@ def _fetch(
+     show_checksums=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     """Download data items from a cloud and imported repositories
+@@ -37,6 +38,7 @@ def _fetch(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/pull.py b/dvc/repo/pull.py
+index 993d50b..a6ca9c8 100644
+--- a/dvc/repo/pull.py
++++ b/dvc/repo/pull.py
+@@ -15,6 +15,7 @@ def pull(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     force=False,
+     recursive=False,
+ ):
+@@ -24,6 +25,7 @@ def pull(
+         remote=remote,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         recursive=recursive,
+     )
+diff --git a/dvc/repo/push.py b/dvc/repo/push.py
+index 4ea1dd0..a8ef322 100644
+--- a/dvc/repo/push.py
++++ b/dvc/repo/push.py
+@@ -10,12 +10,14 @@ def push(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+     recursive=False,
+ ):
+     used = self.used_cache(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+diff --git a/dvc/repo/status.py b/dvc/repo/status.py
+index b8c3a8f..fd77e21 100644
+--- a/dvc/repo/status.py
++++ b/dvc/repo/status.py
+@@ -44,6 +44,7 @@ def _cloud_status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     """Returns a dictionary with the files that are new or deleted.
+ 
+@@ -77,6 +78,7 @@ def _cloud_status(
+         targets,
+         all_branches=all_branches,
+         all_tags=all_tags,
++        all_commits=all_commits,
+         with_deps=with_deps,
+         force=True,
+         remote=remote,
+@@ -108,6 +110,7 @@ def status(
+     all_branches=False,
+     with_deps=False,
+     all_tags=False,
++    all_commits=False,
+ ):
+     if cloud or remote:
+         return _cloud_status(
+@@ -118,6 +121,7 @@ def status(
+             with_deps=with_deps,
+             remote=remote,
+             all_tags=all_tags,
++            all_commits=all_commits,
+         )
+ 
+     ignored = list(

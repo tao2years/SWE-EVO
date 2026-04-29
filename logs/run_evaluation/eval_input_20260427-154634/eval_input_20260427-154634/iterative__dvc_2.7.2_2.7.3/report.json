@@ -1,0 +1,66 @@
+{
+    "iterative__dvc_2.7.2_2.7.3": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/func/experiments/test_remote.py::test_auth_error_list",
+                    "tests/func/experiments/test_remote.py::test_auth_error_pull",
+                    "tests/func/test_fs.py::test_fs_makedirs_on_upload_and_copy[webdav]",
+                    "tests/unit/fs/test_ssh.py::test_init"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/test_fs.py::TestLocalFileSystem::test_exists",
+                    "tests/func/test_fs.py::TestLocalFileSystem::test_isdir",
+                    "tests/func/test_fs.py::TestLocalFileSystem::test_isfile",
+                    "tests/func/test_fs.py::TestLocalFileSystem::test_open",
+                    "tests/func/test_fs.py::TestWalkInGit::test_nobranch",
+                    "tests/func/test_fs.py::TestWalkInNoSCM::test",
+                    "tests/func/test_fs.py::TestWalkInNoSCM::test_subdir",
+                    "tests/func/test_fs.py::test_cleanfs_subrepo",
+                    "tests/func/test_fs.py::test_fs_find[webdav]",
+                    "tests/func/test_fs.py::test_fs_find_with_etag[webdav]",
+                    "tests/func/test_fs.py::test_fs_getsize[http]",
+                    "tests/func/test_fs.py::test_fs_getsize[local_cloud]",
+                    "tests/func/test_fs.py::test_fs_upload_fobj[local_cloud]",
+                    "tests/func/test_fs.py::test_fs_upload_fobj[ssh]",
+                    "tests/func/test_fs.py::test_fs_upload_fobj[webhdfs]",
+                    "tests/unit/fs/test_ssh.py::test_get_kwargs_from_urls",
+                    "tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config0-True]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config1-False]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config2-False]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_host_override_from_config[config0-1.2.3.4]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_host_override_from_config[config1-not_in_ssh_config.com]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_keyfile[config0-expected_keyfile0]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_keyfile[config1-expected_keyfile1]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_keyfile[config2-expected_keyfile2]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_keyfile[config3-None]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_multi_identity_files",
+                    "tests/unit/fs/test_ssh.py::test_ssh_port[config0-1234]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_port[config1-4321]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_port[config2-22]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_port[config3-2222]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_user[config0-test1]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_user[config1-ubuntu]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_user[config2-test1]",
+                    "tests/unit/fs/test_ssh.py::test_ssh_user[config3-root]"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

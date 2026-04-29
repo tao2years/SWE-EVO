@@ -1,0 +1,588 @@
+2026-04-28 18:11:07,365 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_2.7.2_2.7.3
+Building instance image sweb.eval.x86_64.iterative__dvc_2.7.2_2.7.3:latest for iterative__dvc_2.7.2_2.7.3
+2026-04-28 18:11:07,384 - INFO - Image sweb.eval.x86_64.iterative__dvc_2.7.2_2.7.3:latest already exists, skipping build.
+2026-04-28 18:11:07,384 - INFO - Creating container for iterative__dvc_2.7.2_2.7.3...
+2026-04-28 18:11:10,960 - INFO - Container for iterative__dvc_2.7.2_2.7.3 created: 760a0c6e652956fc2187faf4080ae3806b42957241b4c3e972b1ec53824fcceb
+2026-04-28 18:11:11,080 - INFO - Container for iterative__dvc_2.7.2_2.7.3 started: 760a0c6e652956fc2187faf4080ae3806b42957241b4c3e972b1ec53824fcceb
+2026-04-28 18:11:11,080 - INFO - Intermediate patch for iterative__dvc_2.7.2_2.7.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.7.2_2.7.3/patch.diff, now applying to container...
+2026-04-28 18:11:11,421 - INFO - >>>>> Applied Patch:
+Checking patch test_requirements.txt => requirements/tests.txt...
+Checking patch tests/func/experiments/conftest.py...
+Checking patch tests/func/experiments/test_remote.py...
+Checking patch tests/func/test_fs.py...
+Checking patch tests/unit/fs/test_ssh.py...
+Checking patch dvc/exceptions.py...
+Checking patch dvc/fs/ssh.py...
+Checking patch dvc/scm/git/backend/dulwich.py...
+Applied patch test_requirements.txt => requirements/tests.txt cleanly.
+Applied patch tests/func/experiments/conftest.py cleanly.
+Applied patch tests/func/experiments/test_remote.py cleanly.
+Applied patch tests/func/test_fs.py cleanly.
+Applied patch tests/unit/fs/test_ssh.py cleanly.
+Applied patch dvc/exceptions.py cleanly.
+Applied patch dvc/fs/ssh.py cleanly.
+Applied patch dvc/scm/git/backend/dulwich.py cleanly.
+
+2026-04-28 18:11:11,474 - INFO - Git diff before:
+diff --git a/dvc/exceptions.py b/dvc/exceptions.py
+index 6d5db86f4..71be5ac8b 100644
+--- a/dvc/exceptions.py
++++ b/dvc/exceptions.py
+@@ -14,6 +14,10 @@ class InvalidArgumentError(ValueError, DvcException):
+     """Thrown if arguments are invalid."""
+ 
+ 
++class GitAuthError(DvcException):
++    """Thrown if authentication to git remote fails."""
++
++
+ class OutputDuplicationError(DvcException):
+     """Thrown if a file/directory is specified as an output in more than one
+     stage.
+diff --git a/dvc/fs/ssh.py b/dvc/fs/ssh.py
+index 23f15f888..8926423ba 100644
+--- a/dvc/fs/ssh.py
++++ b/dvc/fs/ssh.py
+@@ -67,6 +67,7 @@ class SSHFileSystem(CallbackMixin, FSSpecWrapper):
+         )
+ 
+         login_info["password"] = config.get("password")
++        login_info["passphrase"] = config.get("passphrase")
+ 
+         raw_keys = []
+         if config.get("keyfile"):
+diff --git a/dvc/scm/git/backend/dulwich.py b/dvc/scm/git/backend/dulwich.py
+index 91327206b..5fa250c53 100644
+--- a/dvc/scm/git/backend/dulwich.py
++++ b/dvc/scm/git/backend/dulwich.py
+@@ -356,9 +356,11 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+ 
+     def iter_remote_refs(self, url: str, base: Optional[str] = None):
+         from dulwich.client import get_transport_and_path
+-        from dulwich.errors import NotGitRepository
++        from dulwich.errors import GitProtocolError, NotGitRepository
+         from dulwich.porcelain import get_remote_repo
+ 
++        from dvc.exceptions import GitAuthError
++
+         try:
+             _remote, location = get_remote_repo(self.repo, url)
+             client, path = get_transport_and_path(location)
+@@ -374,6 +376,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 )
+             else:
+                 yield from (os.fsdecode(ref) for ref in client.get_refs(path))
++        except GitProtocolError as exc:
++            raise GitAuthError(f"Auth error while accessing '{url}'") from exc
+         except NotGitRepository as exc:
+             raise InvalidRemoteSCMRepo(url) from exc
+ 
+@@ -396,6 +400,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         dest_refs, values = self._push_dest_refs(src, dest)
+ 
+         try:
+@@ -445,8 +451,10 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                     self.repo.object_store.generate_pack_data,
+                     progress=progress,
+                 )
+-        except (NotGitRepository, SendPackError) as exc:
+-            raise SCMError("Git failed to push '{src}' to '{url}'") from exc
++        except SendPackError as exc:
++            raise GitAuthError(f"Auth error while pushing to '{url}'") from exc
++        except (NotGitRepository,) as exc:
++            raise SCMError(f"Git failed to push '{src}' to '{url}'") from exc
+ 
+     def _push_dest_refs(
+         self, src: Optional[str], dest: str
+@@ -481,6 +489,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         fetch_refs = []
+ 
+         def determine_wants(remote_refs):
+@@ -506,22 +516,26 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 f"'{url}' is not a valid Git remote or URL"
+             ) from exc
+ 
+-        with Tqdm(
+-            desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
+-        ) as pbar:
+-
+-            def progress(msg_b):
+-                msg = msg_b.decode("ascii").strip()
+-                pbar.update_msg(msg)
+-                pbar.refresh()
+-                logger.trace(msg)
+-
+-            fetch_result = client.fetch(
+-                path,
+-                self.repo,
+-                progress=progress,
+-                determine_wants=determine_wants,
+-            )
++        try:
++            with Tqdm(
++                desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
++            ) as pbar:
++
++                def progress(msg_b):
++                    msg = msg_b.decode("ascii").strip()
++                    pbar.update_msg(msg)
++                    pbar.refresh()
++                    logger.trace(msg)
++
++                fetch_result = client.fetch(
++                    path,
++                    self.repo,
++                    progress=progress,
++                    determine_wants=determine_wants,
++                )
++        except Exception as exc:
++            raise GitAuthError(f"Auth error while fetching from '{url}'") from exc
++
+         for (lh, rh, _) in fetch_refs:
+             try:
+                 if rh in self.repo.refs:
+diff --git a/test_requirements.txt b/test_requirements.txt
+deleted file mode 100644
+index 5e4b09ce9..000000000
+--- a/test_requirements.txt
++++ /dev/null
+@@ -1,46 +0,0 @@
+-wheel==0.37.0
+-
+-# Test requirements
+-pytest==6.2.5
+-pytest-cov==2.12.1
+-pytest-xdist==2.3.0
+-pytest-mock==3.6.1
+-pytest-lazy-fixture==0.6.3
+-pytest-timeout==1.4.2
+-pytest-docker==0.10.3
+-
+-flaky==3.7.0
+-mock==4.0.3
+-rangehttpserver==1.2.0
+-mock-ssh-server==0.9.0
+-beautifulsoup4==4.9.3
+-wget==3.2
+-filelock==3.0.12
+-wsgidav==3.1.1
+-crc32c==2.2.post0
+-xmltodict==0.12.0
+-google-compute-engine==2.8.13
+-google-cloud-storage==1.42.0
+-urllib3==1.26.6
+-dvclive>=0.2.1
+-
+-# required by collective.checkdocs
+-Pygments==2.10.0
+-collective.checkdocs==0.2
+-pydocstyle==6.1.1
+-jaraco.windows==5.6.0
+-
+-# pylint requirements
+-pylint==2.9.6
+-# we use this to suppress pytest-related false positives in our tests.
+-pylint-pytest==1.0.3
+-# we use this to suppress some messages in tests, eg: foo/bar naming,
+-# and, protected method calls in our tests
+-pylint-plugin-utils==0.6
+-
+-# type-checking
+-mypy==0.910
+-types-requests
+-types-paramiko
+-types-tabulate
+-types-toml
+diff --git a/tests/func/experiments/conftest.py b/tests/func/experiments/conftest.py
+index 455aa687c..67c025802 100644
+--- a/tests/func/experiments/conftest.py
++++ b/tests/func/experiments/conftest.py
+@@ -88,3 +88,17 @@ def checkpoint_stage(tmp_dir, scm, dvc, mocker):
+     scm.commit("init")
+     stage.iterations = DEFAULT_ITERATIONS
+     return stage
++
++
++@pytest.fixture
++def http_auth_patch(mocker):
++    from dulwich.client import HTTPUnauthorized
++
++    url = "https://0.0.0.0"
++    client = mocker.MagicMock()
++    client.get_refs.side_effect = HTTPUnauthorized("", url)
++    client.send_pack.side_effect = HTTPUnauthorized("", url)
++
++    patch = mocker.patch("dulwich.client.get_transport_and_path")
++    patch.return_value = (client, url)
++    return url
+diff --git a/tests/func/experiments/test_remote.py b/tests/func/experiments/test_remote.py
+index dffb1970c..2e8a6cae2 100644
+--- a/tests/func/experiments/test_remote.py
++++ b/tests/func/experiments/test_remote.py
+@@ -252,3 +252,37 @@ def test_push_pull_cache(
+         path = os.path.join(dvc.odb.local.cache_dir, hash_[:2], hash_[2:])
+         assert os.path.exists(path)
+         assert open(path).read() == str(x)
++
++
++def test_auth_error_list(tmp_dir, scm, dvc, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.ls(git_remote=http_auth_patch)
++
++
++def test_auth_error_pull(tmp_dir, scm, dvc, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.pull(http_auth_patch, "foo")
++
++
++def test_auth_error_push(tmp_dir, scm, dvc, exp_stage, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    results = dvc.experiments.run(exp_stage.addressing, params=["foo=2"])
++    exp = first(results)
++    ref_info = first(exp_refs_by_rev(scm, exp))
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.push(http_auth_patch, ref_info.name)
+diff --git a/tests/func/test_fs.py b/tests/func/test_fs.py
+index c8034f253..04e016fb8 100644
+--- a/tests/func/test_fs.py
++++ b/tests/func/test_fs.py
+@@ -405,7 +405,7 @@ def test_fs_makedirs_on_upload_and_copy(dvc, cloud):
+     fs = cls(**config)
+ 
+     with io.BytesIO(b"foo") as stream:
+-        fs.upload_fobj(stream, cloud / "dir" / "foo")
++        fs.upload(stream, cloud / "dir" / "foo")
+ 
+     assert fs.isdir(cloud / "dir")
+     assert fs.exists(cloud / "dir" / "foo")
+diff --git a/tests/unit/fs/test_ssh.py b/tests/unit/fs/test_ssh.py
+index da5a544e6..a7372ddd6 100644
+--- a/tests/unit/fs/test_ssh.py
++++ b/tests/unit/fs/test_ssh.py
+@@ -34,10 +34,13 @@ def test_get_kwargs_from_urls():
+ 
+ 
+ def test_init():
+-    fs = SSHFileSystem(user="test", host="12.34.56.78", port="1234")
++    fs = SSHFileSystem(
++        user="test", host="12.34.56.78", port="1234", password="xxx"
++    )
+     assert fs.fs_args["username"] == "test"
+     assert fs.fs_args["host"] == "12.34.56.78"
+     assert fs.fs_args["port"] == "1234"
++    assert fs.fs_args["password"] == fs.fs_args["passphrase"] == "xxx"
+ 
+ 
+ mock_ssh_config = """
+2026-04-28 18:11:11,474 - INFO - Eval script for iterative__dvc_2.7.2_2.7.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.7.2_2.7.3/eval.sh; copying to container...
+2026-04-28 18:15:13,048 - INFO - Test runtime: 241.52 seconds
+2026-04-28 18:15:13,049 - INFO - Test output for iterative__dvc_2.7.2_2.7.3 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.7.2_2.7.3/test_output.txt
+2026-04-28 18:15:13,109 - INFO - Git diff after:
+diff --git a/dvc/exceptions.py b/dvc/exceptions.py
+index 6d5db86f4..71be5ac8b 100644
+--- a/dvc/exceptions.py
++++ b/dvc/exceptions.py
+@@ -14,6 +14,10 @@ class InvalidArgumentError(ValueError, DvcException):
+     """Thrown if arguments are invalid."""
+ 
+ 
++class GitAuthError(DvcException):
++    """Thrown if authentication to git remote fails."""
++
++
+ class OutputDuplicationError(DvcException):
+     """Thrown if a file/directory is specified as an output in more than one
+     stage.
+diff --git a/dvc/fs/ssh.py b/dvc/fs/ssh.py
+index 23f15f888..8926423ba 100644
+--- a/dvc/fs/ssh.py
++++ b/dvc/fs/ssh.py
+@@ -67,6 +67,7 @@ class SSHFileSystem(CallbackMixin, FSSpecWrapper):
+         )
+ 
+         login_info["password"] = config.get("password")
++        login_info["passphrase"] = config.get("passphrase")
+ 
+         raw_keys = []
+         if config.get("keyfile"):
+diff --git a/dvc/scm/git/backend/dulwich.py b/dvc/scm/git/backend/dulwich.py
+index 91327206b..5fa250c53 100644
+--- a/dvc/scm/git/backend/dulwich.py
++++ b/dvc/scm/git/backend/dulwich.py
+@@ -356,9 +356,11 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+ 
+     def iter_remote_refs(self, url: str, base: Optional[str] = None):
+         from dulwich.client import get_transport_and_path
+-        from dulwich.errors import NotGitRepository
++        from dulwich.errors import GitProtocolError, NotGitRepository
+         from dulwich.porcelain import get_remote_repo
+ 
++        from dvc.exceptions import GitAuthError
++
+         try:
+             _remote, location = get_remote_repo(self.repo, url)
+             client, path = get_transport_and_path(location)
+@@ -374,6 +376,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 )
+             else:
+                 yield from (os.fsdecode(ref) for ref in client.get_refs(path))
++        except GitProtocolError as exc:
++            raise GitAuthError(f"Auth error while accessing '{url}'") from exc
+         except NotGitRepository as exc:
+             raise InvalidRemoteSCMRepo(url) from exc
+ 
+@@ -396,6 +400,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         dest_refs, values = self._push_dest_refs(src, dest)
+ 
+         try:
+@@ -445,8 +451,10 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                     self.repo.object_store.generate_pack_data,
+                     progress=progress,
+                 )
+-        except (NotGitRepository, SendPackError) as exc:
+-            raise SCMError("Git failed to push '{src}' to '{url}'") from exc
++        except SendPackError as exc:
++            raise GitAuthError(f"Auth error while pushing to '{url}'") from exc
++        except (NotGitRepository,) as exc:
++            raise SCMError(f"Git failed to push '{src}' to '{url}'") from exc
+ 
+     def _push_dest_refs(
+         self, src: Optional[str], dest: str
+@@ -481,6 +489,8 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+             get_remote_repo,
+         )
+ 
++        from dvc.exceptions import GitAuthError
++
+         fetch_refs = []
+ 
+         def determine_wants(remote_refs):
+@@ -506,22 +516,26 @@ class DulwichBackend(BaseGitBackend):  # pylint:disable=abstract-method
+                 f"'{url}' is not a valid Git remote or URL"
+             ) from exc
+ 
+-        with Tqdm(
+-            desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
+-        ) as pbar:
+-
+-            def progress(msg_b):
+-                msg = msg_b.decode("ascii").strip()
+-                pbar.update_msg(msg)
+-                pbar.refresh()
+-                logger.trace(msg)
+-
+-            fetch_result = client.fetch(
+-                path,
+-                self.repo,
+-                progress=progress,
+-                determine_wants=determine_wants,
+-            )
++        try:
++            with Tqdm(
++                desc="Fetching git refs", bar_format=self.BAR_FMT_NOTOTAL
++            ) as pbar:
++
++                def progress(msg_b):
++                    msg = msg_b.decode("ascii").strip()
++                    pbar.update_msg(msg)
++                    pbar.refresh()
++                    logger.trace(msg)
++
++                fetch_result = client.fetch(
++                    path,
++                    self.repo,
++                    progress=progress,
++                    determine_wants=determine_wants,
++                )
++        except Exception as exc:
++            raise GitAuthError(f"Auth error while fetching from '{url}'") from exc
++
+         for (lh, rh, _) in fetch_refs:
+             try:
+                 if rh in self.repo.refs:
+diff --git a/test_requirements.txt b/test_requirements.txt
+deleted file mode 100644
+index 5e4b09ce9..000000000
+--- a/test_requirements.txt
++++ /dev/null
+@@ -1,46 +0,0 @@
+-wheel==0.37.0
+-
+-# Test requirements
+-pytest==6.2.5
+-pytest-cov==2.12.1
+-pytest-xdist==2.3.0
+-pytest-mock==3.6.1
+-pytest-lazy-fixture==0.6.3
+-pytest-timeout==1.4.2
+-pytest-docker==0.10.3
+-
+-flaky==3.7.0
+-mock==4.0.3
+-rangehttpserver==1.2.0
+-mock-ssh-server==0.9.0
+-beautifulsoup4==4.9.3
+-wget==3.2
+-filelock==3.0.12
+-wsgidav==3.1.1
+-crc32c==2.2.post0
+-xmltodict==0.12.0
+-google-compute-engine==2.8.13
+-google-cloud-storage==1.42.0
+-urllib3==1.26.6
+-dvclive>=0.2.1
+-
+-# required by collective.checkdocs
+-Pygments==2.10.0
+-collective.checkdocs==0.2
+-pydocstyle==6.1.1
+-jaraco.windows==5.6.0
+-
+-# pylint requirements
+-pylint==2.9.6
+-# we use this to suppress pytest-related false positives in our tests.
+-pylint-pytest==1.0.3
+-# we use this to suppress some messages in tests, eg: foo/bar naming,
+-# and, protected method calls in our tests
+-pylint-plugin-utils==0.6
+-
+-# type-checking
+-mypy==0.910
+-types-requests
+-types-paramiko
+-types-tabulate
+-types-toml
+diff --git a/tests/func/experiments/conftest.py b/tests/func/experiments/conftest.py
+index 455aa687c..67c025802 100644
+--- a/tests/func/experiments/conftest.py
++++ b/tests/func/experiments/conftest.py
+@@ -88,3 +88,17 @@ def checkpoint_stage(tmp_dir, scm, dvc, mocker):
+     scm.commit("init")
+     stage.iterations = DEFAULT_ITERATIONS
+     return stage
++
++
++@pytest.fixture
++def http_auth_patch(mocker):
++    from dulwich.client import HTTPUnauthorized
++
++    url = "https://0.0.0.0"
++    client = mocker.MagicMock()
++    client.get_refs.side_effect = HTTPUnauthorized("", url)
++    client.send_pack.side_effect = HTTPUnauthorized("", url)
++
++    patch = mocker.patch("dulwich.client.get_transport_and_path")
++    patch.return_value = (client, url)
++    return url
+diff --git a/tests/func/experiments/test_remote.py b/tests/func/experiments/test_remote.py
+index dffb1970c..2e8a6cae2 100644
+--- a/tests/func/experiments/test_remote.py
++++ b/tests/func/experiments/test_remote.py
+@@ -252,3 +252,37 @@ def test_push_pull_cache(
+         path = os.path.join(dvc.odb.local.cache_dir, hash_[:2], hash_[2:])
+         assert os.path.exists(path)
+         assert open(path).read() == str(x)
++
++
++def test_auth_error_list(tmp_dir, scm, dvc, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.ls(git_remote=http_auth_patch)
++
++
++def test_auth_error_pull(tmp_dir, scm, dvc, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.pull(http_auth_patch, "foo")
++
++
++def test_auth_error_push(tmp_dir, scm, dvc, exp_stage, http_auth_patch):
++    from dvc.scm.base import GitAuthError
++
++    results = dvc.experiments.run(exp_stage.addressing, params=["foo=2"])
++    exp = first(results)
++    ref_info = first(exp_refs_by_rev(scm, exp))
++
++    with pytest.raises(
++        GitAuthError,
++        match=f"HTTP Git authentication is not supported: '{http_auth_patch}'",
++    ):
++        dvc.experiments.push(http_auth_patch, ref_info.name)
+diff --git a/tests/func/test_fs.py b/tests/func/test_fs.py
+index c8034f253..04e016fb8 100644
+--- a/tests/func/test_fs.py
++++ b/tests/func/test_fs.py
+@@ -405,7 +405,7 @@ def test_fs_makedirs_on_upload_and_copy(dvc, cloud):
+     fs = cls(**config)
+ 
+     with io.BytesIO(b"foo") as stream:
+-        fs.upload_fobj(stream, cloud / "dir" / "foo")
++        fs.upload(stream, cloud / "dir" / "foo")
+ 
+     assert fs.isdir(cloud / "dir")
+     assert fs.exists(cloud / "dir" / "foo")
+diff --git a/tests/unit/fs/test_ssh.py b/tests/unit/fs/test_ssh.py
+index da5a544e6..a7372ddd6 100644
+--- a/tests/unit/fs/test_ssh.py
++++ b/tests/unit/fs/test_ssh.py
+@@ -34,10 +34,13 @@ def test_get_kwargs_from_urls():
+ 
+ 
+ def test_init():
+-    fs = SSHFileSystem(user="test", host="12.34.56.78", port="1234")
++    fs = SSHFileSystem(
++        user="test", host="12.34.56.78", port="1234", password="xxx"
++    )
+     assert fs.fs_args["username"] == "test"
+     assert fs.fs_args["host"] == "12.34.56.78"
+     assert fs.fs_args["port"] == "1234"
++    assert fs.fs_args["password"] == fs.fs_args["passphrase"] == "xxx"
+ 
+ 
+ mock_ssh_config = """
+2026-04-28 18:15:13,109 - INFO - Grading answer for iterative__dvc_2.7.2_2.7.3...
+2026-04-28 18:15:13,116 - INFO - report: {'iterative__dvc_2.7.2_2.7.3': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/func/experiments/test_remote.py::test_auth_error_list', 'tests/func/experiments/test_remote.py::test_auth_error_pull', 'tests/func/test_fs.py::test_fs_makedirs_on_upload_and_copy[webdav]', 'tests/unit/fs/test_ssh.py::test_init']}, 'PASS_TO_PASS': {'success': ['tests/func/test_fs.py::TestLocalFileSystem::test_exists', 'tests/func/test_fs.py::TestLocalFileSystem::test_isdir', 'tests/func/test_fs.py::TestLocalFileSystem::test_isfile', 'tests/func/test_fs.py::TestLocalFileSystem::test_open', 'tests/func/test_fs.py::TestWalkInGit::test_nobranch', 'tests/func/test_fs.py::TestWalkInNoSCM::test', 'tests/func/test_fs.py::TestWalkInNoSCM::test_subdir', 'tests/func/test_fs.py::test_cleanfs_subrepo', 'tests/func/test_fs.py::test_fs_find[webdav]', 'tests/func/test_fs.py::test_fs_find_with_etag[webdav]', 'tests/func/test_fs.py::test_fs_getsize[http]', 'tests/func/test_fs.py::test_fs_getsize[local_cloud]', 'tests/func/test_fs.py::test_fs_upload_fobj[local_cloud]', 'tests/func/test_fs.py::test_fs_upload_fobj[ssh]', 'tests/func/test_fs.py::test_fs_upload_fobj[webhdfs]', 'tests/unit/fs/test_ssh.py::test_get_kwargs_from_urls', 'tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config0-True]', 'tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config1-False]', 'tests/unit/fs/test_ssh.py::test_ssh_gss_auth[config2-False]', 'tests/unit/fs/test_ssh.py::test_ssh_host_override_from_config[config0-1.2.3.4]', 'tests/unit/fs/test_ssh.py::test_ssh_host_override_from_config[config1-not_in_ssh_config.com]', 'tests/unit/fs/test_ssh.py::test_ssh_keyfile[config0-expected_keyfile0]', 'tests/unit/fs/test_ssh.py::test_ssh_keyfile[config1-expected_keyfile1]', 'tests/unit/fs/test_ssh.py::test_ssh_keyfile[config2-expected_keyfile2]', 'tests/unit/fs/test_ssh.py::test_ssh_keyfile[config3-None]', 'tests/unit/fs/test_ssh.py::test_ssh_multi_identity_files', 'tests/unit/fs/test_ssh.py::test_ssh_port[config0-1234]', 'tests/unit/fs/test_ssh.py::test_ssh_port[config1-4321]', 'tests/unit/fs/test_ssh.py::test_ssh_port[config2-22]', 'tests/unit/fs/test_ssh.py::test_ssh_port[config3-2222]', 'tests/unit/fs/test_ssh.py::test_ssh_user[config0-test1]', 'tests/unit/fs/test_ssh.py::test_ssh_user[config1-ubuntu]', 'tests/unit/fs/test_ssh.py::test_ssh_user[config2-test1]', 'tests/unit/fs/test_ssh.py::test_ssh_user[config3-root]'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_2.7.2_2.7.3: resolved: False
+2026-04-28 18:15:13,116 - INFO - Attempting to stop container sweb.eval.iterative__dvc_2.7.2_2.7.3.eval_input_20260427-154634...
+2026-04-28 18:15:28,320 - INFO - Attempting to remove container sweb.eval.iterative__dvc_2.7.2_2.7.3.eval_input_20260427-154634...
+2026-04-28 18:15:28,529 - INFO - Container sweb.eval.iterative__dvc_2.7.2_2.7.3.eval_input_20260427-154634 removed.
+2026-04-28 18:15:28,529 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_2.7.2_2.7.3:latest...
+2026-04-28 18:15:28,533 - INFO - Image sweb.eval.x86_64.iterative__dvc_2.7.2_2.7.3:latest removed.

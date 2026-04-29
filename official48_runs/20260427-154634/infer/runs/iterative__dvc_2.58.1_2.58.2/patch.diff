@@ -1,0 +1,47 @@
+diff --git a/dvc/repo/fetch.py b/dvc/repo/fetch.py
+index 75acadb..d1736a8 100644
+--- a/dvc/repo/fetch.py
++++ b/dvc/repo/fetch.py
+@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING, Optional, Sequence
+ from dvc.config import NoRemoteError
+ from dvc.exceptions import DownloadError
+ from dvc.fs import Schemes
++from dvc.stage.cache import RunCacheNotSupported
+ 
+ from . import locked
+ 
+@@ -63,8 +64,8 @@ def fetch(  # noqa: C901, PLR0913
+     try:
+         if run_cache:
+             self.stage_cache.pull(remote)
+-    except DownloadError as exc:
+-        failed_count += exc.amount
++    except (DownloadError, RunCacheNotSupported):
++        pass
+ 
+     no_remote_msg: Optional[str] = None
+     result = TransferResult(set(), set())
+diff --git a/dvc/repo/reproduce.py b/dvc/repo/reproduce.py
+index fdf4999..c6bdf77 100644
+--- a/dvc/repo/reproduce.py
++++ b/dvc/repo/reproduce.py
+@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Iterator, List
+ 
+ from dvc.exceptions import DvcException, ReproductionError
+ from dvc.repo.scm_context import scm_context
++from dvc.stage.cache import RunCacheNotSupported
+ from dvc.stage.exceptions import CheckpointKilledError
+ 
+ from . import locked
+@@ -127,7 +128,10 @@ def reproduce(  # noqa: C901, PLR0912
+ 
+     if kwargs.get("pull", False):
+         logger.debug("Pulling run cache")
+-        self.stage_cache.pull(None)
++        try:
++            self.stage_cache.pull(None)
++        except RunCacheNotSupported:
++            pass
+ 
+     return _reproduce_stages(self.index.graph, list(stages), **kwargs)
+ 

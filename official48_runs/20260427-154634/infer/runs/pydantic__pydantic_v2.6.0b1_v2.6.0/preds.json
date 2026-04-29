@@ -1,0 +1,7 @@
+{
+  "pydantic__pydantic_v2.6.0b1_v2.6.0": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "pydantic__pydantic_v2.6.0b1_v2.6.0",
+    "model_patch": "diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py\nindex eee9e60..aa6b98f 100644\n--- a/pydantic/json_schema.py\n+++ b/pydantic/json_schema.py\n@@ -1128,7 +1128,7 @@ class GenerateJsonSchema:\n             # property on all choices. If so, that property will be used as the OpenAPI discriminator.\n             for alias_path in schema['discriminator']:\n                 if not isinstance(alias_path, list):\n-                    break  # this means that the discriminator is not a list of alias paths\n+                    continue  # this means that the discriminator element is not an alias path, skip it\n                 if len(alias_path) != 1:\n                     continue  # this means that the \"alias\" does not represent a single field\n                 alias = alias_path[0]\n"
+  }
+}

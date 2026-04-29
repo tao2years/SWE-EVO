@@ -1,0 +1,4550 @@
+2026-04-28 17:51:35,314 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.10.2_1.11.0
+Building instance image sweb.eval.x86_64.iterative__dvc_1.10.2_1.11.0:latest for iterative__dvc_1.10.2_1.11.0
+2026-04-28 17:51:35,329 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.10.2_1.11.0:latest already exists, skipping build.
+2026-04-28 17:51:35,329 - INFO - Creating container for iterative__dvc_1.10.2_1.11.0...
+2026-04-28 17:51:38,061 - INFO - Container for iterative__dvc_1.10.2_1.11.0 created: 5ee21c0850d144b57360855e2d0345be7ba5691a937a43ced6caa25afe06dd4c
+2026-04-28 17:51:38,175 - INFO - Container for iterative__dvc_1.10.2_1.11.0 started: 5ee21c0850d144b57360855e2d0345be7ba5691a937a43ced6caa25afe06dd4c
+2026-04-28 17:51:38,175 - INFO - Intermediate patch for iterative__dvc_1.10.2_1.11.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.10.2_1.11.0/patch.diff, now applying to container...
+2026-04-28 17:51:38,526 - INFO - >>>>> Applied Patch:
+Checking patch tests/docker-compose.yml...
+Checking patch tests/func/experiments/test_checkpoints.py...
+Checking patch tests/func/experiments/test_diff.py...
+Checking patch tests/func/experiments/test_experiments.py...
+Checking patch tests/func/experiments/test_gc.py...
+Checking patch tests/func/experiments/test_show.py...
+Checking patch tests/func/params/test_diff.py...
+Checking patch tests/func/test_add.py...
+Checking patch tests/func/test_api.py...
+Checking patch tests/func/test_checkout.py...
+Checking patch tests/func/test_dvcfile.py...
+Checking patch tests/func/test_import_url.py...
+Checking patch tests/func/test_init.py...
+Checking patch tests/func/test_repo.py...
+Checking patch tests/func/test_run_single_stage.py...
+Checking patch tests/func/test_scm.py...
+Checking patch tests/func/test_stage.py...
+Checking patch tests/func/test_stage_load.py...
+Checking patch tests/func/test_stage_resolver.py...
+Checking patch tests/func/test_stage_resolver_error_msg.py...
+Checking patch tests/remotes/__init__.py...
+Checking patch tests/unit/command/test_experiments.py...
+Checking patch tests/unit/command/test_repro.py...
+Checking patch tests/unit/remote/test_base.py...
+Checking patch tests/unit/repo/test_repo.py...
+Checking patch tests/unit/scm/test_git.py...
+Checking patch tests/unit/test_context.py...
+Checking patch tests/unit/tree/test_base.py...
+Checking patch tests/unit/utils/test_utils.py...
+Checking patch dvc/path_info.py...
+Checking patch tests/dir_helpers.py...
+Applied patch tests/docker-compose.yml cleanly.
+Applied patch tests/func/experiments/test_checkpoints.py cleanly.
+Applied patch tests/func/experiments/test_diff.py cleanly.
+Applied patch tests/func/experiments/test_experiments.py cleanly.
+Applied patch tests/func/experiments/test_gc.py cleanly.
+Applied patch tests/func/experiments/test_show.py cleanly.
+Applied patch tests/func/params/test_diff.py cleanly.
+Applied patch tests/func/test_add.py cleanly.
+Applied patch tests/func/test_api.py cleanly.
+Applied patch tests/func/test_checkout.py cleanly.
+Applied patch tests/func/test_dvcfile.py cleanly.
+Applied patch tests/func/test_import_url.py cleanly.
+Applied patch tests/func/test_init.py cleanly.
+Applied patch tests/func/test_repo.py cleanly.
+Applied patch tests/func/test_run_single_stage.py cleanly.
+Applied patch tests/func/test_scm.py cleanly.
+Applied patch tests/func/test_stage.py cleanly.
+Applied patch tests/func/test_stage_load.py cleanly.
+Applied patch tests/func/test_stage_resolver.py cleanly.
+Applied patch tests/func/test_stage_resolver_error_msg.py cleanly.
+Applied patch tests/remotes/__init__.py cleanly.
+Applied patch tests/unit/command/test_experiments.py cleanly.
+Applied patch tests/unit/command/test_repro.py cleanly.
+Applied patch tests/unit/remote/test_base.py cleanly.
+Applied patch tests/unit/repo/test_repo.py cleanly.
+Applied patch tests/unit/scm/test_git.py cleanly.
+Applied patch tests/unit/test_context.py cleanly.
+Applied patch tests/unit/tree/test_base.py cleanly.
+Applied patch tests/unit/utils/test_utils.py cleanly.
+Applied patch dvc/path_info.py cleanly.
+Applied patch tests/dir_helpers.py cleanly.
+
+2026-04-28 17:51:38,591 - INFO - Git diff before:
+diff --git a/dvc/path_info.py b/dvc/path_info.py
+index 6f6aa57d8..54e270626 100644
+--- a/dvc/path_info.py
++++ b/dvc/path_info.py
+@@ -32,11 +32,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+     def __new__(cls, *args):
+         # Construct a proper subclass depending on current os
+         if cls is PathInfo:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsPathInfo if os.name == "nt" else PosixPathInfo
+-            )
+-
+-        return cls._from_parts(args)
++            cls = WindowsPathInfo if os.name == "nt" else PosixPathInfo
++        self = object.__new__(cls)
++        self.__init__(*args)
++        return self
+ 
+     def as_posix(self):
+         f = self._flavour  # pylint: disable=no-member
+@@ -73,8 +72,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+         elif self.__class__ != other.__class__:
+             return False
+         # Use cached casefolded parts to compare paths
+-        n = len(other._cparts)
+-        return len(self._cparts) > n and self._cparts[:n] == other._cparts
++        other_parts = getattr(other, "_parts_normcase_cached", getattr(other, "_parts_normcase", other.parts))
++        self_parts = getattr(self, "_parts_normcase_cached", getattr(self, "_parts_normcase", self.parts))
++        n = len(other_parts)
++        return len(self_parts) > n and self_parts[:n] == other_parts
+ 
+     def relative_to(self, other):  # pylint: disable=arguments-differ
+         # pathlib relative_to raises exception when one path is not a direct
+@@ -89,11 +90,17 @@ class PathInfo(pathlib.PurePath, _BasePath):
+ 
+ 
+ class WindowsPathInfo(PathInfo, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class PosixPathInfo(PathInfo, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class _URLPathInfo(PosixPathInfo):
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 34e6dbf46..8da63d1be 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -78,15 +78,9 @@ class TmpDir(pathlib.Path):
+ 
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-            )
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                f"cannot instantiate {cls.__name__!r} on your system"
+-            )
+-        self._init()
++            cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     def init(self, *, scm=False, dvc=False, subdir=False):
+@@ -246,11 +240,17 @@ def _coerce_filenames(filenames):
+ 
+ 
+ class WindowsTmpDir(TmpDir, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ class PosixTmpDir(TmpDir, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ CACHE = {}
+diff --git a/tests/docker-compose.yml b/tests/docker-compose.yml
+index 3bf4e45cd..7dfab75de 100644
+--- a/tests/docker-compose.yml
++++ b/tests/docker-compose.yml
+@@ -2,7 +2,7 @@
+ version: '3.2'
+ services:
+   azurite:
+-    image: mcr.microsoft.com/azure-storage/azurite:3.3.0-preview
++    image: mcr.microsoft.com/azure-storage/azurite:3.9.0
+     ports:
+       - "10000"
+   oss:
+diff --git a/tests/func/experiments/test_checkpoints.py b/tests/func/experiments/test_checkpoints.py
+index 2aed4e07d..3c0a2594a 100644
+--- a/tests/func/experiments/test_checkpoints.py
++++ b/tests/func/experiments/test_checkpoints.py
+@@ -1,27 +1,23 @@
+-import logging
+-
+ import pytest
+ from funcy import first
+ 
+-import dvc as dvc_module
+ from dvc.exceptions import DvcException
+ from dvc.repo.experiments import Experiments, MultipleBranchError
+ 
+ 
+ def test_new_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, mocker):
+-    from dvc.env import DVC_CHECKPOINT, DVC_ROOT
+-
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    env_mock = mocker.spy(dvc_module.stage.run, "_checkpoint_env")
+-    dvc.experiments.run(checkpoint_stage.addressing, params=["foo=2"])
++    results = dvc.experiments.run(
++        checkpoint_stage.addressing, params=["foo=2"]
++    )
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    env_mock.assert_called_once()
+-    assert set(env_mock.return_value.keys()) == {DVC_CHECKPOINT, DVC_ROOT}
+-    assert (tmp_dir / "foo").read_text() == "5"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "5"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -48,32 +44,40 @@ def test_resume_checkpoint(
+     if checkpoint_resume != Experiments.LAST_CHECKPOINT:
+         checkpoint_resume = first(results)
+ 
+-    dvc.experiments.run(
++    results = dvc.experiments.run(
+         checkpoint_stage.addressing, checkpoint_resume=checkpoint_resume
+     )
++    exp = first(results)
+ 
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ def test_reset_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, caplog):
+-    dvc.experiments.run(checkpoint_stage.addressing)
++    from dvc.repo.experiments.base import CheckpointExistsError
++
++    dvc.experiments.run(checkpoint_stage.addressing, name="foo")
+     scm.repo.git.reset(hard=True)
+     scm.repo.git.clean(force=True)
+ 
+-    with caplog.at_level(logging.ERROR):
+-        results = dvc.experiments.run(checkpoint_stage.addressing)
+-        assert len(results) == 0
+-        assert "already exists" in caplog.text
++    with pytest.raises(CheckpointExistsError):
++        dvc.experiments.run(
++            checkpoint_stage.addressing, name="foo", params=["foo=2"]
++        )
+ 
+-    dvc.experiments.run(checkpoint_stage.addressing, force=True)
++    results = dvc.experiments.run(
++        checkpoint_stage.addressing, params=["foo=2"], name="foo", force=True
++    )
++    exp = first(results)
+ 
+-    assert (tmp_dir / "foo").read_text() == "5"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 1"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "5"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ def test_resume_branch(tmp_dir, scm, dvc, checkpoint_stage):
+@@ -94,23 +98,21 @@ def test_resume_branch(tmp_dir, scm, dvc, checkpoint_stage):
+     )
+     checkpoint_b = first(results)
+ 
+-    dvc.experiments.checkout(checkpoint_a)
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(checkpoint_a)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+-    dvc.experiments.checkout(checkpoint_b)
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 100"
++    tree = scm.get_tree(checkpoint_b)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 100"
+ 
+     with pytest.raises(MultipleBranchError):
+-        dvc.experiments._get_branch_containing(branch_rev)
++        dvc.experiments.get_branch_containing(branch_rev)
+ 
+-    branch_a = dvc.experiments._get_branch_containing(checkpoint_a)
+-    branch_b = dvc.experiments._get_branch_containing(checkpoint_b)
+     assert branch_rev == dvc.experiments.scm.repo.git.merge_base(
+-        branch_a, branch_b, fork_point=True
++        checkpoint_a, checkpoint_b
+     )
+diff --git a/tests/func/experiments/test_experiments.py b/tests/func/experiments/test_experiments.py
+index 732d4ea5a..032e7e82e 100644
+--- a/tests/func/experiments/test_experiments.py
++++ b/tests/func/experiments/test_experiments.py
+@@ -9,16 +9,38 @@ from dvc.utils.serialize import PythonFileCorruptedError
+ from tests.func.test_repro_multistage import COPY_SCRIPT
+ 
+ 
+-def test_new_simple(tmp_dir, scm, dvc, exp_stage, mocker):
++@pytest.mark.parametrize("name", [None, "foo"])
++def test_new_simple(tmp_dir, scm, dvc, exp_stage, mocker, name):
+     tmp_dir.gen("params.yaml", "foo: 2")
+ 
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    dvc.experiments.run(exp_stage.addressing)
++    results = dvc.experiments.run(exp_stage.addressing, name=name)
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
++    if name:
++        assert dvc.experiments.get_exact_name(exp) == name
++
++
++def test_experiment_exists(tmp_dir, scm, dvc, exp_stage, mocker):
++    from dvc.repo.experiments.base import ExperimentExistsError
++
++    dvc.experiments.run(exp_stage.addressing, name="foo", params=["foo=2"])
++
++    with pytest.raises(ExperimentExistsError):
++        dvc.experiments.run(exp_stage.addressing, name="foo", params=["foo=3"])
++
++    results = dvc.experiments.run(
++        exp_stage.addressing, name="foo", params=["foo=3"], force=True
++    )
++    exp = first(results)
++
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 3"
+ 
+ 
+ @pytest.mark.skipif(os.name == "nt", reason="Not supported for Windows.")
+@@ -34,36 +56,19 @@ def test_file_permissions(tmp_dir, scm, dvc, exp_stage, mocker):
+ 
+ 
+ def test_failed_exp(tmp_dir, scm, dvc, exp_stage, mocker, caplog):
+-    from dvc.stage.exceptions import StageCmdFailedError
++    from dvc.exceptions import ReproductionError
+ 
+     tmp_dir.gen("params.yaml", "foo: 2")
+ 
+     mocker.patch(
+-        "dvc.stage.run.cmd_run",
+-        side_effect=StageCmdFailedError(exp_stage.cmd, -1),
++        "concurrent.futures.Future.exception",
++        return_value=ReproductionError(exp_stage.relpath),
+     )
+     with caplog.at_level(logging.ERROR):
+         dvc.experiments.run(exp_stage.addressing)
+         assert "Failed to reproduce experiment" in caplog.text
+ 
+ 
+-def test_update_with_pull(tmp_dir, scm, dvc, exp_stage, mocker):
+-    expected_revs = [scm.get_rev()]
+-
+-    tmp_dir.gen("params.yaml", "foo: 2")
+-    dvc.experiments.run(exp_stage.addressing)
+-    scm.add(["dvc.yaml", "dvc.lock", "params.yaml", "metrics.yaml"])
+-    scm.commit("promote experiment")
+-    expected_revs.append(scm.get_rev())
+-
+-    tmp_dir.gen("params.yaml", "foo: 3")
+-    dvc.experiments.run(exp_stage.addressing)
+-
+-    exp_scm = dvc.experiments.scm
+-    for rev in expected_revs:
+-        assert exp_scm.has_rev(rev)
+-
+-
+ @pytest.mark.parametrize(
+     "changes, expected",
+     [
+@@ -103,16 +108,19 @@ def test_modify_params(tmp_dir, scm, dvc, mocker, changes, expected):
+     scm.commit("init")
+ 
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    dvc.experiments.run(stage.addressing, params=changes)
++    results = dvc.experiments.run(stage.addressing, params=changes)
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == expected
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == expected
+ 
+ 
+ @pytest.mark.parametrize("queue", [True, False])
+-def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
++def test_apply(tmp_dir, scm, dvc, exp_stage, queue):
++    from dvc.exceptions import InvalidArgumentError
++
+     metrics_original = (tmp_dir / "metrics.yaml").read_text().strip()
+     results = dvc.experiments.run(
+         exp_stage.addressing, params=["foo=2"], queue=queue
+@@ -124,7 +132,10 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+     )
+     exp_b = first(results)
+ 
+-    dvc.experiments.checkout(exp_a)
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.apply("foo")
++
++    dvc.experiments.apply(exp_a)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 2"
+     assert (
+         (tmp_dir / "metrics.yaml").read_text().strip() == metrics_original
+@@ -132,7 +143,7 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+         else "foo: 2"
+     )
+ 
+-    dvc.experiments.checkout(exp_b)
++    dvc.experiments.apply(exp_b)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+     assert (
+         (tmp_dir / "metrics.yaml").read_text().strip() == metrics_original
+@@ -142,6 +153,8 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+ 
+ 
+ def test_get_baseline(tmp_dir, scm, dvc, exp_stage):
++    from dvc.repo.experiments.base import EXPS_STASH
++
+     init_rev = scm.get_rev()
+     assert dvc.experiments.get_baseline(init_rev) is None
+ 
+@@ -150,21 +163,22 @@ def test_get_baseline(tmp_dir, scm, dvc, exp_stage):
+     assert dvc.experiments.get_baseline(exp_rev) == init_rev
+ 
+     dvc.experiments.run(exp_stage.addressing, params=["foo=3"], queue=True)
+-    assert dvc.experiments.get_baseline("stash@{0}") == init_rev
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{0}}") == init_rev
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("promote exp")
+     promote_rev = scm.get_rev()
++    assert dvc.experiments.get_baseline(promote_rev) is None
+ 
+     results = dvc.experiments.run(exp_stage.addressing, params=["foo=4"])
+     exp_rev = first(results)
+-    assert dvc.experiments.get_baseline(promote_rev) is None
+     assert dvc.experiments.get_baseline(exp_rev) == promote_rev
+ 
+     dvc.experiments.run(exp_stage.addressing, params=["foo=5"], queue=True)
+-    assert dvc.experiments.get_baseline("stash@{0}") == promote_rev
+-    assert dvc.experiments.get_baseline("stash@{1}") == init_rev
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{0}}") == promote_rev
++    print("stash 1")
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{1}}") == init_rev
+ 
+ 
+ def test_update_py_params(tmp_dir, scm, dvc):
+@@ -182,9 +196,11 @@ def test_update_py_params(tmp_dir, scm, dvc):
+     results = dvc.experiments.run(stage.addressing, params=["params.py:INT=2"])
+     exp_a = first(results)
+ 
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.py").read_text().strip() == "INT = 2"
+-    assert (tmp_dir / "metrics.py").read_text().strip() == "INT = 2"
++    tree = scm.get_tree(exp_a)
++    with tree.open(tmp_dir / "params.py") as fobj:
++        assert fobj.read().strip() == "INT = 2"
++    with tree.open(tmp_dir / "metrics.py") as fobj:
++        assert fobj.read().strip() == "INT = 2"
+ 
+     tmp_dir.gen(
+         "params.py",
+@@ -213,9 +229,11 @@ def test_update_py_params(tmp_dir, scm, dvc):
+         "class Klass:\n    def __init__(self):\n        self.a = 222"
+     )
+ 
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.py").read_text().strip() == result
+-    assert (tmp_dir / "metrics.py").read_text().strip() == result
++    tree = scm.get_tree(exp_a)
++    with tree.open(tmp_dir / "params.py") as fobj:
++        assert fobj.read().strip() == result
++    with tree.open(tmp_dir / "metrics.py") as fobj:
++        assert fobj.read().strip() == result
+ 
+     tmp_dir.gen("params.py", "INT = 1\n")
+     stage = dvc.run(
+@@ -231,31 +249,6 @@ def test_update_py_params(tmp_dir, scm, dvc):
+         dvc.experiments.run(stage.addressing, params=["params.py:INT=2a"])
+ 
+ 
+-def test_extend_branch(tmp_dir, scm, dvc, exp_stage):
+-    results = dvc.experiments.run(exp_stage.addressing, params=["foo=2"])
+-    exp_a = first(results)
+-    exp_branch = dvc.experiments._get_branch_containing(exp_a)
+-
+-    results = dvc.experiments.run(
+-        exp_stage.addressing,
+-        params=["foo=3"],
+-        branch=exp_branch,
+-        apply_workspace=False,
+-    )
+-    exp_b = first(results)
+-
+-    assert exp_a != exp_b
+-    assert dvc.experiments._get_branch_containing(exp_b) == exp_branch
+-
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 2"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 2"
+-
+-    dvc.experiments.checkout(exp_b)
+-    assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
+-
+-
+ def test_detached_parent(tmp_dir, scm, dvc, exp_stage, mocker):
+     detached_rev = scm.get_rev()
+ 
+@@ -270,5 +263,45 @@ def test_detached_parent(tmp_dir, scm, dvc, exp_stage, mocker):
+ 
+     exp_rev = first(results)
+     assert dvc.experiments.get_baseline(exp_rev) == detached_rev
++
++    dvc.experiments.apply(exp_rev)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
++
++
++def test_branch(tmp_dir, scm, dvc, exp_stage):
++    from dvc.exceptions import InvalidArgumentError
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch")
++
++    scm.branch("branch-exists")
++
++    results = dvc.experiments.run(
++        exp_stage.addressing, params=["foo=2"], name="foo"
++    )
++    exp_a = first(results)
++    ref_a = dvc.experiments.get_branch_containing(exp_a)
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch-exists")
++    dvc.experiments.branch("foo", "branch-name")
++    dvc.experiments.branch(exp_a, "branch-rev")
++    dvc.experiments.branch(ref_a, "branch-ref")
++
++    for name in ["branch-name", "branch-rev", "branch-ref"]:
++        assert name in scm.list_branches()
++        assert scm.resolve_rev(name) == exp_a
++
++    tmp_dir.scm_gen({"new_file": "new_file"}, commit="new baseline")
++    results = dvc.experiments.run(
++        exp_stage.addressing, params=["foo=2"], name="foo"
++    )
++    exp_b = first(results)
++    ref_b = dvc.experiments.get_branch_containing(exp_b)
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch-name")
++    dvc.experiments.branch(ref_b, "branch-ref-b")
++
++    assert "branch-ref-b" in scm.list_branches()
++    assert scm.resolve_rev("branch-ref-b") == exp_b
+diff --git a/tests/func/experiments/test_gc.py b/tests/func/experiments/test_gc.py
+index 20d1d870f..e5f9069ca 100644
+--- a/tests/func/experiments/test_gc.py
++++ b/tests/func/experiments/test_gc.py
+@@ -43,7 +43,7 @@ def test_all_commits(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+ 
+@@ -72,7 +72,7 @@ def test_all_branches(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+ 
+@@ -82,7 +82,7 @@ def test_all_branches(tmp_dir, scm, dvc, queued, expected):
+     dvc.experiments.run(stage.addressing, params=["foo=5"], queue=True)
+     exp_rev = first(results)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v3")
+ 
+@@ -108,7 +108,7 @@ def test_all_tags(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+     scm.tag("tag-v2")
+diff --git a/tests/func/experiments/test_show.py b/tests/func/experiments/test_show.py
+index 3b4ec829d..70e1fc53b 100644
+--- a/tests/func/experiments/test_show.py
++++ b/tests/func/experiments/test_show.py
+@@ -4,6 +4,7 @@ from funcy import first
+ 
+ from dvc.dvcfile import PIPELINE_FILE
+ from dvc.main import main
++from dvc.repo.experiments.base import ExpRefInfo
+ from tests.func.test_repro_multistage import COPY_SCRIPT
+ 
+ 
+@@ -67,6 +68,8 @@ def test_show_experiment(tmp_dir, scm, dvc):
+ 
+ 
+ def test_show_queued(tmp_dir, scm, dvc):
++    from dvc.repo.experiments.base import EXPS_STASH
++
+     tmp_dir.gen("copy.py", COPY_SCRIPT)
+     tmp_dir.gen("params.yaml", "foo: 1")
+     stage = dvc.run(
+@@ -80,7 +83,7 @@ def test_show_queued(tmp_dir, scm, dvc):
+     baseline_rev = scm.get_rev()
+ 
+     dvc.experiments.run(stage.addressing, params=["foo=2"], queue=True)
+-    exp_rev = dvc.experiments.scm.resolve_rev("stash@{0}")
++    exp_rev = dvc.experiments.scm.resolve_rev(f"{EXPS_STASH}@{{0}}")
+ 
+     results = dvc.experiments.show()[baseline_rev]
+     assert len(results) == 2
+@@ -95,7 +98,7 @@ def test_show_queued(tmp_dir, scm, dvc):
+     new_rev = scm.get_rev()
+ 
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+-    exp_rev = dvc.experiments.scm.resolve_rev("stash@{0}")
++    exp_rev = dvc.experiments.scm.resolve_rev(f"{EXPS_STASH}@{{0}}")
+ 
+     results = dvc.experiments.show()[new_rev]
+     assert len(results) == 2
+@@ -126,12 +129,15 @@ def test_show_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+ 
+     for i, rev in enumerate(checkpoints):
+         if i == 0:
++            name = dvc.experiments.get_exact_name(rev)
+             tree = "╓"
+         elif i == len(checkpoints) - 1:
++            name = rev[:7]
+             tree = "╨"
+         else:
++            name = rev[:7]
+             tree = "╟"
+-        assert f"{tree} {rev[:7]}" in cap.out
++        assert f"{tree} {name}" in cap.out
+ 
+ 
+ def test_show_checkpoint_branch(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+@@ -157,5 +163,8 @@ def test_show_checkpoint_branch(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+     cap = capsys.readouterr()
+ 
+     for rev in (checkpoint_a, checkpoint_b):
+-        assert f"╓ {rev[:7]}" in cap.out
++        ref = dvc.experiments.get_branch_containing(rev)
++        ref_info = ExpRefInfo.from_ref(ref)
++        name = ref_info.name
++        assert f"╓ {name}" in cap.out
+     assert f"({branch_rev[:7]})" in cap.out
+diff --git a/tests/func/params/test_diff.py b/tests/func/params/test_diff.py
+index 7d7a99640..df3e131ec 100644
+--- a/tests/func/params/test_diff.py
++++ b/tests/func/params/test_diff.py
+@@ -1,3 +1,7 @@
++from dvc.utils import relpath
++from dvc.utils.serialize import dump_yaml
++
++
+ def test_diff_no_params(tmp_dir, scm, dvc):
+     assert dvc.params.diff() == {}
+ 
+@@ -144,3 +148,45 @@ def test_no_commits(tmp_dir):
+     assert Git().no_commits
+ 
+     assert Repo.init().params.diff() == {}
++
++
++def test_vars_shows_on_params_diff(tmp_dir, scm, dvc):
++    dvc.config["feature"]["parametrization"] = True
++    params_file = tmp_dir / "test_params.yaml"
++    param_data = {"vars": {"model1": {"epoch": 15}, "model2": {"epoch": 35}}}
++    dump_yaml(params_file, param_data)
++    d = {
++        "vars": ["test_params.yaml"],
++        "stages": {
++            "build": {
++                "foreach": "${vars}",
++                "do": {"cmd": "script --epoch ${item.epoch}"},
++            }
++        },
++    }
++    dump_yaml("dvc.yaml", d)
++    assert dvc.params.diff() == {
++        "test_params.yaml": {
++            "vars.model1.epoch": {"new": 15, "old": None},
++            "vars.model2.epoch": {"new": 35, "old": None},
++        }
++    }
++    scm.add(["dvc.yaml", "test_params.yaml"])
++    scm.commit("added stages")
++
++    param_data["vars"]["model1"]["epoch"] = 20
++    dump_yaml(params_file, param_data)
++    assert dvc.params.diff() == {
++        "test_params.yaml": {
++            "vars.model1.epoch": {"new": 20, "old": 15, "diff": 5},
++        }
++    }
++
++    data_dir = tmp_dir / "data"
++    data_dir.mkdir()
++    with data_dir.chdir():
++        assert dvc.params.diff() == {
++            relpath(params_file): {
++                "vars.model1.epoch": {"new": 20, "old": 15, "diff": 5},
++            }
++        }
+diff --git a/tests/func/test_add.py b/tests/func/test_add.py
+index b2dcd38c8..216d742fc 100644
+--- a/tests/func/test_add.py
++++ b/tests/func/test_add.py
+@@ -2,6 +2,7 @@ import filecmp
+ import logging
+ import os
+ import shutil
++import textwrap
+ import time
+ 
+ import colorama
+@@ -922,3 +923,31 @@ def test_add_with_cache_link_error(tmp_dir, dvc, mocker, caplog):
+     assert (tmp_dir / ".dvc" / "cache").read_text() == {
+         "ac": {"bd18db4cc2f85cedef654fccc4a4d8": "foo"}
+     }
++
++
++def test_add_preserve_meta(tmp_dir, dvc):
++    text = textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        outs:
++        - path: foo # out comment
++          desc: out desc
++        meta: some metadata
++    """
++    )
++    tmp_dir.gen("foo.dvc", text)
++
++    tmp_dir.dvc_gen("foo", "foo")
++    assert (tmp_dir / "foo.dvc").read_text() == textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        outs:
++        - path: foo # out comment
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta: some metadata
++    """
++    )
+diff --git a/tests/func/test_api.py b/tests/func/test_api.py
+index 4e3301ef2..3fa0f4aa4 100644
+--- a/tests/func/test_api.py
++++ b/tests/func/test_api.py
+@@ -75,7 +75,7 @@ def test_open(tmp_dir, dvc, remote):
+     [
+         pytest.lazy_fixture(cloud)
+         for cloud in [
+-            "real_s3",  # NOTE: moto's s3 fails in some tests
++            "s3",
+             "gs",
+             "azure",
+             "gdrive",
+@@ -128,7 +128,7 @@ def test_open_granular(tmp_dir, dvc, remote):
+     [
+         pytest.lazy_fixture(cloud)
+         for cloud in [
+-            "real_s3",  # NOTE: moto's s3 fails in some tests
++            "s3",
+             "gs",
+             "azure",
+             "gdrive",
+diff --git a/tests/func/test_checkout.py b/tests/func/test_checkout.py
+index c61c684f3..fd0419cee 100644
+--- a/tests/func/test_checkout.py
++++ b/tests/func/test_checkout.py
+@@ -7,7 +7,6 @@ import shutil
+ import pytest
+ from mock import patch
+ 
+-from dvc.cache.base import CloudCache
+ from dvc.dvcfile import DVC_FILE_SUFFIX, PIPELINE_FILE, Dvcfile
+ from dvc.exceptions import (
+     CheckoutError,
+@@ -17,19 +16,16 @@ from dvc.exceptions import (
+     NoOutputOrStageError,
+ )
+ from dvc.main import main
+-from dvc.remote.base import Remote
+ from dvc.repo import Repo as DvcRepo
+ from dvc.stage import Stage
+ from dvc.stage.exceptions import StageFileDoesNotExistError
+ from dvc.system import System
+ from dvc.tree.local import LocalTree
+-from dvc.tree.s3 import S3Tree
+ from dvc.utils import relpath
+ from dvc.utils.fs import walk_files
+ from dvc.utils.serialize import dump_yaml, load_yaml
+ from tests.basic_env import TestDvc, TestDvcGit
+ from tests.func.test_repro import TestRepro
+-from tests.remotes import S3
+ 
+ logger = logging.getLogger("dvc")
+ 
+@@ -757,32 +753,28 @@ def test_checkout_recursive(tmp_dir, dvc):
+     }
+ 
+ 
+-@pytest.mark.skipif(
+-    not S3.should_test(), reason="Only run with S3 credentials"
++@pytest.mark.parametrize(
++    "workspace", [pytest.lazy_fixture("s3")], indirect=True
+ )
+-def test_checkout_for_external_outputs(tmp_dir, dvc):
+-    dvc.cache.s3 = CloudCache(S3Tree(dvc, {"url": S3.get_url()}))
+-
+-    remote = Remote(S3Tree(dvc, {"url": S3.get_url()}))
+-    file_path = remote.tree.path_info / "foo"
+-    remote.tree.s3.meta.client.put_object(
+-        Bucket=remote.tree.path_info.bucket, Key=file_path.path, Body="foo"
+-    )
++def test_checkout_for_external_outputs(tmp_dir, dvc, workspace):
++    workspace.gen("foo", "foo")
+ 
+-    dvc.add(str(remote.tree.path_info / "foo"), external=True)
++    file_path = workspace / "foo"
++    dvc.add("remote://workspace/foo")
+ 
++    remote = dvc.cloud.get_remote("workspace")
+     remote.tree.remove(file_path)
++    assert not file_path.exists()
++
+     stats = dvc.checkout(force=True)
+     assert stats == {**empty_checkout, "added": [str(file_path)]}
+-    assert remote.tree.exists(file_path)
++    assert file_path.exists()
++
++    workspace.gen("foo", "foo\nfoo")
+ 
+-    remote.tree.s3.meta.client.put_object(
+-        Bucket=remote.tree.path_info.bucket,
+-        Key=file_path.path,
+-        Body="foo\nfoo",
+-    )
+     stats = dvc.checkout(force=True)
+     assert stats == {**empty_checkout, "modified": [str(file_path)]}
++    assert file_path.read_text() == "foo"
+ 
+ 
+ def test_checkouts_with_different_addressing(tmp_dir, dvc, run_copy):
+diff --git a/tests/func/test_dvcfile.py b/tests/func/test_dvcfile.py
+index f11f960bb..f98750d57 100644
+--- a/tests/func/test_dvcfile.py
++++ b/tests/func/test_dvcfile.py
+@@ -315,8 +315,8 @@ def test_dvcfile_dump_preserves_meta(tmp_dir, dvc, run_copy):
+ 
+     data = dvcfile._load()[0]
+     metadata = {"name": "copy-file"}
++    stage.meta = metadata
+     data["stages"]["run_copy"]["meta"] = metadata
+-    dump_yaml(dvcfile.path, data)
+ 
+     dvcfile.dump(stage)
+     assert dvcfile._load()[0] == data
+@@ -355,7 +355,7 @@ def test_dvcfile_dump_preserves_comments(tmp_dir, dvc):
+             - foo"""
+     )
+     tmp_dir.gen("dvc.yaml", text)
+-    stage = dvc.get_stage(name="generate-foo")
++    stage = dvc.stage.load_one(name="generate-foo")
+     stage.outs[0].use_cache = False
+     dvcfile = stage.dvcfile
+ 
+@@ -377,7 +377,7 @@ def test_dvcfile_try_dumping_parametrized_stage(tmp_dir, dvc, data, name):
+     dump_yaml("dvc.yaml", {"stages": data, "vars": [{"foo": "foobar"}]})
+     dvc.config["feature"]["parametrization"] = True
+ 
+-    stage = dvc.get_stage(name=name)
++    stage = dvc.stage.load_one(name=name)
+     dvcfile = stage.dvcfile
+ 
+     with pytest.raises(ParametrizedDumpError) as exc:
+diff --git a/tests/func/test_import_url.py b/tests/func/test_import_url.py
+index 906566bea..b58b5406c 100644
+--- a/tests/func/test_import_url.py
++++ b/tests/func/test_import_url.py
+@@ -1,4 +1,5 @@
+ import os
++import textwrap
+ from uuid import uuid4
+ 
+ import pytest
+@@ -207,3 +208,40 @@ def test_import_url_dir(tmp_dir, dvc, workspace, stage_md5, dir_md5):
+     )
+ 
+     assert dvc.status() == {}
++
++
++def test_import_url_preserve_meta(tmp_dir, dvc):
++    text = textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        deps:
++        - path: foo # dep comment
++        outs:
++        - path: bar # out comment
++          desc: out desc
++        meta: some metadata
++    """
++    )
++    tmp_dir.gen("bar.dvc", text)
++
++    tmp_dir.gen("foo", "foo")
++    dvc.imp_url("foo", out="bar")
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        deps:
++        - path: foo # dep comment
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        outs:
++        - path: bar # out comment
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta: some metadata
++        md5: be7ade0aa89cc8d56e320867a9de9740
++        frozen: true
++    """
++    )
+diff --git a/tests/func/test_init.py b/tests/func/test_init.py
+index 4ea9c9101..79f7dc4ab 100644
+--- a/tests/func/test_init.py
++++ b/tests/func/test_init.py
+@@ -111,3 +111,17 @@ def test_gen_dvcignore(tmp_dir):
+         "# https://dvc.org/doc/user-guide/dvcignore\n"
+     )
+     assert text == (tmp_dir / ".dvcignore").read_text()
++
++
++def test_init_when_ignored_by_git(tmp_dir, scm, caplog):
++    # https://github.com/iterative/dvc/issues/3738
++    tmp_dir.gen({".gitignore": ".*"})
++    with caplog.at_level(logging.ERROR, logger="dvc"):
++        assert main(["init"]) == 1
++    assert (
++        "{dvc_dir} is ignored by your SCM tool. \n"
++        "Make sure that it's tracked, "
++        "for example, by adding '!.dvc' to .gitignore.".format(
++            dvc_dir=tmp_dir / DvcRepo.DVC_DIR
++        )
++    ) in caplog.text
+diff --git a/tests/func/test_repo.py b/tests/func/test_repo.py
+index a76147f59..ae5d35f5b 100644
+--- a/tests/func/test_repo.py
++++ b/tests/func/test_repo.py
+@@ -1,21 +1,6 @@
+-import os
+-from operator import itemgetter
+-
+-import pytest
+-
+ from dvc.cache import Cache
+ from dvc.dvcfile import PIPELINE_FILE, PIPELINE_LOCK
+-from dvc.exceptions import NoOutputOrStageError
+-from dvc.path_info import PathInfo
+-from dvc.repo import Repo
+-from dvc.stage.exceptions import (
+-    StageFileDoesNotExistError,
+-    StageNameUnspecified,
+-    StageNotFound,
+-)
+ from dvc.system import System
+-from dvc.utils import relpath
+-from dvc.utils.fs import remove
+ 
+ 
+ def test_destroy(tmp_dir, dvc, run_copy):
+@@ -65,300 +50,3 @@ def test_destroy(tmp_dir, dvc, run_copy):
+         "dir/subdir/file",
+     ]:
+         assert not System.is_symlink(tmp_dir / path)
+-
+-
+-def test_collect(tmp_dir, scm, dvc, run_copy):
+-    def collect_outs(*args, **kwargs):
+-        return {
+-            str(out)
+-            for stage in dvc.collect(*args, **kwargs)
+-            for out in stage.outs
+-        }
+-
+-    tmp_dir.dvc_gen("foo", "foo")
+-    run_copy("foo", "bar", single_stage=True)
+-    scm.add([".gitignore", "foo.dvc", "bar.dvc"])
+-    scm.commit("Add foo and bar")
+-
+-    scm.checkout("new-branch", create_new=True)
+-
+-    run_copy("bar", "buzz", single_stage=True)
+-    scm.add([".gitignore", "buzz.dvc"])
+-    scm.commit("Add buzz")
+-
+-    assert collect_outs("bar.dvc", with_deps=True) == {"foo", "bar"}
+-    assert collect_outs("buzz.dvc", with_deps=True) == {"foo", "bar", "buzz"}
+-    assert collect_outs("buzz.dvc", with_deps=False) == {"buzz"}
+-
+-    run_copy("foo", "foobar", name="copy-foo-foobar")
+-    assert collect_outs(":copy-foo-foobar") == {"foobar"}
+-    assert collect_outs(":copy-foo-foobar", with_deps=True) == {
+-        "foobar",
+-        "foo",
+-    }
+-    assert collect_outs("dvc.yaml:copy-foo-foobar", recursive=True) == {
+-        "foobar"
+-    }
+-    assert collect_outs("copy-foo-foobar") == {"foobar"}
+-    assert collect_outs("copy-foo-foobar", with_deps=True) == {
+-        "foobar",
+-        "foo",
+-    }
+-    assert collect_outs("copy-foo-foobar", recursive=True) == {"foobar"}
+-
+-    run_copy("foobar", "baz", name="copy-foobar-baz")
+-    assert collect_outs("dvc.yaml") == {"foobar", "baz"}
+-    assert collect_outs("dvc.yaml", with_deps=True) == {
+-        "foobar",
+-        "baz",
+-        "foo",
+-    }
+-
+-
+-def test_collect_dir_recursive(tmp_dir, dvc, run_head):
+-    tmp_dir.gen({"dir": {"foo": "foo"}})
+-    (stage1,) = dvc.add("dir", recursive=True)
+-    with (tmp_dir / "dir").chdir():
+-        stage2 = run_head("foo", name="copy-foo-bar")
+-        stage3 = run_head("foo-1", single_stage=True)
+-    assert set(dvc.collect("dir", recursive=True)) == {stage1, stage2, stage3}
+-
+-
+-def test_collect_with_not_existing_output_or_stage_name(
+-    tmp_dir, dvc, run_copy
+-):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect("some_file")
+-    tmp_dir.dvc_gen("foo", "foo")
+-    run_copy("foo", "bar", name="copy-foo-bar")
+-    with pytest.raises(StageNotFound):
+-        dvc.collect("some_file")
+-
+-
+-def test_stages(tmp_dir, dvc):
+-    def collect_stages():
+-        return {stage.relpath for stage in Repo(os.fspath(tmp_dir)).stages}
+-
+-    tmp_dir.dvc_gen({"file": "a", "dir/file": "b", "dir/subdir/file": "c"})
+-
+-    assert collect_stages() == {
+-        "file.dvc",
+-        os.path.join("dir", "file.dvc"),
+-        os.path.join("dir", "subdir", "file.dvc"),
+-    }
+-
+-    tmp_dir.gen(".dvcignore", "dir")
+-
+-    assert collect_stages() == {"file.dvc"}
+-
+-
+-@pytest.fixture
+-def stages(tmp_dir, run_copy):
+-    stage1, stage2 = tmp_dir.dvc_gen({"foo": "foo", "lorem": "lorem"})
+-    return {
+-        "foo-generate": stage1,
+-        "lorem-generate": stage2,
+-        "copy-foo-bar": run_copy("foo", "bar", single_stage=True),
+-        "copy-bar-foobar": run_copy("bar", "foobar", name="copy-bar-foobar"),
+-        "copy-lorem-ipsum": run_copy("lorem", "ipsum", name="lorem-ipsum"),
+-    }
+-
+-
+-def test_collect_granular_with_no_target(tmp_dir, dvc, stages):
+-    assert set(map(itemgetter(0), dvc.collect_granular())) == set(
+-        stages.values()
+-    )
+-    assert list(map(itemgetter(1), dvc.collect_granular())) == [None] * len(
+-        stages
+-    )
+-
+-
+-def test_collect_granular_with_target(tmp_dir, dvc, stages):
+-    assert dvc.collect_granular("bar.dvc") == [(stages["copy-foo-bar"], None)]
+-    assert dvc.collect_granular(PIPELINE_FILE) == [
+-        (stages["copy-bar-foobar"], None),
+-        (stages["copy-lorem-ipsum"], None),
+-    ]
+-    assert dvc.collect_granular(":") == [
+-        (stages["copy-bar-foobar"], None),
+-        (stages["copy-lorem-ipsum"], None),
+-    ]
+-    assert dvc.collect_granular("copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-    assert dvc.collect_granular(":copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-    assert dvc.collect_granular("dvc.yaml:copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-
+-    with (tmp_dir / dvc.DVC_DIR).chdir():
+-        assert dvc.collect_granular(
+-            relpath(tmp_dir / PIPELINE_FILE) + ":copy-bar-foobar"
+-        ) == [(stages["copy-bar-foobar"], None)]
+-
+-    assert dvc.collect_granular("foobar") == [
+-        (stages["copy-bar-foobar"], PathInfo(tmp_dir / "foobar"))
+-    ]
+-
+-
+-@pytest.mark.parametrize(
+-    "target",
+-    [
+-        "not_existing.dvc",
+-        "not_existing.dvc:stage_name",
+-        "not_existing/dvc.yaml",
+-        "not_existing/dvc.yaml:stage_name",
+-    ],
+-)
+-def test_collect_with_not_existing_dvcfile(tmp_dir, dvc, target):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect_granular(target)
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect(target)
+-
+-
+-def test_collect_granular_with_not_existing_output_or_stage_name(tmp_dir, dvc):
+-    with pytest.raises(NoOutputOrStageError):
+-        dvc.collect_granular("some_file")
+-    with pytest.raises(NoOutputOrStageError):
+-        dvc.collect_granular("some_file", recursive=True)
+-
+-
+-def test_collect_granular_with_deps(tmp_dir, dvc, stages):
+-    assert set(
+-        map(itemgetter(0), dvc.collect_granular("bar.dvc", with_deps=True))
+-    ) == {stages["copy-foo-bar"], stages["foo-generate"]}
+-    assert set(
+-        map(
+-            itemgetter(0),
+-            dvc.collect_granular("copy-bar-foobar", with_deps=True),
+-        )
+-    ) == {
+-        stages["copy-bar-foobar"],
+-        stages["copy-foo-bar"],
+-        stages["foo-generate"],
+-    }
+-    assert set(
+-        map(
+-            itemgetter(0), dvc.collect_granular(PIPELINE_FILE, with_deps=True),
+-        )
+-    ) == set(stages.values())
+-
+-
+-def test_collect_granular_same_output_name_stage_name(tmp_dir, dvc, run_copy):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    (stage2,) = tmp_dir.dvc_gen("copy-foo-bar", "copy-foo-bar")
+-    stage3 = run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    assert dvc.collect_granular("copy-foo-bar") == [(stage3, None)]
+-
+-    coll = dvc.collect_granular("copy-foo-bar", with_deps=True)
+-    assert set(map(itemgetter(0), coll)) == {stage3, stage1}
+-    assert list(map(itemgetter(1), coll)) == [None] * 2
+-
+-    assert dvc.collect_granular("./copy-foo-bar") == [
+-        (stage2, PathInfo(tmp_dir / "copy-foo-bar"))
+-    ]
+-    assert dvc.collect_granular("./copy-foo-bar", with_deps=True) == [
+-        (stage2, PathInfo(tmp_dir / "copy-foo-bar"))
+-    ]
+-
+-
+-def test_collect_granular_priority_on_collision(tmp_dir, dvc, run_copy):
+-    tmp_dir.gen({"dir": {"foo": "foo"}, "foo": "foo"})
+-    (stage1,) = dvc.add("dir", recursive=True)
+-    stage2 = run_copy("foo", "bar", name="dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage2, None)]
+-    assert dvc.collect_granular("dir", recursive=True) == [(stage1, None)]
+-
+-    remove(tmp_dir / "dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage2, None)]
+-    assert dvc.collect_granular("dir", recursive=True) == [(stage2, None)]
+-
+-
+-def test_collect_granular_collision_output_dir_stage_name(
+-    tmp_dir, dvc, run_copy
+-):
+-    stage1, *_ = tmp_dir.dvc_gen({"dir": {"foo": "foo"}, "foo": "foo"})
+-    stage3 = run_copy("foo", "bar", name="dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage3, None)]
+-    assert not dvc.collect_granular("dir", recursive=True)
+-    assert dvc.collect_granular("./dir") == [
+-        (stage1, PathInfo(tmp_dir / "dir"))
+-    ]
+-
+-
+-def test_collect_granular_not_existing_stage_name(tmp_dir, dvc, run_copy):
+-    tmp_dir.dvc_gen("foo", "foo")
+-    (stage,) = tmp_dir.dvc_gen("copy-foo-bar", "copy-foo-bar")
+-    run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    assert dvc.collect_granular("copy-foo-bar.dvc:stage_name_not_needed") == [
+-        (stage, None)
+-    ]
+-    with pytest.raises(StageNotFound):
+-        dvc.collect_granular("dvc.yaml:does-not-exist")
+-
+-
+-def test_get_stages(tmp_dir, dvc, run_copy):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages()
+-
+-    tmp_dir.gen("foo", "foo")
+-    stage1 = run_copy("foo", "bar", name="copy-foo-bar")
+-    stage2 = run_copy("bar", "foobar", name="copy-bar-foobar")
+-
+-    assert set(dvc.get_stages()) == {stage1, stage2}
+-    assert set(dvc.get_stages(path=PIPELINE_FILE)) == {stage1, stage2}
+-    assert set(dvc.get_stages(name="copy-bar-foobar")) == {stage2}
+-    assert set(dvc.get_stages(path=PIPELINE_FILE, name="copy-bar-foobar")) == {
+-        stage2
+-    }
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages(path=relpath(tmp_dir / ".." / PIPELINE_FILE))
+-
+-    with pytest.raises(StageNotFound):
+-        dvc.get_stages(path=PIPELINE_FILE, name="copy")
+-
+-
+-def test_get_stages_old_dvcfile(tmp_dir, dvc):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    assert set(dvc.get_stages("foo.dvc")) == {stage1}
+-    assert set(dvc.get_stages("foo.dvc", name="foo-generate")) == {stage1}
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages(path=relpath(tmp_dir / ".." / "foo.dvc"))
+-
+-
+-def test_get_stage(tmp_dir, dvc, run_copy):
+-    tmp_dir.gen("foo", "foo")
+-    stage1 = run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    with pytest.raises(StageNameUnspecified):
+-        dvc.get_stage()
+-
+-    with pytest.raises(StageNameUnspecified):
+-        dvc.get_stage(path=PIPELINE_FILE)
+-
+-    assert dvc.get_stage(path=PIPELINE_FILE, name="copy-foo-bar") == stage1
+-    assert dvc.get_stage(name="copy-foo-bar") == stage1
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stage(path="something.yaml", name="name")
+-
+-    with pytest.raises(StageNotFound):
+-        dvc.get_stage(name="random_name")
+-
+-
+-def test_get_stage_single_stage_dvcfile(tmp_dir, dvc):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    assert dvc.get_stage("foo.dvc") == stage1
+-    assert dvc.get_stage("foo.dvc", name="jpt") == stage1
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stage(path="bar.dvc", name="name")
+diff --git a/tests/func/test_run_single_stage.py b/tests/func/test_run_single_stage.py
+index 155126459..24969570e 100644
+--- a/tests/func/test_run_single_stage.py
++++ b/tests/func/test_run_single_stage.py
+@@ -1005,30 +1005,70 @@ def test_metrics_dir(tmp_dir, dvc, caplog, run_copy_metrics, metrics_type):
+     )
+ 
+ 
+-def test_run_force_doesnot_preserve_comments_and_meta(tmp_dir, dvc, run_copy):
+-    """Depends on loading of stage on `run` where we don't check the file
+-    for stage already exists, so we don't copy `stage_text` over due to which
+-    `meta` and `comments` don't get preserved."""
++def test_run_force_preserves_comments_and_meta(tmp_dir, dvc, run_copy):
+     tmp_dir.gen({"foo": "foo", "foo1": "foo1"})
+     text = textwrap.dedent(
+         """\
++      desc: top desc
+       cmd: python copy.py foo bar
+       deps:
+       - path: copy.py
+       - path: foo
+       outs:
+-      # comment not preserved
++      # comment preserved
+       - path: bar
++        desc: out desc
+       meta:
+         name: copy-foo-bar
+     """
+     )
+     (tmp_dir / "bar.dvc").write_text(text)
+     dvc.reproduce("bar.dvc")
+-    assert "comment" in (tmp_dir / "bar.dvc").read_text()
+-    assert "meta" in (tmp_dir / "bar.dvc").read_text()
+ 
+-    run_copy("foo1", "bar1", single_stage=True, force=True, fname="bar.dvc")
++    # CRLF on windows makes the generated file bigger in size
++    code_size = 143 if os.name == "nt" else 142
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        f"""\
++        desc: top desc
++        cmd: python copy.py foo bar
++        deps:
++        - path: copy.py
++          md5: 90c27dd80b698fe766f0c3ee0b6b9729
++          size: {code_size}
++        - path: foo
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        outs:
++        # comment preserved
++        - path: bar
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta:
++          name: copy-foo-bar
++        md5: be659ce4a33cebb85d4e8e1335d394ad
++    """
++    )
+ 
+-    assert "comment" not in (tmp_dir / "bar.dvc").read_text()
+-    assert "meta" not in (tmp_dir / "bar.dvc").read_text()
++    run_copy("foo1", "bar1", single_stage=True, force=True, fname="bar.dvc")
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        f"""\
++        desc: top desc
++        cmd: python copy.py foo1 bar1
++        deps:
++        - path: foo1
++          md5: 299a0be4a5a79e6a59fdd251b19d78bb
++          size: 4
++        - path: copy.py
++          md5: 90c27dd80b698fe766f0c3ee0b6b9729
++          size: {code_size}
++        outs:
++        # comment preserved
++        - path: bar1
++          md5: 299a0be4a5a79e6a59fdd251b19d78bb
++          size: 4
++        meta:
++          name: copy-foo-bar
++        md5: 9e725b11cb393e6a7468369fa50328b7
++    """
++    )
+diff --git a/tests/func/test_scm.py b/tests/func/test_scm.py
+index 97530ac74..644fda3b2 100644
+--- a/tests/func/test_scm.py
++++ b/tests/func/test_scm.py
+@@ -92,8 +92,8 @@ def test_ignored(tmp_dir, scm):
+     tmp_dir.gen({"dir1": {"file1.jpg": "cont", "file2.txt": "cont"}})
+     tmp_dir.gen({".gitignore": "dir1/*.jpg"})
+ 
+-    assert scm._ignored(os.fspath(tmp_dir / "dir1" / "file1.jpg"))
+-    assert not scm._ignored(os.fspath(tmp_dir / "dir1" / "file2.txt"))
++    assert scm.is_ignored(tmp_dir / "dir1" / "file1.jpg")
++    assert not scm.is_ignored(tmp_dir / "dir1" / "file2.txt")
+ 
+ 
+ def test_get_gitignore(tmp_dir, scm):
+@@ -163,3 +163,120 @@ def test_gitignore_should_append_newline_to_gitignore(tmp_dir, scm):
+     assert gitignore.read_text().endswith("\n")
+ 
+     assert contents.splitlines() == ["/foo", "/bar"]
++
++
++def test_git_detach_head(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++
++    with scm.detach_head() as rev:
++        assert init_rev == rev
++        assert init_rev == (tmp_dir / ".git" / "HEAD").read_text().strip()
++    assert (
++        "ref: refs/heads/master"
++        == (tmp_dir / ".git" / "HEAD").read_text().strip()
++    )
++
++
++def test_git_stash_workspace(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    with scm.stash_workspace():
++        assert not scm.repo.is_dirty()
++        assert "0" == (tmp_dir / "file").read_text()
++    assert scm.repo.is_dirty()
++    assert "1" == (tmp_dir / "file").read_text()
++
++
++@pytest.mark.parametrize(
++    "ref, include_untracked",
++    [
++        (None, True),
++        (None, False),
++        ("refs/foo/stash", True),
++        ("refs/foo/stash", False),
++    ],
++)
++def test_git_stash_push(tmp_dir, scm, ref, include_untracked):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen({"file": "1", "untracked": "0"})
++
++    stash = Stash(scm, ref=ref)
++    rev = stash.push(include_untracked=include_untracked)
++    assert rev == scm.get_ref(stash.ref)
++    assert "0" == (tmp_dir / "file").read_text()
++    assert include_untracked != (tmp_dir / "untracked").exists()
++    assert len(stash) == 1
++
++    stash.apply(rev)
++    assert "1" == (tmp_dir / "file").read_text()
++    assert "0" == (tmp_dir / "untracked").read_text()
++
++    parts = list(stash.ref.split("/"))
++    assert os.path.exists(os.path.join(os.fspath(tmp_dir), ".git", *parts))
++    assert os.path.exists(
++        os.path.join(os.fspath(tmp_dir), ".git", "logs", *parts)
++    )
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_drop(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    stash.push()
++
++    tmp_dir.gen("file", "2")
++    expected = stash.push()
++
++    stash.drop(1)
++    assert expected == scm.get_ref(stash.ref)
++    assert len(stash) == 1
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_pop(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    first = stash.push()
++
++    tmp_dir.gen("file", "2")
++    second = stash.push()
++
++    assert second == stash.pop()
++    assert len(stash) == 1
++    assert first == scm.get_ref(stash.ref)
++    assert "2" == (tmp_dir / "file").read_text()
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_clear(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    stash.push()
++
++    tmp_dir.gen("file", "2")
++    stash.push()
++
++    stash.clear()
++    assert len(stash) == 0
++
++    parts = list(stash.ref.split("/"))
++    assert not os.path.exists(os.path.join(os.fspath(tmp_dir), ".git", *parts))
++    assert not os.path.exists(
++        os.path.join(os.fspath(tmp_dir), ".git", "logs", *parts)
++    )
+diff --git a/tests/func/test_stage.py b/tests/func/test_stage.py
+index df17bf440..28435c1ad 100644
+--- a/tests/func/test_stage.py
++++ b/tests/func/test_stage.py
+@@ -216,9 +216,9 @@ def test_parent_repo_collect_stages(tmp_dir, scm, dvc):
+         deep_subrepo_dir.gen("subrepo_file", "subrepo file content")
+         deep_subrepo.add("subrepo_file")
+ 
+-    stages = dvc.collect(None)
+-    subrepo_stages = subrepo.collect(None)
+-    deep_subrepo_stages = deep_subrepo.collect(None)
++    stages = dvc.stage.collect(None)
++    subrepo_stages = subrepo.stage.collect(None)
++    deep_subrepo_stages = deep_subrepo.stage.collect(None)
+ 
+     assert stages == []
+     assert subrepo_stages != []
+diff --git a/tests/func/test_stage_resolver.py b/tests/func/test_stage_resolver.py
+index c1c7b7c3a..788232e14 100644
+--- a/tests/func/test_stage_resolver.py
++++ b/tests/func/test_stage_resolver.py
+@@ -1,4 +1,3 @@
+-import os
+ from copy import deepcopy
+ from math import pi
+ 
+@@ -34,16 +33,17 @@ RESOLVED_DVC_YAML_DATA = {
+             "cmd": "python script.py foo --out bar",
+             "outs": ["bar"],
+             "deps": ["foo"],
+-            "params": [{"params.yaml": ["dict.foo", "dict.bar", "freeze"]}],
+             "frozen": True,
+         },
+-        "stage2": {
+-            "cmd": "echo foo bar",
+-            "params": [{"params.yaml": ["dict.foo", "dict.bar"]}],
+-        },
++        "stage2": {"cmd": "echo foo bar"},
+     }
+ }
+ 
++USED_VARS = {
++    "stage1": {"dict.foo": "foo", "dict.bar": "bar", "freeze": True},
++    "stage2": {"dict.foo": "foo", "dict.bar": "bar"},
++}
++
+ 
+ def recurse_not_a_node(d):
+     assert not isinstance(d, Node)
+@@ -73,6 +73,10 @@ def test_simple(tmp_dir, dvc):
+         dvc, PathInfo(str(tmp_dir)), deepcopy(TEMPLATED_DVC_YAML_DATA)
+     )
+     assert_stage_equal(resolver.resolve(), deepcopy(RESOLVED_DVC_YAML_DATA))
++    assert resolver.tracked_vars == {
++        "stage1": {DEFAULT_PARAMS_FILE: USED_VARS["stage1"]},
++        "stage2": {DEFAULT_PARAMS_FILE: USED_VARS["stage2"]},
++    }
+ 
+ 
+ def test_vars(tmp_dir, dvc):
+@@ -81,10 +85,8 @@ def test_vars(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+     resolved_data = deepcopy(RESOLVED_DVC_YAML_DATA)
+ 
+-    # `vars` section is not auto-tracked
+-    del resolved_data["stages"]["stage1"]["params"]
+-    del resolved_data["stages"]["stage2"]["params"]
+     assert_stage_equal(resolver.resolve(), resolved_data)
++    assert not any(resolver.tracked_vars.values())
+ 
+ 
+ def test_no_params_yaml_and_vars(tmp_dir, dvc):
+@@ -97,7 +99,7 @@ def test_no_params_yaml_and_vars(tmp_dir, dvc):
+ 
+ def test_vars_import(tmp_dir, dvc):
+     """
+-    Test that different file can be loaded using `use`
++    Test that different file can be loaded using `vars`
+     instead of default params.yaml.
+     """
+     dump_yaml(tmp_dir / "params2.yaml", CONTEXT_DATA)
+@@ -106,11 +108,11 @@ def test_vars_import(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+     resolved_data = deepcopy(RESOLVED_DVC_YAML_DATA)
+-    for _, stage_d in resolved_data["stages"].items():
+-        params = stage_d["params"][0]
+-        params["params2.yaml"] = params.pop(DEFAULT_PARAMS_FILE)
+-
+     assert_stage_equal(resolver.resolve(), resolved_data)
++    assert resolver.tracked_vars == {
++        "stage1": {"params2.yaml": USED_VARS["stage1"]},
++        "stage2": {"params2.yaml": USED_VARS["stage2"]},
++    }
+ 
+ 
+ def test_vars_and_params_import(tmp_dir, dvc):
+@@ -126,13 +128,11 @@ def test_vars_and_params_import(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+     assert_stage_equal(
+-        resolver.resolve(),
+-        {
+-            "stages": {
+-                "stage1": {"cmd": "echo foobar bar", "params": ["dict.bar"]}
+-            }
+-        },
++        resolver.resolve(), {"stages": {"stage1": {"cmd": "echo foobar bar"}}}
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {DEFAULT_PARAMS_FILE: {"dict.bar": "bar"}}
++    }
+ 
+ 
+ def test_with_params_section(tmp_dir, dvc):
+@@ -156,14 +156,17 @@ def test_with_params_section(tmp_dir, dvc):
+             "stages": {
+                 "stage1": {
+                     "cmd": "echo foo bar foobar",
+-                    "params": [
+-                        "dict.bar",
+-                        {"params.json": ["dict.foobar", "value1"]},
+-                    ],
++                    "params": [{"params.json": ["value1"]}],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar"},
++            "params.json": {"dict.foobar": "foobar"},
++        }
++    }
+ 
+ 
+ def test_stage_with_wdir(tmp_dir, dvc):
+@@ -187,7 +190,6 @@ def test_stage_with_wdir(tmp_dir, dvc):
+     dump_json(data_dir / DEFAULT_PARAMS_FILE, {"dict": {"foo": "foo"}})
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+-    root_params_file = os.path.relpath(tmp_dir / "params.yaml", data_dir)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+@@ -195,15 +197,17 @@ def test_stage_with_wdir(tmp_dir, dvc):
+                 "stage1": {
+                     "cmd": "echo foo bar",
+                     "wdir": "data",
+-                    "params": [
+-                        "dict.foo",
+-                        "value1",
+-                        {root_params_file: ["dict.bar"]},
+-                    ],
++                    "params": ["value1"],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            str(PathInfo("data") / DEFAULT_PARAMS_FILE): {"dict.foo": "foo"},
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar"},
++        }
++    }
+ 
+ 
+ def test_with_templated_wdir(tmp_dir, dvc):
+@@ -229,7 +233,6 @@ def test_with_templated_wdir(tmp_dir, dvc):
+     dump_json(data_dir / DEFAULT_PARAMS_FILE, {"dict": {"foo": "foo"}})
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+-    root_params_file = os.path.relpath(tmp_dir / "params.yaml", data_dir)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+@@ -237,15 +240,17 @@ def test_with_templated_wdir(tmp_dir, dvc):
+                 "stage1": {
+                     "cmd": "echo foo bar",
+                     "wdir": "data",
+-                    "params": [
+-                        "dict.foo",
+-                        "value1",
+-                        {root_params_file: ["dict.bar", "dict.ws"]},
+-                    ],
++                    "params": ["value1"],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            str(PathInfo("data") / DEFAULT_PARAMS_FILE): {"dict.foo": "foo"},
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar", "dict.ws": "data"},
++        }
++    }
+ 
+ 
+ def test_simple_foreach_loop(tmp_dir, dvc):
+@@ -314,13 +319,14 @@ def test_foreach_loop_templatized(tmp_dir, dvc):
+         {
+             "stages": {
+                 "build@gb": {"cmd": "python script.py --thresh 15"},
+-                "build@us": {
+-                    "cmd": "python script.py --thresh 10",
+-                    "params": ["models.us.thresh"],
+-                },
++                "build@us": {"cmd": "python script.py --thresh 10"},
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "build@gb": {},
++        "build@us": {DEFAULT_PARAMS_FILE: {"models.us.thresh": 10}},
++    }
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -337,12 +343,16 @@ def test_set(tmp_dir, dvc, value):
+         }
+     }
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
++    if isinstance(value, bool):
++        stringified_value = "true" if value else "false"
++    else:
++        stringified_value = str(value)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+             "stages": {
+                 "build": {
+-                    "cmd": f"python script.py --thresh {value}",
++                    "cmd": f"python script.py --thresh {stringified_value}",
+                     "always_changed": value,
+                 }
+             }
+@@ -419,17 +429,15 @@ def test_set_with_foreach_and_on_stage_definition(tmp_dir, dvc):
+         resolver.resolve(),
+         {
+             "stages": {
+-                "build@us": {
+-                    "cmd": "command --value 10",
+-                    "params": [{"params.json": ["models.us.thresh"]}],
+-                },
+-                "build@gb": {
+-                    "cmd": "command --value 15",
+-                    "params": [{"params.json": ["models.gb.thresh"]}],
+-                },
++                "build@us": {"cmd": "command --value 10"},
++                "build@gb": {"cmd": "command --value 15"},
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "build@us": {"params.json": {"models.us.thresh": 10}},
++        "build@gb": {"params.json": {"models.gb.thresh": 15}},
++    }
+ 
+ 
+ def test_resolve_local_tries_to_load_globally_used_files(tmp_dir, dvc):
+@@ -453,11 +461,12 @@ def test_resolve_local_tries_to_load_globally_used_files(tmp_dir, dvc):
+             "stages": {
+                 "build": {
+                     "cmd": "command --value bar",
+-                    "params": [{"params.json": ["bar", "foo"]}],
++                    "params": [{"params.json": ["foo"]}],
+                 },
+             }
+         },
+     )
++    assert resolver.tracked_vars == {"build": {"params.json": {"bar": "bar"}}}
+ 
+ 
+ def test_resolve_local_tries_to_load_globally_used_params_yaml(tmp_dir, dvc):
+@@ -480,11 +489,12 @@ def test_resolve_local_tries_to_load_globally_used_params_yaml(tmp_dir, dvc):
+             "stages": {
+                 "build": {
+                     "cmd": "command --value bar",
+-                    "params": [{"params.yaml": ["bar", "foo"]}],
++                    "params": [{"params.yaml": ["foo"]}],
+                 },
+             }
+         },
+     )
++    assert resolver.tracked_vars == {"build": {"params.yaml": {"bar": "bar"}}}
+ 
+ 
+ def test_vars_relpath_overwrite(tmp_dir, dvc):
+@@ -502,3 +512,25 @@ def test_vars_relpath_overwrite(tmp_dir, dvc):
+     }
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+     resolver.resolve()
++
++
++@pytest.mark.parametrize("local", [True, False])
++@pytest.mark.parametrize(
++    "vars_",
++    [
++        ["test_params.yaml:bar", "test_params.yaml:foo"],
++        ["test_params.yaml:foo,bar"],
++        ["test_params.yaml"],
++        ["test_params.yaml", "test_params.yaml"],
++    ],
++)
++def test_vars_load_partial(tmp_dir, dvc, local, vars_):
++    iterable = {"bar": "bar", "foo": "foo"}
++    dump_yaml(tmp_dir / "test_params.yaml", iterable)
++    d = {"stages": {"build": {"cmd": "echo ${bar}"}}}
++    if local:
++        d["stages"]["build"]["vars"] = vars_
++    else:
++        d["vars"] = vars_
++    resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
++    resolver.resolve()
+diff --git a/tests/func/test_stage_resolver_error_msg.py b/tests/func/test_stage_resolver_error_msg.py
+index b92c70a76..f07977e13 100644
+--- a/tests/func/test_stage_resolver_error_msg.py
++++ b/tests/func/test_stage_resolver_error_msg.py
+@@ -343,3 +343,42 @@ def test_interpolate_non_string(tmp_dir, repo):
+         "failed to parse 'stages.build.cmd' in 'dvc.yaml':\n"
+         "Cannot interpolate data of type 'dict'"
+     )
++
++
++@pytest.mark.parametrize("local", [True, False])
++@pytest.mark.parametrize(
++    "vars_",
++    [
++        ["test_params.yaml", "test_params.yaml:sub1"],
++        ["test_params.yaml:sub1", "test_params.yaml"],
++        ["test_params.yaml:sub1", "test_params.yaml:sub1,sub2"],
++    ],
++)
++def test_vars_already_loaded_message(tmp_dir, repo, local, vars_):
++    d = {"stages": {"build": {"cmd": "echo ${sub1} ${sub2}"}}}
++    dump_yaml("test_params.yaml", {"sub1": "sub1", "sub2": "sub2"})
++    if not local:
++        d["vars"] = vars_
++    else:
++        d["stages"]["build"]["vars"] = vars_
++
++    with pytest.raises(ResolveError) as exc_info:
++        resolver = DataResolver(repo, tmp_dir, d)
++        resolver.resolve()
++
++    assert "partially" in str(exc_info.value)
++
++
++@pytest.mark.parametrize("local", [False, True])
++def test_partial_vars_doesnot_exist(tmp_dir, repo, local):
++    d = {"stages": {"build": {"cmd": "echo ${sub1} ${sub2}"}}}
++    dump_yaml("test_params.yaml", {"sub1": "sub1", "sub2": "sub2"})
++    vars_ = ["test_params.yaml:sub3"]
++    if not local:
++        d["vars"] = vars_
++    else:
++        d["stages"]["build"]["vars"] = vars_
++
++    with pytest.raises(ResolveError):
++        resolver = DataResolver(repo, tmp_dir, d)
++        resolver.resolve()
+diff --git a/tests/remotes/__init__.py b/tests/remotes/__init__.py
+index 5e4d8b9d5..d075923d3 100644
+--- a/tests/remotes/__init__.py
++++ b/tests/remotes/__init__.py
+@@ -3,19 +3,6 @@ import subprocess
+ import pytest
+ 
+ from .azure import Azure, azure, azure_server  # noqa: F401
+-from .hdfs import HDFS, hadoop, hdfs, hdfs_server, webhdfs  # noqa: F401
+-from .http import HTTP, http, http_server  # noqa: F401
+-from .local import Local, local_cloud, local_remote  # noqa: F401
+-from .oss import (  # noqa: F401
+-    OSS,
+-    TEST_OSS_REPO_BUCKET,
+-    oss,
+-    oss_server,
+-    real_oss,
+-)
+-from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+-from .webdav import Webdav, webdav, webdav_server  # noqa: F401
+-
+ from .gdrive import (  # noqa: F401; noqa: F401
+     TEST_GDRIVE_REPO_BUCKET,
+     GDrive,
+@@ -27,12 +14,24 @@ from .gs import (  # noqa: F401; noqa: F401
+     TEST_GCP_REPO_BUCKET,
+     gs,
+ )
++from .hdfs import HDFS, hadoop, hdfs, hdfs_server, webhdfs  # noqa: F401
++from .http import HTTP, http, http_server  # noqa: F401
++from .local import Local, local_cloud, local_remote  # noqa: F401
++from .oss import (  # noqa: F401
++    OSS,
++    TEST_OSS_REPO_BUCKET,
++    oss,
++    oss_server,
++    real_oss,
++)
++from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+ from .ssh import (  # noqa: F401; noqa: F401
+     SSHMocked,
+     ssh,
+     ssh_connection,
+     ssh_server,
+ )
++from .webdav import Webdav, webdav, webdav_server  # noqa: F401
+ 
+ TEST_REMOTE = "upstream"
+ TEST_CONFIG = {
+diff --git a/tests/unit/command/test_experiments.py b/tests/unit/command/test_experiments.py
+index c48cc48f1..0f3408830 100644
+--- a/tests/unit/command/test_experiments.py
++++ b/tests/unit/command/test_experiments.py
+@@ -2,6 +2,8 @@ import pytest
+ 
+ from dvc.cli import parse_args
+ from dvc.command.experiments import (
++    CmdExperimentsApply,
++    CmdExperimentsBranch,
+     CmdExperimentsDiff,
+     CmdExperimentsGC,
+     CmdExperimentsRun,
+@@ -13,6 +15,18 @@ from dvc.exceptions import InvalidArgumentError
+ from .test_repro import default_arguments as repro_arguments
+ 
+ 
++def test_experiments_apply(dvc, mocker):
++    cli_args = parse_args(["experiments", "apply", "exp_rev"])
++    assert cli_args.func == CmdExperimentsApply
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.experiments.apply.apply", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(cmd.repo, "exp_rev")
++
++
+ def test_experiments_diff(dvc, mocker):
+     cli_args = parse_args(
+         [
+@@ -73,6 +87,7 @@ def test_experiments_show(dvc, mocker):
+ def test_experiments_run(dvc, mocker, args, resume):
+     default_arguments = {
+         "params": [],
++        "name": None,
+         "queue": False,
+         "run_all": False,
+         "jobs": None,
+@@ -123,3 +138,15 @@ def test_experiments_gc(dvc, mocker):
+     cmd = cli_args.func(cli_args)
+     with pytest.raises(InvalidArgumentError):
+         cmd.run()
++
++
++def test_experiments_branch(dvc, mocker):
++    cli_args = parse_args(["experiments", "branch", "expname", "branchname"])
++    assert cli_args.func == CmdExperimentsBranch
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.experiments.branch.branch", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(cmd.repo, "expname", "branchname")
+diff --git a/tests/unit/command/test_repro.py b/tests/unit/command/test_repro.py
+index 7a9f4e710..172893b37 100644
+--- a/tests/unit/command/test_repro.py
++++ b/tests/unit/command/test_repro.py
+@@ -15,6 +15,7 @@ default_arguments = {
+     "recursive": False,
+     "force_downstream": False,
+     "pull": False,
++    "glob": False,
+ }
+ 
+ 
+diff --git a/tests/unit/remote/test_base.py b/tests/unit/remote/test_base.py
+index 1f793ed83..c4734acd0 100644
+--- a/tests/unit/remote/test_base.py
++++ b/tests/unit/remote/test_base.py
+@@ -5,7 +5,7 @@ import pytest
+ 
+ from dvc.cache.base import CloudCache
+ from dvc.path_info import PathInfo
+-from dvc.tree.base import BaseTree, RemoteCmdError, RemoteMissingDepsError
++from dvc.tree.base import BaseTree, RemoteCmdError
+ 
+ 
+ class _CallableOrNone:
+@@ -18,13 +18,6 @@ class _CallableOrNone:
+ CallableOrNone = _CallableOrNone()
+ 
+ 
+-def test_missing_deps(dvc):
+-    requires = {"missing": "missing"}
+-    with mock.patch.object(BaseTree, "REQUIRES", requires):
+-        with pytest.raises(RemoteMissingDepsError):
+-            BaseTree(dvc, {})
+-
+-
+ def test_cmd_error(dvc):
+     config = {}
+ 
+diff --git a/tests/unit/repo/test_repo.py b/tests/unit/repo/test_repo.py
+index 44ae5d0d4..272d5b78e 100644
+--- a/tests/unit/repo/test_repo.py
++++ b/tests/unit/repo/test_repo.py
+@@ -1,7 +1,6 @@
+ import os
+ 
+ import pytest
+-from funcy import raiser
+ 
+ from dvc.repo import NotDvcRepoError, Repo, locked
+ from dvc.utils.fs import remove
+@@ -73,36 +72,6 @@ def test_locked(mocker):
+     ]
+ 
+ 
+-def test_collect_optimization(tmp_dir, dvc, mocker):
+-    (stage,) = tmp_dir.dvc_gen("foo", "foo text")
+-
+-    # Forget cached stages and graph and error out on collection
+-    dvc._reset()
+-    mocker.patch(
+-        "dvc.repo.Repo.stages",
+-        property(raiser(Exception("Should not collect"))),
+-    )
+-
+-    # Should read stage directly instead of collecting the whole graph
+-    dvc.collect(stage.path)
+-    dvc.collect_granular(stage.path)
+-
+-
+-def test_collect_optimization_on_stage_name(tmp_dir, dvc, mocker, run_copy):
+-    tmp_dir.dvc_gen("foo", "foo")
+-    stage = run_copy("foo", "bar", name="copy-foo-bar")
+-    # Forget cached stages and graph and error out on collection
+-    dvc._reset()
+-    mocker.patch(
+-        "dvc.repo.Repo.stages",
+-        property(raiser(Exception("Should not collect"))),
+-    )
+-
+-    # Should read stage directly instead of collecting the whole graph
+-    assert dvc.collect("copy-foo-bar") == [stage]
+-    assert dvc.collect_granular("copy-foo-bar") == [(stage, None)]
+-
+-
+ def test_skip_graph_checks(tmp_dir, dvc, mocker, run_copy):
+     # See https://github.com/iterative/dvc/issues/2671 for more info
+     mock_build_graph = mocker.patch("dvc.repo.build_graph")
+diff --git a/tests/unit/scm/test_git.py b/tests/unit/scm/test_git.py
+index 0c30db04f..43bf94473 100644
+--- a/tests/unit/scm/test_git.py
++++ b/tests/unit/scm/test_git.py
+@@ -2,6 +2,7 @@ import os
+ 
+ import pytest
+ 
++from dvc.scm.base import SCMError
+ from tests.basic_env import TestDvcGit
+ 
+ 
+@@ -123,3 +124,125 @@ def test_branch_revs(tmp_dir, scm):
+     for rev in scm.branch_revs("master", init_rev):
+         assert rev == expected.pop()
+     assert len(expected) == 0
++
++
++def test_set_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.scm_gen({"file": "1"}, commit="commit")
++    commit_rev = scm.get_rev()
++
++    scm.set_ref("refs/foo/bar", init_rev)
++    assert (
++        init_rev
++        == (tmp_dir / ".git" / "refs" / "foo" / "bar").read_text().strip()
++    )
++
++    with pytest.raises(SCMError):
++        scm.set_ref("refs/foo/bar", commit_rev, old_ref=commit_rev)
++    scm.set_ref("refs/foo/bar", commit_rev, old_ref=init_rev)
++    assert (
++        commit_rev
++        == (tmp_dir / ".git" / "refs" / "foo" / "bar").read_text().strip()
++    )
++
++    scm.set_ref("refs/foo/baz", "refs/heads/master", symbolic=True)
++    assert (
++        "ref: refs/heads/master"
++        == (tmp_dir / ".git" / "refs" / "foo" / "baz").read_text().strip()
++    )
++
++
++def test_get_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(
++                ".git", "refs", "foo", "baz"
++            ): "ref: refs/heads/master",
++        }
++    )
++
++    assert init_rev == scm.get_ref("refs/foo/bar")
++    assert init_rev == scm.get_ref("refs/foo/baz")
++    assert "refs/heads/master" == scm.get_ref("refs/foo/baz", follow=False)
++    assert scm.get_ref("refs/foo/qux") is None
++
++
++def test_remove_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(os.path.join(".git", "refs", "foo", "bar"), init_rev)
++    tmp_dir.scm_gen({"file": "1"}, commit="commit")
++    commit_rev = scm.get_rev()
++
++    with pytest.raises(SCMError):
++        scm.remove_ref("refs/foo/bar", old_ref=commit_rev)
++    scm.remove_ref("refs/foo/bar", old_ref=init_rev)
++    assert not (tmp_dir / ".git" / "refs" / "foo" / "bar").exists()
++
++
++def test_refs_containing(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++
++    expected = {"refs/foo/bar", "refs/foo/baz", "refs/heads/master"}
++    assert expected == set(scm.get_refs_containing(init_rev))
++
++
++def test_push_refspec(tmp_dir, scm, make_tmp_dir):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++    remote_dir = make_tmp_dir("git-remote", scm=True)
++    url = "file://{}".format(remote_dir.resolve().as_posix())
++
++    scm.push_refspec(url, "refs/foo/bar", "refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_ref("refs/foo/bar")
++
++    remote_dir.scm.checkout("refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_rev()
++    assert "0" == (remote_dir / "file").read_text()
++
++    scm.push_refspec(url, "refs/foo/", "refs/foo/")
++    assert init_rev == remote_dir.scm.get_ref("refs/foo/baz")
++
++    scm.push_refspec(url, None, "refs/foo/baz")
++    assert remote_dir.scm.get_ref("refs/foo/baz") is None
++
++
++def test_fetch_refspecs(tmp_dir, scm, make_tmp_dir):
++    remote_dir = make_tmp_dir("git-remote", scm=True)
++    url = "file://{}".format(remote_dir.resolve().as_posix())
++
++    remote_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = remote_dir.scm.get_rev()
++    remote_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++
++    scm.fetch_refspecs(
++        url, ["refs/foo/bar:refs/foo/bar", "refs/foo/baz:refs/foo/baz"]
++    )
++    assert init_rev == scm.get_ref("refs/foo/bar")
++    assert init_rev == scm.get_ref("refs/foo/baz")
++
++    remote_dir.scm.checkout("refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_rev()
++    assert "0" == (remote_dir / "file").read_text()
+diff --git a/tests/unit/test_context.py b/tests/unit/test_context.py
+index 924b8f986..507a16c1d 100644
+--- a/tests/unit/test_context.py
++++ b/tests/unit/test_context.py
+@@ -411,6 +411,17 @@ def test_resolve_resolves_dict_keys():
+     }
+ 
+ 
++def test_resolve_resolves_boolean_value():
++    d = {"enabled": True, "disabled": False}
++    context = Context(d)
++
++    assert context.resolve_str("${enabled}") is True
++    assert context.resolve_str("${disabled}") is False
++
++    assert context.resolve_str("--flag ${enabled}") == "--flag true"
++    assert context.resolve_str("--flag ${disabled}") == "--flag false"
++
++
+ def test_merge_from_raises_if_file_not_exist(tmp_dir, dvc):
+     context = Context(foo="bar")
+     with pytest.raises(ParamsFileNotFound):
+diff --git a/tests/unit/utils/test_utils.py b/tests/unit/utils/test_utils.py
+index 1b8aa9c47..c990d6a5a 100644
+--- a/tests/unit/utils/test_utils.py
++++ b/tests/unit/utils/test_utils.py
+@@ -149,6 +149,31 @@ def test_resolve_output(inp, out, is_dir, expected, mocker):
+         ["something.dvc:name", ("something.dvc", "name"), None],
+         ["../something.dvc:name", ("../something.dvc", "name"), None],
+         ["file", (None, "file"), None],
++        ["build@15", (None, "build@15"), None],
++        ["build@{'level': 35}", (None, "build@{'level': 35}"), None],
++        [":build@15", ("dvc.yaml", "build@15"), None],
++        [":build@{'level': 35}", ("dvc.yaml", "build@{'level': 35}"), None],
++        ["dvc.yaml:build@15", ("dvc.yaml", "build@15"), None],
++        [
++            "dvc.yaml:build@{'level': 35}",
++            ("dvc.yaml", "build@{'level': 35}"),
++            None,
++        ],
++        [
++            "build2@{'level': [1, 2, 3]}",
++            (None, "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
++        [
++            ":build2@{'level': [1, 2, 3]}",
++            ("dvc.yaml", "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
++        [
++            "dvc.yaml:build2@{'level': [1, 2, 3]}",
++            ("dvc.yaml", "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
+     ],
+ )
+ def test_parse_target(inp, out, default):
+2026-04-28 17:51:38,591 - INFO - Eval script for iterative__dvc_1.10.2_1.11.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.10.2_1.11.0/eval.sh; copying to container...
+2026-04-28 17:53:43,566 - INFO - Test runtime: 124.92 seconds
+2026-04-28 17:53:43,568 - INFO - Test output for iterative__dvc_1.10.2_1.11.0 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.10.2_1.11.0/test_output.txt
+2026-04-28 17:53:43,635 - INFO - Git diff after:
+diff --git a/dvc/path_info.py b/dvc/path_info.py
+index 6f6aa57d8..54e270626 100644
+--- a/dvc/path_info.py
++++ b/dvc/path_info.py
+@@ -32,11 +32,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+     def __new__(cls, *args):
+         # Construct a proper subclass depending on current os
+         if cls is PathInfo:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsPathInfo if os.name == "nt" else PosixPathInfo
+-            )
+-
+-        return cls._from_parts(args)
++            cls = WindowsPathInfo if os.name == "nt" else PosixPathInfo
++        self = object.__new__(cls)
++        self.__init__(*args)
++        return self
+ 
+     def as_posix(self):
+         f = self._flavour  # pylint: disable=no-member
+@@ -73,8 +72,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+         elif self.__class__ != other.__class__:
+             return False
+         # Use cached casefolded parts to compare paths
+-        n = len(other._cparts)
+-        return len(self._cparts) > n and self._cparts[:n] == other._cparts
++        other_parts = getattr(other, "_parts_normcase_cached", getattr(other, "_parts_normcase", other.parts))
++        self_parts = getattr(self, "_parts_normcase_cached", getattr(self, "_parts_normcase", self.parts))
++        n = len(other_parts)
++        return len(self_parts) > n and self_parts[:n] == other_parts
+ 
+     def relative_to(self, other):  # pylint: disable=arguments-differ
+         # pathlib relative_to raises exception when one path is not a direct
+@@ -89,11 +90,17 @@ class PathInfo(pathlib.PurePath, _BasePath):
+ 
+ 
+ class WindowsPathInfo(PathInfo, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class PosixPathInfo(PathInfo, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class _URLPathInfo(PosixPathInfo):
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 34e6dbf46..8da63d1be 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -78,15 +78,9 @@ class TmpDir(pathlib.Path):
+ 
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-            )
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                f"cannot instantiate {cls.__name__!r} on your system"
+-            )
+-        self._init()
++            cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     def init(self, *, scm=False, dvc=False, subdir=False):
+@@ -246,11 +240,17 @@ def _coerce_filenames(filenames):
+ 
+ 
+ class WindowsTmpDir(TmpDir, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ class PosixTmpDir(TmpDir, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ CACHE = {}
+diff --git a/tests/docker-compose.yml b/tests/docker-compose.yml
+index 3bf4e45cd..7dfab75de 100644
+--- a/tests/docker-compose.yml
++++ b/tests/docker-compose.yml
+@@ -2,7 +2,7 @@
+ version: '3.2'
+ services:
+   azurite:
+-    image: mcr.microsoft.com/azure-storage/azurite:3.3.0-preview
++    image: mcr.microsoft.com/azure-storage/azurite:3.9.0
+     ports:
+       - "10000"
+   oss:
+diff --git a/tests/func/experiments/test_checkpoints.py b/tests/func/experiments/test_checkpoints.py
+index 2aed4e07d..3c0a2594a 100644
+--- a/tests/func/experiments/test_checkpoints.py
++++ b/tests/func/experiments/test_checkpoints.py
+@@ -1,27 +1,23 @@
+-import logging
+-
+ import pytest
+ from funcy import first
+ 
+-import dvc as dvc_module
+ from dvc.exceptions import DvcException
+ from dvc.repo.experiments import Experiments, MultipleBranchError
+ 
+ 
+ def test_new_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, mocker):
+-    from dvc.env import DVC_CHECKPOINT, DVC_ROOT
+-
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    env_mock = mocker.spy(dvc_module.stage.run, "_checkpoint_env")
+-    dvc.experiments.run(checkpoint_stage.addressing, params=["foo=2"])
++    results = dvc.experiments.run(
++        checkpoint_stage.addressing, params=["foo=2"]
++    )
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    env_mock.assert_called_once()
+-    assert set(env_mock.return_value.keys()) == {DVC_CHECKPOINT, DVC_ROOT}
+-    assert (tmp_dir / "foo").read_text() == "5"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "5"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -48,32 +44,40 @@ def test_resume_checkpoint(
+     if checkpoint_resume != Experiments.LAST_CHECKPOINT:
+         checkpoint_resume = first(results)
+ 
+-    dvc.experiments.run(
++    results = dvc.experiments.run(
+         checkpoint_stage.addressing, checkpoint_resume=checkpoint_resume
+     )
++    exp = first(results)
+ 
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ def test_reset_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, caplog):
+-    dvc.experiments.run(checkpoint_stage.addressing)
++    from dvc.repo.experiments.base import CheckpointExistsError
++
++    dvc.experiments.run(checkpoint_stage.addressing, name="foo")
+     scm.repo.git.reset(hard=True)
+     scm.repo.git.clean(force=True)
+ 
+-    with caplog.at_level(logging.ERROR):
+-        results = dvc.experiments.run(checkpoint_stage.addressing)
+-        assert len(results) == 0
+-        assert "already exists" in caplog.text
++    with pytest.raises(CheckpointExistsError):
++        dvc.experiments.run(
++            checkpoint_stage.addressing, name="foo", params=["foo=2"]
++        )
+ 
+-    dvc.experiments.run(checkpoint_stage.addressing, force=True)
++    results = dvc.experiments.run(
++        checkpoint_stage.addressing, params=["foo=2"], name="foo", force=True
++    )
++    exp = first(results)
+ 
+-    assert (tmp_dir / "foo").read_text() == "5"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 1"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "5"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+ 
+ def test_resume_branch(tmp_dir, scm, dvc, checkpoint_stage):
+@@ -94,23 +98,21 @@ def test_resume_branch(tmp_dir, scm, dvc, checkpoint_stage):
+     )
+     checkpoint_b = first(results)
+ 
+-    dvc.experiments.checkout(checkpoint_a)
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 2"
++    tree = scm.get_tree(checkpoint_a)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
+ 
+-    dvc.experiments.checkout(checkpoint_b)
+-    assert (tmp_dir / "foo").read_text() == "10"
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == "foo: 100"
++    tree = scm.get_tree(checkpoint_b)
++    with tree.open(tmp_dir / "foo") as fobj:
++        assert fobj.read().strip() == "10"
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 100"
+ 
+     with pytest.raises(MultipleBranchError):
+-        dvc.experiments._get_branch_containing(branch_rev)
++        dvc.experiments.get_branch_containing(branch_rev)
+ 
+-    branch_a = dvc.experiments._get_branch_containing(checkpoint_a)
+-    branch_b = dvc.experiments._get_branch_containing(checkpoint_b)
+     assert branch_rev == dvc.experiments.scm.repo.git.merge_base(
+-        branch_a, branch_b, fork_point=True
++        checkpoint_a, checkpoint_b
+     )
+diff --git a/tests/func/experiments/test_experiments.py b/tests/func/experiments/test_experiments.py
+index 732d4ea5a..032e7e82e 100644
+--- a/tests/func/experiments/test_experiments.py
++++ b/tests/func/experiments/test_experiments.py
+@@ -9,16 +9,38 @@ from dvc.utils.serialize import PythonFileCorruptedError
+ from tests.func.test_repro_multistage import COPY_SCRIPT
+ 
+ 
+-def test_new_simple(tmp_dir, scm, dvc, exp_stage, mocker):
++@pytest.mark.parametrize("name", [None, "foo"])
++def test_new_simple(tmp_dir, scm, dvc, exp_stage, mocker, name):
+     tmp_dir.gen("params.yaml", "foo: 2")
+ 
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    dvc.experiments.run(exp_stage.addressing)
++    results = dvc.experiments.run(exp_stage.addressing, name=name)
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text() == "foo: 2"
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 2"
++    if name:
++        assert dvc.experiments.get_exact_name(exp) == name
++
++
++def test_experiment_exists(tmp_dir, scm, dvc, exp_stage, mocker):
++    from dvc.repo.experiments.base import ExperimentExistsError
++
++    dvc.experiments.run(exp_stage.addressing, name="foo", params=["foo=2"])
++
++    with pytest.raises(ExperimentExistsError):
++        dvc.experiments.run(exp_stage.addressing, name="foo", params=["foo=3"])
++
++    results = dvc.experiments.run(
++        exp_stage.addressing, name="foo", params=["foo=3"], force=True
++    )
++    exp = first(results)
++
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == "foo: 3"
+ 
+ 
+ @pytest.mark.skipif(os.name == "nt", reason="Not supported for Windows.")
+@@ -34,36 +56,19 @@ def test_file_permissions(tmp_dir, scm, dvc, exp_stage, mocker):
+ 
+ 
+ def test_failed_exp(tmp_dir, scm, dvc, exp_stage, mocker, caplog):
+-    from dvc.stage.exceptions import StageCmdFailedError
++    from dvc.exceptions import ReproductionError
+ 
+     tmp_dir.gen("params.yaml", "foo: 2")
+ 
+     mocker.patch(
+-        "dvc.stage.run.cmd_run",
+-        side_effect=StageCmdFailedError(exp_stage.cmd, -1),
++        "concurrent.futures.Future.exception",
++        return_value=ReproductionError(exp_stage.relpath),
+     )
+     with caplog.at_level(logging.ERROR):
+         dvc.experiments.run(exp_stage.addressing)
+         assert "Failed to reproduce experiment" in caplog.text
+ 
+ 
+-def test_update_with_pull(tmp_dir, scm, dvc, exp_stage, mocker):
+-    expected_revs = [scm.get_rev()]
+-
+-    tmp_dir.gen("params.yaml", "foo: 2")
+-    dvc.experiments.run(exp_stage.addressing)
+-    scm.add(["dvc.yaml", "dvc.lock", "params.yaml", "metrics.yaml"])
+-    scm.commit("promote experiment")
+-    expected_revs.append(scm.get_rev())
+-
+-    tmp_dir.gen("params.yaml", "foo: 3")
+-    dvc.experiments.run(exp_stage.addressing)
+-
+-    exp_scm = dvc.experiments.scm
+-    for rev in expected_revs:
+-        assert exp_scm.has_rev(rev)
+-
+-
+ @pytest.mark.parametrize(
+     "changes, expected",
+     [
+@@ -103,16 +108,19 @@ def test_modify_params(tmp_dir, scm, dvc, mocker, changes, expected):
+     scm.commit("init")
+ 
+     new_mock = mocker.spy(dvc.experiments, "new")
+-    dvc.experiments.run(stage.addressing, params=changes)
++    results = dvc.experiments.run(stage.addressing, params=changes)
++    exp = first(results)
+ 
+     new_mock.assert_called_once()
+-    assert (
+-        tmp_dir / ".dvc" / "experiments" / "metrics.yaml"
+-    ).read_text().strip() == expected
++    tree = scm.get_tree(exp)
++    with tree.open(tmp_dir / "metrics.yaml") as fobj:
++        assert fobj.read().strip() == expected
+ 
+ 
+ @pytest.mark.parametrize("queue", [True, False])
+-def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
++def test_apply(tmp_dir, scm, dvc, exp_stage, queue):
++    from dvc.exceptions import InvalidArgumentError
++
+     metrics_original = (tmp_dir / "metrics.yaml").read_text().strip()
+     results = dvc.experiments.run(
+         exp_stage.addressing, params=["foo=2"], queue=queue
+@@ -124,7 +132,10 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+     )
+     exp_b = first(results)
+ 
+-    dvc.experiments.checkout(exp_a)
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.apply("foo")
++
++    dvc.experiments.apply(exp_a)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 2"
+     assert (
+         (tmp_dir / "metrics.yaml").read_text().strip() == metrics_original
+@@ -132,7 +143,7 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+         else "foo: 2"
+     )
+ 
+-    dvc.experiments.checkout(exp_b)
++    dvc.experiments.apply(exp_b)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+     assert (
+         (tmp_dir / "metrics.yaml").read_text().strip() == metrics_original
+@@ -142,6 +153,8 @@ def test_checkout(tmp_dir, scm, dvc, exp_stage, queue):
+ 
+ 
+ def test_get_baseline(tmp_dir, scm, dvc, exp_stage):
++    from dvc.repo.experiments.base import EXPS_STASH
++
+     init_rev = scm.get_rev()
+     assert dvc.experiments.get_baseline(init_rev) is None
+ 
+@@ -150,21 +163,22 @@ def test_get_baseline(tmp_dir, scm, dvc, exp_stage):
+     assert dvc.experiments.get_baseline(exp_rev) == init_rev
+ 
+     dvc.experiments.run(exp_stage.addressing, params=["foo=3"], queue=True)
+-    assert dvc.experiments.get_baseline("stash@{0}") == init_rev
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{0}}") == init_rev
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("promote exp")
+     promote_rev = scm.get_rev()
++    assert dvc.experiments.get_baseline(promote_rev) is None
+ 
+     results = dvc.experiments.run(exp_stage.addressing, params=["foo=4"])
+     exp_rev = first(results)
+-    assert dvc.experiments.get_baseline(promote_rev) is None
+     assert dvc.experiments.get_baseline(exp_rev) == promote_rev
+ 
+     dvc.experiments.run(exp_stage.addressing, params=["foo=5"], queue=True)
+-    assert dvc.experiments.get_baseline("stash@{0}") == promote_rev
+-    assert dvc.experiments.get_baseline("stash@{1}") == init_rev
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{0}}") == promote_rev
++    print("stash 1")
++    assert dvc.experiments.get_baseline(f"{EXPS_STASH}@{{1}}") == init_rev
+ 
+ 
+ def test_update_py_params(tmp_dir, scm, dvc):
+@@ -182,9 +196,11 @@ def test_update_py_params(tmp_dir, scm, dvc):
+     results = dvc.experiments.run(stage.addressing, params=["params.py:INT=2"])
+     exp_a = first(results)
+ 
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.py").read_text().strip() == "INT = 2"
+-    assert (tmp_dir / "metrics.py").read_text().strip() == "INT = 2"
++    tree = scm.get_tree(exp_a)
++    with tree.open(tmp_dir / "params.py") as fobj:
++        assert fobj.read().strip() == "INT = 2"
++    with tree.open(tmp_dir / "metrics.py") as fobj:
++        assert fobj.read().strip() == "INT = 2"
+ 
+     tmp_dir.gen(
+         "params.py",
+@@ -213,9 +229,11 @@ def test_update_py_params(tmp_dir, scm, dvc):
+         "class Klass:\n    def __init__(self):\n        self.a = 222"
+     )
+ 
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.py").read_text().strip() == result
+-    assert (tmp_dir / "metrics.py").read_text().strip() == result
++    tree = scm.get_tree(exp_a)
++    with tree.open(tmp_dir / "params.py") as fobj:
++        assert fobj.read().strip() == result
++    with tree.open(tmp_dir / "metrics.py") as fobj:
++        assert fobj.read().strip() == result
+ 
+     tmp_dir.gen("params.py", "INT = 1\n")
+     stage = dvc.run(
+@@ -231,31 +249,6 @@ def test_update_py_params(tmp_dir, scm, dvc):
+         dvc.experiments.run(stage.addressing, params=["params.py:INT=2a"])
+ 
+ 
+-def test_extend_branch(tmp_dir, scm, dvc, exp_stage):
+-    results = dvc.experiments.run(exp_stage.addressing, params=["foo=2"])
+-    exp_a = first(results)
+-    exp_branch = dvc.experiments._get_branch_containing(exp_a)
+-
+-    results = dvc.experiments.run(
+-        exp_stage.addressing,
+-        params=["foo=3"],
+-        branch=exp_branch,
+-        apply_workspace=False,
+-    )
+-    exp_b = first(results)
+-
+-    assert exp_a != exp_b
+-    assert dvc.experiments._get_branch_containing(exp_b) == exp_branch
+-
+-    dvc.experiments.checkout(exp_a)
+-    assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 2"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 2"
+-
+-    dvc.experiments.checkout(exp_b)
+-    assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
+-
+-
+ def test_detached_parent(tmp_dir, scm, dvc, exp_stage, mocker):
+     detached_rev = scm.get_rev()
+ 
+@@ -270,5 +263,45 @@ def test_detached_parent(tmp_dir, scm, dvc, exp_stage, mocker):
+ 
+     exp_rev = first(results)
+     assert dvc.experiments.get_baseline(exp_rev) == detached_rev
++
++    dvc.experiments.apply(exp_rev)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+-    assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
++
++
++def test_branch(tmp_dir, scm, dvc, exp_stage):
++    from dvc.exceptions import InvalidArgumentError
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch")
++
++    scm.branch("branch-exists")
++
++    results = dvc.experiments.run(
++        exp_stage.addressing, params=["foo=2"], name="foo"
++    )
++    exp_a = first(results)
++    ref_a = dvc.experiments.get_branch_containing(exp_a)
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch-exists")
++    dvc.experiments.branch("foo", "branch-name")
++    dvc.experiments.branch(exp_a, "branch-rev")
++    dvc.experiments.branch(ref_a, "branch-ref")
++
++    for name in ["branch-name", "branch-rev", "branch-ref"]:
++        assert name in scm.list_branches()
++        assert scm.resolve_rev(name) == exp_a
++
++    tmp_dir.scm_gen({"new_file": "new_file"}, commit="new baseline")
++    results = dvc.experiments.run(
++        exp_stage.addressing, params=["foo=2"], name="foo"
++    )
++    exp_b = first(results)
++    ref_b = dvc.experiments.get_branch_containing(exp_b)
++
++    with pytest.raises(InvalidArgumentError):
++        dvc.experiments.branch("foo", "branch-name")
++    dvc.experiments.branch(ref_b, "branch-ref-b")
++
++    assert "branch-ref-b" in scm.list_branches()
++    assert scm.resolve_rev("branch-ref-b") == exp_b
+diff --git a/tests/func/experiments/test_gc.py b/tests/func/experiments/test_gc.py
+index 20d1d870f..e5f9069ca 100644
+--- a/tests/func/experiments/test_gc.py
++++ b/tests/func/experiments/test_gc.py
+@@ -43,7 +43,7 @@ def test_all_commits(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+ 
+@@ -72,7 +72,7 @@ def test_all_branches(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+ 
+@@ -82,7 +82,7 @@ def test_all_branches(tmp_dir, scm, dvc, queued, expected):
+     dvc.experiments.run(stage.addressing, params=["foo=5"], queue=True)
+     exp_rev = first(results)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v3")
+ 
+@@ -108,7 +108,7 @@ def test_all_tags(tmp_dir, scm, dvc, queued, expected):
+     exp_rev = first(results)
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+ 
+-    dvc.experiments.checkout(exp_rev)
++    dvc.experiments.apply(exp_rev)
+     scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
+     scm.commit("v2")
+     scm.tag("tag-v2")
+diff --git a/tests/func/experiments/test_show.py b/tests/func/experiments/test_show.py
+index 3b4ec829d..70e1fc53b 100644
+--- a/tests/func/experiments/test_show.py
++++ b/tests/func/experiments/test_show.py
+@@ -4,6 +4,7 @@ from funcy import first
+ 
+ from dvc.dvcfile import PIPELINE_FILE
+ from dvc.main import main
++from dvc.repo.experiments.base import ExpRefInfo
+ from tests.func.test_repro_multistage import COPY_SCRIPT
+ 
+ 
+@@ -67,6 +68,8 @@ def test_show_experiment(tmp_dir, scm, dvc):
+ 
+ 
+ def test_show_queued(tmp_dir, scm, dvc):
++    from dvc.repo.experiments.base import EXPS_STASH
++
+     tmp_dir.gen("copy.py", COPY_SCRIPT)
+     tmp_dir.gen("params.yaml", "foo: 1")
+     stage = dvc.run(
+@@ -80,7 +83,7 @@ def test_show_queued(tmp_dir, scm, dvc):
+     baseline_rev = scm.get_rev()
+ 
+     dvc.experiments.run(stage.addressing, params=["foo=2"], queue=True)
+-    exp_rev = dvc.experiments.scm.resolve_rev("stash@{0}")
++    exp_rev = dvc.experiments.scm.resolve_rev(f"{EXPS_STASH}@{{0}}")
+ 
+     results = dvc.experiments.show()[baseline_rev]
+     assert len(results) == 2
+@@ -95,7 +98,7 @@ def test_show_queued(tmp_dir, scm, dvc):
+     new_rev = scm.get_rev()
+ 
+     dvc.experiments.run(stage.addressing, params=["foo=3"], queue=True)
+-    exp_rev = dvc.experiments.scm.resolve_rev("stash@{0}")
++    exp_rev = dvc.experiments.scm.resolve_rev(f"{EXPS_STASH}@{{0}}")
+ 
+     results = dvc.experiments.show()[new_rev]
+     assert len(results) == 2
+@@ -126,12 +129,15 @@ def test_show_checkpoint(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+ 
+     for i, rev in enumerate(checkpoints):
+         if i == 0:
++            name = dvc.experiments.get_exact_name(rev)
+             tree = "╓"
+         elif i == len(checkpoints) - 1:
++            name = rev[:7]
+             tree = "╨"
+         else:
++            name = rev[:7]
+             tree = "╟"
+-        assert f"{tree} {rev[:7]}" in cap.out
++        assert f"{tree} {name}" in cap.out
+ 
+ 
+ def test_show_checkpoint_branch(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+@@ -157,5 +163,8 @@ def test_show_checkpoint_branch(tmp_dir, scm, dvc, checkpoint_stage, capsys):
+     cap = capsys.readouterr()
+ 
+     for rev in (checkpoint_a, checkpoint_b):
+-        assert f"╓ {rev[:7]}" in cap.out
++        ref = dvc.experiments.get_branch_containing(rev)
++        ref_info = ExpRefInfo.from_ref(ref)
++        name = ref_info.name
++        assert f"╓ {name}" in cap.out
+     assert f"({branch_rev[:7]})" in cap.out
+diff --git a/tests/func/params/test_diff.py b/tests/func/params/test_diff.py
+index 7d7a99640..df3e131ec 100644
+--- a/tests/func/params/test_diff.py
++++ b/tests/func/params/test_diff.py
+@@ -1,3 +1,7 @@
++from dvc.utils import relpath
++from dvc.utils.serialize import dump_yaml
++
++
+ def test_diff_no_params(tmp_dir, scm, dvc):
+     assert dvc.params.diff() == {}
+ 
+@@ -144,3 +148,45 @@ def test_no_commits(tmp_dir):
+     assert Git().no_commits
+ 
+     assert Repo.init().params.diff() == {}
++
++
++def test_vars_shows_on_params_diff(tmp_dir, scm, dvc):
++    dvc.config["feature"]["parametrization"] = True
++    params_file = tmp_dir / "test_params.yaml"
++    param_data = {"vars": {"model1": {"epoch": 15}, "model2": {"epoch": 35}}}
++    dump_yaml(params_file, param_data)
++    d = {
++        "vars": ["test_params.yaml"],
++        "stages": {
++            "build": {
++                "foreach": "${vars}",
++                "do": {"cmd": "script --epoch ${item.epoch}"},
++            }
++        },
++    }
++    dump_yaml("dvc.yaml", d)
++    assert dvc.params.diff() == {
++        "test_params.yaml": {
++            "vars.model1.epoch": {"new": 15, "old": None},
++            "vars.model2.epoch": {"new": 35, "old": None},
++        }
++    }
++    scm.add(["dvc.yaml", "test_params.yaml"])
++    scm.commit("added stages")
++
++    param_data["vars"]["model1"]["epoch"] = 20
++    dump_yaml(params_file, param_data)
++    assert dvc.params.diff() == {
++        "test_params.yaml": {
++            "vars.model1.epoch": {"new": 20, "old": 15, "diff": 5},
++        }
++    }
++
++    data_dir = tmp_dir / "data"
++    data_dir.mkdir()
++    with data_dir.chdir():
++        assert dvc.params.diff() == {
++            relpath(params_file): {
++                "vars.model1.epoch": {"new": 20, "old": 15, "diff": 5},
++            }
++        }
+diff --git a/tests/func/test_add.py b/tests/func/test_add.py
+index b2dcd38c8..216d742fc 100644
+--- a/tests/func/test_add.py
++++ b/tests/func/test_add.py
+@@ -2,6 +2,7 @@ import filecmp
+ import logging
+ import os
+ import shutil
++import textwrap
+ import time
+ 
+ import colorama
+@@ -922,3 +923,31 @@ def test_add_with_cache_link_error(tmp_dir, dvc, mocker, caplog):
+     assert (tmp_dir / ".dvc" / "cache").read_text() == {
+         "ac": {"bd18db4cc2f85cedef654fccc4a4d8": "foo"}
+     }
++
++
++def test_add_preserve_meta(tmp_dir, dvc):
++    text = textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        outs:
++        - path: foo # out comment
++          desc: out desc
++        meta: some metadata
++    """
++    )
++    tmp_dir.gen("foo.dvc", text)
++
++    tmp_dir.dvc_gen("foo", "foo")
++    assert (tmp_dir / "foo.dvc").read_text() == textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        outs:
++        - path: foo # out comment
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta: some metadata
++    """
++    )
+diff --git a/tests/func/test_api.py b/tests/func/test_api.py
+index 4e3301ef2..3fa0f4aa4 100644
+--- a/tests/func/test_api.py
++++ b/tests/func/test_api.py
+@@ -75,7 +75,7 @@ def test_open(tmp_dir, dvc, remote):
+     [
+         pytest.lazy_fixture(cloud)
+         for cloud in [
+-            "real_s3",  # NOTE: moto's s3 fails in some tests
++            "s3",
+             "gs",
+             "azure",
+             "gdrive",
+@@ -128,7 +128,7 @@ def test_open_granular(tmp_dir, dvc, remote):
+     [
+         pytest.lazy_fixture(cloud)
+         for cloud in [
+-            "real_s3",  # NOTE: moto's s3 fails in some tests
++            "s3",
+             "gs",
+             "azure",
+             "gdrive",
+diff --git a/tests/func/test_checkout.py b/tests/func/test_checkout.py
+index c61c684f3..fd0419cee 100644
+--- a/tests/func/test_checkout.py
++++ b/tests/func/test_checkout.py
+@@ -7,7 +7,6 @@ import shutil
+ import pytest
+ from mock import patch
+ 
+-from dvc.cache.base import CloudCache
+ from dvc.dvcfile import DVC_FILE_SUFFIX, PIPELINE_FILE, Dvcfile
+ from dvc.exceptions import (
+     CheckoutError,
+@@ -17,19 +16,16 @@ from dvc.exceptions import (
+     NoOutputOrStageError,
+ )
+ from dvc.main import main
+-from dvc.remote.base import Remote
+ from dvc.repo import Repo as DvcRepo
+ from dvc.stage import Stage
+ from dvc.stage.exceptions import StageFileDoesNotExistError
+ from dvc.system import System
+ from dvc.tree.local import LocalTree
+-from dvc.tree.s3 import S3Tree
+ from dvc.utils import relpath
+ from dvc.utils.fs import walk_files
+ from dvc.utils.serialize import dump_yaml, load_yaml
+ from tests.basic_env import TestDvc, TestDvcGit
+ from tests.func.test_repro import TestRepro
+-from tests.remotes import S3
+ 
+ logger = logging.getLogger("dvc")
+ 
+@@ -757,32 +753,28 @@ def test_checkout_recursive(tmp_dir, dvc):
+     }
+ 
+ 
+-@pytest.mark.skipif(
+-    not S3.should_test(), reason="Only run with S3 credentials"
++@pytest.mark.parametrize(
++    "workspace", [pytest.lazy_fixture("s3")], indirect=True
+ )
+-def test_checkout_for_external_outputs(tmp_dir, dvc):
+-    dvc.cache.s3 = CloudCache(S3Tree(dvc, {"url": S3.get_url()}))
+-
+-    remote = Remote(S3Tree(dvc, {"url": S3.get_url()}))
+-    file_path = remote.tree.path_info / "foo"
+-    remote.tree.s3.meta.client.put_object(
+-        Bucket=remote.tree.path_info.bucket, Key=file_path.path, Body="foo"
+-    )
++def test_checkout_for_external_outputs(tmp_dir, dvc, workspace):
++    workspace.gen("foo", "foo")
+ 
+-    dvc.add(str(remote.tree.path_info / "foo"), external=True)
++    file_path = workspace / "foo"
++    dvc.add("remote://workspace/foo")
+ 
++    remote = dvc.cloud.get_remote("workspace")
+     remote.tree.remove(file_path)
++    assert not file_path.exists()
++
+     stats = dvc.checkout(force=True)
+     assert stats == {**empty_checkout, "added": [str(file_path)]}
+-    assert remote.tree.exists(file_path)
++    assert file_path.exists()
++
++    workspace.gen("foo", "foo\nfoo")
+ 
+-    remote.tree.s3.meta.client.put_object(
+-        Bucket=remote.tree.path_info.bucket,
+-        Key=file_path.path,
+-        Body="foo\nfoo",
+-    )
+     stats = dvc.checkout(force=True)
+     assert stats == {**empty_checkout, "modified": [str(file_path)]}
++    assert file_path.read_text() == "foo"
+ 
+ 
+ def test_checkouts_with_different_addressing(tmp_dir, dvc, run_copy):
+diff --git a/tests/func/test_dvcfile.py b/tests/func/test_dvcfile.py
+index f11f960bb..f98750d57 100644
+--- a/tests/func/test_dvcfile.py
++++ b/tests/func/test_dvcfile.py
+@@ -315,8 +315,8 @@ def test_dvcfile_dump_preserves_meta(tmp_dir, dvc, run_copy):
+ 
+     data = dvcfile._load()[0]
+     metadata = {"name": "copy-file"}
++    stage.meta = metadata
+     data["stages"]["run_copy"]["meta"] = metadata
+-    dump_yaml(dvcfile.path, data)
+ 
+     dvcfile.dump(stage)
+     assert dvcfile._load()[0] == data
+@@ -355,7 +355,7 @@ def test_dvcfile_dump_preserves_comments(tmp_dir, dvc):
+             - foo"""
+     )
+     tmp_dir.gen("dvc.yaml", text)
+-    stage = dvc.get_stage(name="generate-foo")
++    stage = dvc.stage.load_one(name="generate-foo")
+     stage.outs[0].use_cache = False
+     dvcfile = stage.dvcfile
+ 
+@@ -377,7 +377,7 @@ def test_dvcfile_try_dumping_parametrized_stage(tmp_dir, dvc, data, name):
+     dump_yaml("dvc.yaml", {"stages": data, "vars": [{"foo": "foobar"}]})
+     dvc.config["feature"]["parametrization"] = True
+ 
+-    stage = dvc.get_stage(name=name)
++    stage = dvc.stage.load_one(name=name)
+     dvcfile = stage.dvcfile
+ 
+     with pytest.raises(ParametrizedDumpError) as exc:
+diff --git a/tests/func/test_import_url.py b/tests/func/test_import_url.py
+index 906566bea..b58b5406c 100644
+--- a/tests/func/test_import_url.py
++++ b/tests/func/test_import_url.py
+@@ -1,4 +1,5 @@
+ import os
++import textwrap
+ from uuid import uuid4
+ 
+ import pytest
+@@ -207,3 +208,40 @@ def test_import_url_dir(tmp_dir, dvc, workspace, stage_md5, dir_md5):
+     )
+ 
+     assert dvc.status() == {}
++
++
++def test_import_url_preserve_meta(tmp_dir, dvc):
++    text = textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        deps:
++        - path: foo # dep comment
++        outs:
++        - path: bar # out comment
++          desc: out desc
++        meta: some metadata
++    """
++    )
++    tmp_dir.gen("bar.dvc", text)
++
++    tmp_dir.gen("foo", "foo")
++    dvc.imp_url("foo", out="bar")
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        """\
++        # top comment
++        desc: top desc
++        deps:
++        - path: foo # dep comment
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        outs:
++        - path: bar # out comment
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta: some metadata
++        md5: be7ade0aa89cc8d56e320867a9de9740
++        frozen: true
++    """
++    )
+diff --git a/tests/func/test_init.py b/tests/func/test_init.py
+index 4ea9c9101..79f7dc4ab 100644
+--- a/tests/func/test_init.py
++++ b/tests/func/test_init.py
+@@ -111,3 +111,17 @@ def test_gen_dvcignore(tmp_dir):
+         "# https://dvc.org/doc/user-guide/dvcignore\n"
+     )
+     assert text == (tmp_dir / ".dvcignore").read_text()
++
++
++def test_init_when_ignored_by_git(tmp_dir, scm, caplog):
++    # https://github.com/iterative/dvc/issues/3738
++    tmp_dir.gen({".gitignore": ".*"})
++    with caplog.at_level(logging.ERROR, logger="dvc"):
++        assert main(["init"]) == 1
++    assert (
++        "{dvc_dir} is ignored by your SCM tool. \n"
++        "Make sure that it's tracked, "
++        "for example, by adding '!.dvc' to .gitignore.".format(
++            dvc_dir=tmp_dir / DvcRepo.DVC_DIR
++        )
++    ) in caplog.text
+diff --git a/tests/func/test_repo.py b/tests/func/test_repo.py
+index a76147f59..ae5d35f5b 100644
+--- a/tests/func/test_repo.py
++++ b/tests/func/test_repo.py
+@@ -1,21 +1,6 @@
+-import os
+-from operator import itemgetter
+-
+-import pytest
+-
+ from dvc.cache import Cache
+ from dvc.dvcfile import PIPELINE_FILE, PIPELINE_LOCK
+-from dvc.exceptions import NoOutputOrStageError
+-from dvc.path_info import PathInfo
+-from dvc.repo import Repo
+-from dvc.stage.exceptions import (
+-    StageFileDoesNotExistError,
+-    StageNameUnspecified,
+-    StageNotFound,
+-)
+ from dvc.system import System
+-from dvc.utils import relpath
+-from dvc.utils.fs import remove
+ 
+ 
+ def test_destroy(tmp_dir, dvc, run_copy):
+@@ -65,300 +50,3 @@ def test_destroy(tmp_dir, dvc, run_copy):
+         "dir/subdir/file",
+     ]:
+         assert not System.is_symlink(tmp_dir / path)
+-
+-
+-def test_collect(tmp_dir, scm, dvc, run_copy):
+-    def collect_outs(*args, **kwargs):
+-        return {
+-            str(out)
+-            for stage in dvc.collect(*args, **kwargs)
+-            for out in stage.outs
+-        }
+-
+-    tmp_dir.dvc_gen("foo", "foo")
+-    run_copy("foo", "bar", single_stage=True)
+-    scm.add([".gitignore", "foo.dvc", "bar.dvc"])
+-    scm.commit("Add foo and bar")
+-
+-    scm.checkout("new-branch", create_new=True)
+-
+-    run_copy("bar", "buzz", single_stage=True)
+-    scm.add([".gitignore", "buzz.dvc"])
+-    scm.commit("Add buzz")
+-
+-    assert collect_outs("bar.dvc", with_deps=True) == {"foo", "bar"}
+-    assert collect_outs("buzz.dvc", with_deps=True) == {"foo", "bar", "buzz"}
+-    assert collect_outs("buzz.dvc", with_deps=False) == {"buzz"}
+-
+-    run_copy("foo", "foobar", name="copy-foo-foobar")
+-    assert collect_outs(":copy-foo-foobar") == {"foobar"}
+-    assert collect_outs(":copy-foo-foobar", with_deps=True) == {
+-        "foobar",
+-        "foo",
+-    }
+-    assert collect_outs("dvc.yaml:copy-foo-foobar", recursive=True) == {
+-        "foobar"
+-    }
+-    assert collect_outs("copy-foo-foobar") == {"foobar"}
+-    assert collect_outs("copy-foo-foobar", with_deps=True) == {
+-        "foobar",
+-        "foo",
+-    }
+-    assert collect_outs("copy-foo-foobar", recursive=True) == {"foobar"}
+-
+-    run_copy("foobar", "baz", name="copy-foobar-baz")
+-    assert collect_outs("dvc.yaml") == {"foobar", "baz"}
+-    assert collect_outs("dvc.yaml", with_deps=True) == {
+-        "foobar",
+-        "baz",
+-        "foo",
+-    }
+-
+-
+-def test_collect_dir_recursive(tmp_dir, dvc, run_head):
+-    tmp_dir.gen({"dir": {"foo": "foo"}})
+-    (stage1,) = dvc.add("dir", recursive=True)
+-    with (tmp_dir / "dir").chdir():
+-        stage2 = run_head("foo", name="copy-foo-bar")
+-        stage3 = run_head("foo-1", single_stage=True)
+-    assert set(dvc.collect("dir", recursive=True)) == {stage1, stage2, stage3}
+-
+-
+-def test_collect_with_not_existing_output_or_stage_name(
+-    tmp_dir, dvc, run_copy
+-):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect("some_file")
+-    tmp_dir.dvc_gen("foo", "foo")
+-    run_copy("foo", "bar", name="copy-foo-bar")
+-    with pytest.raises(StageNotFound):
+-        dvc.collect("some_file")
+-
+-
+-def test_stages(tmp_dir, dvc):
+-    def collect_stages():
+-        return {stage.relpath for stage in Repo(os.fspath(tmp_dir)).stages}
+-
+-    tmp_dir.dvc_gen({"file": "a", "dir/file": "b", "dir/subdir/file": "c"})
+-
+-    assert collect_stages() == {
+-        "file.dvc",
+-        os.path.join("dir", "file.dvc"),
+-        os.path.join("dir", "subdir", "file.dvc"),
+-    }
+-
+-    tmp_dir.gen(".dvcignore", "dir")
+-
+-    assert collect_stages() == {"file.dvc"}
+-
+-
+-@pytest.fixture
+-def stages(tmp_dir, run_copy):
+-    stage1, stage2 = tmp_dir.dvc_gen({"foo": "foo", "lorem": "lorem"})
+-    return {
+-        "foo-generate": stage1,
+-        "lorem-generate": stage2,
+-        "copy-foo-bar": run_copy("foo", "bar", single_stage=True),
+-        "copy-bar-foobar": run_copy("bar", "foobar", name="copy-bar-foobar"),
+-        "copy-lorem-ipsum": run_copy("lorem", "ipsum", name="lorem-ipsum"),
+-    }
+-
+-
+-def test_collect_granular_with_no_target(tmp_dir, dvc, stages):
+-    assert set(map(itemgetter(0), dvc.collect_granular())) == set(
+-        stages.values()
+-    )
+-    assert list(map(itemgetter(1), dvc.collect_granular())) == [None] * len(
+-        stages
+-    )
+-
+-
+-def test_collect_granular_with_target(tmp_dir, dvc, stages):
+-    assert dvc.collect_granular("bar.dvc") == [(stages["copy-foo-bar"], None)]
+-    assert dvc.collect_granular(PIPELINE_FILE) == [
+-        (stages["copy-bar-foobar"], None),
+-        (stages["copy-lorem-ipsum"], None),
+-    ]
+-    assert dvc.collect_granular(":") == [
+-        (stages["copy-bar-foobar"], None),
+-        (stages["copy-lorem-ipsum"], None),
+-    ]
+-    assert dvc.collect_granular("copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-    assert dvc.collect_granular(":copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-    assert dvc.collect_granular("dvc.yaml:copy-bar-foobar") == [
+-        (stages["copy-bar-foobar"], None)
+-    ]
+-
+-    with (tmp_dir / dvc.DVC_DIR).chdir():
+-        assert dvc.collect_granular(
+-            relpath(tmp_dir / PIPELINE_FILE) + ":copy-bar-foobar"
+-        ) == [(stages["copy-bar-foobar"], None)]
+-
+-    assert dvc.collect_granular("foobar") == [
+-        (stages["copy-bar-foobar"], PathInfo(tmp_dir / "foobar"))
+-    ]
+-
+-
+-@pytest.mark.parametrize(
+-    "target",
+-    [
+-        "not_existing.dvc",
+-        "not_existing.dvc:stage_name",
+-        "not_existing/dvc.yaml",
+-        "not_existing/dvc.yaml:stage_name",
+-    ],
+-)
+-def test_collect_with_not_existing_dvcfile(tmp_dir, dvc, target):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect_granular(target)
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.collect(target)
+-
+-
+-def test_collect_granular_with_not_existing_output_or_stage_name(tmp_dir, dvc):
+-    with pytest.raises(NoOutputOrStageError):
+-        dvc.collect_granular("some_file")
+-    with pytest.raises(NoOutputOrStageError):
+-        dvc.collect_granular("some_file", recursive=True)
+-
+-
+-def test_collect_granular_with_deps(tmp_dir, dvc, stages):
+-    assert set(
+-        map(itemgetter(0), dvc.collect_granular("bar.dvc", with_deps=True))
+-    ) == {stages["copy-foo-bar"], stages["foo-generate"]}
+-    assert set(
+-        map(
+-            itemgetter(0),
+-            dvc.collect_granular("copy-bar-foobar", with_deps=True),
+-        )
+-    ) == {
+-        stages["copy-bar-foobar"],
+-        stages["copy-foo-bar"],
+-        stages["foo-generate"],
+-    }
+-    assert set(
+-        map(
+-            itemgetter(0), dvc.collect_granular(PIPELINE_FILE, with_deps=True),
+-        )
+-    ) == set(stages.values())
+-
+-
+-def test_collect_granular_same_output_name_stage_name(tmp_dir, dvc, run_copy):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    (stage2,) = tmp_dir.dvc_gen("copy-foo-bar", "copy-foo-bar")
+-    stage3 = run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    assert dvc.collect_granular("copy-foo-bar") == [(stage3, None)]
+-
+-    coll = dvc.collect_granular("copy-foo-bar", with_deps=True)
+-    assert set(map(itemgetter(0), coll)) == {stage3, stage1}
+-    assert list(map(itemgetter(1), coll)) == [None] * 2
+-
+-    assert dvc.collect_granular("./copy-foo-bar") == [
+-        (stage2, PathInfo(tmp_dir / "copy-foo-bar"))
+-    ]
+-    assert dvc.collect_granular("./copy-foo-bar", with_deps=True) == [
+-        (stage2, PathInfo(tmp_dir / "copy-foo-bar"))
+-    ]
+-
+-
+-def test_collect_granular_priority_on_collision(tmp_dir, dvc, run_copy):
+-    tmp_dir.gen({"dir": {"foo": "foo"}, "foo": "foo"})
+-    (stage1,) = dvc.add("dir", recursive=True)
+-    stage2 = run_copy("foo", "bar", name="dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage2, None)]
+-    assert dvc.collect_granular("dir", recursive=True) == [(stage1, None)]
+-
+-    remove(tmp_dir / "dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage2, None)]
+-    assert dvc.collect_granular("dir", recursive=True) == [(stage2, None)]
+-
+-
+-def test_collect_granular_collision_output_dir_stage_name(
+-    tmp_dir, dvc, run_copy
+-):
+-    stage1, *_ = tmp_dir.dvc_gen({"dir": {"foo": "foo"}, "foo": "foo"})
+-    stage3 = run_copy("foo", "bar", name="dir")
+-
+-    assert dvc.collect_granular("dir") == [(stage3, None)]
+-    assert not dvc.collect_granular("dir", recursive=True)
+-    assert dvc.collect_granular("./dir") == [
+-        (stage1, PathInfo(tmp_dir / "dir"))
+-    ]
+-
+-
+-def test_collect_granular_not_existing_stage_name(tmp_dir, dvc, run_copy):
+-    tmp_dir.dvc_gen("foo", "foo")
+-    (stage,) = tmp_dir.dvc_gen("copy-foo-bar", "copy-foo-bar")
+-    run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    assert dvc.collect_granular("copy-foo-bar.dvc:stage_name_not_needed") == [
+-        (stage, None)
+-    ]
+-    with pytest.raises(StageNotFound):
+-        dvc.collect_granular("dvc.yaml:does-not-exist")
+-
+-
+-def test_get_stages(tmp_dir, dvc, run_copy):
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages()
+-
+-    tmp_dir.gen("foo", "foo")
+-    stage1 = run_copy("foo", "bar", name="copy-foo-bar")
+-    stage2 = run_copy("bar", "foobar", name="copy-bar-foobar")
+-
+-    assert set(dvc.get_stages()) == {stage1, stage2}
+-    assert set(dvc.get_stages(path=PIPELINE_FILE)) == {stage1, stage2}
+-    assert set(dvc.get_stages(name="copy-bar-foobar")) == {stage2}
+-    assert set(dvc.get_stages(path=PIPELINE_FILE, name="copy-bar-foobar")) == {
+-        stage2
+-    }
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages(path=relpath(tmp_dir / ".." / PIPELINE_FILE))
+-
+-    with pytest.raises(StageNotFound):
+-        dvc.get_stages(path=PIPELINE_FILE, name="copy")
+-
+-
+-def test_get_stages_old_dvcfile(tmp_dir, dvc):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    assert set(dvc.get_stages("foo.dvc")) == {stage1}
+-    assert set(dvc.get_stages("foo.dvc", name="foo-generate")) == {stage1}
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stages(path=relpath(tmp_dir / ".." / "foo.dvc"))
+-
+-
+-def test_get_stage(tmp_dir, dvc, run_copy):
+-    tmp_dir.gen("foo", "foo")
+-    stage1 = run_copy("foo", "bar", name="copy-foo-bar")
+-
+-    with pytest.raises(StageNameUnspecified):
+-        dvc.get_stage()
+-
+-    with pytest.raises(StageNameUnspecified):
+-        dvc.get_stage(path=PIPELINE_FILE)
+-
+-    assert dvc.get_stage(path=PIPELINE_FILE, name="copy-foo-bar") == stage1
+-    assert dvc.get_stage(name="copy-foo-bar") == stage1
+-
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stage(path="something.yaml", name="name")
+-
+-    with pytest.raises(StageNotFound):
+-        dvc.get_stage(name="random_name")
+-
+-
+-def test_get_stage_single_stage_dvcfile(tmp_dir, dvc):
+-    (stage1,) = tmp_dir.dvc_gen("foo", "foo")
+-    assert dvc.get_stage("foo.dvc") == stage1
+-    assert dvc.get_stage("foo.dvc", name="jpt") == stage1
+-    with pytest.raises(StageFileDoesNotExistError):
+-        dvc.get_stage(path="bar.dvc", name="name")
+diff --git a/tests/func/test_run_single_stage.py b/tests/func/test_run_single_stage.py
+index 155126459..24969570e 100644
+--- a/tests/func/test_run_single_stage.py
++++ b/tests/func/test_run_single_stage.py
+@@ -1005,30 +1005,70 @@ def test_metrics_dir(tmp_dir, dvc, caplog, run_copy_metrics, metrics_type):
+     )
+ 
+ 
+-def test_run_force_doesnot_preserve_comments_and_meta(tmp_dir, dvc, run_copy):
+-    """Depends on loading of stage on `run` where we don't check the file
+-    for stage already exists, so we don't copy `stage_text` over due to which
+-    `meta` and `comments` don't get preserved."""
++def test_run_force_preserves_comments_and_meta(tmp_dir, dvc, run_copy):
+     tmp_dir.gen({"foo": "foo", "foo1": "foo1"})
+     text = textwrap.dedent(
+         """\
++      desc: top desc
+       cmd: python copy.py foo bar
+       deps:
+       - path: copy.py
+       - path: foo
+       outs:
+-      # comment not preserved
++      # comment preserved
+       - path: bar
++        desc: out desc
+       meta:
+         name: copy-foo-bar
+     """
+     )
+     (tmp_dir / "bar.dvc").write_text(text)
+     dvc.reproduce("bar.dvc")
+-    assert "comment" in (tmp_dir / "bar.dvc").read_text()
+-    assert "meta" in (tmp_dir / "bar.dvc").read_text()
+ 
+-    run_copy("foo1", "bar1", single_stage=True, force=True, fname="bar.dvc")
++    # CRLF on windows makes the generated file bigger in size
++    code_size = 143 if os.name == "nt" else 142
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        f"""\
++        desc: top desc
++        cmd: python copy.py foo bar
++        deps:
++        - path: copy.py
++          md5: 90c27dd80b698fe766f0c3ee0b6b9729
++          size: {code_size}
++        - path: foo
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        outs:
++        # comment preserved
++        - path: bar
++          desc: out desc
++          md5: acbd18db4cc2f85cedef654fccc4a4d8
++          size: 3
++        meta:
++          name: copy-foo-bar
++        md5: be659ce4a33cebb85d4e8e1335d394ad
++    """
++    )
+ 
+-    assert "comment" not in (tmp_dir / "bar.dvc").read_text()
+-    assert "meta" not in (tmp_dir / "bar.dvc").read_text()
++    run_copy("foo1", "bar1", single_stage=True, force=True, fname="bar.dvc")
++    assert (tmp_dir / "bar.dvc").read_text() == textwrap.dedent(
++        f"""\
++        desc: top desc
++        cmd: python copy.py foo1 bar1
++        deps:
++        - path: foo1
++          md5: 299a0be4a5a79e6a59fdd251b19d78bb
++          size: 4
++        - path: copy.py
++          md5: 90c27dd80b698fe766f0c3ee0b6b9729
++          size: {code_size}
++        outs:
++        # comment preserved
++        - path: bar1
++          md5: 299a0be4a5a79e6a59fdd251b19d78bb
++          size: 4
++        meta:
++          name: copy-foo-bar
++        md5: 9e725b11cb393e6a7468369fa50328b7
++    """
++    )
+diff --git a/tests/func/test_scm.py b/tests/func/test_scm.py
+index 97530ac74..644fda3b2 100644
+--- a/tests/func/test_scm.py
++++ b/tests/func/test_scm.py
+@@ -92,8 +92,8 @@ def test_ignored(tmp_dir, scm):
+     tmp_dir.gen({"dir1": {"file1.jpg": "cont", "file2.txt": "cont"}})
+     tmp_dir.gen({".gitignore": "dir1/*.jpg"})
+ 
+-    assert scm._ignored(os.fspath(tmp_dir / "dir1" / "file1.jpg"))
+-    assert not scm._ignored(os.fspath(tmp_dir / "dir1" / "file2.txt"))
++    assert scm.is_ignored(tmp_dir / "dir1" / "file1.jpg")
++    assert not scm.is_ignored(tmp_dir / "dir1" / "file2.txt")
+ 
+ 
+ def test_get_gitignore(tmp_dir, scm):
+@@ -163,3 +163,120 @@ def test_gitignore_should_append_newline_to_gitignore(tmp_dir, scm):
+     assert gitignore.read_text().endswith("\n")
+ 
+     assert contents.splitlines() == ["/foo", "/bar"]
++
++
++def test_git_detach_head(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++
++    with scm.detach_head() as rev:
++        assert init_rev == rev
++        assert init_rev == (tmp_dir / ".git" / "HEAD").read_text().strip()
++    assert (
++        "ref: refs/heads/master"
++        == (tmp_dir / ".git" / "HEAD").read_text().strip()
++    )
++
++
++def test_git_stash_workspace(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    with scm.stash_workspace():
++        assert not scm.repo.is_dirty()
++        assert "0" == (tmp_dir / "file").read_text()
++    assert scm.repo.is_dirty()
++    assert "1" == (tmp_dir / "file").read_text()
++
++
++@pytest.mark.parametrize(
++    "ref, include_untracked",
++    [
++        (None, True),
++        (None, False),
++        ("refs/foo/stash", True),
++        ("refs/foo/stash", False),
++    ],
++)
++def test_git_stash_push(tmp_dir, scm, ref, include_untracked):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen({"file": "1", "untracked": "0"})
++
++    stash = Stash(scm, ref=ref)
++    rev = stash.push(include_untracked=include_untracked)
++    assert rev == scm.get_ref(stash.ref)
++    assert "0" == (tmp_dir / "file").read_text()
++    assert include_untracked != (tmp_dir / "untracked").exists()
++    assert len(stash) == 1
++
++    stash.apply(rev)
++    assert "1" == (tmp_dir / "file").read_text()
++    assert "0" == (tmp_dir / "untracked").read_text()
++
++    parts = list(stash.ref.split("/"))
++    assert os.path.exists(os.path.join(os.fspath(tmp_dir), ".git", *parts))
++    assert os.path.exists(
++        os.path.join(os.fspath(tmp_dir), ".git", "logs", *parts)
++    )
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_drop(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    stash.push()
++
++    tmp_dir.gen("file", "2")
++    expected = stash.push()
++
++    stash.drop(1)
++    assert expected == scm.get_ref(stash.ref)
++    assert len(stash) == 1
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_pop(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    first = stash.push()
++
++    tmp_dir.gen("file", "2")
++    second = stash.push()
++
++    assert second == stash.pop()
++    assert len(stash) == 1
++    assert first == scm.get_ref(stash.ref)
++    assert "2" == (tmp_dir / "file").read_text()
++
++
++@pytest.mark.parametrize("ref", [None, "refs/foo/stash"])
++def test_git_stash_clear(tmp_dir, scm, ref):
++    from dvc.scm.git import Stash
++
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    tmp_dir.gen("file", "1")
++
++    stash = Stash(scm, ref=ref)
++    stash.push()
++
++    tmp_dir.gen("file", "2")
++    stash.push()
++
++    stash.clear()
++    assert len(stash) == 0
++
++    parts = list(stash.ref.split("/"))
++    assert not os.path.exists(os.path.join(os.fspath(tmp_dir), ".git", *parts))
++    assert not os.path.exists(
++        os.path.join(os.fspath(tmp_dir), ".git", "logs", *parts)
++    )
+diff --git a/tests/func/test_stage.py b/tests/func/test_stage.py
+index df17bf440..28435c1ad 100644
+--- a/tests/func/test_stage.py
++++ b/tests/func/test_stage.py
+@@ -216,9 +216,9 @@ def test_parent_repo_collect_stages(tmp_dir, scm, dvc):
+         deep_subrepo_dir.gen("subrepo_file", "subrepo file content")
+         deep_subrepo.add("subrepo_file")
+ 
+-    stages = dvc.collect(None)
+-    subrepo_stages = subrepo.collect(None)
+-    deep_subrepo_stages = deep_subrepo.collect(None)
++    stages = dvc.stage.collect(None)
++    subrepo_stages = subrepo.stage.collect(None)
++    deep_subrepo_stages = deep_subrepo.stage.collect(None)
+ 
+     assert stages == []
+     assert subrepo_stages != []
+diff --git a/tests/func/test_stage_resolver.py b/tests/func/test_stage_resolver.py
+index c1c7b7c3a..788232e14 100644
+--- a/tests/func/test_stage_resolver.py
++++ b/tests/func/test_stage_resolver.py
+@@ -1,4 +1,3 @@
+-import os
+ from copy import deepcopy
+ from math import pi
+ 
+@@ -34,16 +33,17 @@ RESOLVED_DVC_YAML_DATA = {
+             "cmd": "python script.py foo --out bar",
+             "outs": ["bar"],
+             "deps": ["foo"],
+-            "params": [{"params.yaml": ["dict.foo", "dict.bar", "freeze"]}],
+             "frozen": True,
+         },
+-        "stage2": {
+-            "cmd": "echo foo bar",
+-            "params": [{"params.yaml": ["dict.foo", "dict.bar"]}],
+-        },
++        "stage2": {"cmd": "echo foo bar"},
+     }
+ }
+ 
++USED_VARS = {
++    "stage1": {"dict.foo": "foo", "dict.bar": "bar", "freeze": True},
++    "stage2": {"dict.foo": "foo", "dict.bar": "bar"},
++}
++
+ 
+ def recurse_not_a_node(d):
+     assert not isinstance(d, Node)
+@@ -73,6 +73,10 @@ def test_simple(tmp_dir, dvc):
+         dvc, PathInfo(str(tmp_dir)), deepcopy(TEMPLATED_DVC_YAML_DATA)
+     )
+     assert_stage_equal(resolver.resolve(), deepcopy(RESOLVED_DVC_YAML_DATA))
++    assert resolver.tracked_vars == {
++        "stage1": {DEFAULT_PARAMS_FILE: USED_VARS["stage1"]},
++        "stage2": {DEFAULT_PARAMS_FILE: USED_VARS["stage2"]},
++    }
+ 
+ 
+ def test_vars(tmp_dir, dvc):
+@@ -81,10 +85,8 @@ def test_vars(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+     resolved_data = deepcopy(RESOLVED_DVC_YAML_DATA)
+ 
+-    # `vars` section is not auto-tracked
+-    del resolved_data["stages"]["stage1"]["params"]
+-    del resolved_data["stages"]["stage2"]["params"]
+     assert_stage_equal(resolver.resolve(), resolved_data)
++    assert not any(resolver.tracked_vars.values())
+ 
+ 
+ def test_no_params_yaml_and_vars(tmp_dir, dvc):
+@@ -97,7 +99,7 @@ def test_no_params_yaml_and_vars(tmp_dir, dvc):
+ 
+ def test_vars_import(tmp_dir, dvc):
+     """
+-    Test that different file can be loaded using `use`
++    Test that different file can be loaded using `vars`
+     instead of default params.yaml.
+     """
+     dump_yaml(tmp_dir / "params2.yaml", CONTEXT_DATA)
+@@ -106,11 +108,11 @@ def test_vars_import(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+     resolved_data = deepcopy(RESOLVED_DVC_YAML_DATA)
+-    for _, stage_d in resolved_data["stages"].items():
+-        params = stage_d["params"][0]
+-        params["params2.yaml"] = params.pop(DEFAULT_PARAMS_FILE)
+-
+     assert_stage_equal(resolver.resolve(), resolved_data)
++    assert resolver.tracked_vars == {
++        "stage1": {"params2.yaml": USED_VARS["stage1"]},
++        "stage2": {"params2.yaml": USED_VARS["stage2"]},
++    }
+ 
+ 
+ def test_vars_and_params_import(tmp_dir, dvc):
+@@ -126,13 +128,11 @@ def test_vars_and_params_import(tmp_dir, dvc):
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+     assert_stage_equal(
+-        resolver.resolve(),
+-        {
+-            "stages": {
+-                "stage1": {"cmd": "echo foobar bar", "params": ["dict.bar"]}
+-            }
+-        },
++        resolver.resolve(), {"stages": {"stage1": {"cmd": "echo foobar bar"}}}
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {DEFAULT_PARAMS_FILE: {"dict.bar": "bar"}}
++    }
+ 
+ 
+ def test_with_params_section(tmp_dir, dvc):
+@@ -156,14 +156,17 @@ def test_with_params_section(tmp_dir, dvc):
+             "stages": {
+                 "stage1": {
+                     "cmd": "echo foo bar foobar",
+-                    "params": [
+-                        "dict.bar",
+-                        {"params.json": ["dict.foobar", "value1"]},
+-                    ],
++                    "params": [{"params.json": ["value1"]}],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar"},
++            "params.json": {"dict.foobar": "foobar"},
++        }
++    }
+ 
+ 
+ def test_stage_with_wdir(tmp_dir, dvc):
+@@ -187,7 +190,6 @@ def test_stage_with_wdir(tmp_dir, dvc):
+     dump_json(data_dir / DEFAULT_PARAMS_FILE, {"dict": {"foo": "foo"}})
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+-    root_params_file = os.path.relpath(tmp_dir / "params.yaml", data_dir)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+@@ -195,15 +197,17 @@ def test_stage_with_wdir(tmp_dir, dvc):
+                 "stage1": {
+                     "cmd": "echo foo bar",
+                     "wdir": "data",
+-                    "params": [
+-                        "dict.foo",
+-                        "value1",
+-                        {root_params_file: ["dict.bar"]},
+-                    ],
++                    "params": ["value1"],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            str(PathInfo("data") / DEFAULT_PARAMS_FILE): {"dict.foo": "foo"},
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar"},
++        }
++    }
+ 
+ 
+ def test_with_templated_wdir(tmp_dir, dvc):
+@@ -229,7 +233,6 @@ def test_with_templated_wdir(tmp_dir, dvc):
+     dump_json(data_dir / DEFAULT_PARAMS_FILE, {"dict": {"foo": "foo"}})
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+ 
+-    root_params_file = os.path.relpath(tmp_dir / "params.yaml", data_dir)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+@@ -237,15 +240,17 @@ def test_with_templated_wdir(tmp_dir, dvc):
+                 "stage1": {
+                     "cmd": "echo foo bar",
+                     "wdir": "data",
+-                    "params": [
+-                        "dict.foo",
+-                        "value1",
+-                        {root_params_file: ["dict.bar", "dict.ws"]},
+-                    ],
++                    "params": ["value1"],
+                 }
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "stage1": {
++            str(PathInfo("data") / DEFAULT_PARAMS_FILE): {"dict.foo": "foo"},
++            DEFAULT_PARAMS_FILE: {"dict.bar": "bar", "dict.ws": "data"},
++        }
++    }
+ 
+ 
+ def test_simple_foreach_loop(tmp_dir, dvc):
+@@ -314,13 +319,14 @@ def test_foreach_loop_templatized(tmp_dir, dvc):
+         {
+             "stages": {
+                 "build@gb": {"cmd": "python script.py --thresh 15"},
+-                "build@us": {
+-                    "cmd": "python script.py --thresh 10",
+-                    "params": ["models.us.thresh"],
+-                },
++                "build@us": {"cmd": "python script.py --thresh 10"},
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "build@gb": {},
++        "build@us": {DEFAULT_PARAMS_FILE: {"models.us.thresh": 10}},
++    }
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -337,12 +343,16 @@ def test_set(tmp_dir, dvc, value):
+         }
+     }
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
++    if isinstance(value, bool):
++        stringified_value = "true" if value else "false"
++    else:
++        stringified_value = str(value)
+     assert_stage_equal(
+         resolver.resolve(),
+         {
+             "stages": {
+                 "build": {
+-                    "cmd": f"python script.py --thresh {value}",
++                    "cmd": f"python script.py --thresh {stringified_value}",
+                     "always_changed": value,
+                 }
+             }
+@@ -419,17 +429,15 @@ def test_set_with_foreach_and_on_stage_definition(tmp_dir, dvc):
+         resolver.resolve(),
+         {
+             "stages": {
+-                "build@us": {
+-                    "cmd": "command --value 10",
+-                    "params": [{"params.json": ["models.us.thresh"]}],
+-                },
+-                "build@gb": {
+-                    "cmd": "command --value 15",
+-                    "params": [{"params.json": ["models.gb.thresh"]}],
+-                },
++                "build@us": {"cmd": "command --value 10"},
++                "build@gb": {"cmd": "command --value 15"},
+             }
+         },
+     )
++    assert resolver.tracked_vars == {
++        "build@us": {"params.json": {"models.us.thresh": 10}},
++        "build@gb": {"params.json": {"models.gb.thresh": 15}},
++    }
+ 
+ 
+ def test_resolve_local_tries_to_load_globally_used_files(tmp_dir, dvc):
+@@ -453,11 +461,12 @@ def test_resolve_local_tries_to_load_globally_used_files(tmp_dir, dvc):
+             "stages": {
+                 "build": {
+                     "cmd": "command --value bar",
+-                    "params": [{"params.json": ["bar", "foo"]}],
++                    "params": [{"params.json": ["foo"]}],
+                 },
+             }
+         },
+     )
++    assert resolver.tracked_vars == {"build": {"params.json": {"bar": "bar"}}}
+ 
+ 
+ def test_resolve_local_tries_to_load_globally_used_params_yaml(tmp_dir, dvc):
+@@ -480,11 +489,12 @@ def test_resolve_local_tries_to_load_globally_used_params_yaml(tmp_dir, dvc):
+             "stages": {
+                 "build": {
+                     "cmd": "command --value bar",
+-                    "params": [{"params.yaml": ["bar", "foo"]}],
++                    "params": [{"params.yaml": ["foo"]}],
+                 },
+             }
+         },
+     )
++    assert resolver.tracked_vars == {"build": {"params.yaml": {"bar": "bar"}}}
+ 
+ 
+ def test_vars_relpath_overwrite(tmp_dir, dvc):
+@@ -502,3 +512,25 @@ def test_vars_relpath_overwrite(tmp_dir, dvc):
+     }
+     resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
+     resolver.resolve()
++
++
++@pytest.mark.parametrize("local", [True, False])
++@pytest.mark.parametrize(
++    "vars_",
++    [
++        ["test_params.yaml:bar", "test_params.yaml:foo"],
++        ["test_params.yaml:foo,bar"],
++        ["test_params.yaml"],
++        ["test_params.yaml", "test_params.yaml"],
++    ],
++)
++def test_vars_load_partial(tmp_dir, dvc, local, vars_):
++    iterable = {"bar": "bar", "foo": "foo"}
++    dump_yaml(tmp_dir / "test_params.yaml", iterable)
++    d = {"stages": {"build": {"cmd": "echo ${bar}"}}}
++    if local:
++        d["stages"]["build"]["vars"] = vars_
++    else:
++        d["vars"] = vars_
++    resolver = DataResolver(dvc, PathInfo(str(tmp_dir)), d)
++    resolver.resolve()
+diff --git a/tests/func/test_stage_resolver_error_msg.py b/tests/func/test_stage_resolver_error_msg.py
+index b92c70a76..f07977e13 100644
+--- a/tests/func/test_stage_resolver_error_msg.py
++++ b/tests/func/test_stage_resolver_error_msg.py
+@@ -343,3 +343,42 @@ def test_interpolate_non_string(tmp_dir, repo):
+         "failed to parse 'stages.build.cmd' in 'dvc.yaml':\n"
+         "Cannot interpolate data of type 'dict'"
+     )
++
++
++@pytest.mark.parametrize("local", [True, False])
++@pytest.mark.parametrize(
++    "vars_",
++    [
++        ["test_params.yaml", "test_params.yaml:sub1"],
++        ["test_params.yaml:sub1", "test_params.yaml"],
++        ["test_params.yaml:sub1", "test_params.yaml:sub1,sub2"],
++    ],
++)
++def test_vars_already_loaded_message(tmp_dir, repo, local, vars_):
++    d = {"stages": {"build": {"cmd": "echo ${sub1} ${sub2}"}}}
++    dump_yaml("test_params.yaml", {"sub1": "sub1", "sub2": "sub2"})
++    if not local:
++        d["vars"] = vars_
++    else:
++        d["stages"]["build"]["vars"] = vars_
++
++    with pytest.raises(ResolveError) as exc_info:
++        resolver = DataResolver(repo, tmp_dir, d)
++        resolver.resolve()
++
++    assert "partially" in str(exc_info.value)
++
++
++@pytest.mark.parametrize("local", [False, True])
++def test_partial_vars_doesnot_exist(tmp_dir, repo, local):
++    d = {"stages": {"build": {"cmd": "echo ${sub1} ${sub2}"}}}
++    dump_yaml("test_params.yaml", {"sub1": "sub1", "sub2": "sub2"})
++    vars_ = ["test_params.yaml:sub3"]
++    if not local:
++        d["vars"] = vars_
++    else:
++        d["stages"]["build"]["vars"] = vars_
++
++    with pytest.raises(ResolveError):
++        resolver = DataResolver(repo, tmp_dir, d)
++        resolver.resolve()
+diff --git a/tests/remotes/__init__.py b/tests/remotes/__init__.py
+index 5e4d8b9d5..d075923d3 100644
+--- a/tests/remotes/__init__.py
++++ b/tests/remotes/__init__.py
+@@ -3,19 +3,6 @@ import subprocess
+ import pytest
+ 
+ from .azure import Azure, azure, azure_server  # noqa: F401
+-from .hdfs import HDFS, hadoop, hdfs, hdfs_server, webhdfs  # noqa: F401
+-from .http import HTTP, http, http_server  # noqa: F401
+-from .local import Local, local_cloud, local_remote  # noqa: F401
+-from .oss import (  # noqa: F401
+-    OSS,
+-    TEST_OSS_REPO_BUCKET,
+-    oss,
+-    oss_server,
+-    real_oss,
+-)
+-from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+-from .webdav import Webdav, webdav, webdav_server  # noqa: F401
+-
+ from .gdrive import (  # noqa: F401; noqa: F401
+     TEST_GDRIVE_REPO_BUCKET,
+     GDrive,
+@@ -27,12 +14,24 @@ from .gs import (  # noqa: F401; noqa: F401
+     TEST_GCP_REPO_BUCKET,
+     gs,
+ )
++from .hdfs import HDFS, hadoop, hdfs, hdfs_server, webhdfs  # noqa: F401
++from .http import HTTP, http, http_server  # noqa: F401
++from .local import Local, local_cloud, local_remote  # noqa: F401
++from .oss import (  # noqa: F401
++    OSS,
++    TEST_OSS_REPO_BUCKET,
++    oss,
++    oss_server,
++    real_oss,
++)
++from .s3 import S3, TEST_AWS_REPO_BUCKET, real_s3, s3  # noqa: F401
+ from .ssh import (  # noqa: F401; noqa: F401
+     SSHMocked,
+     ssh,
+     ssh_connection,
+     ssh_server,
+ )
++from .webdav import Webdav, webdav, webdav_server  # noqa: F401
+ 
+ TEST_REMOTE = "upstream"
+ TEST_CONFIG = {
+diff --git a/tests/unit/command/test_experiments.py b/tests/unit/command/test_experiments.py
+index c48cc48f1..0f3408830 100644
+--- a/tests/unit/command/test_experiments.py
++++ b/tests/unit/command/test_experiments.py
+@@ -2,6 +2,8 @@ import pytest
+ 
+ from dvc.cli import parse_args
+ from dvc.command.experiments import (
++    CmdExperimentsApply,
++    CmdExperimentsBranch,
+     CmdExperimentsDiff,
+     CmdExperimentsGC,
+     CmdExperimentsRun,
+@@ -13,6 +15,18 @@ from dvc.exceptions import InvalidArgumentError
+ from .test_repro import default_arguments as repro_arguments
+ 
+ 
++def test_experiments_apply(dvc, mocker):
++    cli_args = parse_args(["experiments", "apply", "exp_rev"])
++    assert cli_args.func == CmdExperimentsApply
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.experiments.apply.apply", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(cmd.repo, "exp_rev")
++
++
+ def test_experiments_diff(dvc, mocker):
+     cli_args = parse_args(
+         [
+@@ -73,6 +87,7 @@ def test_experiments_show(dvc, mocker):
+ def test_experiments_run(dvc, mocker, args, resume):
+     default_arguments = {
+         "params": [],
++        "name": None,
+         "queue": False,
+         "run_all": False,
+         "jobs": None,
+@@ -123,3 +138,15 @@ def test_experiments_gc(dvc, mocker):
+     cmd = cli_args.func(cli_args)
+     with pytest.raises(InvalidArgumentError):
+         cmd.run()
++
++
++def test_experiments_branch(dvc, mocker):
++    cli_args = parse_args(["experiments", "branch", "expname", "branchname"])
++    assert cli_args.func == CmdExperimentsBranch
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch("dvc.repo.experiments.branch.branch", return_value={})
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(cmd.repo, "expname", "branchname")
+diff --git a/tests/unit/command/test_repro.py b/tests/unit/command/test_repro.py
+index 7a9f4e710..172893b37 100644
+--- a/tests/unit/command/test_repro.py
++++ b/tests/unit/command/test_repro.py
+@@ -15,6 +15,7 @@ default_arguments = {
+     "recursive": False,
+     "force_downstream": False,
+     "pull": False,
++    "glob": False,
+ }
+ 
+ 
+diff --git a/tests/unit/remote/test_base.py b/tests/unit/remote/test_base.py
+index 1f793ed83..c4734acd0 100644
+--- a/tests/unit/remote/test_base.py
++++ b/tests/unit/remote/test_base.py
+@@ -5,7 +5,7 @@ import pytest
+ 
+ from dvc.cache.base import CloudCache
+ from dvc.path_info import PathInfo
+-from dvc.tree.base import BaseTree, RemoteCmdError, RemoteMissingDepsError
++from dvc.tree.base import BaseTree, RemoteCmdError
+ 
+ 
+ class _CallableOrNone:
+@@ -18,13 +18,6 @@ class _CallableOrNone:
+ CallableOrNone = _CallableOrNone()
+ 
+ 
+-def test_missing_deps(dvc):
+-    requires = {"missing": "missing"}
+-    with mock.patch.object(BaseTree, "REQUIRES", requires):
+-        with pytest.raises(RemoteMissingDepsError):
+-            BaseTree(dvc, {})
+-
+-
+ def test_cmd_error(dvc):
+     config = {}
+ 
+diff --git a/tests/unit/repo/test_repo.py b/tests/unit/repo/test_repo.py
+index 44ae5d0d4..272d5b78e 100644
+--- a/tests/unit/repo/test_repo.py
++++ b/tests/unit/repo/test_repo.py
+@@ -1,7 +1,6 @@
+ import os
+ 
+ import pytest
+-from funcy import raiser
+ 
+ from dvc.repo import NotDvcRepoError, Repo, locked
+ from dvc.utils.fs import remove
+@@ -73,36 +72,6 @@ def test_locked(mocker):
+     ]
+ 
+ 
+-def test_collect_optimization(tmp_dir, dvc, mocker):
+-    (stage,) = tmp_dir.dvc_gen("foo", "foo text")
+-
+-    # Forget cached stages and graph and error out on collection
+-    dvc._reset()
+-    mocker.patch(
+-        "dvc.repo.Repo.stages",
+-        property(raiser(Exception("Should not collect"))),
+-    )
+-
+-    # Should read stage directly instead of collecting the whole graph
+-    dvc.collect(stage.path)
+-    dvc.collect_granular(stage.path)
+-
+-
+-def test_collect_optimization_on_stage_name(tmp_dir, dvc, mocker, run_copy):
+-    tmp_dir.dvc_gen("foo", "foo")
+-    stage = run_copy("foo", "bar", name="copy-foo-bar")
+-    # Forget cached stages and graph and error out on collection
+-    dvc._reset()
+-    mocker.patch(
+-        "dvc.repo.Repo.stages",
+-        property(raiser(Exception("Should not collect"))),
+-    )
+-
+-    # Should read stage directly instead of collecting the whole graph
+-    assert dvc.collect("copy-foo-bar") == [stage]
+-    assert dvc.collect_granular("copy-foo-bar") == [(stage, None)]
+-
+-
+ def test_skip_graph_checks(tmp_dir, dvc, mocker, run_copy):
+     # See https://github.com/iterative/dvc/issues/2671 for more info
+     mock_build_graph = mocker.patch("dvc.repo.build_graph")
+diff --git a/tests/unit/scm/test_git.py b/tests/unit/scm/test_git.py
+index 0c30db04f..43bf94473 100644
+--- a/tests/unit/scm/test_git.py
++++ b/tests/unit/scm/test_git.py
+@@ -2,6 +2,7 @@ import os
+ 
+ import pytest
+ 
++from dvc.scm.base import SCMError
+ from tests.basic_env import TestDvcGit
+ 
+ 
+@@ -123,3 +124,125 @@ def test_branch_revs(tmp_dir, scm):
+     for rev in scm.branch_revs("master", init_rev):
+         assert rev == expected.pop()
+     assert len(expected) == 0
++
++
++def test_set_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.scm_gen({"file": "1"}, commit="commit")
++    commit_rev = scm.get_rev()
++
++    scm.set_ref("refs/foo/bar", init_rev)
++    assert (
++        init_rev
++        == (tmp_dir / ".git" / "refs" / "foo" / "bar").read_text().strip()
++    )
++
++    with pytest.raises(SCMError):
++        scm.set_ref("refs/foo/bar", commit_rev, old_ref=commit_rev)
++    scm.set_ref("refs/foo/bar", commit_rev, old_ref=init_rev)
++    assert (
++        commit_rev
++        == (tmp_dir / ".git" / "refs" / "foo" / "bar").read_text().strip()
++    )
++
++    scm.set_ref("refs/foo/baz", "refs/heads/master", symbolic=True)
++    assert (
++        "ref: refs/heads/master"
++        == (tmp_dir / ".git" / "refs" / "foo" / "baz").read_text().strip()
++    )
++
++
++def test_get_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(
++                ".git", "refs", "foo", "baz"
++            ): "ref: refs/heads/master",
++        }
++    )
++
++    assert init_rev == scm.get_ref("refs/foo/bar")
++    assert init_rev == scm.get_ref("refs/foo/baz")
++    assert "refs/heads/master" == scm.get_ref("refs/foo/baz", follow=False)
++    assert scm.get_ref("refs/foo/qux") is None
++
++
++def test_remove_ref(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(os.path.join(".git", "refs", "foo", "bar"), init_rev)
++    tmp_dir.scm_gen({"file": "1"}, commit="commit")
++    commit_rev = scm.get_rev()
++
++    with pytest.raises(SCMError):
++        scm.remove_ref("refs/foo/bar", old_ref=commit_rev)
++    scm.remove_ref("refs/foo/bar", old_ref=init_rev)
++    assert not (tmp_dir / ".git" / "refs" / "foo" / "bar").exists()
++
++
++def test_refs_containing(tmp_dir, scm):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++
++    expected = {"refs/foo/bar", "refs/foo/baz", "refs/heads/master"}
++    assert expected == set(scm.get_refs_containing(init_rev))
++
++
++def test_push_refspec(tmp_dir, scm, make_tmp_dir):
++    tmp_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = scm.get_rev()
++    tmp_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++    remote_dir = make_tmp_dir("git-remote", scm=True)
++    url = "file://{}".format(remote_dir.resolve().as_posix())
++
++    scm.push_refspec(url, "refs/foo/bar", "refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_ref("refs/foo/bar")
++
++    remote_dir.scm.checkout("refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_rev()
++    assert "0" == (remote_dir / "file").read_text()
++
++    scm.push_refspec(url, "refs/foo/", "refs/foo/")
++    assert init_rev == remote_dir.scm.get_ref("refs/foo/baz")
++
++    scm.push_refspec(url, None, "refs/foo/baz")
++    assert remote_dir.scm.get_ref("refs/foo/baz") is None
++
++
++def test_fetch_refspecs(tmp_dir, scm, make_tmp_dir):
++    remote_dir = make_tmp_dir("git-remote", scm=True)
++    url = "file://{}".format(remote_dir.resolve().as_posix())
++
++    remote_dir.scm_gen({"file": "0"}, commit="init")
++    init_rev = remote_dir.scm.get_rev()
++    remote_dir.gen(
++        {
++            os.path.join(".git", "refs", "foo", "bar"): init_rev,
++            os.path.join(".git", "refs", "foo", "baz"): init_rev,
++        }
++    )
++
++    scm.fetch_refspecs(
++        url, ["refs/foo/bar:refs/foo/bar", "refs/foo/baz:refs/foo/baz"]
++    )
++    assert init_rev == scm.get_ref("refs/foo/bar")
++    assert init_rev == scm.get_ref("refs/foo/baz")
++
++    remote_dir.scm.checkout("refs/foo/bar")
++    assert init_rev == remote_dir.scm.get_rev()
++    assert "0" == (remote_dir / "file").read_text()
+diff --git a/tests/unit/test_context.py b/tests/unit/test_context.py
+index 924b8f986..507a16c1d 100644
+--- a/tests/unit/test_context.py
++++ b/tests/unit/test_context.py
+@@ -411,6 +411,17 @@ def test_resolve_resolves_dict_keys():
+     }
+ 
+ 
++def test_resolve_resolves_boolean_value():
++    d = {"enabled": True, "disabled": False}
++    context = Context(d)
++
++    assert context.resolve_str("${enabled}") is True
++    assert context.resolve_str("${disabled}") is False
++
++    assert context.resolve_str("--flag ${enabled}") == "--flag true"
++    assert context.resolve_str("--flag ${disabled}") == "--flag false"
++
++
+ def test_merge_from_raises_if_file_not_exist(tmp_dir, dvc):
+     context = Context(foo="bar")
+     with pytest.raises(ParamsFileNotFound):
+diff --git a/tests/unit/utils/test_utils.py b/tests/unit/utils/test_utils.py
+index 1b8aa9c47..c990d6a5a 100644
+--- a/tests/unit/utils/test_utils.py
++++ b/tests/unit/utils/test_utils.py
+@@ -149,6 +149,31 @@ def test_resolve_output(inp, out, is_dir, expected, mocker):
+         ["something.dvc:name", ("something.dvc", "name"), None],
+         ["../something.dvc:name", ("../something.dvc", "name"), None],
+         ["file", (None, "file"), None],
++        ["build@15", (None, "build@15"), None],
++        ["build@{'level': 35}", (None, "build@{'level': 35}"), None],
++        [":build@15", ("dvc.yaml", "build@15"), None],
++        [":build@{'level': 35}", ("dvc.yaml", "build@{'level': 35}"), None],
++        ["dvc.yaml:build@15", ("dvc.yaml", "build@15"), None],
++        [
++            "dvc.yaml:build@{'level': 35}",
++            ("dvc.yaml", "build@{'level': 35}"),
++            None,
++        ],
++        [
++            "build2@{'level': [1, 2, 3]}",
++            (None, "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
++        [
++            ":build2@{'level': [1, 2, 3]}",
++            ("dvc.yaml", "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
++        [
++            "dvc.yaml:build2@{'level': [1, 2, 3]}",
++            ("dvc.yaml", "build2@{'level': [1, 2, 3]}"),
++            None,
++        ],
+     ],
+ )
+ def test_parse_target(inp, out, default):
+2026-04-28 17:53:43,635 - INFO - Grading answer for iterative__dvc_1.10.2_1.11.0...
+2026-04-28 17:53:43,667 - INFO - report: {'iterative__dvc_1.10.2_1.11.0': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/func/test_stage_load.py::test_collect_with_not_existing_dvcfile[not_existing.dvc:stage_name]', 'tests/func/test_stage_load.py::test_collect_with_not_existing_dvcfile[not_existing.dvc]', 'tests/func/test_stage_load.py::test_collect_with_not_existing_dvcfile[not_existing/dvc.yaml:stage_name]', 'tests/func/test_stage_load.py::test_collect_with_not_existing_dvcfile[not_existing/dvc.yaml]', 'tests/unit/tree/test_base.py::test_missing_deps[None-Please', 'tests/unit/tree/test_base.py::test_missing_deps[conda-conda']}, 'PASS_TO_PASS': {'success': ['tests/func/test_init.py::TestInitNoSCMFail::test_api', 'tests/func/test_init.py::TestInitNoSCMFail::test_cli', 'tests/func/test_scm.py::TestSCMGit::test_commit', 'tests/func/test_scm.py::TestSCMGit::test_is_tracked', 'tests/func/test_scm.py::TestSCMGitSubmodule::test_commit_in_submodule', 'tests/func/test_scm.py::TestSCMGitSubmodule::test_git_submodule', 'tests/func/test_stage.py::test_cmd_none', 'tests/func/test_stage.py::test_cmd_obj', 'tests/func/test_stage.py::test_cmd_str', 'tests/func/test_stage.py::test_empty_list', 'tests/func/test_stage.py::test_list', 'tests/func/test_stage.py::test_no_cmd', 'tests/func/test_stage.py::test_none', 'tests/func/test_stage.py::test_object', 'tests/unit/remote/test_base.py::test_is_dir_hash[-False]', 'tests/unit/remote/test_base.py::test_is_dir_hash[3456-False]', 'tests/unit/remote/test_base.py::test_is_dir_hash[3456.dir-True]', 'tests/unit/remote/test_base.py::test_is_dir_hash[None-False]', 'tests/unit/repo/test_repo.py::test_locked', 'tests/unit/test_context.py::test_clone', 'tests/unit/test_context.py::test_context', 'tests/unit/test_context.py::test_context_dict_ignores_keys_except_str', 'tests/unit/test_context.py::test_context_list', 'tests/unit/test_context.py::test_context_setitem_getitem', 'tests/unit/test_context.py::test_load_from', 'tests/unit/test_context.py::test_loop_context', 'tests/unit/test_context.py::test_merge_dict', 'tests/unit/test_context.py::test_merge_list', 'tests/unit/test_context.py::test_node_value', 'tests/unit/test_context.py::test_overwrite_with_setitem', 'tests/unit/test_context.py::test_repr', 'tests/unit/test_context.py::test_resolve_resolves_dict_keys', 'tests/unit/test_context.py::test_select', 'tests/unit/test_context.py::test_select_unwrap', 'tests/unit/tree/test_base.py::test_missing_deps[pip-pip', 'tests/unit/utils/test_utils.py::test_dict_sha256[d0-f472eda60f09660a4750e8b3208cf90b3a3b24e5f42e0371d829710e9464d74a]', 'tests/unit/utils/test_utils.py::test_dict_sha256[d1-a239b67073bd58affcdb81fff3305d1726c6e7f9c86f3d4fca0e92e8147dc7b0]', 'tests/unit/utils/test_utils.py::test_fix_env_pyenv[/orig/path1:/orig/path2-/orig/path1:/orig/path2]', 'tests/unit/utils/test_utils.py::test_fix_env_pyenv[/orig/path1:/orig/path2:/pyenv/bin:/pyenv/libexec-/orig/path1:/orig/path2:/pyenv/bin:/pyenv/libexec]', 'tests/unit/utils/test_utils.py::test_fix_env_pyenv[/pyenv/bin:/pyenv/libexec:/orig/path1:/orig/path2-/orig/path1:/orig/path2]', 'tests/unit/utils/test_utils.py::test_fix_env_pyenv[/pyenv/bin:/pyenv/libexec:/pyenv/plugins/plugin:/orig/path1:/orig/path2-/orig/path1:/orig/path2]', 'tests/unit/utils/test_utils.py::test_fix_env_pyenv[/pyenv/bin:/some/libexec:/pyenv/plugins/plugin:/orig/path1:/orig/path2-/orig/path1:/orig/path2]', 'tests/unit/utils/test_utils.py::test_hint_on_lockfile', 'tests/unit/utils/test_utils.py::test_parse_target[../models/stage.dvc-out5-def]', 'tests/unit/utils/test_utils.py::test_parse_target[../something.dvc:name-out9-None]', 'tests/unit/utils/test_utils.py::test_parse_target[:name-out2-None]', 'tests/unit/utils/test_utils.py::test_parse_target[:name-out6-default]', 'tests/unit/utils/test_utils.py::test_parse_target[:name-out7-default]', 'tests/unit/utils/test_utils.py::test_parse_target[dvc.yaml-out0-None]', 'tests/unit/utils/test_utils.py::test_parse_target[dvc.yaml:name-out1-None]', 'tests/unit/utils/test_utils.py::test_parse_target[dvc.yaml:name-out4-None]', 'tests/unit/utils/test_utils.py::test_parse_target[file-out10-None]', 'tests/unit/utils/test_utils.py::test_parse_target[something.dvc:name-out8-None]', 'tests/unit/utils/test_utils.py::test_parse_target[stage.dvc-out3-None]', 'tests/unit/utils/test_utils.py::test_resolve_output[dir-None-False-dir]', 'tests/unit/utils/test_utils.py::test_resolve_output[dir-other_dir-False-other_dir]', 'tests/unit/utils/test_utils.py::test_resolve_output[dir-other_dir-True-other_dir/dir]', 'tests/unit/utils/test_utils.py::test_resolve_output[dir/-None-False-dir]', 'tests/unit/utils/test_utils.py::test_resolve_output[target-None-False-target]', 'tests/unit/utils/test_utils.py::test_resolve_output[target-dir-True-dir/target]', 'tests/unit/utils/test_utils.py::test_resolve_output[target-dir/subdir-True-dir/subdir/target]', 'tests/unit/utils/test_utils.py::test_resolve_output[target-file_target-False-file_target]', 'tests/unit/utils/test_utils.py::test_to_chunks_chunk_size[1-expected_chunks0]', 'tests/unit/utils/test_utils.py::test_to_chunks_chunk_size[2-expected_chunks1]', 'tests/unit/utils/test_utils.py::test_to_chunks_chunk_size[3-expected_chunks2]', 'tests/unit/utils/test_utils.py::test_to_chunks_num_chunks[2-expected_chunks2]', 'tests/unit/utils/test_utils.py::test_to_chunks_num_chunks[3-expected_chunks1]', 'tests/unit/utils/test_utils.py::test_to_chunks_num_chunks[4-expected_chunks0]', 'tests/unit/utils/test_utils.py::test_to_chunks_should_raise[1-2]', 'tests/unit/utils/test_utils.py::test_to_chunks_should_raise[None-None]'], 'failure': ['tests/func/params/test_diff.py::test_no_commits', 'tests/func/test_add.py::test_add_file_in_symlink_dir[False]', 'tests/func/test_add.py::test_add_file_in_symlink_dir[True]', 'tests/func/test_add.py::test_add_symlink_dir[False]', 'tests/func/test_add.py::test_add_symlink_dir[True]', 'tests/func/test_api.py::test_open_scm_controlled', 'tests/func/test_dvcfile.py::test_run_load_one_for_multistage_non_existing', 'tests/func/test_import_url.py::TestCmdImport::test_unsupported', 'tests/func/test_init.py::TestDoubleInit::test', 'tests/func/test_init.py::TestDoubleInit::test_api', 'tests/func/test_init.py::TestDoubleInit::test_cli', 'tests/func/test_init.py::TestInit::test_api', 'tests/func/test_init.py::TestInit::test_cli', 'tests/func/test_init.py::test_allow_init_dvc_subdir', 'tests/func/test_init.py::test_gen_dvcignore', 'tests/func/test_init.py::test_init_no_scm_api', 'tests/func/test_init.py::test_init_no_scm_cli', 'tests/func/test_init.py::test_init_quiet_should_not_display_welcome_screen', 'tests/func/test_init.py::test_subdir_init_no_option', 'tests/func/test_run_single_stage.py::TestRunBadCwd::test', 'tests/func/test_run_single_stage.py::TestRunBadCwd::test_same_prefix', 'tests/func/test_run_single_stage.py::TestRunBadName::test', 'tests/func/test_run_single_stage.py::TestRunBadName::test_not_found', 'tests/func/test_run_single_stage.py::TestRunBadName::test_same_prefix', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_not_dir', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_not_found', 'tests/func/test_run_single_stage.py::TestRunBadWdir::test_same_prefix', 'tests/func/test_scm.py::test_get_gitignore', 'tests/func/test_scm.py::test_get_gitignore_subdir', 'tests/func/test_scm.py::test_get_gitignore_symlink', 'tests/func/test_scm.py::test_gitignore_should_append_newline_to_gitignore', 'tests/func/test_scm.py::test_gitignore_should_end_with_newline', 'tests/func/test_scm.py::test_ignore', 'tests/func/test_scm.py::test_init_git', 'tests/func/test_scm.py::test_init_no_git', 'tests/func/test_scm.py::test_init_none', 'tests/func/test_scm.py::test_init_sub_dir', 'tests/func/test_stage.py::test_stage_on_no_path_string_repr', 'tests/func/test_stage.py::test_stage_run_checkpoint[False]', 'tests/func/test_stage.py::test_stage_run_checkpoint[True]', 'tests/func/test_stage_resolver.py::test_coll[coll0]', 'tests/func/test_stage_resolver.py::test_coll[coll1]', 'tests/func/test_stage_resolver.py::test_foreach_loop_dict', 'tests/func/test_stage_resolver.py::test_no_params_yaml_and_vars', 'tests/func/test_stage_resolver.py::test_set[3.141592653589793]', 'tests/func/test_stage_resolver.py::test_set[3]', 'tests/func/test_stage_resolver.py::test_set[None]', 'tests/func/test_stage_resolver.py::test_set[To', 'tests/func/test_stage_resolver.py::test_set[value]', 'tests/func/test_stage_resolver.py::test_set_with_foreach', 'tests/func/test_stage_resolver.py::test_simple_foreach_loop', 'tests/func/test_stage_resolver.py::test_vars', 'tests/func/test_stage_resolver_error_msg.py::test_default_params_file_not_exist', 'tests/unit/command/test_experiments.py::test_experiments_diff', 'tests/unit/command/test_experiments.py::test_experiments_gc', 'tests/unit/command/test_experiments.py::test_experiments_show', 'tests/unit/remote/test_base.py::test_cmd_error', 'tests/unit/remote/test_base.py::test_hashes_exist', 'tests/unit/remote/test_base.py::test_list_hashes', 'tests/unit/remote/test_base.py::test_list_hashes_traverse', 'tests/unit/remote/test_base.py::test_list_paths', 'tests/unit/remote/test_base.py::test_missing_deps', 'tests/unit/repo/test_repo.py::test_branch_config', 'tests/unit/repo/test_repo.py::test_is_dvc_internal', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_false', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_true_on_git_internal', 'tests/unit/scm/test_git.py::TestGit::test_belongs_to_scm_true_on_gitignore', 'tests/unit/scm/test_git.py::test_branch_revs', 'tests/unit/scm/test_git.py::test_is_tracked', 'tests/unit/scm/test_git.py::test_is_tracked_unicode', 'tests/unit/scm/test_git.py::test_no_commits', 'tests/unit/scm/test_git.py::test_walk_onerror', 'tests/unit/scm/test_git.py::test_walk_with_submodules', 'tests/unit/test_context.py::test_merge_from_raises_if_file_not_exist', 'tests/unit/test_context.py::test_track', 'tests/unit/test_context.py::test_track_from_multiple_files', 'tests/unit/utils/test_utils.py::test_file_md5', 'tests/unit/utils/test_utils.py::test_relpath', 'tests/unit/utils/test_utils.py::test_tmp_fname']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.10.2_1.11.0: resolved: False
+2026-04-28 17:53:43,668 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.10.2_1.11.0.eval_input_20260427-154634...
+2026-04-28 17:53:58,856 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.10.2_1.11.0.eval_input_20260427-154634...
+2026-04-28 17:53:58,989 - INFO - Container sweb.eval.iterative__dvc_1.10.2_1.11.0.eval_input_20260427-154634 removed.
+2026-04-28 17:53:58,989 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.10.2_1.11.0:latest...
+2026-04-28 17:53:58,992 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.10.2_1.11.0:latest removed.

@@ -1,0 +1,96 @@
+diff --git a/dvc/path_info.py b/dvc/path_info.py
+index 6f6aa57..54e2706 100644
+--- a/dvc/path_info.py
++++ b/dvc/path_info.py
+@@ -32,11 +32,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+     def __new__(cls, *args):
+         # Construct a proper subclass depending on current os
+         if cls is PathInfo:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsPathInfo if os.name == "nt" else PosixPathInfo
+-            )
+-
+-        return cls._from_parts(args)
++            cls = WindowsPathInfo if os.name == "nt" else PosixPathInfo
++        self = object.__new__(cls)
++        self.__init__(*args)
++        return self
+ 
+     def as_posix(self):
+         f = self._flavour  # pylint: disable=no-member
+@@ -73,8 +72,10 @@ class PathInfo(pathlib.PurePath, _BasePath):
+         elif self.__class__ != other.__class__:
+             return False
+         # Use cached casefolded parts to compare paths
+-        n = len(other._cparts)
+-        return len(self._cparts) > n and self._cparts[:n] == other._cparts
++        other_parts = getattr(other, "_parts_normcase_cached", getattr(other, "_parts_normcase", other.parts))
++        self_parts = getattr(self, "_parts_normcase_cached", getattr(self, "_parts_normcase", self.parts))
++        n = len(other_parts)
++        return len(self_parts) > n and self_parts[:n] == other_parts
+ 
+     def relative_to(self, other):  # pylint: disable=arguments-differ
+         # pathlib relative_to raises exception when one path is not a direct
+@@ -89,11 +90,17 @@ class PathInfo(pathlib.PurePath, _BasePath):
+ 
+ 
+ class WindowsPathInfo(PathInfo, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class PosixPathInfo(PathInfo, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args):
++        return object.__new__(cls)
+ 
+ 
+ class _URLPathInfo(PosixPathInfo):
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 34e6dbf..8da63d1 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -78,15 +78,9 @@ class TmpDir(pathlib.Path):
+ 
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+-            cls = (  # pylint: disable=self-cls-assignment
+-                WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-            )
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                f"cannot instantiate {cls.__name__!r} on your system"
+-            )
+-        self._init()
++            cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     def init(self, *, scm=False, dvc=False, subdir=False):
+@@ -246,11 +240,17 @@ def _coerce_filenames(filenames):
+ 
+ 
+ class WindowsTmpDir(TmpDir, pathlib.PureWindowsPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ class PosixTmpDir(TmpDir, pathlib.PurePosixPath):
+-    pass
++    scheme = "local"
++
++    def __new__(cls, *args, **kwargs):
++        return object.__new__(cls)
+ 
+ 
+ CACHE = {}

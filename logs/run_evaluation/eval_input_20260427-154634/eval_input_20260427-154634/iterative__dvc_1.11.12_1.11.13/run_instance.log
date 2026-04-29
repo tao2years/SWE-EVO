@@ -1,0 +1,168 @@
+2026-04-28 17:52:41,179 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.11.12_1.11.13
+Building instance image sweb.eval.x86_64.iterative__dvc_1.11.12_1.11.13:latest for iterative__dvc_1.11.12_1.11.13
+2026-04-28 17:52:41,196 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.11.12_1.11.13:latest already exists, skipping build.
+2026-04-28 17:52:41,196 - INFO - Creating container for iterative__dvc_1.11.12_1.11.13...
+2026-04-28 17:52:44,039 - INFO - Container for iterative__dvc_1.11.12_1.11.13 created: 308105288d523fabe718ba8712185b7cb5632c63e5aa10dc896bb6d0d120cbb4
+2026-04-28 17:52:44,155 - INFO - Container for iterative__dvc_1.11.12_1.11.13 started: 308105288d523fabe718ba8712185b7cb5632c63e5aa10dc896bb6d0d120cbb4
+2026-04-28 17:52:44,155 - INFO - Intermediate patch for iterative__dvc_1.11.12_1.11.13 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.11.12_1.11.13/patch.diff, now applying to container...
+2026-04-28 17:52:44,496 - INFO - >>>>> Applied Patch:
+Checking patch tests/docker-compose.yml...
+Checking patch tests/unit/remote/test_local.py...
+Checking patch dvc/tree/local.py...
+Applied patch tests/docker-compose.yml cleanly.
+Applied patch tests/unit/remote/test_local.py cleanly.
+Applied patch dvc/tree/local.py cleanly.
+
+2026-04-28 17:52:44,555 - INFO - Git diff before:
+diff --git a/dvc/tree/local.py b/dvc/tree/local.py
+index 0be9a1dbe..fdb294769 100644
+--- a/dvc/tree/local.py
++++ b/dvc/tree/local.py
+@@ -298,7 +298,14 @@ class LocalTree(BaseTree):
+             self._unprotect_file(path)
+ 
+     def protect(self, path_info):
+-        self.chmod(path_info, self.CACHE_MODE)
++        try:
++            self.chmod(path_info, self.CACHE_MODE)
++        except OSError as exc:
++            # Ignore errors in shared cache scenario when we might not own
++            # the cache file and can't change its permissions.
++            if exc.errno in [errno.EPERM, errno.EACCES]:
++                return
++            raise
+ 
+     def is_protected(self, path_info):
+         try:
+diff --git a/tests/docker-compose.yml b/tests/docker-compose.yml
+index 7dfab75de..6cd84986b 100644
+--- a/tests/docker-compose.yml
++++ b/tests/docker-compose.yml
+@@ -2,7 +2,8 @@
+ version: '3.2'
+ services:
+   azurite:
+-    image: mcr.microsoft.com/azure-storage/azurite:3.9.0
++    image: mcr.microsoft.com/azure-storage/azurite:3.10.0
++    command: azurite -L -l /data --blobHost 0.0.0.0 --queueHost 0.0.0.0
+     ports:
+       - "10000"
+   oss:
+diff --git a/tests/unit/remote/test_local.py b/tests/unit/remote/test_local.py
+index 5846c1ddf..ccd8049fb 100644
+--- a/tests/unit/remote/test_local.py
++++ b/tests/unit/remote/test_local.py
+@@ -65,28 +65,12 @@ def test_is_protected(tmp_dir, dvc, link_name):
+         assert tree.is_protected(foo)
+ 
+ 
+-@pytest.mark.parametrize("err", [errno.EPERM, errno.EACCES])
+-def test_protect_ignore_errors(tmp_dir, mocker, err):
++@pytest.mark.parametrize("err", [errno.EPERM, errno.EACCES, errno.EROFS])
++def test_protect_ignore_errors(tmp_dir, dvc, mocker, err):
+     tmp_dir.gen("foo", "foo")
+-    foo = PathInfo("foo")
+-    tree = LocalTree(None, {})
+-
+-    tree.protect(foo)
+ 
+     mock_chmod = mocker.patch(
+         "os.chmod", side_effect=OSError(err, "something")
+     )
+-    tree.protect(foo)
+-    assert mock_chmod.called
+-
+-
+-def test_protect_ignore_erofs(tmp_dir, mocker):
+-    tmp_dir.gen("foo", "foo")
+-    foo = PathInfo("foo")
+-    tree = LocalTree(None, {})
+-
+-    mock_chmod = mocker.patch(
+-        "os.chmod", side_effect=OSError(errno.EROFS, "read-only fs")
+-    )
+-    tree.protect(foo)
++    LocalTree(None, {}).protect(PathInfo("foo"))
+     assert mock_chmod.called
+2026-04-28 17:52:44,555 - INFO - Eval script for iterative__dvc_1.11.12_1.11.13 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.11.12_1.11.13/eval.sh; copying to container...
+2026-04-28 17:56:32,903 - INFO - Test runtime: 228.30 seconds
+2026-04-28 17:56:32,904 - INFO - Test output for iterative__dvc_1.11.12_1.11.13 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.11.12_1.11.13/test_output.txt
+2026-04-28 17:56:32,962 - INFO - Git diff after:
+diff --git a/dvc/tree/local.py b/dvc/tree/local.py
+index 0be9a1dbe..fdb294769 100644
+--- a/dvc/tree/local.py
++++ b/dvc/tree/local.py
+@@ -298,7 +298,14 @@ class LocalTree(BaseTree):
+             self._unprotect_file(path)
+ 
+     def protect(self, path_info):
+-        self.chmod(path_info, self.CACHE_MODE)
++        try:
++            self.chmod(path_info, self.CACHE_MODE)
++        except OSError as exc:
++            # Ignore errors in shared cache scenario when we might not own
++            # the cache file and can't change its permissions.
++            if exc.errno in [errno.EPERM, errno.EACCES]:
++                return
++            raise
+ 
+     def is_protected(self, path_info):
+         try:
+diff --git a/tests/docker-compose.yml b/tests/docker-compose.yml
+index 7dfab75de..6cd84986b 100644
+--- a/tests/docker-compose.yml
++++ b/tests/docker-compose.yml
+@@ -2,7 +2,8 @@
+ version: '3.2'
+ services:
+   azurite:
+-    image: mcr.microsoft.com/azure-storage/azurite:3.9.0
++    image: mcr.microsoft.com/azure-storage/azurite:3.10.0
++    command: azurite -L -l /data --blobHost 0.0.0.0 --queueHost 0.0.0.0
+     ports:
+       - "10000"
+   oss:
+diff --git a/tests/unit/remote/test_local.py b/tests/unit/remote/test_local.py
+index 5846c1ddf..ccd8049fb 100644
+--- a/tests/unit/remote/test_local.py
++++ b/tests/unit/remote/test_local.py
+@@ -65,28 +65,12 @@ def test_is_protected(tmp_dir, dvc, link_name):
+         assert tree.is_protected(foo)
+ 
+ 
+-@pytest.mark.parametrize("err", [errno.EPERM, errno.EACCES])
+-def test_protect_ignore_errors(tmp_dir, mocker, err):
++@pytest.mark.parametrize("err", [errno.EPERM, errno.EACCES, errno.EROFS])
++def test_protect_ignore_errors(tmp_dir, dvc, mocker, err):
+     tmp_dir.gen("foo", "foo")
+-    foo = PathInfo("foo")
+-    tree = LocalTree(None, {})
+-
+-    tree.protect(foo)
+ 
+     mock_chmod = mocker.patch(
+         "os.chmod", side_effect=OSError(err, "something")
+     )
+-    tree.protect(foo)
+-    assert mock_chmod.called
+-
+-
+-def test_protect_ignore_erofs(tmp_dir, mocker):
+-    tmp_dir.gen("foo", "foo")
+-    foo = PathInfo("foo")
+-    tree = LocalTree(None, {})
+-
+-    mock_chmod = mocker.patch(
+-        "os.chmod", side_effect=OSError(errno.EROFS, "read-only fs")
+-    )
+-    tree.protect(foo)
++    LocalTree(None, {}).protect(PathInfo("foo"))
+     assert mock_chmod.called
+2026-04-28 17:56:32,962 - INFO - Grading answer for iterative__dvc_1.11.12_1.11.13...
+2026-04-28 17:56:32,962 - INFO - report: {'iterative__dvc_1.11.12_1.11.13': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': True, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/remote/test_local.py::test_protect_ignore_errors[13]', 'tests/unit/remote/test_local.py::test_protect_ignore_errors[1]'], 'failure': []}, 'PASS_TO_PASS': {'success': ['tests/unit/remote/test_local.py::test_is_protected[hardlink]', 'tests/unit/remote/test_local.py::test_is_protected[symlink]', 'tests/unit/remote/test_local.py::test_protect_ignore_errors[30]', 'tests/unit/remote/test_local.py::test_status_download_optimization'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.11.12_1.11.13: resolved: True
+2026-04-28 17:56:32,962 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.11.12_1.11.13.eval_input_20260427-154634...
+2026-04-28 17:56:48,148 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.11.12_1.11.13.eval_input_20260427-154634...
+2026-04-28 17:56:48,246 - INFO - Container sweb.eval.iterative__dvc_1.11.12_1.11.13.eval_input_20260427-154634 removed.
+2026-04-28 17:56:48,246 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.11.12_1.11.13:latest...
+2026-04-28 17:56:48,250 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.11.12_1.11.13:latest removed.

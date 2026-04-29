@@ -1,0 +1,23 @@
+diff --git a/dvc/utils/diff.py b/dvc/utils/diff.py
+index b412aaf..330a362 100644
+--- a/dvc/utils/diff.py
++++ b/dvc/utils/diff.py
+@@ -91,7 +91,7 @@ def table(header, rows, markdown=False):
+     if not rows and not markdown:
+         return ""
+ 
+-    return tabulate(
++    ret = tabulate(
+         rows,
+         header,
+         tablefmt="github" if markdown else "plain",
+@@ -99,6 +99,9 @@ def table(header, rows, markdown=False):
+         # None will be shown as "" by default, overriding
+         missingval="None",
+     )
++    if markdown:
++        ret += "\n"
++    return ret
+ 
+ 
+ def format_dict(d):

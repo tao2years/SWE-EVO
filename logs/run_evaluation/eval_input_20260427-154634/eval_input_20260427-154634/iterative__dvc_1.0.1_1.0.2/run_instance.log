@@ -1,0 +1,376 @@
+2026-04-28 17:41:59,626 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.0.1_1.0.2
+Building instance image sweb.eval.x86_64.iterative__dvc_1.0.1_1.0.2:latest for iterative__dvc_1.0.1_1.0.2
+2026-04-28 17:41:59,641 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.0.1_1.0.2:latest already exists, skipping build.
+2026-04-28 17:41:59,641 - INFO - Creating container for iterative__dvc_1.0.1_1.0.2...
+2026-04-28 17:42:02,980 - INFO - Container for iterative__dvc_1.0.1_1.0.2 created: 9a404ce292fc96775a66ebed681f5b6d3c6b6ef2f213d54229a2691f5dd85866
+2026-04-28 17:42:03,114 - INFO - Container for iterative__dvc_1.0.1_1.0.2 started: 9a404ce292fc96775a66ebed681f5b6d3c6b6ef2f213d54229a2691f5dd85866
+2026-04-28 17:42:03,114 - INFO - Intermediate patch for iterative__dvc_1.0.1_1.0.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.1_1.0.2/patch.diff, now applying to container...
+2026-04-28 17:42:03,424 - INFO - >>>>> Applied Patch:
+Checking patch tests/__init__.py...
+Checking patch tests/conftest.py...
+Checking patch tests/dir_helpers.py...
+Checking patch tests/func/test_add.py...
+Checking patch tests/func/test_data_cloud.py...
+Checking patch tests/func/test_get.py...
+Checking patch tests/unit/command/test_git_hook.py...
+Checking patch tests/unit/repo/__init__.py...
+Checking patch tests/unit/repo/test_run.py...
+Checking patch dvc/command/git_hook.py...
+Checking patch dvc/command/run.py...
+Applied patch tests/__init__.py cleanly.
+Applied patch tests/conftest.py cleanly.
+Applied patch tests/dir_helpers.py cleanly.
+Applied patch tests/func/test_add.py cleanly.
+Applied patch tests/func/test_data_cloud.py cleanly.
+Applied patch tests/func/test_get.py cleanly.
+Applied patch tests/unit/command/test_git_hook.py cleanly.
+Applied patch tests/unit/repo/__init__.py cleanly.
+Applied patch tests/unit/repo/test_run.py cleanly.
+Applied patch dvc/command/git_hook.py cleanly.
+Applied patch dvc/command/run.py cleanly.
+
+2026-04-28 17:42:03,483 - INFO - Git diff before:
+diff --git a/dvc/command/git_hook.py b/dvc/command/git_hook.py
+index 6c64c582d..719a54c73 100644
+--- a/dvc/command/git_hook.py
++++ b/dvc/command/git_hook.py
+@@ -52,7 +52,7 @@ class CmdPostCheckout(CmdHookBase):
+ 
+ 
+ class CmdPrePush(CmdHookBase):
+-    def run(self):
++    def _run(self):
+         from dvc.main import main
+ 
+         return main(["push"])
+diff --git a/dvc/command/run.py b/dvc/command/run.py
+index 1a3ac6d6d..fa839d9a3 100644
+--- a/dvc/command/run.py
++++ b/dvc/command/run.py
+@@ -31,6 +31,12 @@ class CmdRun(CmdBase):
+             )
+             return 1
+ 
++        if self.args.file and not self.args.single_stage:
++            logger.error(
++                "option `--file` is only allowed with `--single-stage`"
++            )
++            return 1
++
+         try:
+             self.repo.run(
+                 cmd=self._parsed_cmd(),
+@@ -160,7 +166,7 @@ def add_parser(subparsers, parent_parser):
+     )
+     run_parser.add_argument(
+         "--file",
+-        help="Specify name of the DVC-file this command will generate.",
++        help=argparse.SUPPRESS,
+         metavar="<filename>",
+     )
+     run_parser.add_argument(
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 434d8c2e2..8d69f84bf 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -2,7 +2,7 @@ import os
+ 
+ # Increasing fd ulimit for tests
+ if os.name == "nt":
+-    import win32file
++    import win32file  # pylint: disable=import-error
+     import subprocess
+ 
+     win32file._setmaxstdio(2048)
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 54ba074e9..3cc7fc804 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,8 +2,8 @@ import os
+ 
+ import pytest
+ 
+-from .dir_helpers import *  # noqa
+-from .remotes import *  # noqa
++from .dir_helpers import *  # noqa, pylint:disable=wildcard-import
++from .remotes import *  # noqa, pylint:disable=wildcard-import
+ 
+ # Prevent updater and analytics from running their processes
+ os.environ["DVC_TEST"] = "true"
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8480e0ec6..bb892d639 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,7 +74,9 @@ disable_other_loggers()
+ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+-            cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
++            cls = (  # pylint: disable=self-cls-assignment
++                WindowsTmpDir if os.name == "nt" else PosixTmpDir
++            )
+         self = cls._from_parts(args, init=False)
+         if not self._flavour.is_supported:
+             raise NotImplementedError(
+diff --git a/tests/func/test_add.py b/tests/func/test_add.py
+index d1f081733..c016092dd 100644
+--- a/tests/func/test_add.py
++++ b/tests/func/test_add.py
+@@ -526,9 +526,9 @@ class TestAddUnprotected(TestDvc):
+ @pytest.fixture
+ def temporary_windows_drive(tmp_path_factory):
+     import string
+-    import win32api
++    import win32api  # pylint: disable=import-error
+     from ctypes import windll
+-    from win32con import DDD_REMOVE_DEFINITION
++    from win32con import DDD_REMOVE_DEFINITION  # pylint: disable=import-error
+ 
+     drives = [
+         s[0].upper()
+diff --git a/tests/func/test_data_cloud.py b/tests/func/test_data_cloud.py
+index 6ffba4819..1c0679903 100644
+--- a/tests/func/test_data_cloud.py
++++ b/tests/func/test_data_cloud.py
+@@ -285,9 +285,10 @@ def test_verify_hashes(
+ 
+ 
+ @flaky(max_runs=3, min_passes=1)
+-@pytest.mark.parametrize("erepo", ["git_dir", "erepo_dir"])
+-def test_pull_git_imports(request, tmp_dir, dvc, scm, erepo):
+-    erepo = request.getfixturevalue(erepo)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_pull_git_imports(tmp_dir, dvc, scm, erepo):
+     with erepo.chdir():
+         erepo.scm_gen({"dir": {"bar": "bar"}}, commit="second")
+         erepo.scm_gen("foo", "foo", commit="first")
+diff --git a/tests/func/test_get.py b/tests/func/test_get.py
+index 1fab440c4..b87d9bdc8 100644
+--- a/tests/func/test_get.py
++++ b/tests/func/test_get.py
+@@ -33,32 +33,34 @@ def test_get_repo_dir(tmp_dir, erepo_dir):
+     trees_equal(erepo_dir / "dir", "dir_imported")
+ 
+ 
+-@pytest.mark.parametrize("repo_type", ["git_dir", "erepo_dir"])
+-def test_get_git_file(request, tmp_dir, repo_type):
+-    erepo_dir = request.getfixturevalue(repo_type)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_get_git_file(tmp_dir, erepo):
+     src = "some_file"
+     dst = "some_file_imported"
+ 
+-    erepo_dir.scm_gen({src: "hello"}, commit="add a regular file")
++    erepo.scm_gen({src: "hello"}, commit="add a regular file")
+ 
+-    Repo.get(os.fspath(erepo_dir), src, dst)
++    Repo.get(os.fspath(erepo), src, dst)
+ 
+     assert (tmp_dir / dst).is_file()
+     assert (tmp_dir / dst).read_text() == "hello"
+ 
+ 
+-@pytest.mark.parametrize("repo_type", ["git_dir", "erepo_dir"])
+-def test_get_git_dir(request, tmp_dir, repo_type):
+-    erepo_dir = request.getfixturevalue(repo_type)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_get_git_dir(tmp_dir, erepo):
+     src = "some_directory"
+     dst = "some_directory_imported"
+ 
+-    erepo_dir.scm_gen({src: {"file.txt": "hello"}}, commit="add a regular dir")
++    erepo.scm_gen({src: {"file.txt": "hello"}}, commit="add a regular dir")
+ 
+-    Repo.get(os.fspath(erepo_dir), src, dst)
++    Repo.get(os.fspath(erepo), src, dst)
+ 
+     assert (tmp_dir / dst).is_dir()
+-    trees_equal(erepo_dir / src, tmp_dir / dst)
++    trees_equal(erepo / src, tmp_dir / dst)
+ 
+ 
+ def test_cache_type_is_properly_overridden(tmp_dir, erepo_dir):
+2026-04-28 17:42:03,483 - INFO - Eval script for iterative__dvc_1.0.1_1.0.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.1_1.0.2/eval.sh; copying to container...
+2026-04-28 17:45:33,766 - INFO - Test runtime: 210.24 seconds
+2026-04-28 17:45:33,767 - INFO - Test output for iterative__dvc_1.0.1_1.0.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.0.1_1.0.2/test_output.txt
+2026-04-28 17:45:33,828 - INFO - Git diff after:
+diff --git a/dvc/command/git_hook.py b/dvc/command/git_hook.py
+index 6c64c582d..719a54c73 100644
+--- a/dvc/command/git_hook.py
++++ b/dvc/command/git_hook.py
+@@ -52,7 +52,7 @@ class CmdPostCheckout(CmdHookBase):
+ 
+ 
+ class CmdPrePush(CmdHookBase):
+-    def run(self):
++    def _run(self):
+         from dvc.main import main
+ 
+         return main(["push"])
+diff --git a/dvc/command/run.py b/dvc/command/run.py
+index 1a3ac6d6d..fa839d9a3 100644
+--- a/dvc/command/run.py
++++ b/dvc/command/run.py
+@@ -31,6 +31,12 @@ class CmdRun(CmdBase):
+             )
+             return 1
+ 
++        if self.args.file and not self.args.single_stage:
++            logger.error(
++                "option `--file` is only allowed with `--single-stage`"
++            )
++            return 1
++
+         try:
+             self.repo.run(
+                 cmd=self._parsed_cmd(),
+@@ -160,7 +166,7 @@ def add_parser(subparsers, parent_parser):
+     )
+     run_parser.add_argument(
+         "--file",
+-        help="Specify name of the DVC-file this command will generate.",
++        help=argparse.SUPPRESS,
+         metavar="<filename>",
+     )
+     run_parser.add_argument(
+diff --git a/tests/__init__.py b/tests/__init__.py
+index 434d8c2e2..8d69f84bf 100644
+--- a/tests/__init__.py
++++ b/tests/__init__.py
+@@ -2,7 +2,7 @@ import os
+ 
+ # Increasing fd ulimit for tests
+ if os.name == "nt":
+-    import win32file
++    import win32file  # pylint: disable=import-error
+     import subprocess
+ 
+     win32file._setmaxstdio(2048)
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 54ba074e9..3cc7fc804 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -2,8 +2,8 @@ import os
+ 
+ import pytest
+ 
+-from .dir_helpers import *  # noqa
+-from .remotes import *  # noqa
++from .dir_helpers import *  # noqa, pylint:disable=wildcard-import
++from .remotes import *  # noqa, pylint:disable=wildcard-import
+ 
+ # Prevent updater and analytics from running their processes
+ os.environ["DVC_TEST"] = "true"
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8480e0ec6..bb892d639 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,7 +74,9 @@ disable_other_loggers()
+ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+-            cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
++            cls = (  # pylint: disable=self-cls-assignment
++                WindowsTmpDir if os.name == "nt" else PosixTmpDir
++            )
+         self = cls._from_parts(args, init=False)
+         if not self._flavour.is_supported:
+             raise NotImplementedError(
+diff --git a/tests/func/test_add.py b/tests/func/test_add.py
+index d1f081733..c016092dd 100644
+--- a/tests/func/test_add.py
++++ b/tests/func/test_add.py
+@@ -526,9 +526,9 @@ class TestAddUnprotected(TestDvc):
+ @pytest.fixture
+ def temporary_windows_drive(tmp_path_factory):
+     import string
+-    import win32api
++    import win32api  # pylint: disable=import-error
+     from ctypes import windll
+-    from win32con import DDD_REMOVE_DEFINITION
++    from win32con import DDD_REMOVE_DEFINITION  # pylint: disable=import-error
+ 
+     drives = [
+         s[0].upper()
+diff --git a/tests/func/test_data_cloud.py b/tests/func/test_data_cloud.py
+index 6ffba4819..1c0679903 100644
+--- a/tests/func/test_data_cloud.py
++++ b/tests/func/test_data_cloud.py
+@@ -285,9 +285,10 @@ def test_verify_hashes(
+ 
+ 
+ @flaky(max_runs=3, min_passes=1)
+-@pytest.mark.parametrize("erepo", ["git_dir", "erepo_dir"])
+-def test_pull_git_imports(request, tmp_dir, dvc, scm, erepo):
+-    erepo = request.getfixturevalue(erepo)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_pull_git_imports(tmp_dir, dvc, scm, erepo):
+     with erepo.chdir():
+         erepo.scm_gen({"dir": {"bar": "bar"}}, commit="second")
+         erepo.scm_gen("foo", "foo", commit="first")
+diff --git a/tests/func/test_get.py b/tests/func/test_get.py
+index 1fab440c4..b87d9bdc8 100644
+--- a/tests/func/test_get.py
++++ b/tests/func/test_get.py
+@@ -33,32 +33,34 @@ def test_get_repo_dir(tmp_dir, erepo_dir):
+     trees_equal(erepo_dir / "dir", "dir_imported")
+ 
+ 
+-@pytest.mark.parametrize("repo_type", ["git_dir", "erepo_dir"])
+-def test_get_git_file(request, tmp_dir, repo_type):
+-    erepo_dir = request.getfixturevalue(repo_type)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_get_git_file(tmp_dir, erepo):
+     src = "some_file"
+     dst = "some_file_imported"
+ 
+-    erepo_dir.scm_gen({src: "hello"}, commit="add a regular file")
++    erepo.scm_gen({src: "hello"}, commit="add a regular file")
+ 
+-    Repo.get(os.fspath(erepo_dir), src, dst)
++    Repo.get(os.fspath(erepo), src, dst)
+ 
+     assert (tmp_dir / dst).is_file()
+     assert (tmp_dir / dst).read_text() == "hello"
+ 
+ 
+-@pytest.mark.parametrize("repo_type", ["git_dir", "erepo_dir"])
+-def test_get_git_dir(request, tmp_dir, repo_type):
+-    erepo_dir = request.getfixturevalue(repo_type)
++@pytest.mark.parametrize(
++    "erepo", [pytest.lazy_fixture("git_dir"), pytest.lazy_fixture("erepo_dir")]
++)
++def test_get_git_dir(tmp_dir, erepo):
+     src = "some_directory"
+     dst = "some_directory_imported"
+ 
+-    erepo_dir.scm_gen({src: {"file.txt": "hello"}}, commit="add a regular dir")
++    erepo.scm_gen({src: {"file.txt": "hello"}}, commit="add a regular dir")
+ 
+-    Repo.get(os.fspath(erepo_dir), src, dst)
++    Repo.get(os.fspath(erepo), src, dst)
+ 
+     assert (tmp_dir / dst).is_dir()
+-    trees_equal(erepo_dir / src, tmp_dir / dst)
++    trees_equal(erepo / src, tmp_dir / dst)
+ 
+ 
+ def test_cache_type_is_properly_overridden(tmp_dir, erepo_dir):
+2026-04-28 17:45:33,828 - INFO - Grading answer for iterative__dvc_1.0.1_1.0.2...
+2026-04-28 17:45:33,842 - INFO - report: {'iterative__dvc_1.0.1_1.0.2': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/command/test_git_hook.py::test_out_of_repo[pre-push-CmdPrePush]'], 'failure': ['tests/unit/repo/test_run.py::test_file']}, 'PASS_TO_PASS': {'success': ['tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error', 'tests/func/test_data_cloud.py::test_fetch_stats[fs2-Everything', 'tests/func/test_data_cloud.py::test_push_stats[fs2-Everything', 'tests/func/test_get.py::test_absolute_file_outside_git_repo', 'tests/func/test_get.py::test_absolute_file_outside_repo', 'tests/func/test_get.py::test_get_a_dvc_file', 'tests/func/test_get.py::test_get_from_non_dvc_repo', 'tests/func/test_get.py::test_get_git_dir[erepo_dir]', 'tests/func/test_get.py::test_get_git_dir[git_dir]', 'tests/func/test_get.py::test_get_git_file[erepo_dir]', 'tests/func/test_get.py::test_get_git_file[git_dir]', 'tests/func/test_get.py::test_get_url_git_only_repo', 'tests/func/test_get.py::test_get_url_not_existing', 'tests/func/test_get.py::test_unknown_path', 'tests/unit/command/test_git_hook.py::test_out_of_repo[post-checkout-CmdPostCheckout]', 'tests/unit/command/test_git_hook.py::test_out_of_repo[pre-commit-CmdPreCommit]', 'tests/unit/repo/test_repo.py::test_is_dvc_internal', 'tests/unit/repo/test_repo.py::test_locked', 'tests/unit/repo/test_repo.py::test_skip_graph_checks'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.0.1_1.0.2: resolved: False
+2026-04-28 17:45:33,842 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.0.1_1.0.2.eval_input_20260427-154634...
+2026-04-28 17:45:49,052 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.0.1_1.0.2.eval_input_20260427-154634...
+2026-04-28 17:45:49,250 - INFO - Container sweb.eval.iterative__dvc_1.0.1_1.0.2.eval_input_20260427-154634 removed.
+2026-04-28 17:45:49,250 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.0.1_1.0.2:latest...
+2026-04-28 17:45:49,254 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.0.1_1.0.2:latest removed.

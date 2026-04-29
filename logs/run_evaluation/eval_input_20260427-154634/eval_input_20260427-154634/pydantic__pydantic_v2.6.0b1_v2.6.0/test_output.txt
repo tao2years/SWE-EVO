@@ -1,0 +1,967 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   pydantic/json_schema.py
+	modified:   tests/test_discriminated_union.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit e131d53a07da080c2ba642775efa9e81cb2cf0ba
+Author: Sydney Runkle <54324534+sydney-runkle@users.noreply.github.com>
+Date:   Fri Jan 19 10:56:19 2024 -0600
+
+    Prep for 2.6.0b1 Release (#8589)
+    
+    Co-authored-by: Samuel Colvin <s@muelcolvin.com>
+
+diff --git a/HISTORY.md b/HISTORY.md
+index ae8ebf9b3..edf38e402 100644
+--- a/HISTORY.md
++++ b/HISTORY.md
+@@ -1,3 +1,128 @@
++## v2.6.0b1 (2024-01-19)
++
++[GitHub release](https://github.com/pydantic/pydantic/releases/tag/v2.6.0b1)
++
++### What's Changed
++
++#### Packaging
++
++* Check for `email-validator` version >= 2.0 by @commonism in [#6033](https://github.com/pydantic/pydantic/pull/6033)
++* Upgrade `ruff`` target version to Python 3.8 by @Elkiwa in [#8341](https://github.com/pydantic/pydantic/pull/8341)
++* Update to `pydantic-extra-types==2.4.1` by @yezz123 in [#8478](https://github.com/pydantic/pydantic/pull/8478)
++* Update to `pyright==1.1.345` by @Viicos in [#8453](https://github.com/pydantic/pydantic/pull/8453)
++* Update pydantic-core from 2.14.6 to 2.16.1, significant changes from these updates are described below, full changelog [here](https://github.com/pydantic/pydantic-core/compare/v2.14.6...v2.16.1)
++
++#### New Features
++
++* Add `NatsDsn` by @ekeew in [#6874](https://github.com/pydantic/pydantic/pull/6874)
++* Add `ConfigDict.ser_json_inf_nan` by @davidhewitt in [#8159](https://github.com/pydantic/pydantic/pull/8159)
++* Add `types.OnErrorOmit` by @adriangb in [#8222](https://github.com/pydantic/pydantic/pull/8222)
++* Support `AliasGenerator` usage by @sydney-runkle in [#8282](https://github.com/pydantic/pydantic/pull/8282)
++* Add Pydantic People Page to docs by @sydney-runkle in [#8345](https://github.com/pydantic/pydantic/pull/8345)
++* Support `yyyy-MM-DD` datetime parsing by @sydney-runkle in [#8404](https://github.com/pydantic/pydantic/pull/8404)
++* Added bits conversions to the `ByteSize` class #8415 by @luca-matei in [#8507](https://github.com/pydantic/pydantic/pull/8507)
++* Enable json schema creation with type `ByteSize` by @geospackle in [#8537](https://github.com/pydantic/pydantic/pull/8537)
++* Add `eval_type_backport` to handle union operator and builtin generic subscripting in older Pythons by @alexmojaki in [#8209](https://github.com/pydantic/pydantic/pull/8209)
++* Add support for `dataclass` fields `init` by @dmontagu in [#8552](https://github.com/pydantic/pydantic/pull/8552)
++* Implement pickling for `ValidationError` by @davidhewitt in [pydantic/pydantic-core#1119](https://github.com/pydantic/pydantic-core/pull/1119)
++* Add unified tuple validator that can handle "variadic" tuples via PEP-646 by @dmontagu in [pydantic/pydantic-core#865](https://github.com/pydantic/pydantic-core/pull/865)
++
++#### Changes
++
++* Drop Python3.7 support by @hramezani in [#7188](https://github.com/pydantic/pydantic/pull/7188)
++* Drop Python 3.7, and PyPy 3.7 and 3.8 by @davidhewitt in [pydantic/pydantic-core#1129](https://github.com/pydantic/pydantic-core/pull/1129)
++* Use positional-only `self` in `BaseModel` constructor, so no field name can ever conflict with it by @ariebovenberg in [#8072](https://github.com/pydantic/pydantic/pull/8072)
++* Make `@validate_call` return a function instead of a custom descriptor - fixes binding issue with inheritance and adds `self/cls` argument to validation errors by @alexmojaki in [#8268](https://github.com/pydantic/pydantic/pull/8268)
++* Exclude `BaseModel` docstring from JSON schema description by @sydney-runkle in [#8352](https://github.com/pydantic/pydantic/pull/8352)
++* Introducing `classproperty` decorator for `model_computed_fields` by @Jocelyn-Gas in [#8437](https://github.com/pydantic/pydantic/pull/8437)
++* Explicitly raise an error if field names clashes with types by @Viicos in [#8243](https://github.com/pydantic/pydantic/pull/8243)
++* Use stricter serializer for unions of simple types by @alexdrydew [pydantic/pydantic-core#1132](https://github.com/pydantic/pydantic-core/pull/1132)
++
++#### Performance
++
++* Add Codspeed profiling Actions workflow  by @lambertsbennett in [#8054](https://github.com/pydantic/pydantic/pull/8054)
++* Improve `int` extraction by @samuelcolvin in [pydantic/pydantic-core#1155](https://github.com/pydantic/pydantic-core/pull/1155)
++* Improve performance of recursion guard by @samuelcolvin in [pydantic/pydantic-core#1156](https://github.com/pydantic/pydantic-core/pull/1156)
++* `dataclass` serialization speedups by @samuelcolvin in [pydantic/pydantic-core#1162](https://github.com/pydantic/pydantic-core/pull/1162)
++* Avoid `HashMap` creation when looking up small JSON objects in `LazyIndexMaps` by @samuelcolvin in [pydantic/jiter#55](https://github.com/pydantic/jiter/pull/55)
++* use hashbrown to speedup python string caching by @davidhewitt in [pydantic/jiter#51](https://github.com/pydantic/jiter/pull/51)
++* Replace `Peak` with more efficient `Peek` by @davidhewitt in [pydantic/jiter#48](https://github.com/pydantic/jiter/pull/48)
++
++#### Fixes
++
++* Move `getattr` warning in deprecated `BaseConfig` by @tlambert03 in [#7183](https://github.com/pydantic/pydantic/pull/7183)
++* Only hash `model_fields`, not whole `__dict__` by @alexmojaki in [#7786](https://github.com/pydantic/pydantic/pull/7786)
++* Fix mishandling of unions while freezing types in the `mypy` plugin by @dmontagu in [#7411](https://github.com/pydantic/pydantic/pull/7411)
++* Fix `mypy` error on untyped `ClassVar` by @vincent-hachin-wmx in [#8138](https://github.com/pydantic/pydantic/pull/8138)
++* Only compare pydantic fields in `BaseModel.__eq__` instead of whole `__dict__` by @QuentinSoubeyranAqemia in [#7825](https://github.com/pydantic/pydantic/pull/7825)
++* Update `strict` docstring in `model_validate` method. by @LukeTonin in [#8223](https://github.com/pydantic/pydantic/pull/8223)
++* Fix overload position of `computed_field` by @Viicos in [#8227](https://github.com/pydantic/pydantic/pull/8227)
++* Fix custom type type casting used in multiple attributes by @ianhfc in [#8066](https://github.com/pydantic/pydantic/pull/8066)
++* Fix issue not allowing `validate_call` decorator to be dynamically assigned to a class method by @jusexton in [#8249](https://github.com/pydantic/pydantic/pull/8249)
++* Fix issue `unittest.mock` deprecation warnings  by @ibleedicare in [#8262](https://github.com/pydantic/pydantic/pull/8262)
++* Added tests for the case `JsonValue` contains subclassed primitive values by @jusexton in [#8286](https://github.com/pydantic/pydantic/pull/8286)
++* Fix `mypy` error on free before validator (classmethod) by @sydney-runkle in [#8285](https://github.com/pydantic/pydantic/pull/8285)
++* Fix `to_snake` conversion by @jevins09 in [#8316](https://github.com/pydantic/pydantic/pull/8316)
++* Fix type annotation of `ModelMetaclass.__prepare__` by @slanzmich in [#8305](https://github.com/pydantic/pydantic/pull/8305)
++* Disallow `config` specification when initializing a `TypeAdapter` when the annotated type has config already by @sydney-runkle in [#8365](https://github.com/pydantic/pydantic/pull/8365)
++* Fix a naming issue with JSON schema for generics parametrized by recursive type aliases by @dmontagu in [#8389](https://github.com/pydantic/pydantic/pull/8389)
++* Fix type annotation in pydantic people script by @shenxiangzhuang in [#8402](https://github.com/pydantic/pydantic/pull/8402)
++* Add support for field `alias` in `dataclass` signature by @NeevCohen in [#8387](https://github.com/pydantic/pydantic/pull/8387)
++* Fix bug with schema generation with `Field(...)` in a forward ref by @dmontagu in [#8494](https://github.com/pydantic/pydantic/pull/8494)
++* Fix ordering of keys in `__dict__` with `model_construct` call by @sydney-runkle in [#8500](https://github.com/pydantic/pydantic/pull/8500)
++* Fix module `path_type` creation when globals does not contain `__name__` by @hramezani in [#8470](https://github.com/pydantic/pydantic/pull/8470)
++* Fix for namespace issue with dataclasses with `from __future__ import annotations` by @sydney-runkle in [#8513](https://github.com/pydantic/pydantic/pull/8513)
++* Fix: make function validator types positional-only by @pmmmwh in [#8479](https://github.com/pydantic/pydantic/pull/8479)
++* Fix usage of `@deprecated` by @Viicos in [#8294](https://github.com/pydantic/pydantic/pull/8294)
++* Add more support for private attributes in `model_construct` call by @sydney-runkle in [#8525](https://github.com/pydantic/pydantic/pull/8525)
++* Use a stack for the types namespace by @dmontagu in [#8378](https://github.com/pydantic/pydantic/pull/8378)
++* Fix schema-building bug with `TypeAliasType` for types with refs by @dmontagu in [#8526](https://github.com/pydantic/pydantic/pull/8526)
++* Support `pydantic.Field(repr=False)` in dataclasses by @tigeryy2 in [#8511](https://github.com/pydantic/pydantic/pull/8511)
++* Override `dataclass_transform` behavior for `RootModel` by @Viicos in [#8163](https://github.com/pydantic/pydantic/pull/8163)
++* Refactor signature generation for simplicity by @sydney-runkle in [#8572](https://github.com/pydantic/pydantic/pull/8572)
++* Fix ordering bug of PlainValidator annotation by @Anvil in [#8567](https://github.com/pydantic/pydantic/pull/8567)
++* Fix `exclude_none` for json serialization of `computed_field`s by @sydney-runkle in [pydantic/pydantic-core#1098](https://github.com/pydantic/pydantic-core/pull/1098)
++* Support yyyy-MM-DD string for datetimes by @sydney-runkle in [pydantic/pydantic-core#1124](https://github.com/pydantic/pydantic-core/pull/1124)
++
++
++### New Contributors
++
++#### `pydantic`
++* @ekeew made their first contribution in [#6874](https://github.com/pydantic/pydantic/pull/6874)
++* @lambertsbennett made their first contribution in [#8054](https://github.com/pydantic/pydantic/pull/8054)
++* @vincent-hachin-wmx made their first contribution in [#8138](https://github.com/pydantic/pydantic/pull/8138)
++* @QuentinSoubeyranAqemia made their first contribution in [#7825](https://github.com/pydantic/pydantic/pull/7825)
++* @ariebovenberg made their first contribution in [#8072](https://github.com/pydantic/pydantic/pull/8072)
++* @LukeTonin made their first contribution in [#8223](https://github.com/pydantic/pydantic/pull/8223)
++* @denisart made their first contribution in [#8231](https://github.com/pydantic/pydantic/pull/8231)
++* @ianhfc made their first contribution in [#8066](https://github.com/pydantic/pydantic/pull/8066)
++* @eonu made their first contribution in [#8255](https://github.com/pydantic/pydantic/pull/8255)
++* @amandahla made their first contribution in [#8263](https://github.com/pydantic/pydantic/pull/8263)
++* @ibleedicare made their first contribution in [#8262](https://github.com/pydantic/pydantic/pull/8262)
++* @jevins09 made their first contribution in [#8316](https://github.com/pydantic/pydantic/pull/8316)
++* @cuu508 made their first contribution in [#8322](https://github.com/pydantic/pydantic/pull/8322)
++* @slanzmich made their first contribution in [#8305](https://github.com/pydantic/pydantic/pull/8305)
++* @jensenbox made their first contribution in [#8331](https://github.com/pydantic/pydantic/pull/8331)
++* @szepeviktor made their first contribution in [#8356](https://github.com/pydantic/pydantic/pull/8356)
++* @Elkiwa made their first contribution in [#8341](https://github.com/pydantic/pydantic/pull/8341)
++* @parhamfh made their first contribution in [#8395](https://github.com/pydantic/pydantic/pull/8395)
++* @shenxiangzhuang made their first contribution in [#8402](https://github.com/pydantic/pydantic/pull/8402)
++* @NeevCohen made their first contribution in [#8387](https://github.com/pydantic/pydantic/pull/8387)
++* @zby made their first contribution in [#8497](https://github.com/pydantic/pydantic/pull/8497)
++* @patelnets made their first contribution in [#8491](https://github.com/pydantic/pydantic/pull/8491)
++* @edwardwli made their first contribution in [#8503](https://github.com/pydantic/pydantic/pull/8503)
++* @luca-matei made their first contribution in [#8507](https://github.com/pydantic/pydantic/pull/8507)
++* @Jocelyn-Gas made their first contribution in [#8437](https://github.com/pydantic/pydantic/pull/8437)
++* @bL34cHig0 made their first contribution in [#8501](https://github.com/pydantic/pydantic/pull/8501)
++* @tigeryy2 made their first contribution in [#8511](https://github.com/pydantic/pydantic/pull/8511)
++* @geospackle made their first contribution in [#8537](https://github.com/pydantic/pydantic/pull/8537)
++* @Anvil made their first contribution in [#8567](https://github.com/pydantic/pydantic/pull/8567)
++
++#### `pydantic-core`
++* @mariuswinger made their first contribution in [pydantic/pydantic-core#1087](https://github.com/pydantic/pydantic-core/pull/1087)
++* @adamchainz made their first contribution in [pydantic/pydantic-core#1090](https://github.com/pydantic/pydantic-core/pull/1090)
++* @akx made their first contribution in [pydantic/pydantic-core#1123](https://github.com/pydantic/pydantic-core/pull/1123)
++
+ ## v2.5.3 (2023-12-22)
+ 
+ [GitHub release](https://github.com/pydantic/pydantic/releases/tag/v2.5.3)
+diff --git a/pydantic/v1/class_validators.py b/pydantic/v1/class_validators.py
+index 5e7e90cc8..71e665093 100644
+--- a/pydantic/v1/class_validators.py
++++ b/pydantic/v1/class_validators.py
+@@ -61,7 +61,7 @@ def validator(
+     """
+     Decorate methods on the class indicating that they should be used to validate fields
+     :param fields: which field(s) the method should be called on
+-    :param pre: whether this validator should be called before the standard validators (else after)
++    :param pre: whether or not this validator should be called before the standard validators (else after)
+     :param each_item: for complex objects (sets, lists etc.) whether to validate individual elements rather than the
+       whole object
+     :param always: whether this method and other validators should be called even if the value is missing
+diff --git a/pydantic/v1/dataclasses.py b/pydantic/v1/dataclasses.py
+index 86bad1e63..2df3987a0 100644
+--- a/pydantic/v1/dataclasses.py
++++ b/pydantic/v1/dataclasses.py
+@@ -36,6 +36,13 @@ import dataclasses
+ import sys
+ from contextlib import contextmanager
+ from functools import wraps
++
++try:
++    from functools import cached_property
++except ImportError:
++    # cached_property available only for python3.8+
++    pass
++
+ from typing import TYPE_CHECKING, Any, Callable, ClassVar, Dict, Generator, Optional, Type, TypeVar, Union, overload
+ 
+ from typing_extensions import dataclass_transform
+@@ -409,6 +416,17 @@ def create_pydantic_model_from_dataclass(
+     return model
+ 
+ 
++if sys.version_info >= (3, 8):
++
++    def _is_field_cached_property(obj: 'Dataclass', k: str) -> bool:
++        return isinstance(getattr(type(obj), k, None), cached_property)
++
++else:
++
++    def _is_field_cached_property(obj: 'Dataclass', k: str) -> bool:
++        return False
++
++
+ def _dataclass_validate_values(self: 'Dataclass') -> None:
+     # validation errors can occur if this function is called twice on an already initialised dataclass.
+     # for example if Extra.forbid is enabled, it would consider __pydantic_initialised__ an invalid extra property
+@@ -417,9 +435,13 @@ def _dataclass_validate_values(self: 'Dataclass') -> None:
+     if getattr(self, '__pydantic_has_field_info_default__', False):
+         # We need to remove `FieldInfo` values since they are not valid as input
+         # It's ok to do that because they are obviously the default values!
+-        input_data = {k: v for k, v in self.__dict__.items() if not isinstance(v, FieldInfo)}
++        input_data = {
++            k: v
++            for k, v in self.__dict__.items()
++            if not (isinstance(v, FieldInfo) or _is_field_cached_property(self, k))
++        }
+     else:
+-        input_data = self.__dict__
++        input_data = {k: v for k, v in self.__dict__.items() if not _is_field_cached_property(self, k)}
+     d, _, validation_error = validate_model(self.__pydantic_model__, input_data, cls=self.__class__)
+     if validation_error:
+         raise validation_error
+diff --git a/pydantic/v1/error_wrappers.py b/pydantic/v1/error_wrappers.py
+index 5d3204f40..d89a500cb 100644
+--- a/pydantic/v1/error_wrappers.py
++++ b/pydantic/v1/error_wrappers.py
+@@ -101,7 +101,6 @@ def flatten_errors(
+ ) -> Generator['ErrorDict', None, None]:
+     for error in errors:
+         if isinstance(error, ErrorWrapper):
+-
+             if loc:
+                 error_loc = loc + error.loc_tuple()
+             else:
+diff --git a/pydantic/v1/fields.py b/pydantic/v1/fields.py
+index 607bbd7b8..60d260e94 100644
+--- a/pydantic/v1/fields.py
++++ b/pydantic/v1/fields.py
+@@ -178,7 +178,6 @@ class FieldInfo(Representation):
+         self.extra = kwargs
+ 
+     def __repr_args__(self) -> 'ReprArgs':
+-
+         field_defaults_to_hide: Dict[str, Any] = {
+             'repr': True,
+             **self.__field_constraints__,
+@@ -405,7 +404,6 @@ class ModelField(Representation):
+         alias: Optional[str] = None,
+         field_info: Optional[FieldInfo] = None,
+     ) -> None:
+-
+         self.name: str = name
+         self.has_alias: bool = alias is not None
+         self.alias: str = alias if alias is not None else name
+@@ -817,7 +815,7 @@ class ModelField(Representation):
+         """
+         Prepare self.pre_validators, self.validators, and self.post_validators based on self.type_'s  __get_validators__
+         and class validators. This method should be idempotent, e.g. it should be safe to call multiple times
+-        without misconfiguring the field.
++        without mis-configuring the field.
+         """
+         self.validate_always = getattr(self.type_, 'validate_always', False) or any(
+             v.always for v in self.class_validators.values()
+@@ -852,7 +850,6 @@ class ModelField(Representation):
+     def validate(
+         self, v: Any, values: Dict[str, Any], *, loc: 'LocStr', cls: Optional['ModelOrDc'] = None
+     ) -> 'ValidateReturn':
+-
+         assert self.type_.__class__ is not DeferredType
+ 
+         if self.type_.__class__ is ForwardRef:
+diff --git a/pydantic/v1/main.py b/pydantic/v1/main.py
+index 683f3f880..08b8af558 100644
+--- a/pydantic/v1/main.py
++++ b/pydantic/v1/main.py
+@@ -737,7 +737,6 @@ class BaseModel(Representation, metaclass=ModelMetaclass):
+         exclude_defaults: bool,
+         exclude_none: bool,
+     ) -> Any:
+-
+         if isinstance(v, BaseModel):
+             if to_dict:
+                 v_dict = v.dict(
+@@ -830,7 +829,6 @@ class BaseModel(Representation, metaclass=ModelMetaclass):
+         exclude_defaults: bool = False,
+         exclude_none: bool = False,
+     ) -> 'TupleGenerator':
+-
+         # Merge field set excludes with explicit exclude parameter with explicit overriding field set options.
+         # The extra "is not None" guards are not logically necessary but optimizes performance for the simple case.
+         if exclude is not None or self.__exclude_fields__ is not None:
+diff --git a/pydantic/v1/schema.py b/pydantic/v1/schema.py
+index 31e8ae376..ea16a72a6 100644
+--- a/pydantic/v1/schema.py
++++ b/pydantic/v1/schema.py
+@@ -198,7 +198,6 @@ def model_schema(
+ 
+ 
+ def get_field_info_schema(field: ModelField, schema_overrides: bool = False) -> Tuple[Dict[str, Any], bool]:
+-
+     # If no title is explicitly set, we don't set title in the schema for enums.
+     # The behaviour is the same as `BaseModel` reference, where the default title
+     # is in the definitions part of the schema.
+diff --git a/pydantic/v1/types.py b/pydantic/v1/types.py
+index 235bb1809..754e58fff 100644
+--- a/pydantic/v1/types.py
++++ b/pydantic/v1/types.py
+@@ -481,6 +481,7 @@ else:
+ 
+ # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ SET TYPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
++
+ # This types superclass should be Set[T], but cython chokes on that...
+ class ConstrainedSet(set):  # type: ignore
+     # Needed for pydantic to detect that this is a set
+@@ -569,6 +570,7 @@ def confrozenset(
+ 
+ # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ LIST TYPES ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 
++
+ # This types superclass should be List[T], but cython chokes on that...
+ class ConstrainedList(list):  # type: ignore
+     # Needed for pydantic to detect that this is a list
+@@ -1082,19 +1084,6 @@ BYTE_SIZES = {
+     'tib': 2**40,
+     'pib': 2**50,
+     'eib': 2**60,
+-    'bit': 1/8,
+-    'kbit': 10**3/8,
+-    'mbit': 10**6/8,
+-    'gbit': 10**9/8,
+-    'tbit': 10**12/8,
+-    'pbit': 10**15/8,
+-    'ebit': 10**18/8,
+-    'kibit': 2**10/8,
+-    'mibit': 2**20/8,
+-    'gibit': 2**30/8,
+-    'tibit': 2**40/8,
+-    'pibit': 2**50/8,
+-    'eibit': 2**60/8,
+ }
+ BYTE_SIZES.update({k.lower()[0]: v for k, v in BYTE_SIZES.items() if 'i' not in k})
+ byte_string_re = re.compile(r'^\s*(\d*\.?\d+)\s*(\w+)?', re.IGNORECASE)
+@@ -1107,7 +1096,6 @@ class ByteSize(int):
+ 
+     @classmethod
+     def validate(cls, v: StrIntFloat) -> 'ByteSize':
+-
+         try:
+             return cls(int(v))
+         except ValueError:
+@@ -1129,7 +1117,6 @@ class ByteSize(int):
+         return cls(int(float(scalar) * unit_mult))
+ 
+     def human_readable(self, decimal: bool = False) -> str:
+-
+         if decimal:
+             divisor = 1000
+             units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB']
+@@ -1148,7 +1135,6 @@ class ByteSize(int):
+         return f'{num:0.1f}{final_unit}'
+ 
+     def to(self, unit: str) -> float:
+-
+         try:
+             unit_div = BYTE_SIZES[unit.lower()]
+         except KeyError:
+diff --git a/pydantic/v1/version.py b/pydantic/v1/version.py
+index 462c49785..ec982ba7d 100644
+--- a/pydantic/v1/version.py
++++ b/pydantic/v1/version.py
+@@ -1,6 +1,6 @@
+ __all__ = 'compiled', 'VERSION', 'version_info'
+ 
+-VERSION = '1.10.13'
++VERSION = '1.10.14'
+ 
+ try:
+     import cython  # type: ignore
+diff --git a/pydantic/version.py b/pydantic/version.py
+index d1c4e136c..119ba64a6 100644
+--- a/pydantic/version.py
++++ b/pydantic/version.py
+@@ -3,7 +3,7 @@ from __future__ import annotations as _annotations
+ 
+ __all__ = 'VERSION', 'version_info'
+ 
+-VERSION = '2.6.0a1'
++VERSION = '2.6.0b1'
+ """The version of Pydantic."""
+ 
+ 
++ git -c core.fileMode=false diff e131d53a07da080c2ba642775efa9e81cb2cf0ba
+diff --git a/pydantic/json_schema.py b/pydantic/json_schema.py
+index eee9e60eb..aa6b98fc7 100644
+--- a/pydantic/json_schema.py
++++ b/pydantic/json_schema.py
+@@ -1128,7 +1128,7 @@ class GenerateJsonSchema:
+             # property on all choices. If so, that property will be used as the OpenAPI discriminator.
+             for alias_path in schema['discriminator']:
+                 if not isinstance(alias_path, list):
+-                    break  # this means that the discriminator is not a list of alias paths
++                    continue  # this means that the discriminator element is not an alias path, skip it
+                 if len(alias_path) != 1:
+                     continue  # this means that the "alias" does not represent a single field
+                 alias = alias_path[0]
+diff --git a/tests/test_discriminated_union.py b/tests/test_discriminated_union.py
+index 251fee3d3..24e319da3 100644
+--- a/tests/test_discriminated_union.py
++++ b/tests/test_discriminated_union.py
+@@ -2,7 +2,7 @@ import re
+ import sys
+ from enum import Enum, IntEnum
+ from types import SimpleNamespace
+-from typing import Any, Callable, Generic, Optional, Sequence, TypeVar, Union
++from typing import Any, Callable, Generic, List, Optional, Sequence, TypeVar, Union
+ 
+ import pytest
+ from dirty_equals import HasRepr, IsStr
+@@ -12,6 +12,8 @@ from typing_extensions import Annotated, Literal
+ from pydantic import BaseModel, ConfigDict, Discriminator, Field, TypeAdapter, ValidationError, field_validator
+ from pydantic._internal._discriminated_union import apply_discriminator
+ from pydantic.errors import PydanticUserError
++from pydantic.fields import FieldInfo
++from pydantic.json_schema import GenerateJsonSchema
+ from pydantic.types import Tag
+ 
+ 
+@@ -1696,3 +1698,68 @@ def test_callable_discriminated_union_with_missing_tag() -> None:
+             ]
+     except PydanticUserError as exc_info:
+         assert exc_info.code == 'callable-discriminator-no-tag'
++
++
++def test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions() -> None:
++    class ItemType(str, Enum):
++        ITEM1 = 'item1'
++        ITEM2 = 'item2'
++
++    class CreateItem1(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM1], Field(alias='type')]
++        id: int
++
++    class CreateItem2(BaseModel):
++        item_type: Annotated[Literal[ItemType.ITEM2], Field(alias='type')]
++        id: int
++
++    class CreateObjectDto(BaseModel):
++        id: int
++        items: List[
++            Annotated[
++                Union[
++                    CreateItem1,
++                    CreateItem2,
++                ],
++                Field(discriminator='item_type'),
++            ]
++        ]
++
++    adaptor = TypeAdapter(
++        Annotated[CreateObjectDto, FieldInfo(examples=[{'id': 1, 'items': [{'id': 3, 'type': 'ITEM1'}]}])]
++    )
++
++    schema_map, definitions = GenerateJsonSchema().generate_definitions([(adaptor, 'validation', adaptor.core_schema)])
++    assert definitions == {
++        'CreateItem1': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item1', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem1',
++            'type': 'object',
++        },
++        'CreateItem2': {
++            'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item2', 'title': 'Type'}},
++            'required': ['type', 'id'],
++            'title': 'CreateItem2',
++            'type': 'object',
++        },
++        'CreateObjectDto': {
++            'properties': {
++                'id': {'title': 'Id', 'type': 'integer'},
++                'items': {
++                    'items': {
++                        'discriminator': {
++                            'mapping': {'item1': '#/$defs/CreateItem1', 'item2': '#/$defs/CreateItem2'},
++                            'propertyName': 'type',
++                        },
++                        'oneOf': [{'$ref': '#/$defs/CreateItem1'}, {'$ref': '#/$defs/CreateItem2'}],
++                    },
++                    'title': 'Items',
++                    'type': 'array',
++                },
++            },
++            'required': ['id', 'items'],
++            'title': 'CreateObjectDto',
++            'type': 'object',
++        },
++    }
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ export PATH=/root/.local/bin:/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ PATH=/root/.local/bin:/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++ pdm add pre-commit
+Adding packages to default dependencies: pre-commit
+DEPRECATED: `cross_platform` strategy is deprecated in favor of the new lock targets.
+See docs: http://pdm-project.org/en/latest/usage/lock-targets/
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.6.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.6.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.5.1 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.5.1, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.5.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.5.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.4.0 because it requires Python>=3.10 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.4.0, narrow down the `requires-python` range to include this version. For example, ">=3.10" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.3.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.3.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.2.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.2.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.1.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.1.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.0.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.0.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@4.0.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@4.0.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.8.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.8.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.7.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.7.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.7.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.7.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.2 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.2, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.1 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.1, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+/root/.local/pipx/venvs/pdm/lib/python3.10/site-packages/pdm/resolver/providers.py:200: PackageWarning: Skipping pre-commit@3.6.0 because it requires Python>=3.9 but the lock targets to work with Python>=3.8. Instead, another version of pre-commit that supports Python>=3.8 will be used.
+If you want to install pre-commit@3.6.0, narrow down the `requires-python` range to include this version. For example, ">=3.9" should work.
+  return self.repository.find_candidates(
+⠋ 0:00:59 Resolve for environment (>=3.8) None
+See /root/.local/state/pdm/log/pdm-lock-lhilxb60.log for detailed debug log.
+[ReadTimeout]: The read operation timed out
+WARNING: Add '-v' to see the detailed traceback
++ make install
+PDM, version 2.19.1
+pre-commit 3.5.0
+pdm info
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+PDM version:
+  2.19.1
+Python Interpreter:
+  /opt/miniconda3/envs/testbed/bin/python (3.8)
+Project Root:
+  /testbed
+Local Packages:
+  
+INFO: PDM 2.19.1 is installed, while 2.26.8 is available.
+Please run `pipx upgrade pdm` to upgrade.
+Run `pdm config check_update false` to disable the check.
+pdm install --group :all
+WARNING: Lockfile is generated on an older version of PDM
+INFO: Inside an active virtualenv /opt/miniconda3/envs/testbed, reusing it.
+Set env var PDM_IGNORE_ACTIVE_VENV to ignore it.
+STATUS: Resolving packages from lockfile...
+See /root/.local/state/pdm/log/pdm-install-resolve-9bqw7qj3.log for detailed debug log.
+[ReadTimeout]: The read operation timed out
+WARNING: Add '-v' to see the detailed traceback
+make: *** [Makefile:15: install] Error 1
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA --tb=short -vv -o console_output_style=classic --no-header tests/test_discriminated_union.py
+============================= test session starts ==============================
+collecting ... collected 57 items
+
+tests/test_discriminated_union.py::test_discriminated_union_type PASSED
+tests/test_discriminated_union.py::test_discriminated_single_variant[True] PASSED
+tests/test_discriminated_union.py::test_discriminated_single_variant[False] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_single_variant PASSED
+tests/test_discriminated_union.py::test_discriminated_union_invalid_type PASSED
+tests/test_discriminated_union.py::test_discriminated_union_defined_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_literal_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_root_same_discriminator PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[discriminator-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_str-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_str] PASSED
+tests/test_discriminated_union.py::test_discriminated_union_validation[field_discriminator-field_discriminator] PASSED
+tests/test_discriminated_union.py::test_discriminated_annotated_union PASSED
+tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value PASSED
+tests/test_discriminated_union.py::test_discriminated_union_basemodel_instance_value_with_alias PASSED
+tests/test_discriminated_union.py::test_discriminated_union_int PASSED
+tests/test_discriminated_union.py::test_discriminated_union_enum[Enum-choices0] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[Enum-choices1] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[FooIntEnum-choices2] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[IntEnum-choices3] SKIPPED
+tests/test_discriminated_union.py::test_discriminated_union_enum[FooStrEnum-choices4] SKIPPED
+tests/test_discriminated_union.py::test_alias_different PASSED
+tests/test_discriminated_union.py::test_alias_same PASSED
+tests/test_discriminated_union.py::test_nested PASSED
+tests/test_discriminated_union.py::test_generic PASSED
+tests/test_discriminated_union.py::test_optional_union PASSED
+tests/test_discriminated_union.py::test_optional_union_with_defaults PASSED
+tests/test_discriminated_union.py::test_aliases_matching_is_not_sufficient PASSED
+tests/test_discriminated_union.py::test_nested_optional_unions PASSED
+tests/test_discriminated_union.py::test_nested_discriminated_union PASSED
+tests/test_discriminated_union.py::test_unions_of_optionals PASSED
+tests/test_discriminated_union.py::test_union_discriminator_literals PASSED
+tests/test_discriminated_union.py::test_none_schema PASSED
+tests/test_discriminated_union.py::test_nested_unwrapping PASSED
+tests/test_discriminated_union.py::test_distinct_choices PASSED
+tests/test_discriminated_union.py::test_invalid_discriminated_union_type PASSED
+tests/test_discriminated_union.py::test_invalid_alias PASSED
+tests/test_discriminated_union.py::test_invalid_discriminator_type PASSED
+tests/test_discriminated_union.py::test_missing_discriminator_field PASSED
+tests/test_discriminated_union.py::test_wrap_function_schema PASSED
+tests/test_discriminated_union.py::test_plain_function_schema_is_invalid PASSED
+tests/test_discriminated_union.py::test_invalid_str_choice_discriminator_values PASSED
+tests/test_discriminated_union.py::test_lax_or_strict_definitions PASSED
+tests/test_discriminated_union.py::test_wrapped_nullable_union PASSED
+tests/test_discriminated_union.py::test_union_in_submodel PASSED
+tests/test_discriminated_union.py::test_function_after_discriminator PASSED
+tests/test_discriminated_union.py::test_sequence_discriminated_union PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_with_type_adapter PASSED
+tests/test_discriminated_union.py::test_various_syntax_options_for_callable_union PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_recursive PASSED
+tests/test_discriminated_union.py::test_callable_discriminated_union_with_missing_tag PASSED
+tests/test_discriminated_union.py::test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions FAILED [100%]
+tests/test_discriminated_union.py:1702 test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions
+=================================== FAILURES ===================================
+_ test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions _
+tests/test_discriminated_union.py:1733: in test_presence_of_discriminator_when_generating_type_adaptor_json_schema_definitions
+    assert definitions == {
+E   AssertionError: assert {'CreateItem1': {'properties': {'type': {'const': 'item1', 'title': 'Type'}, 'id': {'title': 'Id', 'type': 'integer'}}, 'required': ['type', 'id'], 'title': 'CreateItem1', 'type': 'object'}, 'CreateItem2': {'properties': {'type': {'const': 'item2', 'title': 'Type'}, 'id': {'title': 'Id', 'type': 'integer'}}, 'required': ['type', 'id'], 'title': 'CreateItem2', 'type': 'object'}, 'CreateObjectDto': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'items': {'items': {'oneOf': [{'$ref': '#/$defs/CreateItem1'}, {'$ref': '#/$defs/CreateItem2'}]}, 'title': 'Items', 'type': 'array'}}, 'required': ['id', 'items'], 'title': 'CreateObjectDto', 'type': 'object'}} == {'CreateItem1': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item1', 'title': 'Type'}}, 'required': ['type', 'id'], 'title': 'CreateItem1', 'type': 'object'}, 'CreateItem2': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'type': {'const': 'item2', 'title': 'Type'}}, 'required': ['type', 'id'], 'title': 'CreateItem2', 'type': 'object'}, 'CreateObjectDto': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'items': {'items': {'discriminator': {'mapping': {'item1': '#/$defs/CreateItem1', 'item2': '#/$defs/CreateItem2'}, 'propertyName': 'type'}, 'oneOf': [{'$ref': '#/$defs/CreateItem1'}, {'$ref': '#/$defs/CreateItem2'}]}, 'title': 'Items', 'type': 'array'}}, 'required': ['id', 'items'], 'title': 'CreateObjectDto', 'type': 'object'}}
+E     Common items:
+E     {'CreateItem1': {'properties': {'id': {'title': 'Id', 'type': 'integer'},
+E                                     'type': {'const': 'item1', 'title': 'Type'}},
+E                      'required': ['type', 'id'],
+E                      'title': 'CreateItem1',
+E                      'type': 'object'},
+E      'CreateItem2': {'properties': {'id': {'title': 'Id', 'type': 'integer'},
+E                                     'type': {'const': 'item2', 'title': 'Type'}},
+E                      'required': ['type', 'id'],
+E                      'title': 'CreateItem2',
+E                      'type': 'object'}}
+E     Differing items:
+E     {'CreateObjectDto': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'items': {'items': {'oneOf': [{...}, {...}]}, 'title': 'Items', 'type': 'array'}}, 'required': ['id', 'items'], 'title': 'CreateObjectDto', 'type': 'object'}} != {'CreateObjectDto': {'properties': {'id': {'title': 'Id', 'type': 'integer'}, 'items': {'items': {'discriminator': {'m.....}]}, 'title': 'Items', 'type': 'array'}}, 'required': ['id', 'items'], 'title': 'CreateObjectDto', 'type': 'object'}}
+E     Full diff:
+E       {
+E        'CreateItem1': {'properties': {'id': {'title': 'Id',
+E                                              'type': 'integer'},
+E                                       'type': {'const': 'item1',
+E                                                'title': 'Type'}},
+E                        'required': ['type',
+E                                     'id'],
+E                        'title': 'CreateItem1',
+E                        'type': 'object'},
+E        'CreateItem2': {'properties': {'id': {'title': 'Id',
+E                                              'type': 'integer'},
+E                                       'type': {'const': 'item2',
+E                                                'title': 'Type'}},
+E                        'required': ['type',
+E                                     'id'],
+E                        'title': 'CreateItem2',
+E                        'type': 'object'},
+E        'CreateObjectDto': {'properties': {'id': {'title': 'Id',
+E                                                  'type': 'integer'},
+E     -                                     'items': {'items': {'discriminator': {'mapping': {'item1': '#/$defs/CreateItem1',
+E     ?                                                          ^^^^^^^^ ^^^^     ^^^^^^^  ----------
+E     +                                     'items': {'items': {'oneOf': [{'$ref': '#/$defs/CreateItem1'},
+E     ?                                                          ^ ^^^   +  ^^^^                        +
+E     -                                                                                       'item2': '#/$defs/CreateItem2'},
+E     -                                                                           'propertyName': 'type'},
+E     -                                                         'oneOf': [{'$ref': '#/$defs/CreateItem1'},
+E                                                                         {'$ref': '#/$defs/CreateItem2'}]},
+E                                                     'title': 'Items',
+E                                                     'type': 'array'}},
+E                            'required': ['id',
+E                                         'items'],
+E                            'title': 'CreateObjectDto',
+E                            'type': 'object'},
+E       }
+=============================== warnings summary ===============================
+tests/test_discriminated_union.py::test_generic
+  /opt/miniconda3/envs/testbed/lib/python3.8/site-packages/_pytest/_code/code.py:710: DeprecationWarning: PYDANTIC_ERRORS_OMIT_URL is deprecated, use PYDANTIC_ERRORS_INCLUDE_URL instead
+    value = str(self.value)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+==================================== PASSES ====================================
+                              Summary of Failures                               
+┏━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━┓
+┃               ┃               ┃  Function     ┃              ┃               ┃
+┃  File         ┃  Function     ┃  Line         ┃  Error Line  ┃  Error        ┃
+┡━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━┩
+│  tests/test…  │  test_prese…  │  1703         │  1733        │  in           │
+│               │               │               │              │  test_prese…  │
+└───────────────┴───────────────┴───────────────┴──────────────┴───────────────┘
+Results (0.55s):
+         1 failed
+        51 passed
+         5 skipped
+         1 warning
++ : '>>>>> End Test Output'

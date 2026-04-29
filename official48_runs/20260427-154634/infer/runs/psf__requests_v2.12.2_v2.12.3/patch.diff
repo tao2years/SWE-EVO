@@ -1,0 +1,37 @@
+diff --git a/requests/models.py b/requests/models.py
+index cb44edd..4b3d408 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -347,9 +347,10 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         url = url.lstrip()
+ 
+         # Don't do any URL preparation for non-HTTP schemes like `mailto`,
+-        # `data`, `http+unix` etc to work around exceptions from `url_parse`,
++        # `data`, etc to work around exceptions from `url_parse`,
+         # which handles RFC 3986 only.
+-        if ':' in url and not url.lower().startswith(('http://', 'https://')):
++        scheme, _, _ = url.partition(':')
++        if ':' in url and (not scheme.lower().startswith('http')):
+             self.url = url
+             return
+ 
+@@ -374,11 +375,14 @@ class PreparedRequest(RequestEncodingMixin, RequestHooksMixin):
+         # may fail to encode. On failure, we verify the hostname meets a
+         # minimum standard of only containing ASCII characters, and not starting
+         # with a wildcard (*), before allowing the unencoded hostname through.
+-        try:
+-            host = idna.encode(host, uts46=True).decode('utf-8')
+-        except (UnicodeError, idna.IDNAError):
+-            if not unicode_is_ascii(host) or host.startswith(u'*'):
+-                raise InvalidURL('URL has an invalid label.')
++        # We also skip IDNA encoding for non-standard http schemes (e.g. http+unix),
++        # which have valid non-DNS hostnames that IDNA cannot encode.
++        if scheme.lower() in (‘http’, ‘https’):
++            try:
++                host = idna.encode(host, uts46=True).decode(‘utf-8’)
++            except (UnicodeError, idna.IDNAError):
++                if not unicode_is_ascii(host) or host.startswith(u’*’):
++                    raise InvalidURL(‘URL has an invalid label.’)
+ 
+         # Carefully reconstruct the network location
+         netloc = auth or ''

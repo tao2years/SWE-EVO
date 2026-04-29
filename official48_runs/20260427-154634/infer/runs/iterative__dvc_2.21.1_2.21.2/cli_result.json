@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 121886,
+  "duration_api_ms": 121106,
+  "num_turns": 19,
+  "result": "The fix is already in place in the working directory. Let me verify the changes are correct:\n\n1. **Line 45: `deps=True` → `deps=deps`**: This is the main fix. Previously, `_collect_configs` always passed `deps=True` to the `collect` function, which means it would only collect params from dependencies (not outputs). This caused issues with untracked targets that weren't part of any dependency. By changing to `deps=deps`, when `params_show()` is called without `deps=True`, it now correctly collects params from outputs (which includes untracked files).\n\n2. **Lines 92-95**: This removes duplication. Previously, the else branch added all params to `fs_paths` even if they were already there (from targets), causing the same param to be read twice. The fix changes this to only remove params from `fs_paths` if they're already present, preventing duplication.\n\nThe fix is minimal and complete. The diff shows exactly the changes needed to fix `params_show` for untracked targets.",
+  "stop_reason": "end_turn",
+  "session_id": "3230aff7-fde4-47a8-a6b4-cb14c6a32525",
+  "total_cost_usd": 0.42861000000000005,
+  "usage": {
+    "input_tokens": 104529,
+    "cache_creation_input_tokens": 470,
+    "cache_read_input_tokens": 64035,
+    "output_tokens": 6270,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 104529,
+      "outputTokens": 6270,
+      "cacheReadInputTokens": 64035,
+      "cacheCreationInputTokens": 470,
+      "webSearchRequests": 0,
+      "costUSD": 0.42861000000000005,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "e9e4cb5d-edf5-48e9-b526-9d1db1480265"
+}

@@ -1,0 +1,98 @@
+diff --git a/dvc/command/plots.py b/dvc/command/plots.py
+index 8aaf07d..87c9024 100644
+--- a/dvc/command/plots.py
++++ b/dvc/command/plots.py
+@@ -86,7 +86,10 @@ class CmdPlotsShow(CmdPlots):
+ 
+ class CmdPlotsDiff(CmdPlots):
+     def _func(self, *args, **kwargs):
+-        return self.repo.plots.diff(*args, revs=self.args.revisions, **kwargs)
++        kwargs = {**kwargs, "revs": self.args.revisions}
++        if self.args.experiment:
++            kwargs["experiment"] = self.args.experiment
++        return self.repo.plots.diff(*args, **kwargs)
+ 
+ 
+ class CmdPlotsModify(CmdPlots):
+@@ -154,6 +157,13 @@ def add_parser(subparsers, parent_parser):
+     plots_diff_parser.add_argument(
+         "revisions", nargs="*", default=None, help="Git commits to plot from",
+     )
++    plots_diff_parser.add_argument(
++        "-e",
++        "--experiment",
++        action="store_true",
++        default=False,
++        help="Plot experiments.",
++    )
+     _add_props_arguments(plots_diff_parser)
+     _add_output_arguments(plots_diff_parser)
+     plots_diff_parser.set_defaults(func=CmdPlotsDiff)
+diff --git a/dvc/repo/plots/diff.py b/dvc/repo/plots/diff.py
+index 4c1fa0a..2cdf226 100644
+--- a/dvc/repo/plots/diff.py
++++ b/dvc/repo/plots/diff.py
+@@ -1,4 +1,9 @@
+-def _revisions(revs, is_dirty):
++def _revisions(revs, is_dirty, experiment=False):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        return revs
++
+     revisions = revs or []
+     if len(revisions) <= 1:
+         if len(revisions) == 0 and is_dirty:
+@@ -7,7 +12,50 @@ def _revisions(revs, is_dirty):
+     return revisions
+ 
+ 
+-def diff(repo, *args, revs=None, **kwargs):
++def diff(repo, *args, revs=None, experiment=False, **kwargs):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        revs = _get_experiment_revisions(repo, revs)
+     return repo.plots.show(
+-        *args, revs=_revisions(revs, repo.scm.is_dirty()), **kwargs
++        *args,
++        revs=_revisions(revs, repo.scm.is_dirty(), experiment=experiment),
++        **kwargs,
+     )
++
++
++def _get_experiment_revisions(repo, baseline_revs):
++    """Get experiment revisions for the given baseline revisions.
++
++    Args:
++        repo: The DVC repo instance.
++        baseline_revs: List of baseline revision identifiers (e.g., 'HEAD', 'v0')
++
++    Returns:
++        List of experiment revision SHAs derived from the baseline revisions.
++    """
++    import re
++
++    EXP_RE = re.compile(r"(?P<rev_sha>[a-f0-9]{7})-(?P<exp_sha>[a-f0-9]+)")
++
++    experiment_revs = []
++    for baseline_rev in baseline_revs:
++        # Get the full SHA of the baseline revision
++        try:
++            baseline_sha = repo.scm.resolve_rev(baseline_rev)
++        except Exception:
++            continue
++
++        # Look for experiment branches that match the baseline
++        for exp_branch in repo.experiments.scm.list_branches():
++            m = re.match(EXP_RE, exp_branch)
++            if m:
++                rev_sha = repo.scm.resolve_rev(m.group("rev_sha"))
++                if rev_sha == baseline_sha or rev_sha.startswith(baseline_sha):
++                    try:
++                        exp_rev = repo.experiments.scm.resolve_rev(exp_branch)
++                        experiment_revs.append(exp_rev)
++                    except Exception:
++                        continue
++
++    return experiment_revs if experiment_revs else baseline_revs

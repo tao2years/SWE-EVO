@@ -1,0 +1,92 @@
+diff --git a/dask/dataframe/core.py b/dask/dataframe/core.py
+index 82bec5a..996c5ed 100644
+--- a/dask/dataframe/core.py
++++ b/dask/dataframe/core.py
+@@ -1659,6 +1659,13 @@ Dask Name: {name}, {layers}"""
+         axis = self._validate_axis(axis)
+         if method is None and limit is not None:
+             raise NotImplementedError("fillna with set limit and method=None")
++        if method is not None:
++            warnings.warn(
++                f"{type(self).__name__}.fillna with 'method' is deprecated and "
++                "will raise in a future version. Use obj.ffill() or obj.bfill() "
++                "instead.",
++                FutureWarning,
++            )
+         if isinstance(value, (_Frame, Scalar)):
+             test_value = value._meta_nonempty
+         else:
+@@ -1719,11 +1726,17 @@ Dask Name: {name}, {layers}"""
+ 
+     @derived_from(pd.DataFrame)
+     def ffill(self, axis=None, limit=None):
+-        return self.fillna(method="ffill", limit=limit, axis=axis)
++        # Avoid deprecation warning from fillna(method=...)
++        with warnings.catch_warnings():
++            warnings.filterwarnings("ignore", category=FutureWarning)
++            return self.fillna(method="ffill", limit=limit, axis=axis)
+ 
+     @derived_from(pd.DataFrame)
+     def bfill(self, axis=None, limit=None):
+-        return self.fillna(method="bfill", limit=limit, axis=axis)
++        # Avoid deprecation warning from fillna(method=...)
++        with warnings.catch_warnings():
++            warnings.filterwarnings("ignore", category=FutureWarning)
++            return self.fillna(method="bfill", limit=limit, axis=axis)
+ 
+     def sample(self, n=None, frac=None, replace=False, random_state=None):
+         """Random sample of items
+@@ -3579,6 +3592,12 @@ Dask Name: {name}, {layers}"""
+ 
+     @derived_from(pd.DataFrame)
+     def first(self, offset):
++        # Deprecated in pandas, https://github.com/pandas-dev/pandas/issues/39102
++        warnings.warn(
++            "first is deprecated and will be removed in a future version. "
++            "Please create a mask and filter using `.loc` instead",
++            FutureWarning,
++        )
+         # Let pandas error on bad args
+         self._meta_nonempty.first(offset)
+ 
+@@ -3613,6 +3632,12 @@ Dask Name: {name}, {layers}"""
+ 
+     @derived_from(pd.DataFrame)
+     def last(self, offset):
++        # Deprecated in pandas, https://github.com/pandas-dev/pandas/issues/39102
++        warnings.warn(
++            "last is deprecated and will be removed in a future version. "
++            "Please create a mask and filter using `.loc` instead",
++            FutureWarning,
++        )
+         # Let pandas error on bad args
+         self._meta_nonempty.first(offset)
+ 
+diff --git a/dask/utils.py b/dask/utils.py
+index 8a1dafb..d2e0f86 100644
+--- a/dask/utils.py
++++ b/dask/utils.py
+@@ -804,7 +804,7 @@ def _derived_from(
+         method_args = get_named_args(method)
+         original_args = get_named_args(original_method)
+         not_supported = [m for m in original_args if m not in method_args]
+-    except ValueError:
++    except (ValueError, TypeError):
+         not_supported = []
+     if len(ua_args) > 0:
+         not_supported.extend(ua_args)
+diff --git a/pyproject.toml b/pyproject.toml
+index b024d3d..e2168f5 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -138,6 +138,10 @@ filterwarnings = [
+     # https://pandas.pydata.org/docs/dev/whatsnew/v1.5.0.html#using-group-keys-with-transformers-in-groupby-apply
+     "ignore:Not prepending group keys:FutureWarning",
+     "ignore:.*:dask.tests.warning_aliases.RemovedIn20Warning",
++    # Ignore FutureWarning for deprecated fillna(method=...)
++    "ignore:.*fillna with 'method' is deprecated:FutureWarning:dask",
++    # Ignore FutureWarning for deprecated first/last
++    "ignore:.*is deprecated and will be removed in a future version:FutureWarning:dask",
+ ]
+ xfail_strict = true
+ 

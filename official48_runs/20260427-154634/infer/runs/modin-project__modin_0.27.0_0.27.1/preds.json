@@ -1,0 +1,7 @@
+{
+  "modin-project__modin_0.27.0_0.27.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "modin-project__modin_0.27.0_0.27.1",
+    "model_patch": "diff --git a/modin/pandas/groupby.py b/modin/pandas/groupby.py\nindex bfa4259..4ccdc43 100644\n--- a/modin/pandas/groupby.py\n+++ b/modin/pandas/groupby.py\n@@ -691,17 +691,17 @@ class DataFrameGroupBy(ClassLogger):\n             )\n         )\n \n-    def first(self, numeric_only=False, min_count=-1):\n+    def first(self, numeric_only=False, min_count=-1, skipna=True):\n         return self._wrap_aggregation(\n             type(self._query_compiler).groupby_first,\n-            agg_kwargs=dict(min_count=min_count),\n+            agg_kwargs=dict(min_count=min_count, skipna=skipna),\n             numeric_only=numeric_only,\n         )\n \n-    def last(self, numeric_only=False, min_count=-1):\n+    def last(self, numeric_only=False, min_count=-1, skipna=True):\n         return self._wrap_aggregation(\n             type(self._query_compiler).groupby_last,\n-            agg_kwargs=dict(min_count=min_count),\n+            agg_kwargs=dict(min_count=min_count, skipna=skipna),\n             numeric_only=numeric_only,\n         )\n \n"
+  }
+}

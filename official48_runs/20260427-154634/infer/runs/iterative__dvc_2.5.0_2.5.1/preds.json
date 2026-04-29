@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_2.5.0_2.5.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_2.5.0_2.5.1",
+    "model_patch": "diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py\nindex a45a62c..b021af3 100644\n--- a/tests/dir_helpers.py\n+++ b/tests/dir_helpers.py\n@@ -81,13 +81,7 @@ class TmpDir(pathlib.Path):\n             cls = (  # pylint: disable=self-cls-assignment\n                 WindowsTmpDir if os.name == \"nt\" else PosixTmpDir\n             )\n-        self = cls._from_parts(args, init=False)\n-        if not self._flavour.is_supported:\n-            raise NotImplementedError(\n-                f\"cannot instantiate {cls.__name__!r} on your system\"\n-            )\n-        self._init()\n-        return self\n+        return object.__new__(cls)\n \n     def init(self, *, scm=False, dvc=False, subdir=False):\n         from dvc.repo import Repo\n"
+  }
+}

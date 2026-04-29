@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_0.33.1_0.34.0": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_0.33.1_0.34.0",
+    "model_patch": "diff --git a/dvc/cli.py b/dvc/cli.py\nindex 63d674c..dfec15c 100644\n--- a/dvc/cli.py\n+++ b/dvc/cli.py\n@@ -47,7 +47,6 @@ COMMANDS = [\n     repro,\n     data_sync,\n     gc,\n-    add,\n     imp,\n     config,\n     checkout,\n"
+  }
+}

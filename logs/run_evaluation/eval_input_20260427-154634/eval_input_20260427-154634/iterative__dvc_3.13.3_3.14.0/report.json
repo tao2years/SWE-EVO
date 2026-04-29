@@ -1,0 +1,77 @@
+{
+    "iterative__dvc_3.13.3_3.14.0": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/func/test_config.py::test_load_relative_paths[cert_path-webdavs://example.com/files/USERNAME/]",
+                    "tests/func/test_config.py::test_load_relative_paths[credentialpath-gs://my-bucket/path]",
+                    "tests/func/test_config.py::test_load_relative_paths[credentialpath-s3://mybucket/my/path]",
+                    "tests/func/test_config.py::test_load_relative_paths[gdrive_service_account_json_file_path-gdrive://root/test]",
+                    "tests/func/test_config.py::test_load_relative_paths[gdrive_user_credentials_file-gdrive://root/test]",
+                    "tests/func/test_config.py::test_load_relative_paths[key_path-webdavs://example.com/files/USERNAME/]",
+                    "tests/func/test_config.py::test_load_relative_paths[keyfile-ssh://user@example.com:1234/path/to/dir]",
+                    "tests/unit/test_config.py::test_resolve[../cache-/testbed/cache]",
+                    "tests/unit/test_config.py::test_resolve[/testbed-/testbed]",
+                    "tests/unit/test_config.py::test_resolve[cache-/testbed/conf_dir/cache]",
+                    "tests/unit/test_config.py::test_resolve[dir/cache-/testbed/conf_dir/dir/cache]",
+                    "tests/unit/test_config.py::test_resolve[ssh://some/path-ssh://some/path]",
+                    "tests/unit/test_config.py::test_resolve_homedir"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/test_config.py::test_config_gdrive_fields",
+                    "tests/func/test_config.py::test_config_get[args0-0-False]",
+                    "tests/func/test_config.py::test_config_get[args1-0-myremote]",
+                    "tests/func/test_config.py::test_config_get[args2-0-iterative]",
+                    "tests/func/test_config.py::test_config_get[args3-0-iterative]",
+                    "tests/func/test_config.py::test_config_get[args4-251-option",
+                    "tests/func/test_config.py::test_config_get[args5-0-gs://bucket/path]",
+                    "tests/func/test_config.py::test_config_get[args6-0-gs://bucket/path]",
+                    "tests/func/test_config.py::test_config_get[args7-251-remote",
+                    "tests/func/test_config.py::test_config_get_in_non_dvc_repo[args0-251]",
+                    "tests/func/test_config.py::test_config_get_in_non_dvc_repo[args1-251]",
+                    "tests/func/test_config.py::test_config_get_in_non_dvc_repo[args2-0]",
+                    "tests/func/test_config.py::test_config_list",
+                    "tests/func/test_config.py::test_config_list_in_non_dvc_repo[args0-251]",
+                    "tests/func/test_config.py::test_config_list_in_non_dvc_repo[args1-251]",
+                    "tests/func/test_config.py::test_config_list_in_non_dvc_repo[args2-0]",
+                    "tests/func/test_config.py::test_config_loads_without_error_for_non_dvc_repo",
+                    "tests/func/test_config.py::test_config_remote",
+                    "tests/func/test_config.py::test_config_set",
+                    "tests/func/test_config.py::test_config_set_in_non_dvc_repo",
+                    "tests/func/test_config.py::test_config_set_local",
+                    "tests/func/test_config.py::test_config_show_origin_merged",
+                    "tests/func/test_config.py::test_config_show_origin_single",
+                    "tests/func/test_config.py::test_list_bad_args[args0]",
+                    "tests/func/test_config.py::test_list_bad_args[args1]",
+                    "tests/func/test_config.py::test_list_bad_args[args2]",
+                    "tests/func/test_config.py::test_merging_two_levels",
+                    "tests/func/test_config.py::test_set_invalid_key",
+                    "tests/unit/test_config.py::test_feature_section_supports_arbitrary_values",
+                    "tests/unit/test_config.py::test_load_configob_error",
+                    "tests/unit/test_config.py::test_load_unicode_error",
+                    "tests/unit/test_config.py::test_s3_ssl_verify",
+                    "tests/unit/test_config.py::test_to_relpath[../cache-../../cache]",
+                    "tests/unit/test_config.py::test_to_relpath[/testbed-/testbed]",
+                    "tests/unit/test_config.py::test_to_relpath[cache-../cache]",
+                    "tests/unit/test_config.py::test_to_relpath[ssh://some/path-ssh://some/path]"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

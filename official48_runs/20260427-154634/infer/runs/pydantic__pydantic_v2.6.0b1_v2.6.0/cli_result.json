@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 16860,
+  "duration_api_ms": 951529,
+  "num_turns": 3,
+  "result": "The fix is complete and minimal. Here's the final summary:\n\n## Fix Applied\n\n**File:** `pydantic/json_schema.py`\n\n**Change:** Line 1131 - Changed `break` to `continue` in the `_extract_discriminator` method:\n\n```python\nfor alias_path in schema['discriminator']:\n    if not isinstance(alias_path, list):\n        continue  # this means that the discriminator element is not an alias path, skip it\n```\n\n**Rationale:** When iterating through discriminator paths, the code now correctly skips non-list elements (like plain string field names) instead of breaking out of the loop prematurely. This ensures that alias paths later in the discriminator list are properly checked and can be used as the OpenAPI discriminator property if they're present on all union choices.\n\n**Testing:** All 57 discriminated union tests pass, and 429+ JSON schema tests pass with this fix.",
+  "stop_reason": "end_turn",
+  "session_id": "bf0c36e9-244f-49f2-a803-2e6201970d9a",
+  "total_cost_usd": 25.63454069999999,
+  "usage": {
+    "input_tokens": 206243,
+    "cache_creation_input_tokens": 102503,
+    "cache_read_input_tokens": 12033,
+    "output_tokens": 576,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 8168593,
+      "outputTokens": 37742,
+      "cacheReadInputTokens": 541314,
+      "cacheCreationInputTokens": 106730,
+      "webSearchRequests": 0,
+      "costUSD": 25.63454069999999,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "5668475b-5c55-4338-94d8-b8272f77e4fc"
+}

@@ -1,0 +1,7 @@
+{
+  "scikit-learn__scikit-learn_0.21.1_0.21.2": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "scikit-learn__scikit-learn_0.21.1_0.21.2",
+    "model_patch": "diff --git a/sklearn/cross_decomposition/pls_.py b/sklearn/cross_decomposition/pls_.py\nindex 86e56f2..4c49102 100644\n--- a/sklearn/cross_decomposition/pls_.py\n+++ b/sklearn/cross_decomposition/pls_.py\n@@ -285,6 +285,7 @@ class _PLS(BaseEstimator, TransformerMixin, RegressorMixin, MultiOutputMixin,\n         self.n_iter_ = []\n \n         # NIPALS algo: outer loop, over components\n+        Y_eps = np.finfo(Yk.dtype).eps\n         for k in range(self.n_components):\n             if np.all(np.dot(Yk.T, Yk) < np.finfo(np.double).eps):\n                 # Yk constant\n@@ -293,6 +294,10 @@ class _PLS(BaseEstimator, TransformerMixin, RegressorMixin, MultiOutputMixin,\n             # 1) weights estimation (inner loop)\n             # -----------------------------------\n             if self.algorithm == \"nipals\":\n+                # Replace columns that are all close to zero with zeros\n+                Yk_mask = np.all(np.abs(Yk) < 10 * Y_eps, axis=0)\n+                Yk[:, Yk_mask] = 0.0\n+\n                 x_weights, y_weights, n_iter_ = \\\n                     _nipals_twoblocks_inner_loop(\n                         X=Xk, Y=Yk, mode=self.mode, max_iter=self.max_iter,\n"
+  }
+}

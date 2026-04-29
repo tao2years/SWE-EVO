@@ -1,0 +1,7 @@
+{
+  "dask__dask_2024.1.0_2024.1.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "dask__dask_2024.1.0_2024.1.1",
+    "model_patch": "diff --git a/dask/utils.py b/dask/utils.py\nindex 9e8a8be..864372f 100644\n--- a/dask/utils.py\n+++ b/dask/utils.py\n@@ -933,7 +933,7 @@ def _derived_from(\n         method_args = get_named_args(method)\n         original_args = get_named_args(original_method)\n         not_supported = [m for m in original_args if m not in method_args]\n-    except ValueError:\n+    except (ValueError, TypeError):\n         not_supported = []\n     if len(ua_args) > 0:\n         not_supported.extend(ua_args)\n"
+  }
+}

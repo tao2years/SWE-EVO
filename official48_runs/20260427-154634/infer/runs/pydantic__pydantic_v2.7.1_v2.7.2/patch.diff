@@ -1,0 +1,28 @@
+diff --git a/pydantic/_internal/_generate_schema.py b/pydantic/_internal/_generate_schema.py
+index b88dd8b..8c7dbe4 100644
+--- a/pydantic/_internal/_generate_schema.py
++++ b/pydantic/_internal/_generate_schema.py
+@@ -35,7 +35,7 @@ from typing import (
+ from warnings import warn
+ 
+ from pydantic_core import CoreSchema, PydanticUndefined, core_schema, to_jsonable_python
+-from typing_extensions import Annotated, Literal, TypeAliasType, TypedDict, get_args, get_origin, is_typeddict
++from typing_extensions import Annotated, Literal, NoDefault, TypeAliasType, TypedDict, get_args, get_origin, is_typeddict
+ 
+ from ..aliases import AliasGenerator
+ from ..annotated_handlers import GetCoreSchemaHandler, GetJsonSchemaHandler
+@@ -1658,12 +1658,12 @@ class GenerateSchema:
+         constraints = typevar.__constraints__
+         default = getattr(typevar, '__default__', None)
+ 
+-        if (bound is not None) + (len(constraints) != 0) + (default is not None) > 1:
++        if (bound is not None) + (len(constraints) != 0) + (default not in (None, NoDefault)) > 1:
+             raise NotImplementedError(
+                 'Pydantic does not support mixing more than one of TypeVar bounds, constraints and defaults'
+             )
+ 
+-        if default is not None:
++        if default not in (None, NoDefault):
+             return self.generate_schema(default)
+         elif constraints:
+             return self._union_schema(typing.Union[constraints])  # type: ignore

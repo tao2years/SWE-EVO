@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 207872,
+  "duration_api_ms": 173814,
+  "num_turns": 33,
+  "result": "The fix matches exactly with PR #13903. The change adds:\n\n1. `Y_eps = np.finfo(Yk.dtype).eps` — defines machine epsilon for Y's dtype\n2. Before the NIPALS inner loop, columns of `Yk` (the residual/deflated Y matrix) that are all close to zero (within `10 * Y_eps`) are explicitly set to zero: `Yk[:, Yk_mask] = 0.0`\n\nThis prevents numerical instability in the NIPALS algorithm when Y columns contain values very close to zero (e.g., after centering/scaling in CCA), which was causing the `test_scale_and_stability` test to fail on newer scipy versions.",
+  "stop_reason": "end_turn",
+  "session_id": "7374f8fb-fdca-429a-b9a7-3f467899371f",
+  "total_cost_usd": 1.20779625,
+  "usage": {
+    "input_tokens": 347940,
+    "cache_creation_input_tokens": 727,
+    "cache_read_input_tokens": 124050,
+    "output_tokens": 8269,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 347940,
+      "outputTokens": 8269,
+      "cacheReadInputTokens": 124050,
+      "cacheCreationInputTokens": 727,
+      "webSearchRequests": 0,
+      "costUSD": 1.20779625,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "bca1d234-1a03-4989-9513-b883f4516b3e"
+}

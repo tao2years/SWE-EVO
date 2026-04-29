@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-04-28 19:12:44 CST",
+  "run_root": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634",
+  "total_instances": 48,
+  "inference_done": 48,
+  "eval_done": 48,
+  "remaining": 0,
+  "active_index": null,
+  "active_instance": null,
+  "last_inference_instance": "scikit-learn__scikit-learn_0.21.1_0.21.2",
+  "last_eval_instance": "scikit-learn__scikit-learn_0.21.1_0.21.2",
+  "last_eval_time": "2026-04-28 19:12:24",
+  "done": true
+}

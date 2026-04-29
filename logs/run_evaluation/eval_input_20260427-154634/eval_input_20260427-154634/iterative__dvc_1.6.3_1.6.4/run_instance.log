@@ -1,0 +1,626 @@
+2026-04-28 17:56:02,342 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_1.6.3_1.6.4
+Building instance image sweb.eval.x86_64.iterative__dvc_1.6.3_1.6.4:latest for iterative__dvc_1.6.3_1.6.4
+2026-04-28 17:56:02,363 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.6.3_1.6.4:latest already exists, skipping build.
+2026-04-28 17:56:02,363 - INFO - Creating container for iterative__dvc_1.6.3_1.6.4...
+2026-04-28 17:56:05,940 - INFO - Container for iterative__dvc_1.6.3_1.6.4 created: 1c161a974fa8f9f1b2d7300e00ab5af7ca69e98d19e35176ef7b2f0dff40c531
+2026-04-28 17:56:06,073 - INFO - Container for iterative__dvc_1.6.3_1.6.4 started: 1c161a974fa8f9f1b2d7300e00ab5af7ca69e98d19e35176ef7b2f0dff40c531
+2026-04-28 17:56:06,073 - INFO - Intermediate patch for iterative__dvc_1.6.3_1.6.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.6.3_1.6.4/patch.diff, now applying to container...
+2026-04-28 17:56:06,407 - INFO - >>>>> Applied Patch:
+Checking patch tests/func/experiments/test_experiments.py...
+Checking patch tests/unit/command/test_plots.py...
+Checking patch tests/unit/repo/plots/test_diff.py...
+Checking patch tests/unit/tree/test_dvc.py...
+Checking patch tests/unit/tree/test_repo.py...
+Checking patch dvc/command/plots.py...
+Checking patch dvc/repo/plots/diff.py...
+Applied patch tests/func/experiments/test_experiments.py cleanly.
+Applied patch tests/unit/command/test_plots.py cleanly.
+Applied patch tests/unit/repo/plots/test_diff.py cleanly.
+Applied patch tests/unit/tree/test_dvc.py cleanly.
+Applied patch tests/unit/tree/test_repo.py cleanly.
+Applied patch dvc/command/plots.py cleanly.
+Applied patch dvc/repo/plots/diff.py cleanly.
+
+2026-04-28 17:56:06,469 - INFO - Git diff before:
+diff --git a/dvc/command/plots.py b/dvc/command/plots.py
+index 8aaf07d8f..87c902459 100644
+--- a/dvc/command/plots.py
++++ b/dvc/command/plots.py
+@@ -86,7 +86,10 @@ class CmdPlotsShow(CmdPlots):
+ 
+ class CmdPlotsDiff(CmdPlots):
+     def _func(self, *args, **kwargs):
+-        return self.repo.plots.diff(*args, revs=self.args.revisions, **kwargs)
++        kwargs = {**kwargs, "revs": self.args.revisions}
++        if self.args.experiment:
++            kwargs["experiment"] = self.args.experiment
++        return self.repo.plots.diff(*args, **kwargs)
+ 
+ 
+ class CmdPlotsModify(CmdPlots):
+@@ -154,6 +157,13 @@ def add_parser(subparsers, parent_parser):
+     plots_diff_parser.add_argument(
+         "revisions", nargs="*", default=None, help="Git commits to plot from",
+     )
++    plots_diff_parser.add_argument(
++        "-e",
++        "--experiment",
++        action="store_true",
++        default=False,
++        help="Plot experiments.",
++    )
+     _add_props_arguments(plots_diff_parser)
+     _add_output_arguments(plots_diff_parser)
+     plots_diff_parser.set_defaults(func=CmdPlotsDiff)
+diff --git a/dvc/repo/plots/diff.py b/dvc/repo/plots/diff.py
+index 4c1fa0ae5..2cdf226cb 100644
+--- a/dvc/repo/plots/diff.py
++++ b/dvc/repo/plots/diff.py
+@@ -1,4 +1,9 @@
+-def _revisions(revs, is_dirty):
++def _revisions(revs, is_dirty, experiment=False):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        return revs
++
+     revisions = revs or []
+     if len(revisions) <= 1:
+         if len(revisions) == 0 and is_dirty:
+@@ -7,7 +12,50 @@ def _revisions(revs, is_dirty):
+     return revisions
+ 
+ 
+-def diff(repo, *args, revs=None, **kwargs):
++def diff(repo, *args, revs=None, experiment=False, **kwargs):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        revs = _get_experiment_revisions(repo, revs)
+     return repo.plots.show(
+-        *args, revs=_revisions(revs, repo.scm.is_dirty()), **kwargs
++        *args,
++        revs=_revisions(revs, repo.scm.is_dirty(), experiment=experiment),
++        **kwargs,
+     )
++
++
++def _get_experiment_revisions(repo, baseline_revs):
++    """Get experiment revisions for the given baseline revisions.
++
++    Args:
++        repo: The DVC repo instance.
++        baseline_revs: List of baseline revision identifiers (e.g., 'HEAD', 'v0')
++
++    Returns:
++        List of experiment revision SHAs derived from the baseline revisions.
++    """
++    import re
++
++    EXP_RE = re.compile(r"(?P<rev_sha>[a-f0-9]{7})-(?P<exp_sha>[a-f0-9]+)")
++
++    experiment_revs = []
++    for baseline_rev in baseline_revs:
++        # Get the full SHA of the baseline revision
++        try:
++            baseline_sha = repo.scm.resolve_rev(baseline_rev)
++        except Exception:
++            continue
++
++        # Look for experiment branches that match the baseline
++        for exp_branch in repo.experiments.scm.list_branches():
++            m = re.match(EXP_RE, exp_branch)
++            if m:
++                rev_sha = repo.scm.resolve_rev(m.group("rev_sha"))
++                if rev_sha == baseline_sha or rev_sha.startswith(baseline_sha):
++                    try:
++                        exp_rev = repo.experiments.scm.resolve_rev(exp_branch)
++                        experiment_revs.append(exp_rev)
++                    except Exception:
++                        continue
++
++    return experiment_revs if experiment_revs else baseline_revs
+diff --git a/tests/func/experiments/test_experiments.py b/tests/func/experiments/test_experiments.py
+index 52330df0a..7ebf71a3f 100644
+--- a/tests/func/experiments/test_experiments.py
++++ b/tests/func/experiments/test_experiments.py
+@@ -76,3 +76,27 @@ def test_checkout(tmp_dir, scm, dvc):
+     dvc.experiments.checkout(exp_b)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+     assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
++
++
++def test_get_baseline(tmp_dir, scm, dvc):
++    tmp_dir.gen("copy.py", COPY_SCRIPT)
++    tmp_dir.gen("params.yaml", "foo: 1")
++    stage = dvc.run(
++        cmd="python copy.py params.yaml metrics.yaml",
++        metrics_no_cache=["metrics.yaml"],
++        params=["foo"],
++        name="copy-file",
++    )
++    scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
++    scm.commit("init")
++    expected = scm.get_rev()
++    assert dvc.experiments.get_baseline(expected) is None
++
++    dvc.reproduce(stage.addressing, experiment=True, params=["foo=2"])
++    rev = dvc.experiments.scm.get_rev()
++    assert dvc.experiments.get_baseline(rev) == expected
++
++    dvc.reproduce(
++        stage.addressing, experiment=True, params=["foo=3"], queue=True
++    )
++    assert dvc.experiments.get_baseline("stash@{0}") == expected
+diff --git a/tests/unit/command/test_plots.py b/tests/unit/command/test_plots.py
+index 1cc7543ee..219b9d543 100644
+--- a/tests/unit/command/test_plots.py
++++ b/tests/unit/command/test_plots.py
+@@ -2,7 +2,7 @@ from dvc.cli import parse_args
+ from dvc.command.plots import CmdPlotsDiff, CmdPlotsShow
+ 
+ 
+-def test_metrics_diff(dvc, mocker):
++def test_plots_diff(dvc, mocker):
+     cli_args = parse_args(
+         [
+             "plots",
+@@ -24,6 +24,7 @@ def test_metrics_diff(dvc, mocker):
+             "x_title",
+             "--y-label",
+             "y_title",
++            "--experiment",
+             "HEAD",
+             "tag1",
+             "tag2",
+@@ -50,10 +51,11 @@ def test_metrics_diff(dvc, mocker):
+             "x_label": "x_title",
+             "y_label": "y_title",
+         },
++        experiment=True,
+     )
+ 
+ 
+-def test_metrics_show(dvc, mocker):
++def test_plots_show(dvc, mocker):
+     cli_args = parse_args(
+         [
+             "plots",
+diff --git a/tests/unit/repo/plots/test_diff.py b/tests/unit/repo/plots/test_diff.py
+index f3525384d..9a0e80404 100644
+--- a/tests/unit/repo/plots/test_diff.py
++++ b/tests/unit/repo/plots/test_diff.py
+@@ -13,4 +13,27 @@ from dvc.repo.plots.diff import _revisions
+     ],
+ )
+ def test_revisions(mocker, arg_revisions, is_dirty, expected_revisions):
+-    assert _revisions(arg_revisions, is_dirty) == expected_revisions
++    mock_scm = mocker.Mock()
++    mock_scm.configure_mock(**{"is_dirty.return_value": is_dirty})
++    mock_repo = mocker.Mock(scm=mock_scm)
++    assert _revisions(mock_repo, arg_revisions, False) == expected_revisions
++
++
++@pytest.mark.parametrize(
++    "arg_revisions,baseline,expected_revisions",
++    [
++        (["v1"], "v0", ["v1", "v0"]),
++        (["v1"], None, ["v1", "workspace"]),
++        (["v1", "v2"], "v0", ["v1", "v2"]),
++        (["v1", "v2"], None, ["v1", "v2"]),
++    ],
++)
++def test_revisions_experiment(
++    mocker, arg_revisions, baseline, expected_revisions
++):
++    mock_scm = mocker.Mock()
++    mock_scm.configure_mock(**{"is_dirty.return_value": False})
++    mock_experiments = mocker.Mock()
++    mock_experiments.configure_mock(**{"get_baseline.return_value": baseline})
++    mock_repo = mocker.Mock(scm=mock_scm, experiments=mock_experiments)
++    assert _revisions(mock_repo, arg_revisions, True) == expected_revisions
+diff --git a/tests/unit/tree/test_dvc.py b/tests/unit/tree/test_dvc.py
+index 4c3a428d1..6d32d96c7 100644
+--- a/tests/unit/tree/test_dvc.py
++++ b/tests/unit/tree/test_dvc.py
+@@ -201,3 +201,41 @@ def test_isdvc(tmp_dir, dvc):
+     tree = DvcTree(dvc)
+     assert tree.isdvc("foo")
+     assert not tree.isdvc("bar")
++
++
++def test_get_hash_file(tmp_dir, dvc):
++    tmp_dir.dvc_gen({"foo": "foo"})
++    tree = DvcTree(dvc)
++    assert tree.get_hash(PathInfo(tmp_dir) / "foo") == (
++        "md5",
++        "acbd18db4cc2f85cedef654fccc4a4d8",
++    )
++
++
++def test_get_hash_dir(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = DvcTree(dvc)
++    get_file_hash_spy = mocker.spy(tree, "get_file_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "dir") == (
++        "md5",
++        "8761c4e9acad696bee718615e23e22db.dir",
++    )
++    assert not get_file_hash_spy.called
++
++
++def test_get_hash_granular(tmp_dir, dvc):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = DvcTree(dvc, fetch=True)
++    subdir = PathInfo(tmp_dir) / "dir" / "subdir"
++    assert tree.get_hash(subdir) == (
++        "md5",
++        "af314506f1622d107e0ed3f14ec1a3b5.dir",
++    )
++    assert tree.get_hash(subdir / "data") == (
++        "md5",
++        "8d777f385d3dfec8815d20f7496026dc",
++    )
+diff --git a/tests/unit/tree/test_repo.py b/tests/unit/tree/test_repo.py
+index 23d683944..8d1a348aa 100644
+--- a/tests/unit/tree/test_repo.py
++++ b/tests/unit/tree/test_repo.py
+@@ -357,3 +357,47 @@ def test_repo_tree_no_subrepos(tmp_dir, dvc, scm):
+ 
+     assert tree.exists(tmp_dir / "dir" / "repo.txt") is True
+     assert tree.exists(tmp_dir / "repo" / "ipsum") is False
++
++
++def test_get_hash_cached_file(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen({"foo": "foo"})
++    tree = RepoTree(dvc)
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_file_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "foo") == (
++        "md5",
++        "acbd18db4cc2f85cedef654fccc4a4d8",
++    )
++    assert dvc_tree_spy.called
++
++
++def test_get_hash_cached_dir(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = RepoTree(dvc)
++    get_file_hash_spy = mocker.spy(tree, "get_file_hash")
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_dir_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "dir") == (
++        "md5",
++        "8761c4e9acad696bee718615e23e22db.dir",
++    )
++    assert not get_file_hash_spy.called
++    assert dvc_tree_spy.called
++
++
++def test_get_hash_cached_granular(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = RepoTree(dvc, fetch=True)
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_file_hash")
++    subdir = PathInfo(tmp_dir) / "dir" / "subdir"
++    assert tree.get_hash(subdir) == (
++        "md5",
++        "af314506f1622d107e0ed3f14ec1a3b5.dir",
++    )
++    assert tree.get_hash(subdir / "data") == (
++        "md5",
++        "8d777f385d3dfec8815d20f7496026dc",
++    )
++    assert dvc_tree_spy.called
+2026-04-28 17:56:06,469 - INFO - Eval script for iterative__dvc_1.6.3_1.6.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.6.3_1.6.4/eval.sh; copying to container...
+2026-04-28 17:59:07,182 - INFO - Test runtime: 180.66 seconds
+2026-04-28 17:59:07,183 - INFO - Test output for iterative__dvc_1.6.3_1.6.4 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_1.6.3_1.6.4/test_output.txt
+2026-04-28 17:59:07,243 - INFO - Git diff after:
+diff --git a/dvc/command/plots.py b/dvc/command/plots.py
+index 8aaf07d8f..87c902459 100644
+--- a/dvc/command/plots.py
++++ b/dvc/command/plots.py
+@@ -86,7 +86,10 @@ class CmdPlotsShow(CmdPlots):
+ 
+ class CmdPlotsDiff(CmdPlots):
+     def _func(self, *args, **kwargs):
+-        return self.repo.plots.diff(*args, revs=self.args.revisions, **kwargs)
++        kwargs = {**kwargs, "revs": self.args.revisions}
++        if self.args.experiment:
++            kwargs["experiment"] = self.args.experiment
++        return self.repo.plots.diff(*args, **kwargs)
+ 
+ 
+ class CmdPlotsModify(CmdPlots):
+@@ -154,6 +157,13 @@ def add_parser(subparsers, parent_parser):
+     plots_diff_parser.add_argument(
+         "revisions", nargs="*", default=None, help="Git commits to plot from",
+     )
++    plots_diff_parser.add_argument(
++        "-e",
++        "--experiment",
++        action="store_true",
++        default=False,
++        help="Plot experiments.",
++    )
+     _add_props_arguments(plots_diff_parser)
+     _add_output_arguments(plots_diff_parser)
+     plots_diff_parser.set_defaults(func=CmdPlotsDiff)
+diff --git a/dvc/repo/plots/diff.py b/dvc/repo/plots/diff.py
+index 4c1fa0ae5..2cdf226cb 100644
+--- a/dvc/repo/plots/diff.py
++++ b/dvc/repo/plots/diff.py
+@@ -1,4 +1,9 @@
+-def _revisions(revs, is_dirty):
++def _revisions(revs, is_dirty, experiment=False):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        return revs
++
+     revisions = revs or []
+     if len(revisions) <= 1:
+         if len(revisions) == 0 and is_dirty:
+@@ -7,7 +12,50 @@ def _revisions(revs, is_dirty):
+     return revisions
+ 
+ 
+-def diff(repo, *args, revs=None, **kwargs):
++def diff(repo, *args, revs=None, experiment=False, **kwargs):
++    if experiment:
++        if revs is None:
++            revs = ["HEAD"]
++        revs = _get_experiment_revisions(repo, revs)
+     return repo.plots.show(
+-        *args, revs=_revisions(revs, repo.scm.is_dirty()), **kwargs
++        *args,
++        revs=_revisions(revs, repo.scm.is_dirty(), experiment=experiment),
++        **kwargs,
+     )
++
++
++def _get_experiment_revisions(repo, baseline_revs):
++    """Get experiment revisions for the given baseline revisions.
++
++    Args:
++        repo: The DVC repo instance.
++        baseline_revs: List of baseline revision identifiers (e.g., 'HEAD', 'v0')
++
++    Returns:
++        List of experiment revision SHAs derived from the baseline revisions.
++    """
++    import re
++
++    EXP_RE = re.compile(r"(?P<rev_sha>[a-f0-9]{7})-(?P<exp_sha>[a-f0-9]+)")
++
++    experiment_revs = []
++    for baseline_rev in baseline_revs:
++        # Get the full SHA of the baseline revision
++        try:
++            baseline_sha = repo.scm.resolve_rev(baseline_rev)
++        except Exception:
++            continue
++
++        # Look for experiment branches that match the baseline
++        for exp_branch in repo.experiments.scm.list_branches():
++            m = re.match(EXP_RE, exp_branch)
++            if m:
++                rev_sha = repo.scm.resolve_rev(m.group("rev_sha"))
++                if rev_sha == baseline_sha or rev_sha.startswith(baseline_sha):
++                    try:
++                        exp_rev = repo.experiments.scm.resolve_rev(exp_branch)
++                        experiment_revs.append(exp_rev)
++                    except Exception:
++                        continue
++
++    return experiment_revs if experiment_revs else baseline_revs
+diff --git a/tests/func/experiments/test_experiments.py b/tests/func/experiments/test_experiments.py
+index 52330df0a..7ebf71a3f 100644
+--- a/tests/func/experiments/test_experiments.py
++++ b/tests/func/experiments/test_experiments.py
+@@ -76,3 +76,27 @@ def test_checkout(tmp_dir, scm, dvc):
+     dvc.experiments.checkout(exp_b)
+     assert (tmp_dir / "params.yaml").read_text().strip() == "foo: 3"
+     assert (tmp_dir / "metrics.yaml").read_text().strip() == "foo: 3"
++
++
++def test_get_baseline(tmp_dir, scm, dvc):
++    tmp_dir.gen("copy.py", COPY_SCRIPT)
++    tmp_dir.gen("params.yaml", "foo: 1")
++    stage = dvc.run(
++        cmd="python copy.py params.yaml metrics.yaml",
++        metrics_no_cache=["metrics.yaml"],
++        params=["foo"],
++        name="copy-file",
++    )
++    scm.add(["dvc.yaml", "dvc.lock", "copy.py", "params.yaml", "metrics.yaml"])
++    scm.commit("init")
++    expected = scm.get_rev()
++    assert dvc.experiments.get_baseline(expected) is None
++
++    dvc.reproduce(stage.addressing, experiment=True, params=["foo=2"])
++    rev = dvc.experiments.scm.get_rev()
++    assert dvc.experiments.get_baseline(rev) == expected
++
++    dvc.reproduce(
++        stage.addressing, experiment=True, params=["foo=3"], queue=True
++    )
++    assert dvc.experiments.get_baseline("stash@{0}") == expected
+diff --git a/tests/unit/command/test_plots.py b/tests/unit/command/test_plots.py
+index 1cc7543ee..219b9d543 100644
+--- a/tests/unit/command/test_plots.py
++++ b/tests/unit/command/test_plots.py
+@@ -2,7 +2,7 @@ from dvc.cli import parse_args
+ from dvc.command.plots import CmdPlotsDiff, CmdPlotsShow
+ 
+ 
+-def test_metrics_diff(dvc, mocker):
++def test_plots_diff(dvc, mocker):
+     cli_args = parse_args(
+         [
+             "plots",
+@@ -24,6 +24,7 @@ def test_metrics_diff(dvc, mocker):
+             "x_title",
+             "--y-label",
+             "y_title",
++            "--experiment",
+             "HEAD",
+             "tag1",
+             "tag2",
+@@ -50,10 +51,11 @@ def test_metrics_diff(dvc, mocker):
+             "x_label": "x_title",
+             "y_label": "y_title",
+         },
++        experiment=True,
+     )
+ 
+ 
+-def test_metrics_show(dvc, mocker):
++def test_plots_show(dvc, mocker):
+     cli_args = parse_args(
+         [
+             "plots",
+diff --git a/tests/unit/repo/plots/test_diff.py b/tests/unit/repo/plots/test_diff.py
+index f3525384d..9a0e80404 100644
+--- a/tests/unit/repo/plots/test_diff.py
++++ b/tests/unit/repo/plots/test_diff.py
+@@ -13,4 +13,27 @@ from dvc.repo.plots.diff import _revisions
+     ],
+ )
+ def test_revisions(mocker, arg_revisions, is_dirty, expected_revisions):
+-    assert _revisions(arg_revisions, is_dirty) == expected_revisions
++    mock_scm = mocker.Mock()
++    mock_scm.configure_mock(**{"is_dirty.return_value": is_dirty})
++    mock_repo = mocker.Mock(scm=mock_scm)
++    assert _revisions(mock_repo, arg_revisions, False) == expected_revisions
++
++
++@pytest.mark.parametrize(
++    "arg_revisions,baseline,expected_revisions",
++    [
++        (["v1"], "v0", ["v1", "v0"]),
++        (["v1"], None, ["v1", "workspace"]),
++        (["v1", "v2"], "v0", ["v1", "v2"]),
++        (["v1", "v2"], None, ["v1", "v2"]),
++    ],
++)
++def test_revisions_experiment(
++    mocker, arg_revisions, baseline, expected_revisions
++):
++    mock_scm = mocker.Mock()
++    mock_scm.configure_mock(**{"is_dirty.return_value": False})
++    mock_experiments = mocker.Mock()
++    mock_experiments.configure_mock(**{"get_baseline.return_value": baseline})
++    mock_repo = mocker.Mock(scm=mock_scm, experiments=mock_experiments)
++    assert _revisions(mock_repo, arg_revisions, True) == expected_revisions
+diff --git a/tests/unit/tree/test_dvc.py b/tests/unit/tree/test_dvc.py
+index 4c3a428d1..6d32d96c7 100644
+--- a/tests/unit/tree/test_dvc.py
++++ b/tests/unit/tree/test_dvc.py
+@@ -201,3 +201,41 @@ def test_isdvc(tmp_dir, dvc):
+     tree = DvcTree(dvc)
+     assert tree.isdvc("foo")
+     assert not tree.isdvc("bar")
++
++
++def test_get_hash_file(tmp_dir, dvc):
++    tmp_dir.dvc_gen({"foo": "foo"})
++    tree = DvcTree(dvc)
++    assert tree.get_hash(PathInfo(tmp_dir) / "foo") == (
++        "md5",
++        "acbd18db4cc2f85cedef654fccc4a4d8",
++    )
++
++
++def test_get_hash_dir(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = DvcTree(dvc)
++    get_file_hash_spy = mocker.spy(tree, "get_file_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "dir") == (
++        "md5",
++        "8761c4e9acad696bee718615e23e22db.dir",
++    )
++    assert not get_file_hash_spy.called
++
++
++def test_get_hash_granular(tmp_dir, dvc):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = DvcTree(dvc, fetch=True)
++    subdir = PathInfo(tmp_dir) / "dir" / "subdir"
++    assert tree.get_hash(subdir) == (
++        "md5",
++        "af314506f1622d107e0ed3f14ec1a3b5.dir",
++    )
++    assert tree.get_hash(subdir / "data") == (
++        "md5",
++        "8d777f385d3dfec8815d20f7496026dc",
++    )
+diff --git a/tests/unit/tree/test_repo.py b/tests/unit/tree/test_repo.py
+index 23d683944..8d1a348aa 100644
+--- a/tests/unit/tree/test_repo.py
++++ b/tests/unit/tree/test_repo.py
+@@ -357,3 +357,47 @@ def test_repo_tree_no_subrepos(tmp_dir, dvc, scm):
+ 
+     assert tree.exists(tmp_dir / "dir" / "repo.txt") is True
+     assert tree.exists(tmp_dir / "repo" / "ipsum") is False
++
++
++def test_get_hash_cached_file(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen({"foo": "foo"})
++    tree = RepoTree(dvc)
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_file_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "foo") == (
++        "md5",
++        "acbd18db4cc2f85cedef654fccc4a4d8",
++    )
++    assert dvc_tree_spy.called
++
++
++def test_get_hash_cached_dir(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = RepoTree(dvc)
++    get_file_hash_spy = mocker.spy(tree, "get_file_hash")
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_dir_hash")
++    assert tree.get_hash(PathInfo(tmp_dir) / "dir") == (
++        "md5",
++        "8761c4e9acad696bee718615e23e22db.dir",
++    )
++    assert not get_file_hash_spy.called
++    assert dvc_tree_spy.called
++
++
++def test_get_hash_cached_granular(tmp_dir, dvc, mocker):
++    tmp_dir.dvc_gen(
++        {"dir": {"foo": "foo", "bar": "bar", "subdir": {"data": "data"}}}
++    )
++    tree = RepoTree(dvc, fetch=True)
++    dvc_tree_spy = mocker.spy(tree._dvctrees[dvc.root_dir], "get_file_hash")
++    subdir = PathInfo(tmp_dir) / "dir" / "subdir"
++    assert tree.get_hash(subdir) == (
++        "md5",
++        "af314506f1622d107e0ed3f14ec1a3b5.dir",
++    )
++    assert tree.get_hash(subdir / "data") == (
++        "md5",
++        "8d777f385d3dfec8815d20f7496026dc",
++    )
++    assert dvc_tree_spy.called
+2026-04-28 17:59:07,243 - INFO - Grading answer for iterative__dvc_1.6.3_1.6.4...
+2026-04-28 17:59:07,271 - INFO - report: {'iterative__dvc_1.6.3_1.6.4': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['tests/unit/command/test_plots.py::test_plots_diff'], 'failure': ['tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions0-False-expected_revisions0]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions1-True-expected_revisions1]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions2-False-expected_revisions2]', 'tests/unit/repo/plots/test_diff.py::test_revisions[arg_revisions3-True-expected_revisions3]', 'tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions0-v0-expected_revisions0]', 'tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions1-None-expected_revisions1]', 'tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions2-v0-expected_revisions2]', 'tests/unit/repo/plots/test_diff.py::test_revisions_experiment[arg_revisions3-None-expected_revisions3]']}, 'PASS_TO_PASS': {'success': ['tests/unit/command/test_plots.py::test_plots_show', 'tests/unit/command/test_plots.py::test_plots_show_vega'], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_1.6.3_1.6.4: resolved: False
+2026-04-28 17:59:07,271 - INFO - Attempting to stop container sweb.eval.iterative__dvc_1.6.3_1.6.4.eval_input_20260427-154634...
+2026-04-28 17:59:22,458 - INFO - Attempting to remove container sweb.eval.iterative__dvc_1.6.3_1.6.4.eval_input_20260427-154634...
+2026-04-28 17:59:22,559 - INFO - Container sweb.eval.iterative__dvc_1.6.3_1.6.4.eval_input_20260427-154634 removed.
+2026-04-28 17:59:22,559 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_1.6.3_1.6.4:latest...
+2026-04-28 17:59:22,563 - INFO - Image sweb.eval.x86_64.iterative__dvc_1.6.3_1.6.4:latest removed.

@@ -1,0 +1,7 @@
+{
+  "modin-project__modin_0.24.0_0.24.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "modin-project__modin_0.24.0_0.24.1",
+    "model_patch": "diff --git a/modin/core/dataframe/pandas/metadata/index.py b/modin/core/dataframe/pandas/metadata/index.py\nindex 0d4ec3e..f6ae4a9 100644\n--- a/modin/core/dataframe/pandas/metadata/index.py\n+++ b/modin/core/dataframe/pandas/metadata/index.py\n@@ -106,7 +106,7 @@ class ModinIndex:\n         ModinIndex\n             New ModinIndex with the reference updated.\n         \"\"\"\n-        if not callable(self._value) or not self._is_default_callable:\n+        if not callable(self._value):\n             return self\n \n         new_index = self.copy(copy_lengths=True)\n"
+  }
+}

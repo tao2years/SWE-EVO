@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_3.13.3_3.14.0": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_3.13.3_3.14.0",
+    "model_patch": "diff --git a/dvc/config.py b/dvc/config.py\nindex 77f086c..dd8c8ce 100644\n--- a/dvc/config.py\n+++ b/dvc/config.py\n@@ -259,6 +259,12 @@ class Config(dict):\n             if os.path.isabs(path) or re.match(r\"\\w+://\", path):\n                 return path\n \n+            # handle ~ home dir\n+            if path.startswith(\"~\"):\n+                path = os.path.expanduser(path)\n+                if os.path.isabs(path):\n+                    return path\n+\n             # on windows convert slashes to backslashes\n             # to have path compatible with abs_conf_dir\n             if os.path.sep == \"\\\\\" and \"/\" in path:\n"
+  }
+}

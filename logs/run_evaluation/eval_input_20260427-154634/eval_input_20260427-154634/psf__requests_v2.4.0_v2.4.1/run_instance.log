@@ -1,0 +1,410 @@
+2026-04-28 18:45:30,948 - INFO - Environment image sweb.env.py.x86_64.1f92e6d7cef88badc4f744:latest found for psf__requests_v2.4.0_v2.4.1
+Building instance image sweb.eval.x86_64.psf__requests_v2.4.0_v2.4.1:latest for psf__requests_v2.4.0_v2.4.1
+2026-04-28 18:45:30,962 - INFO - Image sweb.eval.x86_64.psf__requests_v2.4.0_v2.4.1:latest already exists, skipping build.
+2026-04-28 18:45:30,962 - INFO - Creating container for psf__requests_v2.4.0_v2.4.1...
+2026-04-28 18:45:31,148 - INFO - Container for psf__requests_v2.4.0_v2.4.1 created: 529a66ea8dca3333f05efc563dbeb95ee74c099b4b96b5598bdd5737833f6c28
+2026-04-28 18:45:31,269 - INFO - Container for psf__requests_v2.4.0_v2.4.1 started: 529a66ea8dca3333f05efc563dbeb95ee74c099b4b96b5598bdd5737833f6c28
+2026-04-28 18:45:31,269 - INFO - Intermediate patch for psf__requests_v2.4.0_v2.4.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/psf__requests_v2.4.0_v2.4.1/patch.diff, now applying to container...
+2026-04-28 18:45:31,557 - INFO - >>>>> Applied Patch:
+Checking patch test_requests.py...
+Checking patch requests/adapters.py...
+Checking patch requests/cookies.py...
+Checking patch requests/models.py...
+Checking patch requests/packages/urllib3/_collections.py...
+Checking patch requests/sessions.py...
+Checking patch requests/structures.py...
+Checking patch requests/utils.py...
+Applied patch test_requests.py cleanly.
+Applied patch requests/adapters.py cleanly.
+Applied patch requests/cookies.py cleanly.
+Applied patch requests/models.py cleanly.
+Applied patch requests/packages/urllib3/_collections.py cleanly.
+Applied patch requests/sessions.py cleanly.
+Applied patch requests/structures.py cleanly.
+Applied patch requests/utils.py cleanly.
+
+2026-04-28 18:45:31,618 - INFO - Git diff before:
+diff --git a/requests/adapters.py b/requests/adapters.py
+index 3c1e979f..a1552b80 100644
+--- a/requests/adapters.py
++++ b/requests/adapters.py
+@@ -22,6 +22,7 @@ from .structures import CaseInsensitiveDict
+ from .packages.urllib3.exceptions import ConnectTimeoutError
+ from .packages.urllib3.exceptions import HTTPError as _HTTPError
+ from .packages.urllib3.exceptions import MaxRetryError
++from .packages.urllib3.exceptions import ProtocolError
+ from .packages.urllib3.exceptions import ProxyError as _ProxyError
+ from .packages.urllib3.exceptions import ReadTimeoutError
+ from .packages.urllib3.exceptions import SSLError as _SSLError
+@@ -412,6 +413,9 @@ class HTTPAdapter(BaseAdapter):
+         except _ProxyError as e:
+             raise ProxyError(e)
+ 
++        except ProtocolError as e:
++            raise ConnectionError(e, request=request)
++
+         except (_SSLError, _HTTPError) as e:
+             if isinstance(e, _SSLError):
+                 raise SSLError(e, request=request)
+diff --git a/requests/cookies.py b/requests/cookies.py
+index 831c49c6..ba5bb43a 100644
+--- a/requests/cookies.py
++++ b/requests/cookies.py
+@@ -8,6 +8,10 @@ requests.utils imports from here, so be careful with imports.
+ 
+ import time
+ import collections
++try:
++    from collections.abc import MutableMapping
++except ImportError:
++    from collections import MutableMapping
+ from .compat import cookielib, urlparse, urlunparse, Morsel
+ 
+ try:
+@@ -156,7 +160,7 @@ class CookieConflictError(RuntimeError):
+     Use .get and .set and include domain and path args in order to be more specific."""
+ 
+ 
+-class RequestsCookieJar(cookielib.CookieJar, collections.MutableMapping):
++class RequestsCookieJar(cookielib.CookieJar, MutableMapping):
+     """Compatibility class; is a cookielib.CookieJar, but exposes a dict interface.
+ 
+     This is the CookieJar we create by default for requests and sessions that
+diff --git a/requests/models.py b/requests/models.py
+index 03ff627a..326b8107 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -8,6 +8,10 @@ This module contains the primary objects that power Requests.
+ """
+ 
+ import collections
++try:
++    from collections.abc import Callable
++except ImportError:
++    from collections import Callable
+ import datetime
+ 
+ from io import BytesIO, UnsupportedOperation
+@@ -163,10 +167,10 @@ class RequestHooksMixin(object):
+         if event not in self.hooks:
+             raise ValueError('Unsupported event specified, with event name "%s"' % (event))
+ 
+-        if isinstance(hook, collections.Callable):
++        if isinstance(hook, Callable):
+             self.hooks[event].append(hook)
+         elif hasattr(hook, '__iter__'):
+-            self.hooks[event].extend(h for h in hook if isinstance(h, collections.Callable))
++            self.hooks[event].extend(h for h in hook if isinstance(h, Callable))
+ 
+     def deregister_hook(self, event, hook):
+         """Deregister a previously registered hook.
+diff --git a/requests/packages/urllib3/_collections.py b/requests/packages/urllib3/_collections.py
+index d77ebb8d..2b0c9a0f 100644
+--- a/requests/packages/urllib3/_collections.py
++++ b/requests/packages/urllib3/_collections.py
+@@ -1,4 +1,7 @@
+-from collections import Mapping, MutableMapping
++try:
++    from collections.abc import Mapping, MutableMapping
++except ImportError:
++    from collections import Mapping, MutableMapping
+ try:
+     from threading import RLock
+ except ImportError: # Platform-specific: No threads available
+diff --git a/requests/sessions.py b/requests/sessions.py
+index 508b0ef2..4c431981 100644
+--- a/requests/sessions.py
++++ b/requests/sessions.py
+@@ -9,7 +9,10 @@ requests (cookies, auth, proxies).
+ 
+ """
+ import os
+-from collections import Mapping
++try:
++    from collections.abc import Mapping
++except ImportError:
++    from collections import Mapping
+ from datetime import datetime
+ 
+ from .auth import _basic_auth_str
+@@ -134,6 +137,11 @@ class SessionRedirectMixin(object):
+                 url = requote_uri(url)
+ 
+             prepared_request.url = to_native_string(url)
++
++            # Don't leak the url we've already sent a request to.
++            if prepared_request.url == req.url:
++                break
++
+             # cache the url
+             if resp.is_permanent_redirect:
+                 self.redirect_cache[req.url] = prepared_request.url
+diff --git a/requests/structures.py b/requests/structures.py
+index 3e5f2faa..d7f4256f 100644
+--- a/requests/structures.py
++++ b/requests/structures.py
+@@ -9,9 +9,13 @@ Data structures that power Requests.
+ """
+ 
+ import collections
++try:
++    from collections.abc import MutableMapping, Mapping
++except ImportError:
++    from collections import MutableMapping, Mapping
+ 
+ 
+-class CaseInsensitiveDict(collections.MutableMapping):
++class CaseInsensitiveDict(MutableMapping):
+     """
+     A case-insensitive ``dict``-like object.
+ 
+@@ -71,7 +75,7 @@ class CaseInsensitiveDict(collections.MutableMapping):
+         )
+ 
+     def __eq__(self, other):
+-        if isinstance(other, collections.Mapping):
++        if isinstance(other, Mapping):
+             other = CaseInsensitiveDict(other)
+         else:
+             return NotImplemented
+diff --git a/requests/utils.py b/requests/utils.py
+index 2c6bb090..215cca18 100644
+--- a/requests/utils.py
++++ b/requests/utils.py
+@@ -12,6 +12,10 @@ that are also useful for external consumption.
+ import cgi
+ import codecs
+ import collections
++try:
++    from collections.abc import Mapping
++except ImportError:
++    from collections import Mapping
+ import io
+ import os
+ import platform
+@@ -160,7 +164,7 @@ def to_key_val_list(value):
+     if isinstance(value, (str, bytes, bool, int)):
+         raise ValueError('cannot encode objects that are not 2-tuples')
+ 
+-    if isinstance(value, collections.Mapping):
++    if isinstance(value, Mapping):
+         value = value.items()
+ 
+     return list(value)
+diff --git a/test_requests.py b/test_requests.py
+index 716c0dcf..2ff61248 100755
+--- a/test_requests.py
++++ b/test_requests.py
+@@ -286,6 +286,14 @@ class RequestsTestCase(unittest.TestCase):
+         r = s.get(url)
+         assert r.status_code == 200
+ 
++    def test_connection_error(self):
++        """Connecting to an unknown domain should raise a ConnectionError"""
++        with pytest.raises(ConnectionError):
++            requests.get("http://fooobarbangbazbing.httpbin.org")
++
++        with pytest.raises(ConnectionError):
++            requests.get("http://httpbin.org:1")
++
+     def test_basicauth_with_netrc(self):
+         auth = ('user', 'pass')
+         wrong_auth = ('wronguser', 'wrongpass')
+2026-04-28 18:45:31,619 - INFO - Eval script for psf__requests_v2.4.0_v2.4.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/psf__requests_v2.4.0_v2.4.1/eval.sh; copying to container...
+2026-04-28 19:05:01,867 - INFO - Test runtime: 1_170.20 seconds
+2026-04-28 19:05:01,867 - INFO - Test output for psf__requests_v2.4.0_v2.4.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/psf__requests_v2.4.0_v2.4.1/test_output.txt
+2026-04-28 19:05:01,919 - INFO - Git diff after:
+diff --git a/requests/adapters.py b/requests/adapters.py
+index 3c1e979f..a1552b80 100644
+--- a/requests/adapters.py
++++ b/requests/adapters.py
+@@ -22,6 +22,7 @@ from .structures import CaseInsensitiveDict
+ from .packages.urllib3.exceptions import ConnectTimeoutError
+ from .packages.urllib3.exceptions import HTTPError as _HTTPError
+ from .packages.urllib3.exceptions import MaxRetryError
++from .packages.urllib3.exceptions import ProtocolError
+ from .packages.urllib3.exceptions import ProxyError as _ProxyError
+ from .packages.urllib3.exceptions import ReadTimeoutError
+ from .packages.urllib3.exceptions import SSLError as _SSLError
+@@ -412,6 +413,9 @@ class HTTPAdapter(BaseAdapter):
+         except _ProxyError as e:
+             raise ProxyError(e)
+ 
++        except ProtocolError as e:
++            raise ConnectionError(e, request=request)
++
+         except (_SSLError, _HTTPError) as e:
+             if isinstance(e, _SSLError):
+                 raise SSLError(e, request=request)
+diff --git a/requests/cookies.py b/requests/cookies.py
+index 831c49c6..ba5bb43a 100644
+--- a/requests/cookies.py
++++ b/requests/cookies.py
+@@ -8,6 +8,10 @@ requests.utils imports from here, so be careful with imports.
+ 
+ import time
+ import collections
++try:
++    from collections.abc import MutableMapping
++except ImportError:
++    from collections import MutableMapping
+ from .compat import cookielib, urlparse, urlunparse, Morsel
+ 
+ try:
+@@ -156,7 +160,7 @@ class CookieConflictError(RuntimeError):
+     Use .get and .set and include domain and path args in order to be more specific."""
+ 
+ 
+-class RequestsCookieJar(cookielib.CookieJar, collections.MutableMapping):
++class RequestsCookieJar(cookielib.CookieJar, MutableMapping):
+     """Compatibility class; is a cookielib.CookieJar, but exposes a dict interface.
+ 
+     This is the CookieJar we create by default for requests and sessions that
+diff --git a/requests/models.py b/requests/models.py
+index 03ff627a..326b8107 100644
+--- a/requests/models.py
++++ b/requests/models.py
+@@ -8,6 +8,10 @@ This module contains the primary objects that power Requests.
+ """
+ 
+ import collections
++try:
++    from collections.abc import Callable
++except ImportError:
++    from collections import Callable
+ import datetime
+ 
+ from io import BytesIO, UnsupportedOperation
+@@ -163,10 +167,10 @@ class RequestHooksMixin(object):
+         if event not in self.hooks:
+             raise ValueError('Unsupported event specified, with event name "%s"' % (event))
+ 
+-        if isinstance(hook, collections.Callable):
++        if isinstance(hook, Callable):
+             self.hooks[event].append(hook)
+         elif hasattr(hook, '__iter__'):
+-            self.hooks[event].extend(h for h in hook if isinstance(h, collections.Callable))
++            self.hooks[event].extend(h for h in hook if isinstance(h, Callable))
+ 
+     def deregister_hook(self, event, hook):
+         """Deregister a previously registered hook.
+diff --git a/requests/packages/urllib3/_collections.py b/requests/packages/urllib3/_collections.py
+index d77ebb8d..2b0c9a0f 100644
+--- a/requests/packages/urllib3/_collections.py
++++ b/requests/packages/urllib3/_collections.py
+@@ -1,4 +1,7 @@
+-from collections import Mapping, MutableMapping
++try:
++    from collections.abc import Mapping, MutableMapping
++except ImportError:
++    from collections import Mapping, MutableMapping
+ try:
+     from threading import RLock
+ except ImportError: # Platform-specific: No threads available
+diff --git a/requests/sessions.py b/requests/sessions.py
+index 508b0ef2..4c431981 100644
+--- a/requests/sessions.py
++++ b/requests/sessions.py
+@@ -9,7 +9,10 @@ requests (cookies, auth, proxies).
+ 
+ """
+ import os
+-from collections import Mapping
++try:
++    from collections.abc import Mapping
++except ImportError:
++    from collections import Mapping
+ from datetime import datetime
+ 
+ from .auth import _basic_auth_str
+@@ -134,6 +137,11 @@ class SessionRedirectMixin(object):
+                 url = requote_uri(url)
+ 
+             prepared_request.url = to_native_string(url)
++
++            # Don't leak the url we've already sent a request to.
++            if prepared_request.url == req.url:
++                break
++
+             # cache the url
+             if resp.is_permanent_redirect:
+                 self.redirect_cache[req.url] = prepared_request.url
+diff --git a/requests/structures.py b/requests/structures.py
+index 3e5f2faa..d7f4256f 100644
+--- a/requests/structures.py
++++ b/requests/structures.py
+@@ -9,9 +9,13 @@ Data structures that power Requests.
+ """
+ 
+ import collections
++try:
++    from collections.abc import MutableMapping, Mapping
++except ImportError:
++    from collections import MutableMapping, Mapping
+ 
+ 
+-class CaseInsensitiveDict(collections.MutableMapping):
++class CaseInsensitiveDict(MutableMapping):
+     """
+     A case-insensitive ``dict``-like object.
+ 
+@@ -71,7 +75,7 @@ class CaseInsensitiveDict(collections.MutableMapping):
+         )
+ 
+     def __eq__(self, other):
+-        if isinstance(other, collections.Mapping):
++        if isinstance(other, Mapping):
+             other = CaseInsensitiveDict(other)
+         else:
+             return NotImplemented
+diff --git a/requests/utils.py b/requests/utils.py
+index 2c6bb090..215cca18 100644
+--- a/requests/utils.py
++++ b/requests/utils.py
+@@ -12,6 +12,10 @@ that are also useful for external consumption.
+ import cgi
+ import codecs
+ import collections
++try:
++    from collections.abc import Mapping
++except ImportError:
++    from collections import Mapping
+ import io
+ import os
+ import platform
+@@ -160,7 +164,7 @@ def to_key_val_list(value):
+     if isinstance(value, (str, bytes, bool, int)):
+         raise ValueError('cannot encode objects that are not 2-tuples')
+ 
+-    if isinstance(value, collections.Mapping):
++    if isinstance(value, Mapping):
+         value = value.items()
+ 
+     return list(value)
+diff --git a/test_requests.py b/test_requests.py
+index 716c0dcf..2ff61248 100755
+--- a/test_requests.py
++++ b/test_requests.py
+@@ -286,6 +286,14 @@ class RequestsTestCase(unittest.TestCase):
+         r = s.get(url)
+         assert r.status_code == 200
+ 
++    def test_connection_error(self):
++        """Connecting to an unknown domain should raise a ConnectionError"""
++        with pytest.raises(ConnectionError):
++            requests.get("http://fooobarbangbazbing.httpbin.org")
++
++        with pytest.raises(ConnectionError):
++            requests.get("http://httpbin.org:1")
++
+     def test_basicauth_with_netrc(self):
+         auth = ('user', 'pass')
+         wrong_auth = ('wronguser', 'wrongpass')
+2026-04-28 19:05:01,919 - INFO - Grading answer for psf__requests_v2.4.0_v2.4.1...
+2026-04-28 19:05:01,923 - INFO - report: {'psf__requests_v2.4.0_v2.4.1': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['test_requests.py::RequestsTestCase::test_connection_error', 'test_requests.py::RequestsTestCase::test_prepared_from_session'], 'failure': []}, 'PASS_TO_PASS': {'success': ['test_requests.py::RequestsTestCase::test_BASICAUTH_TUPLE_HTTP_200_OK_GET', 'test_requests.py::RequestsTestCase::test_DIGESTAUTH_QUOTES_QOP_VALUE', 'test_requests.py::RequestsTestCase::test_DIGESTAUTH_WRONG_HTTP_401_GET', 'test_requests.py::RequestsTestCase::test_DIGEST_AUTH_RETURNS_COOKIE', 'test_requests.py::RequestsTestCase::test_DIGEST_AUTH_SETS_SESSION_COOKIES', 'test_requests.py::RequestsTestCase::test_DIGEST_HTTP_200_OK_GET', 'test_requests.py::RequestsTestCase::test_DIGEST_STREAM', 'test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_ALTERNATIVE', 'test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_WITH_MIXED_PARAMS', 'test_requests.py::RequestsTestCase::test_HTTP_200_OK_GET_WITH_PARAMS', 'test_requests.py::RequestsTestCase::test_HTTP_200_OK_HEAD', 'test_requests.py::RequestsTestCase::test_HTTP_200_OK_PUT', 'test_requests.py::RequestsTestCase::test_HTTP_302_ALLOW_REDIRECT_GET', 'test_requests.py::RequestsTestCase::test_POSTBIN_GET_POST_FILES', 'test_requests.py::RequestsTestCase::test_POSTBIN_GET_POST_FILES_WITH_DATA', 'test_requests.py::RequestsTestCase::test_auth_is_retained_for_redirect_on_host', 'test_requests.py::RequestsTestCase::test_autoset_header_values_are_native', 'test_requests.py::RequestsTestCase::test_basic_auth_str_is_always_native', 'test_requests.py::RequestsTestCase::test_basic_building', 'test_requests.py::RequestsTestCase::test_basicauth_with_netrc', 'test_requests.py::RequestsTestCase::test_can_send_nonstring_objects_with_files', 'test_requests.py::RequestsTestCase::test_cannot_send_unprepared_requests', 'test_requests.py::RequestsTestCase::test_cookie_as_dict_items', 'test_requests.py::RequestsTestCase::test_cookie_as_dict_keeps_items', 'test_requests.py::RequestsTestCase::test_cookie_as_dict_keeps_len', 'test_requests.py::RequestsTestCase::test_cookie_as_dict_keys', 'test_requests.py::RequestsTestCase::test_cookie_as_dict_values', 'test_requests.py::RequestsTestCase::test_cookie_parameters', 'test_requests.py::RequestsTestCase::test_cookie_persists_via_api', 'test_requests.py::RequestsTestCase::test_cookie_quote_wrapped', 'test_requests.py::RequestsTestCase::test_cookie_removed_on_expire', 'test_requests.py::RequestsTestCase::test_cookie_sent_on_redirect', 'test_requests.py::RequestsTestCase::test_custom_content_type', 'test_requests.py::RequestsTestCase::test_decompress_gzip', 'test_requests.py::RequestsTestCase::test_different_encodings_dont_break_post', 'test_requests.py::RequestsTestCase::test_entry_points', 'test_requests.py::RequestsTestCase::test_fixes_1329', 'test_requests.py::RequestsTestCase::test_generic_cookiejar_works', 'test_requests.py::RequestsTestCase::test_get_auth_from_url', 'test_requests.py::RequestsTestCase::test_get_auth_from_url_encoded_hashes', 'test_requests.py::RequestsTestCase::test_get_auth_from_url_encoded_spaces', 'test_requests.py::RequestsTestCase::test_get_auth_from_url_not_encoded_spaces', 'test_requests.py::RequestsTestCase::test_get_auth_from_url_percent_chars', 'test_requests.py::RequestsTestCase::test_header_keys_are_native', 'test_requests.py::RequestsTestCase::test_header_remove_is_case_insensitive', 'test_requests.py::RequestsTestCase::test_headers_on_session_with_None_are_not_sent', 'test_requests.py::RequestsTestCase::test_history_is_always_a_list', 'test_requests.py::RequestsTestCase::test_hook_receives_request_arguments', 'test_requests.py::RequestsTestCase::test_http_error', 'test_requests.py::RequestsTestCase::test_invalid_url', 'test_requests.py::RequestsTestCase::test_links', 'test_requests.py::RequestsTestCase::test_long_authinfo_in_url', 'test_requests.py::RequestsTestCase::test_manual_redirect_with_partial_body_read', 'test_requests.py::RequestsTestCase::test_mixed_case_scheme_acceptable', 'test_requests.py::RequestsTestCase::test_no_content_length', 'test_requests.py::RequestsTestCase::test_oddball_schemes_dont_check_URLs', 'test_requests.py::RequestsTestCase::test_param_cookiejar_works', 'test_requests.py::RequestsTestCase::test_params_are_added_before_fragment', 'test_requests.py::RequestsTestCase::test_params_are_merged_case_sensitive', 'test_requests.py::RequestsTestCase::test_path_is_not_double_encoded', 'test_requests.py::RequestsTestCase::test_prepared_request_hook', 'test_requests.py::RequestsTestCase::test_pyopenssl_redirect', 'test_requests.py::RequestsTestCase::test_redirect_with_wrong_gzipped_header', 'test_requests.py::RequestsTestCase::test_request_and_response_are_pickleable', 'test_requests.py::RequestsTestCase::test_request_cookie_overrides_session_cookie', 'test_requests.py::RequestsTestCase::test_request_cookies_not_persisted', 'test_requests.py::RequestsTestCase::test_request_ok_set', 'test_requests.py::RequestsTestCase::test_requests_history_is_saved', 'test_requests.py::RequestsTestCase::test_requests_in_history_are_not_overridden', 'test_requests.py::RequestsTestCase::test_response_decode_unicode', 'test_requests.py::RequestsTestCase::test_response_is_iterable', 'test_requests.py::RequestsTestCase::test_session_hooks_are_overriden_by_request_hooks', 'test_requests.py::RequestsTestCase::test_session_hooks_are_used_with_no_request_hooks', 'test_requests.py::RequestsTestCase::test_session_pickling', 'test_requests.py::RequestsTestCase::test_set_cookie_on_301', 'test_requests.py::RequestsTestCase::test_status_raising', 'test_requests.py::RequestsTestCase::test_time_elapsed_blank', 'test_requests.py::RequestsTestCase::test_transport_adapter_ordering', 'test_requests.py::RequestsTestCase::test_unicode_get', 'test_requests.py::RequestsTestCase::test_unicode_header_name', 'test_requests.py::RequestsTestCase::test_unicode_method_name', 'test_requests.py::RequestsTestCase::test_unicode_multipart_post', 'test_requests.py::RequestsTestCase::test_unicode_multipart_post_fieldnames', 'test_requests.py::RequestsTestCase::test_uppercase_scheme_redirect', 'test_requests.py::RequestsTestCase::test_urlencoded_get_query_multivalued_param', 'test_requests.py::RequestsTestCase::test_user_agent_transfers', 'test_requests.py::TestCaseInsensitiveDict::test_contains', 'test_requests.py::TestCaseInsensitiveDict::test_delitem', 'test_requests.py::TestCaseInsensitiveDict::test_docstring_example', 'test_requests.py::TestCaseInsensitiveDict::test_equality', 'test_requests.py::TestCaseInsensitiveDict::test_fixes_649', 'test_requests.py::TestCaseInsensitiveDict::test_get', 'test_requests.py::TestCaseInsensitiveDict::test_getitem', 'test_requests.py::TestCaseInsensitiveDict::test_iter', 'test_requests.py::TestCaseInsensitiveDict::test_iterable_init', 'test_requests.py::TestCaseInsensitiveDict::test_kwargs_init', 'test_requests.py::TestCaseInsensitiveDict::test_len', 'test_requests.py::TestCaseInsensitiveDict::test_lower_items', 'test_requests.py::TestCaseInsensitiveDict::test_mapping_init', 'test_requests.py::TestCaseInsensitiveDict::test_preserve_key_case', 'test_requests.py::TestCaseInsensitiveDict::test_preserve_last_key_case', 'test_requests.py::TestCaseInsensitiveDict::test_setdefault', 'test_requests.py::TestCaseInsensitiveDict::test_update', 'test_requests.py::TestCaseInsensitiveDict::test_update_retains_unchanged', 'test_requests.py::TestContentEncodingDetection::test_html4_pragma', 'test_requests.py::TestContentEncodingDetection::test_html_charset', 'test_requests.py::TestContentEncodingDetection::test_none', 'test_requests.py::TestContentEncodingDetection::test_precedence', 'test_requests.py::TestContentEncodingDetection::test_xhtml_pragma', 'test_requests.py::TestContentEncodingDetection::test_xml', 'test_requests.py::TestMorselToCookieExpires::test_expires_invalid_int', 'test_requests.py::TestMorselToCookieExpires::test_expires_invalid_str', 'test_requests.py::TestMorselToCookieExpires::test_expires_none', 'test_requests.py::TestMorselToCookieExpires::test_expires_valid_str', 'test_requests.py::TestMorselToCookieMaxAge::test_max_age_invalid_str', 'test_requests.py::TestMorselToCookieMaxAge::test_max_age_valid_int', 'test_requests.py::TestRedirects::test_requests_are_updated_each_time', 'test_requests.py::TestTimeout::test_connect_timeout', 'test_requests.py::TestTimeout::test_invalid_timeout', 'test_requests.py::TestTimeout::test_none_timeout', 'test_requests.py::TestTimeout::test_read_timeout', 'test_requests.py::TestTimeout::test_stream_timeout', 'test_requests.py::TestTimeout::test_total_timeout_connect', 'test_requests.py::UtilsTestCase::test_address_in_network', 'test_requests.py::UtilsTestCase::test_dotted_netmask', 'test_requests.py::UtilsTestCase::test_get_auth_from_url', 'test_requests.py::UtilsTestCase::test_get_environ_proxies', 'test_requests.py::UtilsTestCase::test_get_environ_proxies_ip_ranges', 'test_requests.py::UtilsTestCase::test_is_ipv4_address', 'test_requests.py::UtilsTestCase::test_is_valid_cidr', 'test_requests.py::UtilsTestCase::test_super_len_io_streams', 'test_requests.py::test_data_argument_accepts_tuples', 'test_requests.py::test_prepared_request_complete_copy', 'test_requests.py::test_prepared_request_empty_copy', 'test_requests.py::test_prepared_request_no_cookies_copy'], 'failure': ['test_requests.py::RequestsTestCase::test_auth_is_stripped_on_redirect_off_host']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for psf__requests_v2.4.0_v2.4.1: resolved: False
+2026-04-28 19:05:01,923 - INFO - Attempting to stop container sweb.eval.psf__requests_v2.4.0_v2.4.1.eval_input_20260427-154634...
+2026-04-28 19:05:17,083 - INFO - Attempting to remove container sweb.eval.psf__requests_v2.4.0_v2.4.1.eval_input_20260427-154634...
+2026-04-28 19:05:17,139 - INFO - Container sweb.eval.psf__requests_v2.4.0_v2.4.1.eval_input_20260427-154634 removed.
+2026-04-28 19:05:17,139 - INFO - Attempting to remove image sweb.eval.x86_64.psf__requests_v2.4.0_v2.4.1:latest...
+2026-04-28 19:05:17,143 - INFO - Image sweb.eval.x86_64.psf__requests_v2.4.0_v2.4.1:latest removed.

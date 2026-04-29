@@ -1,0 +1,60 @@
+diff --git a/dvc/path_info.py b/dvc/path_info.py
+index a7fba16..f4ef7a2 100644
+--- a/dvc/path_info.py
++++ b/dvc/path_info.py
+@@ -31,7 +31,7 @@ class PathInfo(pathlib.PurePath, _BasePath):
+         # Construct a proper subclass depending on current os
+         if cls is PathInfo:
+             cls = WindowsPathInfo if os.name == "nt" else PosixPathInfo
+-        return cls._from_parts(args)
++        return super().__new__(cls, *args)
+ 
+     def as_posix(self):
+         f = self._flavour
+@@ -68,9 +68,11 @@ class PathInfo(pathlib.PurePath, _BasePath):
+             other = self.__class__(other)
+         elif self.__class__ != other.__class__:
+             return False
+-        # Use cached casefolded parts to compare paths
+-        n = len(other._cparts)
+-        return len(self._cparts) > n and self._cparts[:n] == other._cparts
++        # Use parts to compare paths
++        other_parts = other.parts
++        self_parts = self.parts
++        n = len(other_parts)
++        return len(self_parts) > n and self_parts[:n] == other_parts
+ 
+ 
+ class WindowsPathInfo(PathInfo, pathlib.PureWindowsPath):
+diff --git a/dvc/stage/loader.py b/dvc/stage/loader.py
+index 05fa630..ad1f0b4 100644
+--- a/dvc/stage/loader.py
++++ b/dvc/stage/loader.py
+@@ -1,6 +1,7 @@
+ import logging
+ import os
+-from collections import Mapping, defaultdict
++from collections import defaultdict
++from collections.abc import Mapping
+ from contextlib import contextmanager
+ from copy import deepcopy
+ from itertools import chain
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index 8e1d876..ea88f9e 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -74,12 +74,8 @@ class TmpDir(pathlib.Path):
+     def __new__(cls, *args, **kwargs):
+         if cls is TmpDir:
+             cls = WindowsTmpDir if os.name == "nt" else PosixTmpDir
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                "cannot instantiate %r on your system" % (cls.__name__,)
+-            )
+-        self._init()
++        self = object.__new__(cls)
++        self.__init__(*args, **kwargs)
+         return self
+ 
+     # Not needed in Python 3.6+

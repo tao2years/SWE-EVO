@@ -1,0 +1,10 @@
+{
+  "run_root": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634",
+  "timestamp": "2026-04-28 19:12:44",
+  "inference_done": 48,
+  "cli_results": 48,
+  "trace_bundles": 48,
+  "eval_reports": 48,
+  "eval_completed_tasks": 48,
+  "done": true
+}

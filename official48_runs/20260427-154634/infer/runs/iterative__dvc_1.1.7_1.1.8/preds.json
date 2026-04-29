@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_1.1.7_1.1.8": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_1.1.7_1.1.8",
+    "model_patch": "diff --git a/dvc/dependency/param.py b/dvc/dependency/param.py\nindex 4df6087..74f97fd 100644\n--- a/dvc/dependency/param.py\n+++ b/dvc/dependency/param.py\n@@ -42,11 +42,11 @@ class ParamsDependency(LocalDependency):\n \n     def fill_values(self, values=None):\n         \"\"\"Load params values dynamically.\"\"\"\n-        if not values:\n+        if values is None:\n             return\n         for param in self.params:\n             value = values.get(param)\n-            if value:\n+            if value is not None:\n                 self.info[param] = value\n \n     def save(self):\ndiff --git a/dvc/ignore.py b/dvc/ignore.py\nindex c9257e5..d976bdd 100644\n--- a/dvc/ignore.py\n+++ b/dvc/ignore.py\n@@ -225,7 +225,8 @@ class CleanTree(BaseTree):\n             if basename == \".\":\n                 # parent_dir == tree_root\n                 continue\n-            dirs, _ = self.dvcignore(os.path.abspath(dirname), [basename], [])\n+            dirname = os.path.join(self.tree_root, dirname)\n+            dirs, _ = self.dvcignore(dirname, [basename], [])\n             if not dirs:\n                 return False\n         return True\n"
+  }
+}

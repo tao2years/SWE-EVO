@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 439030,
+  "duration_api_ms": 423422,
+  "num_turns": 72,
+  "result": "The fix is complete. I've made a minimal change to the `table()` function in `dvc/utils/diff.py` to add a trailing newline when markdown output is requested. This fix addresses the release note requirement: \"dvc: add trailing newline in --show-md (#4124)\".\n\nThe change affects all three commands that use markdown table output:\n- `dvc diff --show-md`\n- `dvc metrics diff --show-md`\n- `dvc params diff --show-md`\n\nAll of these commands now produce output ending with a trailing newline, which is the expected behavior for proper text formatting.",
+  "stop_reason": "end_turn",
+  "session_id": "e19cbd55-aff0-4c22-ae05-5c33c1a30053",
+  "total_cost_usd": 4.559353349999999,
+  "usage": {
+    "input_tokens": 1366416,
+    "cache_creation_input_tokens": 493,
+    "cache_read_input_tokens": 248206,
+    "output_tokens": 21924,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 1382717,
+      "outputTokens": 22246,
+      "cacheReadInputTokens": 252212,
+      "cacheCreationInputTokens": 493,
+      "webSearchRequests": 0,
+      "costUSD": 4.559353349999999,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "e31c990e-e230-4c7e-9e13-188c9dbb6a42"
+}

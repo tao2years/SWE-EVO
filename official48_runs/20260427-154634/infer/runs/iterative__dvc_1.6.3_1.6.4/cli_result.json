@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 370938,
+  "duration_api_ms": 362900,
+  "num_turns": 66,
+  "result": "The implementation is complete. Here's a summary of the changes:\n\n## Summary\n\nAdded the `-e/--experiment` option to `dvc plots diff` command as described in PR #4488.\n\n### Files Modified:\n\n1. **`dvc/command/plots.py`**:\n   - Added `-e/--experiment` argument to the plots diff parser\n   - Updated `CmdPlotsDiff._func()` to conditionally pass the `experiment` argument\n\n2. **`dvc/repo/plots/diff.py`**:\n   - Updated `_revisions()` to accept an `experiment` parameter\n   - Updated `diff()` to accept an `experiment` parameter\n   - Added `_get_experiment_revisions()` helper function to find experiments based on baseline revisions (using the same branch naming convention as `dvc/repo/experiments/show.py`)\n\n### Usage:\n- `dvc plots diff` - existing behavior (shows workspace)\n- `dvc plots diff HEAD v1` - existing behavior (shows specific revisions)\n- `dvc plots diff --experiment` - shows plots from experiments based on HEAD\n- `dvc plots diff -e v0` - shows plots from experiments based on v0",
+  "stop_reason": "end_turn",
+  "session_id": "2aea7d93-c988-4e72-ad77-d2835db21e81",
+  "total_cost_usd": 5.6739862500000005,
+  "usage": {
+    "input_tokens": 1682648,
+    "cache_creation_input_tokens": 709,
+    "cache_read_input_tokens": 208095,
+    "output_tokens": 14209,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 1786476,
+      "outputTokens": 16311,
+      "cacheReadInputTokens": 224115,
+      "cacheCreationInputTokens": 709,
+      "webSearchRequests": 0,
+      "costUSD": 5.6739862500000005,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "16bdfaa0-e4f5-45f9-bdbb-bf272d6026f0"
+}

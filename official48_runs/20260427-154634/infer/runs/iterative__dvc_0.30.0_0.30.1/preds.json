@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_0.30.0_0.30.1": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_0.30.0_0.30.1",
+    "model_patch": "diff --git a/dvc/stage.py b/dvc/stage.py\nindex 29f176f..dcf9213 100644\n--- a/dvc/stage.py\n+++ b/dvc/stage.py\n@@ -527,7 +527,7 @@ class Stage(object):\n             for key, value in {\n                 Stage.PARAM_MD5: self.md5,\n                 Stage.PARAM_CMD: self.cmd,\n-                Stage.PARAM_WDIR: self.wdir,\n+                Stage.PARAM_WDIR: os.path.relpath(self.wdir, os.path.dirname(self.path)),\n                 Stage.PARAM_LOCKED: self.locked,\n                 Stage.PARAM_DEPS: [d.dumpd() for d in self.deps],\n                 Stage.PARAM_OUTS: [o.dumpd() for o in self.outs],\n"
+  }
+}

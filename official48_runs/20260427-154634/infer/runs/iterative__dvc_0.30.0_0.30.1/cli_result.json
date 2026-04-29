@@ -1,0 +1,9 @@
+{
+  "type": "result",
+  "subtype": "timeout",
+  "is_error": true,
+  "stop_reason": "timeout",
+  "errors": [
+    "innerCC CLI exceeded 5400 seconds and was terminated"
+  ]
+}

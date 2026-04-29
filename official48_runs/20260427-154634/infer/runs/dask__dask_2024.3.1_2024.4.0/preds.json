@@ -1,0 +1,7 @@
+{
+  "dask__dask_2024.3.1_2024.4.0": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "model_patch": "diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py\nindex 3b24d2fd..dc056d4f 100644\n--- a/dask/dataframe/groupby.py\n+++ b/dask/dataframe/groupby.py\n@@ -3216,6 +3216,8 @@ def _value_counts(x, **kwargs):\n \n def _value_counts_aggregate(series_gb):\n     data = {k: v.groupby(level=-1).sum() for k, v in series_gb}\n+    if not data:\n+        data = [pd.Series(index=series_gb.obj.index[:0], dtype=\"float64\")]\n     res = pd.concat(data, names=series_gb.obj.index.names)\n     typed_levels = {\n         i: res.index.levels[i].astype(series_gb.obj.index.levels[i].dtype)\n"
+  }
+}

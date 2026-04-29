@@ -1,0 +1,61 @@
+diff --git a/dask/base.py b/dask/base.py
+index b03140c..286f4f3 100644
+--- a/dask/base.py
++++ b/dask/base.py
+@@ -79,7 +79,7 @@ def _clean_ipython_traceback(self, etype, value, tb, tb_offset=None):
+     stb = self.InteractiveTB.structured_traceback(
+         etype, short_exc, short_tb, tb_offset=tb_offset
+     )
+-    self._showtraceback(type, short_exc, stb)
++    self._showtraceback(etype, short_exc, stb)
+ 
+ 
+ try:
+diff --git a/dask/cli.py b/dask/cli.py
+index b417292..bfe0c48 100644
+--- a/dask/cli.py
++++ b/dask/cli.py
+@@ -94,7 +94,13 @@ def _register_command_ep(interface, entry_point):
+         sub-group in `interface`.
+ 
+     """
+-    command = entry_point.load()
++    try:
++        command = entry_point.load()
++    except Exception as e:
++        warnings.warn(
++            f"Failed to load entry point '{entry_point.name}': {e}"
++        )
++        return
+     if not isinstance(command, (click.Command, click.Group)):
+         warnings.warn(
+             "entry points in 'dask_cli' must be instances of "
+diff --git a/dask/dataframe/core.py b/dask/dataframe/core.py
+index 9978de1..e60bb68 100644
+--- a/dask/dataframe/core.py
++++ b/dask/dataframe/core.py
+@@ -3960,6 +3960,10 @@ Dask Name: {name}, {layers}""".format(
+                 else:
+                     res = res.clear_divisions()
+             if inplace:
++                warnings.warn(
++                    "'inplace' argument for dask series will be removed in future versions",
++                    PendingDeprecationWarning,
++                )
+                 self.dask = res.dask
+                 self._name = res._name
+                 self._divisions = res.divisions
+diff --git a/dask/dataframe/io/io.py b/dask/dataframe/io/io.py
+index 5c344f2..6d3a582 100644
+--- a/dask/dataframe/io/io.py
++++ b/dask/dataframe/io/io.py
+@@ -277,6 +277,9 @@ def from_pandas(
+ 
+     name = name or ("from_pandas-" + tokenize(data, chunksize, npartitions))
+ 
++    # Make a copy to ensure input data is immutable
++    data = data.copy()
++
+     if not nrows:
+         return new_dd_object({(name, 0): data}, name, data, [None, None])
+ 

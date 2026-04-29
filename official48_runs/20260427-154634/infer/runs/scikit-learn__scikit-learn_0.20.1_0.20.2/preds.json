@@ -1,0 +1,7 @@
+{
+  "scikit-learn__scikit-learn_0.20.1_0.20.2": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "scikit-learn__scikit-learn_0.20.1_0.20.2",
+    "model_patch": "diff --git a/sklearn/neighbors/dist_metrics.pyx b/sklearn/neighbors/dist_metrics.pyx\nindex 440187d..db76b4f 100755\n--- a/sklearn/neighbors/dist_metrics.pyx\n+++ b/sklearn/neighbors/dist_metrics.pyx\n@@ -788,6 +788,8 @@ cdef class JaccardDistance(DistanceMetric):\n             tf2 = x2[j] != 0\n             nnz += (tf1 or tf2)\n             n_eq += (tf1 and tf2)\n+        if nnz == 0:\n+            return 0.0\n         return (nnz - n_eq) * 1.0 / nnz\n \n \n"
+  }
+}

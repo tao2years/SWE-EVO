@@ -1,0 +1,405 @@
+diff --git a/dask/array/core.py b/dask/array/core.py
+index 7932135..911249c 100644
+--- a/dask/array/core.py
++++ b/dask/array/core.py
+@@ -2853,10 +2853,7 @@ class Array(DaskMethodsMixin):
+         """
+         Copy array.  This is a no-op for dask.arrays, which are immutable
+         """
+-        if self.npartitions == 1:
+-            return self.map_blocks(M.copy)
+-        else:
+-            return Array(self.dask, self.name, self.chunks, meta=self)
++        return Array(self.dask, self.name, self.chunks, meta=self)
+ 
+     def __deepcopy__(self, memo):
+         c = self.copy()
+diff --git a/dask/base.py b/dask/base.py
+index 1af3559..8418ea7 100644
+--- a/dask/base.py
++++ b/dask/base.py
+@@ -947,6 +947,8 @@ normalize_token.register(
+         complex,
+         type(Ellipsis),
+         datetime.date,
++        datetime.datetime,
++        datetime.time,
+         datetime.timedelta,
+         pathlib.PurePath,
+     ),
+@@ -1142,7 +1144,7 @@ def register_pandas():
+ 
+     @normalize_token.register(pd.DataFrame)
+     def normalize_dataframe(df):
+-        mgr = df._data
++        mgr = df._mgr
+ 
+         if PANDAS_GT_130:
+             # for compat with ArrayManager, pandas 1.3.0 introduced a `.arrays`
+diff --git a/dask/dataframe/_compat.py b/dask/dataframe/_compat.py
+index 7b8691e..5b7707f 100644
+--- a/dask/dataframe/_compat.py
++++ b/dask/dataframe/_compat.py
+@@ -23,6 +23,43 @@ PANDAS_GT_150 = PANDAS_VERSION.release >= (1, 5, 0)
+ import pandas.testing as tm
+ 
+ 
++def is_categorical_dtype(obj):
++    """Check if obj is a categorical dtype, compatible with pandas 2.x."""
++    dtype = getattr(obj, "dtype", obj)
++    return isinstance(dtype, pd.CategoricalDtype)
++
++
++def is_any_real_numeric_dtype(obj):
++    """Check if obj is a real numeric dtype (int/float), compatible with pandas 2.x."""
++    # In pandas 2.x, Index.is_numeric() is deprecated in favor of this function
++    # which was added in pandas 1.2.0
++    return pd.api.types.is_any_real_numeric_dtype(obj)
++
++
++def is_datetime64tz_dtype(obj):
++    """Check if obj is a datetime64 with timezone dtype, compatible with pandas 2.x."""
++    dtype = getattr(obj, "dtype", obj)
++    return isinstance(dtype, pd.DatetimeTZDtype)
++
++
++def is_period_dtype(obj):
++    """Check if obj is a period dtype, compatible with pandas 2.x."""
++    dtype = getattr(obj, "dtype", obj)
++    return isinstance(dtype, pd.PeriodDtype)
++
++
++def is_interval_dtype(obj):
++    """Check if obj is an interval dtype, compatible with pandas 2.x."""
++    dtype = getattr(obj, "dtype", obj)
++    return isinstance(dtype, pd.IntervalDtype)
++
++
++def is_sparse(obj):
++    """Check if obj is a sparse dtype, compatible with pandas 2.x."""
++    dtype = getattr(obj, "dtype", obj)
++    return isinstance(dtype, pd.SparseDtype)
++
++
+ def assert_categorical_equal(left, right, *args, **kwargs):
+     tm.assert_extension_array_equal(left, right, *args, **kwargs)
+     assert pd.api.types.is_categorical_dtype(
+diff --git a/dask/dataframe/_pyarrow_compat.py b/dask/dataframe/_pyarrow_compat.py
+index 8bf4cf0..a240850 100644
+--- a/dask/dataframe/_pyarrow_compat.py
++++ b/dask/dataframe/_pyarrow_compat.py
+@@ -133,7 +133,7 @@ def reduce_arrowstringarray(x):
+     # add no meaningful value to the chunked array.
+     chunks = tuple(
+         pyarrow_stringarray_to_parts(chunk)
+-        for chunk in x._data.chunks
++        for chunk in x._pa_array.chunks
+         if len(chunk) > 0
+     )
+     return (rebuild_arrowstringarray, chunks)
+diff --git a/dask/dataframe/accessor.py b/dask/dataframe/accessor.py
+index 05213d5..e5d312a 100644
+--- a/dask/dataframe/accessor.py
++++ b/dask/dataframe/accessor.py
+@@ -273,18 +273,18 @@ class StringAccessor(Accessor):
+         return self._function_map(method, pat=pat, n=n, expand=expand, meta=meta)
+ 
+     @derived_from(
+-        pd.core.strings.StringMethods,
++        pd.core.strings.accessor.StringMethods,
+         inconsistencies="``expand=True`` with unknown ``n`` will raise a ``NotImplementedError``",
+     )
+     def split(self, pat=None, n=-1, expand=False):
+         """Known inconsistencies: ``expand=True`` with unknown ``n`` will raise a ``NotImplementedError``."""
+         return self._split("split", pat=pat, n=n, expand=expand)
+ 
+-    @derived_from(pd.core.strings.StringMethods)
++    @derived_from(pd.core.strings.accessor.StringMethods)
+     def rsplit(self, pat=None, n=-1, expand=False):
+         return self._split("rsplit", pat=pat, n=n, expand=expand)
+ 
+-    @derived_from(pd.core.strings.StringMethods)
++    @derived_from(pd.core.strings.accessor.StringMethods)
+     def cat(self, others=None, sep=None, na_rep=None):
+         from dask.dataframe.core import Index, Series
+ 
+@@ -309,7 +309,7 @@ class StringAccessor(Accessor):
+             str_cat, *others, sep=sep, na_rep=na_rep, meta=self._series._meta
+         )
+ 
+-    @derived_from(pd.core.strings.StringMethods)
++    @derived_from(pd.core.strings.accessor.StringMethods)
+     def extractall(self, pat, flags=0):
+         return self._series.map_partitions(
+             str_extractall, pat, flags, token="str-extractall"
+diff --git a/dask/dataframe/backends.py b/dask/dataframe/backends.py
+index f26b560..8caa1e1 100644
+--- a/dask/dataframe/backends.py
++++ b/dask/dataframe/backends.py
+@@ -5,14 +5,15 @@ from typing import Iterable
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import (
++from pandas.api.types import is_scalar, union_categoricals
++
++from dask.dataframe._compat import (
++    is_any_real_numeric_dtype,
+     is_categorical_dtype,
+     is_datetime64tz_dtype,
+     is_interval_dtype,
+     is_period_dtype,
+-    is_scalar,
+     is_sparse,
+-    union_categoricals,
+ )
+ 
+ from dask.array.dispatch import percentile_lookup
+@@ -202,7 +203,7 @@ def _nonempty_index(idx):
+     typ = type(idx)
+     if typ is pd.RangeIndex:
+         return pd.RangeIndex(2, name=idx.name)
+-    elif idx.is_numeric():
++    elif is_any_real_numeric_dtype(idx):
+         return typ([1, 2], name=idx.name)
+     elif typ is pd.Index:
+         if idx.dtype == bool:
+@@ -546,7 +547,7 @@ def tolist_pandas(obj):
+     (pd.Series, pd.Index, pd.api.extensions.ExtensionDtype, np.dtype)
+ )
+ def is_categorical_dtype_pandas(obj):
+-    return pd.api.types.is_categorical_dtype(obj)
++    return isinstance(obj, pd.CategoricalDtype)
+ 
+ 
+ @grouper_dispatch.register((pd.DataFrame, pd.Series))
+diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py
+index e2db913..eaf5aa5 100644
+--- a/dask/dataframe/groupby.py
++++ b/dask/dataframe/groupby.py
+@@ -338,7 +338,7 @@ def _apply_chunk(df, *by, dropna=None, observed=None, **kwargs):
+     observed = {"observed": observed} if observed is not None else {}
+ 
+     g = _groupby_raise_unaligned(df, by=by, **observed, **dropna)
+-    if is_series_like(df) or columns is None:
++    if is_series_like(g.obj) or columns is None:
+         return func(g, **kwargs)
+     else:
+         if isinstance(columns, (tuple, list, set, pd.Index)):
+@@ -769,6 +769,7 @@ def _build_agg_args_single(result_column, func, input_column):
+         "first": (M.first, M.first),
+         "last": (M.last, M.last),
+         "prod": (M.prod, M.prod),
++        "median": (M.median, M.median),
+     }
+ 
+     if func in simple_impl.keys():
+@@ -1272,7 +1273,7 @@ class _GroupBy:
+         if aggregate_kwargs is None:
+             aggregate_kwargs = {}
+ 
+-        columns = meta.name if is_series_like(meta) else meta.columns
++        columns = None if is_series_like(meta) else meta.columns
+ 
+         token = self._token_prefix + token
+         levels = _determine_levels(self.by)
+@@ -1308,7 +1309,7 @@ class _GroupBy:
+     def _cum_agg(self, token, chunk, aggregate, initial):
+         """Wrapper for cumulative groupby operation"""
+         meta = chunk(self._meta)
+-        columns = meta.name if is_series_like(meta) else meta.columns
++        columns = None if is_series_like(meta) else meta.columns
+         by_cols = self.by if isinstance(self.by, list) else [self.by]
+ 
+         # rename "by" columns internally
+@@ -1546,6 +1547,15 @@ class _GroupBy:
+             chunk_kwargs=dict(skipna=skipna),
+         )
+ 
++    @derived_from(pd.core.groupby.GroupBy)
++    def median(self, split_every=None, split_out=1):
++        return self._aca_agg(
++            token="median",
++            func=M.median,
++            split_every=split_every,
++            split_out=split_out,
++        )
++
+     @derived_from(pd.core.groupby.GroupBy)
+     def count(self, split_every=None, split_out=1):
+         return self._aca_agg(
+diff --git a/dask/dataframe/io/io.py b/dask/dataframe/io/io.py
+index 2ac4a5f..6f0b404 100644
+--- a/dask/dataframe/io/io.py
++++ b/dask/dataframe/io/io.py
+@@ -30,6 +30,7 @@ from dask.dataframe.utils import (
+     is_series_like,
+     make_meta,
+ )
++from dask.dataframe._compat import is_any_real_numeric_dtype
+ from dask.delayed import Delayed, delayed
+ from dask.highlevelgraph import HighLevelGraph
+ from dask.layers import DataFrameIOLayer
+@@ -276,7 +277,7 @@ def from_pandas(
+     if not nrows:
+         return new_dd_object({(name, 0): data}, name, data, [None, None])
+ 
+-    if data.index.isna().any() and not data.index.is_numeric():
++    if data.index.isna().any() and not is_any_real_numeric_dtype(data.index):
+         raise NotImplementedError(
+             "Index in passed data is non-numeric and contains nulls, which Dask does not entirely support.\n"
+             "Consider passing `data.loc[~data.isna()]` instead."
+diff --git a/dask/dataframe/multi.py b/dask/dataframe/multi.py
+index af5e588..e5f1212 100644
+--- a/dask/dataframe/multi.py
++++ b/dask/dataframe/multi.py
+@@ -60,7 +60,9 @@ from functools import partial, wraps
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import is_categorical_dtype, is_dtype_equal
++from pandas.api.types import is_dtype_equal
++
++from dask.dataframe._compat import is_categorical_dtype
+ from tlz import merge_sorted, unique
+ 
+ from dask.base import is_dask_collection, tokenize
+diff --git a/dask/dataframe/partitionquantiles.py b/dask/dataframe/partitionquantiles.py
+index 1dcc497..0040476 100644
+--- a/dask/dataframe/partitionquantiles.py
++++ b/dask/dataframe/partitionquantiles.py
+@@ -72,12 +72,11 @@ import math
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import is_datetime64tz_dtype
+ from tlz import merge, merge_sorted, take
+ 
+ from dask.base import tokenize
++from dask.dataframe._compat import is_categorical_dtype, is_datetime64tz_dtype
+ from dask.dataframe.core import Series
+-from dask.dataframe.utils import is_categorical_dtype
+ from dask.utils import is_cupy_type, random_state_data
+ 
+ 
+diff --git a/dask/dataframe/rolling.py b/dask/dataframe/rolling.py
+index 38df268..5876892 100644
+--- a/dask/dataframe/rolling.py
++++ b/dask/dataframe/rolling.py
+@@ -3,6 +3,7 @@ import inspect
+ from numbers import Integral
+ 
+ import pandas as pd
++from packaging.version import parse as parse_version
+ from pandas.api.types import is_datetime64_any_dtype
+ from pandas.core.window import Rolling as pd_Rolling
+ 
+@@ -149,6 +150,11 @@ def map_overlap(
+ 
+     dfs = [df for df in args if isinstance(df, _Frame)]
+ 
++    if isinstance(before, str):
++        before = pd.Timedelta(before)
++    if isinstance(after, str):
++        after = pd.Timedelta(after)
++
+     if isinstance(before, datetime.timedelta) or isinstance(after, datetime.timedelta):
+         if not is_datetime64_any_dtype(dfs[0].index._meta_nonempty.inferred_type):
+             raise TypeError(
+@@ -453,13 +459,17 @@ class Rolling:
+         self._win_type = None if isinstance(self.window, int) else "freq"
+ 
+     def _rolling_kwargs(self):
+-        return {
++        kwargs = {
+             "window": self.window,
+             "min_periods": self.min_periods,
+             "center": self.center,
+             "win_type": self.win_type,
+-            "axis": self.axis,
+         }
++        # In pandas 2.0+, the axis parameter is deprecated for rolling operations
++        # Only pass axis if it's not the default (0) or if using older pandas
++        if self.axis != 0 or parse_version(pd.__version__) < parse_version("2.0.0"):
++            kwargs["axis"] = self.axis
++        return kwargs
+ 
+     @property
+     def _has_single_partition(self):
+diff --git a/dask/dataframe/shuffle.py b/dask/dataframe/shuffle.py
+index 0c359e2..a39a369 100644
+--- a/dask/dataframe/shuffle.py
++++ b/dask/dataframe/shuffle.py
+@@ -15,6 +15,7 @@ from pandas.api.types import is_numeric_dtype
+ 
+ from dask import config
+ from dask.base import compute, compute_as_if_collection, is_dask_collection, tokenize
++from dask.dataframe._compat import is_categorical_dtype
+ from dask.dataframe import methods
+ from dask.dataframe.core import DataFrame, Series, _Frame, map_partitions, new_dd_object
+ from dask.dataframe.dispatch import group_split_dispatch, hash_object_dispatch
+@@ -92,7 +93,7 @@ def _calculate_divisions(
+ 
+     mins = remove_nans(mins)
+     maxes = remove_nans(maxes)
+-    if pd.api.types.is_categorical_dtype(partition_col.dtype):
++    if is_categorical_dtype(partition_col.dtype):
+         dtype = partition_col.dtype
+         mins = pd.Categorical(mins, dtype=dtype).codes.tolist()
+         maxes = pd.Categorical(maxes, dtype=dtype).codes.tolist()
+@@ -327,7 +328,7 @@ def set_partition(
+         # Can't construct a Series[int64] when any / all of the divisions are NaN.
+         divisions = df._meta._constructor_sliced(divisions)
+     elif (
+-        pd.api.types.is_categorical_dtype(dtype)
++        is_categorical_dtype(dtype)
+         and UNKNOWN_CATEGORIES in dtype.categories
+     ):
+         # If categories are unknown, leave as a string dtype instead.
+diff --git a/dask/dataframe/utils.py b/dask/dataframe/utils.py
+index f66212d..ab8bdc9 100644
+--- a/dask/dataframe/utils.py
++++ b/dask/dataframe/utils.py
+@@ -12,7 +12,9 @@ from typing import Callable, TypeVar, overload
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import is_categorical_dtype, is_dtype_equal
++from pandas.api.types import is_dtype_equal
++
++from dask.dataframe._compat import is_categorical_dtype
+ 
+ from dask.base import get_scheduler, is_dask_collection
+ from dask.core import get_deps
+diff --git a/dask/utils.py b/dask/utils.py
+index cc6fd92..27e3706 100644
+--- a/dask/utils.py
++++ b/dask/utils.py
+@@ -8,6 +8,7 @@ import re
+ import shutil
+ import sys
+ import tempfile
++import threading
+ import uuid
+ import warnings
+ from collections.abc import Hashable, Iterable, Iterator, Mapping, Set
+@@ -565,7 +566,10 @@ def takes_multiple_arguments(func, varargs=True):
+ 
+ def get_named_args(func) -> list[str]:
+     """Get all non ``*args/**kwargs`` arguments for a function"""
+-    s = inspect.signature(func)
++    # Handle property/cached_property objects (inspect.signature fails on these in Python 3.12+)
++    if isinstance(func, (property, functools.cached_property)):
++        func = func.fget
++    s = inspect.signature(func, follow_wrapped=False)
+     return [
+         n
+         for n, p in s.parameters.items()
+@@ -579,6 +583,7 @@ class Dispatch:
+     def __init__(self, name=None):
+         self._lookup = {}
+         self._lazy = {}
++        self._lock = threading.Lock()
+         if name:
+             self.__name__ = name
+ 

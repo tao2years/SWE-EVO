@@ -1,0 +1,13 @@
+diff --git a/dvc/ignore.py b/dvc/ignore.py
+index a622fb1..4570be5 100644
+--- a/dvc/ignore.py
++++ b/dvc/ignore.py
+@@ -27,7 +27,7 @@ class DvcIgnore:
+ 
+ class DvcIgnorePatterns(DvcIgnore):
+     def __init__(self, pattern_list, dirname, sep):
+-        from pathspec.patterns.gitwildmatch import _DIR_MARK
++        from pathspec.patterns.gitignore.spec import _DIR_MARK
+ 
+         if pattern_list and isinstance(pattern_list[0], str):
+             pattern_list = [PatternInfo(pattern, "") for pattern in pattern_list]

@@ -1,0 +1,32 @@
+diff --git a/dvc/dependency/param.py b/dvc/dependency/param.py
+index 4df6087..74f97fd 100644
+--- a/dvc/dependency/param.py
++++ b/dvc/dependency/param.py
+@@ -42,11 +42,11 @@ class ParamsDependency(LocalDependency):
+ 
+     def fill_values(self, values=None):
+         """Load params values dynamically."""
+-        if not values:
++        if values is None:
+             return
+         for param in self.params:
+             value = values.get(param)
+-            if value:
++            if value is not None:
+                 self.info[param] = value
+ 
+     def save(self):
+diff --git a/dvc/ignore.py b/dvc/ignore.py
+index c9257e5..d976bdd 100644
+--- a/dvc/ignore.py
++++ b/dvc/ignore.py
+@@ -225,7 +225,8 @@ class CleanTree(BaseTree):
+             if basename == ".":
+                 # parent_dir == tree_root
+                 continue
+-            dirs, _ = self.dvcignore(os.path.abspath(dirname), [basename], [])
++            dirname = os.path.join(self.tree_root, dirname)
++            dirs, _ = self.dvcignore(dirname, [basename], [])
+             if not dirs:
+                 return False
+         return True

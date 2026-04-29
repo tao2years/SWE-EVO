@@ -1,0 +1,7 @@
+{
+  "iterative__dvc_3.43.1_3.44.0": {
+    "model_name_or_path": "innercc-cli",
+    "instance_id": "iterative__dvc_3.43.1_3.44.0",
+    "model_patch": "diff --git a/dvc/ignore.py b/dvc/ignore.py\nindex a622fb1..4570be5 100644\n--- a/dvc/ignore.py\n+++ b/dvc/ignore.py\n@@ -27,7 +27,7 @@ class DvcIgnore:\n \n class DvcIgnorePatterns(DvcIgnore):\n     def __init__(self, pattern_list, dirname, sep):\n-        from pathspec.patterns.gitwildmatch import _DIR_MARK\n+        from pathspec.patterns.gitignore.spec import _DIR_MARK\n \n         if pattern_list and isinstance(pattern_list[0], str):\n             pattern_list = [PatternInfo(pattern, \"\") for pattern in pattern_list]\n"
+  }
+}

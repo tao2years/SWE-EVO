@@ -1,0 +1,84 @@
+diff --git a/modin/pandas/base.py b/modin/pandas/base.py
+index b254068..d2921f4 100644
+--- a/modin/pandas/base.py
++++ b/modin/pandas/base.py
+@@ -2188,13 +2188,13 @@ class BasePandasDataset(ClassLogger):
+         """
+         Percentage change between the current and a prior element.
+         """
+-        if fill_method is not lib.no_default or limit is not lib.no_default:
++        if fill_method not in (lib.no_default, None) or limit is not lib.no_default:
+             warnings.warn(
+-                "The 'fill_method' and 'limit' keywords in "
+-                + f"{type(self).__name__}.pct_change are deprecated and will be "
+-                + "removed in a future version. Call "
+-                + f"{'bfill' if fill_method in ('backfill', 'bfill') else 'ffill'} "
+-                + "before calling pct_change instead.",
++                "The 'fill_method' keyword being not None and the 'limit' keyword in "
++                + f"{type(self).__name__}.pct_change are deprecated and will be removed "
++                + "in a future version. Either fill in any non-leading NA values prior "
++                + "to calling pct_change or specify 'fill_method=None' to not fill NA "
++                + "values.",
+                 FutureWarning,
+             )
+         if fill_method is lib.no_default:
+diff --git a/modin/pandas/groupby.py b/modin/pandas/groupby.py
+index caa3086..8601bda 100644
+--- a/modin/pandas/groupby.py
++++ b/modin/pandas/groupby.py
+@@ -559,13 +559,13 @@ class DataFrameGroupBy(ClassLogger):
+     ):
+         from .dataframe import DataFrame
+ 
+-        if fill_method is not lib.no_default or limit is not lib.no_default:
++        if fill_method not in (lib.no_default, None) or limit is not lib.no_default:
+             warnings.warn(
+-                "The 'fill_method' and 'limit' keywords in "
+-                + f"{type(self).__name__}.pct_change are deprecated and will be "
+-                + "removed in a future version. Call "
+-                + f"{'bfill' if fill_method in ('backfill', 'bfill') else 'ffill'} "
+-                + "before calling pct_change instead.",
++                "The 'fill_method' keyword being not None and the 'limit' keyword in "
++                + f"{type(self).__name__}.pct_change are deprecated and will be removed "
++                + "in a future version. Either fill in any non-leading NA values prior "
++                + "to calling pct_change or specify 'fill_method=None' to not fill NA "
++                + "values.",
+                 FutureWarning,
+             )
+         if fill_method is lib.no_default:
+diff --git a/modin/pandas/test/test_groupby.py b/modin/pandas/test/test_groupby.py
+index 3bbf649..2b49137 100644
+--- a/modin/pandas/test/test_groupby.py
++++ b/modin/pandas/test/test_groupby.py
+@@ -77,7 +77,8 @@ pytestmark = [
+         "ignore:DataFrameGroupBy.pct_change with axis=1 is deprecated:FutureWarning"
+     ),
+     pytest.mark.filterwarnings(
+-        "ignore:The 'fill_method' and 'limit' keywords in (DataFrame|DataFrameGroupBy).pct_change are deprecated:FutureWarning"
++        "ignore:The 'fill_method' keyword being not None and the 'limit' keyword "
++        + "in (DataFrame|DataFrameGroupBy).pct_change are deprecated:FutureWarning"
+     ),
+     pytest.mark.filterwarnings(
+         "ignore:DataFrameGroupBy.shift with axis=1 is deprecated:FutureWarning"
+@@ -3061,14 +3062,19 @@ def test_groupby_pct_change_parameters_warning():
+     modin_groupby = modin_df.groupby(by="col1")
+     pandas_groupby = pandas_df.groupby(by="col1")
+ 
++    match_string = (
++        "The 'fill_method' keyword being not None and the 'limit' keyword "
++        + "in (DataFrame|DataFrameGroupBy).pct_change are deprecated"
++    )
++
+     with pytest.warns(
+         FutureWarning,
+-        match="The 'fill_method' and 'limit' keywords in (DataFrame|DataFrameGroupBy).pct_change are deprecated",
++        match=match_string,
+     ):
+         modin_groupby.pct_change(fill_method="bfill", limit=1)
+     with pytest.warns(
+         FutureWarning,
+-        match="The 'fill_method' and 'limit' keywords in (DataFrame|DataFrameGroupBy).pct_change are deprecated",
++        match=match_string,
+     ):
+         pandas_groupby.pct_change(fill_method="bfill", limit=1)
+ 

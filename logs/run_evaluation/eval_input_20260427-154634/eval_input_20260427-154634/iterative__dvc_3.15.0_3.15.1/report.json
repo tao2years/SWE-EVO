@@ -1,0 +1,95 @@
+{
+    "iterative__dvc_3.15.0_3.15.1": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": true,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/func/repro/test_repro.py::test_repro_external_outputs[True]"
+                ],
+                "failure": []
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/repro/test_repro.py::TestReproAlreadyCached::test",
+                    "tests/func/repro/test_repro.py::TestReproAlreadyCached::test_force_import",
+                    "tests/func/repro/test_repro.py::TestReproAlreadyCached::test_force_with_dependencies",
+                    "tests/func/repro/test_repro.py::test_cmd_repro",
+                    "tests/func/repro/test_repro.py::test_cyclic_graph_error",
+                    "tests/func/repro/test_repro.py::test_downstream",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[Dvcfile:name]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[Dvcfile]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[not-existing-stage.json]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[pipelines.yaml:name]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[pipelines.yaml]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[stage.dvc:name]",
+                    "tests/func/repro/test_repro.py::test_freeze_non_existing[stage.dvc]",
+                    "tests/func/repro/test_repro.py::test_non_existing_output",
+                    "tests/func/repro/test_repro.py::test_non_existing_stage_name",
+                    "tests/func/repro/test_repro.py::test_repro_all_pipelines",
+                    "tests/func/repro/test_repro.py::test_repro_allow_missing",
+                    "tests/func/repro/test_repro.py::test_repro_allow_missing_and_pull",
+                    "tests/func/repro/test_repro.py::test_repro_changed_code",
+                    "tests/func/repro/test_repro.py::test_repro_changed_data",
+                    "tests/func/repro/test_repro.py::test_repro_changed_deep_data",
+                    "tests/func/repro/test_repro.py::test_repro_changed_dir",
+                    "tests/func/repro/test_repro.py::test_repro_changed_dir_data",
+                    "tests/func/repro/test_repro.py::test_repro_data_source",
+                    "tests/func/repro/test_repro.py::test_repro_dep_dir_with_outputs_under_it",
+                    "tests/func/repro/test_repro.py::test_repro_dep_under_dir",
+                    "tests/func/repro/test_repro.py::test_repro_dry",
+                    "tests/func/repro/test_repro.py::test_repro_dry_no_exec",
+                    "tests/func/repro/test_repro.py::test_repro_external_outputs[False]",
+                    "tests/func/repro/test_repro.py::test_repro_fail",
+                    "tests/func/repro/test_repro.py::test_repro_force",
+                    "tests/func/repro/test_repro.py::test_repro_force_downstream",
+                    "tests/func/repro/test_repro.py::test_repro_force_downstream_do_not_force_independent_stages",
+                    "tests/func/repro/test_repro.py::test_repro_frozen",
+                    "tests/func/repro/test_repro.py::test_repro_frozen_callback",
+                    "tests/func/repro/test_repro.py::test_repro_frozen_unchanged",
+                    "tests/func/repro/test_repro.py::test_repro_ignore_errors",
+                    "tests/func/repro/test_repro.py::test_repro_keep_going",
+                    "tests/func/repro/test_repro.py::test_repro_list_of_commands_in_order[False]",
+                    "tests/func/repro/test_repro.py::test_repro_list_of_commands_in_order[True]",
+                    "tests/func/repro/test_repro.py::test_repro_list_of_commands_raise_and_stops_after_failure[False]",
+                    "tests/func/repro/test_repro.py::test_repro_list_of_commands_raise_and_stops_after_failure[True]",
+                    "tests/func/repro/test_repro.py::test_repro_metrics_add_unchanged",
+                    "tests/func/repro/test_repro.py::test_repro_missing_lock_info",
+                    "tests/func/repro/test_repro.py::test_repro_multiple_params",
+                    "tests/func/repro/test_repro.py::test_repro_no_commit",
+                    "tests/func/repro/test_repro.py::test_repro_phony",
+                    "tests/func/repro/test_repro.py::test_repro_pipeline",
+                    "tests/func/repro/test_repro.py::test_repro_pipeline_cli",
+                    "tests/func/repro/test_repro.py::test_repro_pipelines",
+                    "tests/func/repro/test_repro.py::test_repro_pipelines_cli",
+                    "tests/func/repro/test_repro.py::test_repro_pulls_continue_without_run_cache",
+                    "tests/func/repro/test_repro.py::test_repro_pulls_mising_data_source",
+                    "tests/func/repro/test_repro.py::test_repro_rm_recursive",
+                    "tests/func/repro/test_repro.py::test_repro_shell",
+                    "tests/func/repro/test_repro.py::test_repro_single_item_with_multiple_targets",
+                    "tests/func/repro/test_repro.py::test_repro_skip_pull_if_no_run_cache_is_passed",
+                    "tests/func/repro/test_repro.py::test_repro_up_to_date",
+                    "tests/func/repro/test_repro.py::test_repro_when_cmd_changes",
+                    "tests/func/repro/test_repro.py::test_repro_when_lockfile_gets_deleted",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_deps_added_does_not_exist",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_deps_is_added_in_dvcfile",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_deps_is_moved",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_out_overlaps_others_stage_outs",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_outs_added_does_not_exist",
+                    "tests/func/repro/test_repro.py::test_repro_when_new_outs_is_added_in_dvcfile"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

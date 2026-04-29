@@ -1,0 +1,482 @@
+[
+  {
+    "instance_id": "conan-io__conan_2.0.14_2.0.15",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.14_2.0.15/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.14_2.0.15/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.14_2.0.15/router_trace_bundle.json",
+    "router_session_id": "882d19e9-0389-461d-b8d5-419e36e678f6",
+    "router_run_id": "998b532a-7192-4df3-97ab-adec45adfb65",
+    "router_note": "innercc | conan-io__conan_2.0.14_2.0.15 | 2026-04-27 15:46:34"
+  },
+  {
+    "instance_id": "conan-io__conan_2.0.2_2.0.3",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.2_2.0.3/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.2_2.0.3/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/conan-io__conan_2.0.2_2.0.3/router_trace_bundle.json",
+    "router_session_id": "02381fdc-a73d-4b1c-90ff-335abc52da5a",
+    "router_run_id": "80a84d45-81e7-423b-8c32-5cc9697b7d1f",
+    "router_note": "innercc | conan-io__conan_2.0.2_2.0.3 | 2026-04-27 16:01:12"
+  },
+  {
+    "instance_id": "dask__dask_2022.9.2_2022.10.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2022.9.2_2022.10.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2022.9.2_2022.10.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2022.9.2_2022.10.0/router_trace_bundle.json",
+    "router_session_id": "689ae68b-dfdd-4f19-a4ab-0cf7dff7947b",
+    "router_run_id": "040ca10e-4a64-4c96-800e-96144b73a1fa",
+    "router_note": "innercc | dask__dask_2022.9.2_2022.10.0 | 2026-04-27 19:26:42"
+  },
+  {
+    "instance_id": "dask__dask_2023.3.2_2023.4.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.3.2_2023.4.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.3.2_2023.4.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.3.2_2023.4.0/router_trace_bundle.json",
+    "router_session_id": "6be17e71-f924-4a8b-9a28-ebd735ee6e1a",
+    "router_run_id": "54780cf9-b011-4708-8e51-1ed8fd3e1566",
+    "router_note": "innercc | dask__dask_2023.3.2_2023.4.0 | 2026-04-27 19:59:25"
+  },
+  {
+    "instance_id": "dask__dask_2023.6.0_2023.6.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.0_2023.6.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.0_2023.6.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.0_2023.6.1/router_trace_bundle.json",
+    "router_session_id": "1b262c54-6342-4d63-a82e-a63a087d0b45",
+    "router_run_id": "5bf1710b-7cfb-4baa-94d6-2b4d310879d0",
+    "router_note": "innercc | dask__dask_2023.6.0_2023.6.1 | 2026-04-27 20:11:12"
+  },
+  {
+    "instance_id": "dask__dask_2023.6.1_2023.7.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.1_2023.7.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.1_2023.7.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.6.1_2023.7.0/router_trace_bundle.json",
+    "router_session_id": "68d08829-19c5-4e35-92cb-ec500813cd21",
+    "router_run_id": "f92a774d-35cf-4e67-858d-8ebbf0bcfa1a",
+    "router_note": "innercc | dask__dask_2023.6.1_2023.7.0 | 2026-04-27 20:29:56"
+  },
+  {
+    "instance_id": "dask__dask_2023.8.0_2023.8.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.8.0_2023.8.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.8.0_2023.8.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.8.0_2023.8.1/router_trace_bundle.json",
+    "router_session_id": "26f0affb-8305-4b93-b3b6-c26a096d1820",
+    "router_run_id": "4d2b398b-af4c-4906-8a36-8abf084da135",
+    "router_note": "innercc | dask__dask_2023.8.0_2023.8.1 | 2026-04-27 20:34:07"
+  },
+  {
+    "instance_id": "dask__dask_2023.9.2_2023.9.3",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.9.2_2023.9.3/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.9.2_2023.9.3/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2023.9.2_2023.9.3/router_trace_bundle.json",
+    "router_session_id": "f13cb7b3-c198-4d38-8146-59a5d02b76a4",
+    "router_run_id": "389a9519-4375-40b8-86f2-1d7af1990264",
+    "router_note": "innercc | dask__dask_2023.9.2_2023.9.3 | 2026-04-27 20:47:44"
+  },
+  {
+    "instance_id": "dask__dask_2024.1.0_2024.1.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.1.0_2024.1.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.1.0_2024.1.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.1.0_2024.1.1/router_trace_bundle.json",
+    "router_session_id": "ed9e3b3d-8e0c-46b7-9357-5ed7a7e8a0f7",
+    "router_run_id": "c08ec711-c049-465b-a78d-2173a8a10040",
+    "router_note": "innercc | dask__dask_2024.1.0_2024.1.1 | 2026-04-27 21:09:53"
+  },
+  {
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.3.1_2024.4.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.3.1_2024.4.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.3.1_2024.4.0/router_trace_bundle.json",
+    "router_session_id": "8c00c29b-fc8d-4983-84fc-51143d7981e5",
+    "router_run_id": "96211327-07fe-4d7c-ba70-95bd0a03a31b",
+    "router_note": "innercc | dask__dask_2024.3.1_2024.4.0 | 2026-04-27 21:13:42"
+  },
+  {
+    "instance_id": "iterative__dvc_0.30.0_0.30.1",
+    "cli_returncode": 124,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.30.0_0.30.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.30.0_0.30.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.30.0_0.30.1/router_trace_bundle.json",
+    "router_session_id": "d8e93fd8-59e8-40f7-81ed-532130ac170b",
+    "router_run_id": "2da789cf-7479-4f8c-8626-f3bff82dec56",
+    "router_note": "innercc | iterative__dvc_0.30.0_0.30.1 | timeout recovered"
+  },
+  {
+    "instance_id": "iterative__dvc_0.33.1_0.34.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.33.1_0.34.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.33.1_0.34.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.33.1_0.34.0/router_trace_bundle.json",
+    "router_session_id": "1318ec65-b011-4805-a5c5-402f10b0c960",
+    "router_run_id": "9aa63eca-d136-4c89-9e5e-eda4b88920fb",
+    "router_note": "innercc | iterative__dvc_0.33.1_0.34.0 | 2026-04-28 09:15:20"
+  },
+  {
+    "instance_id": "iterative__dvc_0.35.3_0.35.4",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.35.3_0.35.4/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.35.3_0.35.4/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.35.3_0.35.4/router_trace_bundle.json",
+    "router_session_id": "ea076ac0-c8e1-4143-83b8-d15d0dd865c7",
+    "router_run_id": "ae3db4d5-5856-4dbf-a3d2-e742f50d7779",
+    "router_note": "innercc | iterative__dvc_0.35.3_0.35.4 | 2026-04-28 09:19:33"
+  },
+  {
+    "instance_id": "iterative__dvc_0.52.1_0.53.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.52.1_0.53.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.52.1_0.53.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.52.1_0.53.1/router_trace_bundle.json",
+    "router_session_id": "c2f832b4-b5c0-4caf-822d-f1ad3e155dc5",
+    "router_run_id": "fe6431e7-d39d-41a0-9b58-04e3df43c562",
+    "router_note": "innercc | iterative__dvc_0.52.1_0.53.1 | 2026-04-28 09:22:51"
+  },
+  {
+    "instance_id": "iterative__dvc_0.89.0_0.90.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.89.0_0.90.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.89.0_0.90.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.89.0_0.90.0/router_trace_bundle.json",
+    "router_session_id": "4465d429-1350-475b-98d2-f32ea8d25c69",
+    "router_run_id": "17f113da-db8f-43e2-8d8b-a37431a30a58",
+    "router_note": "innercc | iterative__dvc_0.89.0_0.90.0 | 2026-04-28 09:46:36"
+  },
+  {
+    "instance_id": "iterative__dvc_0.91.2_0.91.3",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.91.2_0.91.3/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.91.2_0.91.3/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.91.2_0.91.3/router_trace_bundle.json",
+    "router_session_id": "b96fb09b-42d8-48d0-8e50-079b3a468188",
+    "router_run_id": "c90e7f51-09a1-4998-af35-76aa7d3ba6eb",
+    "router_note": "innercc | iterative__dvc_0.91.2_0.91.3 | 2026-04-28 09:55:51"
+  },
+  {
+    "instance_id": "iterative__dvc_0.92.0_0.92.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.92.0_0.92.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.92.0_0.92.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.92.0_0.92.1/router_trace_bundle.json",
+    "router_session_id": "e12a713e-f795-45dd-8f7f-f742991e9cd3",
+    "router_run_id": "f4c4f669-1747-4367-b1ee-845d04692304",
+    "router_note": "innercc | iterative__dvc_0.92.0_0.92.1 | 2026-04-28 10:18:42"
+  },
+  {
+    "instance_id": "iterative__dvc_1.0.0a1_1.0.0a2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0a1_1.0.0a2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0a1_1.0.0a2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0a1_1.0.0a2/router_trace_bundle.json",
+    "router_session_id": "5c9ae413-fcb0-4b62-b666-80a30694a453",
+    "router_run_id": "0df8475f-68f0-4446-8cf4-433ac0498962",
+    "router_note": "innercc | iterative__dvc_1.0.0a1_1.0.0a2 | 2026-04-28 10:23:14"
+  },
+  {
+    "instance_id": "iterative__dvc_1.0.0b6_1.0.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0b6_1.0.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0b6_1.0.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.0b6_1.0.0/router_trace_bundle.json",
+    "router_session_id": "c8b36618-4661-4498-9bdb-7153ad99ee73",
+    "router_run_id": "cd44bd7d-6d1b-4b9f-8a58-80e5fdd9c206",
+    "router_note": "innercc | iterative__dvc_1.0.0b6_1.0.0 | 2026-04-28 10:34:49"
+  },
+  {
+    "instance_id": "iterative__dvc_1.0.1_1.0.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.1_1.0.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.1_1.0.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.0.1_1.0.2/router_trace_bundle.json",
+    "router_session_id": "16a8f57a-675e-4b4f-9b8d-649ce363c691",
+    "router_run_id": "8467bbe3-3ea9-4e1c-81fc-c3f740c04641",
+    "router_note": "innercc | iterative__dvc_1.0.1_1.0.2 | 2026-04-28 10:39:38"
+  },
+  {
+    "instance_id": "iterative__dvc_1.1.0_1.1.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.0_1.1.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.0_1.1.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.0_1.1.1/router_trace_bundle.json",
+    "router_session_id": "f950b2f3-c9dc-4348-b37e-27925f0aa1fc",
+    "router_run_id": "834d11ba-037e-4628-b679-dc9d717ad933",
+    "router_note": "innercc | iterative__dvc_1.1.0_1.1.1 | 2026-04-28 10:43:30"
+  },
+  {
+    "instance_id": "iterative__dvc_1.1.7_1.1.8",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.7_1.1.8/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.7_1.1.8/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.1.7_1.1.8/router_trace_bundle.json",
+    "router_session_id": "de28b00e-188d-4cb9-a187-d28c76445876",
+    "router_run_id": "a464bb32-9c44-4fd9-afc8-b96af58587b0",
+    "router_note": "innercc | iterative__dvc_1.1.7_1.1.8 | 2026-04-28 10:50:58"
+  },
+  {
+    "instance_id": "iterative__dvc_1.10.2_1.11.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.10.2_1.11.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.10.2_1.11.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.10.2_1.11.0/router_trace_bundle.json",
+    "router_session_id": "7bbb77ac-dfe5-4351-8550-e88bfcb6dc3d",
+    "router_run_id": "023d7d1e-d819-4067-a7e9-46c72ccf1f3d",
+    "router_note": "innercc | iterative__dvc_1.10.2_1.11.0 | 2026-04-28 10:55:24"
+  },
+  {
+    "instance_id": "iterative__dvc_1.11.12_1.11.13",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.11.12_1.11.13/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.11.12_1.11.13/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.11.12_1.11.13/router_trace_bundle.json",
+    "router_session_id": "e755b6e9-d545-45b3-a563-1340da286f30",
+    "router_run_id": "90cec36b-b45b-445d-831d-c09fd4052887",
+    "router_note": "innercc | iterative__dvc_1.11.12_1.11.13 | 2026-04-28 11:14:05"
+  },
+  {
+    "instance_id": "iterative__dvc_1.6.3_1.6.4",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.6.3_1.6.4/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.6.3_1.6.4/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_1.6.3_1.6.4/router_trace_bundle.json",
+    "router_session_id": "72d003df-3422-44be-ae66-32df535dc9d4",
+    "router_run_id": "bc6d5834-5ffc-490c-9a8e-1e929317d369",
+    "router_note": "innercc | iterative__dvc_1.6.3_1.6.4 | 2026-04-28 11:16:35"
+  },
+  {
+    "instance_id": "iterative__dvc_2.19.0_2.20.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.19.0_2.20.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.19.0_2.20.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.19.0_2.20.0/router_trace_bundle.json",
+    "router_session_id": "18cf29e1-d64f-4944-b3e9-6576d6f7f1f8",
+    "router_run_id": "fa3754f4-0021-4bf1-b427-abba6e2e6186",
+    "router_note": "innercc | iterative__dvc_2.19.0_2.20.0 | 2026-04-28 11:22:54"
+  },
+  {
+    "instance_id": "iterative__dvc_2.21.1_2.21.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.21.1_2.21.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.21.1_2.21.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.21.1_2.21.2/router_trace_bundle.json",
+    "router_session_id": "e0728684-a4dc-4d86-95e6-9fdbca1b401d",
+    "router_run_id": "33b284d1-6f1a-40e7-933a-b19355dd1b5b",
+    "router_note": "innercc | iterative__dvc_2.21.1_2.21.2 | 2026-04-28 11:37:56"
+  },
+  {
+    "instance_id": "iterative__dvc_2.5.0_2.5.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.5.0_2.5.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.5.0_2.5.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.5.0_2.5.1/router_trace_bundle.json",
+    "router_session_id": "ec5f855b-8d08-4976-afb8-1e5fc88099dd",
+    "router_run_id": "236c0b03-b5c7-468f-ac2d-0875b60ce4ab",
+    "router_note": "innercc | iterative__dvc_2.5.0_2.5.1 | 2026-04-28 11:40:01"
+  },
+  {
+    "instance_id": "iterative__dvc_2.58.1_2.58.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.58.1_2.58.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.58.1_2.58.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.58.1_2.58.2/router_trace_bundle.json",
+    "router_session_id": "246f1eca-58ac-42ed-b1bf-c00aed97629d",
+    "router_run_id": "ccd4a17a-73ea-4797-a562-a73d5ec2e242",
+    "router_note": "innercc | iterative__dvc_2.58.1_2.58.2 | 2026-04-28 11:45:48"
+  },
+  {
+    "instance_id": "iterative__dvc_2.7.2_2.7.3",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.7.2_2.7.3/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.7.2_2.7.3/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.7.2_2.7.3/router_trace_bundle.json",
+    "router_session_id": "7c8cf758-0186-49df-86d0-f6f1f77ff6a2",
+    "router_run_id": "cd696439-8f6a-4295-9efc-aa03af1eca79",
+    "router_note": "innercc | iterative__dvc_2.7.2_2.7.3 | 2026-04-28 11:48:36"
+  },
+  {
+    "instance_id": "iterative__dvc_2.8.1_2.8.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.8.1_2.8.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.8.1_2.8.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.8.1_2.8.2/router_trace_bundle.json",
+    "router_session_id": "874baf75-4fbb-4586-9f8d-e2bfff48e166",
+    "router_run_id": "3af79f6d-47d3-4af4-8787-684aec51c3b2",
+    "router_note": "innercc | iterative__dvc_2.8.1_2.8.2 | 2026-04-28 12:04:13"
+  },
+  {
+    "instance_id": "iterative__dvc_3.12.0_3.13.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.12.0_3.13.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.12.0_3.13.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.12.0_3.13.0/router_trace_bundle.json",
+    "router_session_id": "11f28eab-d696-477b-856d-49c45c5673bc",
+    "router_run_id": "110ca844-df39-499b-9f3d-0cacf5e96023",
+    "router_note": "innercc | iterative__dvc_3.12.0_3.13.0 | 2026-04-28 12:08:33"
+  },
+  {
+    "instance_id": "iterative__dvc_3.13.3_3.14.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.13.3_3.14.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.13.3_3.14.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.13.3_3.14.0/router_trace_bundle.json",
+    "router_session_id": "f85d0f28-b3cf-4332-811b-b7a867b9cb54",
+    "router_run_id": "7812d78b-3692-4b03-bd3c-a90c3926e9a2",
+    "router_note": "innercc | iterative__dvc_3.13.3_3.14.0 | 2026-04-28 12:14:02"
+  },
+  {
+    "instance_id": "iterative__dvc_3.15.0_3.15.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.15.0_3.15.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.15.0_3.15.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.15.0_3.15.1/router_trace_bundle.json",
+    "router_session_id": "c95dede0-7d26-40ca-8ece-e27f18cd1a60",
+    "router_run_id": "6096ff67-408b-4202-891d-3c0edfc7645e",
+    "router_note": "innercc | iterative__dvc_3.15.0_3.15.1 | 2026-04-28 12:17:22"
+  },
+  {
+    "instance_id": "iterative__dvc_3.4.0_3.5.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.4.0_3.5.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.4.0_3.5.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.4.0_3.5.0/router_trace_bundle.json",
+    "router_session_id": "4729d304-7e3d-424b-b476-e5d0ebe80169",
+    "router_run_id": "dc8bf7be-6812-4f54-b3a0-0c2c3ab55cf3",
+    "router_note": "innercc | iterative__dvc_3.4.0_3.5.0 | 2026-04-28 12:20:57"
+  },
+  {
+    "instance_id": "iterative__dvc_3.43.1_3.44.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.43.1_3.44.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.43.1_3.44.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_3.43.1_3.44.0/router_trace_bundle.json",
+    "router_session_id": "5f1b0b82-0ca8-43d2-90f7-9abe63aa759d",
+    "router_run_id": "1d026501-c5e0-4ec0-8014-59264427d745",
+    "router_note": "innercc | iterative__dvc_3.43.1_3.44.0 | 2026-04-28 12:36:19"
+  },
+  {
+    "instance_id": "modin-project__modin_0.24.0_0.24.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.24.0_0.24.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.24.0_0.24.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.24.0_0.24.1/router_trace_bundle.json",
+    "router_session_id": "0381210f-bdad-4fb4-ad93-cc3dbd92d6ce",
+    "router_run_id": "4ef7e938-e788-4dce-9bff-ca9d43bbda30",
+    "router_note": "innercc | modin-project__modin_0.24.0_0.24.1 | 2026-04-28 12:45:03"
+  },
+  {
+    "instance_id": "modin-project__modin_0.25.0_0.25.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.25.0_0.25.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.25.0_0.25.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.25.0_0.25.1/router_trace_bundle.json",
+    "router_session_id": "87d6b094-1b09-4a9e-928f-a8e06a37cfe7",
+    "router_run_id": "756699de-55e4-490d-9c16-94ecef584db2",
+    "router_note": "innercc | modin-project__modin_0.25.0_0.25.1 | 2026-04-28 13:05:42"
+  },
+  {
+    "instance_id": "modin-project__modin_0.27.0_0.27.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.27.0_0.27.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.27.0_0.27.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/modin-project__modin_0.27.0_0.27.1/router_trace_bundle.json",
+    "router_session_id": "16aee3a5-cd0e-4cdf-b644-7ecf425e9e4f",
+    "router_run_id": "b376eb71-0f87-4ee6-a19c-024c0430698b",
+    "router_note": "innercc | modin-project__modin_0.27.0_0.27.1 | 2026-04-28 13:14:42"
+  },
+  {
+    "instance_id": "psf__requests_v2.12.2_v2.12.3",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.12.2_v2.12.3/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.12.2_v2.12.3/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.12.2_v2.12.3/router_trace_bundle.json",
+    "router_session_id": "6abc4956-220c-4b9b-8324-fe32fbd64a40",
+    "router_run_id": "a6f84d66-e950-4346-8a17-4546d583c054",
+    "router_note": "innercc | psf__requests_v2.12.2_v2.12.3 | 2026-04-28 13:19:51"
+  },
+  {
+    "instance_id": "psf__requests_v2.27.0_v2.27.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.27.0_v2.27.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.27.0_v2.27.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.27.0_v2.27.1/router_trace_bundle.json",
+    "router_session_id": "3d15e732-c696-4017-b15d-15528d03c44c",
+    "router_run_id": "b6b91b5c-3d20-4742-a78a-d3cd967c455d",
+    "router_note": "innercc | psf__requests_v2.27.0_v2.27.1 | 2026-04-28 13:34:42"
+  },
+  {
+    "instance_id": "psf__requests_v2.4.0_v2.4.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.4.0_v2.4.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.4.0_v2.4.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.4.0_v2.4.1/router_trace_bundle.json",
+    "router_session_id": "8016b490-9add-4e92-8061-c97a18be96f1",
+    "router_run_id": "4ec8745a-42b9-4abe-9c01-2ce7b2bb5b82",
+    "router_note": "innercc | psf__requests_v2.4.0_v2.4.1 | 2026-04-28 13:37:06"
+  },
+  {
+    "instance_id": "psf__requests_v2.9.0_v2.9.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.9.0_v2.9.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.9.0_v2.9.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.9.0_v2.9.1/router_trace_bundle.json",
+    "router_session_id": "dca564f4-870a-4c9c-96dd-6e54478cb6c2",
+    "router_run_id": "6cef2b61-2a2e-4e6c-8e5a-3e069d3dabcc",
+    "router_note": "innercc | psf__requests_v2.9.0_v2.9.1 | 2026-04-28 13:44:23"
+  },
+  {
+    "instance_id": "pydantic__pydantic_v2.6.0b1_v2.6.0",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.6.0b1_v2.6.0/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.6.0b1_v2.6.0/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.6.0b1_v2.6.0/router_trace_bundle.json",
+    "router_session_id": "a6aaf167-5581-4f3a-a029-6887da2edf39",
+    "router_run_id": "7cd25b25-aee7-4287-8429-0ea0fc13dd73",
+    "router_note": "innercc | pydantic__pydantic_v2.6.0b1_v2.6.0 | 2026-04-28 13:48:01"
+  },
+  {
+    "instance_id": "pydantic__pydantic_v2.7.0_v2.7.1",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.0_v2.7.1/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.0_v2.7.1/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.0_v2.7.1/router_trace_bundle.json",
+    "router_session_id": "78afcdfc-5569-4bf3-9eb9-b26d4d6481fa",
+    "router_run_id": "31acb252-24c7-4a28-a730-a7190ce5e35c",
+    "router_note": "innercc | pydantic__pydantic_v2.7.0_v2.7.1 | 2026-04-28 14:07:42"
+  },
+  {
+    "instance_id": "pydantic__pydantic_v2.7.1_v2.7.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.1_v2.7.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.1_v2.7.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.1_v2.7.2/router_trace_bundle.json",
+    "router_session_id": "10cd181f-36e6-4b91-ae2b-d1429b05ebf3",
+    "router_run_id": "8774d7a9-de81-408c-a8d2-6c6111b38a34",
+    "router_note": "innercc | pydantic__pydantic_v2.7.1_v2.7.2 | 2026-04-28 14:33:00"
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn_0.20.1_0.20.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.20.1_0.20.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.20.1_0.20.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.20.1_0.20.2/router_trace_bundle.json",
+    "router_session_id": "a583b0a6-7d4f-4e15-8e9e-bff98c3ae4ef",
+    "router_run_id": "faca16ac-431a-4bc4-b064-343594bd1171",
+    "router_note": "innercc | scikit-learn__scikit-learn_0.20.1_0.20.2 | 2026-04-28 14:35:50"
+  },
+  {
+    "instance_id": "scikit-learn__scikit-learn_0.21.1_0.21.2",
+    "cli_returncode": 0,
+    "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.21.1_0.21.2/cli_result.json",
+    "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.21.1_0.21.2/preds.json",
+    "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/scikit-learn__scikit-learn_0.21.1_0.21.2/router_trace_bundle.json",
+    "router_session_id": "f9078691-f713-4c36-bfde-578769bd077f",
+    "router_run_id": "dac9bce0-43dc-408c-9a4f-d09684e6d7ac",
+    "router_note": "innercc | scikit-learn__scikit-learn_0.21.1_0.21.2 | 2026-04-28 14:37:11"
+  }
+]

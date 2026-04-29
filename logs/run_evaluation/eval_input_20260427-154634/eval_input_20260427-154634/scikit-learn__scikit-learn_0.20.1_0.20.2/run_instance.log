@@ -1,0 +1,712 @@
+2026-04-28 19:08:20,156 - INFO - Environment image sweb.env.py.x86_64.aa92880033da20ca313928:latest found for scikit-learn__scikit-learn_0.20.1_0.20.2
+Building instance image sweb.eval.x86_64.scikit-learn__scikit-learn_0.20.1_0.20.2:latest for scikit-learn__scikit-learn_0.20.1_0.20.2
+2026-04-28 19:08:20,172 - INFO - Image sweb.eval.x86_64.scikit-learn__scikit-learn_0.20.1_0.20.2:latest already exists, skipping build.
+2026-04-28 19:08:20,172 - INFO - Creating container for scikit-learn__scikit-learn_0.20.1_0.20.2...
+2026-04-28 19:08:25,971 - INFO - Container for scikit-learn__scikit-learn_0.20.1_0.20.2 created: 7d1002372756980469d449939735f0ff5c93547c911c19ef4dae4d420e8f2d52
+2026-04-28 19:08:26,096 - INFO - Container for scikit-learn__scikit-learn_0.20.1_0.20.2 started: 7d1002372756980469d449939735f0ff5c93547c911c19ef4dae4d420e8f2d52
+2026-04-28 19:08:26,096 - INFO - Intermediate patch for scikit-learn__scikit-learn_0.20.1_0.20.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/scikit-learn__scikit-learn_0.20.1_0.20.2/patch.diff, now applying to container...
+2026-04-28 19:08:26,835 - INFO - >>>>> Applied Patch:
+Checking patch doc/testimonials/testimonials.rst...
+Checking patch sklearn/compose/tests/test_column_transformer.py...
+Checking patch sklearn/decomposition/tests/test_pca.py...
+Checking patch sklearn/linear_model/tests/test_logistic.py...
+Checking patch sklearn/metrics/tests/test_pairwise.py...
+Checking patch sklearn/model_selection/tests/test_split.py...
+Checking patch sklearn/neighbors/tests/test_dist_metrics.py...
+Checking patch sklearn/utils/testing.py...
+Checking patch sklearn/utils/tests/test_validation.py...
+Checking patch sklearn/neighbors/dist_metrics.pyx...
+Applied patch doc/testimonials/testimonials.rst cleanly.
+Applied patch sklearn/compose/tests/test_column_transformer.py cleanly.
+Applied patch sklearn/decomposition/tests/test_pca.py cleanly.
+Applied patch sklearn/linear_model/tests/test_logistic.py cleanly.
+Applied patch sklearn/metrics/tests/test_pairwise.py cleanly.
+Applied patch sklearn/model_selection/tests/test_split.py cleanly.
+Applied patch sklearn/neighbors/tests/test_dist_metrics.py cleanly.
+Applied patch sklearn/utils/testing.py cleanly.
+Applied patch sklearn/utils/tests/test_validation.py cleanly.
+Applied patch sklearn/neighbors/dist_metrics.pyx cleanly.
+
+2026-04-28 19:08:26,932 - INFO - Git diff before:
+diff --git a/doc/testimonials/testimonials.rst b/doc/testimonials/testimonials.rst
+index 983b858f8..0156df9e0 100644
+--- a/doc/testimonials/testimonials.rst
++++ b/doc/testimonials/testimonials.rst
+@@ -76,7 +76,7 @@ Erik Bernhardsson, Engineering Manager Music Discovery & Machine Learning, Spoti
+    </span>
+ 
+ `Inria <https://www.inria.fr/>`_
+--------------------------------
++--------------------------------
+ 
+ .. raw:: html
+ 
+@@ -255,7 +255,7 @@ Alexandre Gramfort, Assistant Professor
+ 
+ 
+ `Booking.com <https://www.booking.com>`_
+--------------------------------------
++-----------------------------------------
+ .. raw:: html
+ 
+   <div class="logo">
+@@ -728,7 +728,7 @@ Guillaume Lebourgeois & Samuel Charron - Data Scientists at Data Publica
+ 
+ 
+ `Machinalis <https://www.machinalis.com/>`_
+------------------------------------------
++-------------------------------------------
+ 
+ .. raw:: html
+ 
+@@ -937,7 +937,7 @@ Vlasios Vasileiou, Head of Data Science, Zopa
+   </span>
+ 
+ `MARS <https://www.mars.com/global>`_
+-------------------------------------
++--------------------------------------
+ 
+ .. raw:: html
+ 
+diff --git a/sklearn/compose/tests/test_column_transformer.py b/sklearn/compose/tests/test_column_transformer.py
+index c201cfef2..d564aa097 100644
+--- a/sklearn/compose/tests/test_column_transformer.py
++++ b/sklearn/compose/tests/test_column_transformer.py
+@@ -542,6 +542,20 @@ def test_make_column_transformer():
+                                 ('first', 'drop'))
+ 
+ 
++def test_make_column_transformer_pandas():
++    pd = pytest.importorskip('pandas')
++    X_array = np.array([[0, 1, 2], [2, 4, 6]]).T
++    X_df = pd.DataFrame(X_array, columns=['first', 'second'])
++    norm = Normalizer()
++    # XXX remove in v0.22
++    with pytest.warns(DeprecationWarning,
++                      match='`make_column_transformer` now expects'):
++        ct1 = make_column_transformer((X_df.columns, norm))
++    ct2 = make_column_transformer((norm, X_df.columns))
++    assert_almost_equal(ct1.fit_transform(X_df),
++                        ct2.fit_transform(X_df))
++
++
+ def test_make_column_transformer_kwargs():
+     scaler = StandardScaler()
+     norm = Normalizer()
+diff --git a/sklearn/decomposition/tests/test_pca.py b/sklearn/decomposition/tests/test_pca.py
+index 0d7af57a3..559a509de 100644
+--- a/sklearn/decomposition/tests/test_pca.py
++++ b/sklearn/decomposition/tests/test_pca.py
+@@ -723,8 +723,9 @@ def check_pca_float_dtype_preservation(svd_solver):
+     assert pca_64.transform(X_64).dtype == np.float64
+     assert pca_32.transform(X_32).dtype == np.float32
+ 
++    # decimal=5 fails on mac with scipy = 1.1.0
+     assert_array_almost_equal(pca_64.components_, pca_32.components_,
+-                              decimal=5)
++                              decimal=4)
+ 
+ 
+ def check_pca_int_dtype_upcast_to_double(svd_solver):
+diff --git a/sklearn/linear_model/tests/test_logistic.py b/sklearn/linear_model/tests/test_logistic.py
+index fbc45dc40..b4ae80701 100644
+--- a/sklearn/linear_model/tests/test_logistic.py
++++ b/sklearn/linear_model/tests/test_logistic.py
+@@ -1150,14 +1150,31 @@ def test_logreg_l1_sparse_data():
+ 
+ @pytest.mark.filterwarnings('ignore: Default multi_class will')  # 0.22
+ @pytest.mark.filterwarnings('ignore: You should specify a value')  # 0.22
+-def test_logreg_cv_penalty():
+-    # Test that the correct penalty is passed to the final fit.
+-    X, y = make_classification(n_samples=50, n_features=20, random_state=0)
+-    lr_cv = LogisticRegressionCV(penalty="l1", Cs=[1.0], solver='saga')
++@pytest.mark.parametrize("random_seed", [42])
++@pytest.mark.parametrize("penalty", ["l1", "l2"])
++def test_logistic_regression_cv_refit(random_seed, penalty):
++    # Test that when refit=True, logistic regression cv with the saga solver
++    # converges to the same solution as logistic regression with a fixed
++    # regularization parameter.
++    # Internally the LogisticRegressionCV model uses a warm start to refit on
++    # the full data model with the optimal C found by CV. As the penalized
++    # logistic regression loss is convex, we should still recover exactly
++    # the same solution as long as the stopping criterion is strict enough (and
++    # that there are no exactly duplicated features when penalty='l1').
++    X, y = make_classification(n_samples=50, n_features=20,
++                               random_state=random_seed)
++    common_params = dict(
++        solver='saga',
++        penalty=penalty,
++        random_state=random_seed,
++        max_iter=10000,
++        tol=1e-12,
++    )
++    lr_cv = LogisticRegressionCV(Cs=[1.0], refit=True, **common_params)
+     lr_cv.fit(X, y)
+-    lr = LogisticRegression(penalty="l1", C=1.0, solver='saga')
++    lr = LogisticRegression(C=1.0, **common_params)
+     lr.fit(X, y)
+-    assert_equal(np.count_nonzero(lr_cv.coef_), np.count_nonzero(lr.coef_))
++    assert_array_almost_equal(lr_cv.coef_, lr.coef_)
+ 
+ 
+ def test_logreg_predict_proba_multinomial():
+diff --git a/sklearn/metrics/tests/test_pairwise.py b/sklearn/metrics/tests/test_pairwise.py
+index d19f3fc87..aa7b0cc80 100644
+--- a/sklearn/metrics/tests/test_pairwise.py
++++ b/sklearn/metrics/tests/test_pairwise.py
+@@ -5,9 +5,12 @@ from numpy import linalg
+ 
+ from scipy.sparse import dok_matrix, csr_matrix, issparse
+ from scipy.spatial.distance import cosine, cityblock, minkowski, wminkowski
++from scipy.spatial.distance import cdist, pdist, squareform
+ 
+ import pytest
+ 
++from sklearn import config_context
++
+ from sklearn.utils.testing import assert_greater
+ from sklearn.utils.testing import assert_array_almost_equal
+ from sklearn.utils.testing import assert_allclose
+@@ -893,3 +896,39 @@ def test_check_preserve_type():
+                                                    XB.astype(np.float))
+     assert_equal(XA_checked.dtype, np.float)
+     assert_equal(XB_checked.dtype, np.float)
++
++
++@pytest.mark.parametrize("n_jobs", [1, 2])
++@pytest.mark.parametrize("metric", ["seuclidean", "mahalanobis"])
++@pytest.mark.parametrize("dist_function",
++                         [pairwise_distances, pairwise_distances_chunked])
++@pytest.mark.parametrize("y_is_x", [True, False], ids=["Y is X", "Y is not X"])
++def test_pairwise_distances_data_derived_params(n_jobs, metric, dist_function,
++                                                y_is_x):
++    # check that pairwise_distances give the same result in sequential and
++    # parallel, when metric has data-derived parameters.
++    with config_context(working_memory=0.1):  # to have more than 1 chunk
++        rng = np.random.RandomState(0)
++        X = rng.random_sample((1000, 10))
++
++        if y_is_x:
++            Y = X
++            expected_dist_default_params = squareform(pdist(X, metric=metric))
++            if metric == "seuclidean":
++                params = {'V': np.var(X, axis=0, ddof=1)}
++            else:
++                params = {'VI': np.linalg.inv(np.cov(X.T)).T}
++        else:
++            Y = rng.random_sample((1000, 10))
++            expected_dist_default_params = cdist(X, Y, metric=metric)
++            if metric == "seuclidean":
++                params = {'V': np.var(np.vstack([X, Y]), axis=0, ddof=1)}
++            else:
++                params = {'VI': np.linalg.inv(np.cov(np.vstack([X, Y]).T)).T}
++
++        expected_dist_explicit_params = cdist(X, Y, metric=metric, **params)
++        dist = np.vstack(tuple(dist_function(X, Y,
++                                             metric=metric, n_jobs=n_jobs)))
++
++        assert_allclose(dist, expected_dist_explicit_params)
++        assert_allclose(dist, expected_dist_default_params)
+diff --git a/sklearn/model_selection/tests/test_split.py b/sklearn/model_selection/tests/test_split.py
+index 308c94a2e..887a6b0a3 100644
+--- a/sklearn/model_selection/tests/test_split.py
++++ b/sklearn/model_selection/tests/test_split.py
+@@ -458,13 +458,13 @@ def test_shuffle_kfold():
+ 
+ 
+ def test_shuffle_kfold_stratifiedkfold_reproducibility():
+-    # Check that when the shuffle is True multiple split calls produce the
+-    # same split when random_state is set
+     X = np.ones(15)  # Divisible by 3
+     y = [0] * 7 + [1] * 8
+     X2 = np.ones(16)  # Not divisible by 3
+     y2 = [0] * 8 + [1] * 8
+ 
++    # Check that when the shuffle is True, multiple split calls produce the
++    # same split when random_state is int
+     kf = KFold(3, shuffle=True, random_state=0)
+     skf = StratifiedKFold(3, shuffle=True, random_state=0)
+ 
+@@ -472,8 +472,12 @@ def test_shuffle_kfold_stratifiedkfold_reproducibility():
+         np.testing.assert_equal(list(cv.split(X, y)), list(cv.split(X, y)))
+         np.testing.assert_equal(list(cv.split(X2, y2)), list(cv.split(X2, y2)))
+ 
+-    kf = KFold(3, shuffle=True)
+-    skf = StratifiedKFold(3, shuffle=True)
++    # Check that when the shuffle is True, multiple split calls often
++    # (not always) produce different splits when random_state is
++    # RandomState instance or None
++    kf = KFold(3, shuffle=True, random_state=np.random.RandomState(0))
++    skf = StratifiedKFold(3, shuffle=True,
++                          random_state=np.random.RandomState(0))
+ 
+     for cv in (kf, skf):
+         for data in zip((X, X2), (y, y2)):
+diff --git a/sklearn/neighbors/dist_metrics.pyx b/sklearn/neighbors/dist_metrics.pyx
+index 440187d60..db76b4fd4 100755
+--- a/sklearn/neighbors/dist_metrics.pyx
++++ b/sklearn/neighbors/dist_metrics.pyx
+@@ -788,6 +788,8 @@ cdef class JaccardDistance(DistanceMetric):
+             tf2 = x2[j] != 0
+             nnz += (tf1 or tf2)
+             n_eq += (tf1 and tf2)
++        if nnz == 0:
++            return 0.0
+         return (nnz - n_eq) * 1.0 / nnz
+ 
+ 
+diff --git a/sklearn/neighbors/tests/test_dist_metrics.py b/sklearn/neighbors/tests/test_dist_metrics.py
+index f4d6dc3e7..67be5631d 100644
+--- a/sklearn/neighbors/tests/test_dist_metrics.py
++++ b/sklearn/neighbors/tests/test_dist_metrics.py
+@@ -6,6 +6,8 @@ from numpy.testing import assert_array_almost_equal
+ 
+ import pytest
+ 
++from distutils.version import LooseVersion
++from scipy import __version__ as scipy_version
+ from scipy.spatial.distance import cdist
+ from sklearn.neighbors.dist_metrics import DistanceMetric
+ from sklearn.neighbors import BallTree
+@@ -101,6 +103,11 @@ def check_pdist(metric, kwargs, D_true):
+ def check_pdist_bool(metric, D_true):
+     dm = DistanceMetric.get_metric(metric)
+     D12 = dm.pairwise(X1_bool)
++    # Based on https://github.com/scipy/scipy/pull/7373
++    # When comparing two all-zero vectors, scipy>=1.2.0 jaccard metric
++    # was changed to return 0, instead of nan.
++    if metric == 'jaccard' and LooseVersion(scipy_version) < '1.2.0':
++        D_true[np.isnan(D_true)] = 0
+     assert_array_almost_equal(D12, D_true)
+ 
+ 
+diff --git a/sklearn/utils/testing.py b/sklearn/utils/testing.py
+index db43cce6f..e5fd61467 100644
+--- a/sklearn/utils/testing.py
++++ b/sklearn/utils/testing.py
+@@ -42,12 +42,21 @@ try:
+ except NameError:
+     WindowsError = None
+ 
++from numpy.testing import assert_allclose
++from numpy.testing import assert_almost_equal
++from numpy.testing import assert_approx_equal
++from numpy.testing import assert_array_equal
++from numpy.testing import assert_array_almost_equal
++from numpy.testing import assert_array_less
++import numpy as np
++
+ import sklearn
+-from sklearn.base import BaseEstimator
++from sklearn.base import (BaseEstimator, ClassifierMixin, ClusterMixin,
++                          RegressorMixin, TransformerMixin)
++from sklearn.utils import deprecated, IS_PYPY, _IS_32BIT
+ from sklearn.utils._joblib import joblib
++from sklearn.utils._unittest_backport import TestCase
+ from sklearn.utils.fixes import signature
+-from sklearn.utils import deprecated, IS_PYPY, _IS_32BIT
+-
+ 
+ additional_names_in_all = []
+ try:
+@@ -73,24 +82,13 @@ try:
+ except ImportError:
+     pass
+ 
+-from numpy.testing import assert_almost_equal
+-from numpy.testing import assert_array_equal
+-from numpy.testing import assert_array_almost_equal
+-from numpy.testing import assert_array_less
+-from numpy.testing import assert_approx_equal
+-import numpy as np
+-
+-from sklearn.base import (ClassifierMixin, RegressorMixin, TransformerMixin,
+-                          ClusterMixin)
+-from sklearn.utils._unittest_backport import TestCase
+-
+ __all__ = ["assert_equal", "assert_not_equal", "assert_raises",
+            "assert_raises_regexp", "assert_true",
+            "assert_false", "assert_almost_equal", "assert_array_equal",
+            "assert_array_almost_equal", "assert_array_less",
+            "assert_less", "assert_less_equal",
+            "assert_greater", "assert_greater_equal",
+-           "assert_approx_equal", "SkipTest"]
++           "assert_approx_equal", "assert_allclose", "SkipTest"]
+ __all__.extend(additional_names_in_all)
+ 
+ _dummy = TestCase('__init__')
+@@ -379,11 +377,6 @@ class _IgnoreWarnings(object):
+         clean_warning_registry()
+ 
+ 
+-assert_less = _dummy.assertLess
+-assert_greater = _dummy.assertGreater
+-
+-assert_allclose = np.testing.assert_allclose
+-
+ def assert_raise_message(exceptions, message, function, *args, **kwargs):
+     """Helper function to test the message raised in an exception.
+ 
+diff --git a/sklearn/utils/tests/test_validation.py b/sklearn/utils/tests/test_validation.py
+index 9ff3794ff..b3af8e3a9 100644
+--- a/sklearn/utils/tests/test_validation.py
++++ b/sklearn/utils/tests/test_validation.py
+@@ -700,6 +700,11 @@ def test_check_array_series():
+                       warn_on_dtype=True)
+     assert_array_equal(res, np.array([1, 2, 3]))
+ 
++    # with categorical dtype (not a numpy dtype) (GH12699)
++    s = pd.Series(['a', 'b', 'c']).astype('category')
++    res = check_array(s, dtype=None, ensure_2d=False)
++    assert_array_equal(res, np.array(['a', 'b', 'c'], dtype=object))
++
+ 
+ def test_check_dataframe_warns_on_dtype():
+     # Check that warn_on_dtype also works for DataFrames.
+2026-04-28 19:08:26,932 - INFO - Eval script for scikit-learn__scikit-learn_0.20.1_0.20.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/scikit-learn__scikit-learn_0.20.1_0.20.2/eval.sh; copying to container...
+2026-04-28 19:11:00,047 - INFO - Test runtime: 153.06 seconds
+2026-04-28 19:11:00,048 - INFO - Test output for scikit-learn__scikit-learn_0.20.1_0.20.2 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/scikit-learn__scikit-learn_0.20.1_0.20.2/test_output.txt
+2026-04-28 19:11:00,105 - INFO - Git diff after:
+diff --git a/doc/testimonials/testimonials.rst b/doc/testimonials/testimonials.rst
+index 983b858f8..0156df9e0 100644
+--- a/doc/testimonials/testimonials.rst
++++ b/doc/testimonials/testimonials.rst
+@@ -76,7 +76,7 @@ Erik Bernhardsson, Engineering Manager Music Discovery & Machine Learning, Spoti
+    </span>
+ 
+ `Inria <https://www.inria.fr/>`_
+--------------------------------
++--------------------------------
+ 
+ .. raw:: html
+ 
+@@ -255,7 +255,7 @@ Alexandre Gramfort, Assistant Professor
+ 
+ 
+ `Booking.com <https://www.booking.com>`_
+--------------------------------------
++-----------------------------------------
+ .. raw:: html
+ 
+   <div class="logo">
+@@ -728,7 +728,7 @@ Guillaume Lebourgeois & Samuel Charron - Data Scientists at Data Publica
+ 
+ 
+ `Machinalis <https://www.machinalis.com/>`_
+------------------------------------------
++-------------------------------------------
+ 
+ .. raw:: html
+ 
+@@ -937,7 +937,7 @@ Vlasios Vasileiou, Head of Data Science, Zopa
+   </span>
+ 
+ `MARS <https://www.mars.com/global>`_
+-------------------------------------
++--------------------------------------
+ 
+ .. raw:: html
+ 
+diff --git a/sklearn/compose/tests/test_column_transformer.py b/sklearn/compose/tests/test_column_transformer.py
+index c201cfef2..d564aa097 100644
+--- a/sklearn/compose/tests/test_column_transformer.py
++++ b/sklearn/compose/tests/test_column_transformer.py
+@@ -542,6 +542,20 @@ def test_make_column_transformer():
+                                 ('first', 'drop'))
+ 
+ 
++def test_make_column_transformer_pandas():
++    pd = pytest.importorskip('pandas')
++    X_array = np.array([[0, 1, 2], [2, 4, 6]]).T
++    X_df = pd.DataFrame(X_array, columns=['first', 'second'])
++    norm = Normalizer()
++    # XXX remove in v0.22
++    with pytest.warns(DeprecationWarning,
++                      match='`make_column_transformer` now expects'):
++        ct1 = make_column_transformer((X_df.columns, norm))
++    ct2 = make_column_transformer((norm, X_df.columns))
++    assert_almost_equal(ct1.fit_transform(X_df),
++                        ct2.fit_transform(X_df))
++
++
+ def test_make_column_transformer_kwargs():
+     scaler = StandardScaler()
+     norm = Normalizer()
+diff --git a/sklearn/decomposition/tests/test_pca.py b/sklearn/decomposition/tests/test_pca.py
+index 0d7af57a3..559a509de 100644
+--- a/sklearn/decomposition/tests/test_pca.py
++++ b/sklearn/decomposition/tests/test_pca.py
+@@ -723,8 +723,9 @@ def check_pca_float_dtype_preservation(svd_solver):
+     assert pca_64.transform(X_64).dtype == np.float64
+     assert pca_32.transform(X_32).dtype == np.float32
+ 
++    # decimal=5 fails on mac with scipy = 1.1.0
+     assert_array_almost_equal(pca_64.components_, pca_32.components_,
+-                              decimal=5)
++                              decimal=4)
+ 
+ 
+ def check_pca_int_dtype_upcast_to_double(svd_solver):
+diff --git a/sklearn/linear_model/tests/test_logistic.py b/sklearn/linear_model/tests/test_logistic.py
+index fbc45dc40..b4ae80701 100644
+--- a/sklearn/linear_model/tests/test_logistic.py
++++ b/sklearn/linear_model/tests/test_logistic.py
+@@ -1150,14 +1150,31 @@ def test_logreg_l1_sparse_data():
+ 
+ @pytest.mark.filterwarnings('ignore: Default multi_class will')  # 0.22
+ @pytest.mark.filterwarnings('ignore: You should specify a value')  # 0.22
+-def test_logreg_cv_penalty():
+-    # Test that the correct penalty is passed to the final fit.
+-    X, y = make_classification(n_samples=50, n_features=20, random_state=0)
+-    lr_cv = LogisticRegressionCV(penalty="l1", Cs=[1.0], solver='saga')
++@pytest.mark.parametrize("random_seed", [42])
++@pytest.mark.parametrize("penalty", ["l1", "l2"])
++def test_logistic_regression_cv_refit(random_seed, penalty):
++    # Test that when refit=True, logistic regression cv with the saga solver
++    # converges to the same solution as logistic regression with a fixed
++    # regularization parameter.
++    # Internally the LogisticRegressionCV model uses a warm start to refit on
++    # the full data model with the optimal C found by CV. As the penalized
++    # logistic regression loss is convex, we should still recover exactly
++    # the same solution as long as the stopping criterion is strict enough (and
++    # that there are no exactly duplicated features when penalty='l1').
++    X, y = make_classification(n_samples=50, n_features=20,
++                               random_state=random_seed)
++    common_params = dict(
++        solver='saga',
++        penalty=penalty,
++        random_state=random_seed,
++        max_iter=10000,
++        tol=1e-12,
++    )
++    lr_cv = LogisticRegressionCV(Cs=[1.0], refit=True, **common_params)
+     lr_cv.fit(X, y)
+-    lr = LogisticRegression(penalty="l1", C=1.0, solver='saga')
++    lr = LogisticRegression(C=1.0, **common_params)
+     lr.fit(X, y)
+-    assert_equal(np.count_nonzero(lr_cv.coef_), np.count_nonzero(lr.coef_))
++    assert_array_almost_equal(lr_cv.coef_, lr.coef_)
+ 
+ 
+ def test_logreg_predict_proba_multinomial():
+diff --git a/sklearn/metrics/tests/test_pairwise.py b/sklearn/metrics/tests/test_pairwise.py
+index d19f3fc87..aa7b0cc80 100644
+--- a/sklearn/metrics/tests/test_pairwise.py
++++ b/sklearn/metrics/tests/test_pairwise.py
+@@ -5,9 +5,12 @@ from numpy import linalg
+ 
+ from scipy.sparse import dok_matrix, csr_matrix, issparse
+ from scipy.spatial.distance import cosine, cityblock, minkowski, wminkowski
++from scipy.spatial.distance import cdist, pdist, squareform
+ 
+ import pytest
+ 
++from sklearn import config_context
++
+ from sklearn.utils.testing import assert_greater
+ from sklearn.utils.testing import assert_array_almost_equal
+ from sklearn.utils.testing import assert_allclose
+@@ -893,3 +896,39 @@ def test_check_preserve_type():
+                                                    XB.astype(np.float))
+     assert_equal(XA_checked.dtype, np.float)
+     assert_equal(XB_checked.dtype, np.float)
++
++
++@pytest.mark.parametrize("n_jobs", [1, 2])
++@pytest.mark.parametrize("metric", ["seuclidean", "mahalanobis"])
++@pytest.mark.parametrize("dist_function",
++                         [pairwise_distances, pairwise_distances_chunked])
++@pytest.mark.parametrize("y_is_x", [True, False], ids=["Y is X", "Y is not X"])
++def test_pairwise_distances_data_derived_params(n_jobs, metric, dist_function,
++                                                y_is_x):
++    # check that pairwise_distances give the same result in sequential and
++    # parallel, when metric has data-derived parameters.
++    with config_context(working_memory=0.1):  # to have more than 1 chunk
++        rng = np.random.RandomState(0)
++        X = rng.random_sample((1000, 10))
++
++        if y_is_x:
++            Y = X
++            expected_dist_default_params = squareform(pdist(X, metric=metric))
++            if metric == "seuclidean":
++                params = {'V': np.var(X, axis=0, ddof=1)}
++            else:
++                params = {'VI': np.linalg.inv(np.cov(X.T)).T}
++        else:
++            Y = rng.random_sample((1000, 10))
++            expected_dist_default_params = cdist(X, Y, metric=metric)
++            if metric == "seuclidean":
++                params = {'V': np.var(np.vstack([X, Y]), axis=0, ddof=1)}
++            else:
++                params = {'VI': np.linalg.inv(np.cov(np.vstack([X, Y]).T)).T}
++
++        expected_dist_explicit_params = cdist(X, Y, metric=metric, **params)
++        dist = np.vstack(tuple(dist_function(X, Y,
++                                             metric=metric, n_jobs=n_jobs)))
++
++        assert_allclose(dist, expected_dist_explicit_params)
++        assert_allclose(dist, expected_dist_default_params)
+diff --git a/sklearn/model_selection/tests/test_split.py b/sklearn/model_selection/tests/test_split.py
+index 308c94a2e..887a6b0a3 100644
+--- a/sklearn/model_selection/tests/test_split.py
++++ b/sklearn/model_selection/tests/test_split.py
+@@ -458,13 +458,13 @@ def test_shuffle_kfold():
+ 
+ 
+ def test_shuffle_kfold_stratifiedkfold_reproducibility():
+-    # Check that when the shuffle is True multiple split calls produce the
+-    # same split when random_state is set
+     X = np.ones(15)  # Divisible by 3
+     y = [0] * 7 + [1] * 8
+     X2 = np.ones(16)  # Not divisible by 3
+     y2 = [0] * 8 + [1] * 8
+ 
++    # Check that when the shuffle is True, multiple split calls produce the
++    # same split when random_state is int
+     kf = KFold(3, shuffle=True, random_state=0)
+     skf = StratifiedKFold(3, shuffle=True, random_state=0)
+ 
+@@ -472,8 +472,12 @@ def test_shuffle_kfold_stratifiedkfold_reproducibility():
+         np.testing.assert_equal(list(cv.split(X, y)), list(cv.split(X, y)))
+         np.testing.assert_equal(list(cv.split(X2, y2)), list(cv.split(X2, y2)))
+ 
+-    kf = KFold(3, shuffle=True)
+-    skf = StratifiedKFold(3, shuffle=True)
++    # Check that when the shuffle is True, multiple split calls often
++    # (not always) produce different splits when random_state is
++    # RandomState instance or None
++    kf = KFold(3, shuffle=True, random_state=np.random.RandomState(0))
++    skf = StratifiedKFold(3, shuffle=True,
++                          random_state=np.random.RandomState(0))
+ 
+     for cv in (kf, skf):
+         for data in zip((X, X2), (y, y2)):
+diff --git a/sklearn/neighbors/dist_metrics.pyx b/sklearn/neighbors/dist_metrics.pyx
+index 440187d60..db76b4fd4 100755
+--- a/sklearn/neighbors/dist_metrics.pyx
++++ b/sklearn/neighbors/dist_metrics.pyx
+@@ -788,6 +788,8 @@ cdef class JaccardDistance(DistanceMetric):
+             tf2 = x2[j] != 0
+             nnz += (tf1 or tf2)
+             n_eq += (tf1 and tf2)
++        if nnz == 0:
++            return 0.0
+         return (nnz - n_eq) * 1.0 / nnz
+ 
+ 
+diff --git a/sklearn/neighbors/tests/test_dist_metrics.py b/sklearn/neighbors/tests/test_dist_metrics.py
+index f4d6dc3e7..67be5631d 100644
+--- a/sklearn/neighbors/tests/test_dist_metrics.py
++++ b/sklearn/neighbors/tests/test_dist_metrics.py
+@@ -6,6 +6,8 @@ from numpy.testing import assert_array_almost_equal
+ 
+ import pytest
+ 
++from distutils.version import LooseVersion
++from scipy import __version__ as scipy_version
+ from scipy.spatial.distance import cdist
+ from sklearn.neighbors.dist_metrics import DistanceMetric
+ from sklearn.neighbors import BallTree
+@@ -101,6 +103,11 @@ def check_pdist(metric, kwargs, D_true):
+ def check_pdist_bool(metric, D_true):
+     dm = DistanceMetric.get_metric(metric)
+     D12 = dm.pairwise(X1_bool)
++    # Based on https://github.com/scipy/scipy/pull/7373
++    # When comparing two all-zero vectors, scipy>=1.2.0 jaccard metric
++    # was changed to return 0, instead of nan.
++    if metric == 'jaccard' and LooseVersion(scipy_version) < '1.2.0':
++        D_true[np.isnan(D_true)] = 0
+     assert_array_almost_equal(D12, D_true)
+ 
+ 
+diff --git a/sklearn/utils/testing.py b/sklearn/utils/testing.py
+index db43cce6f..e5fd61467 100644
+--- a/sklearn/utils/testing.py
++++ b/sklearn/utils/testing.py
+@@ -42,12 +42,21 @@ try:
+ except NameError:
+     WindowsError = None
+ 
++from numpy.testing import assert_allclose
++from numpy.testing import assert_almost_equal
++from numpy.testing import assert_approx_equal
++from numpy.testing import assert_array_equal
++from numpy.testing import assert_array_almost_equal
++from numpy.testing import assert_array_less
++import numpy as np
++
+ import sklearn
+-from sklearn.base import BaseEstimator
++from sklearn.base import (BaseEstimator, ClassifierMixin, ClusterMixin,
++                          RegressorMixin, TransformerMixin)
++from sklearn.utils import deprecated, IS_PYPY, _IS_32BIT
+ from sklearn.utils._joblib import joblib
++from sklearn.utils._unittest_backport import TestCase
+ from sklearn.utils.fixes import signature
+-from sklearn.utils import deprecated, IS_PYPY, _IS_32BIT
+-
+ 
+ additional_names_in_all = []
+ try:
+@@ -73,24 +82,13 @@ try:
+ except ImportError:
+     pass
+ 
+-from numpy.testing import assert_almost_equal
+-from numpy.testing import assert_array_equal
+-from numpy.testing import assert_array_almost_equal
+-from numpy.testing import assert_array_less
+-from numpy.testing import assert_approx_equal
+-import numpy as np
+-
+-from sklearn.base import (ClassifierMixin, RegressorMixin, TransformerMixin,
+-                          ClusterMixin)
+-from sklearn.utils._unittest_backport import TestCase
+-
+ __all__ = ["assert_equal", "assert_not_equal", "assert_raises",
+            "assert_raises_regexp", "assert_true",
+            "assert_false", "assert_almost_equal", "assert_array_equal",
+            "assert_array_almost_equal", "assert_array_less",
+            "assert_less", "assert_less_equal",
+            "assert_greater", "assert_greater_equal",
+-           "assert_approx_equal", "SkipTest"]
++           "assert_approx_equal", "assert_allclose", "SkipTest"]
+ __all__.extend(additional_names_in_all)
+ 
+ _dummy = TestCase('__init__')
+@@ -379,11 +377,6 @@ class _IgnoreWarnings(object):
+         clean_warning_registry()
+ 
+ 
+-assert_less = _dummy.assertLess
+-assert_greater = _dummy.assertGreater
+-
+-assert_allclose = np.testing.assert_allclose
+-
+ def assert_raise_message(exceptions, message, function, *args, **kwargs):
+     """Helper function to test the message raised in an exception.
+ 
+diff --git a/sklearn/utils/tests/test_validation.py b/sklearn/utils/tests/test_validation.py
+index 9ff3794ff..b3af8e3a9 100644
+--- a/sklearn/utils/tests/test_validation.py
++++ b/sklearn/utils/tests/test_validation.py
+@@ -700,6 +700,11 @@ def test_check_array_series():
+                       warn_on_dtype=True)
+     assert_array_equal(res, np.array([1, 2, 3]))
+ 
++    # with categorical dtype (not a numpy dtype) (GH12699)
++    s = pd.Series(['a', 'b', 'c']).astype('category')
++    res = check_array(s, dtype=None, ensure_2d=False)
++    assert_array_equal(res, np.array(['a', 'b', 'c'], dtype=object))
++
+ 
+ def test_check_dataframe_warns_on_dtype():
+     # Check that warn_on_dtype also works for DataFrames.
+2026-04-28 19:11:00,105 - INFO - Grading answer for scikit-learn__scikit-learn_0.20.1_0.20.2...
+2026-04-28 19:11:00,119 - INFO - report: {'scikit-learn__scikit-learn_0.20.1_0.20.2': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': ['sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[jaccard]'], 'failure': []}, 'PASS_TO_PASS': {'success': ['sklearn/compose/tests/test_column_transformer.py::test_2D_transformer_output', 'sklearn/compose/tests/test_column_transformer.py::test_2D_transformer_output_pandas', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_callable_specifier', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_cloning', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_dataframe', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_drop_all_sparse_remainder_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_drops_all_remainder_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_empty_columns[bool-numpy]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_empty_columns[bool-pandas]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_empty_columns[list-numpy]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_empty_columns[list-pandas]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_error_msg_1D', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_get_feature_names', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_get_set_params', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_get_set_params_with_remainder', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_invalid_columns[drop]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_invalid_columns[passthrough]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_invalid_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_list', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_mixed_cols_sparse', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_named_estimators', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_no_estimators', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_no_estimators_set_params', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_no_remaining_remainder_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_numpy[key0]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_numpy[key1]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_numpy[key2]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_numpy[key3]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key0]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key1]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key2]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key3]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key5]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key6]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key7]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[key8]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_pandas[pd-index]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_transformer[key0]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_transformer[key1]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_transformer[key2]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_remainder_transformer[key3]', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_sparse_array', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_sparse_remainder_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_sparse_stacking', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_sparse_threshold', 'sklearn/compose/tests/test_column_transformer.py::test_column_transformer_special_strings', 'sklearn/compose/tests/test_column_transformer.py::test_make_column_transformer', 'sklearn/compose/tests/test_column_transformer.py::test_make_column_transformer_kwargs', 'sklearn/compose/tests/test_column_transformer.py::test_make_column_transformer_remainder_transformer', 'sklearn/decomposition/tests/test_pca.py::test_explained_variance', 'sklearn/decomposition/tests/test_pca.py::test_infer_dim_1', 'sklearn/decomposition/tests/test_pca.py::test_infer_dim_2', 'sklearn/decomposition/tests/test_pca.py::test_infer_dim_3', 'sklearn/decomposition/tests/test_pca.py::test_infer_dim_by_explained_variance', 'sklearn/decomposition/tests/test_pca.py::test_n_components_mle', 'sklearn/decomposition/tests/test_pca.py::test_n_components_none[arpack]', 'sklearn/decomposition/tests/test_pca.py::test_n_components_none[auto]', 'sklearn/decomposition/tests/test_pca.py::test_n_components_none[full]', 'sklearn/decomposition/tests/test_pca.py::test_n_components_none[randomized]', 'sklearn/decomposition/tests/test_pca.py::test_no_empty_slice_warning', 'sklearn/decomposition/tests/test_pca.py::test_pca', 'sklearn/decomposition/tests/test_pca.py::test_pca_arpack_solver', 'sklearn/decomposition/tests/test_pca.py::test_pca_bad_solver', 'sklearn/decomposition/tests/test_pca.py::test_pca_check_projection', 'sklearn/decomposition/tests/test_pca.py::test_pca_dim', 'sklearn/decomposition/tests/test_pca.py::test_pca_dtype_preservation[arpack]', 'sklearn/decomposition/tests/test_pca.py::test_pca_dtype_preservation[auto]', 'sklearn/decomposition/tests/test_pca.py::test_pca_dtype_preservation[full]', 'sklearn/decomposition/tests/test_pca.py::test_pca_dtype_preservation[randomized]', 'sklearn/decomposition/tests/test_pca.py::test_pca_inverse', 'sklearn/decomposition/tests/test_pca.py::test_pca_randomized_solver', 'sklearn/decomposition/tests/test_pca.py::test_pca_score', 'sklearn/decomposition/tests/test_pca.py::test_pca_score2', 'sklearn/decomposition/tests/test_pca.py::test_pca_score3', 'sklearn/decomposition/tests/test_pca.py::test_pca_score_with_different_solvers', 'sklearn/decomposition/tests/test_pca.py::test_pca_sparse_input[arpack]', 'sklearn/decomposition/tests/test_pca.py::test_pca_sparse_input[auto]', 'sklearn/decomposition/tests/test_pca.py::test_pca_sparse_input[full]', 'sklearn/decomposition/tests/test_pca.py::test_pca_sparse_input[randomized]', 'sklearn/decomposition/tests/test_pca.py::test_pca_validation[arpack]', 'sklearn/decomposition/tests/test_pca.py::test_pca_validation[auto]', 'sklearn/decomposition/tests/test_pca.py::test_pca_validation[full]', 'sklearn/decomposition/tests/test_pca.py::test_pca_validation[randomized]', 'sklearn/decomposition/tests/test_pca.py::test_pca_zero_noise_variance_edge_cases', 'sklearn/decomposition/tests/test_pca.py::test_randomized_pca_check_list', 'sklearn/decomposition/tests/test_pca.py::test_randomized_pca_check_projection', 'sklearn/decomposition/tests/test_pca.py::test_randomized_pca_inverse', 'sklearn/decomposition/tests/test_pca.py::test_singular_values', 'sklearn/decomposition/tests/test_pca.py::test_svd_solver_auto', 'sklearn/decomposition/tests/test_pca.py::test_whitening', 'sklearn/linear_model/tests/test_logistic.py::test_check_solver_option[LogisticRegressionCV]', 'sklearn/linear_model/tests/test_logistic.py::test_check_solver_option[LogisticRegression]', 'sklearn/linear_model/tests/test_logistic.py::test_consistency_path', 'sklearn/linear_model/tests/test_logistic.py::test_dtype_match[multinomial]', 'sklearn/linear_model/tests/test_logistic.py::test_dtype_match[ovr]', 'sklearn/linear_model/tests/test_logistic.py::test_error', 'sklearn/linear_model/tests/test_logistic.py::test_inconsistent_input', 'sklearn/linear_model/tests/test_logistic.py::test_intercept_logistic_helper', 'sklearn/linear_model/tests/test_logistic.py::test_liblinear_decision_function_zero', 'sklearn/linear_model/tests/test_logistic.py::test_liblinear_dual_random_state', 'sklearn/linear_model/tests/test_logistic.py::test_liblinear_logregcv_sparse', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_mock_scorer', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_multinomial_score[accuracy-multiclass_agg_list0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_multinomial_score[f1-multiclass_agg_list2]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_multinomial_score[neg_log_loss-multiclass_agg_list3]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_multinomial_score[precision-multiclass_agg_list1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_multinomial_score[recall-multiclass_agg_list4]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_score_does_not_warn_by_default', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_cv_sparse', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_grad_hess', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_loss_and_grad', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_class_weights', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[lbfgs-est0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[lbfgs-est1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[liblinear-est0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[liblinear-est1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[newton-cg-est0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[newton-cg-est1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[sag-est0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[sag-est1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[saga-est0]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multi_class_auto[saga-est1]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_multinomial', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_path_coefs_multinomial', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_path_convergence_fail', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_sample_weights', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_solvers', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_solvers_multiclass', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_warnings[LogisticRegression-params0-True]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regression_warnings[LogisticRegressionCV-params1-False]', 'sklearn/linear_model/tests/test_logistic.py::test_logistic_regressioncv_class_weights', 'sklearn/linear_model/tests/test_logistic.py::test_logreg_intercept_scaling', 'sklearn/linear_model/tests/test_logistic.py::test_logreg_intercept_scaling_zero', 'sklearn/linear_model/tests/test_logistic.py::test_logreg_l1', 'sklearn/linear_model/tests/test_logistic.py::test_logreg_l1_sparse_data', 'sklearn/linear_model/tests/test_logistic.py::test_logreg_predict_proba_multinomial', 'sklearn/linear_model/tests/test_logistic.py::test_lr_liblinear_warning', 'sklearn/linear_model/tests/test_logistic.py::test_max_iter', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_binary[lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_binary[newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_binary[sag]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_binary[saga]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_binary_probabilities', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_grad_hess', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_logistic_regression_string_inputs', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_validation[lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_validation[newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_validation[sag]', 'sklearn/linear_model/tests/test_logistic.py::test_multinomial_validation[saga]', 'sklearn/linear_model/tests/test_logistic.py::test_n_iter[lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_n_iter[liblinear]', 'sklearn/linear_model/tests/test_logistic.py::test_n_iter[newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_n_iter[sag]', 'sklearn/linear_model/tests/test_logistic.py::test_n_iter[saga]', 'sklearn/linear_model/tests/test_logistic.py::test_nan', 'sklearn/linear_model/tests/test_logistic.py::test_ovr_multinomial_iris', 'sklearn/linear_model/tests/test_logistic.py::test_predict_2_classes', 'sklearn/linear_model/tests/test_logistic.py::test_predict_3_classes', 'sklearn/linear_model/tests/test_logistic.py::test_predict_iris', 'sklearn/linear_model/tests/test_logistic.py::test_saga_sparse', 'sklearn/linear_model/tests/test_logistic.py::test_saga_vs_liblinear', 'sklearn/linear_model/tests/test_logistic.py::test_sparsify', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-False-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-False-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-False-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-False-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-True-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-True-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-True-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-False-True-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-False-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-False-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-False-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-False-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-True-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-True-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-True-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[multinomial-True-True-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-False-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-False-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-False-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-False-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-True-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-True-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-True-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-False-True-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-False-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-False-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-False-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-False-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-True-lbfgs]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-True-newton-cg]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-True-sag]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start[ovr-True-True-saga]', 'sklearn/linear_model/tests/test_logistic.py::test_warm_start_converge_LR', 'sklearn/linear_model/tests/test_logistic.py::test_write_parameters', 'sklearn/metrics/tests/test_pairwise.py::test_check_XB_returned', 'sklearn/metrics/tests/test_pairwise.py::test_check_dense_matrices', 'sklearn/metrics/tests/test_pairwise.py::test_check_different_dimensions', 'sklearn/metrics/tests/test_pairwise.py::test_check_invalid_dimensions', 'sklearn/metrics/tests/test_pairwise.py::test_check_preserve_type', 'sklearn/metrics/tests/test_pairwise.py::test_check_sparse_arrays', 'sklearn/metrics/tests/test_pairwise.py::test_check_tuple_input', 'sklearn/metrics/tests/test_pairwise.py::test_chi_square_kernel', 'sklearn/metrics/tests/test_pairwise.py::test_cosine_distances', 'sklearn/metrics/tests/test_pairwise.py::test_cosine_similarity', 'sklearn/metrics/tests/test_pairwise.py::test_euclidean_distances', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[cosine_similarity]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[laplacian_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[linear_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[polynomial_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[rbf_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_sparse[sigmoid_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[cosine_similarity]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[laplacian_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[linear_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[polynomial_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[rbf_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_kernel_symmetry[sigmoid_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_laplacian_kernel', 'sklearn/metrics/tests/test_pairwise.py::test_linear_kernel', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[cityblock-paired_manhattan_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[cosine-paired_cosine_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[euclidean-paired_euclidean_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[l1-paired_manhattan_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[l2-paired_euclidean_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances[manhattan-paired_manhattan_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_paired_distances_callable', 'sklearn/metrics/tests/test_pairwise.py::test_paired_euclidean_distances', 'sklearn/metrics/tests/test_pairwise.py::test_paired_manhattan_distances', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[dice]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[jaccard]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[kulsinski]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[matching]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[rogerstanimoto]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[russellrao]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[sokalmichener]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[sokalsneath]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_boolean_distance[yule]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_callable_nonstrict_metric', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_argmin_min', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_diagonal[euclidean]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_diagonal[l2]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_diagonal[sqeuclidean]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_invalid[<lambda>-TypeError-,', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_invalid[<lambda>-TypeError-returned', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_invalid[<lambda>-ValueError-length', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_valid[<lambda>0]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_valid[<lambda>1]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_valid[<lambda>2]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_valid[<lambda>3]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_distances_chunked_reduce_valid[<lambda>4]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[additive_chi2]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[chi2]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[laplacian]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[linear]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[polynomial]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[rbf]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels[sigmoid]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels_callable', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_kernels_filter_param', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_parallel[pairwise_distances-euclidean-kwds0]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_parallel[pairwise_distances-wminkowski-kwds1]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_parallel[pairwise_distances-wminkowski-kwds2]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_parallel[pairwise_kernels-callable_rbf_kernel-kwds4]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_parallel[pairwise_kernels-polynomial-kwds3]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_precomputed[pairwise_distances]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_precomputed[pairwise_kernels]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_similarity_sparse_output[cosine-cosine_similarity]', 'sklearn/metrics/tests/test_pairwise.py::test_pairwise_similarity_sparse_output[linear-linear_kernel]', 'sklearn/metrics/tests/test_pairwise.py::test_rbf_kernel', 'sklearn/model_selection/tests/test_split.py::test_2d_y', 'sklearn/model_selection/tests/test_split.py::test_build_repr', 'sklearn/model_selection/tests/test_split.py::test_check_cv', 'sklearn/model_selection/tests/test_split.py::test_check_cv_default_warn', 'sklearn/model_selection/tests/test_split.py::test_cross_validator_with_default_params', 'sklearn/model_selection/tests/test_split.py::test_cv_iterable_wrapper', 'sklearn/model_selection/tests/test_split.py::test_get_n_splits_for_repeated_kfold', 'sklearn/model_selection/tests/test_split.py::test_get_n_splits_for_repeated_stratified_kfold', 'sklearn/model_selection/tests/test_split.py::test_group_kfold', 'sklearn/model_selection/tests/test_split.py::test_group_shuffle_split', 'sklearn/model_selection/tests/test_split.py::test_kfold_balance', 'sklearn/model_selection/tests/test_split.py::test_kfold_can_detect_dependent_samples_on_digits', 'sklearn/model_selection/tests/test_split.py::test_kfold_indices', 'sklearn/model_selection/tests/test_split.py::test_kfold_no_shuffle', 'sklearn/model_selection/tests/test_split.py::test_kfold_valueerrors', 'sklearn/model_selection/tests/test_split.py::test_leave_group_out_changing_groups', 'sklearn/model_selection/tests/test_split.py::test_leave_one_p_group_out', 'sklearn/model_selection/tests/test_split.py::test_leave_one_p_group_out_error_on_fewer_number_of_groups', 'sklearn/model_selection/tests/test_split.py::test_nested_cv', 'sklearn/model_selection/tests/test_split.py::test_nsplit_default_warn', 'sklearn/model_selection/tests/test_split.py::test_predefinedsplit_with_kfold_split', 'sklearn/model_selection/tests/test_split.py::test_repeated_cv_value_errors', 'sklearn/model_selection/tests/test_split.py::test_repeated_kfold_determinstic_split', 'sklearn/model_selection/tests/test_split.py::test_repeated_stratified_kfold_determinstic_split', 'sklearn/model_selection/tests/test_split.py::test_shuffle_kfold', 'sklearn/model_selection/tests/test_split.py::test_shuffle_split', 'sklearn/model_selection/tests/test_split.py::test_shuffle_stratifiedkfold', 'sklearn/model_selection/tests/test_split.py::test_shufflesplit_errors', 'sklearn/model_selection/tests/test_split.py::test_shufflesplit_reproducible', 'sklearn/model_selection/tests/test_split.py::test_stratified_kfold_no_shuffle', 'sklearn/model_selection/tests/test_split.py::test_stratified_kfold_ratios', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_even', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_init', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_iter', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_multilabel', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_multilabel_many_labels', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_overlap_train_test_bug', 'sklearn/model_selection/tests/test_split.py::test_stratified_shuffle_split_respects_test_size', 'sklearn/model_selection/tests/test_split.py::test_stratifiedkfold_balance', 'sklearn/model_selection/tests/test_split.py::test_stratifiedshufflesplit_list_input', 'sklearn/model_selection/tests/test_split.py::test_time_series_cv', 'sklearn/model_selection/tests/test_split.py::test_time_series_max_train_size', 'sklearn/model_selection/tests/test_split.py::test_train_test_default_warning', 'sklearn/model_selection/tests/test_split.py::test_train_test_split', 'sklearn/model_selection/tests/test_split.py::test_train_test_split_allow_nans', 'sklearn/model_selection/tests/test_split.py::test_train_test_split_errors', 'sklearn/neighbors/tests/test_dist_metrics.py::test_bad_pyfunc_metric', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[braycurtis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[canberra]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[chebyshev]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[cityblock]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[euclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[hamming]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[mahalanobis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[minkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[seuclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist[wminkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[dice]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[jaccard]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[kulsinski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[matching]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[rogerstanimoto]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[russellrao]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[sokalmichener]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_cdist_bool_metric[sokalsneath]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_haversine_metric', 'sklearn/neighbors/tests/test_dist_metrics.py::test_input_data_size', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[braycurtis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[canberra]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[chebyshev]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[cityblock]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[euclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[hamming]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[mahalanobis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[minkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[seuclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist[wminkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[dice]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[kulsinski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[matching]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[rogerstanimoto]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[russellrao]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[sokalmichener]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pdist_bool_metrics[sokalsneath]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[braycurtis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[canberra]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[chebyshev]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[cityblock]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[euclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[hamming]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[mahalanobis]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[minkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[seuclidean]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle[wminkowski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[dice]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[jaccard]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[kulsinski]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[matching]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[rogerstanimoto]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[russellrao]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[sokalmichener]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pickle_bool_metrics[sokalsneath]', 'sklearn/neighbors/tests/test_dist_metrics.py::test_pyfunc_metric', 'sklearn/utils/testing.py::sklearn.utils.testing.ignore_warnings', 'sklearn/utils/tests/test_validation.py::test_as_float_array', 'sklearn/utils/tests/test_validation.py::test_as_float_array_nan[X0]', 'sklearn/utils/tests/test_validation.py::test_as_float_array_nan[X1]', 'sklearn/utils/tests/test_validation.py::test_check_X_y_informative_error', 'sklearn/utils/tests/test_validation.py::test_check_array', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_no_exception[bsr]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_no_exception[coo]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_no_exception[csc]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_no_exception[csr]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_raise_exception[bsr]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_raise_exception[coo]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_raise_exception[csc]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_large_sparse_raise_exception[csr]', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_sparse_no_exception', 'sklearn/utils/tests/test_validation.py::test_check_array_accept_sparse_type_exception', 'sklearn/utils/tests/test_validation.py::test_check_array_complex_data_error', 'sklearn/utils/tests/test_validation.py::test_check_array_dtype_stability', 'sklearn/utils/tests/test_validation.py::test_check_array_dtype_warning', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[asarray-inf-False]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[asarray-nan-False]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[asarray-nan-allow-nan]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[csr_matrix-inf-False]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[csr_matrix-nan-False]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finite_valid[csr_matrix-nan-allow-nan]', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[asarray-inf-True-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[asarray-inf-allow-nan-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[asarray-nan-1-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[asarray-nan-True-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[asarray-nan-allow-inf-force_all_finite', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[csr_matrix-inf-True-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[csr_matrix-inf-allow-nan-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[csr_matrix-nan-1-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[csr_matrix-nan-True-Input', 'sklearn/utils/tests/test_validation.py::test_check_array_force_all_finiteinvalid[csr_matrix-nan-allow-inf-force_all_finite', 'sklearn/utils/tests/test_validation.py::test_check_array_large_indices_non_supported_scipy_version[bsr]', 'sklearn/utils/tests/test_validation.py::test_check_array_large_indices_non_supported_scipy_version[coo]', 'sklearn/utils/tests/test_validation.py::test_check_array_large_indices_non_supported_scipy_version[csc]', 'sklearn/utils/tests/test_validation.py::test_check_array_large_indices_non_supported_scipy_version[csr]', 'sklearn/utils/tests/test_validation.py::test_check_array_memmap[False]', 'sklearn/utils/tests/test_validation.py::test_check_array_memmap[True]', 'sklearn/utils/tests/test_validation.py::test_check_array_min_samples_and_features_messages', 'sklearn/utils/tests/test_validation.py::test_check_array_on_mock_dataframe', 'sklearn/utils/tests/test_validation.py::test_check_array_pandas_dtype_object_conversion', 'sklearn/utils/tests/test_validation.py::test_check_consistent_length', 'sklearn/utils/tests/test_validation.py::test_check_dataframe_fit_attribute', 'sklearn/utils/tests/test_validation.py::test_check_dataframe_warns_on_dtype', 'sklearn/utils/tests/test_validation.py::test_check_is_fitted', 'sklearn/utils/tests/test_validation.py::test_check_memory', 'sklearn/utils/tests/test_validation.py::test_check_symmetric', 'sklearn/utils/tests/test_validation.py::test_has_fit_parameter', 'sklearn/utils/tests/test_validation.py::test_memmap', 'sklearn/utils/tests/test_validation.py::test_np_matrix', 'sklearn/utils/tests/test_validation.py::test_ordering', 'sklearn/utils/tests/test_validation.py::test_retrieve_samples_from_non_standard_shape', 'sklearn/utils/tests/test_validation.py::test_suppress_validation'], 'failure': ['sklearn/linear_model/tests/test_logistic.py::test_logreg_cv_penalty', 'sklearn/utils/tests/test_validation.py::test_check_array_series']}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for scikit-learn__scikit-learn_0.20.1_0.20.2: resolved: False
+2026-04-28 19:11:00,120 - INFO - Attempting to stop container sweb.eval.scikit-learn__scikit-learn_0.20.1_0.20.2.eval_input_20260427-154634...
+2026-04-28 19:11:15,325 - INFO - Attempting to remove container sweb.eval.scikit-learn__scikit-learn_0.20.1_0.20.2.eval_input_20260427-154634...
+2026-04-28 19:11:15,444 - INFO - Container sweb.eval.scikit-learn__scikit-learn_0.20.1_0.20.2.eval_input_20260427-154634 removed.
+2026-04-28 19:11:15,444 - INFO - Attempting to remove image sweb.eval.x86_64.scikit-learn__scikit-learn_0.20.1_0.20.2:latest...
+2026-04-28 19:11:15,448 - INFO - Image sweb.eval.x86_64.scikit-learn__scikit-learn_0.20.1_0.20.2:latest removed.

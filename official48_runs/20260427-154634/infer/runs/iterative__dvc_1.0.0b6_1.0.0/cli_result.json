@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 280284,
+  "duration_api_ms": 267146,
+  "num_turns": 53,
+  "result": "The fix is complete. Let me provide a summary of the changes:\n\n## Summary\n\nI implemented the `--no-exec` mode for the `import-url` command by making minimal changes to two files:\n\n### 1. `dvc/command/imp_url.py`\n- Added `--no-exec` argument to the parser\n- Modified the `run()` method to conditionally pass `dry=True` when `--no-exec` is specified\n\n### 2. `dvc/repo/imp_url.py`\n- Added `dry=False` parameter to the `imp_url` function signature\n- Passed `dry=dry` to `stage.run()`\n\nThe `Stage.run()` method already supports a `dry` parameter that:\n- Skips the actual download/sync operation\n- Skips saving and committing the stage\n\nThis allows creating a DVC stage file without actually downloading the file from the URL.\n\nThe implementation follows the same pattern used by the `run` command's `--no-exec` option.",
+  "stop_reason": "end_turn",
+  "session_id": "733899c5-17b7-4c17-87d5-05637939910b",
+  "total_cost_usd": 2.2693964999999996,
+  "usage": {
+    "input_tokens": 650149,
+    "cache_creation_input_tokens": 454,
+    "cache_read_input_tokens": 196320,
+    "output_tokens": 11780,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 674740,
+      "outputTokens": 12225,
+      "cacheReadInputTokens": 200330,
+      "cacheCreationInputTokens": 454,
+      "webSearchRequests": 0,
+      "costUSD": 2.2693964999999996,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "9ed2ae52-606f-4c69-ac94-03795772e067"
+}

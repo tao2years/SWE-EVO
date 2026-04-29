@@ -1,0 +1,238 @@
+diff --git a/dask/dataframe/_compat.py b/dask/dataframe/_compat.py
+index 672b0fb..b0c421b 100644
+--- a/dask/dataframe/_compat.py
++++ b/dask/dataframe/_compat.py
+@@ -19,11 +19,11 @@ import pandas.testing as tm
+ 
+ def assert_categorical_equal(left, right, *args, **kwargs):
+     tm.assert_extension_array_equal(left, right, *args, **kwargs)
+-    assert pd.api.types.is_categorical_dtype(
+-        left.dtype
++    assert isinstance(
++        left.dtype, pd.CategoricalDtype
+     ), f"{left} is not categorical dtype"
+-    assert pd.api.types.is_categorical_dtype(
+-        right.dtype
++    assert isinstance(
++        right.dtype, pd.CategoricalDtype
+     ), f"{right} is not categorical dtype"
+ 
+ 
+diff --git a/dask/dataframe/backends.py b/dask/dataframe/backends.py
+index 6c9ff6c..356bebf 100644
+--- a/dask/dataframe/backends.py
++++ b/dask/dataframe/backends.py
+@@ -6,12 +6,7 @@ from typing import Iterable
+ import numpy as np
+ import pandas as pd
+ from pandas.api.types import (
+-    is_categorical_dtype,
+-    is_datetime64tz_dtype,
+-    is_interval_dtype,
+-    is_period_dtype,
+     is_scalar,
+-    is_sparse,
+     union_categoricals,
+ )
+ 
+@@ -401,10 +396,10 @@ def _nonempty_series(s, idx=None):
+     if len(s) > 0:
+         # use value from meta if provided
+         data = [s.iloc[0]] * 2
+-    elif is_datetime64tz_dtype(dtype):
++    elif isinstance(dtype, pd.DatetimeTZDtype):
+         entry = pd.Timestamp("1970-01-01", tz=dtype.tz)
+         data = [entry, entry]
+-    elif is_categorical_dtype(dtype):
++    elif isinstance(dtype, pd.CategoricalDtype):
+         if len(s.cat.categories):
+             data = [s.cat.categories[0]] * 2
+             cats = s.cat.categories
+@@ -416,14 +411,14 @@ def _nonempty_series(s, idx=None):
+         data = pd.array([1, None], dtype=dtype)
+     elif is_float_na_dtype(dtype):
+         data = pd.array([1.0, None], dtype=dtype)
+-    elif is_period_dtype(dtype):
++    elif isinstance(dtype, pd.PeriodDtype):
+         # pandas 0.24.0+ should infer this to be Series[Period[freq]]
+         freq = dtype.freq
+         data = [pd.Period("2000", freq), pd.Period("2001", freq)]
+-    elif is_sparse(dtype):
++    elif isinstance(dtype, pd.SparseDtype):
+         entry = _scalar_from_dtype(dtype.subtype)
+         data = pd.array([entry, entry], dtype=dtype)
+-    elif is_interval_dtype(dtype):
++    elif isinstance(dtype, pd.IntervalDtype):
+         entry = _scalar_from_dtype(dtype.subtype)
+         data = pd.array([entry, entry], dtype=dtype)
+     elif type(dtype) in make_array_nonempty._lookup:
+@@ -654,7 +649,7 @@ def concat_pandas(
+                     warnings.simplefilter("ignore", FutureWarning)
+                 out = pd.concat(dfs3, join=join, sort=False)
+     else:
+-        if is_categorical_dtype(dfs2[0].dtype):
++        if isinstance(dfs2[0].dtype, pd.CategoricalDtype):
+             if ind is None:
+                 ind = concat([df.index for df in dfs2])
+             return pd.Series(
+@@ -687,7 +682,7 @@ def tolist_pandas(obj):
+     (pd.Series, pd.Index, pd.api.extensions.ExtensionDtype, np.dtype)
+ )
+ def is_categorical_dtype_pandas(obj):
+-    return pd.api.types.is_categorical_dtype(obj)
++    return isinstance(obj, pd.CategoricalDtype)
+ 
+ 
+ @grouper_dispatch.register((pd.DataFrame, pd.Series))
+diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py
+index e5ff39e..d8d38bc 100644
+--- a/dask/dataframe/groupby.py
++++ b/dask/dataframe/groupby.py
+@@ -351,8 +351,10 @@ def numeric_only_not_implemented(func):
+                         "'numeric_only=False' is not implemented in Dask."
+                     )
+                 numerics = self.obj._meta._get_numeric_data()
+-                has_non_numerics = set(self._meta.dtypes.columns) - set(
+-                    numerics.columns
++                # Exclude grouping columns from the check for non-numeric columns
++                by_columns = set(flatten(self.by)) if self.by is not None else set()
++                has_non_numerics = (
++                    set(self.obj._meta.columns) - set(numerics.columns) - by_columns
+                 )
+                 if has_non_numerics:
+                     if numeric_only is False or (
+@@ -675,7 +677,7 @@ def _cov_chunk(df, *by):
+     is_mask = any(is_series_like(s) for s in by)
+     if not is_mask:
+         by = [col_mapping[k] for k in by]
+-        cols = cols.drop(np.array(by))
++        cols = cols.drop(np.array([b for b in by if b in cols]))
+ 
+     g = _groupby_raise_unaligned(df, by=by)
+     x = g.sum()
+diff --git a/dask/dataframe/io/json.py b/dask/dataframe/io/json.py
+index 1a2d1fd..e62f1d6 100644
+--- a/dask/dataframe/io/json.py
++++ b/dask/dataframe/io/json.py
+@@ -202,6 +202,11 @@ def read_json(
+             "JSON file chunking only allowed for JSON-lines"
+             "input (orient='records', lines=True)."
+         )
++    if isinstance(engine, str):
++        import importlib
++
++        mod = importlib.import_module(engine)
++        engine = mod.load
+     storage_options = storage_options or {}
+     if include_path_column is True:
+         include_path_column = "path"
+diff --git a/dask/dataframe/multi.py b/dask/dataframe/multi.py
+index ccde971..aaa7376 100644
+--- a/dask/dataframe/multi.py
++++ b/dask/dataframe/multi.py
+@@ -60,9 +60,14 @@ from functools import partial, wraps
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import is_categorical_dtype, is_dtype_equal
++from pandas.api.types import is_dtype_equal
+ from tlz import merge_sorted, unique
+ 
++
++def is_categorical_dtype(dtype) -> bool:
++    """Check if a dtype is categorical, without triggering deprecation warnings."""
++    return isinstance(dtype, pd.CategoricalDtype)
++
+ from dask.base import is_dask_collection, tokenize
+ from dask.dataframe import methods
+ from dask.dataframe.core import (
+diff --git a/dask/dataframe/partitionquantiles.py b/dask/dataframe/partitionquantiles.py
+index 128493b..9700ca0 100644
+--- a/dask/dataframe/partitionquantiles.py
++++ b/dask/dataframe/partitionquantiles.py
+@@ -74,7 +74,6 @@ import numpy as np
+ import pandas as pd
+ from pandas.api.types import (
+     is_datetime64_dtype,
+-    is_datetime64tz_dtype,
+     is_integer_dtype,
+ )
+ from tlz import merge, merge_sorted, take
+@@ -378,7 +377,7 @@ def process_val_weights(vals_and_weights, npartitions, dtype_info):
+ 
+     if is_categorical_dtype(dtype):
+         rv = pd.Categorical.from_codes(rv, info[0], info[1])
+-    elif is_datetime64tz_dtype(dtype):
++    elif isinstance(dtype, pd.DatetimeTZDtype):
+         rv = pd.DatetimeIndex(rv).tz_localize(dtype.tz)
+     elif "datetime64" in str(dtype):
+         rv = pd.DatetimeIndex(rv, dtype=dtype)
+diff --git a/dask/dataframe/shuffle.py b/dask/dataframe/shuffle.py
+index 7f9823f..8f27075 100644
+--- a/dask/dataframe/shuffle.py
++++ b/dask/dataframe/shuffle.py
+@@ -90,7 +90,7 @@ def _calculate_divisions(
+ 
+     mins = mins.fillna(method="bfill")
+     maxes = maxes.fillna(method="bfill")
+-    if pd.api.types.is_categorical_dtype(partition_col.dtype):
++    if isinstance(partition_col.dtype, pd.CategoricalDtype):
+         dtype = partition_col.dtype
+         mins = mins.astype(dtype)
+         maxes = maxes.astype(dtype)
+@@ -294,7 +294,7 @@ def set_partition(
+         # Can't construct a Series[int64] when any / all of the divisions are NaN.
+         divisions = df._meta._constructor_sliced(divisions)
+     elif (
+-        pd.api.types.is_categorical_dtype(dtype)
++        isinstance(dtype, pd.CategoricalDtype)
+         and UNKNOWN_CATEGORIES in dtype.categories
+     ):
+         # If categories are unknown, leave as a string dtype instead.
+diff --git a/dask/dataframe/utils.py b/dask/dataframe/utils.py
+index 9f6ffc7..ed2d6a1 100644
+--- a/dask/dataframe/utils.py
++++ b/dask/dataframe/utils.py
+@@ -12,7 +12,12 @@ from typing import Callable, TypeVar, overload
+ 
+ import numpy as np
+ import pandas as pd
+-from pandas.api.types import is_categorical_dtype, is_dtype_equal
++from pandas.api.types import is_dtype_equal
++
++
++def is_categorical_dtype(dtype) -> bool:
++    """Check if a dtype is categorical, without triggering deprecation warnings."""
++    return isinstance(dtype, pd.CategoricalDtype)
+ 
+ from dask import config
+ from dask.base import get_scheduler, is_dask_collection
+@@ -727,11 +732,14 @@ def valid_divisions(divisions):
+     False
+     >>> valid_divisions([0, float('nan'), 1])
+     False
++    >>> valid_divisions((1, 2, 3))
++    True
+     """
+     if not isinstance(divisions, (tuple, list)):
+         return False
+ 
+-    if pd.isnull(divisions).any():
++    divisions = list(divisions)
++    if any(pd.isnull(divisions)):
+         return False
+ 
+     for i, x in enumerate(divisions[:-2]):
+diff --git a/dask/utils.py b/dask/utils.py
+index ba187ab..7cecc3a 100644
+--- a/dask/utils.py
++++ b/dask/utils.py
+@@ -804,7 +804,7 @@ def _derived_from(
+         method_args = get_named_args(method)
+         original_args = get_named_args(original_method)
+         not_supported = [m for m in original_args if m not in method_args]
+-    except ValueError:
++    except (ValueError, TypeError):
+         not_supported = []
+     if len(ua_args) > 0:
+         not_supported.extend(ua_args)

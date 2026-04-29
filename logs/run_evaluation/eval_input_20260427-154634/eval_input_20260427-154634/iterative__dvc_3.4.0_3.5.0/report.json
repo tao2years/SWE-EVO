@@ -1,0 +1,56 @@
+{
+    "iterative__dvc_3.4.0_3.5.0": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": true,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/func/api/test_data.py::test_get_url_subrepos",
+                    "tests/unit/command/test_data_sync.py::test_fetch"
+                ],
+                "failure": []
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/api/test_data.py::TestAPI::test_get_url",
+                    "tests/func/api/test_data.py::TestAPI::test_open",
+                    "tests/func/api/test_data.py::test_api_missing_local_cache_exists_on_remote[file-False]",
+                    "tests/func/api/test_data.py::test_api_missing_local_cache_exists_on_remote[inside-dir-False]",
+                    "tests/func/api/test_data.py::test_get_url_granular",
+                    "tests/func/api/test_data.py::test_missing",
+                    "tests/func/api/test_data.py::test_open_granular",
+                    "tests/func/api/test_data.py::test_open_not_cached",
+                    "tests/func/api/test_data.py::test_open_scm_controlled",
+                    "tests/func/api/test_data.py::test_read_with_subrepos[True]",
+                    "tests/unit/command/test_data_sync.py::test_pull",
+                    "tests/unit/command/test_data_sync.py::test_push",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes0-False-expected_edges0]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes1-False-expected_edges1]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes10-True-expected_edges10]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes11-True-expected_edges11]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes12-True-expected_edges12]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes13-True-expected_edges13]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes2-False-expected_edges2]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes3-False-expected_edges3]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes4-False-expected_edges4]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes5-False-expected_edges5]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes6-False-expected_edges6]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes7-True-expected_edges7]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes8-True-expected_edges8]",
+                    "tests/unit/repo/test_graph.py::test_subgraph_of_nodes[nodes9-True-expected_edges9]"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

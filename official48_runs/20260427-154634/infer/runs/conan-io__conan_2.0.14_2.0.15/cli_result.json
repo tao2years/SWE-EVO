@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 869964,
+  "duration_api_ms": 853388,
+  "num_turns": 209,
+  "result": "All changes have been implemented correctly. Here's a summary of what was done:\n\n## Summary of Changes\n\nThe implementation updates Conan from version 2.0.14 to 2.0.15 by modifying 31 non-test source files:\n\n### Core Features Implemented:\n1. **`platform_requires` and `platform_tool_requires`** - Added new profile sections replacing `system_tools`\n2. **`replace_requires` and `replace_tool_requires`** - Added new profile sections for package replacement\n3. **Tool-requires in `source()` method** - Added `VirtualBuildEnv` support with `source_buildenv` attribute\n4. **`<host_version>` tracking syntax** - Enhanced to support tracking syntax `:<ref>`\n\n### Key Changes:\n- **Profile system**: Updated `Profile`, `profile_loader.py` with new sections and deprecation warning for `[system_tools]`\n- **Graph builder**: Added `_resolve_replace_requires()` method, renamed `RECIPE_SYSTEM_TOOL` → `RECIPE_PLATFORM`\n- **Graph lock**: Added `remove()` method for removing requires from lockfiles\n- **Deploy method**: Added `deploy()` method support in recipes and `--deployer-package` CLI argument\n- **CLI**: Added `conan graph explain` command, updated `conan lock remove` command\n- **API output**: Added `set_warnings_as_errors()` and `CONAN_LOG_LEVEL` environment variable support\n- **Migrations**: Fixed storage_path handling in 2.0.14 cache migration\n- **Bug fixes**: Fixed error message formatting, build error warnings, profile serialization",
+  "stop_reason": "end_turn",
+  "session_id": "089e2376-35e6-4dfe-8257-71269279f63d",
+  "total_cost_usd": 37.6964541,
+  "usage": {
+    "input_tokens": 12221323,
+    "cache_creation_input_tokens": 4906,
+    "cache_read_input_tokens": 708192,
+    "output_tokens": 53442,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 12221323,
+      "outputTokens": 53442,
+      "cacheReadInputTokens": 708192,
+      "cacheCreationInputTokens": 4906,
+      "webSearchRequests": 0,
+      "costUSD": 37.6964541,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "0db5a0ce-c44d-413a-80b3-9300a56021c9"
+}

@@ -1,0 +1,32 @@
+{
+    "iterative__dvc_1.0.0b6_1.0.0": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/unit/command/test_imp_url.py::test_import_url",
+                    "tests/unit/command/test_imp_url.py::test_import_url_no_exec"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/func/test_import_url.py::TestCmdImport::test_unsupported",
+                    "tests/unit/command/test_imp_url.py::test_failed_import_url"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

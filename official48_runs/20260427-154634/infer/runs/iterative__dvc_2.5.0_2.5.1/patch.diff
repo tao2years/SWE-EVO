@@ -1,0 +1,19 @@
+diff --git a/tests/dir_helpers.py b/tests/dir_helpers.py
+index a45a62c..b021af3 100644
+--- a/tests/dir_helpers.py
++++ b/tests/dir_helpers.py
+@@ -81,13 +81,7 @@ class TmpDir(pathlib.Path):
+             cls = (  # pylint: disable=self-cls-assignment
+                 WindowsTmpDir if os.name == "nt" else PosixTmpDir
+             )
+-        self = cls._from_parts(args, init=False)
+-        if not self._flavour.is_supported:
+-            raise NotImplementedError(
+-                f"cannot instantiate {cls.__name__!r} on your system"
+-            )
+-        self._init()
+-        return self
++        return object.__new__(cls)
+ 
+     def init(self, *, scm=False, dvc=False, subdir=False):
+         from dvc.repo import Repo

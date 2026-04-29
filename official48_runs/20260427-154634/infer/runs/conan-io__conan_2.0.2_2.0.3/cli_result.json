@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 956374,
+  "duration_api_ms": 906987,
+  "num_turns": 129,
+  "result": "The minimal code-only fixes have been implemented. Here's a summary of the changes:\n\n**1. `conan/internal/integrity_check.py`** - Fixed IntegrityChecker to:\n   - Use explicit `.items()` calls on `refs()` and `prefs()` dicts\n   - Use `recipe_layout()` instead of `ref_layout()`\n   - Filter `export_sources` entries from the read manifest when the export_sources folder doesn't exist locally (prevents false positive corruption detection when recipe is downloaded without sources from server)\n\n**2. `conans/client/cache/cache.py`** - Added `recipe_layout()` method as an alias for `ref_layout()` (needed by IntegrityChecker fix)\n\n**3. `conan/cli/commands/cache.py`** - Added `cache_check_integrity` subcommand for `conan cache check-integrity *` \n\n**4. `conans/client/downloaders/caching_file_downloader.py`** - Updated JSON summary format from `{\"key\": [...]}` to `{\"references\": {\"key\": [...]}}` to match expected format\n\n**5. `conan/tools/files/files.py`** - Updated download cache config to chain through `tools.files.download:download_cache` → `core.download:download_cache` → `core.sources:download_cache`\n\n**6. `conans/model/conf.py`** - Added `core.sources:download_cache`, `core.sources:download_urls`, `core.sources:upload_url`, and `core.sources:exclude_urls` config keys to BUILT_IN_CONFS",
+  "stop_reason": "end_turn",
+  "session_id": "b1a1b423-c528-4d00-b327-4119a3182c6f",
+  "total_cost_usd": 21.424958850000003,
+  "usage": {
+    "input_tokens": 6885081,
+    "cache_creation_input_tokens": 1649,
+    "cache_read_input_tokens": 456857,
+    "output_tokens": 41765,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 6885081,
+      "outputTokens": 41765,
+      "cacheReadInputTokens": 456857,
+      "cacheCreationInputTokens": 1649,
+      "webSearchRequests": 0,
+      "costUSD": 21.424958850000003,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "76262a57-e9a8-4cae-bce2-7bbcbb1bd38c"
+}

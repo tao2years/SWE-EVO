@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 159774,
+  "duration_api_ms": 158471,
+  "num_turns": 48,
+  "result": "The fix has been implemented. Here's a summary of the changes:\n\n## Changes Made\n\n### 1. `dvc/repo/reproduce.py`\n- Added import for `RunCacheNotSupported` from `dvc.stage.cache`\n- Wrapped the `self.stage_cache.pull(None)` call in a try/except block to catch `RunCacheNotSupported` exception and continue\n\n### 2. `dvc/repo/fetch.py`\n- Added import for `RunCacheNotSupported` from `dvc.stage.cache`\n- Modified exception handling to also catch `RunCacheNotSupported` (in addition to `DownloadError`)\n\n## Rationale\n\nThe release note mentions \"repro: Continue on RunCacheNotSupported\" (PR #9511). The `RunCacheNotSupported` exception is raised in `dvc/stage/cache.py::transfer()` when the remote filesystem doesn't support run cache (e.g., HTTP remotes).\n\nThe fix ensures that when `dvc.reproduce(pull=True)` or `dvc fetch --run-cache` is called with a remote that doesn't support run cache:\n1. The exception is caught\n2. The operation continues gracefully instead of crashing\n\nThis is a minimal, focused fix that addresses the specific issue described in the release notes.",
+  "stop_reason": "end_turn",
+  "session_id": "dc90b787-a6fc-49a4-9887-b0371630de3c",
+  "total_cost_usd": 1.7014449000000003,
+  "usage": {
+    "input_tokens": 504875,
+    "cache_creation_input_tokens": 554,
+    "cache_read_input_tokens": 144120,
+    "output_tokens": 7577,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 512108,
+      "outputTokens": 7907,
+      "cacheReadInputTokens": 148128,
+      "cacheCreationInputTokens": 554,
+      "webSearchRequests": 0,
+      "costUSD": 1.7014449000000003,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "84cd03df-fc2a-449d-9a65-d33e531cb7ef"
+}

@@ -1,0 +1,13 @@
+diff --git a/dask/utils.py b/dask/utils.py
+index 9e8a8be..864372f 100644
+--- a/dask/utils.py
++++ b/dask/utils.py
+@@ -933,7 +933,7 @@ def _derived_from(
+         method_args = get_named_args(method)
+         original_args = get_named_args(original_method)
+         not_supported = [m for m in original_args if m not in method_args]
+-    except ValueError:
++    except (ValueError, TypeError):
+         not_supported = []
+     if len(ua_args) > 0:
+         not_supported.extend(ua_args)

@@ -1,0 +1,529 @@
+2026-04-28 17:31:35,143 - INFO - Environment image sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest found for iterative__dvc_0.52.1_0.53.1
+Building instance image sweb.eval.x86_64.iterative__dvc_0.52.1_0.53.1:latest for iterative__dvc_0.52.1_0.53.1
+2026-04-28 17:31:35,156 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.52.1_0.53.1:latest already exists, skipping build.
+2026-04-28 17:31:35,156 - INFO - Creating container for iterative__dvc_0.52.1_0.53.1...
+2026-04-28 17:31:36,926 - INFO - Container for iterative__dvc_0.52.1_0.53.1 created: 92c7e6b7023aa8778cf42b0b9149f9be3ba6322c0274c0ab9bcdf3ebf7057e80
+2026-04-28 17:31:37,045 - INFO - Container for iterative__dvc_0.52.1_0.53.1 started: 92c7e6b7023aa8778cf42b0b9149f9be3ba6322c0274c0ab9bcdf3ebf7057e80
+2026-04-28 17:31:37,046 - INFO - Intermediate patch for iterative__dvc_0.52.1_0.53.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.52.1_0.53.1/patch.diff, now applying to container...
+2026-04-28 17:31:37,333 - INFO - Failed to apply patch to container: git apply --verbose
+2026-04-28 17:31:37,383 - INFO - Failed to apply patch to container: git apply --verbose --reject
+2026-04-28 17:31:37,439 - INFO - >>>>> Applied Patch:
+patching file tests/conftest.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_data_cloud.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_import_url.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_output.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_remote.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_repro.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_s3.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_tree.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_update.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/command/test_imp_url.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/dependency/test_hdfs.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/output/test_hdfs.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+The next patch would create the file tests/unit/remote/ssh/test_pool.py,
+which already exists!  Assuming -R.
+patching file tests/unit/remote/ssh/test_pool.py
+patching file tests/unit/test_path_info.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/unit/test_stage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/command/imp_url.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/command/version.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/path_info.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/remote/base.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/remote/ssh/connection.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/remote/ssh/pool.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/repo/fetch.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/repo/imp_url.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/repo/pull.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/repo/push.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/scm/git/tree.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file dvc/stage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file scripts/completion/dvc.bash
+Reversed (or previously applied) patch detected!  Assuming -R.
+patching file tests/func/test_tree.py
+Hunk #2 succeeded at 191 with fuzz 3.
+patching file tests/func/test_update.py
+patching file tests/unit/command/test_imp_url.py
+Hunk #2 succeeded at 53 with fuzz 3.
+patching file tests/unit/test_path_info.py
+patching file tests/unit/test_stage.py
+Reversed (or previously applied) patch detected!  Assuming -R.
+
+2026-04-28 17:31:37,499 - INFO - Git diff before:
+diff --git a/tests/func/test_tree.py b/tests/func/test_tree.py
+index 7bec4ce71..aa4e85696 100644
+--- a/tests/func/test_tree.py
++++ b/tests/func/test_tree.py
+@@ -7,9 +7,10 @@ from os.path import join
+ from dvc.ignore import DvcIgnoreFilter
+ from dvc.scm import SCM
+ from dvc.scm.git import GitTree
++from dvc.scm.git.tree import GitSubmoduleTree
+ from dvc.scm.tree import WorkingTree
+ 
+-from tests.basic_env import TestDir, TestGit
++from tests.basic_env import TestDir, TestGit, TestGitSubmodule
+ 
+ 
+ class TestWorkingTree(TestDir):
+@@ -190,3 +191,91 @@ class TestWalkInGit(AssertWalkEqualMixin, TestGit):
+                 )
+             ],
+         )
++
++
++class TestGitSubmoduleTree(TestGitSubmodule):
++    def setUp(self):
++        super(TestGitSubmoduleTree, self).setUp()
++        self.scm = SCM(self._root_dir)
++        self.tree = GitSubmoduleTree(self.git, "master")
++
++    def test_open(self):
++        self.scm.add([self.FOO, self.UNICODE, self.DATA_DIR])
++        self.scm.commit("add")
++        with self.tree.open(self.FOO) as fd:
++            self.assertEqual(fd.read(), self.FOO_CONTENTS)
++        with self.tree.open(self.UNICODE) as fd:
++            self.assertEqual(fd.read(), self.UNICODE_CONTENTS)
++        with self.assertRaises(IOError):
++            self.tree.open("not-existing-file")
++        with self.assertRaises(IOError):
++            self.tree.open(self.DATA_DIR)
++
++    def test_exists(self):
++        self.assertFalse(self.tree.exists(self.FOO))
++        self.assertFalse(self.tree.exists(self.UNICODE))
++        self.assertFalse(self.tree.exists(self.DATA_DIR))
++        self.scm.add([self.FOO, self.UNICODE, self.DATA])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.exists(self.FOO))
++        self.assertTrue(self.tree.exists(self.UNICODE))
++        self.assertTrue(self.tree.exists(self.DATA_DIR))
++        self.assertFalse(self.tree.exists("non-existing-file"))
++
++    def test_isdir(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isdir(self.DATA_DIR))
++        self.assertFalse(self.tree.isdir(self.FOO))
++        self.assertFalse(self.tree.isdir("non-existing-file"))
++
++    def test_isfile(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isfile(self.FOO))
++        self.assertFalse(self.tree.isfile(self.DATA_DIR))
++        self.assertFalse(self.tree.isfile("not-existing-file"))
++
++
++class TestGitSubmoduleTree(TestGitSubmodule):
++    def setUp(self):
++        super(TestGitSubmoduleTree, self).setUp()
++        self.scm = SCM(self._root_dir)
++        self.tree = GitSubmoduleTree(self.git, "master")
++
++    def test_open(self):
++        self.scm.add([self.FOO, self.UNICODE, self.DATA_DIR])
++        self.scm.commit("add")
++        with self.tree.open(self.FOO) as fd:
++            self.assertEqual(fd.read(), self.FOO_CONTENTS)
++        with self.tree.open(self.UNICODE) as fd:
++            self.assertEqual(fd.read(), self.UNICODE_CONTENTS)
++        with self.assertRaises(IOError):
++            self.tree.open("not-existing-file")
++        with self.assertRaises(IOError):
++            self.tree.open(self.DATA_DIR)
++
++    def test_exists(self):
++        self.assertFalse(self.tree.exists(self.FOO))
++        self.assertFalse(self.tree.exists(self.UNICODE))
++        self.assertFalse(self.tree.exists(self.DATA_DIR))
++        self.scm.add([self.FOO, self.UNICODE, self.DATA])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.exists(self.FOO))
++        self.assertTrue(self.tree.exists(self.UNICODE))
++        self.assertTrue(self.tree.exists(self.DATA_DIR))
++        self.assertFalse(self.tree.exists("non-existing-file"))
++
++    def test_isdir(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isdir(self.DATA_DIR))
++        self.assertFalse(self.tree.isdir(self.FOO))
++        self.assertFalse(self.tree.isdir("non-existing-file"))
++
++    def test_isfile(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isfile(self.FOO))
++        self.assertFalse(self.tree.isfile(self.DATA_DIR))
++        self.assertFalse(self.tree.isfile("not-existing-file"))
+diff --git a/tests/func/test_update.py b/tests/func/test_update.py
+index 9234b0ed4..453ada07a 100644
+--- a/tests/func/test_update.py
++++ b/tests/func/test_update.py
+@@ -1,6 +1,8 @@
+ import os
++import tempfile
+ 
+ from dvc.repo import Repo
++from dvc.main import main
+ 
+ 
+ def test_update_import(dvc_repo, erepo):
+@@ -40,3 +42,32 @@ def test_update_import(dvc_repo, erepo):
+     assert os.path.isfile(dst)
+     with open(dst, "r+") as fobj:
+         assert fobj.read() == "updated"
++
++
++def test_update_import_url(dvc_repo, erepo):
++    src = erepo.FOO
++    dst = "imported_file"
++
++    with tempfile.NamedTemporaryFile(delete=False) as f:
++        f.write(b"file content")
++        f.flush()
++        tmpfile = f.name
++
++    stage = dvc_repo.imp_url(tmpfile, dst)
++
++    assert os.path.exists(dst)
++    with open(dst, "r") as fobj:
++        assert fobj.read() == "file content"
++
++    # update data
++    with open(tmpfile, "w") as f:
++        f.write("updated content")
++
++    assert dvc_repo.status(stage.path) == {}
++    dvc_repo.update(stage.path)
++    assert dvc_repo.status(stage.path) == {}
++
++    with open(dst, "r") as fobj:
++        assert fobj.read() == "updated content"
++
++    os.unlink(tmpfile)
+diff --git a/tests/unit/command/test_imp_url.py b/tests/unit/command/test_imp_url.py
+index 2e11ff520..4c055bf5a 100644
+--- a/tests/unit/command/test_imp_url.py
++++ b/tests/unit/command/test_imp_url.py
+@@ -16,7 +16,25 @@ def test_import_url(mocker, dvc_repo):
+ 
+     assert cmd.run() == 0
+ 
+-    m.assert_called_once_with("src", out="out", resume=True, fname="file")
++    m.assert_called_once_with(
++        "src", out="out", resume=True, fname="file", locked=True
++    )
++
++
++def test_import_url_no_lock(mocker, dvc_repo):
++    cli_args = parse_args(
++        ["import-url", "src", "out", "--resume", "--file", "file", "--no-lock"]
++    )
++    assert cli_args.func == CmdImportUrl
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch.object(cmd.repo, "imp_url", autospec=True)
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(
++        "src", out="out", resume=True, fname="file", locked=False
++    )
+ 
+ 
+ def test_failed_import_url(mocker, caplog, dvc_repo):
+@@ -35,3 +53,13 @@ def test_failed_import_url(mocker, caplog, dvc_repo):
+                 "adding it with `dvc add` command."
+             )
+             assert expected_error in caplog.text
++
++
++def test_unsupported(mocker, dvc_repo):
++    cli_args = parse_args(["import-url", "invalid://url"])
++    assert cli_args.func == CmdImportUrl
++
++
++def test_unsupported(mocker, dvc_repo):
++    cli_args = parse_args(["import-url", "invalid://url"])
++    assert cli_args.func == CmdImportUrl
+diff --git a/tests/unit/test_path_info.py b/tests/unit/test_path_info.py
+index 46bd032b9..1dd864be2 100644
+--- a/tests/unit/test_path_info.py
++++ b/tests/unit/test_path_info.py
+@@ -1,4 +1,5 @@
+ import pytest
++from copy import deepcopy
+ 
+ from dvc.path_info import URLInfo, CloudURLInfo
+ 
+@@ -34,3 +35,10 @@ def test_url_info_parents(cls):
+         cls("ssh://user@test.com/test1"),
+         cls("ssh://user@test.com/"),
+     ]
++
++
++@pytest.mark.parametrize("cls", [URLInfo, CloudURLInfo])
++def test_url_info_deepcopy(cls):
++    u = cls("ssh://user@test.com:/test1/test2")
++    u2 = deepcopy(u)
++    assert u == u2
+2026-04-28 17:31:37,499 - INFO - Eval script for iterative__dvc_0.52.1_0.53.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.52.1_0.53.1/eval.sh; copying to container...
+2026-04-28 17:34:24,277 - INFO - Test runtime: 166.73 seconds
+2026-04-28 17:34:24,278 - INFO - Test output for iterative__dvc_0.52.1_0.53.1 written to logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.52.1_0.53.1/test_output.txt
+2026-04-28 17:34:24,325 - INFO - Git diff after:
+diff --git a/tests/func/test_tree.py b/tests/func/test_tree.py
+index 7bec4ce71..aa4e85696 100644
+--- a/tests/func/test_tree.py
++++ b/tests/func/test_tree.py
+@@ -7,9 +7,10 @@ from os.path import join
+ from dvc.ignore import DvcIgnoreFilter
+ from dvc.scm import SCM
+ from dvc.scm.git import GitTree
++from dvc.scm.git.tree import GitSubmoduleTree
+ from dvc.scm.tree import WorkingTree
+ 
+-from tests.basic_env import TestDir, TestGit
++from tests.basic_env import TestDir, TestGit, TestGitSubmodule
+ 
+ 
+ class TestWorkingTree(TestDir):
+@@ -190,3 +191,91 @@ class TestWalkInGit(AssertWalkEqualMixin, TestGit):
+                 )
+             ],
+         )
++
++
++class TestGitSubmoduleTree(TestGitSubmodule):
++    def setUp(self):
++        super(TestGitSubmoduleTree, self).setUp()
++        self.scm = SCM(self._root_dir)
++        self.tree = GitSubmoduleTree(self.git, "master")
++
++    def test_open(self):
++        self.scm.add([self.FOO, self.UNICODE, self.DATA_DIR])
++        self.scm.commit("add")
++        with self.tree.open(self.FOO) as fd:
++            self.assertEqual(fd.read(), self.FOO_CONTENTS)
++        with self.tree.open(self.UNICODE) as fd:
++            self.assertEqual(fd.read(), self.UNICODE_CONTENTS)
++        with self.assertRaises(IOError):
++            self.tree.open("not-existing-file")
++        with self.assertRaises(IOError):
++            self.tree.open(self.DATA_DIR)
++
++    def test_exists(self):
++        self.assertFalse(self.tree.exists(self.FOO))
++        self.assertFalse(self.tree.exists(self.UNICODE))
++        self.assertFalse(self.tree.exists(self.DATA_DIR))
++        self.scm.add([self.FOO, self.UNICODE, self.DATA])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.exists(self.FOO))
++        self.assertTrue(self.tree.exists(self.UNICODE))
++        self.assertTrue(self.tree.exists(self.DATA_DIR))
++        self.assertFalse(self.tree.exists("non-existing-file"))
++
++    def test_isdir(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isdir(self.DATA_DIR))
++        self.assertFalse(self.tree.isdir(self.FOO))
++        self.assertFalse(self.tree.isdir("non-existing-file"))
++
++    def test_isfile(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isfile(self.FOO))
++        self.assertFalse(self.tree.isfile(self.DATA_DIR))
++        self.assertFalse(self.tree.isfile("not-existing-file"))
++
++
++class TestGitSubmoduleTree(TestGitSubmodule):
++    def setUp(self):
++        super(TestGitSubmoduleTree, self).setUp()
++        self.scm = SCM(self._root_dir)
++        self.tree = GitSubmoduleTree(self.git, "master")
++
++    def test_open(self):
++        self.scm.add([self.FOO, self.UNICODE, self.DATA_DIR])
++        self.scm.commit("add")
++        with self.tree.open(self.FOO) as fd:
++            self.assertEqual(fd.read(), self.FOO_CONTENTS)
++        with self.tree.open(self.UNICODE) as fd:
++            self.assertEqual(fd.read(), self.UNICODE_CONTENTS)
++        with self.assertRaises(IOError):
++            self.tree.open("not-existing-file")
++        with self.assertRaises(IOError):
++            self.tree.open(self.DATA_DIR)
++
++    def test_exists(self):
++        self.assertFalse(self.tree.exists(self.FOO))
++        self.assertFalse(self.tree.exists(self.UNICODE))
++        self.assertFalse(self.tree.exists(self.DATA_DIR))
++        self.scm.add([self.FOO, self.UNICODE, self.DATA])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.exists(self.FOO))
++        self.assertTrue(self.tree.exists(self.UNICODE))
++        self.assertTrue(self.tree.exists(self.DATA_DIR))
++        self.assertFalse(self.tree.exists("non-existing-file"))
++
++    def test_isdir(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isdir(self.DATA_DIR))
++        self.assertFalse(self.tree.isdir(self.FOO))
++        self.assertFalse(self.tree.isdir("non-existing-file"))
++
++    def test_isfile(self):
++        self.scm.add([self.FOO, self.DATA_DIR])
++        self.scm.commit("add")
++        self.assertTrue(self.tree.isfile(self.FOO))
++        self.assertFalse(self.tree.isfile(self.DATA_DIR))
++        self.assertFalse(self.tree.isfile("not-existing-file"))
+diff --git a/tests/func/test_update.py b/tests/func/test_update.py
+index 9234b0ed4..453ada07a 100644
+--- a/tests/func/test_update.py
++++ b/tests/func/test_update.py
+@@ -1,6 +1,8 @@
+ import os
++import tempfile
+ 
+ from dvc.repo import Repo
++from dvc.main import main
+ 
+ 
+ def test_update_import(dvc_repo, erepo):
+@@ -40,3 +42,32 @@ def test_update_import(dvc_repo, erepo):
+     assert os.path.isfile(dst)
+     with open(dst, "r+") as fobj:
+         assert fobj.read() == "updated"
++
++
++def test_update_import_url(dvc_repo, erepo):
++    src = erepo.FOO
++    dst = "imported_file"
++
++    with tempfile.NamedTemporaryFile(delete=False) as f:
++        f.write(b"file content")
++        f.flush()
++        tmpfile = f.name
++
++    stage = dvc_repo.imp_url(tmpfile, dst)
++
++    assert os.path.exists(dst)
++    with open(dst, "r") as fobj:
++        assert fobj.read() == "file content"
++
++    # update data
++    with open(tmpfile, "w") as f:
++        f.write("updated content")
++
++    assert dvc_repo.status(stage.path) == {}
++    dvc_repo.update(stage.path)
++    assert dvc_repo.status(stage.path) == {}
++
++    with open(dst, "r") as fobj:
++        assert fobj.read() == "updated content"
++
++    os.unlink(tmpfile)
+diff --git a/tests/unit/command/test_imp_url.py b/tests/unit/command/test_imp_url.py
+index 2e11ff520..4c055bf5a 100644
+--- a/tests/unit/command/test_imp_url.py
++++ b/tests/unit/command/test_imp_url.py
+@@ -16,7 +16,25 @@ def test_import_url(mocker, dvc_repo):
+ 
+     assert cmd.run() == 0
+ 
+-    m.assert_called_once_with("src", out="out", resume=True, fname="file")
++    m.assert_called_once_with(
++        "src", out="out", resume=True, fname="file", locked=True
++    )
++
++
++def test_import_url_no_lock(mocker, dvc_repo):
++    cli_args = parse_args(
++        ["import-url", "src", "out", "--resume", "--file", "file", "--no-lock"]
++    )
++    assert cli_args.func == CmdImportUrl
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch.object(cmd.repo, "imp_url", autospec=True)
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with(
++        "src", out="out", resume=True, fname="file", locked=False
++    )
+ 
+ 
+ def test_failed_import_url(mocker, caplog, dvc_repo):
+@@ -35,3 +53,13 @@ def test_failed_import_url(mocker, caplog, dvc_repo):
+                 "adding it with `dvc add` command."
+             )
+             assert expected_error in caplog.text
++
++
++def test_unsupported(mocker, dvc_repo):
++    cli_args = parse_args(["import-url", "invalid://url"])
++    assert cli_args.func == CmdImportUrl
++
++
++def test_unsupported(mocker, dvc_repo):
++    cli_args = parse_args(["import-url", "invalid://url"])
++    assert cli_args.func == CmdImportUrl
+diff --git a/tests/unit/test_path_info.py b/tests/unit/test_path_info.py
+index 46bd032b9..1dd864be2 100644
+--- a/tests/unit/test_path_info.py
++++ b/tests/unit/test_path_info.py
+@@ -1,4 +1,5 @@
+ import pytest
++from copy import deepcopy
+ 
+ from dvc.path_info import URLInfo, CloudURLInfo
+ 
+@@ -34,3 +35,10 @@ def test_url_info_parents(cls):
+         cls("ssh://user@test.com/test1"),
+         cls("ssh://user@test.com/"),
+     ]
++
++
++@pytest.mark.parametrize("cls", [URLInfo, CloudURLInfo])
++def test_url_info_deepcopy(cls):
++    u = cls("ssh://user@test.com:/test1/test2")
++    u2 = deepcopy(u)
++    assert u == u2
+2026-04-28 17:34:24,325 - INFO - Grading answer for iterative__dvc_0.52.1_0.53.1...
+2026-04-28 17:34:24,326 - INFO - report: {'iterative__dvc_0.52.1_0.53.1': {'patch_is_None': False, 'patch_exists': True, 'patch_successfully_applied': True, 'resolved': False, 'tests_status': {'FAIL_TO_PASS': {'success': [], 'failure': ['tests/func/test_data_cloud.py::TestCheckSumRecalculation::test', 'tests/func/test_data_cloud.py::TestDataCloud::test', 'tests/func/test_data_cloud.py::TestDataCloudCLIBase::test', 'tests/func/test_data_cloud.py::TestDataCloudErrorCLI::test_error', 'tests/func/test_data_cloud.py::TestRecursiveSyncOperations::test', 'tests/func/test_data_cloud.py::TestRemoteLOCAL::test', 'tests/func/test_data_cloud.py::TestRemoteLOCALCLI::test', 'tests/func/test_data_cloud.py::TestRemoteSSHMocked::test', 'tests/func/test_data_cloud.py::TestShouldWarnOnNoChecksumInLocalAndRemoteCache::test', 'tests/func/test_data_cloud.py::TestWarnOnOutdatedStage::test', 'tests/func/test_import_url.py::TestCmdImport::test', 'tests/func/test_import_url.py::TestCmdImport::test_unsupported', 'tests/func/test_import_url.py::TestDefaultOutput::test', 'tests/func/test_import_url.py::TestImportFilename::test', 'tests/func/test_import_url.py::TestShouldRemoveOutsBeforeImport::test', 'tests/func/test_output.py::test_scheme[../file-local]', 'tests/func/test_output.py::test_scheme[..\\\\file-local]', 'tests/func/test_output.py::test_scheme[./file-local]', 'tests/func/test_output.py::test_scheme[.\\\\file-local]', 'tests/func/test_output.py::test_scheme[file-local]', 'tests/func/test_output.py::test_scheme[gs://bucket/path-gs]', 'tests/func/test_output.py::test_scheme[path/to/file-local]', 'tests/func/test_output.py::test_scheme[path\\\\to\\\\file-local]', 'tests/func/test_output.py::test_scheme[s3://bucket/path-s3]', 'tests/func/test_output.py::test_scheme[ssh://example.com:/dir/path-ssh]', 'tests/func/test_output.py::test_scheme[unknown://path-local]', 'tests/func/test_remote.py::TestRemote::test', 'tests/func/test_remote.py::TestRemote::test_overwrite', 'tests/func/test_remote.py::TestRemote::test_referencing_other_remotes', 'tests/func/test_remote.py::TestRemote::test_relative_path', 'tests/func/test_remote.py::TestRemoteDefault::test', 'tests/func/test_remote.py::TestRemoteRemove::test', 'tests/func/test_remote.py::TestRemoteRemoveDefault::test', 'tests/func/test_remote.py::TestRemoteShouldHandleUppercaseRemoteName::test', 'tests/func/test_remote.py::test_dir_checksum_should_be_key_order_agnostic', 'tests/func/test_remote.py::test_large_dir_progress', 'tests/func/test_remote.py::test_partial_push_n_pull', 'tests/func/test_repro.py::TestCmdRepro::test', 'tests/func/test_repro.py::TestCmdReproChdir::test', 'tests/func/test_repro.py::TestCmdReproChdirCwdBackwardCompatible::test', 'tests/func/test_repro.py::TestNonExistingOutput::test', 'tests/func/test_repro.py::TestReproAllPipelines::test', 'tests/func/test_repro.py::TestReproAlreadyCached::test', 'tests/func/test_repro.py::TestReproAlreadyCached::test_force_import', 'tests/func/test_repro.py::TestReproAlreadyCached::test_force_with_dependencies', 'tests/func/test_repro.py::TestReproChangedCode::test', 'tests/func/test_repro.py::TestReproChangedData::test', 'tests/func/test_repro.py::TestReproChangedDeepData::test', 'tests/func/test_repro.py::TestReproChangedDir::test', 'tests/func/test_repro.py::TestReproChangedDirData::test', 'tests/func/test_repro.py::TestReproCyclicGraph::test', 'tests/func/test_repro.py::TestReproDataSource::test', 'tests/func/test_repro.py::TestReproDepDirWithOutputsUnderIt::test', 'tests/func/test_repro.py::TestReproDepUnderDir::test', 'tests/func/test_repro.py::TestReproDownstream::test', 'tests/func/test_repro.py::TestReproDry::test', 'tests/func/test_repro.py::TestReproDryNoExec::test', 'tests/func/test_repro.py::TestReproExternalBase::test', 'tests/func/test_repro.py::TestReproExternalGS::test', 'tests/func/test_repro.py::TestReproExternalHDFS::test', 'tests/func/test_repro.py::TestReproExternalHTTP::test', 'tests/func/test_repro.py::TestReproExternalLOCAL::test', 'tests/func/test_repro.py::TestReproExternalS3::test', 'tests/func/test_repro.py::TestReproExternalSSH::test', 'tests/func/test_repro.py::TestReproFail::test', 'tests/func/test_repro.py::TestReproForce::test', 'tests/func/test_repro.py::TestReproIgnoreBuildCache::test', 'tests/func/test_repro.py::TestReproLocked::test', 'tests/func/test_repro.py::TestReproLocked::test_non_existing', 'tests/func/test_repro.py::TestReproLockedCallback::test', 'tests/func/test_repro.py::TestReproLockedUnchanged::test', 'tests/func/test_repro.py::TestReproMetricsAddUnchanged::test', 'tests/func/test_repro.py::TestReproMissingMd5InStageFile::test', 'tests/func/test_repro.py::TestReproNoCommit::test', 'tests/func/test_repro.py::TestReproNoDeps::test', 'tests/func/test_repro.py::TestReproPhony::test', 'tests/func/test_repro.py::TestReproPipeline::test', 'tests/func/test_repro.py::TestReproPipeline::test_cli', 'tests/func/test_repro.py::TestReproPipelines::test', 'tests/func/test_repro.py::TestReproPipelines::test_cli', 'tests/func/test_repro.py::TestReproUpToDate::test', 'tests/func/test_repro.py::TestReproWorkingDirectoryAsOutput::test', 'tests/func/test_repro.py::TestReproWorkingDirectoryAsOutput::test_nested', 'tests/func/test_repro.py::TestReproWorkingDirectoryAsOutput::test_similar_paths', 'tests/func/test_repro.py::TestShouldDisplayMetricsOnReproWithMetricsOption::test', 'tests/func/test_repro.py::test_dvc_formatting_retained', 'tests/func/test_repro.py::test_recursive_repro_default', 'tests/func/test_repro.py::test_recursive_repro_empty_dir', 'tests/func/test_repro.py::test_recursive_repro_on_stage_file', 'tests/func/test_repro.py::test_recursive_repro_recursive_missing_file', 'tests/func/test_repro.py::test_recursive_repro_single', 'tests/func/test_repro.py::test_recursive_repro_single_force', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_exists', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_isdir', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_isfile', 'tests/func/test_tree.py::TestGitSubmoduleTree::test_open', 'tests/func/test_tree.py::TestGitTree::test_exists', 'tests/func/test_tree.py::TestGitTree::test_isdir', 'tests/func/test_tree.py::TestGitTree::test_isfile', 'tests/func/test_tree.py::TestGitTree::test_open', 'tests/func/test_tree.py::TestWalkInGit::test_branch', 'tests/func/test_tree.py::TestWalkInGit::test_nobranch', 'tests/func/test_tree.py::TestWalkInNoSCM::test', 'tests/func/test_tree.py::TestWalkInNoSCM::test_subdir', 'tests/func/test_tree.py::TestWorkingTree::test_exists', 'tests/func/test_tree.py::TestWorkingTree::test_isdir', 'tests/func/test_tree.py::TestWorkingTree::test_isfile', 'tests/func/test_tree.py::TestWorkingTree::test_open', 'tests/func/test_update.py::test_update_import', 'tests/func/test_update.py::test_update_import_url', 'tests/unit/command/test_imp_url.py::test_failed_import_url', 'tests/unit/command/test_imp_url.py::test_import_url', 'tests/unit/dependency/test_hdfs.py::TestDependencyLOCAL::test_save_missing', 'tests/unit/output/test_hdfs.py::TestOutputLOCAL::test_save_missing', 'tests/unit/remote/ssh/test_pool.py::test_doesnt_swallow_errors', 'tests/unit/test_path_info.py::test_url_info_deepcopy[CloudURLInfo]', 'tests/unit/test_path_info.py::test_url_info_deepcopy[URLInfo]', 'tests/unit/test_path_info.py::test_url_info_eq[CloudURLInfo]', 'tests/unit/test_path_info.py::test_url_info_eq[URLInfo]', 'tests/unit/test_path_info.py::test_url_info_parent[CloudURLInfo]', 'tests/unit/test_path_info.py::test_url_info_parent[URLInfo]', 'tests/unit/test_path_info.py::test_url_info_parents[CloudURLInfo]', 'tests/unit/test_path_info.py::test_url_info_parents[URLInfo]', 'tests/unit/test_path_info.py::test_url_info_str[CloudURLInfo]', 'tests/unit/test_path_info.py::test_url_info_str[URLInfo]', 'tests/unit/test_stage.py::test_meta_ignored', 'tests/unit/test_stage.py::test_stage_checksum', 'tests/unit/test_stage.py::test_stage_fname[False]', 'tests/unit/test_stage.py::test_stage_fname[True]', 'tests/unit/test_stage.py::test_stage_update', 'tests/unit/test_stage.py::test_wdir_default_ignored', 'tests/unit/test_stage.py::test_wdir_non_default_is_not_ignored']}, 'PASS_TO_PASS': {'success': [], 'failure': []}, 'FAIL_TO_FAIL': {'success': [], 'failure': []}, 'PASS_TO_FAIL': {'success': [], 'failure': []}}}}
+Result for iterative__dvc_0.52.1_0.53.1: resolved: False
+2026-04-28 17:34:24,326 - INFO - Attempting to stop container sweb.eval.iterative__dvc_0.52.1_0.53.1.eval_input_20260427-154634...
+2026-04-28 17:34:44,912 - INFO - Attempting to remove container sweb.eval.iterative__dvc_0.52.1_0.53.1.eval_input_20260427-154634...
+2026-04-28 17:34:44,979 - INFO - Container sweb.eval.iterative__dvc_0.52.1_0.53.1.eval_input_20260427-154634 removed.
+2026-04-28 17:34:44,979 - INFO - Attempting to remove image sweb.eval.x86_64.iterative__dvc_0.52.1_0.53.1:latest...
+2026-04-28 17:34:44,983 - INFO - Image sweb.eval.x86_64.iterative__dvc_0.52.1_0.53.1:latest removed.

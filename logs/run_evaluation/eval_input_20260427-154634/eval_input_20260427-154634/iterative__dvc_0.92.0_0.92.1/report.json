@@ -1,0 +1,38 @@
+{
+    "iterative__dvc_0.92.0_0.92.1": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": true,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_data_sync.py::test_fetch",
+                    "tests/unit/command/test_data_sync.py::test_pull",
+                    "tests/unit/command/test_data_sync.py::test_push",
+                    "tests/unit/command/test_status.py::test_cloud_status"
+                ],
+                "failure": []
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_metrics.py::test_metrics_diff",
+                    "tests/unit/command/test_metrics.py::test_metrics_diff_deleted_metric",
+                    "tests/unit/command/test_metrics.py::test_metrics_diff_new_metric",
+                    "tests/unit/command/test_metrics.py::test_metrics_diff_no_diff",
+                    "tests/unit/command/test_metrics.py::test_metrics_show_json_diff",
+                    "tests/unit/command/test_metrics.py::test_metrics_show_raw_diff"
+                ],
+                "failure": []
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}

@@ -1,0 +1,20 @@
+diff --git a/dvc/tree/local.py b/dvc/tree/local.py
+index 0be9a1d..fdb2947 100644
+--- a/dvc/tree/local.py
++++ b/dvc/tree/local.py
+@@ -298,7 +298,14 @@ class LocalTree(BaseTree):
+             self._unprotect_file(path)
+ 
+     def protect(self, path_info):
+-        self.chmod(path_info, self.CACHE_MODE)
++        try:
++            self.chmod(path_info, self.CACHE_MODE)
++        except OSError as exc:
++            # Ignore errors in shared cache scenario when we might not own
++            # the cache file and can't change its permissions.
++            if exc.errno in [errno.EPERM, errno.EACCES]:
++                return
++            raise
+ 
+     def is_protected(self, path_info):
+         try:

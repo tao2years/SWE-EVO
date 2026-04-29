@@ -1,0 +1,1369 @@
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z '' ']'
++++ export CONDA_SHLVL=0
++++ CONDA_SHLVL=0
++++ '[' -n '' ']'
++++++ dirname /opt/miniconda3/bin/conda
+++++ dirname /opt/miniconda3/bin
++++ PATH=/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export PATH
++++ '[' -z '' ']'
++++ PS1=
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1=
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''1'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=1
++++ CONDA_SHLVL=1
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''2'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_1='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=2
+++ CONDA_SHLVL=2
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_1=/opt/miniconda3
+++ CONDA_PREFIX_1=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ cd /testbed
++ git config --global --add safe.directory /testbed
++ cd /testbed
++ git status
+On branch main
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   dvc/command/imp_url.py
+	modified:   dvc/repo/imp_url.py
+	modified:   tests/func/test_import_url.py
+	modified:   tests/unit/command/test_imp_url.py
+
+no changes added to commit (use "git add" and/or "git commit -a")
++ git show
+commit a2f1367a9a75849ef6ad7ee23a5bacc18580f102
+Author: Ruslan Kuprieiev <kupruser@gmail.com>
+Date:   Sat Jun 20 00:04:53 2020 +0300
+
+    dvc: bump to 1.0.0b6
+
+diff --git a/dvc/version.py b/dvc/version.py
+index 47fb7dc4c..65a797543 100644
+--- a/dvc/version.py
++++ b/dvc/version.py
+@@ -6,7 +6,7 @@
+ import os
+ import subprocess
+ 
+-_BASE_VERSION = "1.0.0b5"
++_BASE_VERSION = "1.0.0b6"
+ 
+ 
+ def _generate_version(base_version):
++ git -c core.fileMode=false diff a2f1367a9a75849ef6ad7ee23a5bacc18580f102
+diff --git a/dvc/command/imp_url.py b/dvc/command/imp_url.py
+index 18591891b..641ad83df 100644
+--- a/dvc/command/imp_url.py
++++ b/dvc/command/imp_url.py
+@@ -12,7 +12,10 @@ class CmdImportUrl(CmdBase):
+     def run(self):
+         try:
+             self.repo.imp_url(
+-                self.args.url, out=self.args.out, fname=self.args.file
++                self.args.url,
++                out=self.args.out,
++                fname=self.args.file,
++                **({"dry": self.args.no_exec} if self.args.no_exec else {}),
+             )
+         except DvcException:
+             logger.exception(
+@@ -66,4 +69,10 @@ def add_parser(subparsers, parent_parser):
+         metavar="<filename>",
+         choices=completion.Optional.DIR,
+     )
++    import_parser.add_argument(
++        "--no-exec",
++        action="store_true",
++        default=False,
++        help="Only create DVC-file without actually downloading it.",
++    )
+     import_parser.set_defaults(func=CmdImportUrl)
+diff --git a/dvc/repo/imp_url.py b/dvc/repo/imp_url.py
+index b6aabfefc..bdb08edf1 100644
+--- a/dvc/repo/imp_url.py
++++ b/dvc/repo/imp_url.py
+@@ -10,7 +10,7 @@ from . import locked
+ 
+ @locked
+ @scm_context
+-def imp_url(self, url, out=None, fname=None, erepo=None, frozen=True):
++def imp_url(self, url, out=None, fname=None, erepo=None, frozen=True, dry=False):
+     from dvc.dvcfile import Dvcfile
+     from dvc.stage import Stage, create_stage
+ 
+@@ -46,7 +46,7 @@ def imp_url(self, url, out=None, fname=None, erepo=None, frozen=True):
+     except OutputDuplicationError as exc:
+         raise OutputDuplicationError(exc.output, set(exc.stages) - {stage})
+ 
+-    stage.run()
++    stage.run(dry=dry)
+ 
+     stage.frozen = frozen
+ 
+diff --git a/tests/func/test_import_url.py b/tests/func/test_import_url.py
+index 52e7edd2f..c5b8db8f9 100644
+--- a/tests/func/test_import_url.py
++++ b/tests/func/test_import_url.py
+@@ -103,3 +103,12 @@ def test_import_stage_accompanies_target(tmp_dir, dvc, erepo_dir):
+ def test_import_url_nonexistent(dvc, erepo_dir):
+     with pytest.raises(DependencyDoesNotExistError):
+         dvc.imp_url(os.fspath(erepo_dir / "non-existent"))
++
++
++def test_import_url_with_no_exec(tmp_dir, dvc, erepo_dir):
++    tmp_dir.gen({"data_dir": {"file": "file content"}})
++    src = os.path.join("data_dir", "file")
++
++    dvc.imp_url(src, ".", no_exec=True)
++    dst = tmp_dir / "file"
++    assert not dst.exists()
+diff --git a/tests/unit/command/test_imp_url.py b/tests/unit/command/test_imp_url.py
+index 8e04d1268..6b5b5f784 100644
+--- a/tests/unit/command/test_imp_url.py
++++ b/tests/unit/command/test_imp_url.py
+@@ -14,7 +14,7 @@ def test_import_url(mocker):
+ 
+     assert cmd.run() == 0
+ 
+-    m.assert_called_once_with("src", out="out", fname="file")
++    m.assert_called_once_with("src", out="out", fname="file", no_exec=False)
+ 
+ 
+ def test_failed_import_url(mocker, caplog):
+@@ -31,3 +31,16 @@ def test_failed_import_url(mocker, caplog):
+             "adding it with `dvc add`."
+         )
+         assert expected_error in caplog.text
++
++
++def test_import_url_no_exec(mocker):
++    cli_args = parse_args(
++        ["import-url", "--no-exec", "src", "out", "--file", "file"]
++    )
++
++    cmd = cli_args.func(cli_args)
++    m = mocker.patch.object(cmd.repo, "imp_url", autospec=True)
++
++    assert cmd.run() == 0
++
++    m.assert_called_once_with("src", out="out", fname="file", no_exec=True)
++ source /opt/miniconda3/bin/activate
+++ _CONDA_ROOT=/opt/miniconda3
+++ . /opt/miniconda3/etc/profile.d/conda.sh
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ '[' -z x ']'
+++ conda activate
+++ local cmd=activate
+++ case "$cmd" in
+++ __conda_activate activate
+++ '[' -n '' ']'
+++ local ask_conda
++++ PS1='(testbed) '
++++ __conda_exe shell.posix activate
++++ /opt/miniconda3/bin/conda shell.posix activate
+++ ask_conda='PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ eval 'PS1='\''(base) '\''
+export PATH='\''/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3'\''
+export CONDA_SHLVL='\''3'\''
+export CONDA_DEFAULT_ENV='\''base'\''
+export CONDA_PROMPT_MODIFIER='\''(base) '\''
+export CONDA_PREFIX_2='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++++ PS1='(base) '
++++ export PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ PATH=/opt/miniconda3/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
++++ export CONDA_PREFIX=/opt/miniconda3
++++ CONDA_PREFIX=/opt/miniconda3
++++ export CONDA_SHLVL=3
++++ CONDA_SHLVL=3
++++ export CONDA_DEFAULT_ENV=base
++++ CONDA_DEFAULT_ENV=base
++++ export 'CONDA_PROMPT_MODIFIER=(base) '
++++ CONDA_PROMPT_MODIFIER='(base) '
++++ export CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ CONDA_PREFIX_2=/opt/miniconda3/envs/testbed
++++ export CONDA_EXE=/opt/miniconda3/bin/conda
++++ CONDA_EXE=/opt/miniconda3/bin/conda
++++ export _CE_M=
++++ _CE_M=
++++ export _CE_CONDA=
++++ _CE_CONDA=
++++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ __conda_hashr
+++ '[' -n '' ']'
+++ '[' -n '' ']'
+++ hash -r
++ conda activate testbed
++ local cmd=activate
++ case "$cmd" in
++ __conda_activate activate testbed
++ '[' -n '' ']'
++ local ask_conda
+++ PS1='(base) '
+++ __conda_exe shell.posix activate testbed
+++ /opt/miniconda3/bin/conda shell.posix activate testbed
++ ask_conda='PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
++ eval 'PS1='\''(testbed) '\''
+export PATH='\''/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'\''
+export CONDA_PREFIX='\''/opt/miniconda3/envs/testbed'\''
+export CONDA_SHLVL='\''4'\''
+export CONDA_DEFAULT_ENV='\''testbed'\''
+export CONDA_PROMPT_MODIFIER='\''(testbed) '\''
+export CONDA_PREFIX_3='\''/opt/miniconda3'\''
+export CONDA_EXE='\''/opt/miniconda3/bin/conda'\''
+export _CE_M='\'''\''
+export _CE_CONDA='\'''\''
+export CONDA_PYTHON_EXE='\''/opt/miniconda3/bin/python'\'''
+++ PS1='(testbed) '
+++ export PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ PATH=/opt/miniconda3/envs/testbed/bin:/opt/miniconda3/condabin:/opt/miniconda3/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+++ export CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ CONDA_PREFIX=/opt/miniconda3/envs/testbed
+++ export CONDA_SHLVL=4
+++ CONDA_SHLVL=4
+++ export CONDA_DEFAULT_ENV=testbed
+++ CONDA_DEFAULT_ENV=testbed
+++ export 'CONDA_PROMPT_MODIFIER=(testbed) '
+++ CONDA_PROMPT_MODIFIER='(testbed) '
+++ export CONDA_PREFIX_3=/opt/miniconda3
+++ CONDA_PREFIX_3=/opt/miniconda3
+++ export CONDA_EXE=/opt/miniconda3/bin/conda
+++ CONDA_EXE=/opt/miniconda3/bin/conda
+++ export _CE_M=
+++ _CE_M=
+++ export _CE_CONDA=
+++ _CE_CONDA=
+++ export CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
+++ CONDA_PYTHON_EXE=/opt/miniconda3/bin/python
++ __conda_hashr
++ '[' -n '' ']'
++ '[' -n '' ']'
++ hash -r
++ python -m pip install --upgrade pip wheel GitPython
+Requirement already satisfied: pip in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (24.2)
+Collecting pip
+  Downloading pip-26.0.1-py3-none-any.whl.metadata (4.7 kB)
+Requirement already satisfied: wheel in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.44.0)
+Collecting wheel
+  Downloading wheel-0.47.0-py3-none-any.whl.metadata (2.3 kB)
+Requirement already satisfied: GitPython in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (3.1.43)
+Collecting GitPython
+  Downloading gitpython-3.1.48-py3-none-any.whl.metadata (14 kB)
+Requirement already satisfied: packaging>=24.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from wheel) (24.1)
+Requirement already satisfied: gitdb<5,>=4.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.0.11)
+Requirement already satisfied: typing-extensions>=3.10.0.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from GitPython) (4.12.2)
+Requirement already satisfied: smmap<6,>=3.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from gitdb<5,>=4.0.1->GitPython) (5.0.1)
+Downloading pip-26.0.1-py3-none-any.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 21.1 kB/s eta 0:00:00
+Downloading wheel-0.47.0-py3-none-any.whl (32 kB)
+Downloading gitpython-3.1.48-py3-none-any.whl (209 kB)
+Installing collected packages: wheel, pip, GitPython
+  Attempting uninstall: wheel
+    Found existing installation: wheel 0.44.0
+    Uninstalling wheel-0.44.0:
+      Successfully uninstalled wheel-0.44.0
+  Attempting uninstall: pip
+    Found existing installation: pip 24.2
+    Uninstalling pip-24.2:
+      Successfully uninstalled pip-24.2
+  Attempting uninstall: GitPython
+    Found existing installation: GitPython 3.1.43
+    Uninstalling GitPython-3.1.43:
+      Successfully uninstalled GitPython-3.1.43
+Successfully installed GitPython-3.1.48 pip-26.0.1 wheel-0.47.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable.It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'cython<3.0.0'
+Requirement already satisfied: cython<3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (0.29.37)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install --no-build-isolation pyyaml==5.4.1
+Collecting pyyaml==5.4.1
+  Using cached PyYAML-5.4.1-cp39-cp39-manylinux1_x86_64.whl.metadata (2.1 kB)
+Using cached PyYAML-5.4.1-cp39-cp39-manylinux1_x86_64.whl (630 kB)
+Installing collected packages: pyyaml
+  Attempting uninstall: pyyaml
+    Found existing installation: PyYAML 5.3.1
+    Uninstalling PyYAML-5.3.1:
+      Successfully uninstalled PyYAML-5.3.1
+ERROR: pip's dependency resolver does not currently take into account all the packages that are installed. This behaviour is the source of the following dependency conflicts.
+dvc 1.0.0b6+a2f136.mod requires PyYAML<5.4,>=5.1.2, but you have pyyaml 5.4.1 which is incompatible.
+Successfully installed pyyaml-5.4.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install git+https://github.com/iterative/mock-ssh-server.git
+Collecting git+https://github.com/iterative/mock-ssh-server.git
+  Cloning https://github.com/iterative/mock-ssh-server.git to /tmp/pip-req-build-tlusivrh
+  Running command git clone --filter=blob:none --quiet https://github.com/iterative/mock-ssh-server.git /tmp/pip-req-build-tlusivrh
+  Resolved https://github.com/iterative/mock-ssh-server.git to commit cd2032aeb04bb142dbc964e50839133c3584cf08
+  Installing build dependencies: started
+  Installing build dependencies: still running...
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: paramiko in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from mock-ssh-server==0.8.1) (3.5.0)
+Requirement already satisfied: bcrypt>=3.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from paramiko->mock-ssh-server==0.8.1) (4.2.0)
+Requirement already satisfied: cryptography>=3.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from paramiko->mock-ssh-server==0.8.1) (43.0.1)
+Requirement already satisfied: pynacl>=1.5 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from paramiko->mock-ssh-server==0.8.1) (1.5.0)
+Requirement already satisfied: cffi>=1.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cryptography>=3.3->paramiko->mock-ssh-server==0.8.1) (1.17.1)
+Requirement already satisfied: pycparser in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from cffi>=1.12->cryptography>=3.3->paramiko->mock-ssh-server==0.8.1) (2.22)
+Building wheels for collected packages: mock-ssh-server
+  Building wheel for mock-ssh-server (pyproject.toml): started
+  Building wheel for mock-ssh-server (pyproject.toml): finished with status 'done'
+  Created wheel for mock-ssh-server: filename=mock_ssh_server-0.8.1-py3-none-any.whl size=12976 sha256=0bc60cb9862b255eb0342ddb54f110316bee6d7eff42f7ece5ed46c7542c4507
+  Stored in directory: /tmp/pip-ephem-wheel-cache-ko_8mqw5/wheels/08/e6/a2/238a7b275c063937c00f0fb6dd3367cb276f70086abdcf42c0
+Successfully built mock-ssh-server
+Installing collected packages: mock-ssh-server
+  Attempting uninstall: mock-ssh-server
+    Found existing installation: mock-ssh-server 0.9.1
+    Uninstalling mock-ssh-server-0.9.1:
+      Successfully uninstalled mock-ssh-server-0.9.1
+Successfully installed mock-ssh-server-0.8.1
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install -r tests/requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'tests/requirements.txt'
++ true
++ python -m pip install -r test-requirements.txt
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'test-requirements.txt'
++ true
++ python -m pip install -e '.[tests,dev,all_remotes,all,testing]'
+Obtaining file:///testbed
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: ply>=3.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.11)
+Requirement already satisfied: colorama>=0.3.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.4.6)
+Requirement already satisfied: configobj>=5.0.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (5.0.9)
+Requirement already satisfied: gitpython>3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.1.48)
+Requirement already satisfied: setuptools>=34.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (75.1.0)
+Requirement already satisfied: nanotime>=0.5.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.5.2)
+Requirement already satisfied: pyasn1>=0.4.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.6.1)
+Requirement already satisfied: voluptuous>=0.11.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.15.2)
+Requirement already satisfied: jsonpath-ng>=1.5.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.6.1)
+Requirement already satisfied: requests>=2.22.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.32.3)
+Requirement already satisfied: grandalf==0.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.6)
+Requirement already satisfied: distro>=1.3.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.9.0)
+Requirement already satisfied: appdirs>=1.4.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.4.4)
+Collecting PyYAML<5.4,>=5.1.2 (from dvc==1.0.0b6+a2f136.mod)
+  Using cached PyYAML-5.3.1-cp39-cp39-linux_x86_64.whl
+Requirement already satisfied: ruamel.yaml>=0.16.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.18.6)
+Requirement already satisfied: funcy>=1.14 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.0)
+Requirement already satisfied: pathspec>=0.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.12.1)
+Requirement already satisfied: shortuuid>=0.5.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.0.13)
+Requirement already satisfied: tqdm<5,>=4.45.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (4.66.5)
+Requirement already satisfied: packaging>=19.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (24.1)
+Requirement already satisfied: zc.lockfile>=1.2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.0.post1)
+Requirement already satisfied: flufl.lock>=3.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (8.1.0)
+Requirement already satisfied: networkx<2.4,>=2.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.3)
+Requirement already satisfied: pydot>=1.2.4 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.0.1)
+Requirement already satisfied: flatten_json>=0.1.6 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.1.14)
+Requirement already satisfied: tabulate>=0.8.7 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.9.0)
+Requirement already satisfied: pygtrie==2.3.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.3.2)
+Requirement already satisfied: dpath<3,>=2.0.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.2.0)
+Requirement already satisfied: shtab>=0.0.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.7.1)
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'all-remotes'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'dev'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'testing'
+Requirement already satisfied: wheel>=0.31.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.47.0)
+Requirement already satisfied: pytest>=4.6.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (7.4.4)
+Requirement already satisfied: pytest-timeout>=1.3.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.3.1)
+Requirement already satisfied: pytest-cov>=2.6.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (5.0.0)
+Requirement already satisfied: pytest-xdist>=1.26.1 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.6.1)
+Requirement already satisfied: pytest-mock==1.11.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.11.2)
+Requirement already satisfied: pytest-lazy-fixture in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.6.3)
+Requirement already satisfied: flaky>=3.5.3 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.8.1)
+Requirement already satisfied: mock>=3.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (5.1.0)
+Requirement already satisfied: xmltodict>=0.11.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.13.0)
+Requirement already satisfied: awscli>=1.16.297 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.34.26)
+Requirement already satisfied: google-compute-engine==2.8.13 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.8.13)
+Requirement already satisfied: Pygments in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (2.18.0)
+Requirement already satisfied: collective.checkdocs in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (0.2)
+Requirement already satisfied: flake8==3.7.9 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.7.9)
+Requirement already satisfied: psutil in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (6.0.0)
+Requirement already satisfied: flake8-docstrings in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (1.7.0)
+Requirement already satisfied: pydocstyle<4.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.0.0)
+Requirement already satisfied: jaraco.windows==3.9.2 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from dvc==1.0.0b6+a2f136.mod) (3.9.2)
+Collecting mock-ssh-server>=0.8.2 (from dvc==1.0.0b6+a2f136.mod)
+  Using cached mock_ssh_server-0.9.1-py3-none-any.whl.metadata (2.3 kB)
+INFO: pip is looking at multiple versions of dvc[all,all-remotes,dev,testing,tests] to determine which version is compatible with other requirements. This could take a while.
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'all-remotes'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'dev'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'testing'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'all-remotes'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'dev'
+WARNING: dvc 1.0.0b6+a2f136.mod does not provide the extra 'testing'
+ERROR: Could not find a version that satisfies the requirement moto==1.3.14.dev464; extra == "tests" (from dvc[all,all-remotes,dev,testing,tests]) (from versions: 1.0.0, 1.0.1, 1.1.0, 1.1.1, 1.1.2, 1.1.3, 1.1.4, 1.1.5, 1.1.6, 1.1.7, 1.1.8, 1.1.9, 1.1.10, 1.1.11, 1.1.12, 1.1.13, 1.1.14, 1.1.15, 1.1.16, 1.1.18, 1.1.19, 1.1.20, 1.1.21, 1.1.22, 1.1.23, 1.1.24, 1.1.25, 1.2.0, 1.3.0, 1.3.1, 1.3.2, 1.3.3, 1.3.4, 1.3.5, 1.3.6, 1.3.7, 1.3.8, 1.3.9, 1.3.10, 1.3.11, 1.3.12, 1.3.13, 1.3.14, 1.3.15, 1.3.16, 2.0.0, 2.0.1, 2.0.2, 2.0.3, 2.0.4, 2.0.5, 2.0.6, 2.0.7, 2.0.8, 2.0.9, 2.0.10, 2.0.11, 2.1.0, 2.2.0, 2.2.1, 2.2.2, 2.2.3, 2.2.4, 2.2.5, 2.2.6, 2.2.7, 2.2.8, 2.2.9, 2.2.10, 2.2.11, 2.2.12, 2.2.13, 2.2.14, 2.2.15, 2.2.16, 2.2.17, 2.2.18, 2.2.19, 2.2.20, 2.3.0, 2.3.1, 2.3.2, 3.0.0, 3.0.1, 3.0.2, 3.0.3, 3.0.4, 3.0.5, 3.0.6, 3.0.7, 3.1.0, 3.1.1, 3.1.2, 3.1.3, 3.1.4, 3.1.5, 3.1.6, 3.1.7, 3.1.8, 3.1.9, 3.1.10, 3.1.11, 3.1.12, 3.1.13, 3.1.14, 3.1.15, 3.1.16, 3.1.17, 3.1.18, 3.1.19, 4.0.0, 4.0.1, 4.0.2, 4.0.3, 4.0.5, 4.0.6, 4.0.7, 4.0.8, 4.0.9, 4.0.10, 4.0.11, 4.0.12, 4.0.13, 4.1.0, 4.1.1, 4.1.2, 4.1.3, 4.1.4, 4.1.5, 4.1.6, 4.1.7, 4.1.8, 4.1.9, 4.1.10, 4.1.11, 4.1.12.dev7, 4.1.12, 4.1.13.dev2, 4.1.13.dev3, 4.1.13.dev4, 4.1.13.dev6, 4.1.13.dev7, 4.1.13.dev8, 4.1.13.dev9, 4.1.13.dev10, 4.1.13.dev11, 4.1.13.dev12, 4.1.13.dev14, 4.1.13.dev15, 4.1.13.dev16, 4.1.13.dev17, 4.1.13.dev18, 4.1.13.dev23, 4.1.13.dev24, 4.1.13.dev25, 4.1.13.dev26, 4.1.13.dev28, 4.1.13.dev29, 4.1.13.dev30, 4.1.13.dev32, 4.1.13.dev33, 4.1.13.dev34, 4.1.13.dev35, 4.1.13.dev36, 4.1.13.dev37, 4.1.13.dev38, 4.1.13.dev39, 4.1.13.dev40, 4.1.13.dev41, 4.1.13.dev42, 4.1.13.dev43, 4.1.13.dev44, 4.1.13.dev45, 4.1.13.dev46, 4.1.13.dev47, 4.1.13.dev48, 4.1.13.dev49, 4.1.13.dev50, 4.1.13.dev52, 4.1.13.dev53, 4.1.13.dev54, 4.1.13.dev55, 4.1.13.dev56, 4.1.13.dev57, 4.1.13.dev58, 4.1.13.dev59, 4.1.13.dev60, 4.1.13.dev61, 4.1.13.dev62, 4.1.13.dev63, 4.1.13.dev64, 4.1.13, 4.1.14.dev2, 4.1.14.dev3, 4.1.14.dev4, 4.1.14.dev5, 4.1.14.dev6, 4.1.14.dev8, 4.1.14.dev9, 4.1.14.dev10, 4.1.14.dev11, 4.1.14.dev12, 4.1.14.dev13, 4.1.14.dev14, 4.1.14.dev15, 4.1.14.dev16, 4.1.14.dev17, 4.1.14.dev18, 4.1.14.dev19, 4.1.14.dev20, 4.1.14.dev22, 4.1.14.dev23, 4.1.14.dev24, 4.1.14.dev25, 4.1.14.dev26, 4.1.14.dev27, 4.1.14.dev30, 4.1.14.dev31, 4.1.14.dev32, 4.1.14.dev33, 4.1.14.dev36, 4.1.14.dev37, 4.1.14.dev38, 4.1.14.dev39, 4.1.14.dev41, 4.1.14.dev42, 4.1.14.dev43, 4.1.14, 4.1.15.dev2, 4.1.15.dev4, 4.1.15.dev5, 4.1.15.dev6, 4.1.15.dev7, 4.1.15.dev8, 4.1.15.dev12, 4.1.15.dev13, 4.1.15.dev14, 4.1.15.dev15, 4.1.15.dev17, 4.1.15.dev19, 4.1.15.dev20, 4.1.15.dev22, 4.1.15.dev23, 4.1.15.dev24, 4.1.15.dev25, 4.1.15.dev26, 4.1.15.dev27, 4.1.15.dev28, 4.1.15.dev30, 4.1.15.dev38, 4.1.15.dev40, 4.1.15.dev42, 4.1.15.dev43, 4.1.15.dev44, 4.1.15.dev45, 4.1.15.dev46, 4.1.15.dev72, 4.1.15.dev74, 4.1.15.dev82, 4.1.15.dev83, 4.1.15.dev90, 4.1.15.dev91, 4.1.15.dev92, 4.1.15.dev93, 4.1.15.dev94, 4.1.15.dev95, 4.1.15.dev96, 4.1.15.dev98, 4.1.15.dev99, 4.1.15.dev100, 4.1.15.dev101, 4.1.15.dev103, 4.1.15, 4.2.0.dev2, 4.2.0, 4.2.1.dev2, 4.2.1.dev3, 4.2.1.dev4, 4.2.1.dev5, 4.2.1.dev7, 4.2.1.dev13, 4.2.1.dev14, 4.2.1.dev16, 4.2.1.dev17, 4.2.1.dev19, 4.2.1.dev20, 4.2.1.dev23, 4.2.1.dev26, 4.2.1.dev27, 4.2.1.dev28, 4.2.1.dev29, 4.2.1.dev30, 4.2.1.dev31, 4.2.1.dev32, 4.2.1.dev33, 4.2.1.dev34, 4.2.1.dev35, 4.2.1.dev37, 4.2.1, 4.2.2, 4.2.3.dev4, 4.2.3.dev5, 4.2.3.dev8, 4.2.3.dev9, 4.2.3.dev10, 4.2.3.dev11, 4.2.3.dev13, 4.2.3.dev14, 4.2.3.dev15, 4.2.3.dev16, 4.2.3.dev17, 4.2.3.dev18, 4.2.3.dev19, 4.2.3.dev20, 4.2.3.dev21, 4.2.3.dev22, 4.2.3.dev23, 4.2.3.dev26, 4.2.3.dev28, 4.2.3.dev30, 4.2.3.dev31, 4.2.3.dev32, 4.2.3.dev33, 4.2.3.dev35, 4.2.3.dev37, 4.2.3.dev38, 4.2.3.dev39, 4.2.3.dev40, 4.2.3.dev41, 4.2.3.dev42, 4.2.3.dev44, 4.2.3.dev46, 4.2.3, 4.2.4.dev5, 4.2.4.dev6, 4.2.4.dev7, 4.2.4.dev8, 4.2.4.dev12, 4.2.4.dev13, 4.2.4.dev18, 4.2.4.dev19, 4.2.4.dev20, 4.2.4, 4.2.5.dev5, 4.2.5.dev6, 4.2.5.dev7, 4.2.5.dev10, 4.2.5.dev12, 4.2.5.dev16, 4.2.5.dev17, 4.2.5, 4.2.6.dev3, 4.2.6.dev8, 4.2.6.dev9, 4.2.6.dev10, 4.2.6.dev12, 4.2.6.dev13, 4.2.6.dev14, 4.2.6.dev15, 4.2.6.dev16, 4.2.6.dev18, 4.2.6.dev21, 4.2.6.dev22, 4.2.6.dev26, 4.2.6.dev27, 4.2.6.dev29, 4.2.6.dev30, 4.2.6.dev31, 4.2.6.dev33, 4.2.6.dev35, 4.2.6, 4.2.7.dev3, 4.2.7.dev5, 4.2.7.dev6, 4.2.7.dev7, 4.2.7.dev8, 4.2.7.dev9, 4.2.7.dev11, 4.2.7.dev12, 4.2.7.dev14, 4.2.7.dev15, 4.2.7.dev16, 4.2.7.dev18, 4.2.7.dev19, 4.2.7.dev20, 4.2.7.dev23, 4.2.7.dev24, 4.2.7.dev25, 4.2.7.dev28, 4.2.7.dev29, 4.2.7.dev30, 4.2.7.dev31, 4.2.7.dev32, 4.2.7, 4.2.8.dev2, 4.2.8.dev3, 4.2.8.dev4, 4.2.8.dev5, 4.2.8.dev7, 4.2.8.dev9, 4.2.8.dev16, 4.2.8.dev18, 4.2.8.dev23, 4.2.8.dev24, 4.2.8.dev25, 4.2.8.dev30, 4.2.8.dev31, 4.2.8.dev32, 4.2.8.dev35, 4.2.8.dev37, 4.2.8, 4.2.9.dev4, 4.2.9.dev6, 4.2.9.dev9, 4.2.9.dev10, 4.2.9, 4.2.10.dev3, 4.2.10.dev6, 4.2.10.dev8, 4.2.10.dev17, 4.2.10.dev19, 4.2.10.dev20, 4.2.10.dev21, 4.2.10.dev22, 4.2.10.dev25, 4.2.10.dev26, 4.2.10, 4.2.11.dev2, 4.2.11.dev3, 4.2.11.dev4, 4.2.11.dev5, 4.2.11.dev6, 4.2.11.dev7, 4.2.11.dev9, 4.2.11.dev10, 4.2.11.dev11, 4.2.11.dev12, 4.2.11.dev13, 4.2.11.dev14, 4.2.11.dev15, 4.2.11.dev16, 4.2.11.dev17, 4.2.11.dev18, 4.2.11.dev19, 4.2.11.dev20, 4.2.11, 4.2.12.dev2, 4.2.12.dev3, 4.2.12.dev4, 4.2.12.dev5, 4.2.12.dev6, 4.2.12.dev7, 4.2.12.dev8, 4.2.12.dev9, 4.2.12.dev10, 4.2.12.dev11, 4.2.12.dev12, 4.2.12.dev14, 4.2.12.dev15, 4.2.12.dev16, 4.2.12.dev17, 4.2.12.dev19, 4.2.12.dev20, 4.2.12.dev21, 4.2.12.dev23, 4.2.12.dev24, 4.2.12.dev28, 4.2.12.dev29, 4.2.12.dev31, 4.2.12, 4.2.13.dev3, 4.2.13.dev5, 4.2.13.dev8, 4.2.13.dev9, 4.2.13.dev11, 4.2.13.dev12, 4.2.13.dev13, 4.2.13.dev15, 4.2.13.dev16, 4.2.13.dev17, 4.2.13.dev18, 4.2.13.dev19, 4.2.13.dev21, 4.2.13.dev22, 4.2.13.dev23, 4.2.13.dev24, 4.2.13.dev28, 4.2.13.dev33, 4.2.13.dev34, 4.2.13.dev37, 4.2.13.dev40, 4.2.13.dev44, 4.2.13, 4.2.14.dev2, 4.2.14.dev6, 4.2.14.dev7, 4.2.14.dev8, 4.2.14.dev10, 4.2.14.dev11, 4.2.14.dev12, 4.2.14.dev18, 4.2.14.dev19, 4.2.14.dev22, 4.2.14.dev23, 4.2.14.dev24, 4.2.14.dev25, 4.2.14.dev26, 4.2.14.dev29, 4.2.14.dev30, 4.2.14.dev31, 4.2.14, 5.0.0.dev17, 5.0.0a1, 5.0.0a2, 5.0.0a3, 5.0.0, 5.0.1.dev3, 5.0.1.dev4, 5.0.1.dev5, 5.0.1.dev6, 5.0.1.dev7, 5.0.1.dev8, 5.0.1.dev11, 5.0.1.dev12, 5.0.1.dev13, 5.0.1.dev14, 5.0.1.dev17, 5.0.1.dev18, 5.0.1.dev19, 5.0.1.dev20, 5.0.1.dev21, 5.0.1.dev22, 5.0.1.dev23, 5.0.1.dev25, 5.0.1.dev28, 5.0.1.dev29, 5.0.1.dev33, 5.0.1, 5.0.2.dev2, 5.0.2.dev5, 5.0.2.dev6, 5.0.2.dev7, 5.0.2.dev8, 5.0.2.dev9, 5.0.2.dev10, 5.0.2.dev11, 5.0.2.dev12, 5.0.2.dev13, 5.0.2.dev14, 5.0.2.dev15, 5.0.2.dev16, 5.0.2.dev17, 5.0.2.dev18, 5.0.2.dev19, 5.0.2.dev20, 5.0.2.dev21, 5.0.2.dev22, 5.0.2.dev23, 5.0.2.dev24, 5.0.2.dev26, 5.0.2.dev27, 5.0.2.dev28, 5.0.2.dev29, 5.0.2.dev30, 5.0.2.dev31, 5.0.2.dev32, 5.0.2, 5.0.3.dev2, 5.0.3.dev3, 5.0.3.dev4, 5.0.3.dev5, 5.0.3.dev6, 5.0.3.dev7, 5.0.3.dev8, 5.0.3.dev9, 5.0.3.dev10, 5.0.3.dev11, 5.0.3.dev12, 5.0.3.dev13, 5.0.3.dev14, 5.0.3.dev15, 5.0.3.dev16, 5.0.3.dev17, 5.0.3.dev18, 5.0.3.dev19, 5.0.3.dev20, 5.0.3.dev21, 5.0.3.dev22, 5.0.3.dev23, 5.0.3.dev24, 5.0.3.dev25, 5.0.3.dev26, 5.0.3.dev27, 5.0.3.dev28, 5.0.3.dev29, 5.0.3.dev30, 5.0.3.dev31, 5.0.3.dev32, 5.0.3.dev33, 5.0.3.dev34, 5.0.3.dev35, 5.0.3.dev36, 5.0.3.dev37, 5.0.3.dev38, 5.0.3.dev39, 5.0.3.dev40, 5.0.3.dev41, 5.0.3.dev42, 5.0.3.dev43, 5.0.3.dev44, 5.0.3.dev45, 5.0.3.dev46, 5.0.3.dev47, 5.0.3.dev48, 5.0.3.dev49, 5.0.3.dev50, 5.0.3.dev51, 5.0.3.dev52, 5.0.3.dev53, 5.0.3.dev54, 5.0.3.dev55, 5.0.3.dev56, 5.0.3.dev57, 5.0.3.dev58, 5.0.3.dev59, 5.0.3.dev60, 5.0.3, 5.0.4.dev3, 5.0.4.dev5, 5.0.4.dev6, 5.0.4.dev7, 5.0.4.dev8, 5.0.4.dev9, 5.0.4.dev10, 5.0.4.dev11, 5.0.4.dev12, 5.0.4.dev13, 5.0.4.dev14, 5.0.4.dev15, 5.0.4.dev16, 5.0.4.dev17, 5.0.4.dev18, 5.0.4.dev19, 5.0.4.dev20, 5.0.4.dev21, 5.0.4.dev22, 5.0.4.dev23, 5.0.4.dev24, 5.0.4.dev25, 5.0.4.dev26, 5.0.4.dev27, 5.0.4.dev28, 5.0.4.dev29, 5.0.4.dev30, 5.0.4.dev31, 5.0.4.dev33, 5.0.4.dev34, 5.0.4.dev35, 5.0.4.dev36, 5.0.4.dev38, 5.0.4.dev39, 5.0.4.dev40, 5.0.4.dev41, 5.0.4.dev43, 5.0.4.dev44, 5.0.4.dev45, 5.0.4.dev46, 5.0.4.dev47, 5.0.4.dev48, 5.0.4.dev49, 5.0.4.dev50, 5.0.4, 5.0.5.dev2, 5.0.5.dev3, 5.0.5.dev4, 5.0.5.dev5, 5.0.5.dev6, 5.0.5.dev7, 5.0.5.dev8, 5.0.5.dev9, 5.0.5.dev10, 5.0.5.dev11, 5.0.5.dev12, 5.0.5.dev13, 5.0.5.dev15, 5.0.5.dev16, 5.0.5.dev17, 5.0.5.dev18, 5.0.5.dev19, 5.0.5.dev21, 5.0.5.dev22, 5.0.5.dev23, 5.0.5.dev24, 5.0.5.dev25, 5.0.5.dev27, 5.0.5.dev28, 5.0.5.dev29, 5.0.5, 5.0.6.dev2, 5.0.6.dev4, 5.0.6.dev6, 5.0.6.dev7, 5.0.6.dev8, 5.0.6.dev9, 5.0.6.dev11, 5.0.6.dev12, 5.0.6.dev13, 5.0.6.dev14, 5.0.6.dev15, 5.0.6.dev16, 5.0.6.dev17, 5.0.6.dev18, 5.0.6.dev19, 5.0.6.dev20, 5.0.6.dev21, 5.0.6.dev22, 5.0.6.dev23, 5.0.6.dev24, 5.0.6.dev25, 5.0.6.dev26, 5.0.6.dev27, 5.0.6.dev28, 5.0.6.dev29, 5.0.6.dev30, 5.0.6.dev32, 5.0.6.dev33, 5.0.6.dev34, 5.0.6.dev35, 5.0.6.dev36, 5.0.6.dev37, 5.0.6.dev38, 5.0.6.dev39, 5.0.6.dev40, 5.0.6.dev41, 5.0.6.dev42, 5.0.6.dev43, 5.0.6.dev44, 5.0.6.dev45, 5.0.6, 5.0.7.dev2, 5.0.7.dev3, 5.0.7.dev4, 5.0.7.dev5, 5.0.7.dev6, 5.0.7.dev8, 5.0.7.dev9, 5.0.7.dev11, 5.0.7.dev12, 5.0.7.dev13, 5.0.7.dev14, 5.0.7.dev15, 5.0.7.dev16, 5.0.7.dev28, 5.0.7.dev31, 5.0.7.dev32, 5.0.7.dev33, 5.0.7.dev34, 5.0.7.dev35, 5.0.7.dev36, 5.0.7.dev37, 5.0.7.dev38, 5.0.7.dev40, 5.0.7.dev41, 5.0.7.dev42, 5.0.7.dev43, 5.0.7.dev44, 5.0.7.dev45, 5.0.7, 5.0.8.dev2, 5.0.8.dev3, 5.0.8.dev4, 5.0.8.dev5, 5.0.8.dev6, 5.0.8.dev7, 5.0.8.dev8, 5.0.8.dev9, 5.0.8.dev10, 5.0.8.dev11, 5.0.8.dev12, 5.0.8.dev13, 5.0.8.dev14, 5.0.8.dev16, 5.0.8.dev17, 5.0.8.dev18, 5.0.8.dev19, 5.0.8.dev20, 5.0.8.dev21, 5.0.8.dev22, 5.0.8.dev23, 5.0.8.dev24, 5.0.8, 5.0.9.dev2, 5.0.9.dev4, 5.0.9.dev5, 5.0.9.dev8, 5.0.9.dev9, 5.0.9.dev10, 5.0.9, 5.0.10.dev7, 5.0.10.dev8, 5.0.10.dev9, 5.0.10.dev10, 5.0.10.dev11, 5.0.10.dev12, 5.0.10.dev13, 5.0.10.dev14, 5.0.10.dev15, 5.0.10.dev16, 5.0.10.dev18, 5.0.10.dev19, 5.0.10.dev20, 5.0.10.dev22, 5.0.10.dev23, 5.0.10.dev24, 5.0.10.dev32, 5.0.10.dev33, 5.0.10.dev34, 5.0.10.dev35, 5.0.10.dev36, 5.0.10.dev37, 5.0.10.dev39, 5.0.10.dev41, 5.0.10, 5.0.11.dev2, 5.0.11.dev11, 5.0.11.dev12, 5.0.11.dev15, 5.0.11.dev16, 5.0.11.dev17, 5.0.11, 5.0.12.dev2, 5.0.12.dev3, 5.0.12.dev4, 5.0.12.dev5, 5.0.12.dev6, 5.0.12.dev7, 5.0.12.dev10, 5.0.12.dev11, 5.0.12.dev12, 5.0.12.dev13, 5.0.12.dev14, 5.0.12.dev15, 5.0.12.dev18, 5.0.12.dev19, 5.0.12.dev20, 5.0.12.dev21, 5.0.12.dev30, 5.0.12.dev31, 5.0.12.dev32, 5.0.12.dev33, 5.0.12.dev35, 5.0.12.dev36, 5.0.12.dev37, 5.0.12.dev38, 5.0.12.dev40, 5.0.12.dev41, 5.0.12.dev42, 5.0.12.dev43, 5.0.12.dev44, 5.0.12.dev45, 5.0.12.dev46, 5.0.12.dev50, 5.0.12.dev51, 5.0.12.dev52, 5.0.12.dev53, 5.0.12.dev54, 5.0.12.dev60, 5.0.12.dev61, 5.0.12.dev63, 5.0.12.dev64, 5.0.12.dev65, 5.0.12.dev67, 5.0.12.dev68, 5.0.12, 5.0.13.dev4, 5.0.13.dev5, 5.0.13.dev6, 5.0.13.dev7, 5.0.13.dev8, 5.0.13.dev9, 5.0.13.dev10, 5.0.13.dev11, 5.0.13.dev12, 5.0.13.dev13, 5.0.13.dev15, 5.0.13.dev16, 5.0.13.dev17, 5.0.13.dev18, 5.0.13.dev19, 5.0.13.dev20, 5.0.13.dev21, 5.0.13.dev22, 5.0.13.dev23, 5.0.13.dev24, 5.0.13.dev27, 5.0.13.dev28, 5.0.13.dev29, 5.0.13.dev30, 5.0.13.dev31, 5.0.13.dev32, 5.0.13.dev33, 5.0.13.dev34, 5.0.13.dev35, 5.0.13.dev36, 5.0.13.dev37, 5.0.13.dev38, 5.0.13.dev44, 5.0.13.dev45, 5.0.13.dev46, 5.0.13.dev47, 5.0.13.dev48, 5.0.13.dev49, 5.0.13.dev50, 5.0.13.dev52, 5.0.13.dev53, 5.0.13.dev54, 5.0.13.dev55, 5.0.13.dev56, 5.0.13.dev57, 5.0.13.dev58, 5.0.13.dev59, 5.0.13, 5.0.14.dev5, 5.0.14.dev6, 5.0.14.dev7, 5.0.14.dev8, 5.0.14.dev10, 5.0.14.dev11, 5.0.14.dev12, 5.0.14.dev13, 5.0.14.dev14, 5.0.14.dev16, 5.0.14.dev17, 5.0.14.dev18, 5.0.14.dev19, 5.0.14.dev20, 5.0.14.dev21, 5.0.14.dev22, 5.0.14.dev27, 5.0.14.dev30, 5.0.14.dev32, 5.0.14.dev33, 5.0.14.dev35, 5.0.14.dev37, 5.0.14.dev39, 5.0.14.dev40, 5.0.14.dev41, 5.0.14.dev42, 5.0.14.dev43, 5.0.14.dev47, 5.0.14.dev53, 5.0.14.dev55, 5.0.14.dev56, 5.0.14.dev57, 5.0.14.dev58, 5.0.14.dev60, 5.0.14.dev61, 5.0.14.dev62, 5.0.14.dev63, 5.0.14.dev64, 5.0.14.dev65, 5.0.14.dev66, 5.0.14.dev67, 5.0.14.dev68, 5.0.14.dev69, 5.0.14.dev70, 5.0.14, 5.0.15.dev2, 5.0.15.dev4, 5.0.15.dev6, 5.0.15.dev8, 5.0.15.dev9, 5.0.15.dev10, 5.0.15.dev13, 5.0.15.dev16, 5.0.15.dev18, 5.0.15.dev19, 5.0.15.dev27, 5.0.15.dev28, 5.0.15, 5.0.16.dev5, 5.0.16.dev20, 5.0.16.dev23, 5.0.16, 5.0.17.dev5, 5.0.17.dev16, 5.0.17, 5.0.18, 5.0.19.dev7, 5.0.19, 5.0.20, 5.0.21.dev13, 5.0.21, 5.0.22, 5.0.23.dev23, 5.0.23, 5.0.24, 5.0.25, 5.0.26, 5.0.27.dev16, 5.0.27, 5.0.28.dev16, 5.0.28, 5.0.29.dev41, 5.0.29.dev79, 5.1.0, 5.1.1, 5.1.2.dev43, 5.1.2.dev69, 5.1.2, 5.1.3, 5.1.4, 5.1.5, 5.1.6, 5.1.8, 5.1.9, 5.1.10.dev2, 5.1.10, 5.1.11, 5.1.12.dev52, 5.1.12, 5.1.13, 5.1.14, 5.1.15, 5.1.16, 5.1.17, 5.1.18, 5.1.19, 5.1.20.dev59, 5.1.20, 5.1.21, 5.1.22.dev74, 5.1.22, 5.1.23.dev86)
+ERROR: No matching distribution found for moto==1.3.14.dev464; extra == "tests"
++ python -m pip install 'numpy<=1.20'
+Requirement already satisfied: numpy<=1.20 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (1.20.0)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ python -m pip install 'pytest<8'
+Requirement already satisfied: pytest<8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (7.4.4)
+Requirement already satisfied: iniconfig in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.0)
+Requirement already satisfied: packaging in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (24.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.5.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (1.2.2)
+Requirement already satisfied: tomli>=1.0.0 in /opt/miniconda3/envs/testbed/lib/python3.9/site-packages (from pytest<8) (2.0.1)
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
++ : '>>>>> Start Test Output'
++ pytest --continue-on-collection-errors -W default::DeprecationWarning -W default::pytest.PytestDeprecationWarning -rA tests/func/test_import_url.py tests/unit/command/test_imp_url.py
+============================= test session starts ==============================
+platform linux -- Python 3.9.19, pytest-7.4.4, pluggy-1.5.0
+rootdir: /testbed
+plugins: lazy-fixture-0.6.3, cov-5.0.0, xdist-3.6.1, flaky-3.8.1, mock-1.11.2, timeout-2.3.1
+collected 14 items
+
+tests/func/test_import_url.py F.FFFFFFFFF                                [ 78%]
+tests/unit/command/test_imp_url.py F.F                                   [100%]
+
+=================================== FAILURES ===================================
+______________________________ TestCmdImport.test ______________________________
+
+self = <tests.func.test_import_url.TestCmdImport testMethod=test>
+
+    def test(self):
+        ret = main(["import-url", self.FOO, "import"])
+>       self.assertEqual(ret, 0)
+E       AssertionError: 255 != 0
+
+tests/func/test_import_url.py:16: AssertionError
+----------------------------- Captured stdout call -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      ERROR: unexpected error - cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+------------------------------ Captured log call -------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+ERROR    dvc:main.py:79 unexpected error
+Traceback (most recent call last):
+  File "/testbed/dvc/main.py", line 53, in main
+    ret = cmd.run()
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/testbed/dvc/repo/__init__.py", line 35, in wrapper
+    ret = f(repo, *args, **kwargs)
+  File "/testbed/dvc/repo/scm_context.py", line 4, in run
+    result = method(repo, *args, **kw)
+  File "/testbed/dvc/repo/imp_url.py", line 45, in imp_url
+    self.check_modified_graph([stage])
+  File "/testbed/dvc/repo/__init__.py", line 234, in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+  File "/testbed/dvc/repo/__init__.py", line 432, in _collect_graph
+    import networkx as nx
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py", line 114, in <module>
+    import networkx.generators
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py", line 14, in <module>
+    from networkx.generators.intersection import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py", line 13, in <module>
+    from networkx.algorithms import bipartite
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py", line 16, in <module>
+    from networkx.algorithms.dag import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py", line 23, in <module>
+    from fractions import gcd
+ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+INFO     dvc:main.py:94 
+[33mHaving any troubles?[39m Hit us up at [34mhttps://dvc.org/support[39m, we are always happy to help!
+____________________________ TestDefaultOutput.test ____________________________
+
+self = <tests.func.test_import_url.TestDefaultOutput testMethod=test>
+
+    def test(self):
+        tmpdir = self.mkdtemp()
+        filename = str(uuid4())
+        tmpfile = os.path.join(tmpdir, filename)
+    
+        with open(tmpfile, "w") as fd:
+            fd.write("content")
+    
+        ret = main(["import-url", tmpfile])
+>       self.assertEqual(ret, 0)
+E       AssertionError: 255 != 0
+
+tests/func/test_import_url.py:37: AssertionError
+----------------------------- Captured stdout call -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      ERROR: unexpected error - cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+------------------------------ Captured log call -------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+ERROR    dvc:main.py:79 unexpected error
+Traceback (most recent call last):
+  File "/testbed/dvc/main.py", line 53, in main
+    ret = cmd.run()
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/testbed/dvc/repo/__init__.py", line 35, in wrapper
+    ret = f(repo, *args, **kwargs)
+  File "/testbed/dvc/repo/scm_context.py", line 4, in run
+    result = method(repo, *args, **kw)
+  File "/testbed/dvc/repo/imp_url.py", line 45, in imp_url
+    self.check_modified_graph([stage])
+  File "/testbed/dvc/repo/__init__.py", line 234, in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+  File "/testbed/dvc/repo/__init__.py", line 432, in _collect_graph
+    import networkx as nx
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py", line 114, in <module>
+    import networkx.generators
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py", line 14, in <module>
+    from networkx.generators.intersection import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py", line 13, in <module>
+    from networkx.algorithms import bipartite
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py", line 16, in <module>
+    from networkx.algorithms.dag import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py", line 23, in <module>
+    from fractions import gcd
+ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+INFO     dvc:main.py:94 
+[33mHaving any troubles?[39m Hit us up at [34mhttps://dvc.org/support[39m, we are always happy to help!
+____________________ test_should_remove_outs_before_import _____________________
+
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_should_remove_outs_before0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_should_remove_outs_before0'
+mocker = <pytest_mock.plugin.MockFixture object at 0x7c416bc11880>
+erepo_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/erepo0')
+
+    def test_should_remove_outs_before_import(tmp_dir, dvc, mocker, erepo_dir):
+        erepo_dir.gen({"foo": "foo"})
+    
+        remove_outs_call_counter = mocker.spy(Stage, "remove_outs")
+        ret = main(["import-url", os.fspath(erepo_dir / "foo")])
+    
+>       assert ret == 0
+E       assert 255 == 0
+
+/testbed/tests/func/test_import_url.py:49: AssertionError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+You can now commit the changes to git.
+
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+INFO     dvc.repo.init:init.py:108 
+You can now commit the changes to git.
+
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stdout call -----------------------------
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      ERROR: unexpected error - cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+------------------------------ Captured log call -------------------------------
+ERROR    dvc:main.py:79 unexpected error
+Traceback (most recent call last):
+  File "/testbed/dvc/main.py", line 53, in main
+    ret = cmd.run()
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/testbed/dvc/repo/__init__.py", line 35, in wrapper
+    ret = f(repo, *args, **kwargs)
+  File "/testbed/dvc/repo/scm_context.py", line 4, in run
+    result = method(repo, *args, **kw)
+  File "/testbed/dvc/repo/imp_url.py", line 45, in imp_url
+    self.check_modified_graph([stage])
+  File "/testbed/dvc/repo/__init__.py", line 234, in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+  File "/testbed/dvc/repo/__init__.py", line 432, in _collect_graph
+    import networkx as nx
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py", line 114, in <module>
+    import networkx.generators
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py", line 14, in <module>
+    from networkx.generators.intersection import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py", line 13, in <module>
+    from networkx.algorithms import bipartite
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py", line 16, in <module>
+    from networkx.algorithms.dag import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py", line 23, in <module>
+    from fractions import gcd
+ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+INFO     dvc:main.py:94 
+[33mHaving any troubles?[39m Hit us up at [34mhttps://dvc.org/support[39m, we are always happy to help!
+___________________________ TestImportFilename.test ____________________________
+
+self = <tests.func.test_import_url.TestImportFilename testMethod=test>
+
+    def test(self):
+        ret = main(["import-url", "--file", "bar.dvc", self.external_source])
+>       self.assertEqual(0, ret)
+E       AssertionError: 0 != 255
+
+tests/func/test_import_url.py:63: AssertionError
+----------------------------- Captured stdout call -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      ERROR: unexpected error - cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+------------------------------ Captured log call -------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+ERROR    dvc:main.py:79 unexpected error
+Traceback (most recent call last):
+  File "/testbed/dvc/main.py", line 53, in main
+    ret = cmd.run()
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/testbed/dvc/repo/__init__.py", line 35, in wrapper
+    ret = f(repo, *args, **kwargs)
+  File "/testbed/dvc/repo/scm_context.py", line 4, in run
+    result = method(repo, *args, **kw)
+  File "/testbed/dvc/repo/imp_url.py", line 45, in imp_url
+    self.check_modified_graph([stage])
+  File "/testbed/dvc/repo/__init__.py", line 234, in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+  File "/testbed/dvc/repo/__init__.py", line 432, in _collect_graph
+    import networkx as nx
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py", line 114, in <module>
+    import networkx.generators
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py", line 14, in <module>
+    from networkx.generators.intersection import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py", line 13, in <module>
+    from networkx.algorithms import bipartite
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py", line 16, in <module>
+    from networkx.algorithms.dag import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py", line 23, in <module>
+    from fractions import gcd
+ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+INFO     dvc:main.py:94 
+[33mHaving any troubles?[39m Hit us up at [34mhttps://dvc.org/support[39m, we are always happy to help!
+__________________________ test_import_url_to_dir[.] ___________________________
+
+dname = '.'
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_import_url_to_dir___0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_to_dir___0'
+
+    @pytest.mark.parametrize("dname", [".", "dir", "dir/subdir"])
+    def test_import_url_to_dir(dname, tmp_dir, dvc):
+        tmp_dir.gen({"data_dir": {"file": "file content"}})
+        src = os.path.join("data_dir", "file")
+    
+        makedirs(dname, exist_ok=True)
+    
+>       stage = dvc.imp_url(src, dname)
+
+/testbed/tests/func/test_import_url.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:4: in run
+    result = method(repo, *args, **kw)
+/testbed/dvc/repo/imp_url.py:45: in imp_url
+    self.check_modified_graph([stage])
+/testbed/dvc/repo/__init__.py:234: in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+/testbed/dvc/repo/__init__.py:432: in _collect_graph
+    import networkx as nx
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py:114: in <module>
+    import networkx.generators
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py:14: in <module>
+    from networkx.generators.intersection import *
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py:13: in <module>
+    from networkx.algorithms import bipartite
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py:16: in <module>
+    from networkx.algorithms.dag import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Algorithms for directed acyclic graphs (DAGs).
+    
+    Note that most of these functions are only guaranteed to work for DAGs.
+    In general, these functions do not check for acyclic-ness, so it is up
+    to the user to check for that.
+    """
+    
+    from collections import defaultdict, deque
+>   from fractions import gcd
+E   ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py:23: ImportError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+_________________________ test_import_url_to_dir[dir] __________________________
+
+dname = 'dir'
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_import_url_to_dir_dir_0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_to_dir_dir_0'
+
+    @pytest.mark.parametrize("dname", [".", "dir", "dir/subdir"])
+    def test_import_url_to_dir(dname, tmp_dir, dvc):
+        tmp_dir.gen({"data_dir": {"file": "file content"}})
+        src = os.path.join("data_dir", "file")
+    
+        makedirs(dname, exist_ok=True)
+    
+>       stage = dvc.imp_url(src, dname)
+
+/testbed/tests/func/test_import_url.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:4: in run
+    result = method(repo, *args, **kw)
+/testbed/dvc/repo/imp_url.py:45: in imp_url
+    self.check_modified_graph([stage])
+/testbed/dvc/repo/__init__.py:234: in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+/testbed/dvc/repo/__init__.py:432: in _collect_graph
+    import networkx as nx
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py:114: in <module>
+    import networkx.generators
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py:14: in <module>
+    from networkx.generators.intersection import *
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py:13: in <module>
+    from networkx.algorithms import bipartite
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py:16: in <module>
+    from networkx.algorithms.dag import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Algorithms for directed acyclic graphs (DAGs).
+    
+    Note that most of these functions are only guaranteed to work for DAGs.
+    In general, these functions do not check for acyclic-ness, so it is up
+    to the user to check for that.
+    """
+    
+    from collections import defaultdict, deque
+>   from fractions import gcd
+E   ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py:23: ImportError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+______________________ test_import_url_to_dir[dir/subdir] ______________________
+
+dname = 'dir/subdir'
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_import_url_to_dir_dir_sub0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_to_dir_dir_sub0'
+
+    @pytest.mark.parametrize("dname", [".", "dir", "dir/subdir"])
+    def test_import_url_to_dir(dname, tmp_dir, dvc):
+        tmp_dir.gen({"data_dir": {"file": "file content"}})
+        src = os.path.join("data_dir", "file")
+    
+        makedirs(dname, exist_ok=True)
+    
+>       stage = dvc.imp_url(src, dname)
+
+/testbed/tests/func/test_import_url.py:82: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:4: in run
+    result = method(repo, *args, **kw)
+/testbed/dvc/repo/imp_url.py:45: in imp_url
+    self.check_modified_graph([stage])
+/testbed/dvc/repo/__init__.py:234: in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+/testbed/dvc/repo/__init__.py:432: in _collect_graph
+    import networkx as nx
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py:114: in <module>
+    import networkx.generators
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py:14: in <module>
+    from networkx.generators.intersection import *
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py:13: in <module>
+    from networkx.algorithms import bipartite
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py:16: in <module>
+    from networkx.algorithms.dag import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Algorithms for directed acyclic graphs (DAGs).
+    
+    Note that most of these functions are only guaranteed to work for DAGs.
+    In general, these functions do not check for acyclic-ness, so it is up
+    to the user to check for that.
+    """
+    
+    from collections import defaultdict, deque
+>   from fractions import gcd
+E   ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py:23: ImportError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+_____________________ test_import_stage_accompanies_target _____________________
+
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_import_stage_accompanies_0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_stage_accompanies_0'
+erepo_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/erepo1')
+
+    def test_import_stage_accompanies_target(tmp_dir, dvc, erepo_dir):
+        with erepo_dir.chdir():
+>           erepo_dir.dvc_gen("file1", "file1 content", commit="commit file")
+
+/testbed/tests/func/test_import_url.py:93: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/tests/dir_helpers.py:143: in dvc_gen
+    return self.dvc_add(paths, commit=commit)
+/testbed/tests/dir_helpers.py:153: in dvc_add
+    stages = self.dvc.add(filenames)
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:4: in run
+    result = method(repo, *args, **kw)
+/testbed/dvc/repo/add.py:62: in add
+    repo.check_modified_graph(stages)
+/testbed/dvc/repo/__init__.py:234: in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+/testbed/dvc/repo/__init__.py:432: in _collect_graph
+    import networkx as nx
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py:114: in <module>
+    import networkx.generators
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py:14: in <module>
+    from networkx.generators.intersection import *
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py:13: in <module>
+    from networkx.algorithms import bipartite
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py:16: in <module>
+    from networkx.algorithms.dag import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Algorithms for directed acyclic graphs (DAGs).
+    
+    Note that most of these functions are only guaranteed to work for DAGs.
+    In general, these functions do not check for acyclic-ness, so it is up
+    to the user to check for that.
+    """
+    
+    from collections import defaultdict, deque
+>   from fractions import gcd
+E   ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py:23: ImportError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+You can now commit the changes to git.
+
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+INFO     dvc.repo.init:init.py:108 
+You can now commit the changes to git.
+
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      !  0% Add|          |0/1 [00:00<?,     ?file/s]Adding...                                     Adding...
+_________________________ test_import_url_nonexistent __________________________
+
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_nonexistent0'
+erepo_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/erepo2')
+
+    def test_import_url_nonexistent(dvc, erepo_dir):
+        with pytest.raises(DependencyDoesNotExistError):
+>           dvc.imp_url(os.fspath(erepo_dir / "non-existent"))
+
+/testbed/tests/func/test_import_url.py:105: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+/testbed/dvc/repo/scm_context.py:4: in run
+    result = method(repo, *args, **kw)
+/testbed/dvc/repo/imp_url.py:45: in imp_url
+    self.check_modified_graph([stage])
+/testbed/dvc/repo/__init__.py:234: in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+/testbed/dvc/repo/__init__.py:432: in _collect_graph
+    import networkx as nx
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py:114: in <module>
+    import networkx.generators
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py:14: in <module>
+    from networkx.generators.intersection import *
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py:13: in <module>
+    from networkx.algorithms import bipartite
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py:16: in <module>
+    from networkx.algorithms.dag import *
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Algorithms for directed acyclic graphs (DAGs).
+    
+    Note that most of these functions are only guaranteed to work for DAGs.
+    In general, these functions do not check for acyclic-ness, so it is up
+    to the user to check for that.
+    """
+    
+    from collections import defaultdict, deque
+>   from fractions import gcd
+E   ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+
+/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py:23: ImportError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+You can now commit the changes to git.
+
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+INFO     dvc.repo.init:init.py:108 
+You can now commit the changes to git.
+
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+_________________________ test_import_url_with_no_exec _________________________
+
+tmp_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/test_import_url_with_no_exec0')
+dvc = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_with_no_exec0'
+erepo_dir = PosixTmpDir('/tmp/pytest-of-root/pytest-0/erepo3')
+
+    def test_import_url_with_no_exec(tmp_dir, dvc, erepo_dir):
+        tmp_dir.gen({"data_dir": {"file": "file content"}})
+        src = os.path.join("data_dir", "file")
+    
+>       dvc.imp_url(src, ".", no_exec=True)
+
+/testbed/tests/func/test_import_url.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/testbed/dvc/repo/__init__.py:35: in wrapper
+    ret = f(repo, *args, **kwargs)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+repo = Repo: '/tmp/pytest-of-root/pytest-0/test_import_url_with_no_exec0'
+args = ('data_dir/file', '.'), kw = {'no_exec': True}
+
+    def run(repo, *args, **kw):
+        try:
+>           result = method(repo, *args, **kw)
+E           TypeError: imp_url() got an unexpected keyword argument 'no_exec'
+
+/testbed/dvc/repo/scm_context.py:4: TypeError
+---------------------------- Captured stdout setup -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+You can now commit the changes to git.
+
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+------------------------------ Captured log setup ------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+INFO     dvc.repo.init:init.py:108 
+You can now commit the changes to git.
+
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      
+_______________________________ test_import_url ________________________________
+
+mocker = <pytest_mock.plugin.MockFixture object at 0x7c416b8da370>
+
+    def test_import_url(mocker):
+        cli_args = parse_args(["import-url", "src", "out", "--file", "file"])
+        assert cli_args.func == CmdImportUrl
+    
+        cmd = cli_args.func(cli_args)
+        m = mocker.patch.object(cmd.repo, "imp_url", autospec=True)
+    
+        assert cmd.run() == 0
+    
+>       m.assert_called_once_with("src", out="out", fname="file", no_exec=False)
+
+tests/unit/command/test_imp_url.py:17: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('src',), kwargs = {'fname': 'file', 'no_exec': False, 'out': 'out'}
+
+    def assert_called_once_with(*args, **kwargs):
+>       return mock.assert_called_once_with(*args, **kwargs)
+E       AssertionError: expected call not found.
+E       Expected: imp_url('src', out='out', fname='file', no_exec=False)
+E       Actual: imp_url('src', out='out', fname='file')
+E       
+E       pytest introspection follows:
+E       
+E       Kwargs:
+E       assert {'fname': 'fi... 'out': 'out'} == {'fname': 'fi... 'out': 'out'}
+E         Omitting 2 identical items, use -vv to show
+E         Right contains 1 more item:
+E         {'no_exec': False}
+E         Use -v to get more diff
+
+/opt/miniconda3/envs/testbed/lib/python3.9/unittest/mock.py:208: AssertionError
+___________________________ test_import_url_no_exec ____________________________
+
+mocker = <pytest_mock.plugin.MockFixture object at 0x7c416bc28c70>
+
+    def test_import_url_no_exec(mocker):
+        cli_args = parse_args(
+            ["import-url", "--no-exec", "src", "out", "--file", "file"]
+        )
+    
+        cmd = cli_args.func(cli_args)
+        m = mocker.patch.object(cmd.repo, "imp_url", autospec=True)
+    
+        assert cmd.run() == 0
+    
+>       m.assert_called_once_with("src", out="out", fname="file", no_exec=True)
+
+tests/unit/command/test_imp_url.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+args = ('src',), kwargs = {'fname': 'file', 'no_exec': True, 'out': 'out'}
+
+    def assert_called_once_with(*args, **kwargs):
+>       return mock.assert_called_once_with(*args, **kwargs)
+E       AssertionError: expected call not found.
+E       Expected: imp_url('src', out='out', fname='file', no_exec=True)
+E       Actual: imp_url('src', out='out', fname='file', dry=True)
+E       
+E       pytest introspection follows:
+E       
+E       Kwargs:
+E       assert {'dry': True,... 'out': 'out'} == {'fname': 'fi... 'out': 'out'}
+E         Omitting 2 identical items, use -vv to show
+E         Left contains 1 more item:
+E         {'dry': True}
+E         Right contains 1 more item:
+E         {'no_exec': True}
+E         Use -v to get more diff
+
+/opt/miniconda3/envs/testbed/lib/python3.9/unittest/mock.py:208: AssertionError
+==================================== PASSES ====================================
+________________________ TestCmdImport.test_unsupported ________________________
+----------------------------- Captured stdout call -----------------------------
+What's next?
+------------
+- Check out the documentation: https://dvc.org/doc
+- Get help and share ideas: https://dvc.org/chat
+- Star us on GitHub: https://github.com/iterative/dvc
+
+Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
+----------------------------- Captured stderr call -----------------------------
+!If DVC froze, see `hardlink_lock` in <[36mhttps://man.dvc.org/config#core[39m>                                                                      ERROR: unexpected error - cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+------------------------------ Captured log call -------------------------------
+INFO     dvc.repo.init:init.py:43 [33mWhat's next?[39m
+[33m------------[39m
+- Check out the documentation: [34mhttps://dvc.org/doc[39m
+- Get help and share ideas: [34mhttps://dvc.org/chat[39m
+- Star us on GitHub: [34mhttps://github.com/iterative/dvc[39m
+ERROR    dvc:main.py:79 unexpected error
+Traceback (most recent call last):
+  File "/testbed/dvc/main.py", line 53, in main
+    ret = cmd.run()
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/testbed/dvc/repo/__init__.py", line 35, in wrapper
+    ret = f(repo, *args, **kwargs)
+  File "/testbed/dvc/repo/scm_context.py", line 4, in run
+    result = method(repo, *args, **kw)
+  File "/testbed/dvc/repo/imp_url.py", line 45, in imp_url
+    self.check_modified_graph([stage])
+  File "/testbed/dvc/repo/__init__.py", line 234, in check_modified_graph
+    self._collect_graph(self.stages + new_stages)
+  File "/testbed/dvc/repo/__init__.py", line 432, in _collect_graph
+    import networkx as nx
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/__init__.py", line 114, in <module>
+    import networkx.generators
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/__init__.py", line 14, in <module>
+    from networkx.generators.intersection import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/generators/intersection.py", line 13, in <module>
+    from networkx.algorithms import bipartite
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/__init__.py", line 16, in <module>
+    from networkx.algorithms.dag import *
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/site-packages/networkx/algorithms/dag.py", line 23, in <module>
+    from fractions import gcd
+ImportError: cannot import name 'gcd' from 'fractions' (/opt/miniconda3/envs/testbed/lib/python3.9/fractions.py)
+INFO     dvc:main.py:94 
+[33mHaving any troubles?[39m Hit us up at [34mhttps://dvc.org/support[39m, we are always happy to help!
+____________________________ test_failed_import_url ____________________________
+----------------------------- Captured stderr call -----------------------------
+ERROR: failed to import http://somesite.com/file_name. You could also try downloading it manually, and adding it with `dvc add`. - error
+------------------------------ Captured log call -------------------------------
+ERROR    dvc.command.imp_url:imp_url.py:21 failed to import http://somesite.com/file_name. You could also try downloading it manually, and adding it with `dvc add`.
+Traceback (most recent call last):
+  File "/testbed/dvc/command/imp_url.py", line 14, in run
+    self.repo.imp_url(
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/unittest/mock.py", line 1092, in __call__
+    return self._mock_call(*args, **kwargs)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/unittest/mock.py", line 1096, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+  File "/opt/miniconda3/envs/testbed/lib/python3.9/unittest/mock.py", line 1151, in _execute_mock_call
+    raise effect
+dvc.exceptions.DvcException: error
+=========================== short test summary info ============================
+PASSED tests/func/test_import_url.py::TestCmdImport::test_unsupported
+PASSED tests/unit/command/test_imp_url.py::test_failed_import_url
+FAILED tests/func/test_import_url.py::TestCmdImport::test - AssertionError: 2...
+FAILED tests/func/test_import_url.py::TestDefaultOutput::test - AssertionErro...
+FAILED tests/func/test_import_url.py::test_should_remove_outs_before_import
+FAILED tests/func/test_import_url.py::TestImportFilename::test - AssertionErr...
+FAILED tests/func/test_import_url.py::test_import_url_to_dir[.] - ImportError...
+FAILED tests/func/test_import_url.py::test_import_url_to_dir[dir] - ImportErr...
+FAILED tests/func/test_import_url.py::test_import_url_to_dir[dir/subdir] - Im...
+FAILED tests/func/test_import_url.py::test_import_stage_accompanies_target - ...
+FAILED tests/func/test_import_url.py::test_import_url_nonexistent - ImportErr...
+FAILED tests/func/test_import_url.py::test_import_url_with_no_exec - TypeErro...
+FAILED tests/unit/command/test_imp_url.py::test_import_url - AssertionError: ...
+FAILED tests/unit/command/test_imp_url.py::test_import_url_no_exec - Assertio...
+========================= 12 failed, 2 passed in 1.50s =========================
++ : '>>>>> End Test Output'

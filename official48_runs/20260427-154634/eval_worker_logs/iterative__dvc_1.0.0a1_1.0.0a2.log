@@ -1,0 +1,20 @@
+2026-04-28 17:39:36,365 - numexpr.utils - INFO - Note: NumExpr detected 16 cores but "NUMEXPR_MAX_THREADS" not set, so enforcing safe limit of 8.
+2026-04-28 17:39:36,365 - numexpr.utils - INFO - NumExpr defaulting to 8 threads.
+Loading data ...:   0%|          | 0/48 [00:00<?, ?it/s]Loading data ...: 100%|██████████| 48/48 [00:00<00:00, 4593.14it/s]
+[pull] xingyaoww/sweb.eval.x86_64.iterative_s_dvc-3760
+[tag p1] xingyaoww/sweb.eval.x86_64.iterative_s_dvc-3760  ->  sweb.eval.x86_64.iterative__dvc_1.0.0a1_1.0.0a2:latest
+[tag p2] xingyaoww/sweb.eval.x86_64.iterative_s_dvc-3760  ->  sweb.env.py.x86_64.2f217c8b4490bfa0e2ba14:latest
+[ok] retag all instance images done.
+Base image sweb.base.py.x86_64:latest already exists, skipping build.
+Base images built successfully.
+No environment images need to be built.
+Found 1 existing instance images. Will reuse them.
+Running 1 instances...
+Evaluation:   0%|          | 0/1 [00:00<?, ?it/s, error=0, ✓=0, ✖=0]Evaluation:   0%|          | 0/1 [03:55<?, ?it/s, ✓=0, ✖=1, error=0]Evaluation: 100%|██████████| 1/1 [03:55<00:00, 235.93s/it, ✓=0, ✖=1, error=0]Evaluation: 100%|██████████| 1/1 [03:55<00:00, 235.93s/it, ✓=0, ✖=1, error=0]
+All instances run.
+Logs & reports in: logs/run_evaluation
+[id] 0 bonus_success = 0 and bonus_failure = 68
+[bonus_success] = 0 and [bonus_failure] = 68
+[Fix rate] = 0.00%
+[Resolved rate] = 0.000%  [0/1]
+[Applied rate] = 100.000%  [1/1]

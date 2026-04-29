@@ -1,0 +1,46 @@
+{
+  "type": "result",
+  "subtype": "success",
+  "is_error": false,
+  "duration_ms": 3568,
+  "duration_api_ms": 938165,
+  "num_turns": 1,
+  "result": "That background task notification is from an earlier test run before the fix was applied. The test now passes successfully as confirmed in my most recent verification run (both tests passed in 10.40s).",
+  "stop_reason": "end_turn",
+  "session_id": "6ecc935c-3914-4747-a4e6-5779c096157f",
+  "total_cost_usd": 19.866299100000006,
+  "usage": {
+    "input_tokens": 0,
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 82303,
+    "output_tokens": 85,
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_deleted_input_tokens": 0,
+    "inference_geo": "",
+    "iterations": [],
+    "speed": "standard"
+  },
+  "modelUsage": {
+    "MiniMax-M2.5-highspeed": {
+      "inputTokens": 6204161,
+      "outputTokens": 52814,
+      "cacheReadInputTokens": 559087,
+      "cacheCreationInputTokens": 78368,
+      "webSearchRequests": 0,
+      "costUSD": 19.866299100000006,
+      "contextWindow": 196000,
+      "maxOutputTokens": 32000
+    }
+  },
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "uuid": "0b2f160e-80ab-429a-87ab-5170aeb61d45"
+}

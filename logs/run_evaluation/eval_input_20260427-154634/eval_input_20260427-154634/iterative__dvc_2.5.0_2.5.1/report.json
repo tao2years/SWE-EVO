@@ -1,0 +1,58 @@
+{
+    "iterative__dvc_2.5.0_2.5.1": {
+        "patch_is_None": false,
+        "patch_exists": true,
+        "patch_successfully_applied": true,
+        "resolved": false,
+        "tests_status": {
+            "FAIL_TO_PASS": {
+                "success": [],
+                "failure": [
+                    "tests/unit/objects/test_tree.py::test_size[trie_dict1-21]",
+                    "tests/unit/remote/test_http.py::test_content_length[headers0-3]",
+                    "tests/unit/remote/test_http.py::test_content_length[headers1-None]",
+                    "tests/unit/test_info.py::test_fs_info_outside_of_repo",
+                    "tests/unit/test_info.py::test_info_outside_of_repo"
+                ]
+            },
+            "PASS_TO_PASS": {
+                "success": [
+                    "tests/unit/command/test_diff.py::test_digest[dict]",
+                    "tests/unit/command/test_diff.py::test_digest[str]",
+                    "tests/unit/command/test_diff.py::test_show_md",
+                    "tests/unit/command/test_diff.py::test_show_md_hide_missing",
+                    "tests/unit/command/test_diff.py::test_show_md_with_hash",
+                    "tests/unit/objects/test_tree.py::test_items[trie_dict0]",
+                    "tests/unit/objects/test_tree.py::test_items[trie_dict1]",
+                    "tests/unit/objects/test_tree.py::test_list[lst0-trie_dict0]",
+                    "tests/unit/objects/test_tree.py::test_list[lst1-trie_dict1]",
+                    "tests/unit/objects/test_tree.py::test_list[lst2-trie_dict2]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict0-our_dict0-their_dict0-merged_dict0]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict1-our_dict1-their_dict1-merged_dict1]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict2-our_dict2-their_dict2-merged_dict2]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict3-our_dict3-their_dict3-merged_dict3]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict4-our_dict4-their_dict4-merged_dict4]",
+                    "tests/unit/objects/test_tree.py::test_merge[ancestor_dict5-our_dict5-their_dict5-merged_dict5]",
+                    "tests/unit/objects/test_tree.py::test_nfiles[trie_dict0-0]",
+                    "tests/unit/objects/test_tree.py::test_nfiles[trie_dict1-6]",
+                    "tests/unit/objects/test_tree.py::test_nfiles[trie_dict2-2]",
+                    "tests/unit/objects/test_tree.py::test_size[trie_dict0-0]",
+                    "tests/unit/objects/test_tree.py::test_size[trie_dict2-None]",
+                    "tests/unit/remote/test_http.py::test_exists"
+                ],
+                "failure": [
+                    "tests/func/plots/test_show.py::test_load_metric_from_dict_json",
+                    "tests/func/plots/test_show.py::test_load_metric_from_dict_yaml"
+                ]
+            },
+            "FAIL_TO_FAIL": {
+                "success": [],
+                "failure": []
+            },
+            "PASS_TO_FAIL": {
+                "success": [],
+                "failure": []
+            }
+        }
+    }
+}
