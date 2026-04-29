@@ -9,6 +9,16 @@
 
 ## 本版改动明细
 
+### 0. 提交后续增量修正
+
+在 `ff5a604` 之后，又继续补了这一批关键修正：
+
+- 推理链路改成可配置并发，默认 `2`
+- 评测链路改成“单题推理完成后立即增量评测”
+- runner 增加对 `claude -p --dangerously-skip-permissions "Prompt"` 的兼容
+- 运行中的 run 也能实时展示 resolved / F2P / P2P
+- 看板新增 idle run 删除功能，并带确认和后端保护
+
 ### 1. 自有 CLI 接入与单题联调
 
 新增 `custom_cli_case/` 单题链路，用于先验证 CLI 契约，再放大到 official48：
@@ -154,7 +164,56 @@
 
 - `lib/dashboard-data.js`
 
-### 8. Run 别名 display_name
+### 8. 推理并发与增量评测重构
+
+后续把 full official48 执行链路从“串行推理后统一评测”重构为：
+
+- inference 支持并发执行
+- eval worker 长驻轮询
+- 某题一旦写入 `inference_summary.json`
+- 对应评测立即开始
+
+核心变动：
+
+- `run_innercc_infer_official48.py`
+  - 新增 `--max-concurrency`，默认 `2`
+  - 新增 `inference_status.json`
+  - 引入线程池并发推理
+  - 引入 router 就绪等待与导出超时配置
+  - 结果落盘改为线程安全原子写
+- `run_official48_eval_worker.py`
+  - 轮询 `inference_summary.json` + `inference_status.json`
+  - 不再假设要等全部 48 题推理结束后再评测
+- `monitor_official48_run.py`
+  - 读取实时 `active_instances`
+  - 能正确展示并发中的活跃 case 数
+- `record_official48_progress.py`
+  - 支持并发 active case 展示
+- `run_official48_pipeline.sh`
+  - 先启动增量评测 worker
+  - 再启动并发 inference
+  - 等评测追平后再收尾
+- `watch_official48_supervisor.py`
+  - 暴露：
+    - `--inference-concurrency`
+    - `--eval-max-concurrency`
+    - `--cli-timeout-seconds`
+    - `--router-ready-timeout-seconds`
+
+### 9. Claude Code 兼容
+
+runner 新增对 Claude Code 的非交互协议兼容：
+
+- `custom_cli_case/run_custom_cli_case.py`
+  - 识别 `--cli-bin /usr/bin/claude`
+  - 自动改用：
+    - `claude -p --output-format json --dangerously-skip-permissions --settings <settings> "Prompt"`
+  - 不再对 Claude 使用 stdin 喂 prompt
+  - 兼容 Claude 的整段 JSON stdout 输出
+
+这使得 full official48 可以直接跑在 Claude Code 上，同时仍通过 llm_router 代理模型请求。
+
+### 10. Run 别名 display_name
 
 新增 run 级可编辑别名：
 
@@ -174,7 +233,39 @@
 - 会删除空的 `metadata.json`
 - 内部仍继续用 `run_id` 做路径和主键
 
-### 9. README 重写
+### 11. 看板运行中实时汇总
+
+原先看板只在 `analysis/summary.json` 存在时显示 resolved / F2P / P2P。
+
+后续补丁改成：
+
+- 运行中的 run 也会按 `inference_summary.json`、`eval_worker_status.json`、已落盘 `report.json` 实时刷新 summary
+- 不需要等整轮完成后再看统计
+
+核心变动：
+
+- `lib/dashboard-data.js`
+  - `ensureSummary()` 改成运行中增量刷新
+  - summary 是否重算取决于 inference / eval / report 的最新 mtime
+
+### 12. 看板删除功能
+
+新增 run 删除能力：
+
+- 前端：
+  - `components/dashboard-client.jsx`
+  - 在 `Selected Run` 面板新增 `Delete Run`
+  - 点击后弹确认框
+- 后端：
+  - `DELETE /api/run/[runId]`
+  - `running` 状态返回 `409`
+  - 非运行 run 删除：
+    - `official48_runs/<run_id>`
+    - `logs/run_evaluation/eval_input_<run_id>`
+- 样式：
+  - `app/globals.css` 新增危险按钮样式
+
+### 13. README 重写与后续补充
 
 原 README 的论文/benchmark 宣传内容已整体移除，改为中文运维手册：
 
@@ -188,7 +279,7 @@
   - `tmux` 后台模式
   - 关键参数、配置文件路径和可变项
 
-### 10. `.gitignore` 调整
+### 14. `.gitignore` 调整
 
 修改 `.gitignore` 以适配当前仓库结构：
 

@@ -35,13 +35,26 @@ def ensure_eval_input_link(run_root: Path) -> Path:
 
 def main() -> None:
     if len(sys.argv) < 2:
-        raise SystemExit("usage: run_official48_eval_worker.py <run_root> [max_concurrency] [--retry-missing-report]")
+        raise SystemExit(
+            "usage: run_official48_eval_worker.py <run_root> [max_concurrency] [--retry-missing-report] [--poll-interval-seconds N]"
+        )
 
     run_root = Path(sys.argv[1]).resolve()
     retry_missing_report = "--retry-missing-report" in sys.argv[2:]
-    positional = [arg for arg in sys.argv[2:] if not arg.startswith("--")]
+    poll_interval_seconds = 15
+    raw_args = sys.argv[2:]
+    if "--poll-interval-seconds" in raw_args:
+        idx = raw_args.index("--poll-interval-seconds")
+        try:
+            poll_interval_seconds = int(raw_args[idx + 1])
+        except Exception as exc:
+            raise SystemExit("--poll-interval-seconds requires an integer value") from exc
+        raw_args = raw_args[:idx] + raw_args[idx + 2 :]
+
+    positional = [arg for arg in raw_args if not arg.startswith("--")]
     max_concurrency = int(positional[0]) if positional else 3
     infer_summary_path = run_root / "infer" / "inference_summary.json"
+    infer_status_path = run_root / "infer" / "inference_status.json"
     eval_input_link = ensure_eval_input_link(run_root)
     eval_run_root = REPO_ROOT / "logs" / "run_evaluation" / eval_input_link.name
     eval_logs_dir = run_root / "eval_worker_logs"
@@ -91,6 +104,12 @@ def main() -> None:
                 inference_rows = json.loads(infer_summary_path.read_text(encoding="utf-8"))
             except Exception:
                 inference_rows = []
+        inference_state = {}
+        if infer_status_path.exists():
+            try:
+                inference_state = json.loads(infer_status_path.read_text(encoding="utf-8"))
+            except Exception:
+                inference_state = {}
 
         for instance_id, (proc, log_path, eval_run_name) in list(active.items()):
             rc = proc.poll()
@@ -144,8 +163,9 @@ def main() -> None:
             )
             active[instance_id] = (proc, log_path, eval_run_name)
 
-        all_inference_done = len(inference_rows) == 48
-        all_eval_done = all_inference_done and len(completed) >= len(inference_rows) and not active
+        total_instances = int(inference_state.get("total_instances") or len(inference_rows) or 48)
+        all_inference_done = bool(inference_state.get("done")) or len(inference_rows) >= total_instances
+        all_eval_done = all_inference_done and len(completed) >= total_instances and not active
 
         persist_state()
 
@@ -157,7 +177,7 @@ def main() -> None:
                 fh.write(json.dumps(payload, ensure_ascii=False) + "\n")
             break
 
-        time.sleep(15)
+        time.sleep(poll_interval_seconds)
 
 
 if __name__ == "__main__":

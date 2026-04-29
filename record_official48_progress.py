@@ -75,13 +75,20 @@ def build_snapshot(run_root: Path) -> dict:
     instance_ids = load_instance_order(repo_root)
     total_instances = len(instance_ids) or 48
     infer_summary = read_json(run_root / "infer" / "inference_summary.json", [])
+    infer_state = read_json(run_root / "infer" / "inference_status.json", {})
     eval_state = read_json(run_root / "eval_worker_status.json", {})
     monitor_state = read_json(run_root / "monitor_status.json", {})
     last_started = parse_last_started_instance(repo_root / "official48_runs" / "current_router.log")
 
-    inference_done = int(monitor_state.get("inference_done", len(infer_summary)))
+    if infer_state.get("total_instances"):
+        total_instances = int(infer_state["total_instances"])
+    inference_done = int(infer_state.get("completed_count", monitor_state.get("inference_done", len(infer_summary))))
     eval_done = int(monitor_state.get("eval_reports", len(eval_state.get("completed", {}))))
+    active_instances = list(infer_state.get("active", []))
     active_index, active_instance = detect_active_instance(instance_ids, inference_done, last_started)
+    if active_instances:
+        active_index = None
+        active_instance = ", ".join(active_instances)
     last_inference_instance = infer_summary[-1]["instance_id"] if infer_summary else None
     last_eval_instance, last_eval_time = last_completed_eval(eval_state)
 
@@ -93,6 +100,8 @@ def build_snapshot(run_root: Path) -> dict:
         "inference_done": inference_done,
         "eval_done": eval_done,
         "remaining": max(total_instances - inference_done, 0),
+        "active_count": len(active_instances),
+        "active_instances": active_instances,
         "active_index": active_index,
         "active_instance": active_instance,
         "last_inference_instance": last_inference_instance,
@@ -158,7 +167,8 @@ def append_snapshot(path: Path, snapshot: dict, delta: str) -> None:
         f"- Inference: `{snapshot['inference_done']}/{snapshot['total_instances']}` ({format_pct(snapshot['inference_done'], snapshot['total_instances'])})",
         f"- Evaluation: `{snapshot['eval_done']}/{snapshot['total_instances']}` ({format_pct(snapshot['eval_done'], snapshot['total_instances'])})",
         f"- Remaining instances: `{snapshot['remaining']}`",
-        f"- Current in-flight instance: `{snapshot['active_instance'] or 'unknown'}`"
+        f"- Active inference slots: `{snapshot['active_count']}`",
+        f"- Current in-flight instance(s): `{snapshot['active_instance'] or 'unknown'}`"
         + (f" (`{snapshot['active_index']}/{snapshot['total_instances']}`)" if snapshot["active_index"] else ""),
         f"- Last completed inference: `{snapshot['last_inference_instance'] or 'none'}`",
         f"- Last completed evaluation: `{snapshot['last_eval_instance'] or 'none'}`"

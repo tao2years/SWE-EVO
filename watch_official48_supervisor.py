@@ -93,10 +93,11 @@ def ensure_llm_router(log_path: Path) -> None:
 
 def monitor_done(run_root: Path) -> bool:
     state = read_json(run_root / "monitor_status.json", {})
-    return bool(state.get("done")) and actual_report_count(run_root) >= 48
+    total_instances = int(state.get("total_instances", 48) or 48)
+    return bool(state.get("done")) and actual_report_count(run_root) >= total_instances
 
 
-def ensure_eval(run_root: Path, log_path: Path) -> None:
+def ensure_eval(run_root: Path, log_path: Path, max_concurrency: int) -> None:
     if tmux_has_session(EVAL_SESSION):
         return
     report_count = actual_report_count(run_root)
@@ -105,7 +106,7 @@ def ensure_eval(run_root: Path, log_path: Path) -> None:
         EVAL_SESSION,
         (
             "bash -lc 'cd /home/wt/sss_repos/sss_auto/SWE-EVO && "
-            f"python3 -u run_official48_eval_worker.py {run_root} 3 --retry-missing-report"
+            f"python3 -u run_official48_eval_worker.py {run_root} {max_concurrency} --retry-missing-report"
             f" 2>&1 | tee -a {run_root}/eval_worker.log'"
         ),
     )
@@ -138,11 +139,23 @@ def ensure_progress(run_root: Path, progress_md: Path, log_path: Path) -> None:
     )
 
 
-def ensure_router_worker(run_root: Path, log_path: Path) -> None:
+def ensure_router_worker(
+    run_root: Path,
+    log_path: Path,
+    inference_concurrency: int,
+    cli_timeout_seconds: int,
+    router_ready_timeout_seconds: int,
+    cli_bin: str,
+    settings_file: str,
+    env_file: str,
+    model_name: str,
+    agent_name: str,
+) -> None:
     if tmux_has_session(ROUTER_SESSION):
         return
     monitor_state = read_json(run_root / "monitor_status.json", {})
-    if int(monitor_state.get("inference_done", 0)) >= 48:
+    total_instances = int(monitor_state.get("total_instances", 48) or 48)
+    if int(monitor_state.get("inference_done", 0)) >= total_instances:
         return
     append_log(log_path, "router inference session missing; restarting with --resume")
     start_tmux_session(
@@ -153,10 +166,14 @@ def ensure_router_worker(run_root: Path, log_path: Path) -> None:
             "python3 -u run_innercc_infer_official48.py "
             f"--output-dir {run_root}/infer "
             "--instances-dir /home/wt/sss_repos/sss_auto/SWE-EVO/output_final "
-            "--cli-bin /home/wt/repo/innerCC/cli "
-            "--settings-file /home/wt/.claude/settings.json "
-            "--env-file /home/wt/.config/swe-evo/minimax.env "
-            "--resume --cli-timeout-seconds 5400 "
+            f"--cli-bin {cli_bin} "
+            f"--settings-file {settings_file} "
+            f"--env-file {env_file} "
+            f"--model {model_name} "
+            f"--agent-name {agent_name} "
+            f"--resume --max-concurrency {inference_concurrency} "
+            f"--cli-timeout-seconds {cli_timeout_seconds} "
+            f"--router-ready-timeout-seconds {router_ready_timeout_seconds} "
             "2>&1 | tee -a /home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/current_router.log'"
         ),
     )
@@ -167,6 +184,15 @@ def main() -> None:
     parser.add_argument("run_root")
     parser.add_argument("--progress-md", default=str(REPO_ROOT / "progress.md"))
     parser.add_argument("--interval-seconds", type=int, default=30)
+    parser.add_argument("--inference-concurrency", type=int, default=2)
+    parser.add_argument("--eval-max-concurrency", type=int, default=3)
+    parser.add_argument("--cli-timeout-seconds", type=int, default=5400)
+    parser.add_argument("--router-ready-timeout-seconds", type=int, default=120)
+    parser.add_argument("--cli-bin", default="/home/wt/repo/innerCC/cli")
+    parser.add_argument("--settings-file", default="/home/wt/.claude/settings.json")
+    parser.add_argument("--env-file", default="/home/wt/.config/swe-evo/minimax.env")
+    parser.add_argument("--model", default="MiniMax-M2.5-highspeed")
+    parser.add_argument("--agent-name", default="innercc-cli")
     args = parser.parse_args()
 
     run_root = Path(args.run_root).resolve()
@@ -176,7 +202,7 @@ def main() -> None:
 
     while True:
         ensure_llm_router(supervisor_log)
-        ensure_eval(run_root, supervisor_log)
+        ensure_eval(run_root, supervisor_log, args.eval_max_concurrency)
         ensure_monitor(run_root, supervisor_log)
         ensure_progress(run_root, progress_md, supervisor_log)
 
@@ -184,7 +210,18 @@ def main() -> None:
             append_log(supervisor_log, "monitor reports done=true; supervisor exiting")
             break
 
-        ensure_router_worker(run_root, supervisor_log)
+        ensure_router_worker(
+            run_root,
+            supervisor_log,
+            args.inference_concurrency,
+            args.cli_timeout_seconds,
+            args.router_ready_timeout_seconds,
+            args.cli_bin,
+            args.settings_file,
+            args.env_file,
+            args.model,
+            args.agent_name,
+        )
         time.sleep(args.interval_seconds)
 
 

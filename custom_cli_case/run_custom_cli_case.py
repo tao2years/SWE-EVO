@@ -93,12 +93,28 @@ def extract_last_json_line(stdout: str) -> dict | None:
     return None
 
 
+def extract_cli_json(stdout: str) -> dict | None:
+    payload = stdout.strip()
+    if payload:
+        try:
+            parsed = json.loads(payload)
+            if isinstance(parsed, dict):
+                return parsed
+        except json.JSONDecodeError:
+            pass
+    return extract_last_json_line(stdout)
+
+
 def coerce_text(value: str | bytes | None) -> str:
     if value is None:
         return ""
     if isinstance(value, bytes):
         return value.decode("utf-8", errors="replace")
     return value
+
+
+def is_claude_cli(cli_bin: Path) -> bool:
+    return cli_bin.name == "claude"
 
 
 def prepare_workspace(instance: dict, workspace_dir: Path, force: bool) -> None:
@@ -188,33 +204,49 @@ def run_cli(
     prompt = build_prompt(instance)
     raw_stdout_path = run_dir / "cli_stdout.log"
     result_path = run_dir / "cli_result.json"
-    cmd = [
-        str(cli_bin),
-        "--bare",
-        "-p",
-        "--output-format",
-        "json",
-        "--dangerously-skip-permissions",
-        "--settings",
-        str(settings_path),
-        "--model",
-        model_name,
-    ]
-    if max_turns is not None:
-        cmd.extend(["--max-turns", str(max_turns)])
+    if is_claude_cli(cli_bin):
+        cmd = [
+            str(cli_bin),
+            "-p",
+            "--output-format",
+            "json",
+            "--dangerously-skip-permissions",
+            "--settings",
+            str(settings_path),
+            "--model",
+            model_name,
+            prompt,
+        ]
+        use_stdin_prompt = False
+    else:
+        cmd = [
+            str(cli_bin),
+            "--bare",
+            "-p",
+            "--output-format",
+            "json",
+            "--dangerously-skip-permissions",
+            "--settings",
+            str(settings_path),
+            "--model",
+            model_name,
+        ]
+        if max_turns is not None:
+            cmd.extend(["--max-turns", str(max_turns)])
+        use_stdin_prompt = True
 
     proc = subprocess.Popen(
         cmd,
         cwd=workspace_dir,
         env=env,
-        stdin=subprocess.PIPE,
+        stdin=subprocess.PIPE if use_stdin_prompt else None,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
         start_new_session=True,
     )
     try:
-        stdout, stderr = proc.communicate(prompt, timeout=timeout_seconds)
+        stdout, stderr = proc.communicate(prompt if use_stdin_prompt else None, timeout=timeout_seconds)
         returncode = proc.returncode
     except subprocess.TimeoutExpired as exc:
         os.killpg(proc.pid, signal.SIGTERM)
@@ -229,7 +261,7 @@ def run_cli(
         returncode = 124
 
     raw_stdout_path.write_text(stdout, encoding="utf-8")
-    parsed_payload = extract_last_json_line(stdout)
+    parsed_payload = extract_cli_json(stdout)
     if parsed_payload is None:
         result_path.write_text(stdout, encoding="utf-8")
     else:

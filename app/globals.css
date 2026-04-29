@@ -109,8 +109,21 @@ a {
   cursor: pointer;
 }
 
+.danger-button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff8f6;
+  background: linear-gradient(135deg, #b44b35, #8e2f26);
+  cursor: pointer;
+}
+
 .primary-button:disabled,
-.ghost-button:disabled {
+.ghost-button:disabled,
+.danger-button:disabled {
   cursor: not-allowed;
   opacity: 0.55;
 }
@@ -281,7 +294,7 @@ a {
 
 .display-name-editor {
   display: grid;
-  grid-template-columns: minmax(280px, 1fr) auto auto;
+  grid-template-columns: minmax(280px, 1fr) auto auto auto;
   gap: 12px;
   margin-bottom: 16px;
 }

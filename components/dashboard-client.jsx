@@ -209,6 +209,7 @@ export default function DashboardClient({ initialData }) {
   const [statusText, setStatusText] = useState("Server-rendered");
   const [displayNameDraft, setDisplayNameDraft] = useState(initialData?.selectedRunDetail?.run?.display_name ?? "");
   const [isSavingDisplayName, setIsSavingDisplayName] = useState(false);
+  const [isDeletingRun, setIsDeletingRun] = useState(false);
   const traceCacheRef = useRef(new Map());
 
   const currentCases = selectedRunDetail?.cases ?? [];
@@ -372,6 +373,43 @@ export default function DashboardClient({ initialData }) {
       setStatusText(`Save failed: ${error.message}`);
     } finally {
       setIsSavingDisplayName(false);
+    }
+  }
+
+  async function handleDeleteRun() {
+    if (!selectedRunDetail?.run?.run_id) {
+      return;
+    }
+    const targetRun = selectedRunDetail.run;
+    const targetLabel = runDisplayName(targetRun);
+    const confirmed = window.confirm(
+      `Delete run "${targetLabel}" (${targetRun.run_id})?\n\nThis removes the run directory and its evaluation logs. Running runs cannot be deleted.`,
+    );
+    if (!confirmed) {
+      return;
+    }
+
+    setIsDeletingRun(true);
+    setStatusText(`Deleting ${targetRun.run_id}...`);
+    try {
+      const response = await fetch(`/api/run/${encodeURIComponent(targetRun.run_id)}`, {
+        method: "DELETE",
+        cache: "no-store",
+      });
+      if (!response.ok) {
+        throw new Error(`/api/run/${encodeURIComponent(targetRun.run_id)} -> ${response.status}`);
+      }
+
+      setSelectedCaseId(null);
+      setSelectedCaseTrace(null);
+      setSelectedCaseTraceStatus("idle");
+      setSelectedCaseTraceError(null);
+      await handleRefresh(true);
+      setStatusText(`Deleted ${targetRun.run_id} at ${new Date().toLocaleTimeString()}`);
+    } catch (error) {
+      setStatusText(`Delete failed: ${error.message}`);
+    } finally {
+      setIsDeletingRun(false);
     }
   }
 
@@ -573,6 +611,14 @@ export default function DashboardClient({ initialData }) {
                 type="button"
               >
                 Clear
+              </button>
+              <button
+                className="danger-button"
+                disabled={isSavingDisplayName || isDeletingRun || selectedRunDetail.run.status === "running"}
+                onClick={() => void handleDeleteRun()}
+                type="button"
+              >
+                {isDeletingRun ? "Deleting..." : "Delete Run"}
               </button>
             </div>
           ) : null}

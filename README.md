@@ -95,6 +95,22 @@ ROUTER_ROOT=/home/wt/sss_repos/sss_auto/llm_router
 3. stdout 最后一条 JSON 行是可解析结果
 4. 实际 patch 不从 JSON 里取，而是直接对 workspace 跑 `git diff`
 
+当前已经验证过两种模式：
+
+- innerCC 风格：
+
+```bash
+<cli> --bare -p --output-format json --dangerously-skip-permissions ...
+```
+
+- Claude Code 风格：
+
+```bash
+claude -p --output-format json --dangerously-skip-permissions --settings <settings.json> "Prompt"
+```
+
+如果 `--cli-bin /usr/bin/claude`，runner 会自动切换到 Claude Code 的命令行协议，不再从 stdin 喂 prompt，而是把 prompt 作为最后一个位置参数传入。
+
 如果你的 CLI 不符合上述约定，优先改这里：
 
 - `build_prompt()`
@@ -293,7 +309,7 @@ curl -X DELETE http://127.0.0.1:18783/api/data/all
 
 ## 7. official48 推理与评测流程
 
-### 7.1 一次性串行入口
+### 7.1 一次性入口
 
 [run_official48_pipeline.sh](/home/wt/sss_repos/sss_auto/SWE-EVO/run_official48_pipeline.sh) 做这几件事：
 
@@ -301,9 +317,11 @@ curl -X DELETE http://127.0.0.1:18783/api/data/all
 2. 创建 `official48_runs/<run_id>/`
 3. 清空 llm_router traces
 4. 把 `official48_source/output_final` 和 `official48_source/hf_out` 复制到仓库根目录
-5. 调 `run_innercc_infer_official48.py` 跑 48 题推理
-6. 调 `SWE-bench/evaluate_instance.py --scaffold CustomCLI` 跑整批评测
-7. 备份 llm_router `proxy/data`
+5. 后台启动 `run_official48_eval_worker.py`
+6. 调 `run_innercc_infer_official48.py` 并发跑 48 题推理
+7. 每题一完成就把结果追加到 `inference_summary.json`，增量评测 worker 立即接手
+8. 等待增量评测追平
+9. 备份 llm_router `proxy/data`
 
 前台直接执行：
 
@@ -329,7 +347,9 @@ python3 run_innercc_infer_official48.py \
   --agent-name innercc-cli \
   --force-workspace \
   --resume \
+  --max-concurrency 2 \
   --cli-timeout-seconds 5400 \
+  --router-ready-timeout-seconds 120 \
   --router-db-path <router_db_path> \
   --router-api-base http://127.0.0.1:18783
 ```
@@ -337,24 +357,40 @@ python3 run_innercc_infer_official48.py \
 当前脚本实际行为：
 
 1. 遍历 `output_final/*.json`
-2. 为每题准备 git workspace
-3. 通过 `custom_cli_case/run_custom_cli_case.py` 里的 `run_cli()` 调你的 CLI
-4. 记录：
+2. 用 `--max-concurrency` 控制推理并发，默认 `2`
+3. 为每题准备独立 git workspace
+4. 每个任务在真正调用 CLI 之前都会等待 llm_router 就绪
+5. 通过 `custom_cli_case/run_custom_cli_case.py` 里的 `run_cli()` 调你的 CLI
+6. 每题完成后立刻记录：
    - `cli_result.json`
    - `cli_stdout.log`
    - `cli_stderr.log`
    - `patch.diff`
    - `preds.json`
-5. 从 llm_router 导出 `router_trace_bundle.json`
-6. 给 router session / run 写备注：
+   - 根目录 `preds.json`
+   - 根目录 `inference_summary.json`
+   - 根目录 `inference_status.json`
+7. 从 llm_router 导出 `router_trace_bundle.json`
+8. 给 router session / run 写备注：
    - `innercc | <instance_id> | <YYYY-MM-DD HH:MM:SS>`
+
+注意：
+
+- 只要某题写入 `inference_summary.json`，增量评测 worker 就会立刻开始该题评测
+- 整体流程已经不是“48 题全部推理结束后再统一评测”
+
+关键新增配置：
+
+- `--max-concurrency`：推理并发数，默认 `2`
+- `--cli-timeout-seconds`：单题 CLI 超时，默认 `5400`
+- `--router-ready-timeout-seconds`：每题启动前等待 router 的最大秒数，默认 `120`
 
 ### 7.3 增量评测 worker
 
 命令：
 
 ```bash
-python3 -u run_official48_eval_worker.py <run_root> 3 --retry-missing-report
+python3 -u run_official48_eval_worker.py <run_root> 3 --retry-missing-report --poll-interval-seconds 15
 ```
 
 参数：
@@ -362,13 +398,14 @@ python3 -u run_official48_eval_worker.py <run_root> 3 --retry-missing-report
 - 第 1 个位置参数：`run_root`
 - 第 2 个位置参数：最大并发数，当前默认 `3`
 - `--retry-missing-report`：重试已有状态但缺 report 的 case
+- `--poll-interval-seconds`：轮询增量结果的间隔秒数，默认 `15`
 
 它会：
 
 1. 创建软链：
    - `<run_root>/eval_input_<run_id> -> <run_root>/infer`
-2. 轮询 `infer/inference_summary.json`
-3. 对每个已完成推理的 case 单独执行：
+2. 轮询 `infer/inference_summary.json` 和 `infer/inference_status.json`
+3. 对每个已完成推理的 case 立即执行：
 
 ```bash
 python3 SWE-bench/evaluate_instance.py \
@@ -420,6 +457,7 @@ official48_runs/<run_id>/
 - `official48_runs/current_router.log`
 - `official48_runs/<run_id>/infer/preds.json`
 - `official48_runs/<run_id>/infer/inference_summary.json`
+- `official48_runs/<run_id>/infer/inference_status.json`
 - `official48_runs/<run_id>/infer/runs/<instance_id>/cli_result.json`
 - `official48_runs/<run_id>/infer/runs/<instance_id>/cli_stdout.log`
 - `official48_runs/<run_id>/infer/runs/<instance_id>/cli_stderr.log`
@@ -479,6 +517,17 @@ tmux new-session -d -s swe-evo-official48-router \
   "bash -lc './run_official48_pipeline.sh 2>&1 | tee -a /home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/current_router.log'"
 ```
 
+如需修改本轮并发与超时，可直接覆写环境变量：
+
+```bash
+INFER_MAX_CONCURRENCY=2 \
+EVAL_MAX_CONCURRENCY=3 \
+CLI_TIMEOUT_SECONDS=5400 \
+ROUTER_READY_TIMEOUT_SECONDS=120 \
+MODEL_NAME=MiniMax-M2.5-highspeed \
+bash run_official48_pipeline.sh
+```
+
 ### 8.4 启动 supervisor
 
 假设当前 run 根目录是：
@@ -493,6 +542,16 @@ tmux new-session -d -s swe-evo-official48-router \
 cd /home/wt/sss_repos/sss_auto/SWE-EVO
 tmux new-session -d -s swe-evo-official48-supervisor \
   "bash -lc 'python3 -u /home/wt/sss_repos/sss_auto/SWE-EVO/watch_official48_supervisor.py /home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/<run_id>'"
+```
+
+如需显式指定并发：
+
+```bash
+python3 watch_official48_supervisor.py /home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/<run_id> \
+  --inference-concurrency 2 \
+  --eval-max-concurrency 3 \
+  --cli-timeout-seconds 5400 \
+  --router-ready-timeout-seconds 120
 ```
 
 supervisor 会自动保活这些 session：
@@ -593,8 +652,10 @@ http://127.0.0.1:18881/dashboard
 - run 列表
 - run comparison
 - case 级别排序、筛选
+- 运行中的 resolved / F2P / P2P 实时汇总
 - 点击 case 查看完整 router trace
 - 编辑 run 的 `display_name`
+- 删除 idle / 非运行 run（带确认）
 
 `display_name` 会持久化到：
 
@@ -603,6 +664,14 @@ official48_runs/<run_id>/metadata.json
 ```
 
 内部仍然继续用 `run_id` 做目录、artifact、评测和 API 主键。
+
+删除 run 的规则：
+
+- 只能删除非运行中的 run
+- 删除前会弹确认框
+- 删除时会同时清理：
+  - `official48_runs/<run_id>`
+  - `logs/run_evaluation/eval_input_<run_id>`
 
 ## 11. 迁移到另一台机器时，最少检查这些地方
 

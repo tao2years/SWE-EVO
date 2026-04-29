@@ -19,6 +19,7 @@ def main() -> None:
     infer_root = run_root / "infer"
     run_dir = infer_root / "runs"
     infer_summary = infer_root / "inference_summary.json"
+    infer_status = infer_root / "inference_status.json"
     eval_status_path = run_root / "eval_worker_status.json"
     monitor_json = run_root / "monitor_status.json"
     monitor_log = run_root / "monitor.log"
@@ -26,11 +27,21 @@ def main() -> None:
 
     while True:
         inference_done = 0
+        inference_total = 48
+        active_instances: list[str] = []
         if infer_summary.exists():
             try:
                 inference_done = len(json.loads(infer_summary.read_text(encoding="utf-8")))
             except Exception:
                 inference_done = 0
+        if infer_status.exists():
+            try:
+                infer_state = json.loads(infer_status.read_text(encoding="utf-8"))
+                inference_done = int(infer_state.get("completed_count", inference_done))
+                inference_total = int(infer_state.get("total_instances", inference_total))
+                active_instances = list(infer_state.get("active", []))
+            except Exception:
+                active_instances = []
 
         cli_results = count_files(run_dir, "*/cli_result.json")
         trace_bundles = count_files(run_dir, "*/router_trace_bundle.json")
@@ -43,11 +54,14 @@ def main() -> None:
             except Exception:
                 eval_completed_tasks = 0
 
-        done = infer_summary.exists() and inference_done == 48 and eval_reports >= 48
+        done = infer_summary.exists() and inference_done >= inference_total and eval_reports >= inference_total
         payload = {
             "run_root": str(run_root),
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "total_instances": inference_total,
             "inference_done": inference_done,
+            "active_instances": active_instances,
+            "active_count": len(active_instances),
             "cli_results": cli_results,
             "trace_bundles": trace_bundles,
             "eval_reports": eval_reports,
