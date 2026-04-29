@@ -1,0 +1,849 @@
+"use client";
+
+import { startTransition, useEffect, useRef, useState } from "react";
+
+const CASE_COLUMNS = [
+  { key: "instance_id", label: "case_id", defaultDirection: "asc" },
+  { key: "resolved", label: "resolved", defaultDirection: "desc" },
+  { key: "f2p_rate", label: "f2p", defaultDirection: "desc" },
+  { key: "p2p_rate", label: "p2p", defaultDirection: "desc" },
+  { key: "cli_total_cost_usd", label: "cost", defaultDirection: "desc" },
+  { key: "cli_duration_ms", label: "duration", defaultDirection: "desc" },
+  { key: "tool_use_count", label: "tools", defaultDirection: "desc" },
+  { key: null, label: "artifacts" },
+];
+
+const COMPARISON_METRICS = [
+  ["status", "status"],
+  ["inference_done", "inference"],
+  ["eval_reports", "eval reports"],
+  ["resolved_true_cases", "resolved"],
+  ["resolution_rate", "resolved rate"],
+  ["f2p_micro_rate", "f2p micro"],
+  ["p2p_micro_pass_rate", "p2p micro"],
+  ["total_cli_cost_usd", "total cost"],
+  ["avg_cli_duration_ms", "avg duration"],
+];
+
+function percent(value) {
+  return typeof value === "number" ? `${(value * 100).toFixed(1)}%` : "n/a";
+}
+
+function money(value) {
+  return typeof value === "number" ? `$${value.toFixed(2)}` : "n/a";
+}
+
+function duration(value) {
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return "n/a";
+  }
+  const totalSeconds = Math.round(value / 1000);
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  const seconds = totalSeconds % 60;
+  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+  if (minutes > 0) return `${minutes}m ${seconds}s`;
+  return `${seconds}s`;
+}
+
+function numberish(value) {
+  return typeof value === "number" ? value.toLocaleString() : "n/a";
+}
+
+function safeText(value) {
+  return value === null || value === undefined || value === "" ? "n/a" : String(value);
+}
+
+function runDisplayName(run) {
+  return run?.display_name || run?.run_id || "n/a";
+}
+
+function statusClass(status) {
+  if (status === "completed") return "status-completed";
+  if (status === "running") return "status-running";
+  return "status-idle";
+}
+
+function formatTimestamp(value) {
+  return typeof value === "number" ? new Date(value).toLocaleString() : "n/a";
+}
+
+function defaultSortDirection(sortKey) {
+  return CASE_COLUMNS.find((column) => column.key === sortKey)?.defaultDirection || "desc";
+}
+
+function compareCaseValues(left, right, sortKey) {
+  const a = left?.[sortKey];
+  const b = right?.[sortKey];
+  const aMissing = a === null || a === undefined || a === "";
+  const bMissing = b === null || b === undefined || b === "";
+  if (aMissing && bMissing) return 0;
+  if (aMissing) return 1;
+  if (bMissing) return -1;
+  if (typeof a === "number" && typeof b === "number") return a - b;
+  if (typeof a === "boolean" && typeof b === "boolean") return Number(a) - Number(b);
+  return String(a).localeCompare(String(b));
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, { cache: "no-store" });
+  if (!response.ok) {
+    throw new Error(`${url} -> ${response.status}`);
+  }
+  return response.json();
+}
+
+function DetailChip({ label, value }) {
+  return (
+    <span className="detail-chip">
+      <span>{label}</span>
+      <strong>{value}</strong>
+    </span>
+  );
+}
+
+function ArtifactLinks({ artifacts }) {
+  const entries = Object.entries(artifacts || {}).filter(([, url]) => Boolean(url));
+  if (!entries.length) {
+    return <span className="empty-inline">n/a</span>;
+  }
+  return (
+    <div className="artifact-links">
+      {entries.map(([name, url]) => (
+        <a href={url} key={name} rel="noreferrer" target="_blank">
+          {name}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function ToolPayload({ item, kind }) {
+  const statusClassName = kind === "result" ? (item.is_error ? "error" : "ok") : "";
+  const statusText = kind === "result" ? (item.is_error ? "error" : "ok") : safeText(item.tool_use_id);
+  const payload = kind === "result" ? item.content : item.input_json;
+  return (
+    <div className="trace-item">
+      <div className="trace-item-top">
+        <div className="trace-item-title">{item.tool_name || "tool"}</div>
+        <div className={`trace-item-status ${statusClassName}`.trim()}>{statusText}</div>
+      </div>
+      {item.tool_summary || item.summary ? (
+        <div className="trace-item-summary">{item.tool_summary || item.summary}</div>
+      ) : null}
+      {payload ? <pre className="trace-code">{payload}</pre> : null}
+    </div>
+  );
+}
+
+function TraceTurn({ turn }) {
+  const assistant = turn.assistant || {};
+  const requestMessages = turn.request_messages || [];
+  return (
+    <article className="trace-turn">
+      <div className="trace-turn-meta">
+        <DetailChip label={`turn ${turn.index}`} value={formatTimestamp(turn.timestamp)} />
+        <DetailChip label="http" value={safeText(turn.response_status)} />
+        <DetailChip label="latency" value={duration(turn.duration_ms)} />
+        <DetailChip label="stop" value={safeText(assistant.stop_reason)} />
+      </div>
+
+      {requestMessages.map((message, index) => {
+        if (message.kind === "user_text") {
+          return (
+            <section className="trace-message trace-message-user" key={`user-${turn.index}-${index}`}>
+              <div className="trace-label">User</div>
+              <pre className="trace-text">{message.text}</pre>
+            </section>
+          );
+        }
+        if (message.kind === "tool_results") {
+          return (
+            <section className="trace-message trace-message-tool" key={`tool-${turn.index}-${index}`}>
+              <div className="trace-label">Tool Results</div>
+              <div className="trace-list">
+                {(message.results || []).map((item, resultIndex) => (
+                  <ToolPayload item={item} key={`${item.tool_use_id || resultIndex}-result`} kind="result" />
+                ))}
+              </div>
+            </section>
+          );
+        }
+        return null;
+      })}
+
+      <section className="trace-message trace-message-assistant">
+        <div className="trace-label">Assistant</div>
+        {assistant.text ? <pre className="trace-text">{assistant.text}</pre> : null}
+        {assistant.tool_calls?.length ? (
+          <div className="trace-list">
+            {assistant.tool_calls.map((item, index) => (
+              <ToolPayload item={item} key={`${item.tool_use_id || index}-call`} kind="call" />
+            ))}
+          </div>
+        ) : null}
+        {!assistant.text && !assistant.tool_calls?.length ? (
+          <div className="trace-empty">No assistant text captured for this step.</div>
+        ) : null}
+      </section>
+    </article>
+  );
+}
+
+export default function DashboardClient({ initialData }) {
+  const [runs, setRuns] = useState(initialData?.runs ?? []);
+  const [selectedRunId, setSelectedRunId] = useState(initialData?.selectedRunId ?? null);
+  const [selectedRunDetail, setSelectedRunDetail] = useState(initialData?.selectedRunDetail ?? null);
+  const [compareRunIds, setCompareRunIds] = useState(
+    () => new Set(initialData?.selectedRunId ? [initialData.selectedRunId] : []),
+  );
+  const [caseSortKey, setCaseSortKey] = useState("instance_id");
+  const [caseSortDirection, setCaseSortDirection] = useState("asc");
+  const [search, setSearch] = useState("");
+  const [resolvedFilter, setResolvedFilter] = useState("all");
+  const [anomalyFilter, setAnomalyFilter] = useState("all");
+  const [selectedCaseId, setSelectedCaseId] = useState(null);
+  const [selectedCaseTrace, setSelectedCaseTrace] = useState(null);
+  const [selectedCaseTraceStatus, setSelectedCaseTraceStatus] = useState("idle");
+  const [selectedCaseTraceError, setSelectedCaseTraceError] = useState(null);
+  const [statusText, setStatusText] = useState("Server-rendered");
+  const [displayNameDraft, setDisplayNameDraft] = useState(initialData?.selectedRunDetail?.run?.display_name ?? "");
+  const [isSavingDisplayName, setIsSavingDisplayName] = useState(false);
+  const traceCacheRef = useRef(new Map());
+
+  const currentCases = selectedRunDetail?.cases ?? [];
+  const selectedCase = currentCases.find((item) => item.instance_id === selectedCaseId) ?? null;
+  const filteredCases = [...currentCases]
+    .filter((row) => {
+      if (search.trim()) {
+        const haystack = `${row.instance_id} ${row.repo || ""}`.toLowerCase();
+        if (!haystack.includes(search.trim().toLowerCase())) {
+          return false;
+        }
+      }
+      if (resolvedFilter === "resolved" && row.resolved !== true) {
+        return false;
+      }
+      if (resolvedFilter === "unresolved" && row.resolved !== false) {
+        return false;
+      }
+      if (anomalyFilter === "with" && !(row.anomaly_flags || []).length) {
+        return false;
+      }
+      if (anomalyFilter === "without" && (row.anomaly_flags || []).length) {
+        return false;
+      }
+      return true;
+    })
+    .sort((left, right) => {
+      const comparison = compareCaseValues(left, right, caseSortKey);
+      return caseSortDirection === "asc" ? comparison : -comparison;
+    });
+
+  useEffect(() => {
+    setDisplayNameDraft(selectedRunDetail?.run?.display_name ?? "");
+  }, [selectedRunDetail?.run?.run_id, selectedRunDetail?.run?.display_name]);
+
+  async function handleRefresh(silent = false) {
+    if (!silent) {
+      setStatusText("Refreshing...");
+    }
+    try {
+      const nextRunsPayload = await fetchJson("/api/runs");
+      const nextRuns = nextRunsPayload.runs || [];
+      let nextSelectedRunId = selectedRunId;
+      if (!nextSelectedRunId || !nextRuns.some((run) => run.run_id === nextSelectedRunId)) {
+        nextSelectedRunId = nextRuns[0]?.run_id ?? null;
+      }
+      const nextDetail = nextSelectedRunId
+        ? await fetchJson(`/api/run/${encodeURIComponent(nextSelectedRunId)}`)
+        : null;
+      const caseStillExists = nextDetail?.cases?.some((item) => item.instance_id === selectedCaseId) ?? false;
+
+      startTransition(() => {
+        setRuns(nextRuns);
+        setSelectedRunId(nextSelectedRunId);
+        setSelectedRunDetail(nextDetail);
+        setCompareRunIds((previous) => {
+          const next = new Set([...previous].filter((id) => nextRuns.some((run) => run.run_id === id)));
+          if (nextSelectedRunId && next.size === 0) {
+            next.add(nextSelectedRunId);
+          }
+          return next;
+        });
+        if (!caseStillExists) {
+          setSelectedCaseId(null);
+          setSelectedCaseTrace(null);
+          setSelectedCaseTraceStatus("idle");
+          setSelectedCaseTraceError(null);
+        }
+      });
+      setStatusText(`Updated ${new Date().toLocaleTimeString()}`);
+    } catch (error) {
+      setStatusText(`Refresh failed: ${error.message}`);
+    }
+  }
+
+  async function handleRunSelect(runId) {
+    if (!runId || runId === selectedRunId) {
+      return;
+    }
+    setStatusText(`Loading ${runId}...`);
+    setSelectedRunId(runId);
+    setSelectedRunDetail(null);
+    setSelectedCaseId(null);
+    setSelectedCaseTrace(null);
+    setSelectedCaseTraceStatus("idle");
+    setSelectedCaseTraceError(null);
+    try {
+      const detail = await fetchJson(`/api/run/${encodeURIComponent(runId)}`);
+      startTransition(() => {
+        setSelectedRunDetail(detail);
+        setCompareRunIds((previous) => {
+          if (previous.size) {
+            return previous;
+          }
+          return new Set([runId]);
+        });
+      });
+      setStatusText(`Updated ${new Date().toLocaleTimeString()}`);
+    } catch (error) {
+      setStatusText(`Refresh failed: ${error.message}`);
+    }
+  }
+
+  async function handleCaseSelect(instanceId) {
+    if (!selectedRunId || !instanceId) {
+      return;
+    }
+    const cacheKey = `${selectedRunId}:${instanceId}`;
+    setSelectedCaseId(instanceId);
+    setSelectedCaseTrace(null);
+    setSelectedCaseTraceError(null);
+    setSelectedCaseTraceStatus("loading");
+    if (traceCacheRef.current.has(cacheKey)) {
+      setSelectedCaseTrace(traceCacheRef.current.get(cacheKey));
+      setSelectedCaseTraceStatus("loaded");
+      return;
+    }
+
+    try {
+      const trace = await fetchJson(`/api/run/${encodeURIComponent(selectedRunId)}/case/${encodeURIComponent(instanceId)}/trace`);
+      traceCacheRef.current.set(cacheKey, trace);
+      setSelectedCaseTrace(trace);
+      setSelectedCaseTraceStatus("loaded");
+    } catch (error) {
+      setSelectedCaseTrace(null);
+      setSelectedCaseTraceStatus("error");
+      setSelectedCaseTraceError(error.message);
+    }
+  }
+
+  async function handleDisplayNameSave(nextDisplayName) {
+    if (!selectedRunId) {
+      return;
+    }
+    setIsSavingDisplayName(true);
+    setStatusText("Saving display name...");
+    try {
+      const detail = await fetch(`/api/run/${encodeURIComponent(selectedRunId)}`, {
+        method: "PATCH",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ display_name: nextDisplayName }),
+      }).then(async (response) => {
+        if (!response.ok) {
+          throw new Error(`/api/run/${encodeURIComponent(selectedRunId)} -> ${response.status}`);
+        }
+        return response.json();
+      });
+
+      startTransition(() => {
+        setSelectedRunDetail(detail);
+        setDisplayNameDraft(detail?.run?.display_name ?? "");
+        setRuns((previous) => previous.map((run) => (
+          run.run_id === detail.run.run_id ? detail.run : run
+        )));
+      });
+      setStatusText(`Saved display name at ${new Date().toLocaleTimeString()}`);
+    } catch (error) {
+      setStatusText(`Save failed: ${error.message}`);
+    } finally {
+      setIsSavingDisplayName(false);
+    }
+  }
+
+  function toggleCompare(runId, checked) {
+    setCompareRunIds((previous) => {
+      const next = new Set(previous);
+      if (checked) {
+        next.add(runId);
+      } else {
+        next.delete(runId);
+      }
+      return next;
+    });
+  }
+
+  function toggleCaseSort(sortKey) {
+    if (caseSortKey === sortKey) {
+      setCaseSortDirection((previous) => (previous === "asc" ? "desc" : "asc"));
+      return;
+    }
+    setCaseSortKey(sortKey);
+    setCaseSortDirection(defaultSortDirection(sortKey));
+  }
+
+  useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      void handleRefresh(true);
+    }, 30_000);
+    return () => window.clearInterval(intervalId);
+  }, [selectedRunId, selectedCaseId]);
+
+  return (
+    <div className="shell">
+      <header className="hero">
+        <div>
+          <p className="eyebrow">SWE-EVO Dashboard</p>
+          <h1>Run Observatory</h1>
+          <p className="hero-copy">
+            Track official48 benchmark rounds, compare completed runs, and drill into case-level outcomes
+            without digging through folders.
+          </p>
+        </div>
+        <div className="hero-actions">
+          <button className="primary-button" onClick={() => void handleRefresh()} type="button">
+            Refresh
+          </button>
+          <div className="status-chip">{statusText}</div>
+        </div>
+      </header>
+
+      <main className="grid">
+        <section className="panel run-panel">
+          <div className="panel-header">
+            <div>
+              <p className="panel-kicker">Runs</p>
+              <h2>Benchmark Rounds</h2>
+            </div>
+            <p className="panel-note">Select a run for drill-down. Tick multiple runs for side-by-side comparison.</p>
+          </div>
+          <div className="run-list">
+            {runs.map((run) => {
+              const checked = compareRunIds.has(run.run_id);
+              return (
+                <article
+                  className={`run-card ${run.run_id === selectedRunId ? "selected" : ""}`.trim()}
+                  key={run.run_id}
+                  onClick={() => void handleRunSelect(run.run_id)}
+                >
+                  <div className="run-card-top">
+                    <div>
+                      <p className="run-id">{runDisplayName(run)}</p>
+                      <div className="run-updated">
+                        {run.display_name ? run.run_id : safeText(run.updated_at)}
+                      </div>
+                      {run.display_name ? (
+                        <div className="run-updated">{safeText(run.updated_at)}</div>
+                      ) : null}
+                    </div>
+                    <span className={`status-badge ${statusClass(run.status)}`.trim()}>{run.status}</span>
+                  </div>
+                  <div className="mini-stats">
+                    <div className="mini-stat">
+                      <div className="mini-stat-label">Inference</div>
+                      <div className="mini-stat-value">
+                        {run.inference_done}/{run.total_cases}
+                      </div>
+                    </div>
+                    <div className="mini-stat">
+                      <div className="mini-stat-label">Eval</div>
+                      <div className="mini-stat-value">
+                        {run.eval_reports}/{run.total_cases}
+                      </div>
+                    </div>
+                    <div className="mini-stat">
+                      <div className="mini-stat-label">Resolved</div>
+                      <div className="mini-stat-value">{numberish(run.resolved_true_cases)}</div>
+                    </div>
+                  </div>
+                  <label
+                    className="compare-toggle"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                    }}
+                  >
+                    <input
+                      checked={checked}
+                      onChange={(event) => toggleCompare(run.run_id, event.target.checked)}
+                      type="checkbox"
+                    />
+                    Compare this run
+                  </label>
+                </article>
+              );
+            })}
+          </div>
+        </section>
+
+        <section className="panel compare-panel">
+          <div className="panel-header">
+            <div>
+              <p className="panel-kicker">Compare</p>
+              <h2>Run Comparison</h2>
+            </div>
+            <p className="panel-note">Focus on completion, resolution, fix/pass retention, and efficiency at a glance.</p>
+          </div>
+          {runs.filter((run) => compareRunIds.has(run.run_id)).length ? (
+            <div className="table-wrap">
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    <th>metric</th>
+                    {runs
+                      .filter((run) => compareRunIds.has(run.run_id))
+                      .map((run) => (
+                        <th key={run.run_id}>{runDisplayName(run)}</th>
+                      ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {COMPARISON_METRICS.map(([key, label]) => (
+                    <tr key={key}>
+                      <th>{label}</th>
+                      {runs
+                        .filter((run) => compareRunIds.has(run.run_id))
+                        .map((run) => {
+                          let rendered = safeText(run[key]);
+                          if (key.includes("rate")) rendered = percent(run[key]);
+                          if (key.includes("cost")) rendered = money(run[key]);
+                          if (key.includes("duration")) rendered = duration(run[key]);
+                          if (key === "inference_done" || key === "eval_reports") {
+                            rendered = `${run[key]}/${run.total_cases}`;
+                          }
+                          return <td key={`${run.run_id}-${key}`}>{rendered}</td>;
+                        })}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="empty-state">Select at least one run to compare.</div>
+          )}
+        </section>
+
+        <section className="panel summary-panel">
+          <div className="panel-header">
+            <div>
+              <p className="panel-kicker">Selected Run</p>
+              <h2>{selectedRunDetail?.run ? runDisplayName(selectedRunDetail.run) : "No run selected"}</h2>
+            </div>
+            <p className="panel-note">
+              {selectedRunDetail?.run
+                ? `${selectedRunDetail.run.run_id} · ${selectedRunDetail.run.status} · ${safeText(selectedRunDetail.run.updated_at)} · ${selectedRunDetail.run.eval_reports}/${selectedRunDetail.run.total_cases} reports`
+                : "Choose a run card to inspect its summary and cases."}
+            </p>
+          </div>
+          {selectedRunDetail?.run ? (
+            <div className="display-name-editor">
+              <input
+                className="text-input"
+                disabled={isSavingDisplayName}
+                onChange={(event) => setDisplayNameDraft(event.target.value)}
+                placeholder="Optional display name for this round"
+                type="text"
+                value={displayNameDraft}
+              />
+              <button
+                className="primary-button"
+                disabled={isSavingDisplayName}
+                onClick={() => void handleDisplayNameSave(displayNameDraft)}
+                type="button"
+              >
+                {isSavingDisplayName ? "Saving..." : "Save Name"}
+              </button>
+              <button
+                className="ghost-button"
+                disabled={isSavingDisplayName || !selectedRunDetail.run.display_name}
+                onClick={() => void handleDisplayNameSave("")}
+                type="button"
+              >
+                Clear
+              </button>
+            </div>
+          ) : null}
+          <div className="summary-cards">
+            {selectedRunDetail ? (
+              [
+                ["Resolved", `${numberish(selectedRunDetail.summary?.resolved_true_cases)}/${numberish(selectedRunDetail.summary?.total_cases)}`, percent(selectedRunDetail.summary?.resolution_rate_known_only)],
+                ["F2P Micro", percent(selectedRunDetail.summary?.f2p_micro_rate_known_only), "targeted failing tests repaired"],
+                ["P2P Micro", percent(selectedRunDetail.summary?.p2p_micro_pass_rate_known_only), "previously passing tests retained"],
+                ["Total Cost", money(selectedRunDetail.summary?.total_cli_cost_usd), "session-level model usage"],
+                ["Avg Duration", duration(selectedRunDetail.summary?.avg_cli_duration_ms), "per case"],
+                ["Avg Tool Uses", numberish(selectedRunDetail.summary?.avg_tool_use_count), "unique tool_use ids per case"],
+              ].map(([title, value, foot]) => (
+                <article className="summary-card" key={title}>
+                  <h3>{title}</h3>
+                  <div className="summary-card-value">{value}</div>
+                  <div className="summary-card-foot">{foot}</div>
+                </article>
+              ))
+            ) : (
+              <div className="empty-state">No summary available.</div>
+            )}
+          </div>
+          <div className="tool-layout">
+            <div>
+              <h3>Tool Mix</h3>
+              <div className="tool-mix">
+                {selectedRunDetail && Object.entries(selectedRunDetail.summary?.aggregate_tool_names || {}).length ? (
+                  (() => {
+                    const entries = Object.entries(selectedRunDetail.summary.aggregate_tool_names || {});
+                    const total = entries.reduce((sum, [, count]) => sum + count, 0) || 1;
+                    return entries.map(([name, count]) => (
+                      <div className="tool-bar" key={name}>
+                        <div>{name}</div>
+                        <div className="tool-track">
+                          <div className="tool-fill" style={{ width: `${(count / total) * 100}%` }} />
+                        </div>
+                        <div>{numberish(count)}</div>
+                      </div>
+                    ));
+                  })()
+                ) : (
+                  <div className="empty-state">No tool data.</div>
+                )}
+              </div>
+            </div>
+            <div>
+              <h3>Anomalies</h3>
+              <div className="anomaly-list">
+                {selectedRunDetail && Object.entries(selectedRunDetail.summary?.anomaly_counts || {}).length ? (
+                  Object.entries(selectedRunDetail.summary.anomaly_counts || {}).map(([name, count]) => (
+                    <span className="anomaly-pill" key={name}>
+                      {name}: {count}
+                    </span>
+                  ))
+                ) : (
+                  <div className="empty-state">No anomalies recorded.</div>
+                )}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="panel case-panel">
+          <div className="panel-header">
+            <div>
+              <p className="panel-kicker">Cases</p>
+              <h2>Case Drill-Down</h2>
+            </div>
+            <p className="panel-note">Filter by status, anomaly, or substring; sort by outcome or cost/duration.</p>
+          </div>
+
+          <div className="case-toolbar">
+            <input
+              className="text-input"
+              onChange={(event) => setSearch(event.target.value)}
+              placeholder="Search case_id or repo"
+              type="search"
+              value={search}
+            />
+            <select className="select-input" onChange={(event) => setResolvedFilter(event.target.value)} value={resolvedFilter}>
+              <option value="all">All cases</option>
+              <option value="resolved">Resolved only</option>
+              <option value="unresolved">Unresolved only</option>
+            </select>
+            <select className="select-input" onChange={(event) => setAnomalyFilter(event.target.value)} value={anomalyFilter}>
+              <option value="all">All anomaly states</option>
+              <option value="with">With anomalies</option>
+              <option value="without">Without anomalies</option>
+            </select>
+            <div className="toolbar-note">
+              Sorting by {caseSortKey} ({caseSortDirection}). Click a header to toggle order.
+            </div>
+          </div>
+
+          <div className="table-wrap">
+            <table className="case-table">
+              <thead>
+                <tr>
+                  {CASE_COLUMNS.map((column) => (
+                    column.key ? (
+                      <th
+                        aria-sort={
+                          caseSortKey === column.key
+                            ? caseSortDirection === "asc"
+                              ? "ascending"
+                              : "descending"
+                            : "none"
+                        }
+                        className="sortable"
+                        key={column.key}
+                      >
+                        <button className="sort-button" onClick={() => toggleCaseSort(column.key)} type="button">
+                          <span>{column.label}</span>
+                          <span aria-hidden="true" className="sort-arrows">
+                            <span className={`sort-arrow ${caseSortKey === column.key && caseSortDirection === "asc" ? "active" : ""}`.trim()}>
+                              ▲
+                            </span>
+                            <span className={`sort-arrow ${caseSortKey === column.key && caseSortDirection === "desc" ? "active" : ""}`.trim()}>
+                              ▼
+                            </span>
+                          </span>
+                        </button>
+                      </th>
+                    ) : (
+                      <th key={column.label}>{column.label}</th>
+                    )
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {filteredCases.length ? (
+                  filteredCases.map((row) => (
+                    <tr
+                      className={`case-row ${row.instance_id === selectedCaseId ? "selected" : ""}`.trim()}
+                      key={row.instance_id}
+                      onClick={() => void handleCaseSelect(row.instance_id)}
+                    >
+                      <td className="case-id">{row.instance_id}</td>
+                      <td>
+                        {row.resolved === true ? <span className="bool-true">true</span> : null}
+                        {row.resolved === false ? <span className="bool-false">false</span> : null}
+                        {row.resolved !== true && row.resolved !== false ? "n/a" : null}
+                      </td>
+                      <td>
+                        {numberish(row.f2p_success)}/{numberish(row.f2p_total)}
+                        <br />
+                        <span className="run-updated">{percent(row.f2p_rate)}</span>
+                      </td>
+                      <td>
+                        {numberish(row.p2p_success)}/{numberish(row.p2p_total)}
+                        <br />
+                        <span className="run-updated">{percent(row.p2p_rate)}</span>
+                      </td>
+                      <td>{money(row.cli_total_cost_usd)}</td>
+                      <td>{duration(row.cli_duration_ms)}</td>
+                      <td>
+                        {numberish(row.tool_use_count)}
+                        <br />
+                        <span className="run-updated">err {numberish(row.tool_error_count)}</span>
+                      </td>
+                      <td>
+                        <ArtifactLinks artifacts={row.artifacts} />
+                      </td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td className="empty-state" colSpan={8}>
+                      No cases match the current filters.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+
+          {!selectedCase ? (
+            <div className="empty-state">Click a case row to inspect its full reasoning trace.</div>
+          ) : (
+            <section className="case-detail">
+              <div className="case-detail-top">
+                <div>
+                  <p className="panel-kicker">Selected Case</p>
+                  <h3>{selectedCase.instance_id}</h3>
+                  <p className="panel-note">
+                    {safeText(selectedCase.repo)} · resolved {safeText(selectedCase.resolved)} · {numberish(selectedCase.cli_num_turns)} CLI turns
+                  </p>
+                </div>
+                <button
+                  className="ghost-button"
+                  onClick={() => {
+                    setSelectedCaseId(null);
+                    setSelectedCaseTrace(null);
+                    setSelectedCaseTraceStatus("idle");
+                    setSelectedCaseTraceError(null);
+                  }}
+                  type="button"
+                >
+                  Close
+                </button>
+              </div>
+
+              <div className="case-detail-metrics">
+                <DetailChip label="f2p" value={`${numberish(selectedCase.f2p_success)}/${numberish(selectedCase.f2p_total)} (${percent(selectedCase.f2p_rate)})`} />
+                <DetailChip label="p2p" value={`${numberish(selectedCase.p2p_success)}/${numberish(selectedCase.p2p_total)} (${percent(selectedCase.p2p_rate)})`} />
+                <DetailChip label="cost" value={money(selectedCase.cli_total_cost_usd)} />
+                <DetailChip label="duration" value={duration(selectedCase.cli_duration_ms)} />
+                <DetailChip label="tool uses" value={numberish(selectedCase.tool_use_count)} />
+                <DetailChip label="tool errors" value={numberish(selectedCase.tool_error_count)} />
+              </div>
+
+              <div className="case-detail-block">
+                <h4>Artifacts</h4>
+                <ArtifactLinks artifacts={selectedCase.artifacts} />
+              </div>
+
+              <div className="case-detail-block">
+                <h4>Trace Summary</h4>
+                <div className="trace-summary">
+                  {selectedCaseTraceStatus === "loading" ? (
+                    <DetailChip label="trace" value="loading..." />
+                  ) : null}
+                  {selectedCaseTraceStatus === "error" ? (
+                    <DetailChip label="trace" value="load failed" />
+                  ) : null}
+                  {selectedCaseTrace ? (
+                    <>
+                      <DetailChip label="requests" value={numberish(selectedCaseTrace.trace_count)} />
+                      <DetailChip label="tool calls" value={numberish(selectedCaseTrace.total_tool_calls)} />
+                      <DetailChip label="input toks" value={numberish(selectedCaseTrace.total_input_tokens)} />
+                      <DetailChip label="output toks" value={numberish(selectedCaseTrace.total_output_tokens)} />
+                      <DetailChip label="duration" value={duration(selectedCaseTrace.total_duration_ms)} />
+                      <DetailChip label="protocols" value={safeText((selectedCaseTrace.protocols || []).join(", "))} />
+                      <DetailChip label="models" value={safeText((selectedCaseTrace.models || []).join(", "))} />
+                      {selectedCaseTrace.trace_artifact_url ? (
+                        <a className="detail-chip" href={selectedCaseTrace.trace_artifact_url} rel="noreferrer" target="_blank">
+                          <strong>raw trace</strong>
+                        </a>
+                      ) : null}
+                    </>
+                  ) : null}
+                </div>
+              </div>
+
+              <div className="case-detail-block">
+                <h4>Trace Timeline</h4>
+                {selectedCaseTraceStatus === "loading" ? (
+                  <div className="trace-empty">Loading parsed trace...</div>
+                ) : null}
+                {selectedCaseTraceStatus === "error" ? (
+                  <div className="trace-empty">{selectedCaseTraceError || "Trace request failed."}</div>
+                ) : null}
+                {selectedCaseTrace && selectedCaseTrace.turns?.length ? (
+                  <div className="trace-timeline">
+                    {selectedCaseTrace.turns.map((turn) => (
+                      <TraceTurn key={turn.index} turn={turn} />
+                    ))}
+                  </div>
+                ) : null}
+                {selectedCaseTrace && !selectedCaseTrace.turns?.length ? (
+                  <div className="trace-empty">No trace turns were parsed from this case.</div>
+                ) : null}
+                {!selectedCaseTrace && selectedCaseTraceStatus === "idle" ? (
+                  <div className="trace-empty">Select the case again to load trace data.</div>
+                ) : null}
+              </div>
+            </section>
+          )}
+        </section>
+      </main>
+    </div>
+  );
+}

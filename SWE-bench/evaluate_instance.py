@@ -15,7 +15,7 @@ from swebench.harness.run_evaluation import build_env_images, run_instances
 
 parser = argparse.ArgumentParser(description="Read CLI input")
 parser.add_argument("--instance", type=str, default='...', help="xxx")
-parser.add_argument("--scaffold", type=str, default='OpenHands', help='Your Scaffold: Please choose scaffold in ["OpenHands", "SWE-agent"]')
+parser.add_argument("--scaffold", type=str, default='OpenHands', help='Your Scaffold: Please choose scaffold in ["OpenHands", "SWE-agent", "CustomCLI"]')
 parser.add_argument("--max_workers", type=int, default='4', help="xxx")
 parser.add_argument("--trajectories_path", type=str, default='OpenHands/evaluation/evaluation_outputs/outputs/__mnt__data__swe_world_2__SWE-EVO__hf_out__hf_jsonl-test/CodeActAgent/deepseek-r1-0528_maxiter_100_N_v0.58.0-no-hint-run_1', help="xxx")
 
@@ -79,8 +79,10 @@ if __name__ =="__main__":
         in_path  = f"{args.trajectories_path}/output.jsonl" 
     elif args.scaffold == 'SWE-agent':
         in_path = f"{args.trajectories_path}/preds.json"
+    elif args.scaffold == 'CustomCLI':
+        in_path = f"{args.trajectories_path}/preds.json"
     else:
-        print(f'Our current code do not support for your {args.scaffold}, please use scaffold in ["OpenHands", "SWE-agent"]')
+        print(f'Our current code do not support for your {args.scaffold}, please use scaffold in ["OpenHands", "SWE-agent", "CustomCLI"]')
         exit()
     root_path = "output_final"
     root = Path(root_path)
@@ -122,6 +124,12 @@ if __name__ =="__main__":
                         d["patch"] = obj["test_result"]["git_patch"]
                         flag = True
         elif args.scaffold == 'SWE-agent':
+            with open(in_path, "r", encoding="utf-8") as f:
+                data = json.load(f)
+                if d["instance_id"] in data.keys():
+                    d["patch"] = data[d["instance_id"]]["model_patch"]
+                    flag = True
+        elif args.scaffold == 'CustomCLI':
             with open(in_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 if d["instance_id"] in data.keys():

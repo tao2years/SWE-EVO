@@ -163,6 +163,8 @@ cython_debug/
 .api_key
 .keys
 .vscode/
+.next/
+node_modules/
 *.jsonl
 *.jsonl.*
 *.patch
@@ -173,3 +175,8 @@ notebooks/
 
 *.json
 /output/
+!/package.json
+!/package-lock.json
+!/jsconfig.json
+!/lib/
+!/lib/dashboard-data.js
