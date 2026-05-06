@@ -26,11 +26,11 @@ The current starter case is:
 ## Required External Inputs
 
 - Custom CLI binary:
-  `INNERCC_CLI_BIN=/home/wt/repo/innerCC/cli`
+  `INNERCC_CLI_BIN=/path/to/your/cli`
 - Claude-style settings file:
-  `/home/wt/.claude/settings.json`
-- MiniMax credentials file:
-  `/home/wt/.config/swe-evo/minimax.env`
+  `config/claude.settings.json` or `INNERCC_SETTINGS_PATH`
+- Provider credentials file:
+  `config/swe-evo.env` or `INNERCC_ENV_FILE`
 
 The driver uses:
 
@@ -47,14 +47,14 @@ and runs the CLI in:
 ## Run
 
 ```bash
-bash /home/wt/sss_repos/sss_auto/SWE-EVO/custom_cli_case/run_requests_case.sh
+bash ./custom_cli_case/run_requests_case.sh
 ```
 
 You can also override the CLI path explicitly:
 
 ```bash
-INNERCC_CLI_BIN=/home/wt/repo/innerCC/cli \
-  bash /home/wt/sss_repos/sss_auto/SWE-EVO/custom_cli_case/run_requests_case.sh
+INNERCC_CLI_BIN=/path/to/your/cli \
+  bash ./custom_cli_case/run_requests_case.sh
 ```
 
 ## Main Outputs

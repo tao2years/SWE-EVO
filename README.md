@@ -11,6 +11,31 @@
 
 与论文、原始 benchmark 背景、OpenHands / SWE-agent 通用说明无关的内容都已移除。
 
+## 0. 换环境先看这里
+
+当前仓库已经支持“仓库相对路径 + 环境变量覆盖”的运行方式，不再要求你把仓库放在 `/home/wt/...`。
+
+推荐最短启动流程：
+
+```bash
+cd /path/to/SWE-EVO
+bash ./bootstrap_env.sh
+cp config/claude.settings.example.json config/claude.settings.json
+cp config/swe-evo.example.env config/swe-evo.env
+source .venv/bin/activate
+```
+
+然后按需修改：
+
+- `config/claude.settings.json`
+- `config/swe-evo.env`
+- `INNERCC_CLI_BIN`
+- `LLM_ROUTER_ROOT`
+
+完整说明见：
+
+- [docs/environment.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/environment.md)
+
 ## 1. 当前链路总览
 
 当前链路分成 5 层：
@@ -33,7 +58,9 @@
 
 ## 2. 固定路径与可变项
 
-当前机器上的默认路径如下：
+当前脚本现在会优先读取环境变量和仓库内 `config/`，只有没找到时才回退到历史机器上的默认路径。
+
+历史机器上的默认路径如下：
 
 ```bash
 REPO_ROOT=/home/wt/sss_repos/sss_auto/SWE-EVO
@@ -64,6 +91,11 @@ ROUTER_ROOT=/home/wt/sss_repos/sss_auto/llm_router
   所以 full official48 需要本机已经配置 GitHub SSH key。
 - `custom_cli_case/run_custom_cli_case.py` 单题 runner 使用 HTTPS clone，
   单题联调不依赖 GitHub SSH。
+
+说明：
+
+- 下文仍保留了一些历史绝对路径示例，便于回看老命令。
+- 新环境优先使用本节和 [docs/environment.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/environment.md) 里的仓库相对方式。
 
 ## 3. CLI 接入契约
 

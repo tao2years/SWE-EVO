@@ -14,11 +14,19 @@ import urllib.request
 from pathlib import Path
 from urllib.error import URLError
 
+from swe_evo_env import (
+    REPO_ROOT,
+    default_cli_bin_path,
+    default_env_file,
+    default_model_name,
+    default_router_api_base,
+    default_router_db_path,
+    default_settings_path,
+)
 
-REPO_ROOT = Path(__file__).resolve().parent
 CUSTOM_RUNNER_PATH = REPO_ROOT / "custom_cli_case" / "run_custom_cli_case.py"
-ROUTER_DB_PATH = Path("/home/wt/sss_repos/sss_auto/llm_router/proxy/data/traces.db")
-ROUTER_API_BASE = "http://127.0.0.1:18783"
+ROUTER_DB_PATH = default_router_db_path()
+ROUTER_API_BASE = default_router_api_base()
 
 
 def load_runner():
@@ -584,10 +592,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--instances-dir", default=str(REPO_ROOT / "output_final"))
-    parser.add_argument("--cli-bin", default="/home/wt/repo/innerCC/cli")
-    parser.add_argument("--settings-file", default="/home/wt/.claude/settings.json")
-    parser.add_argument("--env-file", default="/home/wt/.config/swe-evo/minimax.env")
-    parser.add_argument("--model", default="MiniMax-M2.5-highspeed")
+    parser.add_argument("--cli-bin", default=str(default_cli_bin_path()))
+    parser.add_argument("--settings-file", default=str(default_settings_path()))
+    parser.add_argument("--env-file", default=str(default_env_file()))
+    parser.add_argument("--model", default=default_model_name())
     parser.add_argument("--agent-name", default="innercc-cli")
     parser.add_argument("--force-workspace", action="store_true")
     parser.add_argument("--resume", action="store_true")

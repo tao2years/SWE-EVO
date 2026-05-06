@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SWE-EVO Run Observatory</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">SWE-EVO Dashboard</p>
+          <h1>Run Observatory</h1>
+          <p class="hero-copy">
+            Track official48 benchmark rounds, compare completed runs, and drill
+            into case-level outcomes without digging through folders.
+          </p>
+        </div>
+        <div class="hero-actions">
+          <button id="refreshButton" class="primary-button">Refresh</button>
+          <div class="status-chip" id="lastRefresh">Loading…</div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="panel run-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Runs</p>
+              <h2>Benchmark Rounds</h2>
+            </div>
+            <p class="panel-note">Select a run for drill-down. Tick multiple runs for side-by-side comparison.</p>
+          </div>
+          <div id="runList" class="run-list"></div>
+        </section>
+
+        <section class="panel compare-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Compare</p>
+              <h2>Run Comparison</h2>
+            </div>
+            <p class="panel-note">Focus on completion, resolution, fix/pass retention, and efficiency at a glance.</p>
+          </div>
+          <div id="comparisonEmpty" class="empty-state">Select at least one run to compare.</div>
+          <div id="comparisonTableWrap" class="table-wrap hidden">
+            <table id="comparisonTable" class="comparison-table"></table>
+          </div>
+        </section>
+
+        <section class="panel summary-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Selected Run</p>
+              <h2 id="selectedRunTitle">No run selected</h2>
+            </div>
+            <p class="panel-note" id="selectedRunSubtitle">Choose a run card to inspect its summary and cases.</p>
+          </div>
+          <div id="summaryCards" class="summary-cards"></div>
+          <div class="tool-layout">
+            <div>
+              <h3>Tool Mix</h3>
+              <div id="toolMix" class="tool-mix"></div>
+            </div>
+            <div>
+              <h3>Anomalies</h3>
+              <div id="anomalyList" class="anomaly-list"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel case-panel">
+          <div class="panel-header">
+            <div>
+              <p class="panel-kicker">Cases</p>
+              <h2>Case Drill-Down</h2>
+            </div>
+            <p class="panel-note">Filter by status, anomaly, or substring; sort by outcome or cost/duration.</p>
+          </div>
+          <div class="case-toolbar">
+            <input id="searchInput" class="text-input" type="search" placeholder="Search case_id or repo" />
+            <select id="resolvedFilter" class="select-input">
+              <option value="all">All cases</option>
+              <option value="resolved">Resolved only</option>
+              <option value="unresolved">Unresolved only</option>
+            </select>
+            <select id="anomalyFilter" class="select-input">
+              <option value="all">All anomaly states</option>
+              <option value="with">With anomalies</option>
+              <option value="without">Without anomalies</option>
+            </select>
+            <div class="toolbar-note" id="caseSortHint">Click case table headers to sort ascending or descending.</div>
+          </div>
+          <div class="table-wrap">
+            <table class="case-table">
+              <thead id="caseTableHead"></thead>
+              <tbody id="caseTableBody"></tbody>
+            </table>
+          </div>
+          <div id="caseDetailEmpty" class="empty-state">Click a case row to inspect its full reasoning trace.</div>
+          <section id="caseDetailPanel" class="case-detail hidden">
+            <div class="case-detail-top">
+              <div>
+                <p class="panel-kicker">Selected Case</p>
+                <h3 id="caseDetailTitle">No case selected</h3>
+                <p class="panel-note" id="caseDetailSubtitle">Trace will appear here after you select a case.</p>
+              </div>
+              <button id="closeCaseDetail" class="ghost-button" type="button">Close</button>
+            </div>
+            <div id="caseDetailMetrics" class="case-detail-metrics"></div>
+            <div class="case-detail-block">
+              <h4>Artifacts</h4>
+              <div id="caseDetailArtifacts" class="artifact-links"></div>
+            </div>
+            <div class="case-detail-block">
+              <h4>Trace Summary</h4>
+              <div id="caseTraceSummary" class="trace-summary"></div>
+            </div>
+            <div class="case-detail-block">
+              <h4>Trace Timeline</h4>
+              <div id="caseTraceTimeline" class="trace-timeline"></div>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+{
+  "repo": "iterative/dvc",
+  "instance_id": "iterative__dvc_2.21.1_2.21.2",
+  "base_commit": "512bfc4305a7607f63514dc734663c973ed954b2",
+  "patch": "diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py\nindex 5a79f54a4..684eb4037 100644\n--- a/dvc/repo/params/show.py\n+++ b/dvc/repo/params/show.py\n@@ -56,7 +56,9 @@ def _collect_configs(\n             default_params\n         ):\n             fs_paths.append(default_params)\n-\n+    if targets and (deps or stages) and not params:\n+        # A target has been provided but it is not used in the stages\n+        fs_paths = []\n     return params, fs_paths\n \n \n",
+  "test_patch": "diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py\nindex b2e954539..85e82ae88 100644\n--- a/tests/func/api/test_params.py\n+++ b/tests/func/api/test_params.py\n@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):\n         \"bar\": 2,\n         \"foobar\": 3,\n     }\n+    assert api.params_show(\"params.yaml\", stages=\"stage-1\") == {\n+        \"foo\": 5,\n+    }\n \n \n def test_params_show_deps(params_repo):\n@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):\n \n     with pytest.raises(DvcException, match=\"No params found\"):\n         api.params_show(deps=True)\n+\n+\n+def test_params_show_untracked_target(params_repo, tmp_dir):\n+    tmp_dir.gen(\"params_foo.yaml\", \"foo: 1\")\n+\n+    assert api.params_show(\"params_foo.yaml\") == {\"foo\": 1}\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", stages=\"stage-0\")\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", deps=True)\n",
+  "problem_statement": "> Refer to https://dvc.org/doc/install for installation instructions.\n\n## Changes\n\n## 🐛 Bug Fixes \n\n- api: Fix `params_show` for untracked targets. (#8166) @daavoo\n\nThanks again to @daavoo for the contributions! 🎉",
+  "FAIL_TO_PASS": [
+    "tests/func/api/test_params.py::test_params_show_untracked_target"
+  ],
+  "PASS_TO_PASS": [
+    "tests/func/api/test_params.py::test_params_show_deps",
+    "tests/func/api/test_params.py::test_params_show_no_args",
+    "tests/func/api/test_params.py::test_params_show_no_params_found",
+    "tests/func/api/test_params.py::test_params_show_repo",
+    "tests/func/api/test_params.py::test_params_show_stage_without_params",
+    "tests/func/api/test_params.py::test_params_show_stages",
+    "tests/func/api/test_params.py::test_params_show_targets",
+    "tests/func/api/test_params.py::test_params_show_while_running_stage"
+  ],
+  "environment_setup_commit": "7b3b4b373b5e383f30792cd25d9d08be62db8275",
+  "PRs": [
+    {
+      "pr_number": 8166,
+      "pr_title": null,
+      "pr_url": "https://github.com/iterative/dvc/pull/8166",
+      "pr_link": "https://github.com/iterative/dvc/pull/8166",
+      "is_mentioned_in_release_note": true,
+      "patch_without_test": "diff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py\nindex 5a79f54a44..684eb4037d 100644\n--- a/dvc/repo/params/show.py\n+++ b/dvc/repo/params/show.py\n@@ -56,7 +56,9 @@ def _collect_configs(\n             default_params\n         ):\n             fs_paths.append(default_params)\n-\n+    if targets and (deps or stages) and not params:\n+        # A target has been provided but it is not used in the stages\n+        fs_paths = []\n     return params, fs_paths\n \n \n",
+      "test_patch": "diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py\nindex b2e954539d..85e82ae88e 100644\n--- a/tests/func/api/test_params.py\n+++ b/tests/func/api/test_params.py\n@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):\n         \"bar\": 2,\n         \"foobar\": 3,\n     }\n+    assert api.params_show(\"params.yaml\", stages=\"stage-1\") == {\n+        \"foo\": 5,\n+    }\n \n \n def test_params_show_deps(params_repo):\n@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):\n \n     with pytest.raises(DvcException, match=\"No params found\"):\n         api.params_show(deps=True)\n+\n+\n+def test_params_show_untracked_target(params_repo, tmp_dir):\n+    tmp_dir.gen(\"params_foo.yaml\", \"foo: 1\")\n+\n+    assert api.params_show(\"params_foo.yaml\") == {\"foo\": 1}\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", stages=\"stage-0\")\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", deps=True)\n",
+      "is_issue": false,
+      "changed_test_files": [
+        "tests/func/api/test_params.py"
+      ]
+    }
+  ],
+  "start_version": "2.21.1",
+  "end_version": "2.21.2",
+  "end_version_commit": "7b3b4b373b5e383f30792cd25d9d08be62db8275",
+  "image": "xingyaoww/sweb.eval.x86_64.iterative_s_dvc-8166",
+  "instance_id_swe": "iterative__dvc-8166",
+  "bench": "swe_gym",
+  "version": "2.21",
+  "test_cmds": "pytest --continue-on-collection-errors -rA",
+  "log_parser": "parse_log_pytest",
+  "all_patch": "diff --git a/tests/func/api/test_params.py b/tests/func/api/test_params.py\nindex b2e954539..85e82ae88 100644\n--- a/tests/func/api/test_params.py\n+++ b/tests/func/api/test_params.py\n@@ -67,6 +67,9 @@ def test_params_show_targets(params_repo):\n         \"bar\": 2,\n         \"foobar\": 3,\n     }\n+    assert api.params_show(\"params.yaml\", stages=\"stage-1\") == {\n+        \"foo\": 5,\n+    }\n \n \n def test_params_show_deps(params_repo):\n@@ -168,3 +171,15 @@ def test_params_show_stage_without_params(tmp_dir, dvc):\n \n     with pytest.raises(DvcException, match=\"No params found\"):\n         api.params_show(deps=True)\n+\n+\n+def test_params_show_untracked_target(params_repo, tmp_dir):\n+    tmp_dir.gen(\"params_foo.yaml\", \"foo: 1\")\n+\n+    assert api.params_show(\"params_foo.yaml\") == {\"foo\": 1}\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", stages=\"stage-0\")\n+\n+    with pytest.raises(DvcException, match=\"No params found\"):\n+        api.params_show(\"params_foo.yaml\", deps=True)\ndiff --git a/dvc/repo/params/show.py b/dvc/repo/params/show.py\nindex 5a79f54a4..684eb4037 100644\n--- a/dvc/repo/params/show.py\n+++ b/dvc/repo/params/show.py\n@@ -56,7 +56,9 @@ def _collect_configs(\n             default_params\n         ):\n             fs_paths.append(default_params)\n-\n+    if targets and (deps or stages) and not params:\n+        # A target has been provided but it is not used in the stages\n+        fs_paths = []\n     return params, fs_paths\n \n \n"
+}

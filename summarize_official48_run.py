@@ -492,10 +492,11 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-root", required=True)
     parser.add_argument("--output-dir", default="")
+    parser.add_argument("--repo-root", default="")
     args = parser.parse_args()
 
     run_root = Path(args.run_root).resolve()
-    repo_root = Path("/home/wt/sss_repos/sss_auto/SWE-EVO")
+    repo_root = Path(args.repo_root).resolve() if args.repo_root else Path(__file__).resolve().parent
     output_dir = Path(args.output_dir).resolve() if args.output_dir else run_root / "analysis"
     output_dir.mkdir(parents=True, exist_ok=True)
 

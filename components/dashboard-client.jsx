@@ -54,6 +54,21 @@ function safeText(value) {
   return value === null || value === undefined || value === "" ? "n/a" : String(value);
 }
 
+function artifactViewerUrl(url) {
+  if (!url) {
+    return url;
+  }
+  if (!url.startsWith("/artifact?")) {
+    return url;
+  }
+  const params = new URLSearchParams(url.split("?", 2)[1] || "");
+  const path = params.get("path");
+  if (!path) {
+    return url;
+  }
+  return `/artifacts?path=${encodeURIComponent(path)}`;
+}
+
 function runDisplayName(run) {
   return run?.display_name || run?.run_id || "n/a";
 }
@@ -110,7 +125,7 @@ function ArtifactLinks({ artifacts }) {
   return (
     <div className="artifact-links">
       {entries.map(([name, url]) => (
-        <a href={url} key={name} rel="noreferrer" target="_blank">
+        <a href={artifactViewerUrl(url)} key={name} rel="noreferrer" target="_blank">
           {name}
         </a>
       ))}
@@ -855,7 +870,7 @@ export default function DashboardClient({ initialData }) {
                       <DetailChip label="protocols" value={safeText((selectedCaseTrace.protocols || []).join(", "))} />
                       <DetailChip label="models" value={safeText((selectedCaseTrace.models || []).join(", "))} />
                       {selectedCaseTrace.trace_artifact_url ? (
-                        <a className="detail-chip" href={selectedCaseTrace.trace_artifact_url} rel="noreferrer" target="_blank">
+                        <a className="detail-chip" href={artifactViewerUrl(selectedCaseTrace.trace_artifact_url)} rel="noreferrer" target="_blank">
                           <strong>raw trace</strong>
                         </a>
                       ) : null}

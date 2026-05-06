@@ -7,8 +7,7 @@ import time
 from datetime import datetime
 from pathlib import Path
 
-
-REPO_ROOT = Path("/home/wt/sss_repos/sss_auto/SWE-EVO")
+from swe_evo_env import REPO_ROOT, prepend_pythonpath
 
 
 def write_json(path: Path, payload: object) -> None:
@@ -149,8 +148,7 @@ def main() -> None:
                 "--scaffold",
                 "CustomCLI",
             ]
-            env = os.environ.copy()
-            env["PYTHONPATH"] = str(REPO_ROOT / ".deps")
+            env = prepend_pythonpath(os.environ.copy())
             env["PYTHONNOUSERSITE"] = "1"
             log_fh = log_path.open("w", encoding="utf-8")
             proc = subprocess.Popen(

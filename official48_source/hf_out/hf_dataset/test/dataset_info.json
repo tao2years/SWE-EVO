@@ -1,0 +1,134 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "repo": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "instance_id": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "base_commit": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "patch": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "test_patch": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "problem_statement": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "FAIL_TO_PASS": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "PASS_TO_PASS": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "List"
+    },
+    "environment_setup_commit": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "PRs": {
+      "feature": {
+        "pr_number": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "pr_title": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "pr_url": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "pr_link": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_mentioned_in_release_note": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "patch_without_test": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "test_patch": {
+          "dtype": "string",
+          "_type": "Value"
+        },
+        "is_issue": {
+          "dtype": "bool",
+          "_type": "Value"
+        },
+        "changed_test_files": {
+          "feature": {
+            "dtype": "string",
+            "_type": "Value"
+          },
+          "_type": "List"
+        }
+      },
+      "_type": "List"
+    },
+    "start_version": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "end_version": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "end_version_commit": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "image": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "instance_id_swe": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "bench": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "version": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "test_cmds": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "log_parser": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "all_patch": {
+      "dtype": "string",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

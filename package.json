@@ -1,6 +1,9 @@
 {
   "name": "swe-evo-dashboard",
   "private": true,
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0 --port 3000",
     "build": "next build",
@@ -9,8 +12,8 @@
     "dashboard:start": "next start --hostname 0.0.0.0 --port 18881"
   },
   "dependencies": {
-    "next": "latest",
-    "react": "latest",
-    "react-dom": "latest"
+    "next": "16.2.4",
+    "react": "19.2.5",
+    "react-dom": "19.2.5"
   }
 }

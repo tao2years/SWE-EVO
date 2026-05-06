@@ -1,0 +1,8 @@
+{
+  "skipDangerousModePermissionPrompt": true,
+  "env": {
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:18782",
+    "ANTHROPIC_MODEL": "MiniMax-M2.5-highspeed",
+    "ANTHROPIC_AUTH_TOKEN": "replace-with-real-token"
+  }
+}

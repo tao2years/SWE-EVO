@@ -8,17 +8,22 @@ import subprocess
 import sys
 from pathlib import Path
 
+from swe_evo_env import (
+    REPO_ROOT,
+    cli_bin_candidates,
+    cli_binary_available,
+    default_agent_name,
+    default_env_file,
+    default_model_name,
+    default_settings_path,
+    pythonpath_entries,
+)
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_CLI_CANDIDATES = [
-    Path(os.environ["INNERCC_CLI_BIN"]) if os.environ.get("INNERCC_CLI_BIN") else None,
-    Path("/home/wt/repo/innerCC/cli"),
-    Path("/home/wt/sss_repos/innerCC/cli"),
-]
-DEFAULT_SETTINGS_PATH = Path(os.environ.get("INNERCC_SETTINGS_PATH", "/home/wt/.claude/settings.json"))
-DEFAULT_ENV_PATH = Path(os.environ.get("INNERCC_ENV_FILE", "/home/wt/.config/swe-evo/minimax.env"))
-DEFAULT_MODEL = os.environ.get("INNERCC_MODEL", "MiniMax-M2.5-highspeed")
-DEFAULT_AGENT_NAME = os.environ.get("INNERCC_AGENT_NAME", "innercc-cli")
+DEFAULT_CLI_CANDIDATES = cli_bin_candidates()
+DEFAULT_SETTINGS_PATH = default_settings_path()
+DEFAULT_ENV_PATH = default_env_file()
+DEFAULT_MODEL = default_model_name()
+DEFAULT_AGENT_NAME = default_agent_name()
 DEFAULT_MAX_WORKERS = int(os.environ.get("INNERCC_MAX_WORKERS", "1"))
 
 
@@ -79,6 +84,14 @@ def resolve_first_existing(paths: list[Path | None]) -> Path:
             return path
     checked = ", ".join(str(path) for path in paths if path)
     raise FileNotFoundError(f"Unable to find required file from candidates: {checked}")
+
+
+def resolve_cli_bin(paths: list[Path | None]) -> Path:
+    for path in paths:
+        if path and cli_binary_available(path):
+            return path
+    checked = ", ".join(str(path) for path in paths if path)
+    raise FileNotFoundError(f"Unable to find runnable CLI from candidates: {checked}")
 
 
 def extract_last_json_line(stdout: str) -> dict | None:
@@ -363,8 +376,9 @@ def run_local_evaluation(
     max_workers: int,
 ) -> Path:
     os.chdir(case_root)
-    sys.path.insert(0, str(REPO_ROOT / ".deps"))
-    sys.path.insert(0, str(REPO_ROOT / "SWE-bench"))
+    for extra_path in reversed(pythonpath_entries(REPO_ROOT / "SWE-bench")):
+        if extra_path not in sys.path:
+            sys.path.insert(0, extra_path)
 
     import docker
     from swebench.harness.constants import KEY_INSTANCE_ID, KEY_MODEL, KEY_PREDICTION, MAP_REPO_VERSION_TO_SPECS
@@ -442,12 +456,12 @@ def main() -> None:
     args = parser.parse_args()
 
     case_root = Path(args.case_root)
-    cli_bin = Path(args.cli_bin) if args.cli_bin else resolve_first_existing(DEFAULT_CLI_CANDIDATES)
+    cli_bin = Path(args.cli_bin) if args.cli_bin else resolve_cli_bin(DEFAULT_CLI_CANDIDATES)
     settings_path = Path(args.settings_file)
     env_path = Path(args.env_file)
     eval_run_id = args.eval_run_id or args.instance_id
 
-    if not cli_bin.exists():
+    if not cli_binary_available(cli_bin):
         raise FileNotFoundError(cli_bin)
     if not settings_path.exists():
         raise FileNotFoundError(settings_path)

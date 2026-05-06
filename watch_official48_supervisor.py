@@ -8,9 +8,22 @@ from pathlib import Path
 from urllib.error import URLError
 from urllib.request import urlopen
 
+from swe_evo_env import (
+    REPO_ROOT,
+    default_cli_bin_path,
+    default_env_file,
+    default_model_name,
+    default_router_api_base,
+    default_router_root,
+    default_settings_path,
+    shell_join,
+    shell_python_env_prefix,
+    shell_quote,
+)
 
-REPO_ROOT = Path("/home/wt/sss_repos/sss_auto/SWE-EVO")
-LLM_ROUTER_ROOT = Path("/home/wt/sss_repos/sss_auto/llm_router")
+
+LLM_ROUTER_ROOT = default_router_root()
+ROUTER_API_BASE = default_router_api_base()
 ROUTER_SESSION = "swe-evo-official48-router"
 EVAL_SESSION = "swe-evo-official48-eval"
 MONITOR_SESSION = "swe-evo-official48-monitor"
@@ -52,9 +65,14 @@ def actual_report_count(run_root: Path) -> int:
     return len(list(eval_run_root.glob("**/report.json")))
 
 
+def repo_shell(command: str) -> str:
+    inner = f"cd {shell_quote(REPO_ROOT)} && {command}"
+    return f"bash -lc {shell_quote(inner)}"
+
+
 def router_api_healthy() -> bool:
     try:
-        with urlopen("http://127.0.0.1:18783/api/sessions", timeout=5) as response:
+        with urlopen(f"{ROUTER_API_BASE}/api/sessions", timeout=5) as response:
             response.read(1)
         return True
     except URLError:
@@ -82,7 +100,7 @@ def ensure_llm_router(log_path: Path) -> None:
                 "SESSION_PREFIX=sss-auto-llm-router "
                 "ANTHROPIC_UPSTREAM_URL=https://api.minimaxi.com/anthropic "
                 "OPENAI_UPSTREAM_URL=https://api.minimaxi.com/v1 "
-                "bash /home/wt/sss_repos/sss_auto/llm_router/scripts/start-prod.sh"
+                f"bash {shell_quote(LLM_ROUTER_ROOT / 'scripts' / 'start-prod.sh')}"
             ),
         ],
         cwd=REPO_ROOT,
@@ -102,13 +120,14 @@ def ensure_eval(run_root: Path, log_path: Path, max_concurrency: int) -> None:
         return
     report_count = actual_report_count(run_root)
     append_log(log_path, f"eval session missing; restarting (report_count={report_count})")
+    command = (
+        f"{shell_python_env_prefix()}"
+        f"{shell_join(['python3', '-u', 'run_official48_eval_worker.py', run_root, max_concurrency, '--retry-missing-report'])} "
+        f"2>&1 | tee -a {shell_quote(run_root / 'eval_worker.log')}"
+    )
     start_tmux_session(
         EVAL_SESSION,
-        (
-            "bash -lc 'cd /home/wt/sss_repos/sss_auto/SWE-EVO && "
-            f"python3 -u run_official48_eval_worker.py {run_root} {max_concurrency} --retry-missing-report"
-            f" 2>&1 | tee -a {run_root}/eval_worker.log'"
-        ),
+        repo_shell(command),
     )
 
 
@@ -116,13 +135,13 @@ def ensure_monitor(run_root: Path, log_path: Path) -> None:
     if tmux_has_session(MONITOR_SESSION):
         return
     append_log(log_path, "monitor session missing; restarting")
+    command = (
+        f"{shell_join(['python3', '-u', 'monitor_official48_run.py', run_root])} "
+        f"2>&1 | tee -a {shell_quote(run_root / 'monitor.log')}"
+    )
     start_tmux_session(
         MONITOR_SESSION,
-        (
-            "bash -lc 'cd /home/wt/sss_repos/sss_auto/SWE-EVO && "
-            f"python3 -u monitor_official48_run.py {run_root}"
-            f" 2>&1 | tee -a {run_root}/monitor.log'"
-        ),
+        repo_shell(command),
     )
 
 
@@ -130,12 +149,20 @@ def ensure_progress(run_root: Path, progress_md: Path, log_path: Path) -> None:
     if tmux_has_session(PROGRESS_SESSION):
         return
     append_log(log_path, "progress session missing; restarting")
+    command = shell_join(
+        [
+            "python3",
+            "-u",
+            "record_official48_progress.py",
+            run_root,
+            progress_md,
+            "--interval-seconds",
+            1800,
+        ]
+    )
     start_tmux_session(
         PROGRESS_SESSION,
-        (
-            "bash -lc 'cd /home/wt/sss_repos/sss_auto/SWE-EVO && "
-            f"python3 -u record_official48_progress.py {run_root} {progress_md} --interval-seconds 1800'"
-        ),
+        repo_shell(command),
     )
 
 
@@ -158,24 +185,24 @@ def ensure_router_worker(
     if int(monitor_state.get("inference_done", 0)) >= total_instances:
         return
     append_log(log_path, "router inference session missing; restarting with --resume")
+    command = (
+        f"{shell_python_env_prefix()}"
+        f"{shell_join(['python3', '-u', 'run_innercc_infer_official48.py'])} "
+        f"{shell_join(['--output-dir', run_root / 'infer'])} "
+        f"{shell_join(['--instances-dir', REPO_ROOT / 'output_final'])} "
+        f"{shell_join(['--cli-bin', cli_bin])} "
+        f"{shell_join(['--settings-file', settings_file])} "
+        f"{shell_join(['--env-file', env_file])} "
+        f"{shell_join(['--model', model_name])} "
+        f"{shell_join(['--agent-name', agent_name])} "
+        f"{shell_join(['--resume', '--max-concurrency', inference_concurrency])} "
+        f"{shell_join(['--cli-timeout-seconds', cli_timeout_seconds])} "
+        f"{shell_join(['--router-ready-timeout-seconds', router_ready_timeout_seconds])} "
+        f"2>&1 | tee -a {shell_quote(REPO_ROOT / 'official48_runs' / 'current_router.log')}"
+    )
     start_tmux_session(
         ROUTER_SESSION,
-        (
-            "bash -lc 'cd /home/wt/sss_repos/sss_auto/SWE-EVO && "
-            "PYTHONPATH=/home/wt/sss_repos/sss_auto/SWE-EVO/.deps "
-            "python3 -u run_innercc_infer_official48.py "
-            f"--output-dir {run_root}/infer "
-            "--instances-dir /home/wt/sss_repos/sss_auto/SWE-EVO/output_final "
-            f"--cli-bin {cli_bin} "
-            f"--settings-file {settings_file} "
-            f"--env-file {env_file} "
-            f"--model {model_name} "
-            f"--agent-name {agent_name} "
-            f"--resume --max-concurrency {inference_concurrency} "
-            f"--cli-timeout-seconds {cli_timeout_seconds} "
-            f"--router-ready-timeout-seconds {router_ready_timeout_seconds} "
-            "2>&1 | tee -a /home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/current_router.log'"
-        ),
+        repo_shell(command),
     )
 
 
@@ -188,10 +215,10 @@ def main() -> None:
     parser.add_argument("--eval-max-concurrency", type=int, default=3)
     parser.add_argument("--cli-timeout-seconds", type=int, default=5400)
     parser.add_argument("--router-ready-timeout-seconds", type=int, default=120)
-    parser.add_argument("--cli-bin", default="/home/wt/repo/innerCC/cli")
-    parser.add_argument("--settings-file", default="/home/wt/.claude/settings.json")
-    parser.add_argument("--env-file", default="/home/wt/.config/swe-evo/minimax.env")
-    parser.add_argument("--model", default="MiniMax-M2.5-highspeed")
+    parser.add_argument("--cli-bin", default=str(default_cli_bin_path()))
+    parser.add_argument("--settings-file", default=str(default_settings_path()))
+    parser.add_argument("--env-file", default=str(default_env_file()))
+    parser.add_argument("--model", default=default_model_name())
     parser.add_argument("--agent-name", default="innercc-cli")
     args = parser.parse_args()
 
