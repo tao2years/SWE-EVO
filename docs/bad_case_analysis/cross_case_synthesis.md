@@ -9,6 +9,10 @@
 
 方法见 [synthesis_methodology.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/synthesis_methodology.md)。
 
+如果你想直接看“某个 failure pattern 在 trace / patch / evaluator log 里到底长什么样”，现在细节都已经并回：
+
+- [common_issues_summary.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/common_issues_summary.md)
+
 ## 1. 样本范围与边界
 
 - 时间截面：`2026-05-06`

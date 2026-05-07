@@ -160,6 +160,53 @@
   - [iterative__dvc_1.1.7_1.1.8_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_1.1.7_1.1.8_analysis.md)
   - [iterative__dvc_2.7.2_2.7.3_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_2.7.2_2.7.3_analysis.md)
 
+细节展开：
+
+- 代表案：[dask__dask_2024.3.1_2024.4.0_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/dask__dask_2024.3.1_2024.4.0_analysis.md)
+- 为什么它最典型：
+  - 这是一个只有 `2` 条 F2P 的小题
+  - agent 已经把问题空间收得很小，也确实读到了正确层
+  - 但最后 edit 仍然落在相邻函数 `_value_counts`，而不是 ground truth 的 `_value_counts_aggregate`
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260429-114027/infer/runs/dask__dask_2024.3.1_2024.4.0/router_trace_bundle.json)
+  - trace `020-023`：已经读到 `_value_counts`、`_value_counts_aggregate` 和外围 flow
+  - trace `027-076`：后面几十步的本地模拟基本都围绕“all-NaN partition 在 `_value_counts` 本地该怎么返回”
+  - trace `088` 和 `093`：最终 edit 还是落在 `_value_counts`
+  - trace `097`：结束时明确把 fix 定义成“在 `_value_counts` 里加 all-NaN guard”
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260429-114027/infer/runs/dask__dask_2024.3.1_2024.4.0/patch.diff)
+
+```diff
+def _value_counts(x, **kwargs):
+    ...
+    elif len(x.obj) == 0 or x.obj.isna().all():
+        return pd.Series(dtype=int)
+```
+
+- ground truth 对照：
+  - [official48_source/output_final/dask__dask_2024.3.1_2024.4.0.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_source/output_final/dask__dask_2024.3.1_2024.4.0.json)
+
+```diff
+def _value_counts_aggregate(series_gb):
+    data = {k: v.groupby(level=-1).sum() for k, v in series_gb}
+    if not data:
+        data = [pd.Series(index=series_gb.obj.index[:0], dtype="float64")]
+```
+
+- evaluator 证据：
+  - [run_instance.log](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260429-114027/eval_input_20260429-114027/dask__dask_2024.3.1_2024.4.0/run_instance.log)
+
+```text
+FAIL_TO_PASS failure:
+- dask/dataframe/tests/test_groupby.py::test_groupby_value_counts_all_na_partitions[disk]
+- dask/dataframe/tests/test_groupby.py::test_groupby_value_counts_all_na_partitions[tasks]
+```
+
+- 这题能直接回答你前面的追问：
+  - 它不是“已经 locate 到了，后面忘了”
+  - 而是读过正确层之后，仍然被局部模拟结果锁回了相邻函数
+  - 所以真正缺的是 edit 前的层级交叉校验，而不是更多搜索量
+
 ### 4.2 `termination_error`
 
 出现次数：`6 / 48`
@@ -181,6 +228,47 @@
 - [dask__dask_2024.1.0_2024.1.1_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/dask__dask_2024.1.0_2024.1.1_analysis.md)：`2774` 条 F2P 的整包任务被单一 compat hypothesis 取代
 - [iterative__dvc_3.13.3_3.14.0_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_3.13.3_3.14.0_analysis.md)：`expanduser` 的局部补丁或空 patch 都被当成“可以交付”
 - [pydantic__pydantic_v2.7.1_v2.7.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/pydantic__pydantic_v2.7.1_v2.7.2_analysis.md)：对 `TypeVar` 噪声做了大量局部验证，却没有回到真实的 `3` 条 F2P
+
+细节展开：
+
+- 代表案：[pydantic__pydantic_v2.7.1_v2.7.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/pydantic__pydantic_v2.7.1_v2.7.2_analysis.md)
+- 为什么它最适合解释 termination：
+  - 这题不是 timeout，也不是完全没验证
+  - 相反，它做了不少局部验证，但 done condition 还是错了
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.1_v2.7.2/router_trace_bundle.json)
+  - trace `001-006`：起手其实跑了 docs examples 和 generics 目标测试
+  - trace `012-017`：很快锁定 `TypeVar.__default__ == NoDefault`
+  - trace `018-019`：唯一 edit 落在 `_generate_schema.py`
+  - trace `020-021`：generics test 一过，就开始把核心问题视为已解决
+  - trace `023-024`：docs examples 不再用 exact target test 收口，而是改成手写 Python snippet
+  - trace `026`：把 broader failure 解释成“与当前修复无关”
+  - trace `029`：最终明确宣告 patch “clean and minimal”
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/pydantic__pydantic_v2.7.1_v2.7.2/patch.diff)
+
+```diff
+-        if (bound is not None) + (len(constraints) != 0) + (default is not None) > 1:
++        if (bound is not None) + (len(constraints) != 0) + (default not in (None, NoDefault)) > 1:
+...
+-        if default is not None:
++        if default not in (None, NoDefault):
+```
+
+- evaluator 证据：
+  - [report.json](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/pydantic__pydantic_v2.7.1_v2.7.2/report.json)
+
+```text
+FAIL_TO_PASS failure:
+- tests/test_docs.py::test_docs_examples[docs/concepts/models.md:1049-1079]
+- tests/test_docs.py::test_docs_examples[docs/concepts/models.md:952-982]
+- tests/test_generics.py::test_serialize_unsubstituted_typevars_bound_default_supported
+```
+
+- 这里的 termination error 本质上是：
+  - 局部证据给了 agent 足够强的心理确定感
+  - 但这些证据并不等价于 benchmark target 已经收口
+  - 所以后面的 final summary 会非常自信，甚至把剩余失败标成 unrelated noise
 
 ### 4.3 `tooling_or_harness_issue`
 
@@ -207,6 +295,38 @@
 - [iterative__dvc_2.8.1_2.8.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_2.8.1_2.8.2_analysis.md)
 - [conan-io__conan_2.0.14_2.0.15_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/conan-io__conan_2.0.14_2.0.15_analysis.md)
 
+细节展开：
+
+- 代表案：[dask__dask_2024.1.0_2024.1.1_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/dask__dask_2024.1.0_2024.1.1_analysis.md)
+- 为什么它最典型：
+  - `FAIL_TO_PASS = 2774`
+  - `PASS_TO_PASS = 5778`
+  - 但 `innercc` 最终 patch 只有 `dask/utils.py` 一个小 hunk
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.1.0_2024.1.1/router_trace_bundle.json)
+  - trace `004`：先跑 `test_A_property`
+  - trace `008-024`：连续十几步都在做 `inspect.signature` / pandas property probe
+  - trace `025`：唯一 edit 落在 `dask/utils.py`
+  - trace `038`：给出“`All 445 tests in test_array_core.py pass.`”
+  - trace `039`：最终把问题收束成 `dask/utils.py` 的 Python 3.12 import error
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/dask__dask_2024.1.0_2024.1.1/patch.diff)
+
+```diff
+-    except ValueError:
++    except (ValueError, TypeError):
+```
+
+- evaluator 证据：
+  - [run_instance.log](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/dask__dask_2024.1.0_2024.1.1/run_instance.log)
+
+```text
+report: ... 'resolved': False ... 'FAIL_TO_PASS': {'success': [], 'failure': [...]}, 'PASS_TO_PASS': {'success': [], 'failure': [...]}
+Result for dask__dask_2024.1.0_2024.1.1: resolved: False
+```
+
+- 这个 pattern 的关键不是“agent 没探索”，而是“探索很勤，但任务边界从第一轮就收缩错了”
+
 ### 5.2 Partial coverage
 
 定义：
@@ -219,6 +339,49 @@
 - [dask__dask_2023.9.2_2023.9.3_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/dask__dask_2023.9.2_2023.9.3_analysis.md)
 - [iterative__dvc_3.4.0_3.5.0_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_3.4.0_3.5.0_analysis.md)
 - [iterative__dvc_2.58.1_2.58.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_2.58.1_2.58.2_analysis.md)
+
+细节展开：
+
+- 代表案：[iterative__dvc_2.58.1_2.58.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_2.58.1_2.58.2_analysis.md)
+- ground truth 要求两件事同时成立：
+  - `pull=True` 遇到 `RunCacheNotSupported` 仍继续
+  - `run_cache=False` 时根本不该 pull run cache
+- ground truth hunk：
+  - [official48_source/output_final/iterative__dvc_2.58.1_2.58.2.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_source/output_final/iterative__dvc_2.58.1_2.58.2.json)
+
+```diff
+-    if kwargs.get("pull", False):
++    if kwargs.get("pull", False) and kwargs.get("run_cache", True):
+         logger.debug("Pulling run cache")
+-        self.stage_cache.pull(None)
++        try:
++            self.stage_cache.pull(None)
++        except RunCacheNotSupported as e:
++            logger.warning("Failed to pull run cache: %s", e)
+```
+
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.58.1_2.58.2/router_trace_bundle.json)
+  - trace `001-017`：围绕 `RunCacheNotSupported` 和 `stage_cache.pull()` 做定位
+  - trace `018-023`：同时编辑 `dvc/repo/reproduce.py` 和 `dvc/repo/fetch.py`
+  - trace `037`：最终总结把自己描述成 “fix has been implemented”
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_2.58.1_2.58.2/patch.diff)
+  - `reproduce.py` 里补了 `try/except RunCacheNotSupported`
+  - 但缺了最关键的 `and kwargs.get("run_cache", True)` 条件
+  - 还顺手扩散去改了 `fetch.py`
+- evaluator 证据：
+  - [report.json](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_2.58.1_2.58.2/report.json)
+
+```text
+FAIL_TO_PASS success:
+- tests/func/test_repro_multistage.py::test_repro_pulls_continue_without_run_cache
+
+FAIL_TO_PASS failure:
+- tests/func/test_repro_multistage.py::test_repro_skip_pull_if_no_run_cache_is_passed
+```
+
+- 这就是典型的“方向没全错，但只修了一半目标语义”
 
 ### 5.3 Wrong-target repair
 
@@ -233,6 +396,41 @@
 - [iterative__dvc_3.43.1_3.44.0_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_3.43.1_3.44.0_analysis.md)
 - [iterative__dvc_2.7.2_2.7.3_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_2.7.2_2.7.3_analysis.md)
 
+细节展开：
+
+- 代表案：[iterative__dvc_0.33.1_0.34.0_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/iterative__dvc_0.33.1_0.34.0_analysis.md)
+- 这题的 `FAIL_TO_PASS` 其实只有一条：`tests/test_tag.py::TestTag::test`
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.33.1_0.34.0/router_trace_bundle.json)
+  - trace `011-017`：确实搜过 `tests/test_tag.py` 和 tag 相关代码
+  - trace `025`：给出强结论“`dvc/cli.py` 里 `add` command 重复注册”
+  - trace `034`：直接跑了 `python3 -m pytest tests/test_tag.py::TestTag::test -v`
+  - trace `041`：即使 exact failing test 没打通，最后仍然收工
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/iterative__dvc_0.33.1_0.34.0/patch.diff)
+
+```diff
+-    add,
+```
+
+- evaluator 证据：
+  - [report.json](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.33.1_0.34.0/report.json)
+
+```text
+FAIL_TO_PASS failure:
+- tests/test_tag.py::TestTag::test
+```
+
+  - [test_output.txt](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/iterative__dvc_0.33.1_0.34.0/test_output.txt)
+
+```text
+FAILED tests/test_tag.py::TestTag::test - AssertionError: 254 != 0
+```
+
+- 这类 case 的危险点是：
+  - agent 其实已经碰到了 exact failing test
+  - 但没有用结果去重置目标，而是继续沿“真实但错靶”的 bug 收尾
+
 ### 5.4 F2P fixed but neighboring semantics regressed
 
 代表案例：
@@ -240,6 +438,47 @@
 - [psf__requests_v2.9.0_v2.9.1_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/psf__requests_v2.9.0_v2.9.1_analysis.md)
 - [scikit-learn__scikit-learn_0.20.1_0.20.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/scikit-learn__scikit-learn_0.20.1_0.20.2_analysis.md)
 - [scikit-learn__scikit-learn_0.21.1_0.21.2_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/scikit-learn__scikit-learn_0.21.1_0.21.2_analysis.md)
+
+细节展开：
+
+- 代表案：[psf__requests_v2.9.0_v2.9.1_analysis.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/psf__requests_v2.9.0_v2.9.1_analysis.md)
+- 为什么它最典型：
+  - 目标 F2P `test_binary_put` 确实修通了
+  - 但共享函数 `_encode_params()` 的相邻语义路径被一起打坏
+- trace 证据：
+  - [router_trace_bundle.json](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.9.0_v2.9.1/router_trace_bundle.json)
+  - trace `012-015`：明确分析 `_encode_params` 同时服务 body path 和 URL params path
+  - trace `015`：把 `requests/models.py` 改成 `if isinstance(data, (str, bytes)): return data`
+  - trace `017-021`：后续验证基本都围绕 binary body
+  - trace `039`：最终总结已经把“两处 fix 都完成”当成 case closed
+- patch 证据：
+  - [patch.diff](/home/wt/sss_repos/sss_auto/SWE-EVO/official48_runs/20260427-154634/infer/runs/psf__requests_v2.9.0_v2.9.1/patch.diff)
+
+```diff
+-            return to_native_string(data)
++            return data
+```
+
+- evaluator 证据：
+  - [run_instance.log](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/psf__requests_v2.9.0_v2.9.1/run_instance.log)
+
+```text
+FAIL_TO_PASS success:
+- test_requests.py::TestRequests::test_binary_put
+
+PASS_TO_PASS failure:
+- test_requests.py::TestRequests::test_params_bytes_are_encoded
+```
+
+  - [test_output.txt](/home/wt/sss_repos/sss_auto/SWE-EVO/logs/run_evaluation/eval_input_20260427-154634/eval_input_20260427-154634/psf__requests_v2.9.0_v2.9.1/test_output.txt)
+
+```text
+TypeError: Cannot mix str and non-str arguments
+```
+
+- 这类 case 最能说明：
+  - F2P 过了不等于共享函数周围的语义安全
+  - 如果 patch 改的是公共入口函数，必须补邻近调用路径的 smoke
 
 ## 6. 当前可以下的 CLI 风格结论
 

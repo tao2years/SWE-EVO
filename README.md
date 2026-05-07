@@ -51,10 +51,89 @@ source .venv/bin/activate
 5. `watch_official48_supervisor.py`
    自救 supervisor；负责保活 llm_router、推理、评测、监控和进度记录。
 
+另外新增了“整轮复现实验”后台编排链路：
+
+6. `run_official48_experiment_suite.py`
+   顺序执行 `smoke-innercc -> smoke-claude-code -> full-innercc -> full-claude-code`，并把 suite 状态持续写到 `official48_suite_runs/<suite_id>/suite_state.json`。
+7. `start_official48_experiment_suite.sh`
+   用 `tmux` 启动上述 suite，确保 SSH 断开或 Codex 会话结束后任务仍继续。
+8. `show_official48_experiment_suite_status.py`
+   直接读取 `official48_suite_runs/latest/suite_state.json` 和对应 `run_root/monitor_status.json`，快速查看当前 suite 进度。
+
 前端看板已经改为 Next.js：
 
 - llm_router 看板：`http://127.0.0.1:18781`
 - official48 结果看板：`http://127.0.0.1:18881`
+
+对应启动命令：
+
+```bash
+# 1) 启动 llm_router 看板（18781/18782/18783）
+export LLM_ROUTER_ROOT="${LLM_ROUTER_ROOT:-$(cd .. && pwd)/llm_router}"
+SESSION_PREFIX=sss-auto-llm-router \
+ANTHROPIC_UPSTREAM_URL=https://api.minimaxi.com/anthropic \
+OPENAI_UPSTREAM_URL=https://api.minimaxi.com/v1 \
+bash "$LLM_ROUTER_ROOT/scripts/start-prod.sh"
+
+# 2) 启动 official48 Next.js 看板（18881）
+cd /path/to/SWE-EVO
+npm ci
+npm run build
+npm run dashboard:start
+```
+
+如果只是本地联调 official48 看板，也可以直接用开发模式：
+
+```bash
+cd /path/to/SWE-EVO
+npm run dashboard:dev
+```
+
+## 1.1 后台整轮实验
+
+启动一轮“先 smoke 再 full”的后台实验：
+
+```bash
+cd /path/to/SWE-EVO
+./start_official48_experiment_suite.sh
+```
+
+它会在后台 `tmux` 里按顺序运行：
+
+1. `smoke-innercc`
+2. `smoke-claude-code`
+3. `full-innercc-round01`
+4. `full-claude-code-round01`
+
+默认 smoke 子集是两个已知稳定样例：
+
+- `psf__requests_v2.27.0_v2.27.1`
+- `iterative__dvc_1.11.12_1.11.13`
+
+查看 suite 进度：
+
+```bash
+cd /path/to/SWE-EVO
+python3 ./show_official48_experiment_suite_status.py
+```
+
+查看后台 tmux：
+
+```bash
+tmux ls
+tmux attach -t swe-evo-official48-suite-<suite_id>
+```
+
+当前 suite 过程会用到的持久化文件：
+
+- `official48_suite_runs/<suite_id>/suite_state.json`
+- `official48_suite_runs/<suite_id>/logs/suite.log`
+- `official48_suite_runs/<suite_id>/logs/<step>.log`
+
+llm router 仍由独立 tmux sessions 保活：
+
+- `sss-auto-llm-router-proxy`
+- `sss-auto-llm-router-web`
 
 ## 2. 固定路径与可变项
 

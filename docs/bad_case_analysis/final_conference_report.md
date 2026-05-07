@@ -4,6 +4,10 @@
 
 本文对 SWE-EVO `official48` 基准上的两组 CLI 运行结果进行全量复盘分析，覆盖 `48/48` 个 benchmark case，并建立统一的单案复盘与跨案综合框架。研究对象为 `innercc` 与 `claude-code` 两条 CLI 路径，对照 run 分别为 `20260427-154634` 与 `20260429-114027`。我们基于 benchmark 原始任务定义、官方 golden patch、agent 推理轨迹、单案补丁、评测日志与最终 `report.json`，从任务理解、故障定位、代码编辑、验证闭环与结束策略五个阶段重建完整证据链。结果表明：全量 `48` 案中，最频繁的共性问题不是代码生成能力不足，而是任务收敛机制失效，具体表现为 `validation_gap`、`task_understanding_error` 与 `hypothesis_lock_in` 的高频组合。`innercc` 更擅长在 multi-task 与 bundle case 中进行多簇覆盖，但更容易出现 patch 扩散与环境噪声误修；`claude-code` 在单点、强契约、窄 patch 任务上更稳，但在大型 release-note case 中更容易过早锁定单一簇并提前结束。本文进一步抽象出一组可推广的 CLI 级优化规则，包括任务规模判定、exact F2P 与相邻 P2P 双门槛验证、三线交叉定位以及环境噪声降权策略。这些结论可直接服务于后续 agent 设计、评测协议改进与回归集构建。
 
+如果需要把这些结论继续下钻到“单个 failure pattern 的代表案、关键 trace index、patch 落点和 evaluator log”，现在细节都已经并回：
+
+- [common_issues_summary.md](/home/wt/sss_repos/sss_auto/SWE-EVO/docs/bad_case_analysis/common_issues_summary.md)
+
 **关键词**：SWE-EVO；LLM agent；benchmark analysis；failure analysis；task sizing；validation
 
 ## 1. 研究背景与问题定义
