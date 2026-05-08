@@ -53,6 +53,10 @@ run_python() {
   python3 -u "$@"
 }
 
+json_escape() {
+  printf '%s' "$1" | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read()))'
+}
+
 INFER_MAX_CONCURRENCY="${INFER_MAX_CONCURRENCY:-2}"
 EVAL_MAX_CONCURRENCY="${EVAL_MAX_CONCURRENCY:-3}"
 CLI_TIMEOUT_SECONDS="${CLI_TIMEOUT_SECONDS:-5400}"
@@ -65,13 +69,35 @@ AGENT_NAME="${AGENT_NAME:-${INNERCC_AGENT_NAME:-innercc-cli}}"
 PYTHON_DEPS_PATH="${SWE_EVO_DEPS_PATH:-$REPO_ROOT/.deps}"
 ROUTER_API_BASE="${SWE_EVO_ROUTER_API_BASE:-http://127.0.0.1:18783}"
 LLM_ROUTER_ROOT="${LLM_ROUTER_ROOT:-$REPO_ROOT/../llm_router}"
+RUN_DISPLAY_NAME="${RUN_DISPLAY_NAME:-}"
 
-RUN_STAMP="$(date +%Y%m%d-%H%M%S)"
+RUN_STAMP="${RUN_STAMP:-$(date +%Y%m%d-%H%M%S)}"
 RUN_ROOT="$REPO_ROOT/official48_runs/$RUN_STAMP"
 BACKUP_ROOT="$REPO_ROOT/official48_runs/backups/$RUN_STAMP"
 SRC_ROOT="${OFFICIAL48_SOURCE_ROOT:-$REPO_ROOT/official48_source}"
 
 mkdir -p "$RUN_ROOT" "$BACKUP_ROOT"
+
+DISPLAY_NAME_JSON="null"
+if [ -n "$RUN_DISPLAY_NAME" ]; then
+  DISPLAY_NAME_JSON="$(json_escape "$RUN_DISPLAY_NAME")"
+fi
+
+cat >"$RUN_ROOT/metadata.json" <<EOF
+{
+  "display_name": $DISPLAY_NAME_JSON,
+  "model": $(json_escape "$MODEL_NAME"),
+  "cli_bin": $(json_escape "$CLI_BIN"),
+  "settings_file": $(json_escape "$SETTINGS_FILE"),
+  "env_file": $(json_escape "$ENV_FILE"),
+  "agent_name": $(json_escape "$AGENT_NAME"),
+  "source_root": $(json_escape "$SRC_ROOT"),
+  "router_api_base": $(json_escape "$ROUTER_API_BASE"),
+  "created_at": $(date --iso-8601=seconds | python3 -c 'import json,sys; print(json.dumps(sys.stdin.read().strip()))')
+}
+EOF
+
+printf '[pipeline] run_root=%s\n' "$RUN_ROOT"
 
 curl -fsS --max-time 30 -X DELETE "$ROUTER_API_BASE/api/data/all" >/dev/null || true
 

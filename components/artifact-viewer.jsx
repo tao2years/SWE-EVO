@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function formatBytes(sizeBytes) {
   if (typeof sizeBytes !== "number" || Number.isNaN(sizeBytes)) {
@@ -92,6 +92,48 @@ function TextView({ content }) {
 }
 
 export default function ArtifactViewer({ artifact }) {
+  const [analysisDoc, setAnalysisDoc] = useState(artifact?.analysisDoc ?? null);
+  const [reviewBusy, setReviewBusy] = useState(false);
+  const [reviewStatus, setReviewStatus] = useState("");
+
+  useEffect(() => {
+    setAnalysisDoc(artifact?.analysisDoc ?? null);
+    setReviewStatus("");
+    setReviewBusy(false);
+  }, [artifact?.relativePath, artifact?.analysisDoc?.instance_id, artifact?.analysisDoc?.reviewed, artifact?.analysisDoc?.reviewed_at]);
+
+  async function handleReviewToggle(nextReviewed) {
+    if (!analysisDoc?.instance_id) {
+      return;
+    }
+    setReviewBusy(true);
+    setReviewStatus(nextReviewed ? "Marking reviewed..." : "Clearing review...");
+    try {
+      const response = await fetch(`/api/analysis/review/${encodeURIComponent(analysisDoc.instance_id)}`, {
+        method: "PATCH",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reviewed: nextReviewed }),
+      });
+      if (!response.ok) {
+        throw new Error(`/api/analysis/review/${encodeURIComponent(analysisDoc.instance_id)} -> ${response.status}`);
+      }
+      const payload = await response.json();
+      setAnalysisDoc(payload);
+      setReviewStatus(
+        nextReviewed
+          ? `Marked reviewed at ${new Date().toLocaleTimeString()}`
+          : `Cleared review at ${new Date().toLocaleTimeString()}`,
+      );
+    } catch (error) {
+      setReviewStatus(`Review update failed: ${error.message}`);
+    } finally {
+      setReviewBusy(false);
+    }
+  }
+
   if (!artifact) {
     return (
       <main className="artifact-shell">
@@ -117,11 +159,44 @@ export default function ArtifactViewer({ artifact }) {
         <div className="artifact-meta">
           <span className="detail-chip"><span>type</span><strong>{artifact.contentType}</strong></span>
           <span className="detail-chip"><span>size</span><strong>{formatBytes(artifact.sizeBytes)}</strong></span>
+          {analysisDoc ? (
+            <span className={`review-pill ${analysisDoc.reviewed ? "reviewed" : "pending"}`.trim()}>
+              {analysisDoc.reviewed ? "reviewed" : "unreviewed"}
+            </span>
+          ) : null}
+          {analysisDoc ? (
+            <button
+              className="ghost-button review-toggle"
+              disabled={reviewBusy}
+              onClick={() => void handleReviewToggle(!analysisDoc.reviewed)}
+              type="button"
+            >
+              {reviewBusy
+                ? "Saving..."
+                : analysisDoc.reviewed
+                  ? "Mark Unreviewed"
+                  : "Mark Reviewed"}
+            </button>
+          ) : null}
           <a className="ghost-button artifact-raw-link" href={artifact.rawUrl} rel="noreferrer" target="_blank">
             Open Raw
           </a>
         </div>
       </section>
+
+      {analysisDoc ? (
+        <section className="panel artifact-panel">
+          <div className="artifact-json-header">
+            <h2>Review Status</h2>
+            <p className="panel-note">
+              {analysisDoc.reviewed
+                ? `Current status: reviewed${analysisDoc.reviewed_at ? ` · ${new Date(analysisDoc.reviewed_at).toLocaleString()}` : ""}`
+                : "Current status: unreviewed"}
+            </p>
+            {reviewStatus ? <p className="panel-note review-note">{reviewStatus}</p> : null}
+          </div>
+        </section>
+      ) : null}
 
       {!artifact.textLike ? (
         <section className="panel artifact-panel">

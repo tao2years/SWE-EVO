@@ -13,6 +13,8 @@ import time
 import urllib.request
 from pathlib import Path
 from urllib.error import URLError
+from urllib.parse import urlparse
+import socket
 
 from swe_evo_env import (
     REPO_ROOT,
@@ -152,31 +154,103 @@ def load_resume_state(
     return all_preds, summaries, summary_by_id, completed_ids
 
 
-def router_api_healthy(router_api_base: str, timeout_seconds: int = 5) -> bool:
+def router_api_healthy(
+    router_api_base: str,
+    timeout_seconds: int = 5,
+    attempts: int = 3,
+    attempt_delay_seconds: float = 1.0,
+) -> bool:
+    for attempt in range(max(attempts, 1)):
+        try:
+            with urllib.request.urlopen(f"{router_api_base}/api/sessions", timeout=timeout_seconds) as response:
+                response.read(1)
+            return True
+        except URLError:
+            pass
+        except Exception:
+            pass
+        if attempt + 1 < max(attempts, 1):
+            time.sleep(attempt_delay_seconds)
+    return False
+
+
+def parse_base_url_from_settings(settings_file: Path) -> str | None:
     try:
-        with urllib.request.urlopen(f"{router_api_base}/api/sessions", timeout=timeout_seconds) as response:
-            response.read(1)
-        return True
-    except URLError:
-        return False
+        payload = json.loads(settings_file.read_text(encoding="utf-8"))
     except Exception:
+        return None
+    if not isinstance(payload, dict):
+        return None
+    env = payload.get("env", {})
+    if not isinstance(env, dict):
+        return None
+    for key in ("ANTHROPIC_BASE_URL", "OPENAI_BASE_URL"):
+        value = env.get(key)
+        if isinstance(value, str) and value:
+            return value
+    return None
+
+
+def parse_base_url_from_env_file(env_file: Path) -> str | None:
+    try:
+        lines = env_file.read_text(encoding="utf-8").splitlines()
+    except Exception:
+        return None
+    for line in lines:
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        for key in ("ANTHROPIC_BASE_URL", "OPENAI_BASE_URL"):
+            prefixes = (f"{key}=", f"export {key}=")
+            if not stripped.startswith(prefixes):
+                continue
+            _, value = stripped.split("=", 1)
+            value = value.strip().strip("'\"")
+            if value:
+                return value
+    return None
+
+
+def load_router_proxy_base_url(settings_file: Path, env_file: Path) -> str | None:
+    return parse_base_url_from_settings(settings_file) or parse_base_url_from_env_file(env_file)
+
+
+def proxy_base_healthy(
+    proxy_base_url: str,
+    timeout_seconds: int = 5,
+    attempts: int = 3,
+    attempt_delay_seconds: float = 1.0,
+) -> bool:
+    parsed = urlparse(proxy_base_url)
+    host = parsed.hostname
+    if host is None:
         return False
+    port = parsed.port or (443 if parsed.scheme == "https" else 80)
+    for attempt in range(max(attempts, 1)):
+        try:
+            with socket.create_connection((host, port), timeout=timeout_seconds):
+                return True
+        except Exception:
+            pass
+        if attempt + 1 < max(attempts, 1):
+            time.sleep(attempt_delay_seconds)
+    return False
 
 
 def wait_for_router(
     router_db_path: Path,
-    router_api_base: str,
+    proxy_base_url: str,
     timeout_seconds: int,
     poll_seconds: float,
     instance_id: str,
 ) -> None:
     deadline = time.time() + timeout_seconds
     while time.time() < deadline:
-        if router_db_path.exists() and router_api_healthy(router_api_base):
+        if router_db_path.exists() and proxy_base_healthy(proxy_base_url):
             return
         time.sleep(poll_seconds)
     raise TimeoutError(
-        f"router not ready for {instance_id}: db={router_db_path.exists()} api={router_api_healthy(router_api_base)}"
+        f"router not ready for {instance_id}: db={router_db_path.exists()} proxy={proxy_base_healthy(proxy_base_url)}"
     )
 
 
@@ -350,6 +424,7 @@ def process_instance(
     model_name: str,
     agent_name: str,
     force_workspace: bool,
+    max_turns: int | None,
     cli_timeout_seconds: int,
     router_db_path: Path,
     router_api_base: str,
@@ -368,11 +443,14 @@ def process_instance(
     run_dir.mkdir(parents=True, exist_ok=True)
     started_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     note_text = f"innercc | {instance_id} | {started_at}"
+    proxy_base_url = load_router_proxy_base_url(settings_file, env_file)
+    if not proxy_base_url:
+        raise RuntimeError(f"router proxy base url is missing for {instance_id}")
 
     prepare_workspace_ssh(instance, workspace_dir, force_workspace)
     wait_for_router(
         router_db_path,
-        router_api_base,
+        proxy_base_url,
         timeout_seconds=router_ready_timeout_seconds,
         poll_seconds=router_poll_seconds,
         instance_id=instance_id,
@@ -395,7 +473,7 @@ def process_instance(
             settings_file,
             env_file,
             model_name,
-            None,
+            max_turns,
             cli_timeout_seconds,
         )
     finally:
@@ -404,19 +482,28 @@ def process_instance(
 
     instance_preds_path = runner.write_patch_outputs(instance_id, workspace_dir, run_dir, agent_name)
     preds = json.loads(instance_preds_path.read_text(encoding="utf-8"))
-    bundle_path, session_id, router_run_id = export_router_bundle(
-        instance_id,
-        run_dir,
-        router_db_path,
-        router_api_base,
-        timeout_seconds=router_export_timeout_seconds,
-        poll_seconds=router_poll_seconds,
-    )
+    router_export_error = None
+    try:
+        bundle_path, session_id, router_run_id = export_router_bundle(
+            instance_id,
+            run_dir,
+            router_db_path,
+            router_api_base,
+            timeout_seconds=router_export_timeout_seconds,
+            poll_seconds=router_poll_seconds,
+        )
 
-    if session_id:
-        patch_router_note("sessions", session_id, note_text, router_api_base)
-    if router_run_id:
-        patch_router_note("runs", router_run_id, note_text, router_api_base)
+        if session_id:
+            patch_router_note("sessions", session_id, note_text, router_api_base)
+        if router_run_id:
+            patch_router_note("runs", router_run_id, note_text, router_api_base)
+    except Exception as exc:
+        router_export_error = str(exc)
+        bundle_path = run_dir / "router_trace_bundle.json"
+        session_id = None
+        router_run_id = None
+        (run_dir / "router_trace_bundle_error.txt").write_text(f"{exc}\n", encoding="utf-8")
+        print(f"[infer {idx}/{total_instances}] warn {instance_id}: {exc}", flush=True)
 
     finished_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     summary_entry = {
@@ -428,6 +515,8 @@ def process_instance(
         "router_session_id": session_id,
         "router_run_id": router_run_id,
         "router_note": note_text,
+        "router_export_error": router_export_error,
+        "max_turns": max_turns,
         "started_at": started_at,
         "finished_at": finished_at,
     }
@@ -531,6 +620,7 @@ def run_batch(args, runner) -> None:
                 model_name=args.model,
                 agent_name=args.agent_name,
                 force_workspace=args.force_workspace,
+                max_turns=args.max_turns,
                 cli_timeout_seconds=args.cli_timeout_seconds,
                 router_db_path=router_db_path,
                 router_api_base=router_api_base,
@@ -600,6 +690,7 @@ def main():
     parser.add_argument("--force-workspace", action="store_true")
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--max-concurrency", type=int, default=2)
+    parser.add_argument("--max-turns", type=int, default=None)
     parser.add_argument("--cli-timeout-seconds", type=int, default=5400)
     parser.add_argument("--router-db-path", default=str(ROUTER_DB_PATH))
     parser.add_argument("--router-api-base", default=ROUTER_API_BASE)
@@ -610,6 +701,8 @@ def main():
 
     if args.max_concurrency < 1:
         raise SystemExit("--max-concurrency must be >= 1")
+    if args.max_turns is not None and args.max_turns < 1:
+        raise SystemExit("--max-turns must be >= 1")
 
     runner = load_runner()
     run_batch(args, runner)

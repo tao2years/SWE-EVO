@@ -15,6 +15,8 @@ const CASE_COLUMNS = [
 
 const COMPARISON_METRICS = [
   ["status", "status"],
+  ["active_count", "active slots"],
+  ["failed_count", "failed"],
   ["inference_done", "inference"],
   ["eval_reports", "eval reports"],
   ["resolved_true_cases", "resolved"],
@@ -54,6 +56,27 @@ function safeText(value) {
   return value === null || value === undefined || value === "" ? "n/a" : String(value);
 }
 
+function formatIsoTimestamp(value) {
+  if (typeof value !== "string" || !value) {
+    return "n/a";
+  }
+  const date = new Date(value);
+  return Number.isNaN(date.valueOf()) ? "n/a" : date.toLocaleString();
+}
+
+function analysisFamilyLabel(value) {
+  if (value === "inner_advantage") return "inner advantage";
+  if (value === "claude_advantage") return "claude advantage";
+  if (value === "both_failed") return "both failed";
+  if (value === "both_partial") return "both partial";
+  if (value === "both_resolved") return "both resolved";
+  return safeText(value);
+}
+
+function reviewLabel(reviewed) {
+  return reviewed ? "reviewed" : "unreviewed";
+}
+
 function artifactViewerUrl(url) {
   if (!url) {
     return url;
@@ -73,9 +96,42 @@ function runDisplayName(run) {
   return run?.display_name || run?.run_id || "n/a";
 }
 
+function runActivityText(run) {
+  if (!run) {
+    return null;
+  }
+
+  const parts = [];
+  if (run.active_count) {
+    const activeInstances = Array.isArray(run.active_instances) ? run.active_instances : [];
+    if (!activeInstances.length) {
+      parts.push(`${run.active_count} infer active`);
+    } else {
+      const preview = activeInstances.slice(0, 2).join(", ");
+      const extra = activeInstances.length > 2 ? ` +${activeInstances.length - 2} more` : "";
+      parts.push(`${run.active_count} infer: ${preview}${extra}`);
+    }
+  }
+  if (run.eval_active_count) {
+    parts.push(`${run.eval_active_count} eval active`);
+  }
+  if (run.failed_count) {
+    parts.push(`${run.failed_count} failed`);
+  }
+  if (run.last_router_activity) {
+    if (typeof run.router_quiet_minutes === "number" && run.router_quiet_minutes >= 10) {
+      parts.push(`router quiet ${run.router_quiet_minutes}m`);
+    } else {
+      parts.push(`router ${run.last_router_activity}`);
+    }
+  }
+  return parts.length ? parts.join(" · ") : null;
+}
+
 function statusClass(status) {
   if (status === "completed") return "status-completed";
   if (status === "running") return "status-running";
+  if (status === "stalled") return "status-stalled";
   return "status-idle";
 }
 
@@ -209,6 +265,7 @@ export default function DashboardClient({ initialData }) {
   const [runs, setRuns] = useState(initialData?.runs ?? []);
   const [selectedRunId, setSelectedRunId] = useState(initialData?.selectedRunId ?? null);
   const [selectedRunDetail, setSelectedRunDetail] = useState(initialData?.selectedRunDetail ?? null);
+  const [analysisOverview, setAnalysisOverview] = useState(initialData?.analysisOverview ?? null);
   const [compareRunIds, setCompareRunIds] = useState(
     () => new Set(initialData?.selectedRunId ? [initialData.selectedRunId] : []),
   );
@@ -225,6 +282,7 @@ export default function DashboardClient({ initialData }) {
   const [displayNameDraft, setDisplayNameDraft] = useState(initialData?.selectedRunDetail?.run?.display_name ?? "");
   const [isSavingDisplayName, setIsSavingDisplayName] = useState(false);
   const [isDeletingRun, setIsDeletingRun] = useState(false);
+  const [reviewPendingId, setReviewPendingId] = useState(null);
   const traceCacheRef = useRef(new Map());
 
   const currentCases = selectedRunDetail?.cases ?? [];
@@ -265,7 +323,10 @@ export default function DashboardClient({ initialData }) {
       setStatusText("Refreshing...");
     }
     try {
-      const nextRunsPayload = await fetchJson("/api/runs");
+      const [nextRunsPayload, nextAnalysisOverview] = await Promise.all([
+        fetchJson("/api/runs"),
+        fetchJson("/api/analysis"),
+      ]);
       const nextRuns = nextRunsPayload.runs || [];
       let nextSelectedRunId = selectedRunId;
       if (!nextSelectedRunId || !nextRuns.some((run) => run.run_id === nextSelectedRunId)) {
@@ -280,6 +341,7 @@ export default function DashboardClient({ initialData }) {
         setRuns(nextRuns);
         setSelectedRunId(nextSelectedRunId);
         setSelectedRunDetail(nextDetail);
+        setAnalysisOverview(nextAnalysisOverview);
         setCompareRunIds((previous) => {
           const next = new Set([...previous].filter((id) => nextRuns.some((run) => run.run_id === id)));
           if (nextSelectedRunId && next.size === 0) {
@@ -428,6 +490,37 @@ export default function DashboardClient({ initialData }) {
     }
   }
 
+  async function handleAnalysisReview(instanceId, reviewed) {
+    if (!instanceId) {
+      return;
+    }
+    setReviewPendingId(instanceId);
+    setStatusText(reviewed ? `Marking ${instanceId} reviewed...` : `Clearing review for ${instanceId}...`);
+    try {
+      const response = await fetch(`/api/analysis/review/${encodeURIComponent(instanceId)}`, {
+        method: "PATCH",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ reviewed }),
+      });
+      if (!response.ok) {
+        throw new Error(`/api/analysis/review/${encodeURIComponent(instanceId)} -> ${response.status}`);
+      }
+      await handleRefresh(true);
+      setStatusText(
+        reviewed
+          ? `Marked ${instanceId} reviewed at ${new Date().toLocaleTimeString()}`
+          : `Cleared review for ${instanceId} at ${new Date().toLocaleTimeString()}`,
+      );
+    } catch (error) {
+      setStatusText(`Review update failed: ${error.message}`);
+    } finally {
+      setReviewPendingId(null);
+    }
+  }
+
   function toggleCompare(runId, checked) {
     setCompareRunIds((previous) => {
       const next = new Set(previous);
@@ -502,6 +595,9 @@ export default function DashboardClient({ initialData }) {
                       {run.display_name ? (
                         <div className="run-updated">{safeText(run.updated_at)}</div>
                       ) : null}
+                      {runActivityText(run) ? (
+                        <div className="run-activity">{runActivityText(run)}</div>
+                      ) : null}
                     </div>
                     <span className={`status-badge ${statusClass(run.status)}`.trim()}>{run.status}</span>
                   </div>
@@ -521,6 +617,10 @@ export default function DashboardClient({ initialData }) {
                     <div className="mini-stat">
                       <div className="mini-stat-label">Resolved</div>
                       <div className="mini-stat-value">{numberish(run.resolved_true_cases)}</div>
+                    </div>
+                    <div className="mini-stat">
+                      <div className="mini-stat-label">Failed</div>
+                      <div className="mini-stat-value">{numberish(run.failed_count)}</div>
                     </div>
                   </div>
                   <label
@@ -567,9 +667,9 @@ export default function DashboardClient({ initialData }) {
                   {COMPARISON_METRICS.map(([key, label]) => (
                     <tr key={key}>
                       <th>{label}</th>
-                      {runs
-                        .filter((run) => compareRunIds.has(run.run_id))
-                        .map((run) => {
+                        {runs
+                          .filter((run) => compareRunIds.has(run.run_id))
+                          .map((run) => {
                           let rendered = safeText(run[key]);
                           if (key.includes("rate")) rendered = percent(run[key]);
                           if (key.includes("cost")) rendered = money(run[key]);
@@ -597,7 +697,7 @@ export default function DashboardClient({ initialData }) {
             </div>
             <p className="panel-note">
               {selectedRunDetail?.run
-                ? `${selectedRunDetail.run.run_id} · ${selectedRunDetail.run.status} · ${safeText(selectedRunDetail.run.updated_at)} · ${selectedRunDetail.run.eval_reports}/${selectedRunDetail.run.total_cases} reports`
+                ? `${selectedRunDetail.run.run_id} · ${selectedRunDetail.run.status} · ${safeText(selectedRunDetail.run.updated_at)} · ${selectedRunDetail.run.eval_reports}/${selectedRunDetail.run.total_cases} reports${selectedRunDetail.run.active_count ? ` · ${selectedRunDetail.run.active_count} infer active` : ""}${selectedRunDetail.run.eval_active_count ? ` · ${selectedRunDetail.run.eval_active_count} eval active` : ""}${selectedRunDetail.run.failed_count ? ` · ${selectedRunDetail.run.failed_count} failed` : ""}`
                 : "Choose a run card to inspect its summary and cases."}
             </p>
           </div>
@@ -636,6 +736,11 @@ export default function DashboardClient({ initialData }) {
                 {isDeletingRun ? "Deleting..." : "Delete Run"}
               </button>
             </div>
+          ) : null}
+          {selectedRunDetail?.run && runActivityText(selectedRunDetail.run) ? (
+            <p className="live-activity-note">
+              {runActivityText(selectedRunDetail.run)}
+            </p>
           ) : null}
           <div className="summary-cards">
             {selectedRunDetail ? (
@@ -695,6 +800,174 @@ export default function DashboardClient({ initialData }) {
               </div>
             </div>
           </div>
+        </section>
+
+        <section className="panel analysis-panel">
+          <div className="panel-header">
+            <div>
+              <p className="panel-kicker">Analysis</p>
+              <h2>Bad Case Analysis</h2>
+            </div>
+            <p className="panel-note">
+              Surface the manually written case reports, track coverage, and spot recurring failure modes
+              without leaving the dashboard.
+            </p>
+          </div>
+          {analysisOverview ? (
+            <>
+              <div className="summary-cards">
+                {[
+                  ["Analyzed", `${numberish(analysisOverview.total_docs)}/${numberish(analysisOverview.total_cases)}`, percent(analysisOverview.coverage_rate)],
+                  ["Remaining", numberish(analysisOverview.remaining_cases), "cases not yet written up"],
+                  ["Reviewed", `${numberish(analysisOverview.reviewed_docs)}/${numberish(analysisOverview.total_docs)}`, percent(analysisOverview.review_rate)],
+                  ["Top Issue", safeText(analysisOverview.tag_counts?.[0]?.tag), `${numberish(analysisOverview.tag_counts?.[0]?.count)} docs`],
+                  ["Top Family", analysisFamilyLabel(analysisOverview.family_counts?.[0]?.family), `${numberish(analysisOverview.family_counts?.[0]?.count)} docs`],
+                  ["Top Repo", safeText(analysisOverview.repo_counts?.[0]?.repo), `${numberish(analysisOverview.repo_counts?.[0]?.count)} docs`],
+                ].map(([title, value, foot]) => (
+                  <article className="summary-card" key={title}>
+                    <h3>{title}</h3>
+                    <div className="summary-card-value">{value}</div>
+                    <div className="summary-card-foot">{foot}</div>
+                  </article>
+                ))}
+              </div>
+
+              <div className="analysis-layout">
+                <div className="analysis-stack">
+                  <div className="analysis-section">
+                    <h3>Common Issues</h3>
+                    <div className="analysis-chip-list">
+                      {(analysisOverview.tag_counts || []).slice(0, 10).map((item) => (
+                        <span className="analysis-chip" key={item.tag}>
+                          {item.tag}: {item.count}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="analysis-section">
+                    <h3>Outcome Families</h3>
+                    <div className="analysis-chip-list">
+                      {(analysisOverview.family_counts || []).map((item) => (
+                        <span className="analysis-chip subtle" key={item.family}>
+                          {analysisFamilyLabel(item.family)}: {item.count}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="analysis-section">
+                    <h3>Repo Spread</h3>
+                    <div className="analysis-chip-list">
+                      {(analysisOverview.repo_counts || []).map((item) => (
+                        <span className="analysis-chip subtle" key={item.repo}>
+                          {item.repo}: {item.count}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="analysis-links">
+                    {analysisOverview.final_report_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.final_report_url)} rel="noreferrer" target="_blank">
+                        Open Full Report
+                      </a>
+                    ) : null}
+                    {analysisOverview.common_summary_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.common_summary_url)} rel="noreferrer" target="_blank">
+                        Open Summary
+                      </a>
+                    ) : null}
+                    {analysisOverview.synthesis_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.synthesis_url)} rel="noreferrer" target="_blank">
+                        Open Synthesis
+                      </a>
+                    ) : null}
+                    {analysisOverview.synthesis_methodology_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.synthesis_methodology_url)} rel="noreferrer" target="_blank">
+                        Open Synthesis Method
+                      </a>
+                    ) : null}
+                    {analysisOverview.design_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.design_url)} rel="noreferrer" target="_blank">
+                        Open Case Design
+                      </a>
+                    ) : null}
+                    {analysisOverview.playbook_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.playbook_url)} rel="noreferrer" target="_blank">
+                        Open Playbook
+                      </a>
+                    ) : null}
+                    {analysisOverview.template_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.template_url)} rel="noreferrer" target="_blank">
+                        Open Template
+                      </a>
+                    ) : null}
+                    {analysisOverview.backlog_url ? (
+                      <a className="ghost-button" href={artifactViewerUrl(analysisOverview.backlog_url)} rel="noreferrer" target="_blank">
+                        Open Backlog
+                      </a>
+                    ) : null}
+                  </div>
+                </div>
+
+                <div>
+                  <h3>Reports</h3>
+                  <div className="analysis-doc-list">
+                    {(analysisOverview.docs || []).map((doc) => (
+                      <article className={`analysis-doc ${selectedCaseId === doc.instance_id ? "selected" : ""}`.trim()} key={doc.instance_id}>
+                        <div className="analysis-doc-top">
+                          <div>
+                            <div className="analysis-doc-id">{doc.instance_id}</div>
+                            <div className="analysis-doc-meta">
+                              {safeText(doc.repo)} · {safeText(doc.comparison_category)}
+                            </div>
+                          </div>
+                          <div className="analysis-doc-actions">
+                            <span className={`review-pill ${doc.reviewed ? "reviewed" : "pending"}`.trim()}>
+                              {reviewLabel(doc.reviewed)}
+                            </span>
+                            <button
+                              className="ghost-button review-toggle"
+                              disabled={reviewPendingId === doc.instance_id}
+                              onClick={() => void handleAnalysisReview(doc.instance_id, !doc.reviewed)}
+                              type="button"
+                            >
+                              {reviewPendingId === doc.instance_id
+                                ? "Saving..."
+                                : doc.reviewed
+                                  ? "Mark Unreviewed"
+                                  : "Mark Reviewed"}
+                            </button>
+                            {doc.url ? (
+                              <a className="detail-chip" href={artifactViewerUrl(doc.url)} rel="noreferrer" target="_blank">
+                                <strong>open</strong>
+                              </a>
+                            ) : null}
+                          </div>
+                        </div>
+                        {doc.conclusion ? <p className="analysis-doc-copy">{doc.conclusion}</p> : null}
+                        {doc.reviewed_at ? (
+                          <div className="analysis-doc-meta review-meta">
+                            reviewed at {formatIsoTimestamp(doc.reviewed_at)}
+                          </div>
+                        ) : null}
+                        <div className="analysis-chip-list">
+                          {(doc.tags || []).map((tag) => (
+                            <span className="analysis-chip subtle" key={`${doc.instance_id}-${tag}`}>
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="empty-state">No analysis overview available.</div>
+          )}
         </section>
 
         <section className="panel case-panel">
@@ -849,6 +1122,50 @@ export default function DashboardClient({ initialData }) {
               <div className="case-detail-block">
                 <h4>Artifacts</h4>
                 <ArtifactLinks artifacts={selectedCase.artifacts} />
+              </div>
+
+              <div className="case-detail-block">
+                <h4>Analysis</h4>
+                {selectedCase.analysis ? (
+                  <>
+                    <div className="trace-summary">
+                      <DetailChip label="category" value={safeText(selectedCase.analysis.comparison_category)} />
+                      <DetailChip label="review" value={reviewLabel(selectedCase.analysis.reviewed)} />
+                      {selectedCase.analysis.reviewed_at ? (
+                        <DetailChip label="reviewed at" value={formatIsoTimestamp(selectedCase.analysis.reviewed_at)} />
+                      ) : null}
+                      <button
+                        className="ghost-button review-toggle"
+                        disabled={reviewPendingId === selectedCase.analysis.instance_id}
+                        onClick={() => void handleAnalysisReview(selectedCase.analysis.instance_id, !selectedCase.analysis.reviewed)}
+                        type="button"
+                      >
+                        {reviewPendingId === selectedCase.analysis.instance_id
+                          ? "Saving..."
+                          : selectedCase.analysis.reviewed
+                            ? "Mark Unreviewed"
+                            : "Mark Reviewed"}
+                      </button>
+                      {selectedCase.analysis.url ? (
+                        <a className="detail-chip" href={artifactViewerUrl(selectedCase.analysis.url)} rel="noreferrer" target="_blank">
+                          <strong>analysis report</strong>
+                        </a>
+                      ) : null}
+                    </div>
+                    {selectedCase.analysis.conclusion ? (
+                      <p className="analysis-doc-copy case-analysis-copy">{selectedCase.analysis.conclusion}</p>
+                    ) : null}
+                    <div className="analysis-chip-list">
+                      {(selectedCase.analysis.tags || []).map((tag) => (
+                        <span className="analysis-chip subtle" key={`${selectedCase.instance_id}-${tag}`}>
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div className="empty-state">No case analysis document exists yet for this instance.</div>
+                )}
               </div>
 
               <div className="case-detail-block">
