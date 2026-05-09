@@ -2,15 +2,15 @@
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REPO_ROOT="$SCRIPT_DIR"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 VENV_DIR="${VENV_DIR:-$REPO_ROOT/.venv}"
 
 python3 -m venv "$VENV_DIR"
 "$VENV_DIR/bin/pip" install --upgrade pip
-"$VENV_DIR/bin/pip" install -r "$REPO_ROOT/requirements.swe-evo.txt"
+"$VENV_DIR/bin/pip" install -r "$REPO_ROOT/runtime/requirements.swe-evo.txt"
 
 if command -v npm >/dev/null 2>&1; then
-  (cd "$REPO_ROOT" && npm ci)
+  (cd "$REPO_ROOT/webui" && npm ci)
 else
   printf 'npm not found, skipped frontend install.\n'
 fi

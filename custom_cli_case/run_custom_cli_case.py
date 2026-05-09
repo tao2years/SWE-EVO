@@ -2,11 +2,16 @@
 import argparse
 import json
 import os
+from pathlib import Path
 import shutil
 import signal
 import subprocess
 import sys
-from pathlib import Path
+
+REPO_PARENT = Path(__file__).resolve().parents[1]
+RUNTIME_ROOT = REPO_PARENT / "runtime"
+if str(RUNTIME_ROOT) not in sys.path:
+    sys.path.insert(0, str(RUNTIME_ROOT))
 
 from swe_evo_env import (
     REPO_ROOT,
@@ -18,6 +23,7 @@ from swe_evo_env import (
     default_settings_path,
     pythonpath_entries,
 )
+from sanitize_model_patch import sanitize_patch_text
 
 DEFAULT_CLI_CANDIDATES = cli_bin_candidates()
 DEFAULT_SETTINGS_PATH = default_settings_path()
@@ -133,7 +139,11 @@ def is_claude_cli(cli_bin: Path) -> bool:
 def prepare_workspace(instance: dict, workspace_dir: Path, force: bool) -> None:
     repo_name = instance["repo"]
     base_commit = instance["base_commit"]
-    repo_url = f"https://github.com/{repo_name}.git"
+    repo_urls = [
+        f"https://github.com/{repo_name}.git",
+        f"git@github.com:{repo_name}.git",
+    ]
+    repo_url = repo_urls[0]
     cache_repo_dir = workspace_dir.parent / repo_name.split("/")[-1]
 
     if force and workspace_dir.exists():
@@ -159,13 +169,18 @@ def prepare_workspace(instance: dict, workspace_dir: Path, force: bool) -> None:
     run(["git", "remote", "add", "origin", repo_url], cwd=workspace_dir)
     fetch_cmd = ["git", "fetch", "--depth", "1", "origin", base_commit]
     last_error = None
-    for _ in range(3):
-        try:
-            run(fetch_cmd, cwd=workspace_dir)
-            last_error = None
+    for candidate_url in repo_urls:
+        run(["git", "remote", "set-url", "origin", candidate_url], cwd=workspace_dir)
+        for _ in range(3):
+            try:
+                run(fetch_cmd, cwd=workspace_dir)
+                last_error = None
+                break
+            except subprocess.CalledProcessError as exc:
+                last_error = exc
+        if last_error is None:
+            repo_url = candidate_url
             break
-        except subprocess.CalledProcessError as exc:
-            last_error = exc
     if last_error is not None:
         raise last_error
     run(["git", "checkout", "FETCH_HEAD"], cwd=workspace_dir)
@@ -221,6 +236,7 @@ def run_cli(
         cmd = [
             str(cli_bin),
             "-p",
+            "--no-session-persistence",
             "--output-format",
             "json",
             "--dangerously-skip-permissions",
@@ -228,14 +244,17 @@ def run_cli(
             str(settings_path),
             "--model",
             model_name,
-            prompt,
         ]
+        if max_turns is not None:
+            cmd.extend(["--max-turns", str(max_turns)])
+        cmd.append(prompt)
         use_stdin_prompt = False
     else:
         cmd = [
             str(cli_bin),
             "--bare",
             "-p",
+            "--no-session-persistence",
             "--output-format",
             "json",
             "--dangerously-skip-permissions",
@@ -290,9 +309,19 @@ def write_patch_outputs(instance_id: str, workspace_dir: Path, run_dir: Path, ag
         cwd=workspace_dir,
         capture_output=True,
     ).stdout
+    diff, removed_paths = sanitize_patch_text(diff)
 
     patch_path = run_dir / "patch.diff"
     patch_path.write_text(diff, encoding="utf-8")
+    if removed_paths:
+        (run_dir / "patch_sanitization.json").write_text(
+            json.dumps(
+                {"changed": True, "removed_paths": sorted(set(removed_paths))},
+                ensure_ascii=False,
+                indent=2,
+            ),
+            encoding="utf-8",
+        )
 
     preds = {
         instance_id: {

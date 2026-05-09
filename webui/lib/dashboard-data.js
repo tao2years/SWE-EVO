@@ -4,7 +4,8 @@ import { spawnSync } from "node:child_process";
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const REPO_ROOT = process.cwd();
+const WEBUI_ROOT = process.cwd();
+const REPO_ROOT = path.resolve(/* turbopackIgnore: true */ WEBUI_ROOT, "..");
 
 function joinRepoPath(...segments) {
   return path.join(/* turbopackIgnore: true */ REPO_ROOT, ...segments);
@@ -15,12 +16,12 @@ function resolveRepoPath(relativePath) {
 }
 
 const RUNS_ROOT = joinRepoPath("official48_runs");
-const STATIC_ROOT = joinRepoPath("dashboard");
+const STATIC_ROOT = path.join(/* turbopackIgnore: true */ WEBUI_ROOT, "dashboard");
 const LOGS_ROOT = joinRepoPath("logs", "run_evaluation");
-const SUMMARY_SCRIPT = joinRepoPath("summarize_official48_run.py");
+const SUMMARY_SCRIPT = joinRepoPath("runtime", "summarize_official48_run.py");
 const BAD_CASE_ROOT = joinRepoPath("docs", "bad_case_analysis");
 const BAD_CASE_REVIEW_PATH = path.join(BAD_CASE_ROOT, "review_status.json");
-const RUN_ID_RE = /^\d{8}-\d{6}$/;
+const RUN_ID_RE = /^\d{8}-\d{6}(?:-.+)?$/;
 const SYSTEM_REMINDER_RE = /<system-reminder>[\s\S]*?<\/system-reminder>\s*/g;
 const BENCHMARK_ID_RE = /\n*\[id:[^\]]+\]\s*$/;
 const TRACE_CACHE = new Map();
@@ -437,9 +438,12 @@ export async function buildBadCaseAnalysisOverview() {
   };
 }
 
-function expectedTotalCases(summaryData, monitor, progress) {
+function expectedTotalCases(summaryData, monitor, progress, inferState) {
   if (summaryData?.summary?.total_cases) {
     return Number(summaryData.summary.total_cases);
+  }
+  if (inferState?.total_instances) {
+    return Number(inferState.total_instances);
   }
   if (progress?.total_instances) {
     return Number(progress.total_instances);
@@ -480,23 +484,34 @@ export async function buildRunOverview(runDir) {
   const monitor = await loadJson(path.join(runDir, "monitor_status.json"), {});
   const progress = await loadJson(path.join(runDir, "progress_state.json"), {});
   const inferState = await loadJson(path.join(runDir, "infer", "inference_status.json"), {});
+  const evalState = await loadJson(path.join(runDir, "eval_worker_status.json"), {});
   const summary = summaryData?.summary ?? {};
 
-  const totalCases = expectedTotalCases(summaryData, monitor, progress);
+  const totalCases = expectedTotalCases(summaryData, monitor, progress, inferState);
   const reportCount = (await actualReportPaths(runId)).length;
-  const inferenceDone = Number(monitor?.inference_done ?? 0);
+  const inferenceDone = Number(monitor?.inference_done ?? inferState?.completed_count ?? 0);
   const evalReports = Math.max(reportCount, Number(monitor?.eval_reports ?? reportCount));
-  const evalCompletedTasks = Number(monitor?.eval_completed_tasks ?? reportCount);
-  const evalActiveCount = Number(monitor?.eval_active_count ?? 0);
-  const evalActiveInstances = Array.isArray(monitor?.eval_active_instances) ? monitor.eval_active_instances : [];
+  const evalCompletedTasks = Number(
+    monitor?.eval_completed_tasks
+      ?? Object.keys(evalState?.completed ?? {}).length
+      ?? reportCount
+  );
+  const evalActiveCount = Number(monitor?.eval_active_count ?? evalState?.active?.length ?? 0);
+  const evalActiveInstances = Array.isArray(monitor?.eval_active_instances)
+    ? monitor.eval_active_instances
+    : Array.isArray(evalState?.active)
+      ? evalState.active
+      : [];
   const failedCount = Number(inferState?.failed_count ?? 0);
   const failedInstances = Array.isArray(inferState?.failed) ? inferState.failed : [];
-  const activeCount = Number(monitor?.active_count ?? progress?.active_count ?? 0);
+  const activeCount = Number(monitor?.active_count ?? progress?.active_count ?? inferState?.active_count ?? 0);
   const activeInstances = Array.isArray(monitor?.active_instances)
     ? monitor.active_instances
     : Array.isArray(progress?.active_instances)
       ? progress.active_instances
-      : [];
+      : Array.isArray(inferState?.active)
+        ? inferState.active
+        : [];
   const lastRouterActivity = typeof monitor?.latest_router_activity === "string" ? monitor.latest_router_activity : null;
   const lastGlobalRouterActivity = typeof monitor?.latest_global_router_activity === "string" ? monitor.latest_global_router_activity : null;
   const effectiveRouterActivity = (() => {
@@ -508,7 +523,7 @@ export async function buildRunOverview(runDir) {
     return lastRouterActivity;
   })();
   const routerQuietMinutes = minutesSinceTimestamp(effectiveRouterActivity);
-  const done = Boolean(monitor?.done);
+  const done = Boolean(monitor?.done || (inferState?.done && evalState?.done));
   const status = done
     ? "completed"
     : activeCount
@@ -524,7 +539,7 @@ export async function buildRunOverview(runDir) {
     display_name: normalizeDisplayName(metadata?.display_name),
     run_root: toRepoRelative(runDir),
     status,
-    updated_at: monitor?.timestamp ?? progress?.timestamp ?? null,
+    updated_at: monitor?.timestamp ?? progress?.timestamp ?? inferState?.timestamp ?? evalState?.timestamp ?? null,
     inference_done: inferenceDone,
     eval_reports: evalReports,
     eval_completed_tasks: evalCompletedTasks,
@@ -545,6 +560,13 @@ export async function buildRunOverview(runDir) {
     p2p_micro_pass_rate: summary?.p2p_micro_pass_rate_known_only ?? null,
     total_cli_cost_usd: summary?.total_cli_cost_usd ?? null,
     avg_cli_duration_ms: summary?.avg_cli_duration_ms ?? null,
+    total_cli_turns: summary?.total_cli_turns ?? null,
+    total_cli_model_input_tokens: summary?.total_cli_model_input_tokens ?? null,
+    total_cli_model_output_tokens: summary?.total_cli_model_output_tokens ?? null,
+    total_cli_tokens: summary?.total_cli_tokens ?? null,
+    cache_hit_rate: summary?.cache_hit_rate ?? null,
+    total_tool_use_count: summary?.total_tool_use_count ?? null,
+    total_tool_error_count: summary?.total_tool_error_count ?? null,
   };
 }
 

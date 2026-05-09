@@ -1,2 +1,0 @@
--e ./SWE-bench
-numpy

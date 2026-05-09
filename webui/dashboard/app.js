@@ -19,7 +19,6 @@ const CASE_COLUMNS = [
   { key: "p2p_rate", label: "p2p", defaultDirection: "desc" },
   { key: "cli_total_cost_usd", label: "cost", defaultDirection: "desc" },
   { key: "cli_duration_ms", label: "duration", defaultDirection: "desc" },
-  { key: "tool_use_count", label: "tools", defaultDirection: "desc" },
   { key: null, label: "artifacts" },
 ];
 
@@ -33,7 +32,30 @@ const COMPARISON_METRICS = [
   ["p2p_micro_pass_rate", "p2p micro"],
   ["total_cli_cost_usd", "total cost"],
   ["avg_cli_duration_ms", "avg duration"],
+  ["total_cli_turns", "total turns"],
+  ["total_cli_model_input_tokens", "input tok"],
+  ["total_cli_model_output_tokens", "output tok"],
+  ["total_cli_tokens", "total tok"],
+  ["cache_hit_rate", "cache hit"],
 ];
+
+const METRIC_DIRECTIONS = {
+  active_count: "lower",
+  failed_count: "lower",
+  inference_done: "higher",
+  eval_reports: "higher",
+  resolved_true_cases: "higher",
+  resolution_rate: "higher",
+  f2p_micro_rate: "higher",
+  p2p_micro_pass_rate: "higher",
+  total_cli_cost_usd: "lower",
+  avg_cli_duration_ms: "lower",
+  total_cli_turns: "lower",
+  total_cli_model_input_tokens: "lower",
+  total_cli_model_output_tokens: "lower",
+  total_cli_tokens: "lower",
+  cache_hit_rate: "higher",
+};
 
 const els = {
   refreshButton: document.getElementById("refreshButton"),
@@ -74,17 +96,50 @@ function money(value) {
 
 function duration(value) {
   if (typeof value !== "number" || Number.isNaN(value)) return "n/a";
-  const totalSeconds = Math.round(value / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
-  if (minutes > 0) return `${minutes}m ${seconds}s`;
-  return `${seconds}s`;
+  return `${(value / 60000).toFixed(1)} min`;
 }
 
 function numberish(value) {
   return typeof value === "number" ? value.toLocaleString() : "n/a";
+}
+
+function tokenK(value) {
+  if (typeof value !== "number" || Number.isNaN(value)) return "n/a";
+  return `${(value / 1000).toFixed(value >= 100000 ? 0 : 1)}k tok`;
+}
+
+function metricComparableValue(run, key) {
+  if (!run) return null;
+  if (key === "inference_done" || key === "eval_reports") {
+    return typeof run[key] === "number" && typeof run.total_cases === "number" && run.total_cases > 0
+      ? run[key] / run.total_cases
+      : null;
+  }
+  return typeof run[key] === "number" ? run[key] : null;
+}
+
+function metricBestRunIds(runs, key) {
+  const direction = METRIC_DIRECTIONS[key];
+  if (!direction) return new Set();
+  const comparable = runs
+    .map((run) => [run.run_id, metricComparableValue(run, key)])
+    .filter(([, value]) => typeof value === "number" && !Number.isNaN(value));
+  if (!comparable.length) return new Set();
+  const values = comparable.map(([, value]) => value);
+  const target = direction === "lower" ? Math.min(...values) : Math.max(...values);
+  return new Set(comparable.filter(([, value]) => value === target).map(([runId]) => runId));
+}
+
+function formatRunMetric(run, key) {
+  if (key === "inference_done" || key === "eval_reports") return `${run[key]}/${run.total_cases}`;
+  if (key.includes("rate")) return percent(run[key]);
+  if (key.includes("cost")) return money(run[key]);
+  if (key.includes("duration")) return duration(run[key]);
+  if (key.includes("tokens")) return tokenK(run[key]);
+  if (key === "cache_hit_rate") return percent(run[key]);
+  if (key === "total_cli_turns") return typeof run[key] === "number" ? `${numberish(run[key])} turns` : "n/a";
+  if (typeof run[key] === "number") return numberish(run[key]);
+  return safeText(run[key]);
 }
 
 function safeText(value) {
@@ -321,13 +376,11 @@ function renderComparison() {
     </thead>
   `;
   const rows = COMPARISON_METRICS.map(([key, label]) => {
+    const bestRunIds = metricBestRunIds(selectedRuns, key);
     const cells = selectedRuns.map((run) => {
-      let rendered = escapeHtml(safeText(run[key]));
-      if (key.includes("rate")) rendered = escapeHtml(percent(run[key]));
-      if (key.includes("cost")) rendered = escapeHtml(money(run[key]));
-      if (key.includes("duration")) rendered = escapeHtml(duration(run[key]));
-      if (key === "inference_done" || key === "eval_reports") rendered = escapeHtml(`${run[key]}/${run.total_cases}`);
-      return `<td>${rendered}</td>`;
+      const rendered = escapeHtml(formatRunMetric(run, key));
+      const bestClass = bestRunIds.has(run.run_id) ? "metric-best" : "";
+      return `<td class="${bestClass}">${rendered}</td>`;
     });
     return `<tr><th>${escapeHtml(label)}</th>${cells.join("")}</tr>`;
   }).join("");
@@ -358,9 +411,13 @@ function renderSummary() {
     ["Resolved", `${numberish(summary.resolved_true_cases)}/${numberish(summary.total_cases)}`, percent(summary.resolution_rate_known_only)],
     ["F2P Micro", percent(summary.f2p_micro_rate_known_only), "targeted failing tests repaired"],
     ["P2P Micro", percent(summary.p2p_micro_pass_rate_known_only), "previously passing tests retained"],
-    ["Total Cost", money(summary.total_cli_cost_usd), "session-level model usage"],
-    ["Avg Duration", duration(summary.avg_cli_duration_ms), "per case"],
-    ["Avg Tool Uses", numberish(summary.avg_tool_use_count), "unique tool_use ids per case"],
+    ["Total Cost", money(summary.total_cli_cost_usd), "USD"],
+    ["Avg Duration", duration(summary.avg_cli_duration_ms), "mean per case"],
+    ["Total Turns", `${numberish(summary.total_cli_turns)} turns`, "aggregate CLI rounds"],
+    ["Input Tokens", tokenK(summary.total_cli_model_input_tokens), "model input"],
+    ["Output Tokens", tokenK(summary.total_cli_model_output_tokens), "model output"],
+    ["Total Tokens", tokenK(summary.total_cli_tokens), "input + output"],
+    ["Cache Hit", percent(summary.cache_hit_rate), "cache_read / (input + cache_read)"],
   ];
 
   els.summaryCards.innerHTML = cards.map(([title, value, foot]) => `
@@ -437,7 +494,7 @@ function renderCases() {
   const rows = filteredCases();
 
   if (!rows.length) {
-    els.caseTableBody.innerHTML = `<tr><td colspan="8" class="empty-state">No cases match the current filters.</td></tr>`;
+    els.caseTableBody.innerHTML = `<tr><td colspan="7" class="empty-state">No cases match the current filters.</td></tr>`;
     return;
   }
 
@@ -458,7 +515,6 @@ function renderCases() {
         <td>${numberish(row.p2p_success)}/${numberish(row.p2p_total)} <br /><span class="run-updated">${escapeHtml(percent(row.p2p_rate))}</span></td>
         <td>${escapeHtml(money(row.cli_total_cost_usd))}</td>
         <td>${escapeHtml(duration(row.cli_duration_ms))}</td>
-        <td>${numberish(row.tool_use_count)} <br /><span class="run-updated">err ${numberish(row.tool_error_count)}</span></td>
         <td><div class="artifact-links">${artifactLinks || "n/a"}</div></td>
       </tr>
     `;
@@ -586,8 +642,6 @@ function renderCaseDetail() {
     ["p2p", `${numberish(selectedCase.p2p_success)}/${numberish(selectedCase.p2p_total)} (${percent(selectedCase.p2p_rate)})`],
     ["cost", money(selectedCase.cli_total_cost_usd)],
     ["duration", duration(selectedCase.cli_duration_ms)],
-    ["tool uses", numberish(selectedCase.tool_use_count)],
-    ["tool errors", numberish(selectedCase.tool_error_count)],
   ];
   els.caseDetailMetrics.innerHTML = metrics.map(([label, value]) => buildChip(label, value)).join("");
   els.caseDetailArtifacts.innerHTML = artifactLinksHtml(selectedCase.artifacts) || "n/a";

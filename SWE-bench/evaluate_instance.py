@@ -18,6 +18,7 @@ parser.add_argument("--instance", type=str, default='...', help="xxx")
 parser.add_argument("--scaffold", type=str, default='OpenHands', help='Your Scaffold: Please choose scaffold in ["OpenHands", "SWE-agent", "CustomCLI"]')
 parser.add_argument("--max_workers", type=int, default='4', help="xxx")
 parser.add_argument("--trajectories_path", type=str, default='OpenHands/evaluation/evaluation_outputs/outputs/__mnt__data__swe_world_2__SWE-EVO__hf_out__hf_jsonl-test/CodeActAgent/deepseek-r1-0528_maxiter_100_N_v0.58.0-no-hint-run_1', help="xxx")
+parser.add_argument("--instances-dir", type=str, default="output_final", help="Directory containing instance json files")
 
 # parser.add_argument("--run_name", type=str, default='kimi-k2-instruct_maxiter_100_N_v0.58.0-no-hint-run_1', help="xxx")
 
@@ -84,14 +85,13 @@ if __name__ =="__main__":
     else:
         print(f'Our current code do not support for your {args.scaffold}, please use scaffold in ["OpenHands", "SWE-agent", "CustomCLI"]')
         exit()
-    root_path = "output_final"
-    root = Path(root_path)
+    root = Path(args.instances_dir)
     files = list(root.glob("*.json"))
     instances = []
     count = 0
     for p in tqdm(files, desc='Loading data ...', total=len(files)):
         if args.instance != '...':
-            if p != Path(f"output_final/{args.instance}.json"): 
+            if p != root / f"{args.instance}.json":
                 continue
         d = json.loads(p.read_text())
         current_version = d.get("end_version") or d.get("version")

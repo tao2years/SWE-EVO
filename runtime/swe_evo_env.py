@@ -6,7 +6,8 @@ import shutil
 from pathlib import Path
 
 
-REPO_ROOT = Path(__file__).resolve().parent
+SCRIPT_ROOT = Path(__file__).resolve().parent
+REPO_ROOT = SCRIPT_ROOT.parent
 CONFIG_ROOT = REPO_ROOT / "config"
 DEFAULT_MODEL_NAME = "MiniMax-M2.5-highspeed"
 DEFAULT_AGENT_NAME = "innercc-cli"
@@ -80,6 +81,7 @@ def cli_bin_candidates() -> list[Path]:
         candidates.append(Path(env_value).expanduser())
     candidates.extend(
         [
+            REPO_ROOT / "dist" / "innercc_0509_dcp",
             REPO_ROOT.parent / "innerCC" / "cli",
             REPO_ROOT.parent.parent / "innerCC" / "cli",
             Path.home() / "repo" / "innerCC" / "cli",

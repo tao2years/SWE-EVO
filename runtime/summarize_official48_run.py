@@ -163,8 +163,18 @@ def parse_eval_log_signature(eval_log_path: Path) -> tuple[str | None, str | Non
     return None, None
 
 
-def collect_case_rows(repo_root: Path, run_root: Path) -> tuple[list[dict], dict]:
-    instances_dir = repo_root / "output_final"
+def collect_case_rows(repo_root: Path, run_root: Path, instances_dir: Path | None = None) -> tuple[list[dict], dict]:
+    if instances_dir is None:
+        candidate = run_root / "input" / "output_final"
+        if candidate.exists():
+            instances_dir = candidate
+        else:
+            metadata = load_json(run_root / "metadata.json", {})
+            metadata_instances_dir = metadata.get("instances_dir") if isinstance(metadata, dict) else None
+            if metadata_instances_dir and Path(metadata_instances_dir).exists():
+                instances_dir = Path(metadata_instances_dir)
+            else:
+                instances_dir = repo_root / "output_final"
     infer_root = run_root / "infer"
     run_eval_root = repo_root / "logs" / "run_evaluation" / f"eval_input_{run_root.name}"
     infer_summary = load_json(infer_root / "inference_summary.json", [])
@@ -304,7 +314,13 @@ def summarize_rows(rows: list[dict], aux: dict) -> dict:
 
     cli_costs = numeric_values(rows, "cli_total_cost_usd")
     cli_durations = numeric_values(rows, "cli_duration_ms")
+    cli_api_durations = numeric_values(rows, "cli_duration_api_ms")
     cli_turns = numeric_values(rows, "cli_num_turns")
+    cli_model_input_tokens = numeric_values(rows, "cli_model_input_tokens")
+    cli_model_output_tokens = numeric_values(rows, "cli_model_output_tokens")
+    cli_model_cache_read_tokens = numeric_values(rows, "cli_model_cache_read_tokens")
+    cli_model_cache_creation_tokens = numeric_values(rows, "cli_model_cache_creation_tokens")
+    trace_request_counts = numeric_values(rows, "trace_request_count")
     tool_counts = numeric_values(rows, "tool_use_count")
     tool_errors = numeric_values(rows, "tool_error_count")
     f2p_rates = rate_values(report_rows, "f2p_rate")
@@ -331,11 +347,30 @@ def summarize_rows(rows: list[dict], aux: dict) -> dict:
         "p2p_micro_pass_rate_known_only": safe_div(p2p_success_total, p2p_total_total),
         "p2p_macro_pass_rate_known_only": statistics.mean(p2p_rates) if p2p_rates else None,
         "p2p_regression_total_known_only": p2p_failure_total,
+        "total_cli_duration_ms": sum(cli_durations) if cli_durations else None,
+        "total_cli_duration_api_ms": sum(cli_api_durations) if cli_api_durations else None,
         "total_cli_cost_usd": sum(cli_costs) if cli_costs else None,
         "avg_cli_cost_usd": statistics.mean(cli_costs) if cli_costs else None,
         "avg_cli_duration_ms": statistics.mean(cli_durations) if cli_durations else None,
         "median_cli_duration_ms": statistics.median(cli_durations) if cli_durations else None,
+        "total_cli_turns": sum(cli_turns) if cli_turns else None,
         "avg_cli_turns": statistics.mean(cli_turns) if cli_turns else None,
+        "total_cli_model_input_tokens": sum(cli_model_input_tokens) if cli_model_input_tokens else None,
+        "total_cli_model_output_tokens": sum(cli_model_output_tokens) if cli_model_output_tokens else None,
+        "total_cli_tokens": (
+            (sum(cli_model_input_tokens) if cli_model_input_tokens else 0)
+            + (sum(cli_model_output_tokens) if cli_model_output_tokens else 0)
+        ) if (cli_model_input_tokens or cli_model_output_tokens) else None,
+        "total_cli_model_cache_read_tokens": sum(cli_model_cache_read_tokens) if cli_model_cache_read_tokens else None,
+        "total_cli_model_cache_creation_tokens": sum(cli_model_cache_creation_tokens) if cli_model_cache_creation_tokens else None,
+        "cache_hit_rate": safe_div(
+            sum(cli_model_cache_read_tokens) if cli_model_cache_read_tokens else 0,
+            (sum(cli_model_input_tokens) if cli_model_input_tokens else 0)
+            + (sum(cli_model_cache_read_tokens) if cli_model_cache_read_tokens else 0),
+        ),
+        "total_trace_request_count": sum(trace_request_counts) if trace_request_counts else None,
+        "total_tool_use_count": sum(tool_counts) if tool_counts else None,
+        "total_tool_error_count": sum(tool_errors) if tool_errors else None,
         "avg_tool_use_count": statistics.mean(tool_counts) if tool_counts else None,
         "avg_tool_error_count": statistics.mean(tool_errors) if tool_errors else None,
         "aggregate_tool_names": aux["aggregate_tool_names"],
@@ -407,9 +442,17 @@ def write_markdown_report(rows: list[dict], summary: dict, output_path: Path, ru
     lines.append("")
     lines.append("## Key Findings")
     lines.append("")
-    lines.append(f"- The run-level monitor says `48/48 inference` and `48/48 evaluation tasks`, but only `{summary['evaluation_report_cases']}` cases produced a real `report.json` artifact.")
+    lines.append(
+        f"- The run-level monitor says `{summary['inference_completed_cases']}/{summary['total_cases']} inference` "
+        f"and `{summary['evaluation_completed_tasks']}/{summary['total_cases']} evaluation tasks`, but only "
+        f"`{summary['evaluation_report_cases']}` cases produced a real `report.json` artifact."
+    )
     lines.append(f"- `Resolved Rate` can currently be computed only on the `{summary['resolution_known_cases']}` report-backed cases: `{fmt_rate(summary['resolution_rate_known_only'])}`.")
-    lines.append(f"- `Resolved Rate` lower bound over all 48 cases is `{fmt_rate(summary['resolution_rate_lower_bound_all_cases'])}` because the remaining cases are evaluator-unknown, not proven unresolved.")
+    lines.append(
+        f"- `Resolved Rate` lower bound over all `{summary['total_cases']}` cases is "
+        f"`{fmt_rate(summary['resolution_rate_lower_bound_all_cases'])}` because the remaining cases are "
+        "evaluator-unknown, not proven unresolved."
+    )
     lines.append(f"- `Fix Rate (micro, report-backed subset)` is `{fmt_rate(summary['f2p_micro_rate_known_only'])}`; `Pass Retention Rate (micro)` is `{fmt_rate(summary['p2p_micro_pass_rate_known_only'])}`.")
     lines.append(f"- Top evaluator failure signature is expected to be visible in anomaly counts: `{summary['anomaly_counts']}`.")
     lines.append("")
@@ -493,14 +536,16 @@ def main() -> None:
     parser.add_argument("--run-root", required=True)
     parser.add_argument("--output-dir", default="")
     parser.add_argument("--repo-root", default="")
+    parser.add_argument("--instances-dir", default="")
     args = parser.parse_args()
 
     run_root = Path(args.run_root).resolve()
-    repo_root = Path(args.repo_root).resolve() if args.repo_root else Path(__file__).resolve().parent
+    repo_root = Path(args.repo_root).resolve() if args.repo_root else Path(__file__).resolve().parent.parent
     output_dir = Path(args.output_dir).resolve() if args.output_dir else run_root / "analysis"
+    instances_dir = Path(args.instances_dir).resolve() if args.instances_dir else None
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    rows, aux = collect_case_rows(repo_root, run_root)
+    rows, aux = collect_case_rows(repo_root, run_root, instances_dir)
     summary = summarize_rows(rows, aux)
 
     (output_dir / "summary.json").write_text(

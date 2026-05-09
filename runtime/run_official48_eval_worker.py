@@ -35,12 +35,13 @@ def ensure_eval_input_link(run_root: Path) -> Path:
 def main() -> None:
     if len(sys.argv) < 2:
         raise SystemExit(
-            "usage: run_official48_eval_worker.py <run_root> [max_concurrency] [--retry-missing-report] [--poll-interval-seconds N]"
+            "usage: run_official48_eval_worker.py <run_root> [max_concurrency] [--retry-missing-report] [--poll-interval-seconds N] [--instances-dir PATH]"
         )
 
     run_root = Path(sys.argv[1]).resolve()
     retry_missing_report = "--retry-missing-report" in sys.argv[2:]
     poll_interval_seconds = 15
+    instances_dir = REPO_ROOT / "output_final"
     raw_args = sys.argv[2:]
     if "--poll-interval-seconds" in raw_args:
         idx = raw_args.index("--poll-interval-seconds")
@@ -48,6 +49,13 @@ def main() -> None:
             poll_interval_seconds = int(raw_args[idx + 1])
         except Exception as exc:
             raise SystemExit("--poll-interval-seconds requires an integer value") from exc
+        raw_args = raw_args[:idx] + raw_args[idx + 2 :]
+    if "--instances-dir" in raw_args:
+        idx = raw_args.index("--instances-dir")
+        try:
+            instances_dir = Path(raw_args[idx + 1]).resolve()
+        except Exception as exc:
+            raise SystemExit("--instances-dir requires a path value") from exc
         raw_args = raw_args[:idx] + raw_args[idx + 2 :]
 
     positional = [arg for arg in raw_args if not arg.startswith("--")]
@@ -127,6 +135,14 @@ def main() -> None:
             }
             active.pop(instance_id, None)
 
+        if retry_missing_report:
+            for instance_id, payload in list(completed.items()):
+                report_json = payload.get("report_json")
+                report_dir = find_report_dir(eval_run_root, instance_id)
+                report_exists = bool((report_json and Path(report_json).exists()) or report_dir is not None)
+                if not report_exists:
+                    completed.pop(instance_id, None)
+
         ready_rows = [row for row in inference_rows if row.get("preds_json")]
         for row in ready_rows:
             instance_id = row["instance_id"]
@@ -137,10 +153,12 @@ def main() -> None:
             log_path = eval_logs_dir / f"{instance_id}.log"
             eval_run_name = eval_input_link.name
             cmd = [
-                "python3",
+                sys.executable,
                 str(REPO_ROOT / "SWE-bench" / "evaluate_instance.py"),
                 "--trajectories_path",
                 str(eval_input_link),
+                "--instances-dir",
+                str(instances_dir),
                 "--instance",
                 instance_id,
                 "--max_workers",

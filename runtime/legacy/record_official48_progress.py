@@ -16,8 +16,9 @@ def read_json(path: Path, default):
         return default
 
 
-def load_instance_order(repo_root: Path) -> list[str]:
-    instances_dir = repo_root / "output_final"
+def load_instance_order(repo_root: Path, instances_dir: Path | None = None) -> list[str]:
+    if instances_dir is None:
+        instances_dir = repo_root / "output_final"
     instance_ids: list[str] = []
     for path in sorted(instances_dir.glob("*.json")):
         payload = read_json(path, {})
@@ -70,9 +71,12 @@ def format_pct(done: int, total: int) -> str:
     return f"{done / total * 100:.1f}%"
 
 
-def build_snapshot(run_root: Path) -> dict:
+def build_snapshot(run_root: Path, instances_dir: Path | None = None) -> dict:
     repo_root = run_root.parents[1]
-    instance_ids = load_instance_order(repo_root)
+    if instances_dir is None:
+        candidate = run_root / "input" / "output_final"
+        instances_dir = candidate if candidate.exists() else repo_root / "output_final"
+    instance_ids = load_instance_order(repo_root, instances_dir)
     total_instances = len(instance_ids) or 48
     infer_summary = read_json(run_root / "infer" / "inference_summary.json", [])
     infer_state = read_json(run_root / "infer" / "inference_status.json", {})
@@ -186,18 +190,20 @@ def main() -> None:
     parser.add_argument("output_md")
     parser.add_argument("--interval-seconds", type=int, default=1800)
     parser.add_argument("--state-file", default="")
+    parser.add_argument("--instances-dir", default="")
     args = parser.parse_args()
 
     run_root = Path(args.run_root).resolve()
     output_md = Path(args.output_md).resolve()
     state_file = Path(args.state_file).resolve() if args.state_file else run_root / "progress_state.json"
+    instances_dir = Path(args.instances_dir).resolve() if args.instances_dir else None
 
     ensure_header(output_md, run_root)
     previous = read_json(state_file, None)
     next_write_at = 0.0
 
     while True:
-        snapshot = build_snapshot(run_root)
+        snapshot = build_snapshot(run_root, instances_dir)
         now = time.time()
         should_write = now >= next_write_at or (snapshot["done"] and not (previous or {}).get("done"))
 

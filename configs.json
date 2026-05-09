@@ -1,0 +1,53 @@
+{
+  "paths": {
+    "repo_root": ".",
+    "runtime_dir": "runtime",
+    "webui_dir": "webui",
+    "subset_manifest": "config/subsets/project-coverage-7.txt",
+    "quick_smoke_manifest": "config/subsets/quick-smoke-5.txt",
+    "official48_source_root": "official48_source",
+    "runs_root": "official48_runs",
+    "single_case_root": "custom_cli_case",
+    "default_env_file": "config/swe-evo.env"
+  },
+  "defaults": {
+    "cli": "innercc",
+    "mode": "direct",
+    "model": "MiniMax-M2.5-highspeed",
+    "infer_max_concurrency": 3,
+    "eval_max_concurrency": 3,
+    "cli_timeout_seconds": 5400,
+    "copy_mode": "copy",
+    "force_workspace": true,
+    "resume": false,
+    "dashboard_port": 18881
+  },
+  "agents": {
+    "innercc": {
+      "cli_bin": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/dist/innercc_0509_dcp",
+      "settings_mode": "direct_generated",
+      "env_file": "config/swe-evo.env",
+      "model": "MiniMax-M2.5-highspeed"
+    },
+    "claude": {
+      "cli_bin": "/usr/bin/claude",
+      "settings_mode": "direct_generated",
+      "env_file": "config/swe-evo.env",
+      "model": "MiniMax-M2.5-highspeed"
+    }
+  },
+  "modes": {
+    "direct": {
+      "pipeline_script": "runtime/run_project_coverage_7_pipeline.sh",
+      "uses_router": false
+    },
+    "router": {
+      "pipeline_script": "runtime/run_project_coverage_7_pipeline_router.sh",
+      "uses_router": true,
+      "settings_file": "config/claude.settings.json",
+      "env_file": "config/swe-evo.env",
+      "router_root": "../llm_router",
+      "router_api_base": "http://127.0.0.1:18783"
+    }
+  }
+}

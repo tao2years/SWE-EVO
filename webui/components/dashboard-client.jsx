@@ -9,7 +9,6 @@ const CASE_COLUMNS = [
   { key: "p2p_rate", label: "p2p", defaultDirection: "desc" },
   { key: "cli_total_cost_usd", label: "cost", defaultDirection: "desc" },
   { key: "cli_duration_ms", label: "duration", defaultDirection: "desc" },
-  { key: "tool_use_count", label: "tools", defaultDirection: "desc" },
   { key: null, label: "artifacts" },
 ];
 
@@ -25,7 +24,30 @@ const COMPARISON_METRICS = [
   ["p2p_micro_pass_rate", "p2p micro"],
   ["total_cli_cost_usd", "total cost"],
   ["avg_cli_duration_ms", "avg duration"],
+  ["total_cli_turns", "total turns"],
+  ["total_cli_model_input_tokens", "input tok"],
+  ["total_cli_model_output_tokens", "output tok"],
+  ["total_cli_tokens", "total tok"],
+  ["cache_hit_rate", "cache hit"],
 ];
+
+const METRIC_DIRECTIONS = {
+  active_count: "lower",
+  failed_count: "lower",
+  inference_done: "higher",
+  eval_reports: "higher",
+  resolved_true_cases: "higher",
+  resolution_rate: "higher",
+  f2p_micro_rate: "higher",
+  p2p_micro_pass_rate: "higher",
+  total_cli_cost_usd: "lower",
+  avg_cli_duration_ms: "lower",
+  total_cli_turns: "lower",
+  total_cli_model_input_tokens: "lower",
+  total_cli_model_output_tokens: "lower",
+  total_cli_tokens: "lower",
+  cache_hit_rate: "higher",
+};
 
 function percent(value) {
   return typeof value === "number" ? `${(value * 100).toFixed(1)}%` : "n/a";
@@ -39,17 +61,72 @@ function duration(value) {
   if (typeof value !== "number" || Number.isNaN(value)) {
     return "n/a";
   }
-  const totalSeconds = Math.round(value / 1000);
-  const hours = Math.floor(totalSeconds / 3600);
-  const minutes = Math.floor((totalSeconds % 3600) / 60);
-  const seconds = totalSeconds % 60;
-  if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
-  if (minutes > 0) return `${minutes}m ${seconds}s`;
-  return `${seconds}s`;
+  return `${(value / 60000).toFixed(1)} min`;
 }
 
 function numberish(value) {
   return typeof value === "number" ? value.toLocaleString() : "n/a";
+}
+
+function tokenK(value) {
+  if (typeof value !== "number" || Number.isNaN(value)) {
+    return "n/a";
+  }
+  return `${(value / 1000).toFixed(value >= 100000 ? 0 : 1)}k tok`;
+}
+
+function metricComparableValue(run, key) {
+  if (!run) return null;
+  if (key === "inference_done" || key === "eval_reports") {
+    return typeof run[key] === "number" && typeof run.total_cases === "number" && run.total_cases > 0
+      ? run[key] / run.total_cases
+      : null;
+  }
+  return typeof run[key] === "number" ? run[key] : null;
+}
+
+function metricBestRunIds(runs, key) {
+  const direction = METRIC_DIRECTIONS[key];
+  if (!direction) return new Set();
+  const comparable = runs
+    .map((run) => [run.run_id, metricComparableValue(run, key)])
+    .filter(([, value]) => typeof value === "number" && !Number.isNaN(value));
+  if (!comparable.length) return new Set();
+  const values = comparable.map(([, value]) => value);
+  const target = direction === "lower" ? Math.min(...values) : Math.max(...values);
+  return new Set(
+    comparable
+      .filter(([, value]) => value === target)
+      .map(([runId]) => runId),
+  );
+}
+
+function formatRunMetric(run, key) {
+  if (key === "inference_done" || key === "eval_reports") {
+    return `${run[key]}/${run.total_cases}`;
+  }
+  if (key.includes("rate")) {
+    return percent(run[key]);
+  }
+  if (key.includes("cost")) {
+    return money(run[key]);
+  }
+  if (key.includes("duration")) {
+    return duration(run[key]);
+  }
+  if (key.includes("tokens")) {
+    return tokenK(run[key]);
+  }
+  if (key === "cache_hit_rate") {
+    return percent(run[key]);
+  }
+  if (key === "total_cli_turns") {
+    return typeof run[key] === "number" ? `${numberish(run[key])} turns` : "n/a";
+  }
+  if (typeof run[key] === "number") {
+    return numberish(run[key]);
+  }
+  return safeText(run[key]);
 }
 
 function safeText(value) {
@@ -664,23 +741,25 @@ export default function DashboardClient({ initialData }) {
                   </tr>
                 </thead>
                 <tbody>
-                  {COMPARISON_METRICS.map(([key, label]) => (
+                  {(() => {
+                    const selectedRuns = runs.filter((run) => compareRunIds.has(run.run_id));
+                    return COMPARISON_METRICS.map(([key, label]) => {
+                      const bestRunIds = metricBestRunIds(selectedRuns, key);
+                      return (
                     <tr key={key}>
                       <th>{label}</th>
-                        {runs
-                          .filter((run) => compareRunIds.has(run.run_id))
-                          .map((run) => {
-                          let rendered = safeText(run[key]);
-                          if (key.includes("rate")) rendered = percent(run[key]);
-                          if (key.includes("cost")) rendered = money(run[key]);
-                          if (key.includes("duration")) rendered = duration(run[key]);
-                          if (key === "inference_done" || key === "eval_reports") {
-                            rendered = `${run[key]}/${run.total_cases}`;
-                          }
-                          return <td key={`${run.run_id}-${key}`}>{rendered}</td>;
-                        })}
+                        {selectedRuns.map((run) => (
+                          <td
+                            className={bestRunIds.has(run.run_id) ? "metric-best" : ""}
+                            key={`${run.run_id}-${key}`}
+                          >
+                            {formatRunMetric(run, key)}
+                          </td>
+                        ))}
                     </tr>
-                  ))}
+                    );
+                    });
+                  })()}
                 </tbody>
               </table>
             </div>
@@ -748,9 +827,13 @@ export default function DashboardClient({ initialData }) {
                 ["Resolved", `${numberish(selectedRunDetail.summary?.resolved_true_cases)}/${numberish(selectedRunDetail.summary?.total_cases)}`, percent(selectedRunDetail.summary?.resolution_rate_known_only)],
                 ["F2P Micro", percent(selectedRunDetail.summary?.f2p_micro_rate_known_only), "targeted failing tests repaired"],
                 ["P2P Micro", percent(selectedRunDetail.summary?.p2p_micro_pass_rate_known_only), "previously passing tests retained"],
-                ["Total Cost", money(selectedRunDetail.summary?.total_cli_cost_usd), "session-level model usage"],
-                ["Avg Duration", duration(selectedRunDetail.summary?.avg_cli_duration_ms), "per case"],
-                ["Avg Tool Uses", numberish(selectedRunDetail.summary?.avg_tool_use_count), "unique tool_use ids per case"],
+                ["Total Cost", money(selectedRunDetail.summary?.total_cli_cost_usd), "USD"],
+                ["Avg Duration", duration(selectedRunDetail.summary?.avg_cli_duration_ms), "mean per case"],
+                ["Total Turns", `${numberish(selectedRunDetail.summary?.total_cli_turns)} turns`, "aggregate CLI rounds"],
+                ["Input Tokens", tokenK(selectedRunDetail.summary?.total_cli_model_input_tokens), "model input"],
+                ["Output Tokens", tokenK(selectedRunDetail.summary?.total_cli_model_output_tokens), "model output"],
+                ["Total Tokens", tokenK(selectedRunDetail.summary?.total_cli_tokens), "input + output"],
+                ["Cache Hit", percent(selectedRunDetail.summary?.cache_hit_rate), "cache_read / (input + cache_read)"],
               ].map(([title, value, foot]) => (
                 <article className="summary-card" key={title}>
                   <h3>{title}</h3>
@@ -1064,18 +1147,13 @@ export default function DashboardClient({ initialData }) {
                       <td>{money(row.cli_total_cost_usd)}</td>
                       <td>{duration(row.cli_duration_ms)}</td>
                       <td>
-                        {numberish(row.tool_use_count)}
-                        <br />
-                        <span className="run-updated">err {numberish(row.tool_error_count)}</span>
-                      </td>
-                      <td>
                         <ArtifactLinks artifacts={row.artifacts} />
                       </td>
                     </tr>
                   ))
                 ) : (
                   <tr>
-                    <td className="empty-state" colSpan={8}>
+                    <td className="empty-state" colSpan={7}>
                       No cases match the current filters.
                     </td>
                   </tr>
@@ -1115,8 +1193,6 @@ export default function DashboardClient({ initialData }) {
                 <DetailChip label="p2p" value={`${numberish(selectedCase.p2p_success)}/${numberish(selectedCase.p2p_total)} (${percent(selectedCase.p2p_rate)})`} />
                 <DetailChip label="cost" value={money(selectedCase.cli_total_cost_usd)} />
                 <DetailChip label="duration" value={duration(selectedCase.cli_duration_ms)} />
-                <DetailChip label="tool uses" value={numberish(selectedCase.tool_use_count)} />
-                <DetailChip label="tool errors" value={numberish(selectedCase.tool_error_count)} />
               </div>
 
               <div className="case-detail-block">
