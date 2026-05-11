@@ -178,6 +178,7 @@ notebooks/
 /output/
 /output_final/
 /hf_out/
+/backup/
 custom_cli_case/run/
 custom_cli_case/workspace/
 custom_cli_case/logs/
@@ -188,3 +189,4 @@ run_innercc_batch.out
 /instruction.md
 config/claude.settings.json
 config/swe-evo.env
+config/local.launch.env

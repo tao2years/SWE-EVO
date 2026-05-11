@@ -1,15 +1,17 @@
 # SWE-EVO Subset Run
 
-当前仓库已经整理成“根目录只保留核心入口 + 配置 + 文档”的结构。
+自己手动使用时，只需要记住两种入口：
 
-根目录现在主要看这几个文件：
+- 直接复制命令启动
+- 改一份本地配置文件后一键后台启动
+
+根目录主要看：
 
 - `run_evaluation.py`: 统一入口
-- `configs.json`: 实验默认参数
+- `configs.json`: 默认参数
 - `README.md`
-- `AGENTS.md`
 
-其余运行脚本已经下沉到：
+运行脚本和看板代码在：
 
 - `runtime/`
 - `runtime/legacy/`
@@ -29,7 +31,125 @@ source .venv/bin/activate
 2. 安装 `runtime/requirements.swe-evo.txt`
 3. 在 `webui/` 下执行 `npm ci`
 
-## 2. 查看配置
+## 2. 最短路径：直接复制命令
+
+### 后台启动看板
+
+```bash
+source .venv/bin/activate
+python3 run_evaluation.py dashboard start --background --session-name subset-run-dashboard
+```
+
+打开：
+
+- `http://127.0.0.1:18881`
+
+查看后台会话：
+
+```bash
+tmux attach -t subset-run-dashboard
+```
+
+### 后台启动评测
+
+跑默认 `project-coverage-7`：
+
+```bash
+source .venv/bin/activate
+python3 run_evaluation.py run --cli innercc --background --session-name subset-innercc-run
+```
+
+跑 `claude`：
+
+```bash
+source .venv/bin/activate
+python3 run_evaluation.py run --cli claude --background --session-name subset-claude-run
+```
+
+常用变体：
+
+```bash
+source .venv/bin/activate
+python3 run_evaluation.py run \
+  --cli innercc \
+  --mode direct \
+  --manifest config/subsets/project-coverage-7.txt \
+  --infer-max-concurrency 3 \
+  --eval-max-concurrency 3 \
+  --cli-timeout-seconds 5400 \
+  --background \
+  --session-name subset-innercc-run
+```
+
+低成本 smoke：
+
+```bash
+source .venv/bin/activate
+python3 run_evaluation.py run \
+  --cli innercc \
+  --limit 1 \
+  --max-turns 1 \
+  --background \
+  --session-name subset-innercc-smoke
+```
+
+查看后台会话：
+
+```bash
+tmux attach -t subset-innercc-run
+```
+
+## 3. 推荐方式：改配置后一键启动
+
+先复制模板：
+
+```bash
+cp config/local.launch.env.example config/local.launch.env
+```
+
+然后修改这几个最常用配置：
+
+- `RUN_CLI=innercc` 或 `claude`
+- `RUN_MODE=direct` 或 `router`
+- `RUN_MANIFEST=config/subsets/project-coverage-7.txt`
+- `RUN_INFER_MAX_CONCURRENCY=3`
+- `RUN_EVAL_MAX_CONCURRENCY=3`
+- `RUN_SESSION_NAME=subset-innercc-run`
+- `DASHBOARD_SESSION_NAME=subset-run-dashboard`
+
+一键同时启动看板和评测：
+
+```bash
+bash runtime/start_local_stack.sh --config config/local.launch.env all
+```
+
+只启动看板：
+
+```bash
+bash runtime/start_local_stack.sh --config config/local.launch.env dashboard
+```
+
+只启动评测：
+
+```bash
+bash runtime/start_local_stack.sh --config config/local.launch.env run
+```
+
+这个脚本会：
+
+- 优先使用 `.venv/bin/python3`
+- 自动打印实际执行的命令
+- 用 `tmux` 后台启动你配置好的看板和实验
+
+模板文件：
+
+- `config/local.launch.env.example`
+
+脚本：
+
+- `runtime/start_local_stack.sh`
+
+## 4. 查看配置
 
 ```bash
 python3 run_evaluation.py show-config
@@ -61,7 +181,7 @@ python3 run_evaluation.py show-config
 - 当前默认 `innercc` 已固定到仓库内归档快照 `dist/innercc_0509_dcp`
 - 如果手动传 `--cli-bin`，入口脚本会先转成绝对路径，再传给 case workspace
 
-## 3. 启动看板
+## 5. 启动看板
 
 开发模式：
 
@@ -90,7 +210,7 @@ python3 run_evaluation.py dashboard start --background --session-name subset-run
 - 前端工程现在在 `webui/`
 - 看板仍然读取仓库根下的 `official48_runs/` 和 `logs/run_evaluation/`
 
-## 4. 跑子集
+## 6. 跑子集
 
 默认入口：
 
@@ -152,7 +272,7 @@ python3 run_evaluation.py run --cli innercc --mode direct --dry-run
 python3 run_evaluation.py run --cli innercc --mode router --dry-run
 ```
 
-## 5. 跑单题
+## 7. 跑单题
 
 当前单题 runner 仍保留在：
 
@@ -164,7 +284,7 @@ python3 run_evaluation.py run --cli innercc --mode router --dry-run
 bash ./custom_cli_case/run_requests_case.sh
 ```
 
-## 6. 结果位置
+## 8. 结果位置
 
 每次子集 run 输出到：
 
@@ -187,7 +307,7 @@ official48_runs/<run_id>/
 logs/run_evaluation/eval_input_<run_id>/
 ```
 
-## 7. 常用维护命令
+## 9. 常用维护命令
 
 刷新 summary：
 
@@ -229,14 +349,13 @@ python3 runtime/sanitize_model_patch.py \
   --runs-root official48_runs/<run_id>/infer/runs
 ```
 
-## 8. 目录约定
+## 10. 目录约定
 
 - `runtime/`: 当前仍在使用的运行脚本
 - `runtime/legacy/`: 保留但非主线入口的旧脚本
 - `webui/`: Next.js 看板
-- `backup/root_refactor_20260509/`: 本次根目录重构备份
 
-## 9. 当前建议
+## 11. 当前建议
 
 如果只是测通链路：
 
