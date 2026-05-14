@@ -1,0 +1,7 @@
+{
+  "dask__dask_2024.3.1_2024.4.0": {
+    "model_name_or_path": "innercc_0509_context",
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "model_patch": "diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py\nindex 3b24d2f..c05cb05 100644\n--- a/dask/dataframe/groupby.py\n+++ b/dask/dataframe/groupby.py\n@@ -3207,14 +3207,24 @@ def _unique_aggregate(series_gb, name=None):\n \n def _value_counts(x, **kwargs):\n     if not x.groups or all(\n-        pd.isna(key) for key in flatten(x.groups.keys(), container=tuple)\n+        all(pd.isna(k) for k in key)\n+        for key in flatten(x.groups.keys(), container=tuple)\n     ):\n-        return pd.Series(dtype=int)\n+        # Return empty Series with correct index structure for aggregation\n+        keys = x.keys if isinstance(x.keys, str) else list(x.keys)\n+        index_names = [keys] if isinstance(keys, str) else keys\n+        index_names.append(x.obj.name)\n+        empty_index = pd.MultiIndex.from_arrays(\n+            [[] for _ in index_names], names=index_names\n+        )\n+        return pd.Series(dtype=int, name=\"count\", index=empty_index)\n     else:\n         return x.value_counts(**kwargs)\n \n \n def _value_counts_aggregate(series_gb):\n+    if not len(series_gb):\n+        return pd.Series(dtype=int, name=\"count\", index=series_gb.obj.index[:0])\n     data = {k: v.groupby(level=-1).sum() for k, v in series_gb}\n     res = pd.concat(data, names=series_gb.obj.index.names)\n     typed_levels = {\n"
+  }
+}

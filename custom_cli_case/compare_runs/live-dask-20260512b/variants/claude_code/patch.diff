@@ -1,0 +1,21 @@
+diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py
+index 3b24d2f..4ea41b4 100644
+--- a/dask/dataframe/groupby.py
++++ b/dask/dataframe/groupby.py
+@@ -3209,7 +3209,15 @@ def _value_counts(x, **kwargs):
+     if not x.groups or all(
+         pd.isna(key) for key in flatten(x.groups.keys(), container=tuple)
+     ):
+-        return pd.Series(dtype=int)
++        # Return empty series with proper MultiIndex structure
++        keys = x.keys
++        value_name = x.obj.name
++        if isinstance(keys, str):
++            names = [keys, value_name]
++        else:
++            names = list(keys) + [value_name]
++        empty_index = pd.MultiIndex.from_tuples([], names=names)
++        return pd.Series([], index=empty_index, dtype=int)
+     else:
+         return x.value_counts(**kwargs)
+ 

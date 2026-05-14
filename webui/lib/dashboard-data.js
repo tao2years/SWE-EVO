@@ -16,12 +16,13 @@ function resolveRepoPath(relativePath) {
 }
 
 const RUNS_ROOT = joinRepoPath("official48_runs");
+const COMPARE_RUNS_ROOT = joinRepoPath("custom_cli_case", "compare_runs");
 const STATIC_ROOT = path.join(/* turbopackIgnore: true */ WEBUI_ROOT, "dashboard");
 const LOGS_ROOT = joinRepoPath("logs", "run_evaluation");
 const SUMMARY_SCRIPT = joinRepoPath("runtime", "summarize_official48_run.py");
 const BAD_CASE_ROOT = joinRepoPath("docs", "bad_case_analysis");
 const BAD_CASE_REVIEW_PATH = path.join(BAD_CASE_ROOT, "review_status.json");
-const RUN_ID_RE = /^\d{8}-\d{6}(?:-.+)?$/;
+const RUN_ID_RE = /^\d{8}(?:-\d{6})?(?:-.+)?$/;
 const SYSTEM_REMINDER_RE = /<system-reminder>[\s\S]*?<\/system-reminder>\s*/g;
 const BENCHMARK_ID_RE = /\n*\[id:[^\]]+\]\s*$/;
 const TRACE_CACHE = new Map();
@@ -71,6 +72,10 @@ async function loadJson(filePath, fallback) {
   } catch {
     return fallback;
   }
+}
+
+async function writeJson(filePath, payload) {
+  await fs.writeFile(filePath, `${JSON.stringify(payload, null, 2)}\n`, "utf-8");
 }
 
 function parseJsonBlob(blob, fallback) {
@@ -176,8 +181,17 @@ async function detectRuns() {
   const entries = await fs.readdir(RUNS_ROOT, { withFileTypes: true });
   return entries
     .filter((entry) => entry.isDirectory() && RUN_ID_RE.test(entry.name))
-    .map((entry) => path.join(RUNS_ROOT, entry.name))
-    .sort((left, right) => path.basename(right).localeCompare(path.basename(left)));
+    .map((entry) => path.join(RUNS_ROOT, entry.name));
+}
+
+async function detectCompareRuns() {
+  if (!(await pathExists(COMPARE_RUNS_ROOT))) {
+    return [];
+  }
+  const entries = await fs.readdir(COMPARE_RUNS_ROOT, { withFileTypes: true });
+  return entries
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => path.join(COMPARE_RUNS_ROOT, entry.name));
 }
 
 async function collectFiles(rootDir, targetName, results = []) {
@@ -455,6 +469,8 @@ function expectedTotalCases(summaryData, monitor, progress, inferState) {
 }
 
 const ACTIVE_STALL_MINUTES = 10;
+const HEARTBEAT_TIMEOUT_MINUTES = 60;
+const TERMINAL_LIFECYCLE_STATES = new Set(["completed", "timed_out", "terminated", "failed", "interrupted"]);
 
 function minutesSinceTimestamp(value) {
   if (typeof value !== "string" || !value) {
@@ -475,6 +491,45 @@ function timestampMsFromString(value) {
   return Number.isNaN(parsed.valueOf()) ? null : parsed.valueOf();
 }
 
+function currentLocalTimestamp() {
+  const date = new Date();
+  const pad = (value) => String(value).padStart(2, "0");
+  return [
+    date.getFullYear(),
+    pad(date.getMonth() + 1),
+    pad(date.getDate()),
+  ].join("-") + ` ${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+}
+
+function latestTimestampString(values) {
+  let bestValue = null;
+  let bestMs = null;
+  for (const value of values) {
+    const ms = timestampMsFromString(value);
+    if (ms === null) {
+      continue;
+    }
+    if (bestMs === null || ms > bestMs) {
+      bestMs = ms;
+      bestValue = value;
+    }
+  }
+  return bestValue;
+}
+
+function runLifecyclePath(runDir) {
+  return path.join(runDir, "run_lifecycle.json");
+}
+
+async function loadRunLifecycle(runDir) {
+  const lifecycle = await loadJson(runLifecyclePath(runDir), {});
+  return lifecycle && typeof lifecycle === "object" ? lifecycle : {};
+}
+
+async function writeRunLifecycle(runDir, payload) {
+  await writeJson(runLifecyclePath(runDir), payload);
+}
+
 export async function buildRunOverview(runDir) {
   await ensureSummary(runDir);
 
@@ -485,6 +540,7 @@ export async function buildRunOverview(runDir) {
   const progress = await loadJson(path.join(runDir, "progress_state.json"), {});
   const inferState = await loadJson(path.join(runDir, "infer", "inference_status.json"), {});
   const evalState = await loadJson(path.join(runDir, "eval_worker_status.json"), {});
+  let lifecycle = await loadRunLifecycle(runDir);
   const summary = summaryData?.summary ?? {};
 
   const totalCases = expectedTotalCases(summaryData, monitor, progress, inferState);
@@ -524,22 +580,69 @@ export async function buildRunOverview(runDir) {
   })();
   const routerQuietMinutes = minutesSinceTimestamp(effectiveRouterActivity);
   const done = Boolean(monitor?.done || (inferState?.done && evalState?.done));
-  const status = done
+  const heartbeatUpdatedAt = latestTimestampString([
+    monitor?.timestamp ?? null,
+    progress?.timestamp ?? null,
+    inferState?.timestamp ?? null,
+    evalState?.timestamp ?? null,
+  ]);
+  const heartbeatAgeMinutes = minutesSinceTimestamp(heartbeatUpdatedAt);
+  const hasProgress = Boolean(inferenceDone || evalCompletedTasks || evalReports || activeCount || evalActiveCount);
+  const lifecycleState = typeof lifecycle?.state === "string" ? lifecycle.state : null;
+
+  if (
+    !done
+    && hasProgress
+    && heartbeatAgeMinutes !== null
+    && heartbeatAgeMinutes >= HEARTBEAT_TIMEOUT_MINUTES
+    && !TERMINAL_LIFECYCLE_STATES.has(lifecycleState ?? "")
+  ) {
+    lifecycle = {
+      ...lifecycle,
+      state: "timed_out",
+      reason: lifecycle?.reason || "heartbeat_timeout_inferred",
+      timed_out_at: lifecycle?.timed_out_at || currentLocalTimestamp(),
+      heartbeat_timeout_minutes: HEARTBEAT_TIMEOUT_MINUTES,
+      heartbeat_age_minutes: heartbeatAgeMinutes,
+      updated_at: currentLocalTimestamp(),
+    };
+    await writeRunLifecycle(runDir, lifecycle);
+  }
+
+  const effectiveLifecycleState = typeof lifecycle?.state === "string" ? lifecycle.state : null;
+  const updatedAt = latestTimestampString([
+    lifecycle?.updated_at ?? null,
+    lifecycle?.finished_at ?? null,
+    lifecycle?.timed_out_at ?? null,
+    monitor?.timestamp ?? null,
+    progress?.timestamp ?? null,
+    inferState?.timestamp ?? null,
+    evalState?.timestamp ?? null,
+  ]);
+  const status = effectiveLifecycleState === "completed"
     ? "completed"
-    : activeCount
-      ? (routerQuietMinutes !== null && routerQuietMinutes >= ACTIVE_STALL_MINUTES && !evalActiveCount ? "stalled" : "running")
-      : evalActiveCount
-        ? "running"
-        : inferenceDone || evalCompletedTasks || evalReports
-          ? "stalled"
-          : "idle";
+    : effectiveLifecycleState === "timed_out"
+      ? "timed_out"
+      : effectiveLifecycleState === "terminated" || effectiveLifecycleState === "failed" || effectiveLifecycleState === "interrupted"
+        ? "interrupted"
+        : done
+          ? "completed"
+          : heartbeatAgeMinutes !== null && heartbeatAgeMinutes >= HEARTBEAT_TIMEOUT_MINUTES && hasProgress
+            ? "timed_out"
+            : activeCount
+              ? (routerQuietMinutes !== null && routerQuietMinutes >= ACTIVE_STALL_MINUTES && !evalActiveCount ? "stalled" : "running")
+              : evalActiveCount
+                ? "running"
+                : inferenceDone || evalCompletedTasks || evalReports
+                  ? "stalled"
+                  : "idle";
 
   return {
     run_id: runId,
     display_name: normalizeDisplayName(metadata?.display_name),
     run_root: toRepoRelative(runDir),
     status,
-    updated_at: monitor?.timestamp ?? progress?.timestamp ?? inferState?.timestamp ?? evalState?.timestamp ?? null,
+    updated_at: updatedAt,
     inference_done: inferenceDone,
     eval_reports: evalReports,
     eval_completed_tasks: evalCompletedTasks,
@@ -552,6 +655,11 @@ export async function buildRunOverview(runDir) {
     active_instances: activeInstances,
     last_router_activity: effectiveRouterActivity,
     router_quiet_minutes: routerQuietMinutes,
+    heartbeat_updated_at: heartbeatUpdatedAt,
+    heartbeat_age_minutes: heartbeatAgeMinutes,
+    heartbeat_timeout_minutes: lifecycle?.heartbeat_timeout_minutes ?? HEARTBEAT_TIMEOUT_MINUTES,
+    lifecycle_state: effectiveLifecycleState,
+    lifecycle_reason: typeof lifecycle?.reason === "string" ? lifecycle.reason : null,
     total_cases: totalCases,
     summary_available: Boolean(summaryData?.summary),
     resolved_true_cases: summary?.resolved_true_cases ?? null,
@@ -570,12 +678,78 @@ export async function buildRunOverview(runDir) {
   };
 }
 
+function compareRunRoute(compareId) {
+  return `/compare-runs/${encodeURIComponent(compareId)}`;
+}
+
+async function buildCompareRunOverview(compareDir) {
+  const compareId = path.basename(compareDir);
+  const metadata = await loadJson(path.join(compareDir, "metadata.json"), {});
+  const comparison = await loadJson(path.join(compareDir, "comparison.json"), {});
+  const runSummaries = await loadJson(path.join(compareDir, "run_summaries.json"), {});
+  const comparisonStat = await statSafe(path.join(compareDir, "comparison.json"));
+  const metadataStat = await statSafe(path.join(compareDir, "metadata.json"));
+  const variants = Object.keys(runSummaries || {});
+  const updatedMs = Math.max(comparisonStat?.mtimeMs ?? 0, metadataStat?.mtimeMs ?? 0);
+
+  return {
+    compare_id: compareId,
+    instance_id: comparison?.instance_id ?? metadata?.instance_id ?? null,
+    repo: metadata?.repo ?? null,
+    base_commit: metadata?.base_commit ?? null,
+    execution_mode: metadata?.execution_mode ?? "serial",
+    variant_order: Array.isArray(metadata?.variant_order) ? metadata.variant_order : [],
+    model: metadata?.model ?? null,
+    updated_at: updatedMs ? new Date(updatedMs).toISOString() : null,
+    variant_names: variants,
+    selected_by: comparison?.selected_by ?? metadata?.selected_by ?? null,
+    shared_prefix_trace_count: comparison?.shared_prefix?.shared_prefix_trace_count ?? null,
+    claude_trace_count: comparison?.claude_code?.trace_count ?? null,
+    innercc_trace_count: comparison?.innercc_0509_context?.trace_count ?? null,
+    comparison_url: await artifactUrl(path.join(compareDir, "comparison.md")),
+    detail_url: compareRunRoute(compareId),
+  };
+}
+
+export async function buildCompareRunsOverview() {
+  const compareDirs = await detectCompareRuns();
+  const runs = [];
+  for (const compareDir of compareDirs) {
+    runs.push(await buildCompareRunOverview(compareDir));
+  }
+  runs.sort((left, right) => {
+    const leftTs = timestampMsFromString(left?.updated_at);
+    const rightTs = timestampMsFromString(right?.updated_at);
+    if (leftTs !== null && rightTs !== null && leftTs !== rightTs) {
+      return rightTs - leftTs;
+    }
+    if (leftTs !== null && rightTs === null) return -1;
+    if (leftTs === null && rightTs !== null) return 1;
+    return String(right?.compare_id || "").localeCompare(String(left?.compare_id || ""));
+  });
+  return { compareRuns: runs };
+}
+
 export async function scanRuns() {
   const runDirs = await detectRuns();
   const runs = [];
   for (const runDir of runDirs) {
     runs.push(await buildRunOverview(runDir));
   }
+  runs.sort((left, right) => {
+    const leftTs = timestampMsFromString(left?.updated_at);
+    const rightTs = timestampMsFromString(right?.updated_at);
+    if (leftTs !== null && rightTs !== null && leftTs !== rightTs) {
+      return rightTs - leftTs;
+    }
+    if (leftTs !== null && rightTs === null) {
+      return -1;
+    }
+    if (leftTs === null && rightTs !== null) {
+      return 1;
+    }
+    return String(right?.run_id || "").localeCompare(String(left?.run_id || ""));
+  });
   return { runs };
 }
 
@@ -895,14 +1069,13 @@ function traceBundlePath(runId, instanceId) {
   return path.join(RUNS_ROOT, runId, "infer", "runs", instanceId, "router_trace_bundle.json");
 }
 
-export async function buildCaseTraceDetail(runId, instanceId) {
-  const bundlePath = traceBundlePath(runId, instanceId);
+async function buildTraceDetailFromBundlePath(bundlePath, cacheLabel = bundlePath) {
   if (!(await pathExists(bundlePath))) {
     return null;
   }
 
   const stat = await fs.stat(bundlePath);
-  const cacheKey = `${bundlePath}:${stat.mtimeMs}`;
+  const cacheKey = `${cacheLabel}:${stat.mtimeMs}`;
   if (TRACE_CACHE.has(cacheKey)) {
     return TRACE_CACHE.get(cacheKey);
   }
@@ -962,8 +1135,6 @@ export async function buildCaseTraceDetail(runId, instanceId) {
   }
 
   const result = {
-    run_id: runId,
-    instance_id: instanceId,
     trace_artifact_url: await artifactUrl(bundlePath),
     trace_count: traces.length,
     turns,
@@ -979,13 +1150,105 @@ export async function buildCaseTraceDetail(runId, instanceId) {
   return result;
 }
 
+export async function buildCaseTraceDetail(runId, instanceId) {
+  const bundlePath = traceBundlePath(runId, instanceId);
+  const detail = await buildTraceDetailFromBundlePath(bundlePath, `${runId}:${instanceId}`);
+  if (!detail) {
+    return null;
+  }
+  return {
+    run_id: runId,
+    instance_id: instanceId,
+    ...detail,
+  };
+}
+
+function compareRunDir(compareId) {
+  return path.join(COMPARE_RUNS_ROOT, compareId);
+}
+
+function compareVariantDir(compareId, variantName) {
+  return path.join(compareRunDir(compareId), "variants", variantName);
+}
+
+export async function buildCompareRunDetail(compareId) {
+  const rootDir = compareRunDir(compareId);
+  if (!(await pathExists(rootDir))) {
+    return null;
+  }
+
+  const metadata = await loadJson(path.join(rootDir, "metadata.json"), {});
+  const comparison = await loadJson(path.join(rootDir, "comparison.json"), {});
+  const instance = await loadJson(path.join(rootDir, "instance.json"), {});
+  const runSummaries = await loadJson(path.join(rootDir, "run_summaries.json"), {});
+
+  const variantEntries = [];
+  for (const variantName of Object.keys(runSummaries || {})) {
+    const variantRoot = compareVariantDir(compareId, variantName);
+    const runSummary = await loadJson(path.join(variantRoot, "run_summary.json"), {});
+    const traceSummary = await loadJson(path.join(variantRoot, "router_trace_summary.json"), {});
+    variantEntries.push({
+      variant_name: variantName,
+      run_summary: runSummary,
+      trace_summary: traceSummary?.summary ?? null,
+      artifacts: {
+        comparison_md: await artifactUrl(path.join(rootDir, "comparison.md")),
+        comparison_json: await artifactUrl(path.join(rootDir, "comparison.json")),
+        metadata_json: await artifactUrl(path.join(rootDir, "metadata.json")),
+        cli_result: await artifactUrl(path.join(variantRoot, "cli_result.json")),
+        cli_stdout: await artifactUrl(path.join(variantRoot, "cli_stdout.log")),
+        cli_stderr: await artifactUrl(path.join(variantRoot, "cli_stderr.log")),
+        patch_diff: await artifactUrl(path.join(variantRoot, "patch.diff")),
+        preds_json: await artifactUrl(path.join(variantRoot, "preds.json")),
+        router_trace_bundle: await artifactUrl(path.join(variantRoot, "router_trace_bundle.json")),
+        router_trace_summary: await artifactUrl(path.join(variantRoot, "router_trace_summary.json")),
+        router_trace_timeline: await artifactUrl(path.join(variantRoot, "router_trace_timeline.md")),
+        run_summary: await artifactUrl(path.join(variantRoot, "run_summary.json")),
+      },
+    });
+  }
+
+  variantEntries.sort((left, right) => left.variant_name.localeCompare(right.variant_name));
+
+  return {
+    compare_id: compareId,
+    detail_url: compareRunRoute(compareId),
+    metadata,
+    comparison,
+    instance,
+    variants: variantEntries,
+    artifacts: {
+      comparison_md: await artifactUrl(path.join(rootDir, "comparison.md")),
+      comparison_json: await artifactUrl(path.join(rootDir, "comparison.json")),
+      metadata_json: await artifactUrl(path.join(rootDir, "metadata.json")),
+      run_summaries_json: await artifactUrl(path.join(rootDir, "run_summaries.json")),
+      instance_json: await artifactUrl(path.join(rootDir, "instance.json")),
+    },
+  };
+}
+
+export async function buildCompareVariantTraceDetail(compareId, variantName) {
+  const bundlePath = path.join(compareVariantDir(compareId, variantName), "router_trace_bundle.json");
+  const detail = await buildTraceDetailFromBundlePath(bundlePath, `compare:${compareId}:${variantName}`);
+  if (!detail) {
+    return null;
+  }
+  return {
+    compare_id: compareId,
+    variant_name: variantName,
+    ...detail,
+  };
+}
+
 export async function buildInitialDashboardData() {
   const { runs } = await scanRuns();
+  const { compareRuns } = await buildCompareRunsOverview();
   const selectedRunId = runs[0]?.run_id ?? null;
   const selectedRunDetail = selectedRunId ? await buildRunDetail(selectedRunId) : null;
   const analysisOverview = await buildBadCaseAnalysisOverview();
   return {
     runs,
+    compareRuns,
     selectedRunId,
     selectedRunDetail,
     analysisOverview,

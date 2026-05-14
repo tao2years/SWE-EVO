@@ -145,6 +145,9 @@ def process_instance(
     agent_name: str,
     force_workspace: bool,
     max_turns: int | None,
+    skill_name: str | None,
+    skill_hint: str | None,
+    disable_slash_commands: bool,
     cli_timeout_seconds: int,
     on_start=None,
 ) -> tuple[dict, dict]:
@@ -168,6 +171,9 @@ def process_instance(
         env_file,
         model_name,
         max_turns,
+        skill_name,
+        skill_hint,
+        disable_slash_commands,
         cli_timeout_seconds,
     )
 
@@ -188,6 +194,8 @@ def process_instance(
         "router_note": "router_disabled",
         "router_export_error": None,
         "max_turns": max_turns,
+        "skill_name": skill_name,
+        "disable_slash_commands": disable_slash_commands,
         "started_at": started_at,
         "finished_at": finished_at,
         "cli_type": cli_metrics.get("type"),
@@ -297,6 +305,9 @@ def run_batch(args, runner) -> None:
                 agent_name=args.agent_name,
                 force_workspace=args.force_workspace,
                 max_turns=args.max_turns,
+                skill_name=args.skill_name,
+                skill_hint=args.skill_hint,
+                disable_slash_commands=args.disable_slash_commands,
                 cli_timeout_seconds=args.cli_timeout_seconds,
                 on_start=mark_active,
             )
@@ -362,6 +373,9 @@ def main() -> None:
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--max-concurrency", type=int, default=2)
     parser.add_argument("--max-turns", type=int, default=None)
+    parser.add_argument("--skill-name", default=None)
+    parser.add_argument("--skill-hint", default=None)
+    parser.add_argument("--disable-slash-commands", action="store_true")
     parser.add_argument("--cli-timeout-seconds", type=int, default=5400)
     args = parser.parse_args()
 

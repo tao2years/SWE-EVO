@@ -1,0 +1,40 @@
+{
+  "instance_id": "dask__dask_2024.3.1_2024.4.0",
+  "selected_by": {
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "reason": "picked by max historical cache-hit gap between Claude Code and innercc context rerun",
+    "claude_cache_hit_rate": 0.7379167887343526,
+    "innercc_cache_hit_rate": 0.09875538338660896,
+    "gap": 0.6391614053477437
+  },
+  "shared_prefix": {
+    "shared_prefix_trace_count": 33,
+    "first_divergence_turn": null
+  },
+  "claude_code": {
+    "trace_count": 33,
+    "first_reset_turn": null,
+    "max_msg_count": 65,
+    "max_request_body_bytes": 168837,
+    "max_input_tokens": 16058,
+    "final_cache_hit_rate": 0.5854930304594734,
+    "total_input_tokens": 263906,
+    "total_output_tokens": 8097,
+    "total_cache_read_input_tokens": 743049,
+    "total_cache_creation_input_tokens": 6932
+  },
+  "innercc_0509_context": {
+    "trace_count": 133,
+    "first_reset_turn": 33,
+    "max_msg_count": 199,
+    "max_request_body_bytes": 333151,
+    "max_input_tokens": 76706,
+    "final_cache_hit_rate": 0.049786311551563954,
+    "total_input_tokens": 3930024,
+    "total_output_tokens": 51169,
+    "total_cache_read_input_tokens": 1144770,
+    "total_cache_creation_input_tokens": 7986
+  },
+  "claude_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/official48_runs/20260511-clean-router-project-coverage-7-claude-2.1.138/infer/runs/dask__dask_2024.3.1_2024.4.0/router_trace_bundle.json",
+  "innercc_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/official48_runs/20260511-194955-project-coverage-7-innercc-context-router-rerun/infer/runs/dask__dask_2024.3.1_2024.4.0/router_trace_bundle.json"
+}

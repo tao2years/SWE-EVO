@@ -31,6 +31,28 @@ const COMPARISON_METRICS = [
   ["cache_hit_rate", "cache hit"],
 ];
 
+const RUN_STATUS_OPTIONS = [
+  { value: "all", label: "All statuses" },
+  { value: "live", label: "Live or needs attention" },
+  { value: "completed", label: "Completed" },
+  { value: "running", label: "Running" },
+  { value: "stalled", label: "Stalled" },
+  { value: "timed_out", label: "Timed out" },
+  { value: "interrupted", label: "Interrupted" },
+  { value: "idle", label: "Idle" },
+];
+
+const RUN_TAG_STOPWORDS = new Set([
+  "official48",
+  "project",
+  "coverage",
+  "round",
+  "rounds",
+  "skill",
+  "single",
+  "trace",
+]);
+
 const METRIC_DIRECTIONS = {
   active_count: "lower",
   failed_count: "lower",
@@ -133,6 +155,82 @@ function safeText(value) {
   return value === null || value === undefined || value === "" ? "n/a" : String(value);
 }
 
+function searchTerms(value) {
+  return String(value || "")
+    .trim()
+    .toLowerCase()
+    .split(/\s+/)
+    .filter(Boolean);
+}
+
+function runSearchText(run) {
+  return [
+    run?.display_name,
+    run?.run_id,
+    run?.status,
+    run?.lifecycle_reason,
+    run?.updated_at,
+    Array.isArray(run?.active_instances) ? run.active_instances.join(" ") : null,
+    Array.isArray(run?.failed_instances) ? run.failed_instances.join(" ") : null,
+  ]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase();
+}
+
+function runTagTokens(run) {
+  return runSearchText(run)
+    .split(/[^a-z0-9]+/)
+    .filter((token) => {
+      if (!token || token.length < 3 || token.length > 18) {
+        return false;
+      }
+      if (/^\d+$/.test(token)) {
+        return false;
+      }
+      return !RUN_TAG_STOPWORDS.has(token);
+    });
+}
+
+function collectRunTags(runs) {
+  const counts = new Map();
+  for (const run of runs) {
+    const uniqueTokens = new Set(runTagTokens(run));
+    for (const token of uniqueTokens) {
+      counts.set(token, (counts.get(token) || 0) + 1);
+    }
+  }
+  return [...counts.entries()]
+    .filter(([, count]) => count >= 2)
+    .sort((left, right) => {
+      if (left[1] !== right[1]) {
+        return right[1] - left[1];
+      }
+      return left[0].localeCompare(right[0]);
+    })
+    .slice(0, 10)
+    .map(([token]) => token);
+}
+
+function runMatchesSearch(run, query) {
+  const terms = searchTerms(query);
+  if (!terms.length) {
+    return true;
+  }
+  const haystack = runSearchText(run);
+  return terms.every((term) => haystack.includes(term));
+}
+
+function runMatchesStatus(run, filter) {
+  if (filter === "all") {
+    return true;
+  }
+  if (filter === "live") {
+    return ["running", "stalled", "timed_out", "interrupted"].includes(run?.status);
+  }
+  return run?.status === filter;
+}
+
 function formatIsoTimestamp(value) {
   if (typeof value !== "string" || !value) {
     return "n/a";
@@ -179,6 +277,11 @@ function runActivityText(run) {
   }
 
   const parts = [];
+  if (run.status === "timed_out" && typeof run.heartbeat_age_minutes === "number") {
+    parts.push(`heartbeat timeout ${run.heartbeat_age_minutes}m`);
+  } else if (run.status === "interrupted" && run.lifecycle_reason) {
+    parts.push(String(run.lifecycle_reason).replaceAll("_", " "));
+  }
   if (run.active_count) {
     const activeInstances = Array.isArray(run.active_instances) ? run.active_instances : [];
     if (!activeInstances.length) {
@@ -209,7 +312,13 @@ function statusClass(status) {
   if (status === "completed") return "status-completed";
   if (status === "running") return "status-running";
   if (status === "stalled") return "status-stalled";
+  if (status === "timed_out" || status === "interrupted") return "status-interrupted";
   return "status-idle";
+}
+
+function statusLabel(status) {
+  if (status === "timed_out") return "timed out";
+  return safeText(status);
 }
 
 function formatTimestamp(value) {
@@ -348,6 +457,10 @@ export default function DashboardClient({ initialData }) {
   );
   const [caseSortKey, setCaseSortKey] = useState("instance_id");
   const [caseSortDirection, setCaseSortDirection] = useState("asc");
+  const [runSearch, setRunSearch] = useState("");
+  const [runStatusFilter, setRunStatusFilter] = useState("all");
+  const [runTagFilter, setRunTagFilter] = useState("all");
+  const [showComparedOnly, setShowComparedOnly] = useState(false);
   const [search, setSearch] = useState("");
   const [resolvedFilter, setResolvedFilter] = useState("all");
   const [anomalyFilter, setAnomalyFilter] = useState("all");
@@ -362,6 +475,33 @@ export default function DashboardClient({ initialData }) {
   const [reviewPendingId, setReviewPendingId] = useState(null);
   const traceCacheRef = useRef(new Map());
 
+  const selectedRuns = runs.filter((run) => compareRunIds.has(run.run_id));
+  const runTags = collectRunTags(runs);
+  const filteredRuns = runs.filter((run) => {
+    if (!runMatchesSearch(run, runSearch)) {
+      return false;
+    }
+    if (!runMatchesStatus(run, runStatusFilter)) {
+      return false;
+    }
+    if (runTagFilter !== "all" && !runTagTokens(run).includes(runTagFilter)) {
+      return false;
+    }
+    if (showComparedOnly && !compareRunIds.has(run.run_id)) {
+      return false;
+    }
+    return true;
+  });
+  const visibleSelectedRuns = filteredRuns.filter((run) => compareRunIds.has(run.run_id));
+  const visibleOtherRuns = filteredRuns.filter((run) => !compareRunIds.has(run.run_id));
+  const displayedRuns = [...visibleSelectedRuns, ...visibleOtherRuns];
+  const hiddenSelectedCount = selectedRuns.length - visibleSelectedRuns.length;
+  const hasRunFilters = Boolean(
+    runSearch.trim()
+      || runStatusFilter !== "all"
+      || runTagFilter !== "all"
+      || showComparedOnly,
+  );
   const currentCases = selectedRunDetail?.cases ?? [];
   const selectedCase = currentCases.find((item) => item.instance_id === selectedCaseId) ?? null;
   const filteredCases = [...currentCases]
@@ -394,6 +534,12 @@ export default function DashboardClient({ initialData }) {
   useEffect(() => {
     setDisplayNameDraft(selectedRunDetail?.run?.display_name ?? "");
   }, [selectedRunDetail?.run?.run_id, selectedRunDetail?.run?.display_name]);
+
+  useEffect(() => {
+    if (showComparedOnly && compareRunIds.size === 0) {
+      setShowComparedOnly(false);
+    }
+  }, [showComparedOnly, compareRunIds]);
 
   async function handleRefresh(silent = false) {
     if (!silent) {
@@ -619,6 +765,17 @@ export default function DashboardClient({ initialData }) {
     setCaseSortDirection(defaultSortDirection(sortKey));
   }
 
+  function keepCurrentRunOnly() {
+    setCompareRunIds(selectedRunId ? new Set([selectedRunId]) : new Set());
+  }
+
+  function resetRunFilters() {
+    setRunSearch("");
+    setRunStatusFilter("all");
+    setRunTagFilter("all");
+    setShowComparedOnly(false);
+  }
+
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       void handleRefresh(true);
@@ -638,6 +795,9 @@ export default function DashboardClient({ initialData }) {
           </p>
         </div>
         <div className="hero-actions">
+          <a className="ghost-button" href="/compare-runs" rel="noreferrer" target="_blank">
+            Compare Runs
+          </a>
           <button className="primary-button" onClick={() => void handleRefresh()} type="button">
             Refresh
           </button>
@@ -652,10 +812,92 @@ export default function DashboardClient({ initialData }) {
               <p className="panel-kicker">Runs</p>
               <h2>Benchmark Rounds</h2>
             </div>
-            <p className="panel-note">Select a run for drill-down. Tick multiple runs for side-by-side comparison.</p>
+            <p className="panel-note">
+              Search by round name, run id, or keywords like <code>pc7 cache</code>; keep your comparison set pinned while
+              you browse older rounds.
+            </p>
           </div>
+          <div className="run-toolbar">
+            <input
+              className="text-input"
+              onChange={(event) => setRunSearch(event.target.value)}
+              placeholder="Search name, run id, model, or keyword"
+              type="search"
+              value={runSearch}
+            />
+            <select className="select-input" onChange={(event) => setRunStatusFilter(event.target.value)} value={runStatusFilter}>
+              {RUN_STATUS_OPTIONS.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="run-filter-row">
+            <button
+              className={`run-filter-chip ${showComparedOnly ? "active" : ""}`.trim()}
+              onClick={() => setShowComparedOnly((previous) => !previous)}
+              type="button"
+            >
+              {showComparedOnly ? "Showing compare tray only" : "Focus compare tray"}
+            </button>
+            {runTags.map((tag) => (
+              <button
+                className={`run-filter-chip ${runTagFilter === tag ? "active" : ""}`.trim()}
+                key={tag}
+                onClick={() => setRunTagFilter((previous) => (previous === tag ? "all" : tag))}
+                type="button"
+              >
+                {tag}
+              </button>
+            ))}
+          </div>
+          <div className="run-meta-row">
+            <p className="run-result-note">
+              Showing {displayedRuns.length} of {runs.length} rounds. {selectedRuns.length} selected for comparison.
+              {hiddenSelectedCount > 0 ? ` ${hiddenSelectedCount} selected rounds are hidden by the current filters.` : ""}
+            </p>
+            <div className="run-filter-actions">
+              {selectedRuns.length > 1 ? (
+                <button className="ghost-button" onClick={keepCurrentRunOnly} type="button">
+                  Keep current only
+                </button>
+              ) : null}
+              {hasRunFilters ? (
+                <button className="ghost-button" onClick={resetRunFilters} type="button">
+                  Reset filters
+                </button>
+              ) : null}
+            </div>
+          </div>
+          {selectedRuns.length ? (
+            <section className="run-selection-tray">
+              <div className="run-selection-top">
+                <div className="run-selection-copy">
+                  <p className="panel-kicker">Compare Tray</p>
+                  <h3>{selectedRuns.length} rounds ready to compare</h3>
+                </div>
+                <div className="status-chip">{selectedRuns.length} selected</div>
+              </div>
+              <div className="selected-run-pills">
+                {selectedRuns.map((run) => (
+                  <button
+                    className={`selected-run-pill ${run.run_id === selectedRunId ? "active" : ""}`.trim()}
+                    key={`selected-${run.run_id}`}
+                    onClick={() => void handleRunSelect(run.run_id)}
+                    type="button"
+                  >
+                    <span className="selected-run-pill-name">{runDisplayName(run)}</span>
+                    <span className="selected-run-pill-meta">
+                      {statusLabel(run.status)} · {numberish(run.resolved_true_cases)} resolved · {percent(run.cache_hit_rate)} cache
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </section>
+          ) : null}
           <div className="run-list">
-            {runs.map((run) => {
+            {displayedRuns.length ? displayedRuns.map((run) => {
               const checked = compareRunIds.has(run.run_id);
               return (
                 <article
@@ -676,7 +918,7 @@ export default function DashboardClient({ initialData }) {
                         <div className="run-activity">{runActivityText(run)}</div>
                       ) : null}
                     </div>
-                    <span className={`status-badge ${statusClass(run.status)}`.trim()}>{run.status}</span>
+                    <span className={`status-badge ${statusClass(run.status)}`.trim()}>{statusLabel(run.status)}</span>
                   </div>
                   <div className="mini-stats">
                     <div className="mini-stat">
@@ -715,7 +957,11 @@ export default function DashboardClient({ initialData }) {
                   </label>
                 </article>
               );
-            })}
+            }) : (
+              <div className="empty-state run-list-empty">
+                No rounds match the current filters. Broaden the search or clear the compare-only focus.
+              </div>
+            )}
           </div>
         </section>
 
@@ -727,22 +973,19 @@ export default function DashboardClient({ initialData }) {
             </div>
             <p className="panel-note">Focus on completion, resolution, fix/pass retention, and efficiency at a glance.</p>
           </div>
-          {runs.filter((run) => compareRunIds.has(run.run_id)).length ? (
+          {selectedRuns.length ? (
             <div className="table-wrap">
               <table className="comparison-table">
                 <thead>
                   <tr>
                     <th>metric</th>
-                    {runs
-                      .filter((run) => compareRunIds.has(run.run_id))
-                      .map((run) => (
-                        <th key={run.run_id}>{runDisplayName(run)}</th>
-                      ))}
+                    {selectedRuns.map((run) => (
+                      <th key={run.run_id}>{runDisplayName(run)}</th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
                   {(() => {
-                    const selectedRuns = runs.filter((run) => compareRunIds.has(run.run_id));
                     return COMPARISON_METRICS.map(([key, label]) => {
                       const bestRunIds = metricBestRunIds(selectedRuns, key);
                       return (
@@ -776,7 +1019,7 @@ export default function DashboardClient({ initialData }) {
             </div>
             <p className="panel-note">
               {selectedRunDetail?.run
-                ? `${selectedRunDetail.run.run_id} · ${selectedRunDetail.run.status} · ${safeText(selectedRunDetail.run.updated_at)} · ${selectedRunDetail.run.eval_reports}/${selectedRunDetail.run.total_cases} reports${selectedRunDetail.run.active_count ? ` · ${selectedRunDetail.run.active_count} infer active` : ""}${selectedRunDetail.run.eval_active_count ? ` · ${selectedRunDetail.run.eval_active_count} eval active` : ""}${selectedRunDetail.run.failed_count ? ` · ${selectedRunDetail.run.failed_count} failed` : ""}`
+                ? `${selectedRunDetail.run.run_id} · ${statusLabel(selectedRunDetail.run.status)} · ${safeText(selectedRunDetail.run.updated_at)} · ${selectedRunDetail.run.eval_reports}/${selectedRunDetail.run.total_cases} reports${selectedRunDetail.run.active_count ? ` · ${selectedRunDetail.run.active_count} infer active` : ""}${selectedRunDetail.run.eval_active_count ? ` · ${selectedRunDetail.run.eval_active_count} eval active` : ""}${selectedRunDetail.run.failed_count ? ` · ${selectedRunDetail.run.failed_count} failed` : ""}`
                 : "Choose a run card to inspect its summary and cases."}
             </p>
           </div>

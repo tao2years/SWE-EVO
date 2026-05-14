@@ -89,3 +89,23 @@ Important files there:
 - Evaluation is done via local harness image builds, not by pulling the benchmark's prebuilt instance image.
 - The prompt explicitly tells the custom CLI agent not to modify tests.
 - `SWE-bench/evaluate_instance.py` now accepts `--scaffold CustomCLI` for `preds.json`-style outputs.
+
+## Cache Trace Comparison
+
+To compare router traces for `Claude Code` vs `innercc_0509_context` on the same case, use:
+
+```bash
+python3 custom_cli_case/compare_cache_traces.py
+```
+
+By default it:
+
+- chooses the historical high-gap case from prior router runs
+- uses `official48_source/output_final/<instance>.json` as input
+- runs `claude` and `innercc_0509_context` separately
+- exports each run's `router_trace_bundle.json`
+- writes per-turn summaries plus a top-level `comparison.md`
+
+Outputs land under:
+
+- `custom_cli_case/compare_runs/<timestamp>-<instance_id>/`

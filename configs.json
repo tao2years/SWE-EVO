@@ -30,7 +30,7 @@
       "model": "MiniMax-M2.5-highspeed"
     },
     "claude": {
-      "cli_bin": "/usr/bin/claude",
+      "cli_bin": "/home/wt/.local/bin/claude",
       "settings_mode": "direct_generated",
       "env_file": "config/swe-evo.env",
       "model": "MiniMax-M2.5-highspeed"

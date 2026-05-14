@@ -188,9 +188,22 @@ def prepare_workspace(instance: dict, workspace_dir: Path, force: bool) -> None:
     run(["git", "config", "user.name", "benchmark"], cwd=workspace_dir)
 
 
-def build_prompt(instance: dict) -> str:
+def build_prompt(
+    instance: dict,
+    skill_name: str | None = None,
+    skill_hint: str | None = None,
+) -> str:
     f2p = instance["FAIL_TO_PASS"]
     test_list = "\n".join(f"- {t}" for t in f2p)
+    skill_section = ""
+    if skill_name:
+        hint = (
+            skill_hint
+            or f"An available skill for this environment is `/{skill_name}`. "
+            f"If the task has explicit target tests and a narrow bugfix contract, invoke it early via the Skill tool before broad exploration."
+        )
+        skill_section = f"\nAvailable benchmark skill:\n- {hint}\n"
+
     return f"""You are working inside a git repository checked out to the benchmark base commit.
 
 Implement the minimal code-only fix for this software evolution task.
@@ -209,6 +222,7 @@ Rules:
 - Prefer a minimal fix over broad refactors.
 - You may inspect and run commands in the repository.
 - When you are done, just finish normally. The patch will be collected from git diff.
+{skill_section}
 """
 
 
@@ -221,6 +235,9 @@ def run_cli(
     env_path: Path,
     model_name: str,
     max_turns: int,
+    skill_name: str | None = None,
+    skill_hint: str | None = None,
+    disable_slash_commands: bool = False,
     timeout_seconds: int | None = None,
 ) -> tuple[Path, int]:
     env = os.environ.copy()
@@ -229,7 +246,7 @@ def run_cli(
     if env.get("OPENAI_API_KEY") and not env.get("ANTHROPIC_API_KEY"):
         env["ANTHROPIC_API_KEY"] = env["OPENAI_API_KEY"]
 
-    prompt = build_prompt(instance)
+    prompt = build_prompt(instance, skill_name=skill_name, skill_hint=skill_hint)
     raw_stdout_path = run_dir / "cli_stdout.log"
     result_path = run_dir / "cli_result.json"
     if is_claude_cli(cli_bin):
@@ -245,6 +262,8 @@ def run_cli(
             "--model",
             model_name,
         ]
+        if disable_slash_commands:
+            cmd.append("--disable-slash-commands")
         if max_turns is not None:
             cmd.extend(["--max-turns", str(max_turns)])
         cmd.append(prompt)
@@ -252,7 +271,6 @@ def run_cli(
     else:
         cmd = [
             str(cli_bin),
-            "--bare",
             "-p",
             "--no-session-persistence",
             "--output-format",
@@ -263,6 +281,8 @@ def run_cli(
             "--model",
             model_name,
         ]
+        if disable_slash_commands:
+            cmd.append("--disable-slash-commands")
         if max_turns is not None:
             cmd.extend(["--max-turns", str(max_turns)])
         use_stdin_prompt = True
@@ -481,6 +501,9 @@ def main() -> None:
     parser.add_argument("--eval-run-id", default=None)
     parser.add_argument("--max-turns", type=int, default=None)
     parser.add_argument("--max-workers", type=int, default=DEFAULT_MAX_WORKERS)
+    parser.add_argument("--skill-name", default=None)
+    parser.add_argument("--skill-hint", default=None)
+    parser.add_argument("--disable-slash-commands", action="store_true")
     parser.add_argument("--force-workspace", action="store_true")
     args = parser.parse_args()
 
@@ -516,6 +539,9 @@ def main() -> None:
         env_path,
         args.model,
         args.max_turns,
+        args.skill_name,
+        args.skill_hint,
+        args.disable_slash_commands,
     )
     preds_path = write_patch_outputs(args.instance_id, workspace_dir, run_dir, args.agent_name)
     report_path = run_local_evaluation(
@@ -534,6 +560,8 @@ def main() -> None:
         "eval_run_id": eval_run_id,
         "cli_bin": str(cli_bin),
         "max_turns": args.max_turns,
+        "skill_name": args.skill_name,
+        "disable_slash_commands": args.disable_slash_commands,
         "max_workers": args.max_workers,
         "workspace_dir": str(workspace_dir),
         "cli_result": str(cli_result),

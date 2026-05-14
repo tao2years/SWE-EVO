@@ -1,0 +1,31 @@
+diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py
+index 3b24d2f..c05cb05 100644
+--- a/dask/dataframe/groupby.py
++++ b/dask/dataframe/groupby.py
+@@ -3207,14 +3207,24 @@ def _unique_aggregate(series_gb, name=None):
+ 
+ def _value_counts(x, **kwargs):
+     if not x.groups or all(
+-        pd.isna(key) for key in flatten(x.groups.keys(), container=tuple)
++        all(pd.isna(k) for k in key)
++        for key in flatten(x.groups.keys(), container=tuple)
+     ):
+-        return pd.Series(dtype=int)
++        # Return empty Series with correct index structure for aggregation
++        keys = x.keys if isinstance(x.keys, str) else list(x.keys)
++        index_names = [keys] if isinstance(keys, str) else keys
++        index_names.append(x.obj.name)
++        empty_index = pd.MultiIndex.from_arrays(
++            [[] for _ in index_names], names=index_names
++        )
++        return pd.Series(dtype=int, name="count", index=empty_index)
+     else:
+         return x.value_counts(**kwargs)
+ 
+ 
+ def _value_counts_aggregate(series_gb):
++    if not len(series_gb):
++        return pd.Series(dtype=int, name="count", index=series_gb.obj.index[:0])
+     data = {k: v.groupby(level=-1).sum() for k, v in series_gb}
+     res = pd.concat(data, names=series_gb.obj.index.names)
+     typed_levels = {

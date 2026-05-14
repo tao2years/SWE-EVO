@@ -1,0 +1,17 @@
+{
+  "variant": "innercc_0509_context",
+  "cli_kind": "innercc",
+  "cli_bin": "/home/wt/sss_repos/innerCC/innercc_0509_context",
+  "agent_name": "innercc_0509_context",
+  "workspace_dir": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/custom_cli_case/compare_runs/live-dask-20260512b/workspaces/innercc_0509_context/dask__dask_2024.3.1_2024.4.0",
+  "run_dir": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/custom_cli_case/compare_runs/live-dask-20260512b/variants/innercc_0509_context",
+  "started_at_ms": 1778570441135,
+  "finished_at_ms": 1778570659868,
+  "cli_result": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/custom_cli_case/compare_runs/live-dask-20260512b/variants/innercc_0509_context/cli_result.json",
+  "cli_returncode": 0,
+  "preds_json": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/custom_cli_case/compare_runs/live-dask-20260512b/variants/innercc_0509_context/preds.json",
+  "router_trace_bundle": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/custom_cli_case/compare_runs/live-dask-20260512b/variants/innercc_0509_context/router_trace_bundle.json",
+  "router_session_id": "de12b6ff-ebb0-4809-877b-53e805047f35",
+  "router_run_id": "839b655c-4cc7-47dc-928e-31818e5b4364",
+  "router_export_error": null
+}

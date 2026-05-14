@@ -291,7 +291,10 @@ def export_router_bundle(
     deadline = time.time() + timeout_seconds
 
     while time.time() < deadline:
-        if not router_db_path.exists() or not router_api_healthy(router_api_base):
+        # `/api/sessions` can become slow once the DB grows. For export, the real
+        # source of truth is the sqlite DB plus a direct `/api/export` request, so
+        # avoid gating on the sessions endpoint here.
+        if not router_db_path.exists():
             time.sleep(poll_seconds)
             continue
 
@@ -320,14 +323,19 @@ def export_router_bundle(
             con.close()
 
         try:
-            payload = json.dumps({"session_ids": [session_id], "run_ids": [], "trace_ids": []}).encode("utf-8")
+            if run_id:
+                scope = {"session_ids": [], "run_ids": [run_id], "trace_ids": []}
+            else:
+                scope = {"session_ids": [session_id], "run_ids": [], "trace_ids": []}
+            payload = json.dumps(scope).encode("utf-8")
             request = urllib.request.Request(
                 f"{router_api_base}/api/export",
                 data=payload,
                 headers={"Content-Type": "application/json"},
                 method="POST",
             )
-            with urllib.request.urlopen(request, timeout=60) as response:
+            export_timeout = max(60, min(180, int(deadline - time.time()) or 60))
+            with urllib.request.urlopen(request, timeout=export_timeout) as response:
                 bundle = json.load(response)
             bundle_path = run_dir / "router_trace_bundle.json"
             bundle_path.write_text(json.dumps(bundle, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -425,6 +433,9 @@ def process_instance(
     agent_name: str,
     force_workspace: bool,
     max_turns: int | None,
+    skill_name: str | None,
+    skill_hint: str | None,
+    disable_slash_commands: bool,
     cli_timeout_seconds: int,
     router_db_path: Path,
     router_api_base: str,
@@ -442,7 +453,7 @@ def process_instance(
     run_dir = runs_root / instance_id
     run_dir.mkdir(parents=True, exist_ok=True)
     started_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    note_text = f"innercc | {instance_id} | {started_at}"
+    note_text = f"{agent_name} | {instance_id} | {started_at}"
     proxy_base_url = load_router_proxy_base_url(settings_file, env_file)
     if not proxy_base_url:
         raise RuntimeError(f"router proxy base url is missing for {instance_id}")
@@ -474,6 +485,9 @@ def process_instance(
             env_file,
             model_name,
             max_turns,
+            skill_name,
+            skill_hint,
+            disable_slash_commands,
             cli_timeout_seconds,
         )
     finally:
@@ -517,6 +531,8 @@ def process_instance(
         "router_note": note_text,
         "router_export_error": router_export_error,
         "max_turns": max_turns,
+        "skill_name": skill_name,
+        "disable_slash_commands": disable_slash_commands,
         "started_at": started_at,
         "finished_at": finished_at,
     }
@@ -621,6 +637,9 @@ def run_batch(args, runner) -> None:
                 agent_name=args.agent_name,
                 force_workspace=args.force_workspace,
                 max_turns=args.max_turns,
+                skill_name=args.skill_name,
+                skill_hint=args.skill_hint,
+                disable_slash_commands=args.disable_slash_commands,
                 cli_timeout_seconds=args.cli_timeout_seconds,
                 router_db_path=router_db_path,
                 router_api_base=router_api_base,
@@ -691,6 +710,9 @@ def main():
     parser.add_argument("--resume", action="store_true")
     parser.add_argument("--max-concurrency", type=int, default=2)
     parser.add_argument("--max-turns", type=int, default=None)
+    parser.add_argument("--skill-name", default=None)
+    parser.add_argument("--skill-hint", default=None)
+    parser.add_argument("--disable-slash-commands", action="store_true")
     parser.add_argument("--cli-timeout-seconds", type=int, default=5400)
     parser.add_argument("--router-db-path", default=str(ROUTER_DB_PATH))
     parser.add_argument("--router-api-base", default=ROUTER_API_BASE)

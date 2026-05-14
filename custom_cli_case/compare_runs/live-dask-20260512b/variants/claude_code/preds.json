@@ -1,0 +1,7 @@
+{
+  "dask__dask_2024.3.1_2024.4.0": {
+    "model_name_or_path": "claude-code",
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "model_patch": "diff --git a/dask/dataframe/groupby.py b/dask/dataframe/groupby.py\nindex 3b24d2f..4ea41b4 100644\n--- a/dask/dataframe/groupby.py\n+++ b/dask/dataframe/groupby.py\n@@ -3209,7 +3209,15 @@ def _value_counts(x, **kwargs):\n     if not x.groups or all(\n         pd.isna(key) for key in flatten(x.groups.keys(), container=tuple)\n     ):\n-        return pd.Series(dtype=int)\n+        # Return empty series with proper MultiIndex structure\n+        keys = x.keys\n+        value_name = x.obj.name\n+        if isinstance(keys, str):\n+            names = [keys, value_name]\n+        else:\n+            names = list(keys) + [value_name]\n+        empty_index = pd.MultiIndex.from_tuples([], names=names)\n+        return pd.Series([], index=empty_index, dtype=int)\n     else:\n         return x.value_counts(**kwargs)\n \n"
+  }
+}

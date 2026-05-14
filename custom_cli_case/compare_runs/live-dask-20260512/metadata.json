@@ -1,0 +1,18 @@
+{
+  "instance_id": "dask__dask_2024.3.1_2024.4.0",
+  "instance_file": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/official48_source/output_final/dask__dask_2024.3.1_2024.4.0.json",
+  "repo": "dask/dask",
+  "base_commit": "f9310c440b661f1ae96ffd8726404d3c3fe32edc",
+  "selected_by": {
+    "instance_id": "dask__dask_2024.3.1_2024.4.0",
+    "reason": "picked by max historical cache-hit gap between Claude Code and innercc context rerun",
+    "claude_cache_hit_rate": 0.7379167887343526,
+    "innercc_cache_hit_rate": 0.09875538338660896,
+    "gap": 0.6391614053477437
+  },
+  "model": "MiniMax-M2.5-highspeed",
+  "settings_file": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/config/claude.settings.json",
+  "env_file": "/home/wt/sss_repos/sss_auto/SWE-EVO-subset-run/config/swe-evo.env",
+  "router_db_path": "/home/wt/sss_repos/sss_auto/llm_router/proxy/data/traces.db",
+  "router_api_base": "http://127.0.0.1:18783"
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Eval Rootcause Synthesis"
+  short_description: "Compare evaluation runs and isolate root causes"
+  default_prompt: "Compare multiple benchmark runs, trace result deltas to specific cases, separate capability changes from environment/setup noise, and produce one deep Chinese analysis document with evidence-backed root causes."
